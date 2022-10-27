@@ -1,7 +1,0 @@
-"0","```r
-area_hectares <- 1.0			# land area in hectares
-area_acres <- area_hectares * 2.47	# convert to acres
-area_acres				# print land area in acres.
-```"
-"1","[1] 2.47
-"
