@@ -1,0 +1,9 @@
+"0","```r
+df_fn_ba %>% filter(Regime == \"Before\") %>%
+  ggplot() +
+  geom_bar(aes(x = as.factor(Date), y=Deaths, fill = Cause), 
+           width = 1, position=\"identity\", stat=\"identity\", alpha = 0.5) + 
+  scale_y_sqrt() +
+  coord_polar(start = 3*pi/2) +
+  labs(title = \"Causes of Mortality in the Army in the East\")
+```"

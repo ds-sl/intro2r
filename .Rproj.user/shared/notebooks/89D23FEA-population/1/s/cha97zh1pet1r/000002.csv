@@ -1,0 +1,5 @@
+"0","```r
+world %>% ggplot(aes(x = YEAR, y = POPULATION)) +
+  geom_line(aes(color = SEX)) + 
+  geom_vline(xintercept = 2020)
+```"

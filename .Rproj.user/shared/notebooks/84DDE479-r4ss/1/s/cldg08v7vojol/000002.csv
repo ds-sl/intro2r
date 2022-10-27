@@ -1,0 +1,11 @@
+"0","```r
+area_hectares <- 1.0    # doesn't print anything
+(area_hectares <- 1.0)  # putting parenthesis around the call prints the value of `area_hectares`
+```"
+"1","[1] 1
+"
+"0","```r
+area_hectares         # and so does typing the name of the object
+```"
+"1","[1] 1
+"

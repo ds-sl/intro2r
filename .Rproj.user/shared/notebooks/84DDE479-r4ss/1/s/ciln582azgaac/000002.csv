@@ -1,0 +1,10 @@
+"0","```r
+hh_members[hh_members < 4 | hh_members > 7]
+```"
+"1","[1]  3 10
+"
+"0","```r
+hh_members[hh_members >= 4 & hh_members <= 7]
+```"
+"1","[1] 7 6
+"

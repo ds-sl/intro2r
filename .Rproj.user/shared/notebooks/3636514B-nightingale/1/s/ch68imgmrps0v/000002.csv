@@ -1,0 +1,12 @@
+"0","```r
+df_fn_before <- df_fn %>% filter(Date < as.Date(\"1855-04-01\"))
+nrow(df_fn_before)
+```"
+"1","[1] 36
+"
+"0","```r
+df_fn_after <- df_fn %>% filter(Date >= as.Date(\"1855-04-01\"))
+nrow(df_fn_after)
+```"
+"1","[1] 36
+"

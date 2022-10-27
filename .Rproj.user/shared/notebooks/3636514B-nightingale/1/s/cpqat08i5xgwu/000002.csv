@@ -1,0 +1,5 @@
+"0","```r
+df_fn_ba <- df_fn %>% 
+  mutate(Regime = if_else(Date < as.Date(\"1855-04-01\"), \"Before\", \"After\"))
+df_fn_ba %>% filter(Date > as.Date(\"1855-01-01\") & Date < as.Date(\"1855-06-01\"))
+```"

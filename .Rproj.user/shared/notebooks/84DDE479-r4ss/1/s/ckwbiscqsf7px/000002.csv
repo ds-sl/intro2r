@@ -1,0 +1,10 @@
+"0","```r
+str(hh_members)
+```"
+"1"," num [1:4] 3 7 10 6
+"
+"0","```r
+str(respondent_wall_type)
+```"
+"1"," chr [1:3] \"muddaub\" \"burntbricks\" \"sunbricks\"
+"

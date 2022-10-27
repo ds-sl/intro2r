@@ -1,0 +1,4 @@
+"0","```r
+ggplot(df_fn_after) +
+  geom_bar(aes(x = Date, y = Deaths, fill = Cause), stat = \"identity\", position = \"dodge\")
+```"

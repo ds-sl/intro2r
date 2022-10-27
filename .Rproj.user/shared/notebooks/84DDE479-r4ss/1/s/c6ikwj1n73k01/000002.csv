@@ -1,0 +1,8 @@
+"0","```r
+possessions <- c(\"bicycle\", \"radio\", \"television\")
+possessions <- c(possessions, \"mobile_phone\") # add to the end of the vector
+possessions <- c(\"car\", possessions) # add to the beginning of the vector
+possessions
+```"
+"1","[1] \"car\"          \"bicycle\"      \"radio\"        \"television\"   \"mobile_phone\"
+"

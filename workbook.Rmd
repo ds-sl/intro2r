@@ -1,0 +1,40 @@
+---
+title: "Workbook"
+output: html_notebook
+---
+
+```{r cash = TRUE}
+library(tidyverse)
+library(dygraphs)
+library(xts)
+```
+
+
+```{r cash = TRUE}
+coronavirus <- read_csv("https://github.com/RamiKrispin/coronavirus/raw/master/csv/coronavirus.csv")
+```
+```{r}
+COUNTRY <- "Japan"
+df0 <- coronavirus[coronavirus$country == COUNTRY,]
+df <- df0[c(1,6,7)]
+df_confirmed <- df[df$type == "confirmed",]
+df_death <- df[df$type == "death",] %>% select(date,cases)
+head(df_death)
+death <- xts(df_death[-1,2], order.by = df_death[-1,1])
+```
+
+```{r}
+df_death[-1,1]
+```
+
+
+```{r}
+as.Date(df_death[-1,1])
+```
+
+
+```{r}
+))
+#death
+# dygraph(death) %>% dyRangeSelector()
+```

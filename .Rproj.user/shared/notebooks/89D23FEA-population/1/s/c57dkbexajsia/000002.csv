@@ -1,0 +1,8 @@
+"0","```r
+### For the first time, delete # in the following four lines to download the files.
+## From the second time, add # to the following four lines to avoid downloading the files.
+# idbzip_url <- \"https://www2.census.gov/programs-surveys/international-programs/about/idb/idbzip.zip\" # URL of the zip file.
+# dir.create(\"./idbzip\") # store everything in idbzip directory in the working directory
+# download.file(url = idbzip_url, destfile = \"idbzip/idbzip.zip\") # file size: 43.1 MB
+# unzip(\"./idbzip/idbzip.zip\", exdir = \"./idbzip\") # zip file contains three files idb5yr.all, idbsingleyear.all, Readme.txt
+```"

@@ -1,0 +1,5 @@
+"0","```r
+japan2020 <- japan %>% filter(YEAR == 2020, SEX == 0)
+ggplot(japan2020) +
+  geom_bar(aes(x = AGE, y = POP), stat = \"identity\") 
+```"

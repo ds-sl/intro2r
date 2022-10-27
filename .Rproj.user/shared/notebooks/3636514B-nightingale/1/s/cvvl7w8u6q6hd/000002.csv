@@ -1,0 +1,5 @@
+"0","```r
+df_fn %>% filter(Date >= as.Date(\"1855-08-01\")) %>%
+  ggplot() +
+  geom_bar(aes(x = Date, y = Deaths, fill = Cause), stat = \"identity\", position = \"identity\", alpha = 0.4)
+```"

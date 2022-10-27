@@ -1,0 +1,5 @@
+"0","```r
+df_cause %>% ggplot(aes(x = \"\", y = Death, fill = Cause)) + 
+  geom_bar(width = 1, stat = \"identity\") + 
+  coord_polar(\"y\", start=0)
+```"

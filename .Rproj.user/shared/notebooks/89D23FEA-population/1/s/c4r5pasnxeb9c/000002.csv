@@ -1,0 +1,6 @@
+"0","```r
+japan_adult <- filter(japan2020, AGE >=18) 
+ggplot(japan_adult) +
+  geom_line(aes(x = AGE, y = cumsum(POP)/sum(POP)*100)) + 
+  geom_vline(xintercept = 40, color = \"red\")
+```"

@@ -1,0 +1,5 @@
+"0","```r
+japan <- filter(idb, GENC == \"JP\") %>% select(\"YEAR\" = `#YR`, SEX, POP, AGE) %>%
+  mutate(SEX = as_factor(SEX))
+japan
+```"

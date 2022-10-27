@@ -1,0 +1,12 @@
+"0","```r
+countries <- idb %>% 
+  select(\"YEAR\" = `#YR`, SEX, GENC, POP) %>%
+  mutate(SEX = as_factor(SEX)) %>% filter(SEX == 0) %>%
+  group_by(YEAR, GENC) %>%
+  summarize(POPULATION = sum(POP)) %>%
+  ungroup() %>%
+  group_by(YEAR) %>% 
+  summarize(NUMBER = n())
+```"
+"1","`summarise()` has grouped output by 'YEAR'. You can override using the `.groups` argument.
+"

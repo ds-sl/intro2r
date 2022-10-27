@@ -1,0 +1,11 @@
+"0","```r
+respondent_wall_type <- c(\"muddaub\", \"burntbricks\", \"sunbricks\")
+respondent_wall_type[2]
+```"
+"1","[1] \"burntbricks\"
+"
+"0","```r
+respondent_wall_type[c(3, 2)]
+```"
+"1","[1] \"sunbricks\"   \"burntbricks\"
+"

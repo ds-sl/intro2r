@@ -1,0 +1,8 @@
+"0","```r
+df_cause <- Nightingale %>%
+  select(Disease, Wounds, Other) %>%
+  pivot_longer(cols = everything(), names_to = \"Cause\", values_to = \"Death\")
+
+df_cause %>% ggplot(aes(x = Cause, y = Death)) + 
+  geom_bar(stat = \"identity\")
+```"

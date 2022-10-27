@@ -1,0 +1,14 @@
+"0","```r
+cp <- coord_polar(theta = \"x\", start = 3*pi/2)
+cp$is_free <- function() TRUE
+
+df_fn_ba %>% #filter(Regime == \"Before\") %>%
+  ggplot() +
+  geom_bar(aes(x = as.factor(Date), y=Deaths, fill = Cause), 
+           width = 1, position=\"identity\", stat=\"identity\", alpha = 0.5) + 
+  scale_y_sqrt() + # death scale is proportional to the area
+  cp + 
+  facet_grid(. ~ Regime, labeller = label_both, scales = \"free\") + 
+  labs(title = \"Causes of Mortality in the Army in the East\") +
+  theme(aspect.ratio = 1)
+```"

@@ -1,0 +1,6 @@
+"0","```r
+area_hectares <- 2.5
+2.47 * area_hectares
+```"
+"1","[1] 6.175
+"

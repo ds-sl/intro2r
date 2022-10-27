@@ -1,0 +1,11 @@
+"0","```r
+df_rate <- Nightingale %>%
+  select(Date, Army, Disease, Wounds, Other) %>%
+  mutate(Death_Rate = (Disease + Wounds + Other)/Army,
+         Disease_Rate = Disease/Army) 
+
+df_rate %>% ggplot(aes(x = Date)) +
+  geom_line(aes(y = Death_Rate)) + 
+  geom_line(aes(y = Disease_Rate), color = \"blue\") + 
+  geom_vline(xintercept = as.Date(\"1855-04-01\"), color = \"red\")
+```"

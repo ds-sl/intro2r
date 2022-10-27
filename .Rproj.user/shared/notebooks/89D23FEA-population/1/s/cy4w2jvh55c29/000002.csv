@@ -1,0 +1,8 @@
+"0","```r
+pop <- japan %>% group_by(YEAR, SEX) %>% summarize(POPULATION = sum(POP)) 
+```"
+"1","`summarise()` has grouped output by 'YEAR'. You can override using the `.groups` argument.
+"
+"0","```r
+pop
+```"

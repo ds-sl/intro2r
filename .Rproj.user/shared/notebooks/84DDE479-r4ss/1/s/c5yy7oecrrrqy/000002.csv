@@ -1,0 +1,10 @@
+"0","```r
+length(hh_members)
+```"
+"1","[1] 4
+"
+"0","```r
+length(respondent_wall_type)
+```"
+"1","[1] 3
+"

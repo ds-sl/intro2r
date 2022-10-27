@@ -1,0 +1,6 @@
+"0","```r
+df_fn <- Nightingale %>%
+  select(Date, \"Disease_Rate\" = Disease.rate, \"Wounds_Rate\" = Wounds.rate, \"Other_Rate\" = Other.rate) %>%
+  pivot_longer(cols = Disease_Rate:Other_Rate, names_to = \"Cause\", values_to = \"Deaths\")
+df_fn
+```"

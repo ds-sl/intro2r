@@ -1,0 +1,7 @@
+[1,"Installing 'rstudioapi' for RStudio Tutorials...\n"]
+[2," URL 'https://cran.rstudio.com/bin/macosx/contrib/4.2/rstudioapi_0.14.tgz' を試しています \n"]
+[2,"Content type 'application/x-gzip' length 291350 bytes (284 KB)\n======================================="]
+[2,"===========\ndownloaded 284 KB\n\n"]
+[1," ダウンロードされたパッケージは、以下にあります \n"]
+[1," \t/var/folders/yj/l0_jlqv975qb9rm_d82sds1r0000gn/T//Rtmpr3UvW0/downloaded_packages \n"]
+[2,"\n\n✔ Package 'rstudioapi' successfully installed.\n"]

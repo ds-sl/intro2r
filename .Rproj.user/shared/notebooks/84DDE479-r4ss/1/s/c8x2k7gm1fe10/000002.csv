@@ -1,0 +1,5 @@
+"0","```r
+possessions %in% c(\"car\", \"bicycle\")
+```"
+"1","[1]  TRUE  TRUE FALSE FALSE FALSE
+"

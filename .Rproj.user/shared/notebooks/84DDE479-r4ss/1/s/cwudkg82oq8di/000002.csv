@@ -1,0 +1,5 @@
+"0","```r
+class(interviews)
+```"
+"1","[1] \"spec_tbl_df\" \"tbl_df\"      \"tbl\"         \"data.frame\" 
+"

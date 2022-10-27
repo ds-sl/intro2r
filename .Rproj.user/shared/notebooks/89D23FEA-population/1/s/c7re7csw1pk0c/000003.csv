@@ -1,0 +1,15 @@
+"0","```r
+summary(countries)
+```"
+"1","      YEAR          NUMBER     
+ Min.   :1950   Min.   :  2.0  
+ 1st Qu.:1988   1st Qu.:113.5  
+ Median :2025   Median :226.0  
+ Mean   :2025   Mean   :173.3  
+ 3rd Qu.:2062   3rd Qu.:227.0  
+ Max.   :2100   Max.   :227.0  
+"
+"0","```r
+ggplot(countries, aes(x = YEAR, y = NUMBER)) +
+  geom_bar(stat = \"identity\")
+```"

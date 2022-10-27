@@ -1,0 +1,8 @@
+"0","```r
+total = sum(df_cause$Death)
+df_cause %>% 
+  group_by(Cause) %>%
+  summarize(Rate = round(sum(Death)/total*100, digits = 1))
+```"
+"1","`summarise()` ungrouping output (override with `.groups` argument)
+"

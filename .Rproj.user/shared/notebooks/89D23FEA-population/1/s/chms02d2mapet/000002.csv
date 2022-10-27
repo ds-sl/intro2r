@@ -1,0 +1,29 @@
+"0","```r
+idb <- read_delim(\"./idbzip/idbsingleyear.all\", delim = \"|\")
+```"
+"1","Rows: 7929813 Columns: 8
+── Column specification ───────────────────────────────────────────────────────────────────────────────────────────────
+Delimiter: \"|\"
+chr (3): NAME, GENC, FIPS
+dbl (5): #YR, SEX, POP, AREA_KM2, AGE
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+"
+"0","```r
+glimpse(idb)
+```"
+"1","Rows: 7,929,813
+Columns: 8
+$ `#YR`    <dbl> 1990, 1990, 1990, 1990, 1990, 1990, 1990, 1990, 1990, 1990, 1990, 1990, 1990, 1990, 1990, 1990, 1990…
+$ SEX      <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ POP      <dbl> 504, 550, 489, 515, 535, 558, 599, 673, 669, 668, 716, 720, 726, 732, 742, 794, 775, 768, 768, 744, …
+$ NAME     <chr> \"Andorra\", \"Andorra\", \"Andorra\", \"Andorra\", \"Andorra\", \"Andorra\", \"Andorra\", \"Andorra\", \"Andorra\", \"…
+$ GENC     <chr> \"AD\", \"AD\", \"AD\", \"AD\", \"AD\", \"AD\", \"AD\", \"AD\", \"AD\", \"AD\", \"AD\", \"AD\", \"AD\", \"AD\", \"AD\", \"AD\", \"AD\"…
+$ FIPS     <chr> \"AN\", \"AN\", \"AN\", \"AN\", \"AN\", \"AN\", \"AN\", \"AN\", \"AN\", \"AN\", \"AN\", \"AN\", \"AN\", \"AN\", \"AN\", \"AN\", \"AN\"…
+$ AREA_KM2 <dbl> 468, 468, 468, 468, 468, 468, 468, 468, 468, 468, 468, 468, 468, 468, 468, 468, 468, 468, 468, 468, …
+$ AGE      <dbl> 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27…
+"
+"0","```r
+idb
+```"

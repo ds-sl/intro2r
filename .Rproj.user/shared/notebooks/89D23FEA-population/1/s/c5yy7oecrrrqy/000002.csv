@@ -1,0 +1,13 @@
+"0","```r
+world_all <- idb %>% 
+  select(\"YEAR\" = `#YR`, SEX, POP, AGE) %>%
+  mutate(SEX = as_factor(SEX))
+world <- world_all %>% 
+  group_by(YEAR, SEX) %>%
+  summarize(POPULATION = sum(POP))
+```"
+"1","`summarise()` has grouped output by 'YEAR'. You can override using the `.groups` argument.
+"
+"0","```r
+world
+```"

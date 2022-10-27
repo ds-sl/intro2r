@@ -1,0 +1,30 @@
+"0","```r
+## Extract those elements which are not missing values.
+## The ! character is also called the NOT operator
+rooms[!is.na(rooms)]
+```"
+"1","[1] 2 1 1 7
+"
+"0","```r
+## Count the number of missing values.
+## The output of is.na() is a logical vector (TRUE/FALSE equivalent to 1/0) so the sum() function here is effectively counting
+sum(is.na(rooms))
+```"
+"1","[1] 1
+"
+"0","```r
+## Returns the object with incomplete cases removed. The returned object is an atomic vector of type `\"numeric\"` (or `\"double\"`).
+na.omit(rooms)
+```"
+"1","[1] 2 1 1 7
+attr(,\"na.action\")
+[1] 4
+attr(,\"class\")
+[1] \"omit\"
+"
+"0","```r
+## Extract those elements which are complete cases. The returned object is an atomic vector of type `\"numeric\"` (or `\"double\"`).
+rooms[complete.cases(rooms)]
+```"
+"1","[1] 2 1 1 7
+"
