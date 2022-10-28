@@ -1022,40 +1022,6 @@ using in the other lessons, and learn about data frames.
 
 # Starting with Data
 
----
-title: "Starting with Data"
-teaching: 50
-exercises: 30
-questions:
-- "What is a data.frame?"
-- "How can I read a complete csv file into R?"
-- "How can I get basic summary information about my dataset?"
-- "How can I change the way R treats strings in my dataset?"
-- "Why would I want strings to be treated differently?"
-- "How are dates represented in R and how can I change the format?"
-objectives:
-- "Describe what a data frame is."
-- "Load external data from a .csv file into a data frame."
-- "Summarize the contents of a data frame."
-- "Subset and extract values from data frames."
-- "Describe the difference between a factor and a string."
-- "Convert between strings and factors."
-- "Reorder and rename factors."
-- "Change how character strings are handled in a data frame."
-- "Examine and change date formats."
-keypoints:
-- "Use read_csv to read tabular data in R."
-- "Use factors to represent categorical data in R."
-source: Rmd
----
-
-
-```#{r, include=FALSE}
-source("../bin/chunk-options.R")
-knitr_fig_path("02-")
-source("../bin/download_data.R")
-```
-
 ## What are data frames and tibbles?
 
 Data frames are the _de facto_ data structure for tabular data in `R`, and what
@@ -1635,51 +1601,6 @@ mdy(char_dates)
 
 # Data Wrangling with dplyr and tidyr
 
----
-title: "Data Wrangling with dplyr and tidyr"
-keypoints:
-- Use the `dplyr` package to manipulate dataframes.
-- Use `select()` to choose variables from a dataframe.
-- Use `filter()` to choose data based on values.
-- Use `group_by()` and `summarize()` to work with subsets of data.
-- Use `mutate()` to create new variables.
-- Use the `tidyr` package to change the layout of dataframes.
-- Use `pivot_wider()` to go from long to wide format.
-- Use `pivot_longer()` to go from wide to long format.
-objectives:
-- Describe the purpose of an R package and the **`dplyr`** and **`tidyr`** packages.
-- Select certain columns in a dataframe with the **`dplyr`** function `select`.
-- Select certain rows in a dataframe according to filtering conditions with the **`dplyr`**
-  function `filter`.
-- Link the output of one **`dplyr`** function to the input of another function with
-  the 'pipe' operator `%>%`.
-- Add new columns to a dataframe that are functions of existing columns with `mutate`.
-- Use the split-apply-combine concept for data analysis.
-- Use `summarize`, `group_by`, and `count` to split a dataframe into groups of observations,
-  apply a summary statistics for each group, and then combine the results.
-- Describe the concept of a wide and a long table format and for which purpose those
-  formats are useful.
-- Describe the roles of variable names and their associated values when a table is
-  reshaped.
-- Reshape a dataframe from long to wide format and back with the `pivot_wider` and
-  `pivot_longer` commands from the **`tidyr`** package.
-- Export a dataframe to a csv file.
-questions:
-- How can I select specific rows and/or columns from a dataframe?
-- How can I combine multiple commands into a single command?
-- How can I create new columns or remove existing columns from a dataframe?
-- How can I reformat a dataframe to meet my needs?
-teaching: 50
-exercises: 30
-source: Rmd
----
-
-
-```#{r, include = FALSE}
-source("../bin/chunk-options.R")
-knitr_fig_path("03-")
-source("../bin/download_data.R")
-```
 
 **`dplyr`** is a package for making tabular data wrangling easier by using a
 limited set of functions that can be combined to extract and summarize insights
@@ -2428,7 +2349,7 @@ and fills those columns with the values of `items_owned_logical`. We also
 declare that for items that are missing, we want to fill those cells with the
 value of `FALSE` instead of `NA`.
 
-```#{r, eval = FALSE}
+```{r, eval = FALSE}
 pivot_wider(names_from = items_owned,
             values_from = items_owned_logical,
             values_fill = list(items_owned_logical = FALSE))
@@ -2553,37 +2474,6 @@ write_csv(interviews_plotting, "data_output/interviews_plotting.csv")
 {% include links.md %}
 
 # Data Visualisation with ggplot2
-
----
-title: "Data Visualisation with ggplot2"
-teaching: 80
-exercises: 35
-questions:
-  - "What are the components of a ggplot?"
-  - "How do I create scatterplots, boxplots, and barplots?"
-  - "How can I change the aesthetics (ex. colour, transparency) of my plot?"
-  - "How can I create multiple plots at once?"
-objectives:
-   - "Produce scatter plots, boxplots, and barplots using ggplot."
-   - "Set universal plot settings."
-   - "Describe what faceting is and apply faceting in ggplot."
-   - "Modify the aesthetics of an existing ggplot plot (including axis labels and colour)."
-   - "Build complex and customized plots from data in a data frame."
-keypoints:
-   - "`ggplot2` is a flexible and useful tool for creating plots in R."
-   - "The data set and coordinate system can be defined using the `ggplot` function."
-   - "Additional layers, including geoms, are added using the `+` operator."
-   - "Boxplots are useful for visualizing the distribution of a continuous variable."
-   - "Barplots are useful for visualizing categorical data."
-   - "Faceting allows you to generate multiple plots based on a categorical variable."
-source: Rmd
----
-
-```#{r, include=FALSE}
-source("../bin/chunk-options.R")
-knitr_fig_path("04-")
-source("../bin/download_data.R")
-```
 
 We start by loading the required package. **`ggplot2`** is also included in the
 **`tidyverse`** package.
@@ -3300,35 +3190,6 @@ Note: The parameters `width` and `height` also determine the font size in the sa
 
 # Getting started with R Markdown (Optional)
 
----
-title: "Getting started with R Markdown (Optional)"
-teaching: 30
-exercises: 15
-output: 
-  html_document:
-    df_print: paged
-objectives:
-- Create a .Rmd document containing R code, text, and plots
-- Create a YAML header to control output
-- Understand basic syntax of (R)Markdown
-- Customise code chunks to control formatting
-- Use code chunks and in-line code to create dynamic, reproducible documents
-keypoints: 
-- R Markdown is a useful language for creating reproducible documents combining text and executable R-code.
-- Specify chunk options to control formatting of the output document
-source: Rmd
-questions:
-- What is R Markdown?
-- How can I integrate my R code with text and plots?
-- How can I convert .Rmd files to .html?
----
-
-```#{r setup, include = FALSE}
-source("../bin/chunk-options.R")
-knitr_fig_path("06-")
-source("../bin/download_data.R")
-```
-
 ## R Markdown
 
 R Markdown is a flexible type of document that allows you to seamlessly combine 
@@ -3781,61 +3642,6 @@ output: word_document
 * [Reproducible Reporting](https://www.rstudio.com/resources/webinars/reproducible-reporting/)
 * [The Ecosystem of R Markdown](https://www.rstudio.com/resources/webinars/the-ecosystem-of-r-markdown/)
 * [Introducing Bookdown](https://www.rstudio.com/resources/webinars/introducing-bookdown/)
-
-# Processing JSON data (Optional)
-
----
-title: "Processing JSON data (Optional)"
-teaching: 30
-exercises: 15
-questions:
-- "What is JSON format?"
-- "How can I convert JSON to an R dataframe?"
-- "How can I convert an array of JSON record into a table?"
-objectives:
-- "Describe the JSON data format"
-- "Understand where JSON is typically used"
-- "Appreciate some advantages of using JSON over tabular data"
-- "Appreciate some disadvantages of processing JSON documents"
-- "Use the jsonLite package to read a JSON file"
-- "Display formatted JSON as dataframe"
-- "Select and display nested dataframe fields from a JSON document"
-- "Write tabular data from selected elements from a JSON document to a csv file"
-keypoints:
-- "JSON is a popular data format for transferring data used by a great many Web based APIs"
-- "The complex structure of a JSON document means that it cannot easily be 'flattened' into tabular data"
-- "We can use R code to extract values of interest and place them in a csv file"
-source: Rmd
----
-
-```#{r, include=FALSE}
-source("../bin/chunk-options.R")
-knitr_fig_path("05-")
-source("../bin/download_data.R")
-## load the tidyverse
-library(tidyverse)
-```
-
-## The JSON data format
-
-The JSON data format was designed as a way of allowing different machines or processes within machines to communicate with each other by sending messages constructed in a well defined format. JSON is now the preferred data format used by APIs (Application Programming Interfaces).
-
-The JSON format although somewhat verbose is not only Human readable but it can also be mapped very easily to an R dataframe.
-
-We are going to read a file of data formatted as JSON, convert it into a dataframe in R then selectively create a csv file from the extracted data.
-
-The JSON file we are going to use is the [SAFI.json](../data/SAFI.json) file. This is the output file from an electronic survey system called ODK. The JSON represents the answers to a series of survey questions. The questions themselves have been replaced with unique Keys, the values are the answers.
-
-Because detailed surveys are by nature nested structures making it possible to record different levels of detail or selectively ask a set of specific questions based on the answer given to a previous question, the structure of the answers for the survey can not only be complex and convoluted, it could easily be different from one survey respondent's set of answers to another.
-
-### Advantages of JSON
-
-* Very popular data format for APIs (e.g. results from an Internet search)
-* Human readable
-* Each record (or document as they are called) is self contained. The equivalent of the column name and column values are in every record.
-* Documents do not all have to have the same structure within the same file
-* Document structures can be complex and nested
-
 
 
 
