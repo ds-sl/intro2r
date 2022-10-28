@@ -10,10 +10,78 @@ output:
 ---
 # Before We Start
 
-* R
-* RStudio
+* The R Project for Statistical Computing: https://www.r-project.org
+  - The R Manuals: https://cran.r-project.org/manuals.html
+* RStudio: https://www.rstudio.com
+
+> Inspired by innovators in science, education, government, and industry, RStudio develops free and open tools for R, and enterprise-ready professional products for teams who use both R and Python, to scale and share their work. [About RStudio: Inspiration](https://www.rstudio.com/about/)
+
+* RBasics and/or `tidyverse`
+  - tidyverse: https://www.tidyverse.org
+* RMarkdown
 
 # Setup
 
+* Update R
+* Update RStudio
+* Install packages
+
+### Video Lectures {-}
+
+# Introduction to Data Analysis
+
+## First Example
+
+
+# About Data
+
+
+# Data Wrangling
+
+
+# Data Visualization
+
+
+# Data Modeling
+
+
+# References
+
+## Data
+
+**Data sets**
+
+1. [DFID portal](https://devtracker.dfid.gov.uk/)
+2. [EU Aid portal](https://euaidexplorer.ec.europa.eu/)
+3. [Eurostat](https://ec.europa.eu/eurostat)
+4. [FAOSTAT](http://www.fao.org/faostat/en/#home)
+5. [Openaid Netherlands](http://openaid.nl/)
+6. [Openaid Sweden](http://openaid.se/aid/)
+7. [Oxfam data sets](https://policy-practice.oxfam.org.uk/our-approach/accountability-and-transparency/our-data)
+8. [Sea Around Us (University of British Columbia)](http://www.seaaroundus.org/data/#/eez)
+9. [UN Habitat portal](http://open.unhabitat.org/)
+10. [UNESCO portal](http://opendata.unesco.org/)
+12. [USAID portal](http://open.undp.org/)
+13. [World Poverty Clock (World Data Lab)](https://aidscape.usaid.gov/)
+
+
+## Books
+
+You can read many excellent books online.
+
+* [RStudio > Resources > Books](https://www.rstudio.com/resources/books/)
+* [Bookdown](https://bookdown.org) and its [archive](https://bookdown.org/home/archive/) page
+
+## Websites
+
+* [RStudio](https://www.rstudio.com)
+  - Education: https://education.rstudio.com
+* R Basics:
+  - [R for Beginners](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) in PDF
+  - [Quick-R by DataCamp](https://www.statmethods.net/r-tutorial/index.html)
+* Data Science for Social Scientists: https://datascience.tntlab.org
+  - R for Social Scientists: https://datacarpentry.org/r-socialsci/
+
+## Interactive Exercises
 
 
