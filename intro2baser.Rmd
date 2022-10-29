@@ -1,5 +1,5 @@
 ---
-title: "Introduction to R"
+title: "Introduction to Base R"
 date: "`r Sys.Date()`"
 output: 
   html_notebook:
@@ -111,112 +111,80 @@ library(tidyverse)
 
 ## First Example
 
-### Importing data
-
-Let us assign the `iris` data in the pre-installed package `datasets` to `df_iris`. You can give any name starting from an alphabet, though there are some rules. 
-
 ```{r}
 df_iris <- datasets::iris
 class(df_iris)
-```
-
-The class of data `iris` is `data.frame`, the basic data class of R. You can assign the same data as a `tibble`, the data class of `tidyverse` as follows.
-
-```{r}
 tbl_iris <- as_tibble(datasets::iris)
 class(tbl_iris)
 ```
 
 ### Look at the data
 
-#### Several ways to view the data.
+View the data.
 
-```{r viewiris, eval = FALSE}
+```{r eval = FALSE}
 View(df_iris)
 ```
 
-```{r dfiris}
+RBasic `head()` or `head(, n)` 
+
+```{r}
+head(df_iris)
+```
+```{r}
 df_iris
 ```
+### Data Structure
 
-The output within R Notebook is a tibble style. Try the same command in Console.
-
-```{r slice10iris}
-slice(df_iris, 1:10)
-```
-```{r one2ten}
-1:10
+```{r}
+str(df_iris)
 ```
 
-```{r sequence}
-seq(1,10)
-```
-
-
-#### Data Structure
-
-```{r glimpse:eiris}
+```{r}
 glimpse(df_iris)
 ```
-There are six types of data in R; Double, Integer, Character, Logical, Raw, Complex.
 
-```{r}
-typeof(df_iris$Species)
-```
-
-```{r}
-class(df_iris$Species)
-```
-
-```{r}
-typeof(df_iris$Sepal.Length)
-class(df_iris$Sepal.Length)
-```
-
-
-**Q1.** What are the differences of`df_iris`, `slice(df_iris, 1:10)` and `glimpse(df_iris)` above?
-
-**Q2.** What are the differences of`df_iris`, `slice(df_iris, 1:10)` and `glimpse(df_iris)` in the console?
-
-#### Summary of the Data
-
-The following is very convenient to get the summary information of a data.
+### Summary of the Data
 
 ```{r}
 summary(df_iris)
 ```
-Minimum, 1st Quadrant (25%),  Median, Mean, 3rd Quadrant (75%), Maximum, and the count of each factor.
 
 ### Visualizing Data
 
-#### Scatter Plot
+```{r}
+plot(x = df_iris$Sepal.Length, y = df_iris$Sepal.Width)
+```
+
+```{r}
+plot(x = df_iris$Sepal.Length, y = df_iris$Sepal.Width, 
+     main = "Scatter Plot of Sepal Data of Iris", 
+     xlab = "Sepal Length", ylab = "Sepal Width")
+```
+
+```{r}
+hist(x = df_iris$Sepal.Length)
+```
+
+```{r}
+boxplot(Sepal.Length ~ Species, data = df_iris)
+```
 
 ```{r}
 ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point()
 ```
-#### Scatter Plot with Labels
 
 ```{r}
 ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point() + 
   labs(title = "Scatter Plot of Sepal Data of Iris", x = "Sepal Length", y = "Sepal Width")
 ```
-#### Scatter Plot with Colors
 
 ```{r}
 ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
   geom_point()
 ```
-#### Boxplot
-
-
-```{r}
-ggplot(data = df_iris, aes(x = Species, y = Sepal.Length)) +
-  geom_boxplot()
-```
-
-#### Histogram
 
 ```{r}
 ggplot(data = df_iris, aes(x = Sepal.Length)) +
@@ -226,13 +194,16 @@ ggplot(data = df_iris, aes(x = Sepal.Length)) +
 ggplot(data = df_iris, aes(x = Sepal.Length)) +
   geom_histogram(bins = 10)
 ```
-### Density Plot
 
 ```{r}
 ggplot(data = df_iris, aes(x = Sepal.Length, color = Species)) +
-  geom_density()
+  geom_freqpoly()
 ```
 
+```{r}
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Species)) +
+  geom_boxplot()
+```
 
 # About Data
 
@@ -295,5 +266,3 @@ You can read many excellent books online.
   - [RStudio Site](https://rmarkdown.rstudio.com/index.html)
 
 ## Interactive Exercises
-
-
