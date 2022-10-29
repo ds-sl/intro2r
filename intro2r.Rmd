@@ -22,9 +22,43 @@ output:
 
 # Setup
 
+* System Language
+
+It is more convenient to set the system language of R to be English. You can copy and paste error message for search solutions.
+
+```{r eval = FALSE}
+Sys.setenv(LANG = "en")
+```
+
+
 * Update R
+
+The following code updates R.
+
+```{r eval = FALSE}
+if( !("installr" %in% installed.packages()) ){install.packages("installr")}
+installr::updateR(TRUE)
+```
+
 * Update RStudio
+  - Top Menu > Help > Check for Updates
+  
+For Rstudio follow the link above.
+
 * Install packages
+
+We need two packages, `rmarkdown` and `tidyverse`. Install these by the following code. You can also copy `install.packages(c("rmarkdown", "tidyverse"))` and paste in Console. You can also use Tools > Install Packages in the top menu.
+
+```{r eval = FALSE}
+install.packages(c("rmarkdown", "tidyverse"))
+```
+
+When you use a package you need to attach it by the following code.
+
+```{r}
+library(tidyverse)
+```
+
 
 ### Video Lectures {-}
 
@@ -32,6 +66,99 @@ output:
 
 ## First Example
 
+```{r}
+df_iris <- datasets::iris
+class(df_iris)
+tbl_iris <- as_tibble(datasets::iris)
+class(tbl_iris)
+```
+
+### Look at the data
+
+View the data.
+
+```{r eval = FALSE}
+View(df_iris)
+```
+
+RBasic `head()` or `head(, n)` 
+
+```{r}
+head(df_iris)
+```
+```{r}
+df_iris
+```
+### Data Structure
+
+```{r}
+str(df_iris)
+```
+
+```{r}
+glimpse(df_iris)
+```
+
+### Summary of the Data
+
+```{r}
+summary(df_iris)
+```
+
+### Visualizing Data
+
+```{r}
+plot(x = df_iris$Sepal.Length, y = df_iris$Sepal.Width)
+```
+
+```{r}
+plot(x = df_iris$Sepal.Length, y = df_iris$Sepal.Width, 
+     main = "Scatter Plot of Sepal Data of Iris", 
+     xlab = "Sepal Length", ylab = "Sepal Width")
+```
+
+```{r}
+hist(x = df_iris$Sepal.Length)
+```
+
+```{r}
+boxplot(Sepal.Length ~ Species, data = df_iris)
+```
+
+```{r}
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point()
+```
+
+```{r}
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point() + 
+  labs(title = "Scatter Plot of Sepal Data of Iris", x = "Sepal Length", y = "Sepal Width")
+```
+
+```{r}
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
+  geom_point()
+```
+
+```{r}
+ggplot(data = df_iris, aes(x = Sepal.Length)) +
+  geom_histogram()
+```
+```{r}
+ggplot(data = df_iris, aes(x = Sepal.Length)) +
+  geom_histogram(bins = 10)
+```
+
+```{r}
+ggplot(data = df_iris, aes(x = Sepal.Length, color = Species)) +
+  geom_freqpoly()
+```
+
+```{r}
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Species)) +
+  geom_boxplot()
+```
 
 # About Data
 
@@ -41,6 +168,14 @@ output:
 
 # Data Visualization
 
+## ggplot2
+
+* [R for Data Science](https://r4ds.had.co.nz/)
+  - [3. Data Visualisation](https://r4ds.had.co.nz/data-visualisation.html#data-visualisation)
+  - [28. Graphics for communication](https://r4ds.had.co.nz/graphics-for-communication.html)
+* [ggplot2 page in tidyverse](https://ggplot2.tidyverse.org)
+* [ggplot2 extensions - gallery](https://exts.ggplot2.tidyverse.org/gallery/)
+* [ggplot2 Cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)
 
 # Data Modeling
 
@@ -81,6 +216,9 @@ You can read many excellent books online.
   - [Quick-R by DataCamp](https://www.statmethods.net/r-tutorial/index.html)
 * Data Science for Social Scientists: https://datascience.tntlab.org
   - R for Social Scientists: https://datacarpentry.org/r-socialsci/
+  
+* RMarkdown
+  - [RStudio Site](https://rmarkdown.rstudio.com/index.html)
 
 ## Interactive Exercises
 
