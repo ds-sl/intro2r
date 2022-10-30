@@ -100,6 +100,29 @@ library(tidyverse)
 * Additional packages
   - `WDI`
 
+### Brief Introduction to R on RStudio
+
+#### Four Panes and Tabs
+
+1. Top Left: Source Editor
+2. Top Right: Environment, History, etc.
+3. Bottom Left: Console, Terminal, Render, Background Jobs
+4. Bottom Right: Files, Plots, Packages, Help, Viewer, Presentation
+
+#### Three Ways to Run Codes
+
+1. Console - Bottom Left Pane
+2. R Script - pull down menu under File
+3. R Notebook, R Markdown - pull down menu under File
+
+#### RStudio Cloud
+
+Create an account of RStudio Cloud: https://www.rstudio.com/products/cloud/
+
+GET STARTED FREE
+
+* Share RStudio Cloud
+* RStudio Primers: https://rstudio.cloud/learn/primers
 
 ### References {-}
 
@@ -279,7 +302,7 @@ ggplot(df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_smooth(formula =  y ~ x, method = "lm", se = FALSE, color = "black", linetype = "twodash", size = 1.5)
 ```
 
-# About Data
+# Importing Data
 
 
 # Data Wrangling
