@@ -216,6 +216,8 @@ ggplot(data = df_iris, aes(x = Species, y = Sepal.Length)) +
   geom_boxplot()
 ```
 
+
+
 #### Histogram
 
 ```{r}
@@ -226,13 +228,56 @@ ggplot(data = df_iris, aes(x = Sepal.Length)) +
 ggplot(data = df_iris, aes(x = Sepal.Length)) +
   geom_histogram(bins = 10)
 ```
-### Density Plot
+### Various Plots of Density
 
 ```{r}
-ggplot(data = df_iris, aes(x = Sepal.Length, color = Species)) +
-  geom_density()
+ggplot(data = df_iris, aes(x = Species, y = Sepal.Length)) +
+  geom_violin()
 ```
 
+```{r}
+ggplot(data = df_iris, aes(x = Species, y = Sepal.Length)) +
+  geom_jitter(width = 0.2)
+```
+
+```{r}
+ggplot(data = df_iris, aes(x = Sepal.Length, fill = Species)) +
+  geom_density(alpha = 0.5)
+```
+
+### Data Modeling 
+
+Linear Regression Model
+
+```{r}
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+```
+```{r}
+lm(Sepal.Width ~ Sepal.Length, data = df_iris)
+```
+
+The formular of the line in the scattered plot is the following.
+$$y = (-0.06188)x + 3.41895$$
+The slope is $-0.06188$ and the $y$-intercept is 3.41895. 
+
+It is a little strange and counter intuitive, because it claims that as the sepal width gets smaller as the sepal length gets larger. What is hidden behind?
+
+```{r}
+lm(Sepal.Width ~ Sepal.Length, data = df_iris) %>% summary()
+```
+```{r}
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+```
+```{r iris:sepal:confounder}
+ggplot(df_iris, aes(x = Sepal.Length, y = Sepal.Width)) + 
+  geom_point(aes(color = Species)) + 
+  geom_smooth(aes(color = Species), formula = y ~ x, method = "lm", se = FALSE) +
+  geom_smooth(formula =  y ~ x, method = "lm", se = FALSE, color = "black", linetype = "twodash", size = 1.5)
+```
 
 # About Data
 
