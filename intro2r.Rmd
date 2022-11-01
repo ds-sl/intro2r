@@ -5,8 +5,8 @@ output:
   html_notebook:
     df_print: paged
     number_sections: yes
-#    toc: true
-#    toc_float: true
+    toc: true
+    toc_float: true
 ---
 # Introduction
 
@@ -70,7 +70,7 @@ Sys.setenv(LANG = "en")
 
 **Update RStudio**
 
-Top Menu > Help > Check for Updates
+Top Menu > Help > Check Updates
 
 #### Packages 
 
@@ -135,7 +135,7 @@ We mainly use one of the formats of R Markdwon called R Notebook.
 * An introduction is in [RStudio Primers: Report Reproducibly](https://rstudio.cloud/learn/primers)
   - [What is R Markdown](https://rmarkdown.rstudio.com/lesson-1.html)
 
-### References {-}
+### References
 
 * ModernDive: [Chapter 1 Getting Started with Data in R](https://moderndive.netlify.app/1-getting-started.html#getting-started) 
 * R-Ladies Sydney: [BasicBasics](https://rladiessydney.org/courses/ryouwithme/01-basicbasics-1/)
@@ -484,6 +484,9 @@ wb_regions
 ### Use the API
 
 Install `WDI` package for the first time by `install.packages("WDI")`. See [the Setup Section Above](#intro:setup).
+```{r eval = FALSE}
+install.packages("WDI")
+```
 ```{r}
 library(WDI)
 ```
