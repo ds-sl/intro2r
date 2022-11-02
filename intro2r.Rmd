@@ -1,12 +1,16 @@
 ---
 title: "Introduction to R"
-date: "2022-11-02" #"`r Sys.Date()`"
-output: 
+date: '2022-11-02'
+output:
+  word_document:
+    toc: yes
   html_notebook:
     df_print: paged
     number_sections: yes
-    toc: true
-    toc_float: true
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    toc: yes
 ---
 > Today, November 2, 2022 RStudio became Posit! (https://posit.co/)
 
@@ -835,7 +839,7 @@ summary(gdpcap_co2)
 ```
 
 Since the most recent year seems to be 2021, let us choose the year.
-```{r}
+```{r cash = TRUE}
 gdpcap_co2 %>% filter(year == 2021) %>%
   ggplot(aes(x = NY.GDP.PCAP.KD, y = EN.ATM.CO2E.PC)) + 
   geom_point()
