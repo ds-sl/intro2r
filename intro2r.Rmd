@@ -2,14 +2,14 @@
 title: "Introduction to R"
 date: '2022-11-02'
 output:
-  word_document:
-    toc: yes
-    reference_docx: intro2rw.docx
   html_notebook:
     df_print: paged
     number_sections: yes
     toc: yes
     toc_float: yes
+  word_document:
+    toc: yes
+    reference_docx: intro2rw.docx
   pdf_document:
     toc: yes
 ---
