@@ -4,6 +4,7 @@ date: '2022-11-02'
 output:
   word_document:
     toc: yes
+    reference_docx: intro2rw.docx
   html_notebook:
     df_print: paged
     number_sections: yes
