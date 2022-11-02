@@ -1,6 +1,6 @@
 ---
 title: "Introduction to R"
-date: "`r Sys.Date()`"
+date: "2022-11-02" #"`r Sys.Date()`"
 output: 
   html_notebook:
     df_print: paged
@@ -8,6 +8,8 @@ output:
     toc: true
     toc_float: true
 ---
+> Today, November 2, 2022 RStudio became Posit! (https://posit.co/)
+
 # Introduction
 
 ## Before We Start
@@ -436,7 +438,43 @@ See a list of open public data [below](#chap:data).
 
 ### Use the File Link
 
-#### Importing Excel Files {#class.xlsx}
+```
+url_class <- "<URL of the data>"
+download.file(url = url_class, destfile = "data/<file name>")
+```
+
+#### Example: [UN Data](https://data.un.org)
+
+Copy the link by Right Click or <kbd>Ctrl</kbd>+Click and paste it in the URL.
+
+```{r cash = TRUE}
+url <- "https://data.un.org/_Docs/SYB/CSV/SYB65_1_202209_Population,%20Surface%20Area%20and%20Density.csv" # long file name
+(pop <- read_csv(url))
+```
+
+`(pop <- read_csv(url))` is a short hand of the following:
+```
+pop <- read_csv(url)
+pop
+```
+
+The first row is not the column names, so skip the first row.
+
+```{r cash = TRUE}
+url <- "https://data.un.org/_Docs/SYB/CSV/SYB65_1_202209_Population,%20Surface%20Area%20and%20Density.csv"
+(pop <- read_csv(url, skip = 1))
+```
+
+It is better to save it in the data folder.
+
+```{r cash = TRUE}
+url <- "https://data.un.org/_Docs/SYB/CSV/SYB65_1_202209_Population,%20Surface%20Area%20and%20Density.csv"
+download.file(url = url, destfile = "data/pop.csv")
+pop <- read_csv("data/pop.csv", skip = 1)
+pop
+```
+
+#### Example: Importing Excel Files {#class.xlsx}
 
 * CLASS.xlsx: - _copy the following link_
   - [The current classification by income in XLS format](https://databankfiles.worldbank.org/data/download/site-content/CLASS.xlsx) 
@@ -479,6 +517,10 @@ wb_regions
 
 
 ### Read from the `data` Folder
+
+```
+object <- read_csv("data/<file name>)
+```
 
 
 ### Use the API
@@ -737,11 +779,45 @@ gdpcap %>% filter(iso2c %in% c("BR", "RU", "IN", "CN")) %>%
 #### Exercises
 
 1. Draw the line graph for ASEAN countries: Brunei, Cambodia, Indonesia, Laos, Malaysia, Myanmar, the Philippines, Singapore, Thailand and Vietnam.
-2. Choose all Low income countries and do the same. Hint: use `wb_countries` [above](#class.xlsx).
+2. Choose all Low income countries and do the same.   
+Hint: use `wb_countries` [above](#class.xlsx).
 ```{r}
-wb_countries %>% filter(income == "Low income") 
+(low_countries <- wb_countries %>% filter(income == "Low income"))
+```
+```{r}
+(gdpcap_low <- semi_join(gdpcap, low_countries))
 ```
 
+```{r}
+gdpcap_low %>% 
+  ggplot(aes(x = year, y = NY.GDP.PCAP.KD, color = country)) + 
+  geom_line() +
+  labs(title = "GDP per capta of low income countries", y = "GDP per capita (constant 2015 US$)")
+```
+
+### CO2 Emission Per Capita
+
+Let us use the saved data.
+```{r cash = TRUE}
+gdpcap_co2 <- read_csv("data/gdpcap_co2.csv")
+gdpcap_co2
+```
+
+```{r}
+co2 <- gdpcap_co2 %>% 
+  select(country, iso2c, iso3c, year, co2 = EN.ATM.CO2E.PC, region)
+```
+
+```{r}
+co2 %>% filter(country %in% c("France", "Germany", "Italy", "Japan", "United Kingdom", "United States", "Canada", "Russian Federation")) %>% distinct(country, iso2c, iso3c, region)
+```
+Successfully chosen data of G8 countries.
+```{r}
+co2 %>% filter(country %in% c("France", "Germany", "Italy", "Japan", "United Kingdom", "United States", "Canada", "Russian Federation")) %>% 
+  filter(!is.na(co2)) %>%
+  ggplot(aes(x = year, y = co2, color = country)) + geom_line() +
+  labs(title = "CO2 Emission Per Capita of G8 Countries")
+```
 
 ### GDP Per Capita vs CO2 Emission Per Capita
 
@@ -813,10 +889,20 @@ $$y = 0.90200 x -3.08818$$
 * **t value**: Estimate divided by Std. Error
 * **Pr(>|t|)**: t value in a T distribution table (with the given degrees of freedom).
 
-There are $n = 184$ data. So gdp = $x_1, x_2, \ldots, x_{184}$ and co2 = $y_1, y_2, \ldots, y_{184}$. In log10 scale, log10(gdp) = $\log_{10}(x_1), \log_{10}(x_2), \ldots, \log_{10}(x_{184})$ and log10(co2) = $\log_{10}(y_1), \log_{10}(y_2), \ldots, \log_{10}(y_{184})$, and call them $x_1', x_2', \ldots, x_{184}'$ and $y_1', y_2', \ldots, y_{184}'$. The scatter plot is the points $(x_1', y_1'), (x_2', y_2'), \ldots, (x_{184}', y_{184}')$.
+There are $n = 184$ data. So gdp = $x_1, x_2, \ldots, x_{184}$ and co2 = $y_1, y_2, \ldots, y_{184}$. In log10 scale, log10(gdp) = $\log_{10}(x_1), \log_{10}(x_2), \ldots, \log_{10}(x_{184})$ and log10(co2) = $\log_{10}(y_1), \log_{10}(y_2), \ldots, \log_{10}(y_{184})$, and call them $x_1', x_2', \ldots, x_{184}'$ and $y_1', y_2', \ldots, y_{184}'$. The scatter plot is the points $(x_1', y_1'), (x_2', y_2'), \ldots, (x_{184}', y_{184}')$. Let $\mathrm{mean}(x')$ and $\mathrm{mean}(y')$ be mean of $x_1', x_2', \ldots, x_{184}'$ and $y_1', y_2', \ldots, y_{184}'$.
 
+$$\mathrm{SSxx} = \sum_{i=1}^{184} (x_i' - \mathrm{mean}(x'))^2, \quad  \mathrm{SSxy} = \sum_{i=1}^{184} (x_i' - \mathrm{mean}(x'))(y_i' - \mathrm{mean}(y')).$$
+Then, by theory, we know the slope and the y-inetrcept as follows.
+$$\mathrm{Slope} = \frac{\mathrm{SSxy}}{\mathrm{SSxx}}, \quad  \mathrm{Intercept} = \mathrm{mean}(y') - \mathrm{Slope}\cdot \mathrm{mean}(x').$$
+```{r}
+gdpco2log_ssxx <- sum((log10(gdpco2_2019$gdp)- mean(log10(gdpco2_2019$gdp)))^2)
+gdpco2log_ssxy <- sum((log10(gdpco2_2019$gdp)- mean(log10(gdpco2_2019$gdp)))*(log10(gdpco2_2019$co2)- mean(log10(gdpco2_2019$co2))))
+gdpco2log_slope <- gdpco2log_ssxy/gdpco2log_ssxx
+gdpco2log_intercept <- mean(log10(gdpco2_2019$co2)) - gdpco2log_slope*mean(log10(gdpco2_2019$gdp))
+c(Intercept = gdpco2log_intercept, Slope = gdpco2log_slope)
+```
 
-Now consider, the squared difference at $\log_{10}(x_i)$ between the actural value $\log_{10}(y_i)$ and the linear estimation $m\cdot \log_{10}(x_i) + b$. Since it is a square, it is positive. Now take the sum and want to determine $m$ and $b$ to minimize the sum, which is called the errors. 
+Now consider, the squared difference at $\log_{10}(x_i)$ between the actual value $\log_{10}(y_i)$ and the linear estimation $m\cdot \log_{10}(x_i) + b$. Since it is a square, it is positive. Now take the sum and want to determine $m$ and $b$ to minimize the sum, which is called the errors. 
 $$\mathrm{SSE} = \sum_{i=1}^{184} (m\cdot \log_{10}(x_i) + b - \log_{10}(y_i))^2 = \sum_{i=1}^{184} (m\cdot x_i' + b - y_i')^2.$$
 Let $k$ be the number of variables for estimation. In our case we estimate using only one variable, we set $k=1$. The following value is called the Residual Standard Error. $n-(k+1) = 182$ is called the degree of freedom.
 $$\mbox{Residual Standard Error} = \sqrt{\frac{\mathrm{SSE}}{n-(k+1)}} = \sqrt{\frac{\mathrm{SSE}}{182}}$$
