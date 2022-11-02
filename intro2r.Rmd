@@ -127,6 +127,9 @@ Create an account of RStudio Cloud: https://www.rstudio.com/products/cloud/
 GET STARTED FREE
 
 * Share RStudio Cloud
+  - The following is the URL of the workspace of this presentaion: https://rstudio.cloud/content/4858948
+  - First login to your RStudio Cloud account and then open the link above.
+  - If you want to work on it you can "Save a Permanent Copy" from the top bar. 
 * [RStudio Primers](https://rstudio.cloud/learn/primers)
 * [Cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
   
