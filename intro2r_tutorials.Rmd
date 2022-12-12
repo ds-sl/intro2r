@@ -24,13 +24,14 @@ tutorial_options(exercise.timelimit = 60)
 
 ### Outline
 
-This tutorial will help you set up your computer to use R. It is for you if you need to:
+We will learn the basics of R in this tutorial.
 
-* Install R on your computer
-* Install the RStudio IDE
-* Install the `tidyverse` R package
+* Arithmetic: addition $+$, subtraction $-$, multiplication by $*$, division by $/$, and a power.
+* A row of numbers or characters called a vector. 
+* A rectangular array of numbers or characters called a data frame.
+* and related topics.
 
-You can skip this tutorial if you've already done these things.
+You can skip this tutorial if you already know above.
 
 ### Is this tutorial for you?
 
