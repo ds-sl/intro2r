@@ -5,12 +5,12 @@ date: "`r Sys.Date()`"
 header-includes:
   - \usepackage{ctex}
 output:
-  html_notebook: default
+  html_document:
+    df_print: paged
   powerpoint_presentation: default
   ioslides_presentation: 
     widescreen: yes
-  html_document:
-    df_print: paged
+  html_notebook: default
   word_document: default
   pdf_document: 
     latex_engine: xelatex
@@ -45,7 +45,7 @@ plot(cars)
 
 ```{r echo=FALSE, message=FALSE}
 library(tidyverse)
-library(showtext)
+library(showtext) # install showtext package
 font_add_google('Noto Sans')
 showtext_auto()
 ```
