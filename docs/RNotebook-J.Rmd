@@ -71,3 +71,16 @@ cor(iris[,1:4])
 `datasets` には、`mtcars` というデータがありますが、下に、新しく、コード・チャンクを挿入して、最初の６行、データ構造（str()）、デーが概要を調べてください。Help を使ってみるのも良いですよ。ヒストグラムや、散布図も描けますか。
 
 
+## スクリプト（R Script）の実行例
+
+```{r}
+coronavirus <- read.csv("https://github.com/RamiKrispin/coronavirus/raw/master/csv/coronavirus.csv")
+coronavirus$date <- as.Date(coronavirus$date)
+COUNTRY <- "Japan"
+df <- coronavirus[coronavirus$country == COUNTRY,]
+df_confirmed <- df[df$type == "confirmed",]
+df_death <- df[df$type == "death",]
+plot(df_confirmed$date, df_confirmed$cases, type = "h")
+plot(df_death$date, df_death$cases, type = "h")
+```
+
