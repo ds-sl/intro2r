@@ -2,15 +2,10 @@
 title: "R Studio で R をはじめてみよう"
 author: "Hiroshi Suzuki"
 date: "`r Sys.Date()`"
-header-includes:
-  - \usepackage{ctex}
 output:
   ioslides_presentation: 
     highlight: tango
     widescreen: yes
-  beamer_presentation:
-    latex_engine: xelatex
-    highlight: tango
 ---
 
 ```{r setup, include=FALSE}
@@ -101,20 +96,42 @@ Rパッケージは、Rの拡張機能で、コード、データ、ドキュメ
 
 インストールは一回だけ。ときどき、Tools > Check for Package Update をつかって、Update しておくと良いでしょう。
 
-## 7. R Notebook
+# R Markdown
+
+## 1. 準備：パッケージのインストール
+
+Rパッケージは、Rの拡張機能で、コード、データ、ドキュメントを標準化されたコレクション形式で含んでおり、標準的なものは、R Studio の Top Bar の Tool > Install Packages からインストールできます。
+
+* `tidyverse`
+* `rmarkdown`
+* `tinytex`
+
+インストールを複数回しても問題はありませんが、インストールされているかどうかは、Packages タブから確認することができます。
+
+インストールは一回だけ。ときどき、Tools > Check for Package Update をつかって、Update しておくと良いでしょう。
+
+
+## 2. R Notebook
 
 R Markdownはデータサイエンスのためのオーサリングフレームワーク。
 
 コード（プログラム）とその実行結果、を記録・表示し、高品質のレポートの作成を可能にします。
 
-Rノートブックは、独立してインタラクティブに実行できるチャンクを持つR Markdownドキュメントの一つの形式で、入力のすぐ下に出力が表示することができます。
+R Notebook は、独立してインタラクティブに実行できるチャンクを持つR Markdownドキュメントの一つの形式で、入力のすぐ下に出力が表示することができます。
 
 1. File > New File > R Notebook
 2. Save with a file name, say, test-notebook
 3. Preview by [Preview] button
 4. Run Code Chunk plot(cars) and then Preview again.
 
-## 8. R Markdown いくつかの Output
+## 3. 日本語のテンプレート
+
+下のリンクを開き、右上の Code ボタンから、Download Rmd を選択すると、ダウンロードできますから、ダインロードしたものを、プロジェクト・フォールダーに移動またはコピーしてください。ダウンロードできないときは、Ctrl を押しながら、Download Rmd をクリックすると、Save As で保存できると思います。ブラウザーによって仕様が異なりますから、適切な方法を選んでください。
+
+* https://ds-sl.github.io/intro2r/RNotebook-J.nb.html
+* https://ds-sl.github.io/intro2r/Rmarkdown-J.nb.html
+
+## 3. R Markdown いくつかの Output
 ```
 ---
 title: "Testing R Markdown Formats"
@@ -122,13 +139,13 @@ author: "ID Your Name"
 header-includes:
   - \usepackage{ctex}
 output:
-  html_notebook: null
-  html_document: null
-  pdf_document: null
+  html_notebook: default
+  html_document: default
+  pdf_document: default
     latex_engine: xelatex
-  word_document: null
-  powerpoint_presentation: null
-  ioslides_presentation: null
+  word_document: default
+  powerpoint_presentation: default
+  ioslides_presentation: default
 ---
 ```
 
@@ -136,7 +153,7 @@ output:
 
 * TeX システムがインストールされている場合は不要
 
-## 9. クラウド - Posit Cloud
+## 4. クラウド - Posit Cloud
 
 RStudio Cloudは、誰でもオンラインでデータサイエンスを行い、共有し、教え、学ぶことができる、軽量でクラウドベースのソリューションです。
 
@@ -148,7 +165,7 @@ RStudio Cloudは、誰でもオンラインでデータサイエンスを行い�
 4. New Project: Project Name
 
 
-## 10. 練習問題 Posit Primers 
+## 5. 練習問題 Posit Primers 
 
 Posit Primers https://posit.cloud/learn/primers
 
@@ -158,7 +175,7 @@ Posit Primers https://posit.cloud/learn/primers
 * [Programming Basics](https://rstudio.cloud/learn/primers/1.2)
 
 
-## 11. 参考文献 References
+## 6. 参考文献 References
 
 * R For Data Science, by H. Wickham: https://r4ds.had.co.nz
   - Introduction: https://r4ds.had.co.nz/explore-intro.html#explore-intro

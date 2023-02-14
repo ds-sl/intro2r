@@ -3239,13 +3239,29 @@ ul.task-list{list-style: none;}
 
 <p>インストールは一回だけ。ときどき、Tools &gt; Check for Package Update をつかって、Update しておくと良いでしょう。</p>
 
-</article></slide><slide class=""><hgroup><h2>7. R Notebook</h2></hgroup><article  id="r-notebook">
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>R Markdown</h2></hgroup><article  id="r-markdown">
+
+</article></slide><slide class=""><hgroup><h2>1. 準備：パッケージのインストール</h2></hgroup><article  id="準備パッケージのインストール">
+
+<p>Rパッケージは、Rの拡張機能で、コード、データ、ドキュメントを標準化されたコレクション形式で含んでおり、標準的なものは、R Studio の Top Bar の Tool &gt; Install Packages からインストールできます。</p>
+
+<ul>
+<li><code>tidyverse</code></li>
+<li><code>rmarkdown</code></li>
+<li><code>tinytex</code></li>
+</ul>
+
+<p>インストールを複数回しても問題はありませんが、インストールされているかどうかは、Packages タブから確認することができます。</p>
+
+<p>インストールは一回だけ。ときどき、Tools &gt; Check for Package Update をつかって、Update しておくと良いでしょう。</p>
+
+</article></slide><slide class=""><hgroup><h2>2. R Notebook</h2></hgroup><article  id="r-notebook">
 
 <p>R Markdownはデータサイエンスのためのオーサリングフレームワーク。</p>
 
 <p>コード（プログラム）とその実行結果、を記録・表示し、高品質のレポートの作成を可能にします。</p>
 
-<p>Rノートブックは、独立してインタラクティブに実行できるチャンクを持つR Markdownドキュメントの一つの形式で、入力のすぐ下に出力が表示することができます。</p>
+<p>R Notebook は、独立してインタラクティブに実行できるチャンクを持つR Markdownドキュメントの一つの形式で、入力のすぐ下に出力が表示することができます。</p>
 
 <ol>
 <li>File &gt; New File &gt; R Notebook</li>
@@ -3254,7 +3270,16 @@ ul.task-list{list-style: none;}
 <li>Run Code Chunk plot(cars) and then Preview again.</li>
 </ol>
 
-</article></slide><slide class=""><hgroup><h2>8. R Markdown いくつかの Output</h2></hgroup><article  id="r-markdown-いくつかの-output">
+</article></slide><slide class=""><hgroup><h2>3. 日本語のテンプレート</h2></hgroup><article  id="日本語のテンプレート">
+
+<p>下のリンクを開き、右上の Code ボタンから、Download Rmd を選択すると、ダウンロードできますから、ダインロードしたものを、プロジェクト・フォールダーに移動またはコピーしてください。ダウンロードできないときは、Ctrl を押しながら、Download Rmd をクリックすると、Save As で保存できると思います。ブラウザーによって仕様が異なりますから、適切な方法を選んでください。</p>
+
+<ul>
+<li><a href='https://ds-sl.github.io/intro2r/RNotebook-J.nb.html' title=''>https://ds-sl.github.io/intro2r/RNotebook-J.nb.html</a></li>
+<li><a href='https://ds-sl.github.io/intro2r/Rmarkdown-J.nb.html' title=''>https://ds-sl.github.io/intro2r/Rmarkdown-J.nb.html</a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>3. R Markdown いくつかの Output</h2></hgroup><article  id="r-markdown-いくつかの-output">
 
 <pre >---
 title: &quot;Testing R Markdown Formats&quot;
@@ -3262,13 +3287,13 @@ author: &quot;ID Your Name&quot;
 header-includes:
   - \usepackage{ctex}
 output:
-  html_notebook: null
-  html_document: null
-  pdf_document: null
+  html_notebook: default
+  html_document: default
+  pdf_document: default
     latex_engine: xelatex
-  word_document: null
-  powerpoint_presentation: null
-  ioslides_presentation: null
+  word_document: default
+  powerpoint_presentation: default
+  ioslides_presentation: default
 ---</pre>
 
 <p><strong>PDFでエラー？</strong> コンソールで <code>tinytex::install_tinytex()</code></p>
@@ -3277,7 +3302,7 @@ output:
 <li>TeX システムがインストールされている場合は不要</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>9. クラウド - Posit Cloud</h2></hgroup><article  id="クラウド---posit-cloud">
+</article></slide><slide class=""><hgroup><h2>4. クラウド - Posit Cloud</h2></hgroup><article  id="クラウド---posit-cloud">
 
 <p>RStudio Cloudは、誰でもオンラインでデータサイエンスを行い、共有し、教え、学ぶことができる、軽量でクラウドベースのソリューションです。</p>
 
@@ -3290,7 +3315,7 @@ output:
 <li>New Project: Project Name</li>
 </ol>
 
-</article></slide><slide class=""><hgroup><h2>10. 練習問題 Posit Primers</h2></hgroup><article  id="練習問題-posit-primers">
+</article></slide><slide class=""><hgroup><h2>5. 練習問題 Posit Primers</h2></hgroup><article  id="練習問題-posit-primers">
 
 <p>Posit Primers <a href='https://posit.cloud/learn/primers' title=''>https://posit.cloud/learn/primers</a></p>
 
@@ -3301,7 +3326,7 @@ output:
 <li><a href='https://rstudio.cloud/learn/primers/1.2' title=''>Programming Basics</a></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>11. 参考文献 References</h2></hgroup><article  id="参考文献-references">
+</article></slide><slide class=""><hgroup><h2>6. 参考文献 References</h2></hgroup><article  id="参考文献-references">
 
 <ul>
 <li><p>R For Data Science, by H. Wickham: <a href='https://r4ds.had.co.nz' title=''>https://r4ds.had.co.nz</a></p>

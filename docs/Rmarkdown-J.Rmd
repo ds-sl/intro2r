@@ -5,20 +5,21 @@ date: "`r Sys.Date()`"
 header-includes:
   - \usepackage{ctex}
 output:
-  html_document:
-    df_print: paged
-  powerpoint_presentation: default
   ioslides_presentation: 
     widescreen: yes
-  html_notebook: default
-  word_document: default
+  powerpoint_presentation: default
   pdf_document: 
     latex_engine: xelatex
+  html_notebook: default
+  word_document: default
+  html_document:
+    df_print: paged
   slidy_presentation: default
   beamer_presentation: 
     latex_engine: xelatex
 ---
 # R Markdown の出力形式をためしてみよう
+
 
 ## R Notebook と他の形式
 
@@ -27,6 +28,26 @@ R Notebook は、[R Markdown](http://rmarkdown.rstudio.com) の一つの形式�
 コード・チャンクは、ハイライトされています。そのコード・チャンクは、 *Run* ボタンを押すか、コード・チャンクの右上にある、右を向いた三角形をおすか、 *Ctrl+Shift+Enter* (Win) または *Cmd+Shift+Enter* (Mac) のキーで実行できます。
 
 R Notebook の、プレビューは、実際にコード・チャンクに表示されているものだけが、含まれますが、*Knit* で他の形式の出力をするときは、最初から一つ一つコード・チャンクを実行して、その結果が出力されますから、エラーがあると、出力されず、途中で停止します。
+
+## 日本語・中国語・韓国語
+
+文字化けが、起こることが多く、対応が、一定せず、難しかったのですが、どうやら、現在は、どの場合も、次の設定で、解決しているようです。下の例を確認してください。
+
+```{r eval=FALSE}
+# showtext を、インストールしていない場合は、一回だけ、右上の三角をクリックして実行
+install.packages('showtext')
+```
+
+### パッケージをロード
+
+`library` によって、Package をロード（いつでも使えるように）します。
+
+```{r setup, echo=TRUE, message=FALSE}
+library(tidyverse)
+library(showtext) 
+font_add_google('Noto Sans')
+showtext_auto()
+```
 
 ## Test Code Chunk (1)
 
@@ -37,18 +58,12 @@ head(cars)
 ## Test Code Chunk (2)
 
 ```{r}
-plot(cars)
+plot(cars, main="散布図")
 ```
 
 
 ## Test Code Chunk (3)
 
-```{r echo=FALSE, message=FALSE}
-library(tidyverse)
-library(showtext) # install showtext package
-font_add_google('Noto Sans')
-showtext_auto()
-```
 
 ```{r}
 df_iris <- iris
