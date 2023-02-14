@@ -2,8 +2,14 @@
 title: "R Studio で R をはじめてみよう"
 author: "Hiroshi Suzuki"
 date: "`r Sys.Date()`"
-output: 
+header-includes:
+  - \usepackage{ctex}
+output:
   ioslides_presentation: 
+    highlight: tango
+    widescreen: yes
+  beamer_presentation:
+    latex_engine: xelatex
     highlight: tango
 ---
 
@@ -109,26 +115,26 @@ Rノートブックは、独立してインタラクティブに実行できる�
 4. Run Code Chunk plot(cars) and then Preview again.
 
 ## 8. R Markdown いくつかの Output
-
 ```
 ---
 title: "Testing R Markdown Formats"
 author: "ID Your Name"
+header-includes:
+  - \usepackage{ctex}
 output:
   html_notebook: null
-  pdf_document: null
   html_document: null
+  pdf_document: null
+    latex_engine: xelatex
   word_document: null
   powerpoint_presentation: null
   ioslides_presentation: null
 ---
 ```
 
-### PDF 作成でエラー？
+**PDFでエラー？** コンソールで `tinytex::install_tinytex()`
 
-`tinytex::install_tinytex()`を実行するように表示されたら、Console で実行
-
-＊ TeX システムがインストールされている場合は不要
+* TeX システムがインストールされている場合は不要
 
 ## 9. クラウド - Posit Cloud
 

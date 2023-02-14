@@ -3129,7 +3129,7 @@ ul.task-list{list-style: none;}
 
 <body style="opacity: 0">
 
-<slides>
+<slides class="layout-widescreen">
 
   <slide class="title-slide segue nobackground">
         <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
@@ -3259,20 +3259,23 @@ ul.task-list{list-style: none;}
 <pre >---
 title: &quot;Testing R Markdown Formats&quot;
 author: &quot;ID Your Name&quot;
+header-includes:
+  - \usepackage{ctex}
 output:
   html_notebook: null
-  pdf_document: null
   html_document: null
+  pdf_document: null
+    latex_engine: xelatex
   word_document: null
   powerpoint_presentation: null
   ioslides_presentation: null
 ---</pre>
 
-<h3>PDF 作成でエラー？</h3>
+<p><strong>PDFでエラー？</strong> コンソールで <code>tinytex::install_tinytex()</code></p>
 
-<p><code>tinytex::install_tinytex()</code>を実行するように表示されたら、Console で実行</p>
-
-<p>＊ TeX システムがインストールされている場合は不要</p>
+<ul>
+<li>TeX システムがインストールされている場合は不要</li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2>9. クラウド - Posit Cloud</h2></hgroup><article  id="クラウド---posit-cloud">
 
