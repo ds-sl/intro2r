@@ -1,0 +1,69 @@
+---
+title: "R Markdown 入門"
+author: "Hiroshi Suzuki"
+date: "`r Sys.Date()`"
+output: 
+  ioslides_presentation: 
+    highlight: tango
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## 最初の一歩 Let's get started!
+
+1. パッケージ - Packages
+2. R Notebook 記録とメモ、レポート作成のために
+3. R Markdown いくつかの Output
+4. クラウド - Posit Cloud - Interactive Exercises
+5. 練習問題 Posit Primers 
+6. 参考文献 References
+
+## 1. パッケージ - Packages 確認
+
+Rパッケージは、Rの拡張機能で、コード、データ、ドキュメントを標準化されたコレクション形式で含んでおり、標準的なものは、R Studio の Top Bar の Tool > Install Packages からインストールできます。
+
+* `tidyverse`
+* `rmarkdown`
+* `tinytex`
+
+インストールは一回だけ。ときどき、Tools > Check for Package Update をつかって、Update しておくと良いでしょう。
+
+右下の 窓枠（Pane）の、Packagesから、インストール済みのパッケージが確認できます。チェックのついているものは、すぐ使えるように、ロードされているものです。
+
+## 1. R Notebook
+
+R Markdownはデータサイエンスのためのオーサリングフレームワークです。
+
+コード（プログラム）とその実行結果、を記録・表示し、高品質のレポートの作成を可能にします。
+
+Rノートブックは、独立してインタラクティブに実行できるチャンクを持つR Markdownドキュメントの一つの形式で、入力のすぐ下に出力が表示することができます。
+
+1. File > New File > R Notebook
+2. Save with a file name, say, test-notebook
+3. Preview by [Preview] button
+4. Run Code Chunk plot(cars) and then Preview again.
+
+## 2. R Markdown いくつかの Output
+
+```
+---
+title: "Testing R Markdown Formats"
+author: "ID Your Name"
+output:
+  html_notebook: null
+  pdf_document: null
+  html_document: null
+  word_document: null
+  powerpoint_presentation: null
+  ioslides_presentation: null
+---
+```
+
+### PDF 作成でエラー？
+
+`tinytex::install_tinytex()`を実行するように表示されたら、Console で実行
+
+＊ TeX システムがインストールされている場合は不要
+

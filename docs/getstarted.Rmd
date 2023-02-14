@@ -20,11 +20,9 @@ knitr::opts_chunk$set(echo = FALSE)
 4. R Studio について
 5. R Script 実行記録
 6. パッケージ - Packages
-7. R Notebook 記録とメモ、レポート作成のために
-8. R Markdown いくつかの Output
-9. クラウド - Posit Cloud - Interactive Exercises
-10. 練習問題 Posit Primers 
-11. 参考文献 References
+7. クラウド - Posit Cloud
+8. 練習問題 Posit Primers 
+9. 参考文献 References
 
 ## 1. R と R Studio のインストール
 
@@ -96,7 +94,50 @@ Rパッケージは、Rの拡張機能で、コード、データ、ドキュメ
 
 インストールは一回だけ。ときどき、Tools > Check for Package Update をつかって、Update しておくと良いでしょう。
 
+## 7. クラウド - Posit Cloud
+
+RStudio Cloudは、誰でもオンラインでデータサイエンスを行い、共有し、教え、学ぶことができる、軽量でクラウドベースのソリューションです。
+
+### クラウドサービス　How to Start Posit Cloud
+
+1. Go to https://posit.cloud/
+2. Sign Up: top right
+3. Email address or Google account
+4. New Project: Project Name
+
+
+## 8. 練習問題 Posit Primers 
+
+Posit Primers https://posit.cloud/learn/primers
+
+### 最初の演習　The Basics – r4ds: Explore, I
+
+* [Visualization Basics](https://rstudio.cloud/learn/primers/1.1)
+* [Programming Basics](https://rstudio.cloud/learn/primers/1.2)
+
+
+## 9. 参考文献 References
+
+* R For Data Science, by H. Wickham: https://r4ds.had.co.nz
+  - Introduction: https://r4ds.had.co.nz/explore-intro.html#explore-intro
+* Bookdown: https://bookdown.org, [Archive](https://bookdown.org/home/archive/)
+
+  
+* [Introducton to R](https://ds-sl.github.io/intro2r/intro2r.nb.html#3_Data_Analysis_Using_RStudio)
+* [Data Analysis for Researchers 2022](https://icu-hsuzuki.github.io/da4r2022/)
+
+
+
 # R Markdown
+
+## 最初の一歩 Let's get started!
+
+1. 準備：パッケージのインストール
+2. R Notebook
+3. 日本語のテンプレート
+4. R Markdown いくつかの Output
+5. R Script 実行記録
+6. パッケージ - Packages
 
 ## 1. 準備：パッケージのインストール
 
@@ -131,7 +172,9 @@ R Notebook は、独立してインタラクティブに実行できるチャン
 * https://ds-sl.github.io/intro2r/RNotebook-J.nb.html
 * https://ds-sl.github.io/intro2r/Rmarkdown-J.nb.html
 
-## 3. R Markdown いくつかの Output
+Windows でも、Mac でも提供されている、Google Chrome の場合には、Code ボタンから、ダンロードされるはずです。
+
+## 4. R Markdown いくつかの Output
 ```
 ---
 title: "Testing R Markdown Formats"
@@ -152,36 +195,4 @@ output:
 **PDFでエラー？** コンソールで `tinytex::install_tinytex()`
 
 * TeX システムがインストールされている場合は不要
-
-## 4. クラウド - Posit Cloud
-
-RStudio Cloudは、誰でもオンラインでデータサイエンスを行い、共有し、教え、学ぶことができる、軽量でクラウドベースのソリューションです。
-
-### クラウドサービス　How to Start Posit Cloud
-
-1. Go to https://posit.cloud/
-2. Sign Up: top right
-3. Email address or Google account
-4. New Project: Project Name
-
-
-## 5. 練習問題 Posit Primers 
-
-Posit Primers https://posit.cloud/learn/primers
-
-### 最初の演習　The Basics – r4ds: Explore, I
-
-* [Visualization Basics](https://rstudio.cloud/learn/primers/1.1)
-* [Programming Basics](https://rstudio.cloud/learn/primers/1.2)
-
-
-## 6. 参考文献 References
-
-* R For Data Science, by H. Wickham: https://r4ds.had.co.nz
-  - Introduction: https://r4ds.had.co.nz/explore-intro.html#explore-intro
-* Bookdown: https://bookdown.org, [Archive](https://bookdown.org/home/archive/)
-
-  
-* [Introducton to R](https://ds-sl.github.io/intro2r/intro2r.nb.html#3_Data_Analysis_Using_RStudio)
-* [Data Analysis for Researchers 2022](https://icu-hsuzuki.github.io/da4r2022/)
 

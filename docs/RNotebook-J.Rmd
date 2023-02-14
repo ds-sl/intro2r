@@ -24,7 +24,7 @@ summary(iris)
 
 ノートブックを保存すると、コードを含む HTML ファイルが作成されます。プレビュー（*Preview* ）ボタンまたは、  *Ctrl+Shift+K* (Win) または *Cmd+Shift+K* (Mac) でも可能です。
 
-*Knit* で他の形式の出力をするときは、最初から一つ一つコード・チャンクを実行して、その結果が出力されますが、R Notebook の、プレビューは、実際にコード・チャンクに表示されているものだけが、含まれます。したがって、たとえば、エラーがあるコードチャンスも、そのまま表示されます。*Knit* で他の形式の出力をするときは、エラーがあると、出力されず、途中で停止します。
+*Knit* で他の形式の出力をするときは、最初から一つ一つコード・チャンクを実行して、その結果が出力されますが、R Notebook の、プレビューは、実際にコード・チャンクに表示されているものだけが、含まれます。したがって、たとえば、エラーがあるコード・チャンクも、そのまま表示されます。*Knit* で他の形式の出力をするときは、エラーがあると、出力されず、途中で停止します。
 
 ```{r}
 head(iris)
@@ -75,6 +75,11 @@ cor(iris[,1:4])
 
 ```{r}
 coronavirus <- read.csv("https://github.com/RamiKrispin/coronavirus/raw/master/csv/coronavirus.csv")
+head(coronavirus)
+```
+
+
+```{r}
 coronavirus$date <- as.Date(coronavirus$date)
 COUNTRY <- "Japan"
 df <- coronavirus[coronavirus$country == COUNTRY,]
@@ -83,4 +88,5 @@ df_death <- df[df$type == "death",]
 plot(df_confirmed$date, df_confirmed$cases, type = "h")
 plot(df_death$date, df_death$cases, type = "h")
 ```
+
 
