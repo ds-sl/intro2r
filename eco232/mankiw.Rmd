@@ -1,0 +1,489 @@
+---
+title: "G. Mankiw, Macroeconomics, 7th Ed., 2009"
+author: "H. Suzuki"
+date: "`r Sys.Date()`"
+output:
+  html_notebook:
+    number_sections: yes
+  beamer_presentation: default
+  pdf_document: 
+    number_sections: yes
+  html_document:
+    df_print: paged
+    number_sections: yes
+  powerpoint_presentation: default
+  word_document: 
+    number_sections: yes
+    reference_docx: "ref_doc.docx"
+  ioslides_presentation:
+    widescreen: yes
+    smaller: yes
+  slidy_presentation: default
+---
+
+# Data Visualization Using `tidyverse` Package
+
+> In this note, we create sereral charts in Mankiw's book "[Macroeconomics, 7th ed., 2009](https://jollygreengeneral.typepad.com/files/n.-gregory-mankiw-macroeconomics-7th-edition-2009.pdf)".
+
+## Setup
+
+```{r evall=FALSE}
+Sys.setenv(LANG="en")
+dir.create("./data")
+```
+
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+```{r eval=FALSE}
+wdi_cache <- WDIcache()
+```
+```{r eval=FALSE}
+write_rds(wdi_cache, "./data/wdi_cache.RData")
+```
+```{r}
+wdi_cache <- read_rds("./data/wdi_cache.RData")
+```
+
+
+```{r}
+wdi_cache$series
+```
+
+```{r}
+wdi_cache$country
+```
+
+## Searching and Downloading Data
+
+```
+WDIsearch(string = "gdp", field = "name", short = TRUE, cache = NULL)
+```
+
+```{r eval=FALSE}
+WDIsearch(string ="", field = "name, short = FALSE, cache = wdi_cache)
+```
+
+
+### List of Indicators
+
+* NY.GDP.MKTP.CD: GDP (current US$)
+* NY.GDP.DEFL.KD.ZG: Inflation, GDP deflator (annual %)
+* SL.UEM.TOTL.NE.ZS: Unemployment, total (% of total labor force) (national estimate)
+* CPTOTNSXN: CPI Price, nominal
+* SL.TLF.CACT.MA.NE.ZS: Labor force participation rate, male (% of male population ages 15+) (national estimate)
+* SL.TLF.CACT.FE.NE.ZS: Labor force participation rate, female (% of male population ages 15+) (national estimate)
+
+### Downloading Data
+
+```
+WDI(
+  country = "all",
+  indicator = "NY.GDP.PCAP.KD",
+  start = 1960,
+  end = NULL,
+  extra = FALSE,
+  cache = NULL,
+  latest = NULL,
+  language = "en"
+)
+```
+
+
+
+## FIGURES
+
+### 1-1 Real GDP per Person in the U.S. Economy
+
+
+```{r}
+WDIsearch(string = "gdp", field = "name", short = FALSE, cache = wdi_cache )
+```
+
+#### NY.GDP.MKTP.CD: GDP (current US$)
+
+```{r cache=TRUE}
+gdp_current <- WDI(country = "all", indicator = "NY.GDP.MKTP.CD", extra = TRUE, cache = wdi_cache)
+```
+
+
+```{r}
+gdp_current
+```
+
+
+```{r}
+gdp_current %>% filter(country == "United States") %>% 
+  ggplot(aes(year, NY.GDP.MKTP.CD)) + geom_line() +
+  labs(title = "Figure 1-1 Real GDP per Person in the U.S. Economy")
+```
+
+### 1-2 The Inflation Rate in the U.S. Economy
+
+```{r}
+WDIsearch("inflation", "name",short = FALSE, cache = wdi_cache)
+```
+
+#### NY.GDP.DEFL.KD.ZG: Inflation, GDP deflator (annual %)
+
+* GDP Deflator:
+NY.GDP.DEFL.KD.ZG Inflation, GDP deflator (annual %): Inflation as measured by the annual growth rate of the GDP implicit deflator shows the rate of price change in the economy as a whole. The GDP implicit deflator is the ratio of GDP in current local currency to GDP in constant local currency. 
+
+
+```{r cache=TRUE}
+inflation <- WDI(country = "all", indicator ="NY.GDP.DEFL.KD.ZG", extra=TRUE, cache=wdi_cache)
+```
+
+```{r}
+inflation %>% filter(country == "United States") %>% 
+  ggplot(aes(year, NY.GDP.DEFL.KD.ZG)) + geom_line() +
+  labs(title = "Figure 1-2 The Inflation Rate in the U.S. Economy")
+```
+
+
+### 1-3 The Unemployment Rate in the U.S. Econom
+
+```{r}
+WDIsearch("unemployment", "name",short = FALSE, cache = wdi_cache)
+```
+
+#### SL.UEM.TOTL.NE.ZS: Unemployment, total (% of total labor force) (national estimate)
+
+```{r cache=TRUE}
+unemployment <- WDI(country = "all", indicator ="SL.UEM.TOTL.NE.ZS", extra=TRUE, cache=wdi_cache)
+```
+
+
+```{r}
+unemployment %>% filter(country == "United States") %>% 
+  ggplot(aes(year, SL.UEM.TOTL.NE.ZS)) + geom_line()
+```
+
+### 2-3 The GDP Deflator and the CPI
+
+```{r}
+WDIsearch("CPI", "name",short = FALSE, cache = wdi_cache)
+```
+
+#### CPTOTSAXNZGY: CPI Price, % y-o-y, nominal, seas. adj.
+
+* CPTOTSAXN: CPI Price, nominal, seas. adj.: The consumer price index reflects the change in prices for the average consumer of a constant basket of consumer goods. Data is in nominal terms and seasonally adjusted. 
+* CPTOTSAXNZGY: CPI Price, % y-o-y, nominal, seas. adj.: The consumer price index reflects the change in prices for the average consumer of a constant basket of consumer goods. Data is in nominal percentage terms, measured on a year-on-year basis, and seasonally adjusted.
+
+
+```{r cache=TRUE}
+cpi <- WDI(country = "all", indicator ="CPTOTSAXNZGY", extra=TRUE, cache=wdi_cache)
+```
+
+
+```{r}
+cpi %>% filter(country == "United States") %>% 
+  ggplot(aes(year, CPTOTSAXNZGY)) + geom_line()
+```
+
+```{r}
+gdp_cpi <- WDI(country = "all", indicator = c(gdp = "NY.GDP.DEFL.KD.ZG", cpi="CPTOTSAXNZGY"), extra=TRUE, cache=wdi_cache)
+```
+
+```{r}
+gdp_cpi %>% pivot_longer(c(gdp, cpi), names_to = "index", values_to = "value")
+```
+
+```{r}
+gdp_cpi %>% pivot_longer(c(gdp, cpi), names_to = "index", values_to = "value") %>%
+  filter(country == "United States") %>% drop_na(value) %>%
+  ggplot(aes(x = year, y = value, color = index)) + geom_line() + 
+  labs(title = "Figure 2-3: The GDP Deflator and the CPI")
+```
+
+### 2-5 Labor-Force Participation
+
+```{r}
+WDIsearch("Labor Force Participation Rate", "name",short = FALSE, cache = wdi_cache)
+```
+
+#### Indicators
+
+* SL.TLF.CACT.MA.NE.ZS: Labor force participation rate, male (% of male population ages 15+) (national estimate)
+* SL.TLF.CACT.FE.NE.ZS: Labor force participation rate, female (% of male population ages 15+) (national estimate)
+
+
+```{r cache=TRUE}
+participation <- WDI(country = "all", indicator =c(male = "SL.TLF.CACT.MA.NE.ZS", female = "SL.TLF.CACT.FE.NE.ZS"), extra=TRUE, cache=wdi_cache)
+```
+
+```{r}
+participation %>% filter(country == "United States") %>% 
+  ggplot() + geom_line(aes(x = year, y = male), col = "blue") + geom_line(aes(x = year, y = female), col = "red")
+```
+
+
+```{r}
+participation %>% 
+  pivot_longer(cols = c(male, female), names_to = "gender", values_to = "rate") %>%
+  filter(country=="United States") %>% ggplot(aes(x = year, y = rate, color=gender)) + geom_line()
+```
+
+### 3-5 The Ratio of Labor Income to Total Income 
+
+
+```{r eval=FALSE}
+WDIsearch(string ="", field = "name, short = FALSE, cache = wdi_cache)
+```
+
+#### Data Download
+
+* Indicator
+
+```{r cache=TRUE, eval=FALSE}
+df <- WDI(country = "all", indicator ="", extra=TRUE, cache=wdi_cache)
+```
+
+#### Chart
+
+
+### 3-10 Military Spending and the Interest Rate in the United Kingdom
+
+```{r eval=FALSE}
+WDIsearch(string ="", field = "name, short = FALSE, cache = wdi_cache)
+```
+
+#### Data Download
+
+* Indicator
+
+
+```{r cache=TRUE, eval=FALSE}
+df <- WDI(country = "all", indicator ="", extra=TRUE, cache=wdi_cache)
+```
+
+
+#### Chart
+
+### 4-1 Historical Data on U.S. Inflation and Money Growth
+
+### 4-2 International Data on Inflation and Money Growth
+
+### 4-3 Inflation and Nominal Interest Rates Over Time
+
+### 4-4 Inflation and Nominal Interest Rates Across Countries
+
+### 4-6 Money and Prices in Interwar Germany
+
+### 5-1 Imports and Exports as a Percentage of Output: 2007
+
+### 5-6 The Trade Balance, Saving, and Investment: The U.S. Experience
+
+### 5-13 Inflation Differentials and the Exchange Rate
+
+### Big Mac Prices and the Exchange Rate: An Application of Purchasing-Power Parity
+
+#### Our Big Mac index shows how burger prices are changing
+
+* [Economist Site](https://www.economist.com/big-mac-index)
+* [GitHub Site](https://github.com/TheEconomist/big-mac-data)
+
+### 6-1 The Unemployment Rate and the Natural Rate of Unemployment in the United States
+
+### Percent of Workers Covered by Collective Bargaining
+
+### 6-4 Unemployment in Europe
+
+### 6-5 Annual Hours Worked per Person 
+
+### Table 7-1 International Differences in the Standard of Living
+
+### 7-6 International Evidence on Investment Rates and Income per Person
+
+### 7-13 International Evidence on Population Growth and Income per Person
+
+### Table 8-2  Growth Around the World
+
+### 8-2 Growth in Output and the Solow Residual
+
+### 9-1 Real GDP Growth in the United States
+
+### 9-2 Growth in Consumption and Investment
+
+### 9-3 Unemployment
+
+### 9-4 Okun’s Law
+
+### 11-2 What Happened During the Great Depression?
+
+### 13-3 Inflation and Unemployment in the United States, 1960–2008
+
+### Table 13-1 Unemployment During the Volcker Disinflation
+
+### 14-1 The Federal Funds Rate: Actual and Suggested
+
+### 15-1 Forecasting the Recession of 1982 
+
+### 15-2 Inflation and Central-Bank Independence
+
+### Table 16-1 How Indebted Are the World’s Governments?
+
+### 16-1 The Ratio of Government Debt to GDP Since 1790
+
+### 18-1 The Three Components of Investment
+
+### 18-4 The Stock Market and the Economy
+
+### 18-7 The Housing Market from 2000 to 2008
+
+
+
+### TEMPLATE
+
+#### Search String
+
+```{r eval=FALSE}
+search_string <- "gdp" # edit the search string
+WDIsearch(string =search_string, field = "name, short = FALSE, cache = wdi_cache)
+```
+
+#### Line Plot with one indicator with abbriviation and one country
+
+```{r}
+chosen_indicator <- "SL.UEM.TOTL.NE.ZS"
+short_name <- "unemployment"
+chosen_country <- "United States"
+WDI(country = "all", indicator = c(short_name = chosen_indicator), extra=TRUE, cache=wdi_cache) %>%
+  filter(country == chosen_country) %>% 
+  ggplot(aes(year, short_name)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator, ": ", short_name, " - ", chosen_country),
+       y = short_name)
+```
+
+#### Line Plot with one indicator and one country
+
+```{r}
+chosen_indicator <- "SL.UEM.TOTL.NE.ZS"
+chosen_country <- "United States"
+WDI(country = "all", indicator = c(chosen_indicator = chosen_indicator), 
+    extra=TRUE, cache=wdi_cache) %>%
+  filter(country == chosen_country) %>% 
+  ggplot(aes(year, chosen_indicator)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator, " - ", chosen_country), 
+       y = chosen_indicator)
+```
+
+#### Line Plot with one indicator with abbriviation and several countries
+
+```{r}
+chosen_indicator <- "SL.UEM.TOTL.NE.ZS"
+short_name <- "unemployment"
+chosen_countries <- c("United States","United Kingdom", "Japan")
+WDI(country = "all", indicator = c(short_name = chosen_indicator), extra=TRUE, cache=wdi_cache) %>% drop_na(short_name) %>% 
+  filter(country %in% chosen_countries) %>% 
+  ggplot(aes(year, short_name, col = country)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator, ": ", short_name), y = short_name)
+```
+
+
+#### Line Plot with two indicators with abbriviation and one country
+
+```{r}
+chosen_indicator_1 <- "NY.GDP.DEFL.KD.ZG"
+short_name_1 <- "gdp"
+chosen_indicator_2 <- "CPTOTSAXNZGY"
+short_name_2 <- "cpi"
+chosen_country <- "United States"
+WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name_2 = chosen_indicator_2), extra=TRUE, cache=wdi_cache) %>% 
+  filter(country == chosen_country) %>% 
+  pivot_longer(c(short_name_1, short_name_2), names_to = "class", values_to = "value") %>% drop_na(value) %>%
+  ggplot(aes(year, value, col = class)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator_1, ": ", short_name_1, "\n", chosen_indicator_2, ": ", short_name_2, " - ", chosen_country)) +
+  scale_color_manual(labels = c(short_name_1, short_name_2), values = scales::hue_pal()(2))
+```
+
+```{r}
+chosen_indicator_1 <- "SL.TLF.CACT.MA.NE.ZS"
+short_name_1 <- "male"
+chosen_indicator_2 <- "SL.TLF.CACT.FE.NE.ZS"
+short_name_2 <- "female"
+chosen_country <- "United States"
+WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name_2 = chosen_indicator_2), extra=TRUE, cache=wdi_cache) %>% 
+  filter(country == chosen_country) %>% 
+  pivot_longer(c(short_name_1, short_name_2), names_to = "class", values_to = "value") %>% drop_na(value) %>%
+  ggplot(aes(year, value, col = class)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator_1, ": ", short_name_1, "\n", chosen_indicator_2, ": ", short_name_2, " - ", chosen_country)) +
+  scale_color_manual(labels = c(short_name_1, short_name_2), values = scales::hue_pal()(2))
+```
+
+#### Line Plot with two indicators with abbriviation and several countries
+
+```{r}
+chosen_indicator_1 <- "NY.GDP.DEFL.KD.ZG"
+short_name_1 <- "gdp"
+chosen_indicator_2 <- "CPTOTSAXNZGY"
+short_name_2 <- "cpi"
+chosen_countries <- c("United States", "France", "Japan")
+WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name_2 = chosen_indicator_2), extra=TRUE, cache=wdi_cache) %>% 
+  filter(country %in% chosen_countries) %>% 
+  pivot_longer(c(short_name_1, short_name_2), names_to = "class", values_to = "value") %>% drop_na(value) %>%
+  ggplot(aes(year, value, linetype = class, col = country)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator_1, ": ", short_name_1, "\n", chosen_indicator_2, ": ", short_name_2)) +
+  scale_linetype_manual(labels = c(short_name_1, short_name_2), values = c("solid", "dashed"))
+```
+
+
+```{r}
+chosen_indicator_1 <- "SL.TLF.CACT.MA.NE.ZS"
+short_name_1 <- "male"
+chosen_indicator_2 <- "SL.TLF.CACT.FE.NE.ZS"
+short_name_2 <- "female"
+chosen_countries <- c("United States", "France", "Japan")
+WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name_2 = chosen_indicator_2), extra=TRUE, cache=wdi_cache) %>% 
+  filter(country %in% chosen_countries) %>% 
+  pivot_longer(c(short_name_1, short_name_2), names_to = "class", values_to = "value") %>% drop_na(value) %>%
+  ggplot(aes(year, value, linetype = class, col = country)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator_1, ": ", short_name_1, "\n", chosen_indicator_2, ": ", short_name_2)) +
+  scale_linetype_manual(labels = c(short_name_1, short_name_2), values = c("solid", "dashed"))
+```
+
+
+#### Dada Download
+
+* Indicator(s)
+
+```{r cache=TRUE, ecal=FALSE}
+df <- WDI(country = "all", indicator ="", extra=TRUE, cache=wdi_cache)
+```
+
+
+
+
+
+#### Chart
+
+##### Themes
+
+* References to Themes: 
+  - [ggplot2 book: Themes](https://ggplot2-book.org/polishing.html#polishing)
+  - [ggplot2 book: Complete Themes](https://ggplot2-book.org/polishing.html#themes)
+  
+* Example: `theme_minimal()`
+
+```{r}
+gdp_cpi %>% pivot_longer(c(gdp, cpi), names_to = "index", values_to = "value") %>%
+  filter(country == "United States") %>% drop_na(value) %>%
+  ggplot(aes(x = year, y = value, color = index)) + geom_line() + 
+  labs(title = "Figure 2-3: The GDP Deflator and the CPI") +
+  theme_minimal()
+```
+
+# Basics of R `tidyverse` for EDA
+
+> EDA is known as Exploratory Data Analysis. For the detail, please refer to "[R for Data Scinece](https://r4ds.had.co.nz)" by H. Wickham et. al. There are many excellent books available at the [bookdown site](https://bookdown.org) for free. See also the [arxive](https://bookdown.org/home/archive/) page.
+
+# References
+
+## 日本語
+
+* KUT 計量経済学応用：https://yukiyanai.github.io/econometrics2/
+ *Rで計量政治学入門：https://shohei-doi.github.io/quant_polisci/index.html
+	- エンコーディングについて：https://shohei-doi.github.io/quant_polisci/encoding-r.html#encoding-r

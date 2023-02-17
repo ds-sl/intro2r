@@ -1,0 +1,248 @@
+---
+title: "ECO232 Rを使った経済データの収集と分析の方法"
+author: "鈴木寛（Hiroshi Suzuki）"
+date: "`r Sys.Date()`"
+output:
+  ioslides_presentation: 
+    highlight: tango
+    widescreen: yes
+---
+
+```{r setup, include=FALSE, eval=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## おおよその目標
+
+### 一日目：2月20日
+
+1. RStudio で Project の作成
+2. Package の確認とインストール
+  - Minimum: `tidyverse`, `rmarkdown`, `WDI`
+3. R Notebook 入門
+4. WDI Package
+5. WDI Search
+  - WDIcache
+6. WDI Data Download
+  - `data` directory, `write_csv()`, `read_csv()`
+  - `write_rds()`, `read_rds()`
+7. Visualization
+8. Templates
+9. Practicum
+
+### 二日目：2月22日
+
+1. Exploratory Data Analysis
+2. Finding Data
+3. Importing Data
+  - 復習：`read_csv()`, `write_csv()`, `read_rds()`, `write_rds()`
+  - `readxl`: `read_ecel()`, `excel_sheets()`
+  - `download.file(url, destfile="")`, `download.file(url, destfile="", mode="wb")`
+4. OECD data
+5. Transforming Data: `dplyr`, `tidyr`
+6. Visualizing Data: `ggplot2`
+  - `geom_smooth()`
+7. Templates
+8. Practicum
+
+### 三日目：2月24日
+
+1. Exploratory Data Analysis; Workflow
+2. Transforming Data
+  - `filter()`, `select()`, `arrange()`, `mutate()`, `group_by()`, `summarize()`
+3. Visualizing Data
+  - Variance - distribution
+  - Covariance - corelation
+4. Combining Data
+5. Practicum
+6. Questions and Answers
+
+最初の一歩 Let's get started!
+
+1. R と R Studio のインストール
+2. プロジェクト - Project
+3. コンソール - Console
+4. R Studio について
+5. R Script 実行記録
+6. パッケージ - Packages
+7. クラウド - Posit Cloud
+8. 練習問題 Posit Primers 
+9. 参考文献 References
+
+## 1. R と R Studio のインストール
+
+まず、R と R Studio をインストールします。
+
+### R のインストール
+
+https://cloud.r-project.org
+
+### R Studio の インストール
+
+http://www.rstudio.com/download
+
+
+
+## 2. プロジェクト - Project
+
+* R Studio の起動
+* New Project 
+  - Directory を指定してプロジェクトを作成
+* 終了
+* プロジェクトの起動
+
+## 3. コンソールで実行 - Run in Console
+
+* `head(cars)`
+* `str(cars)`
+* `summary(cars)`
+* `plot(cars)`
+* `df <- cars`
+* `head(df)`
+* `View(cars)`
+* `?cars`
+* `?datasets`
+* `library(help = "datasets")`
+
+おすすめ：`Sys.setenv(LANG = "en")`
+
+## 4. R Studio について
+
+### 四つの窓枠とタブ Four Panes and Tabs
+
+* Top Left: Source Editor
+* Top Right: Environment, History, etc.
+* Bottom Left: Console, Terminal, Render, Background Jobs
+* Bottom Right: Files, Plots, Packages, Help, Viewer, Presentation
+
+## 5. R Script 実行記録
+
+* In RStudio (create Project in RStudio) choose File > New File > R Script
+* Choose File > Save As, save with a name; e.g. {file names} (.R will be added automatically)
+* To run a code: at the cursor press Ctrl+Shift+Enter (Win) or Cmd+Shift+Enter (Mac).
+
+### Tips
+
+* Top Manu: Help > Keyboard Short Cut Help contains many shortcuts.
+* Bottom Right Pane: Check the files by selecting the Files tab.
+
+
+## 6. パッケージ - Packages
+
+R packages are extensions to the R statistical programming language containing code, data, and documentation in a standardised collection format that can be installed by users of R using Tool > Install Packages in the top menu bar of R Studio.
+
+Rパッケージは、Rの拡張機能で、コード、データ、ドキュメントを標準化されたコレクション形式で含んでおり、標準的なものは、R Studio の Top Bar の Tool > Install Packages からインストールできます。
+
+* `tidyverse`
+* `rmarkdown`
+* `tinytex`
+
+インストールは一回だけ。ときどき、Tools > Check for Package Update をつかって、Update しておくと良いでしょう。
+
+## 7. クラウド - Posit Cloud
+
+RStudio Cloudは、誰でもオンラインでデータサイエンスを行い、共有し、教え、学ぶことができる、軽量でクラウドベースのソリューションです。
+
+### クラウドサービス　How to Start Posit Cloud
+
+1. Go to https://posit.cloud/
+2. Sign Up: top right
+3. Email address or Google account
+4. New Project: Project Name
+
+
+## 8. 練習問題 Posit Primers 
+
+Posit Primers https://posit.cloud/learn/primers
+
+### 最初の演習　The Basics – r4ds: Explore, I
+
+* [Visualization Basics](https://rstudio.cloud/learn/primers/1.1)
+* [Programming Basics](https://rstudio.cloud/learn/primers/1.2)
+
+
+## 9. 参考文献 References
+
+* R For Data Science, by H. Wickham: https://r4ds.had.co.nz
+  - Introduction: https://r4ds.had.co.nz/explore-intro.html#explore-intro
+* Bookdown: https://bookdown.org, [Archive](https://bookdown.org/home/archive/)
+
+  
+* [Introducton to R](https://ds-sl.github.io/intro2r/intro2r.nb.html#3_Data_Analysis_Using_RStudio)
+* [Data Analysis for Researchers 2022](https://icu-hsuzuki.github.io/da4r2022/)
+
+## YouTube Video - getstarted
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9uQmMZoG74g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+# R Markdown
+
+## 最初の一歩 Let's get started!
+
+1. 準備：パッケージのインストール
+2. R Notebook
+3. 日本語のテンプレート
+4. R Markdown いくつかの Output
+5. R Script 実行記録
+6. パッケージ - Packages
+
+## 1. 準備：パッケージのインストール
+
+Rパッケージは、Rの拡張機能で、コード、データ、ドキュメントを標準化されたコレクション形式で含んでおり、標準的なものは、R Studio の Top Bar の Tool > Install Packages からインストールできます。
+
+* `tidyverse`
+* `rmarkdown`
+* `tinytex`
+
+インストールを複数回しても問題はありませんが、インストールされているかどうかは、Packages タブから確認することができます。
+
+インストールは一回だけ。ときどき、Tools > Check for Package Update をつかって、Update しておくと良いでしょう。
+
+
+## 2. R Notebook
+
+R Markdownはデータサイエンスのためのオーサリングフレームワーク。
+
+コード（プログラム）とその実行結果、を記録・表示し、高品質のレポートの作成を可能にします。
+
+R Notebook は、独立してインタラクティブに実行できるチャンクを持つR Markdownドキュメントの一つの形式で、入力のすぐ下に出力が表示することができます。
+
+1. File > New File > R Notebook
+2. Save with a file name, say, test-notebook
+3. Preview by [Preview] button
+4. Run Code Chunk plot(cars) and then Preview again.
+
+## 3. 日本語のテンプレート
+
+下のリンクを開き、右上の Code ボタンから、Download Rmd を選択すると、ダウンロードできますから、ダインロードしたものを、プロジェクト・フォールダーに移動またはコピーしてください。ダウンロードできないときは、Ctrl を押しながら、Download Rmd をクリックすると、Save As で保存できると思います。ブラウザーによって仕様が異なりますから、適切な方法を選んでください。
+
+* https://ds-sl.github.io/intro2r/RNotebook-J.nb.html
+* https://ds-sl.github.io/intro2r/Rmarkdown-J.nb.html
+
+Windows でも、Mac でも提供されている、Google Chrome の場合には、Code ボタンから、ダンロードされるはずです。
+
+## 4. R Markdown いくつかの Output
+```
+---
+title: "Testing R Markdown Formats"
+author: "ID Your Name"
+header-includes:
+  - \usepackage{ctex}
+output:
+  html_notebook: default
+  html_document: default
+  pdf_document: default
+    latex_engine: xelatex
+  word_document: default
+  powerpoint_presentation: default
+  ioslides_presentation: default
+---
+```
+
+**PDFでエラー？** コンソールで `tinytex::install_tinytex()`
+
+* TeX システムがインストールされている場合は不要
+
+## YouTube Video - rmarkdown
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-E_XLf15YHs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
