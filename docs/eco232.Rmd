@@ -88,8 +88,6 @@ WDI(country = "all", indicator = c(gdp = "NY.GDP.MKTP.CD"),
 ```
 
 ```{r cache=TRUE}
-chosen_indicator <- "NY.GDP.MKTP.CD"
-short_name <- "gdp"
 chosen_countries <- c("United States","China", "Japan", "Germany", "United Kingdom","India")
 WDI(country = c("CN","GB","JP","IN","US","DE"), indicator = c(gdp = "NY.GDP.MKTP.CD"), extra=TRUE) %>% drop_na(gdp) %>% 
   ggplot(aes(year, gdp, col = country)) + geom_line() +
@@ -137,7 +135,7 @@ WDI(country = c("CN","IN","JP","US"),
 
 ## WDI パッケージ
 
-`WDI` パッケージで、データをダウンロードしたり、探したり、詳細情報を付得たりできます。
+`WDI` パッケージで、データをダウンロードしたり、探したり、詳細情報を得たりできます。
 
 ### 指標 WDI 検索
 
