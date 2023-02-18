@@ -3,15 +3,18 @@ title: "ECO232 Rを使った経済データの収集と分析の方法"
 author: "鈴木寛（Hiroshi Suzuki）"
 date: "`r Sys.Date()`"
 output:
-  html_notebook: 
+  html_notebook:
     toc: yes
-    toc_fload: yes
+    toc_float: yes
     highlight: tango
     theme: cerulean
     number_sections: yes
-  ioslides_presentation: 
+  ioslides_presentation:
     highlight: tango
     widescreen: yes
+  html_document:
+    toc: yes
+    df_print: paged
 ---
 
 ```{r setup, include=FALSE, eval=FALSE}
@@ -24,138 +27,486 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ### 確認
 
-1. R と R Studio のインストール
-2. RStudio: New Project 作成
-  * R Studio の起動
-  * New Project: eco232, eco232.Rproj
-3. Save して、終了
-4. プロジェクトを起動確認
+1.  R と R Studio のインストール
+2.  RStudio: New Project 作成
+
+-   R Studio の起動
+-   New Project: eco232, eco232.Rproj
+
+3.  Save して、終了
+4.  プロジェクトを起動確認
 
 ## 基本コマンド - in Console
 
-* `head(cars)`
-* `str(cars)`
-* `summary(cars)`
-* `df_cars <- cars`
-* `View(cars)` または、右上の Environment から、`df_cars` をクリック
-* `?cars` または Help 検索窓で `cars`, `head` など
+-   `head(cars)`
+-   `str(cars)`
+-   `summary(cars)`
+-   `df_cars <- cars`
+    -   `<-` と `_` と `%>%` と \` back tick の確認
+-   `View(cars)` または、右上の Environment から、`df_cars` をクリック
+-   `?cars` または Help 検索窓で `cars`, `head` など
 
 おすすめ：`Sys.setenv(LANG = "en")`
 
 ## Package の確認とインストール
-  - Minimum: `tidyverse`, `rmarkdown`, `WDI`
+
+R packages are extensions to the R statistical programming language containing code, data, and documentation in a standardised collection format that can be installed by users of R using Tool \> Install Packages in the top menu bar of R Studio.
+
+Rパッケージは、Rの拡張機能で、コード、データ、ドキュメントを標準化されたコレクション形式で含んでおり、標準的なものは、R Studio の Top Bar の Tool \> Install Packages からインストールできます。
+
+-   Minimum: `tidyverse`, `rmarkdown`, `WDI`
+
+あとから使うので、ロードしておきます。最初に次のようなコードを実行します。右の三角を押します。
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+## R Markdown 入門
+
+### R Notebook
+
+R Markdownはデータサイエンスのためのオーサリングフレームワーク。
+
+コード（プログラム）とその実行結果、を記録・表示し、高品質のレポートの作成を可能にします。
+
+R Notebook は、独立してインタラクティブに実行できるチャンクを持つR Markdownドキュメントの一つの形式で、入力のすぐ下に出力が表示することができます。
+
+1.  File \> New File \> R Notebook
+2.  Save with a file name, say, test-notebook
+3.  Preview by [Preview] button
+4.  Run Code Chunk plot(cars) and then Preview again.
+
+## World Development Indicator (WDI)
+
+```{r cache=TRUE}
+WDI(country = "all", indicator = c(gdp = "NY.GDP.MKTP.CD"),
+    extra=TRUE) %>% drop_na(gdp) %>%
+  filter(year==max(year), income !="Aggregates") %>% 
+  drop_na(region) %>% arrange(desc(gdp))
+```
+
+```{r cache=TRUE}
+chosen_indicator <- "NY.GDP.MKTP.CD"
+short_name <- "gdp"
+chosen_countries <- c("United States","China", "Japan", "Germany", "United Kingdom","India")
+WDI(country = c("CN","GB","JP","IN","US","DE"), indicator = c(gdp = "NY.GDP.MKTP.CD"), extra=TRUE) %>% drop_na(gdp) %>% 
+  ggplot(aes(year, gdp, col = country)) + geom_line() +
+  labs(title = "WDI NY.GDP.MKTP.CD: gdp")
+```
+
+```{r cache=TRUE}
+WDI(country = c("CN","IN","JP","US"), 
+    indicator = c(gdp_growth_rate = "NY.GDP.MKTP.KD.ZG"), extra=TRUE) %>%
+  drop_na(gdp_growth_rate) %>% 
+  ggplot(aes(year, gdp_growth_rate, col = country)) + geom_line() +
+  labs(title = paste("WDI NY.GDP.MKTP.KD.ZG: gdp growth rate"))
+```
+
+### 指標 Indicators (WDI)
+
+-   NY.GDP.MKTP.CD: GDP (current US\$)
+-   NY.GDP.MKTP.KD.ZG: GDP growth (annual %)
+
+### 指標 WDI を探してみよう
+
+> The World Development Indicators is a compilation of relevant, high-quality, and internationally comparable statistics about global development and the fight against poverty. The database contains 1,400 time series indicators for 217 economies and more than 40 country groups, with data for many indicators going back more than 50 years.
+
+> WDIは、世界の開発状況と、貧困との戦いに関する、適切で上質、かつ、国際的に比較可能な時系列の統計データを編纂したものです。このデータベースは、217の経済と40以上の国グループについて1,400の時系列指標を含み、指標のデータの多くは50年以上前に遡ることができます。
+
+-   世界銀行（World Bank）: <https://www.worldbank.org>
+-   World Bank Open Data: <https://data.worldbank.org>
+    -   Country / Indicator \> Featured & All \> Details
+-   [World Development Indicators (WDI)](https://datatopics.worldbank.org/world-development-indicators/) :
+    -   Themes: Poverty and Inequality, People, Environment, Economy, States and Markets, Global Links
+    -   Open Data & DataBank: Explore data, Query database
+
+### 指標 WDIの例
+
+* NY.GDP.MKTP.CD: GDP (current US$)
+* NY.GDP.DEFL.KD.ZG: Inflation, GDP deflator (annual %)
+* SL.UEM.TOTL.NE.ZS: Unemployment, total (% of total labor force) (national estimate)
+* CPTOTNSXN: CPI Price, nominal
+* SL.TLF.CACT.MA.NE.ZS: Labor force participation rate, male (% of male population ages 15+) (national estimate)
+* SL.TLF.CACT.FE.NE.ZS: Labor force participation rate, female (% of male population ages 15+) (national estimate)
+
+### 練習 1. - 調べてみたい WDI
+
+いくつか、リストしてみましょう。
+
+## WDI パッケージ
+
+`WDI` パッケージで、データをダウンロードしたり、探したり、詳細情報を付得たりできます。
+
+### 指標 WDI 検索
+
+#### 検索例 1（WDI名）
+
+```{r cache=TRUE}
+WDIsearch(string = "gdp", field = "name", short = TRUE, cache = NULL)
+```
+
   
-### 6. パッケージ - Packages
+#### 検索例 2（WDI）
 
-R packages are extensions to the R statistical programming language containing code, data, and documentation in a standardised collection format that can be installed by users of R using Tool > Install Packages in the top menu bar of R Studio.
+```{r cache=TRUE}
+WDIsearch(string = "NY.GDP.MKTP.CD", field = "indicator", short = TRUE, cache = NULL)
+```
 
-Rパッケージは、Rの拡張機能で、コード、データ、ドキュメントを標準化されたコレクション形式で含んでおり、標準的なものは、R Studio の Top Bar の Tool > Install Packages からインストールできます。
+  
+#### 練習 2. - 検索（short）
 
-* `tidyverse`
-* `rmarkdown`
-* `tinytex`
+名前で検索（"" の間に、（なるべく簡単な）検索文字列を入れてください。）
 
-インストールは一回だけ。ときどき、Tools > Check for Package Update をつかって、Update しておくと良いでしょう。
+```{r eval=FALSE, cache=TRUE}
+WDIsearch(string = "", field = "name", short = TRUE, cache = NULL)
+```
+
+Indicator で検索（"" の間に、調べたい indicator を入れてください。）
+
+```{r eval=FALSE, cache=TRUE}
+WDIsearch(string = "", field = "indicator", short = TRUE, cache = NULL)
+```
+
+  
+#### 詳しい情報を得るには
+
+`short = FALSE` とします。時間がかかるので、検索は、Indicator と、名前などの情報をもったファイルを手元に持っておくことにします。
+
+```{r cache=TRUE}
+wdi_cache <- WDIcache()
+```
+
+右上の窓枠（pane）から、`wdi_cache` を探して、中身を見てみましょう。series と、country の二つのデータ・フレームからなっているリストです。三角印や、右から二番目の巻物のようなアイコンをクリックすると中身が見えます。
+
+  
+#### 検索例 3（WDI名）
+
+```{r}
+WDIsearch(string = "CPI Price", field = "name", short = FALSE, cache = wdi_cache)
+```
+
+- CPTOTNSXN: CPI Price, nominal
+  - The consumer price index reflects the change in prices for the average consumer of a constant basket of consumer goods. Data is not seasonally adjusted.
+
+#### 検索例 4（WDI）
+
+```{r}
+WDIsearch(string = "NY.GDP.MKTP.KD.ZG", field = "indicator", short = FALSE, cache = wdi_cache)
+```
+
+  
+#### 練習 2 - 検索（long w/ cache）
+
+`string` と、`field` を、ふたつとも入れてください。
+
+```{r eval=FALSE}
+WDIsearch(string = "", field = "", short = FALSE, cache = wdi_cache)
+```
 
 
-## R Notebook 入門
-## WDI Package
-## WDI Search
-  - WDIcache
-## WDI Data Download
-  - `data` directory, `write_csv()`, `read_csv()`
-  - `write_rds()`, `read_rds()`
-## Visualization
-## Templates
-## Practicum
+  
+### 指標 WDI データのダウンロード
+
+Indicator が決まったら、ダウンロードします。
+
+```{r eval=FALSE}
+?WDI
+```
+
+  
+#### ダウンロード例 1-1
+
+```{r cache=TRUE}
+df_gdp1 <- WDI(country = "all", indicator = "NY.GDP.MKTP.CD")
+df_gdp1
+```
+
+  
+#### ダウンロード例 1-2
+
+```{r cache=TRUE}
+df_gdp2 <- WDI(country = "all", indicator = c(gdp = "NY.GDP.MKTP.CD"))
+df_gdp2
+```
+
+  
+#### ダウンロード例 1-3
+
+```{r cache=TRUE}
+df_gdp3 <- WDI(country = "all", indicator = c(gdp = "NY.GDP.MKTP.CD"), extra=TRUE, cache=wdi_cache)
+df_gdp3
+```
+
+  
+#### ダウンロード例 1-4
+
+```{r cache=TRUE}
+df_gdp4 <- WDI(country = c("CN","GB","JP","IN","US","DE"), indicator = c(gdp = "NY.GDP.MKTP.CD"), extra=TRUE, cache=wdi_cache)
+df_gdp4
+```
+
+#### ダウンロード例 2-1
+
+* NY.GDP.DEFL.KD.ZG: Inflation, GDP deflator (annual %)
+* CPTOTNSXN: CPI Price, nominal
+
+```{r cache=TRUE}
+df_gdp21 <- WDI(country = "all", 
+                indicator = c(gdp_deflator = "NY.GDP.DEFL.KD.ZG", 
+                              cpi_price = "CPTOTNSXN"), 
+                extra=TRUE, cache=wdi_cache)
+df_gdp21
+```
+
+```{r}
+str(df_gdp21)
+```
+
+```{r}
+summary(df_gdp21)
+```
+
+右上の窓枠の、Environment も見てみましょう。
+
+## 可視化 Visualization
+
+グラフ（Chart）を描いて視覚化しよう
+
+### グラフ 1
+
+```{r}
+df_gdp4 %>% ggplot(aes(year, gdp, col=country)) + geom_line()
+```
+
+### グラフ 2
+
+```{r}
+df_gdp4 %>% drop_na(gdp) %>% 
+  ggplot(aes(year, gdp, col=country)) + geom_line() +
+  labs(title = paste("WDI - NY.GDP.MKTP.CD: ", "gdp"))
+```
+
+### テンプレート Templates
+
+#### 一つの国についての、一つの指標（WDI）と、その略称から、折線グラフを作成
+
+Line Plot with one indicator with abbreviation and one country
+
+```{r eval=FALSE, cache=TRUE}
+chosen_indicator <- "SL.UEM.TOTL.NE.ZS"
+short_name <- "unemployment"
+chosen_country <- "United States"
+WDI(country = "all", indicator = c(short_name = chosen_indicator), extra=TRUE, cache=wdi_cache) %>%
+  filter(country == chosen_country) %>% 
+  ggplot(aes(year, short_name)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator, ": ", short_name, " - ", chosen_country),
+       y = short_name)
+```
+
+#### 一つの国についての、一つの指標（WDI）から、折線グラフを作成
+
+Line Plot with one indicator and one country
+
+```{r eval=FALSE, cache=TRUE}
+chosen_indicator <- "SL.UEM.TOTL.NE.ZS"
+chosen_country <- "United States"
+WDI(country = "all", indicator = c(chosen_indicator = chosen_indicator), 
+    extra=TRUE, cache=wdi_cache) %>%
+  filter(country == chosen_country) %>% 
+  ggplot(aes(year, chosen_indicator)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator, " - ", chosen_country), 
+       y = chosen_indicator)
+```
+
+#### いくつかの国についての、一つの指標（WDI）と、その略称から、折線グラフを作成
+
+Line Plot with one indicator with abbreviation and several countries
+
+```{r eval=FALSE, cache=TRUE}
+chosen_indicator <- "SL.UEM.TOTL.NE.ZS"
+short_name <- "unemployment"
+chosen_countries <- c("United States","United Kingdom", "Japan")
+WDI(country = "all", indicator = c(short_name = chosen_indicator), extra=TRUE, cache=wdi_cache) %>% drop_na(short_name) %>% 
+  filter(country %in% chosen_countries) %>% 
+  ggplot(aes(year, short_name, col = country)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator, ": ", short_name), y = short_name)
+```
+
+
+#### 一つの国についての、二つの指標（WDI）と、その略称から、折線グラフを作成
+
+Line Plot with two indicators with abbreviation and one country
+
+```{r eval=FALSE, cache=TRUE}
+chosen_indicator_1 <- "NY.GDP.DEFL.KD.ZG"
+short_name_1 <- "gdp_deflator"
+chosen_indicator_2 <- "CPTOTSAXNZGY"
+short_name_2 <- "cpi_price"
+chosen_country <- "United States"
+WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name_2 = chosen_indicator_2), extra=TRUE, cache=wdi_cache) %>% 
+  filter(country == chosen_country) %>% 
+  pivot_longer(c(short_name_1, short_name_2), names_to = "class", values_to = "value") %>% drop_na(value) %>%
+  ggplot(aes(year, value, col = class)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator_1, ": ", short_name_1, "\n", chosen_indicator_2, ": ", short_name_2, " - ", chosen_country)) +
+  scale_color_manual(labels = c(short_name_1, short_name_2), values = scales::hue_pal()(2))
+```
+
+```{r eval=FALSE, cache=TRUE}
+chosen_indicator_1 <- "SL.TLF.CACT.MA.NE.ZS"
+short_name_1 <- "male"
+chosen_indicator_2 <- "SL.TLF.CACT.FE.NE.ZS"
+short_name_2 <- "female"
+chosen_country <- "United States"
+WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name_2 = chosen_indicator_2), extra=TRUE, cache=wdi_cache) %>% 
+  filter(country == chosen_country) %>% 
+  pivot_longer(c(short_name_1, short_name_2), names_to = "class", values_to = "value") %>% drop_na(value) %>%
+  ggplot(aes(year, value, col = class)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator_1, ": ", short_name_1, "\n", chosen_indicator_2, ": ", short_name_2, " - ", chosen_country)) +
+  scale_color_manual(labels = c(short_name_1, short_name_2), values = scales::hue_pal()(2))
+```
+
+#### いくつかの国についての、二つの指標（WDI）と、その略称から、折線グラフを作成
+
+Line Plot with two indicators with abbreviation and several countries
+
+```{r eval=FALSE, cache=TRUE}
+chosen_indicator_1 <- "NY.GDP.DEFL.KD.ZG"
+short_name_1 <- "gdp_deflator"
+chosen_indicator_2 <- "CPTOTSAXNZGY"
+short_name_2 <- "cpi_price"
+chosen_countries <- c("United States", "France", "Japan")
+WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name_2 = chosen_indicator_2), extra=TRUE, cache=wdi_cache) %>% 
+  filter(country %in% chosen_countries) %>% 
+  pivot_longer(c(short_name_1, short_name_2), names_to = "class", values_to = "value") %>% drop_na(value) %>%
+  ggplot(aes(year, value, linetype = class, col = country)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator_1, ": ", short_name_1, "\n", chosen_indicator_2, ": ", short_name_2)) +
+  scale_linetype_manual(labels = c(short_name_1, short_name_2), values = c("solid", "dashed"))
+```
+
+
+```{r eval=FALSE, cache=TRUE}
+chosen_indicator_1 <- "SL.TLF.CACT.MA.NE.ZS"
+short_name_1 <- "male"
+chosen_indicator_2 <- "SL.TLF.CACT.FE.NE.ZS"
+short_name_2 <- "female"
+chosen_countries <- c("United States", "France", "Japan")
+WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name_2 = chosen_indicator_2), extra=TRUE, cache=wdi_cache) %>% 
+  filter(country %in% chosen_countries) %>% 
+  pivot_longer(c(short_name_1, short_name_2), names_to = "class", values_to = "value") %>% drop_na(value) %>%
+  ggplot(aes(year, value, linetype = class, col = country)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator_1, ": ", short_name_1, "\n", chosen_indicator_2, ": ", short_name_2)) +
+  scale_linetype_manual(labels = c(short_name_1, short_name_2), values = c("solid", "dashed"))
+```
+
+## 課題　Assignment
+
+上のテンプレートをコピーして、下に貼り付け、指標 `indicator` と、略称 `short_name` と、いくつかの国名 `chosen_countries` を、入れ替えて、試してみてください。
+
 
 # DAY 2：2月22日
 
 ## Exploratory Data Analysis
+
 ## Finding Data
+
 ## Importing Data
-  - 復習：`read_csv()`, `write_csv()`, `read_rds()`, `write_rds()`
-  - `readxl`: `read_ecel()`, `excel_sheets()`
-  - `download.file(url, destfile="")`, `download.file(url, destfile="", mode="wb")`
+
+-   復習：`read_csv()`, `write_csv()`, `read_rds()`, `write_rds()`
+-   `readxl`: `read_ecel()`, `excel_sheets()`
+-   `download.file(url, destfile="")`, `download.file(url, destfile="", mode="wb")`
+
 ## OECD data
+
 ## Transforming Data: `dplyr`, `tidyr`
+
 ## Visualizing Data: `ggplot2`
-  - `geom_smooth()`
+
+-   `geom_smooth()`
+
 ## Templates
+
 ## Practicum
 
 # DAY 3：2月24日
 
 ## Exploratory Data Analysis; Workflow
+
 ## Transforming Data
-  - `filter()`, `select()`, `arrange()`, `mutate()`, `group_by()`, `summarize()`
+
+-   `filter()`, `select()`, `arrange()`, `mutate()`, `group_by()`, `summarize()`
+
 ## Visualizing Data
-  - Variance - distribution
-  - Covariance - corelation
+
+There is no rule about which questions you should ask to guide your research. However, two types of questions will always be useful for making discoveries within your data. You can loosely word these questions as:
+
+-   What type of variation occurs within my variables?
+    -   Variance - distribution
+-   What type of covariation occurs between my variables?
+    -   Covariance - correlation
+
 ## Combining Data
+
 ## Practicum
+
 ## Questions and Answers
 
+# 参考
 
-## 7. クラウド - Posit Cloud
+## RNotebook の活用
+
+下のリンクを開き、右上の Code ボタンから、Download Rmd を選択すると、ダウンロードできますから、ダインロードしたものを、プロジェクト・フォールダーに移動またはコピーしてください。ダウンロードできないときは、Ctrl を押しながら、Download Rmd をクリックすると、Save As で保存できると思います。ブラウザーによって仕様が異なりますから、適切な方法を選んでください。
+
+-   <https://ds-sl.github.io/intro2r/RNotebook-J.nb.html>
+-   <https://ds-sl.github.io/intro2r/Rmarkdown-J.nb.html>
+
+Windows でも、Mac でも提供されている、Google Chrome の場合には、Code ボタンから、ダンロードされるはずです。
+
+## クラウド - Posit Cloud
 
 RStudio Cloudは、誰でもオンラインでデータサイエンスを行い、共有し、教え、学ぶことができる、軽量でクラウドベースのソリューションです。
 
 ### クラウドサービス　How to Start Posit Cloud
 
-1. Go to https://posit.cloud/
-2. Sign Up: top right
-3. Email address or Google account
-4. New Project: Project Name
+1.  Go to <https://posit.cloud/>
+2.  Sign Up: top right
+3.  Email address or Google account
+4.  New Project: Project Name
 
+## 練習問題 Posit Primers
 
-## 8. 練習問題 Posit Primers 
+Posit Primers <https://posit.cloud/learn/primers>
 
-Posit Primers https://posit.cloud/learn/primers
+### 最初の演習　The Basics -- r4ds: Explore, I
 
-### 最初の演習　The Basics – r4ds: Explore, I
-
-* [Visualization Basics](https://rstudio.cloud/learn/primers/1.1)
-* [Programming Basics](https://rstudio.cloud/learn/primers/1.2)
-
+-   [Visualization Basics](https://rstudio.cloud/learn/primers/1.1)
+-   [Programming Basics](https://rstudio.cloud/learn/primers/1.2)
 
 ## 9. 参考文献 References
 
-* R For Data Science, by H. Wickham: https://r4ds.had.co.nz
-  - Introduction: https://r4ds.had.co.nz/explore-intro.html#explore-intro
-* Bookdown: https://bookdown.org, [Archive](https://bookdown.org/home/archive/)
+-   R For Data Science, by H. Wickham: <https://r4ds.had.co.nz>
 
-  
-* [Introducton to R](https://ds-sl.github.io/intro2r/intro2r.nb.html#3_Data_Analysis_Using_RStudio)
-* [Data Analysis for Researchers 2022](https://icu-hsuzuki.github.io/da4r2022/)
+    -   Introduction: <https://r4ds.had.co.nz/explore-intro.html#explore-intro>
 
-## YouTube Video - getstarted
+-   Bookdown: <https://bookdown.org>, [Archive](https://bookdown.org/home/archive/)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/9uQmMZoG74g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+-   [Get Started: R Studio で R をはじめよう、R Markdown](https://ds-sl.github.io/intro2r/getstarted.html)
+
+-   [Introducton to R](https://ds-sl.github.io/intro2r/intro2r.nb.html#3_Data_Analysis_Using_RStudio)
+
+-   [Data Analysis for Researchers 2022](https://icu-hsuzuki.github.io/da4r2022/)
 
 # R Markdown
 
 ## 最初の一歩 Let's get started!
 
-1. 準備：パッケージのインストール
-2. R Notebook
-3. 日本語のテンプレート
-4. R Markdown いくつかの Output
-5. R Script 実行記録
-6. パッケージ - Packages
-
-## 1. 準備：パッケージのインストール
-
-Rパッケージは、Rの拡張機能で、コード、データ、ドキュメントを標準化されたコレクション形式で含んでおり、標準的なものは、R Studio の Top Bar の Tool > Install Packages からインストールできます。
-
-* `tidyverse`
-* `rmarkdown`
-* `tinytex`
-
-インストールを複数回しても問題はありませんが、インストールされているかどうかは、Packages タブから確認することができます。
-
-インストールは一回だけ。ときどき、Tools > Check for Package Update をつかって、Update しておくと良いでしょう。
-
+1.  準備：パッケージのインストール
+2.  R Notebook
+3.  日本語のテンプレート
+4.  R Markdown いくつかの Output
+5.  R Script 実行記録
+6.  パッケージ - Packages
 
 ## 2. R Notebook
 
@@ -165,42 +516,17 @@ R Markdownはデータサイエンスのためのオーサリングフレーム�
 
 R Notebook は、独立してインタラクティブに実行できるチャンクを持つR Markdownドキュメントの一つの形式で、入力のすぐ下に出力が表示することができます。
 
-1. File > New File > R Notebook
-2. Save with a file name, say, test-notebook
-3. Preview by [Preview] button
-4. Run Code Chunk plot(cars) and then Preview again.
+1.  File \> New File \> R Notebook
+2.  Save with a file name, say, test-notebook
+3.  Preview by [Preview] button
+4.  Run Code Chunk plot(cars) and then Preview again.
 
 ## 3. 日本語のテンプレート
 
 下のリンクを開き、右上の Code ボタンから、Download Rmd を選択すると、ダウンロードできますから、ダインロードしたものを、プロジェクト・フォールダーに移動またはコピーしてください。ダウンロードできないときは、Ctrl を押しながら、Download Rmd をクリックすると、Save As で保存できると思います。ブラウザーによって仕様が異なりますから、適切な方法を選んでください。
 
-* https://ds-sl.github.io/intro2r/RNotebook-J.nb.html
-* https://ds-sl.github.io/intro2r/Rmarkdown-J.nb.html
+-   <https://ds-sl.github.io/intro2r/RNotebook-J.nb.html>
+-   <https://ds-sl.github.io/intro2r/Rmarkdown-J.nb.html>
 
 Windows でも、Mac でも提供されている、Google Chrome の場合には、Code ボタンから、ダンロードされるはずです。
 
-## 4. R Markdown いくつかの Output
-```
----
-title: "Testing R Markdown Formats"
-author: "ID Your Name"
-header-includes:
-  - \usepackage{ctex}
-output:
-  html_notebook: default
-  html_document: default
-  pdf_document: default
-    latex_engine: xelatex
-  word_document: default
-  powerpoint_presentation: default
-  ioslides_presentation: default
----
-```
-
-**PDFでエラー？** コンソールで `tinytex::install_tinytex()`
-
-* TeX システムがインストールされている場合は不要
-
-## YouTube Video - rmarkdown
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/-E_XLf15YHs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
