@@ -1,0 +1,403 @@
+---
+title: "ECO232 Rを使った経済データの収集と分析の方法"
+author: "鈴木寛（Hiroshi Suzuki）"
+date: "`r Sys.Date()`"
+output:
+  html_notebook:
+    toc: yes
+    toc_float: yes
+    highlight: tango
+    theme: cerulean
+    number_sections: yes
+  ioslides_presentation:
+    highlight: tango
+    widescreen: yes
+  html_document:
+    toc: yes
+    df_print: paged
+---
+
+```{r setup, include=FALSE, eval=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# DAY 1：2月20日
+
+## RStudio で Project の作成
+
+### 確認
+
+1.  R と R Studio のインストール
+2.  RStudio: New Project 作成
+
+-   R Studio の起動
+-   New Project: eco232, eco232.Rproj
+
+3.  Save して、終了
+4.  プロジェクトを起動確認
+
+## 基本コマンド - in Console
+
+-   `head(cars)`
+-   `str(cars)`
+-   `summary(cars)`
+-   `df_cars <- cars`
+    -   `<-` と `_` と `%>%` と \` back tick の確認
+-   `View(cars)` または、右上の Environment から、`df_cars` をクリック
+-   `?cars` または Help 検索窓で `cars`, `head` など
+
+おすすめ：`Sys.setenv(LANG = "en")`
+
+## Package の確認とインストール
+
+R packages are extensions to the R statistical programming language containing code, data, and documentation in a standardised collection format that can be installed by users of R using Tool \> Install Packages in the top menu bar of R Studio.
+
+Rパッケージは、Rの拡張機能で、コード、データ、ドキュメントを標準化されたコレクション形式で含んでおり、標準的なものは、R Studio の Top Bar の Tool \> Install Packages からインストールできます。
+
+-   Minimum: `tidyverse`, `rmarkdown`, `WDI`
+
+あとから使うので、ロードしておきます。最初に次のようなコードを実行します。右の三角を押します。
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+## R Markdown 入門
+
+### R Notebook
+
+R Markdownはデータサイエンスのためのオーサリングフレームワーク。
+
+コード（プログラム）とその実行結果、を記録・表示し、高品質のレポートの作成を可能にします。
+
+R Notebook は、独立してインタラクティブに実行できるチャンクを持つR Markdownドキュメントの一つの形式で、入力のすぐ下に出力が表示することができます。
+
+1.  File \> New File \> R Notebook
+2.  Save with a file name, say, test-notebook
+3.  Preview by [Preview] button
+4.  Run Code Chunk plot(cars) and then Preview again.
+
+## World Development Indicator (WDI)
+
+```{r cache=TRUE}
+WDI(country = "all", indicator = c(gdp = "NY.GDP.MKTP.CD"),
+    extra=TRUE) %>% drop_na(gdp) %>%
+  filter(year==max(year), income !="Aggregates") %>% 
+  drop_na(region) %>% arrange(desc(gdp))
+```
+
+```{r cache=TRUE}
+chosen_countries <- c("United States","China", "Japan", "Germany", "United Kingdom","India")
+WDI(country = c("CN","GB","JP","IN","US","DE"), indicator = c(gdp = "NY.GDP.MKTP.CD"), extra=TRUE) %>% drop_na(gdp) %>% 
+  ggplot(aes(year, gdp, col = country)) + geom_line() +
+  labs(title = "WDI NY.GDP.MKTP.CD: gdp")
+```
+
+```{r cache=TRUE}
+WDI(country = c("CN","IN","JP","US"), 
+    indicator = c(gdp_growth_rate = "NY.GDP.MKTP.KD.ZG"), extra=TRUE) %>%
+  drop_na(gdp_growth_rate) %>% 
+  ggplot(aes(year, gdp_growth_rate, col = country)) + geom_line() +
+  labs(title = paste("WDI NY.GDP.MKTP.KD.ZG: gdp growth rate"))
+```
+
+### 指標 Indicators (WDI)
+
+-   NY.GDP.MKTP.CD: GDP (current US\$)
+-   NY.GDP.MKTP.KD.ZG: GDP growth (annual %)
+
+### 指標 WDI を探してみよう
+
+> The World Development Indicators is a compilation of relevant, high-quality, and internationally comparable statistics about global development and the fight against poverty. The database contains 1,400 time series indicators for 217 economies and more than 40 country groups, with data for many indicators going back more than 50 years.
+
+> WDIは、世界の開発状況と、貧困との戦いに関する、適切で上質、かつ、国際的に比較可能な時系列の統計データを編纂したものです。このデータベースは、217の経済と40以上の国グループについて1,400の時系列指標を含み、指標のデータの多くは50年以上前に遡ることができます。
+
+-   世界銀行（World Bank）: 
+-   World Bank Open Data: 
+    -   Country / Indicator \> Featured & All \> Details
+-   [World Development Indicators (WDI)](https://datatopics.worldbank.org/world-development-indicators/) :
+    -   Themes: Poverty and Inequality, People, Environment, Economy, States and Markets, Global Links
+    -   Open Data & DataBank: Explore data, Query database
+
+### 指標 WDIの例
+
+* NY.GDP.MKTP.CD: GDP (current US$)
+* NY.GDP.DEFL.KD.ZG: Inflation, GDP deflator (annual %)
+* SL.UEM.TOTL.NE.ZS: Unemployment, total (% of total labor force) (national estimate)
+* CPTOTNSXN: CPI Price, nominal
+* SL.TLF.CACT.MA.NE.ZS: Labor force participation rate, male (% of male population ages 15+) (national estimate)
+* SL.TLF.CACT.FE.NE.ZS: Labor force participation rate, female (% of male population ages 15+) (national estimate)
+
+### 練習 1. - 調べてみたい WDI
+
+いくつか、リストしてみましょう。
+
+## WDI パッケージ
+
+`WDI` パッケージで、データをダウンロードしたり、探したり、詳細情報を得たりできます。
+
+### 指標 WDI 検索
+
+#### 検索例 1（WDI名）
+
+```{r cache=TRUE}
+WDIsearch(string = "gdp", field = "name", short = TRUE, cache = NULL)
+```
+
+  
+#### 検索例 2（WDI）
+
+```{r cache=TRUE}
+WDIsearch(string = "NY.GDP.MKTP.CD", field = "indicator", short = TRUE, cache = NULL)
+```
+
+  
+#### 練習 2. - 検索（short）
+
+名前で検索（"" の間に、（なるべく簡単な）検索文字列を入れてください。）
+
+```{r cache=TRUE}
+WDIsearch(string = "", field = "name", short = TRUE, cache = NULL)
+```
+
+Indicator で検索（"" の間に、調べたい indicator を入れてください。）
+
+```{r cache=TRUE}
+WDIsearch(string = "", field = "indicator", short = TRUE, cache = NULL)
+```
+
+  
+#### 詳しい情報を得るには
+
+`short = FALSE` とします。時間がかかるので、検索は、Indicator と、名前などの情報をもったファイルを手元に持っておくことにします。
+
+```{r cache=TRUE}
+wdi_cache <- WDIcache()
+```
+
+右上の窓枠（pane）から、`wdi_cache` を探して、中身を見てみましょう。series と、country の二つのデータ・フレームからなっているリストです。三角印や、右から二番目の巻物のようなアイコンをクリックすると中身が見えます。
+
+  
+#### 検索例 3（WDI名）
+
+```{r}
+WDIsearch(string = "CPI Price", field = "name", short = FALSE, cache = wdi_cache)
+```
+
+- CPTOTNSXN: CPI Price, nominal
+  - The consumer price index reflects the change in prices for the average consumer of a constant basket of consumer goods. Data is not seasonally adjusted.
+
+#### 検索例 4（WDI）
+
+```{r}
+WDIsearch(string = "NY.GDP.MKTP.KD.ZG", field = "indicator", short = FALSE, cache = wdi_cache)
+```
+
+  
+#### 練習 2 - 検索（long w/ cache）
+
+`string` と、`field` を、ふたつとも入れてください。
+
+```{r}
+WDIsearch(string = "", field = "", short = FALSE, cache = wdi_cache)
+```
+
+
+  
+### 指標 WDI データのダウンロード
+
+Indicator が決まったら、ダウンロードします。
+
+```{r eval=FALSE}
+?WDI
+```
+
+  
+#### ダウンロード例 1-1
+
+```{r cache=TRUE}
+df_gdp1 <- WDI(country = "all", indicator = "NY.GDP.MKTP.CD")
+df_gdp1
+```
+
+  
+#### ダウンロード例 1-2
+
+```{r cache=TRUE}
+df_gdp2 <- WDI(country = "all", indicator = c(gdp = "NY.GDP.MKTP.CD"))
+df_gdp2
+```
+
+  
+#### ダウンロード例 1-3
+
+```{r cache=TRUE}
+df_gdp3 <- WDI(country = "all", indicator = c(gdp = "NY.GDP.MKTP.CD"), extra=TRUE, cache=wdi_cache)
+df_gdp3
+```
+
+  
+#### ダウンロード例 1-4
+
+```{r cache=TRUE}
+df_gdp4 <- WDI(country = c("CN","GB","JP","IN","US","DE"), indicator = c(gdp = "NY.GDP.MKTP.CD"), extra=TRUE, cache=wdi_cache)
+df_gdp4
+```
+
+#### ダウンロード例 2-1
+
+* NY.GDP.DEFL.KD.ZG: Inflation, GDP deflator (annual %)
+* CPTOTNSXN: CPI Price, nominal
+
+```{r cache=TRUE}
+df_gdp21 <- WDI(country = "all", 
+                indicator = c(gdp_deflator = "NY.GDP.DEFL.KD.ZG", 
+                              cpi_price = "CPTOTNSXN"), 
+                extra=TRUE, cache=wdi_cache)
+df_gdp21
+```
+
+```{r}
+str(df_gdp21)
+```
+
+```{r}
+summary(df_gdp21)
+```
+
+右上の窓枠の、Environment も見てみましょう。
+
+## 可視化 Visualization
+
+グラフ（Chart）を描いて視覚化しよう
+
+### グラフ 1
+
+```{r}
+df_gdp4 %>% ggplot(aes(year, gdp, col=country)) + geom_line()
+```
+
+### グラフ 2
+
+```{r}
+df_gdp4 %>% drop_na(gdp) %>% 
+  ggplot(aes(year, gdp, col=country)) + geom_line() +
+  labs(title = paste("WDI - NY.GDP.MKTP.CD: ", "gdp"))
+```
+
+### テンプレート Templates
+
+#### 一つの国についての、一つの指標（WDI）と、その略称から、折線グラフを作成
+
+Line Plot with one indicator with abbreviation and one country
+
+```{r cache=TRUE}
+chosen_indicator <- "SL.UEM.TOTL.NE.ZS"
+short_name <- "unemployment"
+chosen_country <- "United States"
+WDI(country = "all", indicator = c(short_name = chosen_indicator), extra=TRUE, cache=wdi_cache) %>%
+  filter(country == chosen_country) %>% 
+  ggplot(aes(year, short_name)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator, ": ", short_name, " - ", chosen_country),
+       y = short_name)
+```
+
+#### 一つの国についての、一つの指標（WDI）から、折線グラフを作成
+
+Line Plot with one indicator and one country
+
+```{r cache=TRUE}
+chosen_indicator <- "SL.UEM.TOTL.NE.ZS"
+chosen_country <- "United States"
+WDI(country = "all", indicator = c(chosen_indicator = chosen_indicator), 
+    extra=TRUE, cache=wdi_cache) %>%
+  filter(country == chosen_country) %>% 
+  ggplot(aes(year, chosen_indicator)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator, " - ", chosen_country), 
+       y = chosen_indicator)
+```
+
+#### いくつかの国についての、一つの指標（WDI）と、その略称から、折線グラフを作成
+
+Line Plot with one indicator with abbreviation and several countries
+
+```{r cache=TRUE}
+chosen_indicator <- "SL.UEM.TOTL.NE.ZS"
+short_name <- "unemployment"
+chosen_countries <- c("United States","United Kingdom", "Japan")
+WDI(country = "all", indicator = c(short_name = chosen_indicator), extra=TRUE, cache=wdi_cache) %>% drop_na(short_name) %>% 
+  filter(country %in% chosen_countries) %>% 
+  ggplot(aes(year, short_name, col = country)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator, ": ", short_name), y = short_name)
+```
+
+
+#### 一つの国についての、二つの指標（WDI）と、その略称から、折線グラフを作成
+
+Line Plot with two indicators with abbreviation and one country
+
+```{r cache=TRUE}
+chosen_indicator_1 <- "NY.GDP.DEFL.KD.ZG"
+short_name_1 <- "gdp_deflator"
+chosen_indicator_2 <- "CPTOTSAXNZGY"
+short_name_2 <- "cpi_price"
+chosen_country <- "United States"
+WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name_2 = chosen_indicator_2), extra=TRUE, cache=wdi_cache) %>% 
+  filter(country == chosen_country) %>% 
+  pivot_longer(c(short_name_1, short_name_2), names_to = "class", values_to = "value") %>% drop_na(value) %>%
+  ggplot(aes(year, value, col = class)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator_1, ": ", short_name_1, "\n", chosen_indicator_2, ": ", short_name_2, " - ", chosen_country)) +
+  scale_color_manual(labels = c(short_name_1, short_name_2), values = scales::hue_pal()(2))
+```
+
+```{r cache=TRUE}
+chosen_indicator_1 <- "SL.TLF.CACT.MA.NE.ZS"
+short_name_1 <- "male"
+chosen_indicator_2 <- "SL.TLF.CACT.FE.NE.ZS"
+short_name_2 <- "female"
+chosen_country <- "United States"
+WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name_2 = chosen_indicator_2), extra=TRUE, cache=wdi_cache) %>% 
+  filter(country == chosen_country) %>% 
+  pivot_longer(c(short_name_1, short_name_2), names_to = "class", values_to = "value") %>% drop_na(value) %>%
+  ggplot(aes(year, value, col = class)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator_1, ": ", short_name_1, "\n", chosen_indicator_2, ": ", short_name_2, " - ", chosen_country)) +
+  scale_color_manual(labels = c(short_name_1, short_name_2), values = scales::hue_pal()(2))
+```
+
+#### いくつかの国についての、二つの指標（WDI）と、その略称から、折線グラフを作成
+
+Line Plot with two indicators with abbreviation and several countries
+
+```{r cache=TRUE}
+chosen_indicator_1 <- "NY.GDP.DEFL.KD.ZG"
+short_name_1 <- "gdp_deflator"
+chosen_indicator_2 <- "CPTOTSAXNZGY"
+short_name_2 <- "cpi_price"
+chosen_countries <- c("United States", "France", "Japan")
+WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name_2 = chosen_indicator_2), extra=TRUE, cache=wdi_cache) %>% 
+  filter(country %in% chosen_countries) %>% 
+  pivot_longer(c(short_name_1, short_name_2), names_to = "class", values_to = "value") %>% drop_na(value) %>%
+  ggplot(aes(year, value, linetype = class, col = country)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator_1, ": ", short_name_1, "\n", chosen_indicator_2, ": ", short_name_2)) +
+  scale_linetype_manual(labels = c(short_name_1, short_name_2), values = c("solid", "dashed"))
+```
+
+
+```{r cache=TRUE}
+chosen_indicator_1 <- "SL.TLF.CACT.MA.NE.ZS"
+short_name_1 <- "male"
+chosen_indicator_2 <- "SL.TLF.CACT.FE.NE.ZS"
+short_name_2 <- "female"
+chosen_countries <- c("United States", "France", "Japan")
+WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name_2 = chosen_indicator_2), extra=TRUE, cache=wdi_cache) %>% 
+  filter(country %in% chosen_countries) %>% 
+  pivot_longer(c(short_name_1, short_name_2), names_to = "class", values_to = "value") %>% drop_na(value) %>%
+  ggplot(aes(year, value, linetype = class, col = country)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator_1, ": ", short_name_1, "\n", chosen_indicator_2, ": ", short_name_2)) +
+  scale_linetype_manual(labels = c(short_name_1, short_name_2), values = c("solid", "dashed"))
+```
+
+## 課題　Assignment
+
+上のテンプレートをコピーして、下に貼り付け、指標 `indicator` と、略称 `short_name` と、いくつかの国名 `chosen_countries` を、入れ替えて、試してみてください。
