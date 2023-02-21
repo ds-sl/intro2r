@@ -1,0 +1,530 @@
+---
+title: "ECO232 Rを使った経済データの収集と分析の方法"
+author: "鈴木寛（Hiroshi Suzuki）"
+date: "`r Sys.Date()`"
+output:
+  html_notebook:
+    toc: yes
+    toc_float: yes
+    highlight: tango
+    theme: cerulean
+    number_sections: yes
+  ioslides_presentation:
+    highlight: tango
+    widescreen: yes
+  html_document:
+    toc: yes
+    df_print: paged
+---
+
+```{r setup, include=FALSE, eval=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# DAY 1：2月20日
+
+## RStudio で Project の作成
+
+## 基本コマンド - in Console
+
+## Package の確認とインストール
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+## R Markdown 入門
+
+### R Notebook
+
+## World Development Indicator (WDI)
+
+### 指標 WDI を探してみよう
+
+### 練習 1. - 調べてみたい WDI
+
+いくつか、リストしてみましょう。
+
+## WDI パッケージ
+
+### 指標 WDI 検索
+
+#### 検索例 1（WDI名）
+
+```{r cache=TRUE}
+WDIsearch(string = "gdp", field = "name", short = TRUE, cache = NULL)
+```
+
+  
+#### 検索例 2（WDI）
+
+```{r cache=TRUE}
+WDIsearch(string = "NY.GDP.MKTP.CD", field = "indicator", short = TRUE, cache = NULL)
+```
+
+  
+#### 練習 2. - 検索（short）
+
+名前で検索（"" の間に、（なるべく簡単な）検索文字列を入れてください。）
+
+```{r cache=TRUE}
+WDIsearch(string = "", field = "name", short = TRUE, cache = NULL)
+```
+
+Indicator で検索（"" の間に、調べたい indicator を入れてください。）
+
+```{r cache=TRUE}
+WDIsearch(string = "", field = "indicator", short = TRUE, cache = NULL)
+```
+
+#### 詳しい情報を得るには
+
+`short = FALSE` とします。時間がかかるので、検索は、Indicator と、名前などの情報をもったファイルを手元に持っておくことにします。
+
+```{r cache=TRUE}
+wdi_cache <- WDIcache()
+```
+
+右上の窓枠（pane）から、`wdi_cache` を探して、中身を見てみましょう。series と、country の二つのデータ・フレームからなっているリストです。三角印や、右から二番目の巻物のようなアイコンをクリックすると中身が見えます。
+  
+#### 検索例 3（WDI名）
+
+```{r}
+WDIsearch(string = "CPI Price", field = "name", short = FALSE, cache = wdi_cache)
+```
+
+- CPTOTNSXN: CPI Price, nominal
+  - The consumer price index reflects the change in prices for the average consumer of a constant basket of consumer goods. Data is not seasonally adjusted.
+
+#### 検索例 4（WDI）
+
+```{r}
+WDIsearch(string = "NY.GDP.MKTP.KD.ZG", field = "indicator", short = FALSE, cache = wdi_cache)
+```
+
+  
+#### 練習 2 - 検索（long w/ cache）
+
+`string` と、`field` を、ふたつとも入れてください。
+
+```{r}
+WDIsearch(string = "", field = "", short = FALSE, cache = wdi_cache)
+```
+  
+### 指標 WDI データのダウンロード
+
+Indicator が決まったら、ダウンロードします。
+
+```{r eval=FALSE}
+?WDI
+```
+
+  
+#### ダウンロード例 1-1
+
+```{r cache=TRUE}
+df_gdp1 <- WDI(country = "all", indicator = "NY.GDP.MKTP.CD")
+df_gdp1
+```
+
+  
+#### ダウンロード例 1-2
+
+```{r cache=TRUE}
+df_gdp2 <- WDI(country = "all", indicator = c(gdp = "NY.GDP.MKTP.CD"))
+df_gdp2
+```
+
+  
+#### ダウンロード例 1-3
+
+```{r cache=TRUE}
+df_gdp3 <- WDI(country = "all", indicator = c(gdp = "NY.GDP.MKTP.CD"), extra=TRUE, cache=wdi_cache)
+df_gdp3
+```
+
+  
+#### ダウンロード例 1-4
+
+```{r cache=TRUE}
+df_gdp4 <- WDI(country = c("CN","GB","JP","IN","US","DE"), indicator = c(gdp = "NY.GDP.MKTP.CD"), extra=TRUE, cache=wdi_cache)
+df_gdp4
+```
+
+#### ダウンロード例 2-1
+
+* NY.GDP.DEFL.KD.ZG: Inflation, GDP deflator (annual %)
+* CPTOTNSXN: CPI Price, nominal
+
+```{r cache=TRUE}
+df_gdp21 <- WDI(country = "all", 
+                indicator = c(gdp_deflator = "NY.GDP.DEFL.KD.ZG", 
+                              cpi_price = "CPTOTNSXN"), 
+                extra=TRUE, cache=wdi_cache)
+df_gdp21
+```
+
+```{r}
+str(df_gdp21)
+```
+
+```{r}
+summary(df_gdp21)
+```
+
+右上の窓枠の、Environment も見てみましょう。
+
+## 可視化 Visualization
+
+グラフ（Chart）を描いて視覚化しよう
+
+### グラフ 1
+
+```{r}
+df_gdp4 %>% ggplot(aes(year, gdp, col=country)) + geom_line()
+```
+
+### グラフ 2
+
+```{r}
+df_gdp4 %>% drop_na(gdp) %>% 
+  ggplot(aes(year, gdp, col=country)) + geom_line() +
+  labs(title = paste("WDI - NY.GDP.MKTP.CD: ", "gdp"))
+```
+
+### テンプレート Templates
+
+#### 一つの国についての、一つの指標（WDI）と、その略称から、折線グラフを作成
+
+Line Plot with one indicator with abbreviation and one country
+
+```{r cache=TRUE}
+chosen_indicator <- "SL.UEM.TOTL.NE.ZS"
+short_name <- "unemployment"
+chosen_country <- "United States"
+WDI(country = "all", indicator = c(short_name = chosen_indicator), extra=TRUE, cache=wdi_cache) %>%
+  filter(country == chosen_country) %>% 
+  ggplot(aes(year, short_name)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator, ": ", short_name, " - ", chosen_country),
+       y = short_name)
+```
+
+#### 一つの国についての、一つの指標（WDI）から、折線グラフを作成
+
+Line Plot with one indicator and one country
+
+```{r cache=TRUE}
+chosen_indicator <- "SL.UEM.TOTL.NE.ZS"
+chosen_country <- "United States"
+WDI(country = "all", indicator = c(chosen_indicator = chosen_indicator), 
+    extra=TRUE, cache=wdi_cache) %>%
+  filter(country == chosen_country) %>% 
+  ggplot(aes(year, chosen_indicator)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator, " - ", chosen_country), 
+       y = chosen_indicator)
+```
+
+#### いくつかの国についての、一つの指標（WDI）と、その略称から、折線グラフを作成
+
+Line Plot with one indicator with abbreviation and several countries
+
+```{r cache=TRUE}
+chosen_indicator <- "SL.UEM.TOTL.NE.ZS"
+short_name <- "unemployment"
+chosen_countries <- c("United States","United Kingdom", "Japan")
+WDI(country = "all", indicator = c(short_name = chosen_indicator), extra=TRUE, cache=wdi_cache) %>% drop_na(short_name) %>% 
+  filter(country %in% chosen_countries) %>% 
+  ggplot(aes(year, short_name, col = country)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator, ": ", short_name), y = short_name)
+```
+
+
+#### 一つの国についての、二つの指標（WDI）と、その略称から、折線グラフを作成
+
+Line Plot with two indicators with abbreviation and one country
+
+```{r cache=TRUE}
+chosen_indicator_1 <- "NY.GDP.DEFL.KD.ZG"
+short_name_1 <- "gdp_deflator"
+chosen_indicator_2 <- "CPTOTSAXNZGY"
+short_name_2 <- "cpi_price"
+chosen_country <- "United States"
+WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name_2 = chosen_indicator_2), extra=TRUE, cache=wdi_cache) %>% 
+  filter(country == chosen_country) %>% 
+  pivot_longer(c(short_name_1, short_name_2), names_to = "class", values_to = "value") %>% drop_na(value) %>%
+  ggplot(aes(year, value, col = class)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator_1, ": ", short_name_1, "\n", chosen_indicator_2, ": ", short_name_2, " - ", chosen_country)) +
+  scale_color_manual(labels = c(short_name_1, short_name_2), values = scales::hue_pal()(2))
+```
+
+```{r cache=TRUE}
+chosen_indicator_1 <- "SL.TLF.CACT.MA.NE.ZS"
+short_name_1 <- "male"
+chosen_indicator_2 <- "SL.TLF.CACT.FE.NE.ZS"
+short_name_2 <- "female"
+chosen_country <- "United States"
+WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name_2 = chosen_indicator_2), extra=TRUE, cache=wdi_cache) %>% 
+  filter(country == chosen_country) %>% 
+  pivot_longer(c(short_name_1, short_name_2), names_to = "class", values_to = "value") %>% drop_na(value) %>%
+  ggplot(aes(year, value, col = class)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator_1, ": ", short_name_1, "\n", chosen_indicator_2, ": ", short_name_2, " - ", chosen_country)) +
+  scale_color_manual(labels = c(short_name_1, short_name_2), values = scales::hue_pal()(2))
+```
+
+#### いくつかの国についての、二つの指標（WDI）と、その略称から、折線グラフを作成
+
+Line Plot with two indicators with abbreviation and several countries
+
+```{r cache=TRUE}
+chosen_indicator_1 <- "NY.GDP.DEFL.KD.ZG"
+short_name_1 <- "gdp_deflator"
+chosen_indicator_2 <- "CPTOTSAXNZGY"
+short_name_2 <- "cpi_price"
+chosen_countries <- c("United States", "France", "Japan")
+WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name_2 = chosen_indicator_2), extra=TRUE, cache=wdi_cache) %>% 
+  filter(country %in% chosen_countries) %>% 
+  pivot_longer(c(short_name_1, short_name_2), names_to = "class", values_to = "value") %>% drop_na(value) %>%
+  ggplot(aes(year, value, linetype = class, col = country)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator_1, ": ", short_name_1, "\n", chosen_indicator_2, ": ", short_name_2)) +
+  scale_linetype_manual(labels = c(short_name_1, short_name_2), values = c("solid", "dashed"))
+```
+
+
+```{r cache=TRUE}
+chosen_indicator_1 <- "SL.TLF.CACT.MA.NE.ZS"
+short_name_1 <- "male"
+chosen_indicator_2 <- "SL.TLF.CACT.FE.NE.ZS"
+short_name_2 <- "female"
+chosen_countries <- c("United States", "France", "Japan")
+WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name_2 = chosen_indicator_2), extra=TRUE, cache=wdi_cache) %>% 
+  filter(country %in% chosen_countries) %>% 
+  pivot_longer(c(short_name_1, short_name_2), names_to = "class", values_to = "value") %>% drop_na(value) %>%
+  ggplot(aes(year, value, linetype = class, col = country)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator_1, ": ", short_name_1, "\n", chosen_indicator_2, ": ", short_name_2)) +
+  scale_linetype_manual(labels = c(short_name_1, short_name_2), values = c("solid", "dashed"))
+```
+
+
+## 課題　Assignment
+
+上のテンプレートをコピーして、下に貼り付け、指標 `indicator` と、略称 `short_name` と、いくつかの国名 `chosen_countries` を、入れ替えて、試してみてください。
+
+# DAY 2：2月22日
+
+## 探索的データ解析　Exploratory Data Analysis (EDA)
+
+### 探索的データ解析とは？ ([Posit Primers](https://posit.cloud/learn/primers/3.1))
+
+1. EDAは、データが何を語っているかを理解するための反復的なサイクルです。
+
+2. まず、データに関する問いを作成します。
+
+3. データの可視化、変換、モデリングを行い、答えを探します。
+
+学習したことを活用して、問いを修正したり、新しい問いを考えたりします。そして、このサイクルを繰り返していきます。
+
+EDAはデータ分析において重要な役割を果たします。また、データの品質を保証するために、データの質を確認するために使用することもできます。
+
+![R4DS からのイメージ](data/data-science.png)
+
+### データの取得・読み込み - Importing Data
+
+スタートは、本来は、データの作成・探索ですが、すでに、分析したいデータはすでにあるとして話を進めます。まずは、`data` フォルダ（directory）を作成しておくと良い。右下の窓枠の Files タブから、New Folder で作成してもよい。
+
+```{r eval=FALSE}
+dir.create("./data")
+```
+
+
+データの取得・読み込みを、四つの方法に分けて説明します。
+
+1. パッケージの利用
+  - 例：WDI など。何度も、ダウンロードしなくて良いよいに、書き出しておき、2 を使うとよい。`write(df_name, "./data/name.csv")`
+2. コンピュータ上にある CSV などのテキストファイルを読み込む
+  - 例：`df_name <- read_csv("./data/file_name.csv")`
+3. インターネット上のデータのアドレス（URL）を使って、CSV などのテキストファイルを読み込む。
+  - 例：`df_name <- read_csv(url_of_a_csv)`
+4. コンピュータ上にある、Excel ファイルなどのデジタルファイルを読み込む。まず、`library(readxl)`。
+  - 例：`df_name <- read_excel("./data/file_name.xlsx")`
+5. サイトからダウンロードして、Project のデータフォルダに移す。または、データのアドレス（URL）がわかっていれば、直接ダウンロード。
+  - 例：`download.file(url_of_a_data, destfile = "./data/data_name")
+6. クリップボードにコピーして読み込む。
+  - 例：`df_name <- read_delim(clipboard())`
+
+### `WDIcache()` の扱い
+
+二つの、ファイルが一つになった、リストであるため、違って命令を使います。
+
+```{r}
+wdi_cache <- WDIcache()
+write_rds(wdi_cache, "./wdi_cache.RData")
+```
+
+```{r}
+wdi_cache <- read_rds("./wdi_cache.RData")
+```
+
+### 国際機関のデータ International Institutions' Data
+
+- World Bank: https://data.worldbank.org
+- UN Data: https://data.un.org
+- OECD: https://data.oecd.org/
+
+```{r}
+url_un_pop <- "https://data.un.org/_Docs/SYB/CSV/SYB65_1_202209_Population,%20Surface%20Area%20and%20Density.csv"
+df_un_pop0 <- read_csv(url_un_pop)
+df_un_pop0
+```
+
+```{r}
+url_un_pop <- "https://data.un.org/_Docs/SYB/CSV/SYB65_1_202209_Population,%20Surface%20Area%20and%20Density.csv"
+df_un_pop <- read_csv(url_un_pop, skip=1)
+df_un_pop
+```
+
+```{r}
+df_un_pop %>% distinct(`Region/Country/Area`, `...2`)
+```
+
+
+```{r}
+df_un_pop %>% filter(`Region/Country/Area` %in% c(2,19,142,150,9), Series == "Population mid-year estimates (millions)") %>%
+  ggplot(aes(Year, Value, fill = `...2`)) + geom_area(col="black") +
+  labs(title = "Population mid-year estimates (millions) of the World")
+```
+
+## OECD data
+
+- https://data.oecd.org/
+
+- [日本の時間当たり生産性はOECD38カ国中27位（日本生産性本部「労働生産性の国際比較」）](https://www.jcci.or.jp/news/trend-box/2022/1219154713.html)
+  - [労働生産性の国際比較2022](https://www.jpc-net.jp/research/detail/006174.html)
+- [Productivity statistics](https://www.oecd.org/sdd/productivity-stats/)
+  - [Read More: Improving Productivity Measurement Practices](https://www.oecd.org/sdd/productivity-stats/improving-productivity-measurement-practices.htm)
+    - [Level of GDP per capita and productivity](https://stats.oecd.org/Index.aspx?DataSetCode=PDB_LV)
+    - [GDP per hour worked](https://data.oecd.org/lprdty/gdp-per-hour-worked.htm#indicator-chart)
+    
+    
+### Definition of GDP per hour worked
+
+GDP per hour worked is a measure of labour productivity. It measures how efficiently labour input is combined with other factors of production and used in the production process. Labour input is defined as total hours worked of all persons engaged in production. Labour productivity only partially reflects the productivity of labour in terms of the personal capacities of workers or the intensity of their effort. The ratio between the output measure and the labour input depends to a large degree on the presence and/or use of other inputs (e.g. capital, intermediate inputs, technical, organisational and efficiency change, economies of scale). This indicator is measured in USD (constant prices 2010 and PPPs) and indices.
+
+労働時間当たりGDPは、労働生産性の指標である。これは、労働投入量が他の生産要素と組み合わされ、生産プロセスでどれだけ効率的に利用されたかを測定するものである。労働投入量は、生産に従事するすべての人の総労働時間として定義される。労働生産性は、労働者の個人的能力や努力の強さといった労働の生産性を部分的にしか反映していない。アウトプット指標と労働投入量の比率は、他の投入物（資本、中間投入物、技術・組織・効率の変化、規模の経済など）の存在や利用に大きく左右される。この指標は、米ドル（2010年の恒常価格およびPPP）および指標で測定されています。
+
+```{r}
+df_oecd_productivity <- read_csv("./data/DP_LIVE_21022023111712065.csv")
+df_oecd_productivity
+```
+
+```{r}
+df_oecd_productivity$LOCATION %>% unique()
+```
+```{r}
+df_oecd_productivity$INDICATOR %>% unique()
+```
+
+```{r}
+df_oecd_productivity$SUBJECT %>% unique()
+```
+
+```{r}
+df_oecd_productivity$MEASURE %>% unique()
+```
+
+```{r}
+df_oecd_productivity$FREQUENCY %>% unique()
+```
+
+```{r}
+df_oecd_productivity$TIME %>% unique()
+```
+
+```{r}
+df_oecd_productivity %>% 
+  filter(MEASURE == "USD", TIME == 2021) %>%
+  select(LOCATION, Value) %>%
+  arrange(desc(Value))
+```
+```{r}
+df_oecd_productivity %>% 
+  filter(LOCATION %in% c("JPN", "OECD", "G-7", "EU28")) %>%
+  filter(MEASURE == "USD") %>%
+  ggplot(aes(TIME, Value, col = LOCATION)) + geom_line() + 
+  labs(title="GDP per hour worked", subtitle="Total, 2015=100, 2021 or latest available")
+```
+
+
+### Education
+
+Adult education level: https://data.oecd.org/eduatt/adult-education-level.htm
+
+```{r}
+df_oecd_education_level <- read_csv("./data/DP_LIVE_21022023120132654.csv")
+df_oecd_education_level
+```
+
+## World Inequality Report 2022
+
+
+
+```{r}
+library(readxl)
+```
+
+
+```{r}
+url_summary <- "https://wir2022.wid.world/www-site/uploads/2022/03/WIR2022TablesFigures-Summary.xlsx"
+download.file(url = url_summary, destfile = "./data/WIR2022s.xlsx", mode = "wb") 
+```
+
+```{r}
+excel_sheets("./data/WIR2022s.xlsx")
+```
+```{r}
+df1_wir <- read_excel("./data/WIR2022s.xlsx", sheet = "data-F1")
+df1_wir
+```
+```{r}
+df1_wir %>% select(cat = ...1, 2:4) %>%
+  pivot_longer(2:4, names_to = "group", values_to = "value") %>%
+  ggplot(aes(x = cat, y = value, fill = group)) +
+  geom_col(position = "dodge") + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) + 
+  geom_text(aes(x = cat, y = value, group = group, label = scales::label_percent(accuracy=1)(value)), vjust = -0.08,
+            position = position_dodge(0.9)) + 
+  labs(title = "Figure 1. Global income and wealth inequality, 2021",
+       x = "", y = "Share of total income or wealth", fill = "")
+```
+
+```{r}
+df2_wir <- read_delim(clipboard())
+df2_wir 
+```
+
+```{r}
+df2_wir2 <- read_excel("./data/WIR2022s.xlsx", sheet = "data-F2")
+df2_wir2
+```
+
+```{r}
+df2_wir2 %>% pivot_longer(3:5, names_to = "level", values_to = "value") %>%
+  ggplot(aes(x = iso, y = value, fill = level)) +
+  geom_col(position = "dodge") + 
+  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 8)) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(title = "Figure 2. The poorest half lags behind Bottom 50%, middle 40% \nand top 10% income shares across the world in 2021",
+       x = "", y = "Share of national income (%)", fill = "")
+```
+
+#### WIR2022: https://ds-sl.github.io/data-analysis/wir2022.nb.html
+
+#### References
+
+* Cheat Sheet - `readr`
+* [readr](https://readr.tidyverse.org)
+* [readxl](https://readxl.tidyverse.org)
+
+
+
+

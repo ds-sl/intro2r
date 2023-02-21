@@ -115,7 +115,7 @@ WDI(country = c("CN","IN","JP","US"),
 
 -   世界銀行（World Bank）: <https://www.worldbank.org>
 -   World Bank Open Data: <https://data.worldbank.org>
-    -   Country / Indicator \> Featured & All \> Details
+    -   Country / [Indicator](https://data.worldbank.org/indicator) \> Featured & All \> Details
 -   [World Development Indicators (WDI)](https://datatopics.worldbank.org/world-development-indicators/) :
     -   Themes: Poverty and Inequality, People, Environment, Economy, States and Markets, Global Links
     -   Open Data & DataBank: Explore data, Query database
@@ -204,7 +204,7 @@ WDIsearch(string = "", field = "", short = FALSE, cache = wdi_cache)
 ```
 
 
-  
+
 ### 指標 WDI データのダウンロード
 
 Indicator が決まったら、ダウンロードします。
@@ -292,7 +292,7 @@ df_gdp4 %>% drop_na(gdp) %>%
 
 Line Plot with one indicator with abbreviation and one country
 
-```{r eval=FALSE, cache=TRUE}
+```{r cache=TRUE}
 chosen_indicator <- "SL.UEM.TOTL.NE.ZS"
 short_name <- "unemployment"
 chosen_country <- "United States"
@@ -307,7 +307,7 @@ WDI(country = "all", indicator = c(short_name = chosen_indicator), extra=TRUE, c
 
 Line Plot with one indicator and one country
 
-```{r eval=FALSE, cache=TRUE}
+```{r cache=TRUE}
 chosen_indicator <- "SL.UEM.TOTL.NE.ZS"
 chosen_country <- "United States"
 WDI(country = "all", indicator = c(chosen_indicator = chosen_indicator), 
@@ -322,7 +322,7 @@ WDI(country = "all", indicator = c(chosen_indicator = chosen_indicator),
 
 Line Plot with one indicator with abbreviation and several countries
 
-```{r eval=FALSE, cache=TRUE}
+```{r cache=TRUE}
 chosen_indicator <- "SL.UEM.TOTL.NE.ZS"
 short_name <- "unemployment"
 chosen_countries <- c("United States","United Kingdom", "Japan")
@@ -337,7 +337,7 @@ WDI(country = "all", indicator = c(short_name = chosen_indicator), extra=TRUE, c
 
 Line Plot with two indicators with abbreviation and one country
 
-```{r eval=FALSE, cache=TRUE}
+```{r cache=TRUE}
 chosen_indicator_1 <- "NY.GDP.DEFL.KD.ZG"
 short_name_1 <- "gdp_deflator"
 chosen_indicator_2 <- "CPTOTSAXNZGY"
@@ -351,7 +351,7 @@ WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name
   scale_color_manual(labels = c(short_name_1, short_name_2), values = scales::hue_pal()(2))
 ```
 
-```{r eval=FALSE, cache=TRUE}
+```{r cache=TRUE}
 chosen_indicator_1 <- "SL.TLF.CACT.MA.NE.ZS"
 short_name_1 <- "male"
 chosen_indicator_2 <- "SL.TLF.CACT.FE.NE.ZS"
@@ -369,7 +369,7 @@ WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name
 
 Line Plot with two indicators with abbreviation and several countries
 
-```{r eval=FALSE, cache=TRUE}
+```{r cache=TRUE}
 chosen_indicator_1 <- "NY.GDP.DEFL.KD.ZG"
 short_name_1 <- "gdp_deflator"
 chosen_indicator_2 <- "CPTOTSAXNZGY"
@@ -384,7 +384,7 @@ WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name
 ```
 
 
-```{r eval=FALSE, cache=TRUE}
+```{r cache=TRUE}
 chosen_indicator_1 <- "SL.TLF.CACT.MA.NE.ZS"
 short_name_1 <- "male"
 chosen_indicator_2 <- "SL.TLF.CACT.FE.NE.ZS"
@@ -405,17 +405,291 @@ WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name
 
 # DAY 2：2月22日
 
-## Exploratory Data Analysis
+## 探索的データ解析　Exploratory Data Analysis (EDA)
 
-## Finding Data
+### 探索的データ解析とは？ ([Posit Primers](https://posit.cloud/learn/primers/3.1))
 
-## Importing Data
+1. EDAは、データが何を語っているかを理解するための反復的なサイクルです。
 
--   復習：`read_csv()`, `write_csv()`, `read_rds()`, `write_rds()`
--   `readxl`: `read_ecel()`, `excel_sheets()`
--   `download.file(url, destfile="")`, `download.file(url, destfile="", mode="wb")`
+2. まず、データに関する問いを作成します。
+
+3. データの可視化、変換、モデリングを行い、答えを探します。
+
+学習したことを活用して、問いを修正したり、新しい問いを考えたりします。そして、このサイクルを繰り返していきます。
+
+EDAはデータ分析において重要な役割を果たします。また、データの品質を保証するために、データの質を確認するために使用することもできます。
+
+![R4DS からのイメージ](data/data-science.png)
+
+### データの取得・読み込み - Importing Data
+
+スタートは、本来は、データの作成・探索ですが、すでに、分析したいデータはすでにあるとして話を進めます。まずは、`data` フォルダ（directory）を作成しておくと良い。右下の窓枠の Files タブから、New Folder で作成してもよい。
+
+```{r eval=FALSE}
+dir.create("./data")
+```
+
+
+データの取得・読み込みを、四つの方法に分けて説明します。
+
+1. パッケージの利用
+  - 例：WDI など。何度も、ダウンロードしなくて良いよいに、書き出しておき、2 を使うとよい。`write(df_name, "./data/name.csv")`
+2. コンピュータ上にある CSV などのテキストファイルを読み込む
+  - 例：`df_name <- read_csv("./data/file_name.csv")`
+3. インターネット上のデータのアドレス（URL）を使って、CSV などのテキストファイルを読み込む。
+  - 例：`df_name <- read_csv(url_of_a_csv)`
+4. コンピュータ上にある、Excel ファイルなどのデジタルファイルを読み込む。まず、`library(readxl)`。
+  - 例：`df_name <- read_excel("./data/file_name.xlsx")`
+5. サイトからダウンロードして、Project のデータフォルダに移す。または、データのアドレス（URL）がわかっていれば、直接ダウンロード。
+  - 例：`download.file(url_of_a_data, destfile = "./data/data_name")
+6. クリップボードにコピーして読み込む。
+  - 例：`df_name <- read_delim(clipboard())`
+
+### `WDIcache()` の扱い
+
+二つの、ファイルが一つになった、リストであるため、違って命令を使います。
+
+```{r}
+wdi_cache <- WDIcache()
+write_rds(wdi_cache, "./wdi_cache.RData")
+```
+
+```{r}
+wdi_cache <- read_rds("./wdi_cache.RData")
+```
+
+### 国際機関のデータ International Institutions' Data
+
+- World Bank: https://data.worldbank.org
+- UN Data: https://data.un.org
+- OECD: https://data.oecd.org/
+
+```{r}
+url_un_pop <- "https://data.un.org/_Docs/SYB/CSV/SYB65_1_202209_Population,%20Surface%20Area%20and%20Density.csv"
+df_un_pop0 <- read_csv(url_un_pop)
+df_un_pop0
+```
+
+```{r}
+url_un_pop <- "https://data.un.org/_Docs/SYB/CSV/SYB65_1_202209_Population,%20Surface%20Area%20and%20Density.csv"
+df_un_pop <- read_csv(url_un_pop, skip=1)
+df_un_pop
+```
+
+```{r}
+df_un_pop %>% distinct(`Region/Country/Area`, `...2`)
+```
+
+
+```{r}
+df_un_pop %>% filter(`Region/Country/Area` %in% c(2,19,142,150,9), Series == "Population mid-year estimates (millions)") %>%
+  ggplot(aes(Year, Value, fill = `...2`)) + geom_area(col="black") +
+  labs(title = "Population mid-year estimates (millions) of the World")
+```
 
 ## OECD data
+
+- https://data.oecd.org/
+
+- [日本の時間当たり生産性はOECD38カ国中27位（日本生産性本部「労働生産性の国際比較」）](https://www.jcci.or.jp/news/trend-box/2022/1219154713.html)
+  - [労働生産性の国際比較2022](https://www.jpc-net.jp/research/detail/006174.html)
+- [Productivity statistics](https://www.oecd.org/sdd/productivity-stats/)
+  - [Read More: Improving Productivity Measurement Practices](https://www.oecd.org/sdd/productivity-stats/improving-productivity-measurement-practices.htm)
+    - [Level of GDP per capita and productivity](https://stats.oecd.org/Index.aspx?DataSetCode=PDB_LV)
+    - [GDP per hour worked](https://data.oecd.org/lprdty/gdp-per-hour-worked.htm#indicator-chart)
+    
+    
+### Definition of GDP per hour worked
+
+GDP per hour worked is a measure of labour productivity. It measures how efficiently labour input is combined with other factors of production and used in the production process. Labour input is defined as total hours worked of all persons engaged in production. Labour productivity only partially reflects the productivity of labour in terms of the personal capacities of workers or the intensity of their effort. The ratio between the output measure and the labour input depends to a large degree on the presence and/or use of other inputs (e.g. capital, intermediate inputs, technical, organisational and efficiency change, economies of scale). This indicator is measured in USD (constant prices 2010 and PPPs) and indices.
+
+労働時間当たりGDPは、労働生産性の指標である。これは、労働投入量が他の生産要素と組み合わされ、生産プロセスでどれだけ効率的に利用されたかを測定するものである。労働投入量は、生産に従事するすべての人の総労働時間として定義される。労働生産性は、労働者の個人的能力や努力の強さといった労働の生産性を部分的にしか反映していない。アウトプット指標と労働投入量の比率は、他の投入物（資本、中間投入物、技術・組織・効率の変化、規模の経済など）の存在や利用に大きく左右される。この指標は、米ドル（2010年の恒常価格およびPPP）および指標で測定されています。
+
+```{r}
+df_oecd_productivity <- read_csv("./data/DP_LIVE_21022023111712065.csv")
+df_oecd_productivity
+```
+
+```{r}
+df_oecd_productivity$LOCATION %>% unique()
+```
+```{r}
+df_oecd_productivity$INDICATOR %>% unique()
+```
+
+```{r}
+df_oecd_productivity$SUBJECT %>% unique()
+```
+
+```{r}
+df_oecd_productivity$MEASURE %>% unique()
+```
+
+```{r}
+df_oecd_productivity$FREQUENCY %>% unique()
+```
+
+```{r}
+df_oecd_productivity$TIME %>% unique()
+```
+
+```{r}
+df_oecd_productivity %>% 
+  filter(MEASURE == "USD", TIME == 2021) %>%
+  select(LOCATION, Value) %>%
+  arrange(desc(Value))
+```
+```{r}
+df_oecd_productivity %>% 
+  filter(LOCATION %in% c("JPN", "OECD", "G-7", "EU28")) %>%
+  filter(MEASURE == "USD") %>%
+  ggplot(aes(TIME, Value, col = LOCATION)) + geom_line() + 
+  labs(title="GDP per hour worked", subtitle="Total, 2015=100, 2021 or latest available")
+```
+
+
+### Education
+
+Adult education level: https://data.oecd.org/eduatt/adult-education-level.htm
+
+```{r}
+df_oecd_education_level <- read_csv("./data/DP_LIVE_21022023120132654.csv")
+df_oecd_education_level
+```
+
+## World Inequality Report 2022
+
+
+
+```{r}
+library(readxl)
+```
+
+
+```{r}
+url_summary <- "https://wir2022.wid.world/www-site/uploads/2022/03/WIR2022TablesFigures-Summary.xlsx"
+download.file(url = url_summary, destfile = "./data/WIR2022s.xlsx", mode = "wb") 
+```
+
+```{r}
+excel_sheets("./data/WIR2022s.xlsx")
+```
+```{r}
+df1_wir <- read_excel("./data/WIR2022s.xlsx", sheet = "data-F1")
+df1_wir
+```
+```{r}
+df1_wir %>% select(cat = ...1, 2:4) %>%
+  pivot_longer(2:4, names_to = "group", values_to = "value") %>%
+  ggplot(aes(x = cat, y = value, fill = group)) +
+  geom_col(position = "dodge") + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) + 
+  geom_text(aes(x = cat, y = value, group = group, label = scales::label_percent(accuracy=1)(value)), vjust = -0.08,
+            position = position_dodge(0.9)) + 
+  labs(title = "Figure 1. Global income and wealth inequality, 2021",
+       x = "", y = "Share of total income or wealth", fill = "")
+```
+
+```{r}
+df2_wir <- read_delim(clipboard())
+df2_wir 
+```
+
+```{r}
+df2_wir2 <- read_excel("./data/WIR2022s.xlsx", sheet = "data-F2")
+df2_wir2
+```
+
+```{r}
+df2_wir2 %>% pivot_longer(3:5, names_to = "level", values_to = "value") %>%
+  ggplot(aes(x = iso, y = value, fill = level)) +
+  geom_col(position = "dodge") + 
+  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 8)) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(title = "Figure 2. The poorest half lags behind Bottom 50%, middle 40% \nand top 10% income shares across the world in 2021",
+       x = "", y = "Share of national income (%)", fill = "")
+```
+
+#### WIR2022: https://ds-sl.github.io/data-analysis/wir2022.nb.html
+
+#### References
+
+* Cheat Sheet - `readr`
+* [readr](https://readr.tidyverse.org)
+* [readxl](https://readxl.tidyverse.org)
+
+
+
+
+### EDA by R Studio: Step 4 - Data Trasnformation
+
+4.1. Look at the data: suppose `df` is the data frame
+
+  * It is a good option to change into a tibble: `dt <- as_tibble(df)`
+  * `head(df)`, `str(df)`, `summary(df)`, `dt`, `glimpse(dt)`
+
+4.2. Look at each variable
+
+  * categorical? numerical? 
+  * factor? - [forcats](https://forcats.tidyverse.org)
+  
+4.3. Variation of each data: suppose `x1` is a column name.
+
+  * `df %>% ggplot() + geom_histogram(aes(x1), bins = 30)`
+  * `df %>% drop_na(x1)`: see the rows with a value in `x1`. If the value is NA, the row is not shown.
+  
+    - `df_wo_na <- df %>% drop_na(x1)` if you want to use only the rows without NA in `x1`
+    
+
+
+4.4. Use `dpylr` and `tidyr` to change column names, tidy data, and/or summarize data
+
+  * `rename`, `select`, `filter`, `arrange`, `mutate`, `pivot_longer()`, `pivot_wider()`, `group_by` and `summarize`
+
+
+#### References
+
+* Cheat Sheet - `dplyr` and `tidyr`
+* [dplyr](https://dplyr.tidyverse.org)
+* [tidyr](https://tidyr.tidyverse.org)
+
+
+
+### EDA by R Studio: Step 5 - Visualize Data
+
+5.1. In combination with Stap 4 - data transformation, try various data visualization.
+
+  * What type of variation occurs within my variables?
+  * What type of covariation occurs between my variables?
+
+
+5.2. Keep a record of what you can observe by the visualization
+
+5.3. Edit the list of questions by adding or polishing
+
+5.4. Select several informative chart and add options
+
+5.5. Look at examples from the textbooks or teaching site to have better visualization
+
+
+#### References
+
+* Cheat Sheet - `ggplot2` 
+* [ggplot2](https://ggplot2.tidyverse.org)
+* [ggplot2 book](https://ggplot2-book.org)
+
+### EDA by R Studio: Step 6 - Conclusions and Questions for Further Study
+
+1. EDA is an iterative cycle that helps you understand what your data says. When you do EDA, you:
+
+2. Generate questions about your data
+
+3. Search for answers by visualising, transforming, and/or modeling your data
+
+Use what you learn to refine your questions and/or generate new questions
+
+EDA is an important part of any data analysis. You can use EDA to make discoveries about the world; or you can use EDA to ensure the quality of your data, asking questions about whether the data meets your standards or not.
+
 
 ## Transforming Data: `dplyr`, `tidyr`
 
@@ -428,6 +702,49 @@ WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name
 ## Practicum
 
 # DAY 3：2月24日
+
+## Importing Data
+
+
+#### 日本語データ
+
+学校種類別進学率の推移: https://empowerment.tsuda.ac.jp/detail/82584
+
+
+```{r}
+url_school_jp <- "https://www.gender.go.jp/about_danjo/whitepaper/r02/zentai/html/honpen/csv/zuhyo01-04-01.csv"
+guess_encoding(url_school_jp, n_max = 10000, threshold = 0.2)
+```
+
+
+```{r}
+df_school_jp <- read_csv(url_school_jp, locale = locale(encoding = "Shift_JIS"), skip=2)
+df_school_jp 
+```
+
+```{r warning=FALSE}
+df_edu0 <- df_school_jp 
+colnames(df_edu0) <- c("year", "highschool_m", "highschool_f", "vocational_m", "vocational_f", "university_m", "university_f", "juniorcollege_f", "gradschool_m", "gradschool_f")
+df_edu00 <- df_edu0 %>% mutate(year = 1950:2019, 
+                   highschool = (highschool_m + highschool_f)/2,
+                   vocational = (vocational_m + vocational_f)/2,
+                   university = (university_m + university_f)/2, 
+                   juniorcollege = juniorcollege_f,
+                   gradschool = (gradschool_m + gradschool_f)/2) 
+df_edu00 %>% filter(year >= 1954) %>% select(-(2:10)) %>% 
+  pivot_longer(3:5, names_to = "schools", values_to = "percentage") %>%
+  mutate(types = factor(schools, levels = c("vocational", "juniorcollege", "university"))) %>%
+  pivot_longer(c(highschool, gradschool), names_to = "highgrad", values_to ="value") %>%
+  mutate(high_grad = factor(highgrad, levels = c("highschool", "gradschool"))) %>%
+  ggplot() +
+  geom_area(aes(x = year, y = percentage, fill = types)) +
+  geom_line(aes(x = year, y = value, linetype = high_grad)) + 
+  scale_x_continuous(breaks = round(seq(1960, 2020, by =10),1)) + 
+  scale_y_continuous(breaks = round(seq(0, 100, by =10),1)) + 
+  labs(title = "Tertially Education After Highschool", 
+       subtitle = "with Highschool Graduates and Graduate School", fill = "", linetype = "")
+```
+
 
 ## Exploratory Data Analysis; Workflow
 

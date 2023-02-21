@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.11.18)  15 FEB 2023 00:12
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.11.18)  21 FEB 2023 18:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1032,6 +1032,10 @@ Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=
 flt;!
 Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
 flt;!
+Missing character: There is no ・ (U+30FB) in font Songti SC Bold/OT:language=df
+lt;!
+Missing character: There is no ・ (U+30FB) in font Songti SC Bold/OT:language=df
+lt;!
 
 Package fontspec Warning: Font "STFangsong" does not contain requested Script
 (fontspec)                "CJK".
@@ -1066,31 +1070,31 @@ Package fontspec Info: Font family 'STFangsong(0)' created for font
 (fontspec)             <->s*[0.9707181870057879]"STFangsong/OT:language=dflt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
+
+LaTeX Font Warning: Font shape `TU/STFangsong(0)/m/it' undefined
+(Font)              using `TU/STFangsong(0)/m/n' instead on input line 152.
+
 LaTeX Font Info:    Font shape `TU/STFangsong(0)/m/n' will be
-(Font)              scaled to size 10.23074pt on input line 154.
-File: Rmarkdown-J_files/figure-latex/unnamed-chunk-2-1.pdf Graphic file (type p
-df)
-<use Rmarkdown-J_files/figure-latex/unnamed-chunk-2-1.pdf>
+(Font)              scaled to size 10.23074pt on input line 152.
+LaTeX Font Info:    Font shape `TU/SongtiSCLight(0)/b/n' will be
+(Font)              scaled to size 10.18492pt on input line 158.
 [1
 
 ]
-File: Rmarkdown-J_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (type p
+File: Rmarkdown-J_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type p
 df)
-<use Rmarkdown-J_files/figure-latex/unnamed-chunk-4-1.pdf>
+<use Rmarkdown-J_files/figure-latex/unnamed-chunk-3-1.pdf>
 [2]
-File: Rmarkdown-J_files/figure-latex/unnamed-chunk-6-1.pdf Graphic file (type p
+File: Rmarkdown-J_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (type p
 df)
-<use Rmarkdown-J_files/figure-latex/unnamed-chunk-6-1.pdf>
-[3]
+<use Rmarkdown-J_files/figure-latex/unnamed-chunk-5-1.pdf>
 Missing character: There is no ・ (U+30FB) in font Songti SC Bold/OT:language=df
 lt;!
 Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
 flt;!
 Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
 flt;!
-LaTeX Font Info:    Font shape `TU/SongtiSCLight(0)/b/n' will be
-(Font)              scaled to size 10.18492pt on input line 239.
-[4]
+[3] [4]
 Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
 flt;!
 Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
@@ -1099,14 +1103,18 @@ Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=
 flt;!
 Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
 flt;!
-[5] [6] (./Rmarkdown-J.aux) ) 
-Here is how much of TeX's memory you used:
- 22121 strings out of 476179
- 434703 string characters out of 5809543
- 906200 words of memory out of 5000000
- 42537 multiletter control sequences out of 15000+600000
- 474651 words of font info for 83 fonts, out of 8000000 for 9000
- 1348 hyphenation exceptions out of 8191
- 86i,6n,140p,1008b,867s stack positions out of 10000i,1000n,20000p,200000b,200000s
+[5] (./Rmarkdown-J.aux)
 
-Output written on Rmarkdown-J.pdf (6 pages).
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 22135 strings out of 476179
+ 435352 string characters out of 5809543
+ 910268 words of memory out of 5000000
+ 42550 multiletter control sequences out of 15000+600000
+ 474659 words of font info for 84 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 86i,6n,140p,1008b,491s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on Rmarkdown-J.pdf (5 pages).

@@ -5,11 +5,11 @@ date: "`r Sys.Date()`"
 header-includes:
   - \usepackage{ctex}
 output:
-  ioslides_presentation: 
-    widescreen: yes
-  powerpoint_presentation: default
   pdf_document: 
     latex_engine: xelatex
+  powerpoint_presentation: default
+  ioslides_presentation: 
+    widescreen: yes
   html_notebook: default
   word_document: default
   html_document:
@@ -46,6 +46,7 @@ install.packages('showtext')
 library(tidyverse)
 library(showtext) 
 font_add_google('Noto Sans')
+font_install(source_han_serif())
 showtext_auto()
 ```
 
@@ -136,7 +137,7 @@ Knit ボタンから、他の形式を選び、試してみてください。
 * *Knit* ボタンの隣のギアマーク の Output Option からそれぞれの書式を変更することが可能です。
 * 節番号自動振り付け、ページ番号、テーマ、出力する図のサイズなどが、それぞれの形式に応じて選択できます。
 * また、コード・チャンクの右上にある、ギア・マークからも、コードを出力するか否か、実行するか否か、コード・チャンクの名称、図のサイズなどが選択できます。
-* {r chache=TRUE} とすると、キャッシュしてくれるので、実行に時間がかかるコード・チャンクには、このようなオプションを加えるのも良いでしょう。
+* {r cache=TRUE} とすると、キャッシュしてくれるので、実行に時間がかかるコード・チャンクには、このようなオプションを加えるのも良いでしょう。
 
 ## 参考文献 References
 
