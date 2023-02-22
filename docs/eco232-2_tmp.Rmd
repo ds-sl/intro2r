@@ -21,7 +21,7 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-# DAY 1：2月20日
+# DAY 1：2月20日 の復習
 
 ## RStudio で Project の作成
 
@@ -108,10 +108,15 @@ WDIsearch(string = "NY.GDP.MKTP.KD.ZG", field = "indicator", short = FALSE, cach
 
 `string` と、`field` を、ふたつとも入れてください。
 
-```{r}
+```{r eval=FALSE}
 WDIsearch(string = "", field = "", short = FALSE, cache = wdi_cache)
 ```
-  
+
+
+# DAY 2：2月22日
+
+## WDI パッケージ (つづき　Continued)
+
 ### 指標 WDI データのダウンロード
 
 Indicator が決まったら、ダウンロードします。
@@ -306,11 +311,10 @@ WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name
 ```
 
 
-## 課題　Assignment
+## 課題 1 -　Assignment 1
 
 上のテンプレートをコピーして、下に貼り付け、指標 `indicator` と、略称 `short_name` と、いくつかの国名 `chosen_countries` を、入れ替えて、試してみてください。
 
-# DAY 2：2月22日
 
 ## 探索的データ解析　Exploratory Data Analysis (EDA)
 
@@ -396,7 +400,13 @@ df_un_pop %>% filter(`Region/Country/Area` %in% c(2,19,142,150,9), Series == "Po
 
 ## OECD data
 
+The Organisation for Economic Co-operation and Development (OECD) is an international organisation that works to build better policies for better lives. 
+
+経済協力開発機構（OECD）は、より良い生活のために、より良い政策を構築するために活動している国際機関です。
+
 - https://data.oecd.org/
+
+### 日本のニュースから
 
 - [日本の時間当たり生産性はOECD38カ国中27位（日本生産性本部「労働生産性の国際比較」）](https://www.jcci.or.jp/news/trend-box/2022/1219154713.html)
   - [労働生産性の国際比較2022](https://www.jpc-net.jp/research/detail/006174.html)
@@ -406,17 +416,23 @@ df_un_pop %>% filter(`Region/Country/Area` %in% c(2,19,142,150,9), Series == "Po
     - [GDP per hour worked](https://data.oecd.org/lprdty/gdp-per-hour-worked.htm#indicator-chart)
     
     
-### Definition of GDP per hour worked
+### 労働時間当たりGDP 
+
+**Definition of GDP per hour worked**
 
 GDP per hour worked is a measure of labour productivity. It measures how efficiently labour input is combined with other factors of production and used in the production process. Labour input is defined as total hours worked of all persons engaged in production. Labour productivity only partially reflects the productivity of labour in terms of the personal capacities of workers or the intensity of their effort. The ratio between the output measure and the labour input depends to a large degree on the presence and/or use of other inputs (e.g. capital, intermediate inputs, technical, organisational and efficiency change, economies of scale). This indicator is measured in USD (constant prices 2010 and PPPs) and indices.
 
 労働時間当たりGDPは、労働生産性の指標である。これは、労働投入量が他の生産要素と組み合わされ、生産プロセスでどれだけ効率的に利用されたかを測定するものである。労働投入量は、生産に従事するすべての人の総労働時間として定義される。労働生産性は、労働者の個人的能力や努力の強さといった労働の生産性を部分的にしか反映していない。アウトプット指標と労働投入量の比率は、他の投入物（資本、中間投入物、技術・組織・効率の変化、規模の経済など）の存在や利用に大きく左右される。この指標は、米ドル（2010年の恒常価格およびPPP）および指標で測定されています。
 
-```{r}
+```
 df_oecd_productivity <- read_csv("./data/DP_LIVE_21022023111712065.csv")
 df_oecd_productivity
 ```
 
+```{r}
+df_oecd_productivity <- read_csv("./data/")
+df_oecd_productivity
+```
 
 ```{r}
 df_oecd_productivity$LOCATION %>% unique()
@@ -456,19 +472,24 @@ df_oecd_productivity %>%
 ```
 
 
-### Education
+### 教育 - Education
 
 Adult education level: https://data.oecd.org/eduatt/adult-education-level.htm
 
-```{r}
+```
 df_oecd_education_level <- read_csv("./data/DP_LIVE_21022023120132654.csv")
 df_oecd_education_level
 ```
 
+```{r}
+df_oecd_education_level <- read_csv("./data/")
+df_oecd_education_level
+```
+
+どんなことを見てみたいですか。
 
 
-## World Inequality Report 2022
-
+## （時間があれば）World Inequality Report 2022
 
 
 ```{r}
@@ -529,5 +550,21 @@ df2_wir2 %>% pivot_longer(3:5, names_to = "level", values_to = "value") %>%
 * [readxl](https://readxl.tidyverse.org)
 
 
+## 課題 2 - Assignment 2
 
+探索的データ解析を経験してみよう。
+
+1. 興味のあるデータ（または関連するいくつかのデータ）を見つける。
+
+  - WDI や、OECD や、UN Data。
+
+2. データを読み込む。
+
+3. データに関する問いを作成。
+
+4. 可能な範囲で、データの可視化をして、得られることを書く。
+
+5. 難しかったこと、試したいができなかったことなどを書く。
+
+課題 1 と　課題 2 を、課題 テンプレートを用いて、書き、ID.nb.html を、2月24日（土）深夜までに Moodle 上に提出。
 
