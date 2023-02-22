@@ -375,14 +375,24 @@ wdi_cache <- read_rds("./data/wdi_cache.RData")
 - UN Data: https://data.un.org
 - OECD: https://data.oecd.org/
 
-```{r}
+```
 url_un_pop <- "https://data.un.org/_Docs/SYB/CSV/SYB65_1_202209_Population,%20Surface%20Area%20and%20Density.csv"
 df_un_pop0 <- read_csv(url_un_pop)
 df_un_pop0
 ```
 
 ```{r}
-url_un_pop <- "https://data.un.org/_Docs/SYB/CSV/SYB65_1_202209_Population,%20Surface%20Area%20and%20Density.csv"
+url_un_pop <- ""
+df_un_pop0 <- read_csv(url_un_pop)
+df_un_pop0
+```
+
+```
+df_un_pop <- read_csv(url_un_pop, skip=1)
+df_un_pop
+```
+
+```{r}
 df_un_pop <- read_csv(url_un_pop, skip=1)
 df_un_pop
 ```
