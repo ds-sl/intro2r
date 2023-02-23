@@ -1,0 +1,612 @@
+---
+title: "ECO232 Rを使った経済データの収集と分析の方法"
+author: "鈴木寛（Hiroshi Suzuki）"
+date: "`r Sys.Date()`"
+output:
+  html_notebook:
+    toc: yes
+    toc_float: yes
+    highlight: tango
+    theme: cerulean
+    number_sections: yes
+  ioslides_presentation:
+    highlight: tango
+    widescreen: yes
+  html_document:
+    toc: yes
+    df_print: paged
+---
+
+```{r setup, include=FALSE, eval=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# DAY 1：2月20日
+
+## RStudio で Project の作成
+
+## 基本コマンド - in Console
+
+## Package の確認とインストール
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+## R Markdown 入門
+
+### R Notebook
+
+## World Development Indicator (WDI)
+
+### 指標 WDI を探してみよう
+
+### 練習 1. - 調べてみたい WDI
+
+いくつか、リストしてみましょう。
+
+## WDI パッケージ
+
+# DAY 2：2月22日
+
+## 探索的データ解析　Exploratory Data Analysis (EDA)
+
+### 探索的データ解析とは？ ([Posit Primers](https://posit.cloud/learn/primers/3.1))
+
+1. EDAは、データが何を語っているかを理解するための反復的なサイクルです。
+
+2. まず、データに関する問いを作成します。
+
+3. データの可視化、変換、モデリングを行い、答えを探します。
+
+学習したことを活用して、問いを修正したり、新しい問いを考えたりします。そして、このサイクルを繰り返していきます。
+
+EDAはデータ分析において重要な役割を果たします。また、データの品質を保証するために、データの質を確認するために使用することもできます。
+
+
+
+![R4DS からのイメージ](https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png)
+
+### データの取得・読み込み - Importing Data
+
+スタートは、本来は、データの作成・探索ですが、すでに、分析したいデータはすでにあるとして話を進めます。まずは、`data` フォルダ（directory）を作成しておくと良い。右下の窓枠の Files タブから、New Folder で作成してもよい。
+
+```{r eval=FALSE}
+dir.create("./data")
+```
+
+
+データの取得・読み込みを、四つの方法に分けて説明します。
+
+1. パッケージの利用
+  - 例：WDI など。何度も、ダウンロードしなくて良いよいに、書き出しておき、2 を使うとよい。`write(df_name, "./data/name.csv")`
+2. コンピュータ上にある CSV などのテキストファイルを読み込む
+  - 例：`df_name <- read_csv("./data/file_name.csv")`
+3. インターネット上のデータのアドレス（URL）を使って、CSV などのテキストファイルを読み込む。
+  - 例：`df_name <- read_csv(url_of_a_csv)`
+4. コンピュータ上にある、Excel ファイルなどのデジタルファイルを読み込む。まず、`library(readxl)`。
+  - 例：`df_name <- read_excel("./data/file_name.xlsx")`
+5. サイトからダウンロードして、Project のデータフォルダに移す。または、データのアドレス（URL）がわかっていれば、直接ダウンロード。
+  - 例：`download.file(url_of_a_data, destfile = "./data/data_name")
+6. クリップボードにコピーして読み込む。
+  - 例：`df_name <- read_delim(clipboard())`
+
+### `WDIcache()` の扱い
+
+二つの、ファイルが一つになった、リストであるため、違って命令を使います。
+まだ、data フォルダーに、`wdi_cache` がない場合は、次のコード・チャンクを実行してください。あれば、実行は不要ですから、その次の、読み込むコードを実行してください。
+
+```{r eval=FALSE}
+wdi_cache <- WDIcache()
+write_rds(wdi_cache, "./data/wdi_cache.RData")
+```
+
+```{r}
+wdi_cache <- read_rds("./data/wdi_cache.RData")
+```
+
+### 国際機関のデータ International Institutions' Data
+
+- World Bank: https://data.worldbank.org
+- UN Data: https://data.un.org
+- OECD: https://data.oecd.org/
+
+# DAY 3：2月24日
+
+## OECD data
+
+- https://data.oecd.org/
+
+### 例：労働時間当たりGDP
+
+- [日本の時間当たり生産性はOECD38カ国中27位（日本生産性本部「労働生産性の国際比較」）](https://www.jcci.or.jp/news/trend-box/2022/1219154713.html)
+  - [労働生産性の国際比較2022](https://www.jpc-net.jp/research/detail/006174.html)
+- [Productivity statistics](https://www.oecd.org/sdd/productivity-stats/)
+  - [Read More: Improving Productivity Measurement Practices](https://www.oecd.org/sdd/productivity-stats/improving-productivity-measurement-practices.htm)
+    - [Level of GDP per capita and productivity](https://stats.oecd.org/Index.aspx?DataSetCode=PDB_LV)
+    - [GDP per hour worked](https://data.oecd.org/lprdty/gdp-per-hour-worked.htm#indicator-chart)
+    
+
+**Definition of GDP per hour worked**
+
+GDP per hour worked is a measure of labour productivity. It measures how efficiently labour input is combined with other factors of production and used in the production process. Labour input is defined as total hours worked of all persons engaged in production. Labour productivity only partially reflects the productivity of labour in terms of the personal capacities of workers or the intensity of their effort. The ratio between the output measure and the labour input depends to a large degree on the presence and/or use of other inputs (e.g. capital, intermediate inputs, technical, organisational and efficiency change, economies of scale). This indicator is measured in USD (constant prices 2010 and PPPs) and indices.
+
+労働時間当たりGDPは、労働生産性の指標である。これは、労働投入量が他の生産要素と組み合わされ、生産プロセスでどれだけ効率的に利用されたかを測定するものである。労働投入量は、生産に従事するすべての人の総労働時間として定義される。労働生産性は、労働者の個人的能力や努力の強さといった労働の生産性を部分的にしか反映していない。アウトプット指標と労働投入量の比率は、他の投入物（資本、中間投入物、技術・組織・効率の変化、規模の経済など）の存在や利用に大きく左右される。この指標は、米ドル（2010年の恒常価格およびPPP）および指標で測定されています。
+
+#### 最初のステップ {-}
+
+1. [サイト](https://data.oecd.org/lprdty/gdp-per-hour-worked.htm#indicator-chart)から、CSV データをダウンロード。
+2. プロジェクト内のデータ格納フォルダに入れます。"./data/"
+3. 読み込みます。
+
+上の[サイト](https://data.oecd.org/lprdty/gdp-per-hour-worked.htm#indicator-chart)からデータ（Full indicator data）をダウンロードして、プロジェクトの data フォルダーに入れました。
+
+```{r}
+df_oecd_productivity <- read_csv("./data/DP_LIVE_21022023111712065.csv")
+df_oecd_productivity
+```
+
+### データの確認 {-}
+
+列名を確認し、列ごとに、データを確認
+
+```{r}
+colnames(df_oecd_productivity)
+```
+
+`unique()` のかっこの中に、`df_oecd_productivity$LOCATION` を入れたものと同じものを出力します。次々とつづけるときに便利なので、このパイプ `%>%` をわたしはよく使います。`unique(df_oecd_productivity$LOCATION)` も試してみてください。
+
+
+```{r}
+df_oecd_productivity$LOCATION %>% unique()
+```
+```{r}
+df_oecd_productivity$INDICATOR %>% unique()
+```
+
+```{r}
+df_oecd_productivity$SUBJECT %>% unique()
+```
+
+```{r}
+df_oecd_productivity$MEASURE %>% unique()
+```
+
+```{r}
+df_oecd_productivity$FREQUENCY %>% unique()
+```
+
+```{r}
+df_oecd_productivity$TIME %>% unique()
+```
+
+```{r}
+df_oecd_productivity %>% 
+  filter(MEASURE == "USD", TIME == 2021) %>% # filtering rows with conditions
+  select(LOCATION, Value) %>% # selecting columns
+  arrange(desc(Value)) # ordering the rows in the descenting order of the column Value
+```
+
+#### いくつかの地域を選んで、折線グラフを書いてみる。{-}
+
+３行目がないとどうなりますか。
+
+```{r}
+df_oecd_productivity %>% 
+  filter(LOCATION %in% c("JPN", "OECD", "G-7", "EU28")) %>%
+  filter(MEASURE == "USD") %>% # same as above up to this line
+  ggplot(aes(x = TIME, y = Value, col = LOCATION)) + geom_line() + 
+  labs(title="GDP per hour worked", # adding the title and the subtitle
+       subtitle="Total, 2015=100, 2021 or latest available")
+```
+
+
+### 練習：教育 Education
+
+成人の教育レベルに関する、次のサイトからデータをとって、調べてみてください。
+
+Adult education level: https://data.oecd.org/eduatt/adult-education-level.htm
+
+ダウンロードしたファイルのファイル名が `DP_LIVE_21022023120132654.csv` と同じであることを確認してください。
+
+```{r eval=FALSE}
+df_oecd_education_level <- read_csv("./data/DP_LIVE_21022023120132654.csv")
+df_oecd_education_level
+```
+
+上の労働時間当たりGDPの例に習って、データを調べてみてください。
+
+```{r}
+colnames(df_oecd_education_level)
+```
+
+
+```{r}
+df_oecd_education_level$SUBJECT %>% unique()
+```
+
+これらは、何を意味しているのでしょうか。サイトの Perspectives などをみてください。
+
+他の列（変数）は、どうでしょうか。コードチャンクを挿入して、調べてみてください。
+
+労働時間当たりGDPの例の真似をして、グラフを書いてみました。
+
+```{r}
+df_oecd_education_level %>% 
+  filter(LOCATION %in% c("JPN", "OECD", "G-7", "EU28")) %>%
+  ggplot(aes(TIME, Value, linetype = SUBJECT, col = LOCATION)) + geom_line() + 
+  labs(title="Adult education level")
+```
+
+なにか現れましたが、国も、SUBJECT も期待したものは現れていません。なにが問題なのでしょう。
+
+気づいてたことを書き出してみましょう。
+
+## Excel Data の読み込み
+
+`readxl` パッケージを使います。これは、`tidyverse` をインストールするときに、同時に、インストールされますから、インストールは必要ありませんが、`tidyverse` グループの主たるパッケージはないので、ロードはされていないので、使うときに、ロードする必要があります。
+
+```{r}
+library(readxl) # need to load though readxl is a part of the tidyverse package and installed
+```
+
+実は、範囲を選択し、コピーをし、クリップボードから読む方法もありますが、二つの大きな理由から推奨しません。丁寧に、方法を記述しないと、再現性に問題があること、列のデータ・タイプなどが、適切に、読み込めない場合が多く、読み込んでからの作業が複雑になる。とっても、小さな、自分で作成したデータの場合には、有効かもしれません。
+
+```{r eval=FALSE}
+df_excel_clipboard <- read_delim(clipboard())
+```
+
+
+### 例: 世界の出生率（Fertility） UN Data
+
+ホットなトピックですね。日本の問題、そして、自分ごととしてだけでなく、世界の状況を見る視点も持ちましょう。
+
+[UN data](https://data.un.org/) から、検索窓の上にある、[Datamarts](http://data.un.org/Explorer.aspx) を選択し、下のほうにある、World Fertility Data United Nations Population Division (UNPD) の [+] 記号を開きます。右の [i] からは情報が得られます。三つのデータがあります。
+
+* [Age-specific fertility rates, Total fertility and Mean age at childbearing](http://data.un.org/DocumentData.aspx?id=319)
+* [Annual number of live births and Crude birth rate](http://data.un.org/DocumentData.aspx?id=316)
+* [Children ever born](http://data.un.org/DocumentData.aspx?id=318)
+
+まずは、"Age-specific fertility rates, Total fertility and Mean age at childbearing" データを使うことにします。
+
+1. サイトから、Excel データをダウンロード。
+2. プロジェクト内のデータ格納フォルダに入れます。"./data/"
+3. 試しに、読み込みます。
+4. Files から、Import Dataset を選択し、設定をして、もう一度、読み込む。
+5. 列名を修正
+6. 日本のデータを確認
+7. 年齢ごとの数を比較しやすいように、データを変形
+8. グラフを書いてみる。
+9. 出生平均年齢の表を降年齢順に見てみる。
+10. 密度分布グラフを書いてみる。
+11. 出生率の表を昇順に見てみる。
+12. 密度分布グラフを書いてみる。
+
+#### Steps 1-3. {-}
+
+1. サイトから、Excel データをダウンロード。
+2. プロジェクト内のデータ格納フォルダに入れます。"./data/" {-}
+3. 試しに、読み込みます。サイトから、Excel データをダウンロード。{-}
+
+どんなシートがあるか見てみましょう。読み込みに問題があるときは、データ名からスペースを消し、下のコードも修正して読んでみてください。スペースなどがあると問題が起こる場合があります。
+
+```{r}
+excel_sheets("./data/Age-specific fertility rates, Total fertility and .xls")
+```
+
+シートを指定するときは、`sheet = 1` とか、`sheet = "CHILDREN_EVER_BORN"` とします。
+指定がないときは、最初のシート。詳細は、Help で、`read_excel` として、確認してください。たくさんの、オプションがあります。
+
+```{r}
+df_un_fertility <- read_excel("./data/Age-specific fertility rates, Total fertility and .xls")
+df_un_fertility
+```
+
+構造が複雑そうです。
+
+#### Step 4. Files から、Import Dataset を選択し、設定をして、もう一度、読み込む。{-}
+
+ファイル名も変更しておいが方がよい場合もあります。そのときは、変更記録を RNotebookに追記しておくと良いでしょう。下の例では、上の４行をスキップ。列が、text（文字） か、numeric（数値）かを選択。読み込まないときには、skip しています。
+			
+```{r warning=FALSE, message=FALSE}
+df_un_fertility <- read_excel("./data/Age-specific fertility rates, Total fertility and .xls", 
+    col_types = c("text", "numeric", "text", 
+        "numeric", "text", "numeric", "numeric", 
+        "numeric", "numeric", "numeric", 
+        "numeric", "numeric", "numeric", 
+        "numeric", "skip", "text", "skip", 
+        "skip", "skip", "skip", "skip", "skip"), 
+    skip = 4)
+```
+
+
+```{r}
+df_un_fertility
+```
+
+#### Step 5. 列名を修正 {-}
+
+修正したい列名をコピーしておく。
+
+Country, ISO code, Period, Reference, NA, Total fertility
+
+1列目から、6列目と、14列目と、15列目を、書き換えます。
+
+```{r}
+colnames(df_un_fertility)[c(1:6,14:15)] <- c("country",	"iso",	"period","year", "range",	"fertility_rate","mean_age","source")
+df_un_fertility
+```
+
+#### Step 6. 日本のデータを確認 {-}
+
+
+```{r}
+df_un_fertility_jp <- df_un_fertility %>% filter(country == "Japan")
+df_un_fertility_jp
+```
+
+#### Step 7. 年齢ごとの数を比較しやすいように、データを変形 {-}
+
+すこし、難しいですが、`pivot_longer` を Help で調べてください。
+
+```{r}
+df_un_fertility_jp %>% pivot_longer(-c(1:6, 14:15), names_to = "age_range", values_to = "value")
+```
+
+#### Step 8. グラフを書いてみる。{-}
+
+```{r}
+df_un_fertility_jp %>% pivot_longer(-c(1:6, 14:15), names_to = "age_range", values_to = "value") %>%
+  ggplot(aes(x=year, col=age_range, linetype = age_range)) + geom_line(aes(y=value)) 
+```
+
+いろいろなことがわかります。
+
+#### Step 9. 出生平均年齢の表を降年齢順に見てみる。{-}
+
+```{r}
+df_un_fertility %>% 
+  filter(year %in% c(2010)) %>% select(country, mean_age) %>% 
+  drop_na(mean_age) %>%
+  arrange(desc(mean_age))
+```
+
+#### Step 10. 密度分布グラフを書いてみる。{-}
+
+```{r}
+df_un_fertility %>% filter(year %in% c(1970, 1990, 2010)) %>% 
+                                drop_na(mean_age) %>%
+  ggplot(aes(mean_age, fill = factor(year))) + geom_density(alpha = 0.5) + 
+#  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+#  coord_cartesian(xlim=c(20,40)) + 
+  labs(title="Mean age at childbearing", fill = "year")
+```
+```{r}
+df_un_fertility %>% drop_na(mean_age) %>% group_by(year) %>% summarise(n=n()) %>% arrange(desc(n))
+```
+
+
+```{r}
+df_un_fertility %>% filter(year %in% c(1970, 1985, 1995, 2005, 2010)) %>% 
+                                drop_na(mean_age) %>%
+  ggplot(aes(mean_age, fill = factor(year))) + geom_density(alpha = 0.3) + 
+  labs(title="Mean age at childbearing", fill = "year")
+```
+```{r}
+df_un_fertility %>% filter(year %in% c(1970, 1985,1995, 2005,2010)) %>% 
+                                drop_na(mean_age) %>%
+  ggplot(aes(mean_age, fill = factor(year))) + geom_density(alpha = 0.5) + facet_wrap(~ factor(year)) +
+  labs(title="Mean age at childbearing", fill = "year")
+```
+
+#### 11. 出生率の表を昇順に見てみる。{-}
+
+```{r}
+df_un_fertility %>% 
+  filter(year %in% c(2010)) %>% select(country, fertility_rate) %>% 
+  drop_na(fertility_rate) %>%
+  arrange(fertility_rate)
+```
+
+#### Step 12. 密度分布グラフを書いてみる。{-}
+
+```{r}
+df_un_fertility %>% filter(year %in% c(1970, 1990, 2010)) %>% 
+                                drop_na(mean_age) %>%
+  ggplot(aes(fertility_rate, fill = factor(year))) + geom_density(alpha = 0.5) + 
+  labs(title="Total fertility", fill = "year")
+```
+
+```{r}
+df_un_fertility %>% drop_na(fertility_rate) %>% group_by(year) %>% summarise(n=n()) %>% arrange(desc(n))
+```
+
+```{r}
+df_un_fertility %>% filter(year %in% c(1970, 1985, 1995, 2005, 2010)) %>% 
+                                drop_na(mean_age) %>%
+  ggplot(aes(fertility_rate, fill = factor(year))) + geom_density(alpha = 0.5) + 
+  labs(title="Total fertility", fill = "year")
+```
+
+```{r}
+df_un_fertility %>% filter(year %in% c(1970, 1985, 1995, 2005, 2010)) %>% 
+                                drop_na(mean_age) %>%
+  ggplot(aes(fertility_rate, fill = factor(year))) + geom_density(alpha = 0.5) + facet_wrap(~ factor(year))
+  labs(title="Total fertility", fill = "year")
+```
+
+#### 参考例１：World Inequality Report 2022
+
+WIR2022: https://ds-sl.github.io/data-analysis/wir2022.nb.html
+
+#### 参考例２:学校種類別進学率の推移(日本語データ)
+
+[男女共同参画局](https://www.gender.go.jp)の資料です。
+
+学校種類別進学率の推移: https://empowerment.tsuda.ac.jp/detail/82584
+
+```{r}
+url_school_jp <- "https://www.gender.go.jp/about_danjo/whitepaper/r02/zentai/html/honpen/csv/zuhyo01-04-01.csv"
+```
+
+
+```{r}
+guess_encoding(url_school_jp, n_max = 10000, threshold = 0.2)
+```
+
+
+```{r}
+df_school_jp <- read_csv(url_school_jp, locale = locale(encoding = "Shift_JIS"), skip=2)
+df_school_jp 
+```
+
+```{r warning=FALSE}
+df_edu0 <- df_school_jp 
+colnames(df_edu0) <- c("year", "highschool_m", "highschool_f", "vocational_m", "vocational_f", "university_m", "university_f", "juniorcollege_f", "gradschool_m", "gradschool_f")
+df_edu00 <- df_edu0 %>% mutate(year = 1950:2019, 
+                   highschool = (highschool_m + highschool_f)/2,
+                   vocational = (vocational_m + vocational_f)/2,
+                   university = (university_m + university_f)/2, 
+                   juniorcollege = juniorcollege_f,
+                   gradschool = (gradschool_m + gradschool_f)/2) 
+df_edu00 %>% filter(year >= 1954) %>% select(-(2:10)) %>% 
+  pivot_longer(3:5, names_to = "schools", values_to = "percentage") %>%
+  mutate(types = factor(schools, levels = c("vocational", "juniorcollege", "university"))) %>%
+  pivot_longer(c(highschool, gradschool), names_to = "highgrad", values_to ="value") %>%
+  mutate(high_grad = factor(highgrad, levels = c("highschool", "gradschool"))) %>%
+  ggplot() +
+  geom_area(aes(x = year, y = percentage, fill = types)) +
+  geom_line(aes(x = year, y = value, linetype = high_grad)) + 
+  scale_x_continuous(breaks = round(seq(1960, 2020, by =10),1)) + 
+  scale_y_continuous(breaks = round(seq(0, 100, by =10),1)) + 
+  labs(title = "Tertially Education After Highschool", 
+       subtitle = "with Highschool Graduates and Graduate School", fill = "", linetype = "")
+```
+
+
+## （続）探索的データ解析 (EDA)　
+
+![image from r4ds](https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png)
+
+NY.GDP.PCAP.CD: GDP per capita (current US$)
+
+```{r eval=FALSE}
+df_wdi_gdppcap <- WDI(country = "all", indicator = c(gdp_pcap = "NY.GDP.PCAP.CD"))
+write_csv(df_wdi_gdppcap, "./data/df_wdi_gdppcap.csv")
+```
+
+```{r}
+df_wdi_gdppcap <- read_csv("./data/df_wdi_gdppcap.csv")
+```
+
+```{r}
+df_wdi_gdppcap
+```
+
+### Data Transformation
+
+#### 列を `select`
+
+```{r}
+df_wdi_gdppcap_small <- df_wdi_gdppcap %>% select(country, year, gdp_pcap)
+df_wdi_gdppcap_small
+```
+
+#### 行を `filter`
+
+```{r}
+df_wdi_gdppcap_short <- df_wdi_gdppcap %>% filter(country %in% c("Japan", "Germany", "United States"))
+df_wdi_gdppcap_short
+```
+
+```{r}
+df_wdi_gdppcap_small_short <- df_wdi_gdppcap %>% select(country, year, gdp_pcap) %>%
+  filter(country %in% c("Japan", "Germany", "United States"))
+df_wdi_gdppcap_small_short
+```
+
+```{r}
+df_wdi_gdppcap_small_short %>%
+  ggplot(aes(x = year, y = gdp_pcap)) + geom_line()
+```
+
+```{r}
+df_wdi_gdppcap_small_short %>% filter(country %in% c("Japan")) %>%
+  ggplot(aes(x = year, y = gdp_pcap)) + geom_line()
+```
+
+```{r}
+df_wdi_gdppcap_small_short %>%
+  ggplot(aes(x = year, y = gdp_pcap)) + geom_point()
+```
+
+```{r}
+df_wdi_gdppcap_small_short %>% drop_na(gdp_pcap) %>%
+  ggplot(aes(x = year, y = gdp_pcap, col = country)) + geom_line()
+```
+
+```{r}
+df_wdi_gdppcap_small_short %>% drop_na(gdp_pcap) %>%
+  ggplot(aes(x = year, y = gdp_pcap, col = country)) + geom_line() +
+  geom_point()
+```
+
+```{r}
+df_wdi_gdppcap_small_short %>% drop_na(gdp_pcap) %>%
+  ggplot(aes(x = year, y = gdp_pcap)) + 
+  geom_point(aes(color = country)) + 
+  geom_smooth(method = 'loess', formula = 'y ~ x')
+```
+
+# 参考
+
+## RNotebook の活用
+
+下のリンクを開き、右上の Code ボタンから、Download Rmd を選択すると、ダウンロードできますから、ダインロードしたものを、プロジェクト・フォールダーに移動またはコピーしてください。ダウンロードできないときは、Ctrl を押しながら、Download Rmd をクリックすると、Save As で保存できると思います。ブラウザーによって仕様が異なりますから、適切な方法を選んでください。
+
+-   <https://ds-sl.github.io/intro2r/RNotebook-J.nb.html>
+-   <https://ds-sl.github.io/intro2r/Rmarkdown-J.nb.html>
+
+Windows でも、Mac でも提供されている、Google Chrome の場合には、Code ボタンから、ダンロードされるはずです。
+
+## クラウド - Posit Cloud
+
+RStudio Cloudは、誰でもオンラインでデータサイエンスを行い、共有し、教え、学ぶことができる、軽量でクラウドベースのソリューションです。月25時間の制限がありますが、内容を共有して、他のアカウントから利用することも可能です。
+
+### クラウドサービス　How to Start Posit Cloud {-}
+
+1.  Go to <https://posit.cloud/>
+2.  Sign Up: top right
+3.  Email address or Google account
+4.  New Project: Project Name
+
+## 練習問題 Posit Primers
+
+Posit Primers <https://posit.cloud/learn/primers>
+
+### 最初の演習
+
+Moodle（2月22日）にリンクをつけてあります。
+
+-   [Visualization Basics](https://rstudio.cloud/learn/primers/1.1)
+-   [Programming Basics](https://rstudio.cloud/learn/primers/1.2)
+
+## 参考文献 References
+
+-   R For Data Science, by H. Wickham: <https://r4ds.had.co.nz>
+
+    -   Introduction: <https://r4ds.had.co.nz/explore-intro.html#explore-intro>
+
+-   Bookdown: <https://bookdown.org>, [Archive](https://bookdown.org/home/archive/)
+
+-   [Get Started: R Studio で R をはじめよう、R Markdown](https://ds-sl.github.io/intro2r/getstarted.html)
+
+-   [Introducton to R](https://ds-sl.github.io/intro2r/intro2r.nb.html#3_Data_Analysis_Using_RStudio)
+
+-   [Data Analysis for Researchers 2022](https://icu-hsuzuki.github.io/da4r2022/)
+
+-   [データ・サイエンスを始めましょう - Data Science for All](https://icu-hsuzuki.github.io/ds4aj/)
+
+
+

@@ -450,7 +450,7 @@ WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name
 
 * Indicator(s)
 
-```{r cache=TRUE, ecal=FALSE}
+```{r cache=TRUE, eval=FALSE}
 df <- WDI(country = "all", indicator ="", extra=TRUE, cache=wdi_cache)
 ```
 
