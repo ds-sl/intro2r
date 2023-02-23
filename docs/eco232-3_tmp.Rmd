@@ -142,8 +142,13 @@ GDP per hour worked is a measure of labour productivity. It measures how efficie
 
 上の[サイト](https://data.oecd.org/lprdty/gdp-per-hour-worked.htm#indicator-chart)からデータ（Full indicator data）をダウンロードして、プロジェクトの data フォルダーに入れました。
 
-```{r}
+```
 df_oecd_productivity <- read_csv("./data/DP_LIVE_21022023111712065.csv")
+df_oecd_productivity
+```
+
+```{r}
+df_oecd_productivity <- read_csv("./data/")
 df_oecd_productivity
 ```
 
@@ -210,8 +215,13 @@ Adult education level: https://data.oecd.org/eduatt/adult-education-level.htm
 
 ダウンロードしたファイルのファイル名が `DP_LIVE_21022023120132654.csv` と同じであることを確認してください。
 
-```{r eval=FALSE}
+```
 df_oecd_education_level <- read_csv("./data/DP_LIVE_21022023120132654.csv")
+df_oecd_education_level
+```
+
+```{r eval=FALSE}
+df_oecd_education_level <- read_csv("./data/")
 df_oecd_education_level
 ```
 
@@ -291,15 +301,24 @@ df_excel_clipboard <- read_delim(clipboard())
 
 どんなシートがあるか見てみましょう。読み込みに問題があるときは、データ名からスペースを消し、下のコードも修正して読んでみてください。スペースなどがあると問題が起こる場合があります。
 
-```{r}
+```
 excel_sheets("./data/Age-specific fertility rates, Total fertility and .xls")
+```
+
+```{r}
+excel_sheets("./data/")
 ```
 
 シートを指定するときは、`sheet = 1` とか、`sheet = "CHILDREN_EVER_BORN"` とします。
 指定がないときは、最初のシート。詳細は、Help で、`read_excel` として、確認してください。たくさんの、オプションがあります。
 
-```{r}
+```
 df_un_fertility <- read_excel("./data/Age-specific fertility rates, Total fertility and .xls")
+df_un_fertility
+```
+
+```{r}
+df_un_fertility <- read_excel("./data/")
 df_un_fertility
 ```
 
@@ -309,8 +328,19 @@ df_un_fertility
 
 ファイル名も変更しておいが方がよい場合もあります。そのときは、変更記録を RNotebookに追記しておくと良いでしょう。下の例では、上の４行をスキップ。列が、text（文字） か、numeric（数値）かを選択。読み込まないときには、skip しています。
 			
-```{r warning=FALSE, message=FALSE}
+```
 df_un_fertility <- read_excel("./data/Age-specific fertility rates, Total fertility and .xls", 
+    col_types = c("text", "numeric", "text", 
+        "numeric", "text", "numeric", "numeric", 
+        "numeric", "numeric", "numeric", 
+        "numeric", "numeric", "numeric", 
+        "numeric", "skip", "text", "skip", 
+        "skip", "skip", "skip", "skip", "skip"), 
+    skip = 4)
+```
+
+```{r warning=FALSE, message=FALSE}
+df_un_fertility <- read_excel("./data/", 
     col_types = c("text", "numeric", "text", 
         "numeric", "text", "numeric", "numeric", 
         "numeric", "numeric", "numeric", 
