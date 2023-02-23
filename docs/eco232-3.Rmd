@@ -432,7 +432,7 @@ df_un_fertility %>% filter(year %in% c(1970, 1985, 1995, 2005, 2010)) %>%
 ```{r}
 df_un_fertility %>% filter(year %in% c(1970, 1985, 1995, 2005, 2010)) %>% 
                                 drop_na(mean_age) %>%
-  ggplot(aes(fertility_rate, fill = factor(year))) + geom_density(alpha = 0.5) + facet_wrap(~ factor(year))
+  ggplot(aes(fertility_rate, fill = factor(year))) + geom_density(alpha = 0.5) + facet_wrap(~ factor(year)) +
   labs(title="Total fertility", fill = "year")
 ```
 
