@@ -1,7 +1,7 @@
 ---
-title: "ECO232 Rを使った経済データの収集と分析の方法"
-author: "鈴木寛（Hiroshi Suzuki）"
-date: "`r Sys.Date()`"
+title: "ECO232 Rではじめるデータ・サイエンス"
+author: "ゲスト講師：鈴木寛（Hiroshi Suzuki）"
+date: "Last Updated: `r Sys.Date()`"
 output:
   html_notebook:
     toc: yes
