@@ -3,7 +3,7 @@ title: "R Notebook の表題"
 author: "学籍番号　氏名"
 date: "`r Sys.Date()`"
 output:
-  html_notebook: null
+  html_notebook: default
 ---
 
 R Notebook は、[R Markdown](http://rmarkdown.rstudio.com) の一つの形式で、コードを実行すると、その下に実行結果が現れます。
