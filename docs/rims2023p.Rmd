@@ -3,18 +3,18 @@ title: "生涯学び続ける基盤を構築する<br>データサイエンス�
 author: "鈴木 寛（Hiroshi Suzuki）"
 date: 'Last Updated: `r Sys.Date()`'
 output:
-  ioslides_presentation: 
-    highlight: tango
-    widescreen: yes
-    smaller: yes
-    fig_height: 3.5
-    fig_retina: 1
   html_notebook:
     toc: yes
     toc_float: yes
     highlight: tango
     theme: cerulean
     number_sections: yes
+  ioslides_presentation: 
+    highlight: tango
+    widescreen: yes
+    smaller: yes
+    fig_height: 3.5
+    fig_retina: 1
   pdf_document:
     latex_engine: xelatex
   slidy_presentation:
@@ -48,16 +48,13 @@ header-includes: \usepackage{ctex}
 1. AI に触れる：Duolingo、ChatGPT など
 2. WDI: 日本に関するデータ - ダッシュボード
 3. WDI: 指標を選択して、課題と向き合う
-    - 自分達の興味のあるデータを調べる
-    - 問題意識をしっかり持てるようにする
-    - データに基づいた思考ができるようにする
-    - 批判的思考、バイアスを意識しながら
-    - 他者と協力、分担して、調べ、ディスカッション
-4. AI の基本を学ぶ
+    - 自分達の興味のあるデータを問題意識をもって調べる
+    - バイアスに注意しながら、データに基づいた批判的思考ができるようにする
+    - 他者と協力、分担して、調べ、ディスカッション - 協働
+4. AI のしくみの基本を（ビデオや外部講師などから）学ぶ
 5. AI との付き合い方についての、ディスカッション
 6. トピックを決めてグループ発表
 
-  
 学生のレベルによっては、第二レベルから始めても良い
 
 ## AI を使ってみる：語学学習アプリ Duolingo
