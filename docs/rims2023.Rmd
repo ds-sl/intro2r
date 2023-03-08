@@ -23,11 +23,50 @@ header-includes: \usepackage{ctex}
 
 # 日本でのデータサイエンス教育の<br>課題
 
----
+## 前提：フォーカス、個人の経験
 
 > データサイエンス教育一般ではなく、現在の、日本の大学において、リテラシー・レベルのデータサイエンス教育をどのように始めていったら良いかに絞って、考えていきたいと思います。
 
 以下は、これまで、わたしが、学び、教え、経験しながら、考えてきたことを基盤としていますが、一般的ではないかもしれないことを、最初にお断りしておきます。
+
+### Factfulness（ファクトフルネス）
+
+Gapminder: https://www.gapminder.org/
+
+バイアスを意識しながら
+
+## 前提：すべての学生
+
+学校種類別進学率の推移([男女共同参画局](https://www.gender.go.jp)の資料)
+
+```{r warning=FALSE, message=FALSE, echo=FALSE}
+library(tidyverse)
+url_school_jp <- "https://www.gender.go.jp/about_danjo/whitepaper/r02/zentai/html/honpen/csv/zuhyo01-04-01.csv"
+df_school_jp <- read_csv(url_school_jp, locale = locale(encoding = "Shift_JIS"), skip=2)
+df_edu0 <- df_school_jp 
+colnames(df_edu0) <- c("year", "highschool_m", "highschool_f", "vocational_m", "vocational_f", "university_m", "university_f", "juniorcollege_f", "gradschool_m", "gradschool_f")
+df_edu00 <- df_edu0 %>% mutate(year = 1950:2019, 
+                   highschool = (highschool_m + highschool_f)/2,
+                   vocational = (vocational_m + vocational_f)/2,
+                   university = (university_m + university_f)/2, 
+                   juniorcollege = juniorcollege_f,
+                   gradschool = (gradschool_m + gradschool_f)/2) 
+df_edu00 %>% filter(year >= 1954) %>% select(-(2:10)) %>% 
+  pivot_longer(3:5, names_to = "schools", values_to = "percentage") %>%
+  mutate(types = factor(schools, levels = c("vocational", "juniorcollege", "university"))) %>%
+  pivot_longer(c(highschool, gradschool), names_to = "highgrad", values_to ="value") %>%
+  mutate(high_grad = factor(highgrad, levels = c("highschool", "gradschool"))) %>%
+  ggplot() +
+  geom_area(aes(x = year, y = percentage, fill = types)) +
+  geom_line(aes(x = year, y = value, linetype = high_grad)) + 
+  scale_x_continuous(breaks = round(seq(1960, 2020, by =10),1)) + 
+  scale_y_continuous(breaks = round(seq(0, 100, by =10),1)) + 
+  labs(title = "Tertially Education After Highschool", 
+       subtitle = "with Highschool Graduates and Graduate School", 
+       fill = "", linetype = "")
+```
+
+
 
 ## デミスハサビス - Demis Hassabis
 

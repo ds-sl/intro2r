@@ -1,20 +1,20 @@
 ---
-title: "生涯学び続ける基盤を構築するデータサイエンス・コースの開発"
+title: "生涯学び続ける基盤を構築する<br>データサイエンス・コースの開発"
 author: "鈴木 寛（Hiroshi Suzuki）"
 date: 'Last Updated: `r Sys.Date()`'
 output:
-  ioslides_presentation: 
-    highlight: tango
-    widescreen: yes
-    smaller: yes
-    fig_height: 3.5
-    fig_retina: 1
   html_notebook:
     toc: yes
     toc_float: yes
     highlight: tango
     theme: cerulean
     number_sections: yes
+  ioslides_presentation: 
+    highlight: tango
+    widescreen: yes
+    smaller: yes
+    fig_height: 3.5
+    fig_retina: 1
   pdf_document:
     latex_engine: xelatex
   slidy_presentation:
@@ -249,7 +249,7 @@ https://datatopics.worldbank.org/world-development-indicators/
 10. 発表
 
 <p>
-コンピュータ言語 R を推奨する理由：インタラクティブ、プログラミングの経験がなくても使える、発展性に富み、十分な利用者がおり、教材が多い
+コンピュータ言語 R を推奨する理由：無償、インタラクティブ、プログラミングの経験がなくても使える、発展性に富み、十分な利用者がおり、教材が多い
 
 ## Posit Cloud による実習
 
