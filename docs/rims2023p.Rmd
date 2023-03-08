@@ -3,18 +3,18 @@ title: "生涯学び続ける基盤を構築する<br>データサイエンス�
 author: "鈴木 寛（Hiroshi Suzuki）"
 date: 'Last Updated: `r Sys.Date()`'
 output:
-  html_notebook:
-    toc: yes
-    toc_float: yes
-    highlight: tango
-    theme: cerulean
-    number_sections: yes
   ioslides_presentation: 
     highlight: tango
     widescreen: yes
     smaller: yes
     fig_height: 3.5
     fig_retina: 1
+  html_notebook:
+    toc: yes
+    toc_float: yes
+    highlight: tango
+    theme: cerulean
+    number_sections: yes
   pdf_document:
     latex_engine: xelatex
   slidy_presentation:
@@ -88,6 +88,24 @@ header-includes: \usepackage{ctex}
 - どのように、付き合って行ったら良いだろうか。
 - 目的は、さまざまな情報に対して、批判的思考を訓練しながら、より適切に、学ぶスキルを向上させること。
 - ちょっと変わった新来者にどう対応するかを考え、経験する
+  - 私が心がけていること：
+    - 基本的には Welcome!
+    - 加えて「あなたのことを教えてください」
+
+## 安全な AI を創るための三つの基本原則
+
+**[3 principles for creating safer AI](https://www.newworldai.com/three-principles-for-creating-safer-artificial-intelligence-stuart-russell/) | Stuart Russell**
+
+1. The robot’s only objective is to maximize the realization of human values.
+	- ロボット（AI：人工知能）が目指す（べき）ものは、ひとにとってたいせつなことを実現することである。
+2. The robot is initially uncertain about what those values are
+	- ロボット（AI）は、最初は、ひとにとってたいせつなことが何であるかはわかっていない。
+3. Human behaviour provides information about human values
+	- ロボット（AI）は、ひとがどのように行動し・思考し・感じるかを観察して、ひとにとってたいせつなことが何であるかを学習していく。
+
+* ここで言っている、Human ひととは、誰のことでしょうか。
+* これは、ロボットや、AI だけの使命でしょうか。
+
 
 ## 日本から世界を見る
 
