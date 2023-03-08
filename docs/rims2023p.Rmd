@@ -152,6 +152,8 @@ header-includes: \usepackage{ctex}
   - API Documentation
 
 ## 例
+### GDP (現在の米ドル): [リンク](https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?end=2021&locations=CN-DE-IN-JP-FR-US-GB&start=1960&view=chart)
+
 ### 一人当たりのGDP(定数2015米ドル)：[リンク](https://data.worldbank.org/indicator/NY.GDP.PCAP.KD?locations=JP-GB-RU-FR-CN-US-UA-DE&start=2021&end=2021&view=bar)
   
 
