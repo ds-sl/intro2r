@@ -1,0 +1,181 @@
+---
+title: "いろいろな R Markdown フォーマット"
+author: "学籍番号　氏名"
+date: "`r Sys.Date()`"
+header-includes:
+  - \usepackage{xeCJK}
+  - \usepackage{fontspec}
+  - \setCJKmainfont{Noto Sans JP}
+output:
+  beamer_presentation: 
+    latex_engine: xelatex
+    theme: Madrid
+    colortheme: rose
+  pdf_document: 
+    latex_engine: xelatex
+  ioslides_presentation: 
+    widescreen: yes
+  html_notebook: default
+  word_document: default
+  html_document:
+    df_print: paged
+  slidy_presentation: default
+  powerpoint_presentation: default
+---
+
+```{r include=FALSE, eval=FALSE}
+# if error on ipa fonts
+tinytex::tlmgr_install("ipaex")
+```
+
+```{r include=FALSE, eval=FALSE}
+  - \setCJKmainfont{Hiragino Mincho Pro} # for Mac if you prefer Hiragino
+or 
+  - \setCJKmainfont{HiraMaruProN-W4}
+or
+  - \setCJKmainfont{Osaka}
+  - \setCJKsansfont{Osaka-Mono}
+  - \setCJKmonofont{Osaka-Mono}
+# possible to replace the following with above
+  - \setCJKmainfont{ipaexm.ttf}
+  - \setCJKsansfont{ipaexg.ttf}
+  - \setCJKmonofont{ipaexg.ttf}
+```
+
+
+
+# R Markdown の出力形式をためしてみよう
+
+
+## R Notebook と他の形式
+
+R Notebook は、[R Markdown](http://rmarkdown.rstudio.com) の一つの形式ですが、書式はおなじですから、コードを実行すると、その下に実行結果が現れます。
+
+コード・チャンクは、ハイライトされています。そのコード・チャンクは、 *Run* ボタンを押すか、コード・チャンクの右上にある、右を向いた三角形をおすか、 *Ctrl+Shift+Enter* (Win) または *Cmd+Shift+Enter* (Mac) のキーで実行できます。
+
+R Notebook の、プレビューは、実際にコード・チャンクに表示されているものだけが、含まれますが、*Knit* で他の形式の出力をするときは、最初から一つ一つコード・チャンクを実行して、その結果が出力されますから、エラーがあると、出力されず、途中で停止します。
+
+## 日本語・中国語・韓国語
+
+図の表示などで、文字化けが、起こることが多く、対応が、一定せず、難しかったのですが、どうやら、現在は、どの場合も、次の設定で、解決しているようです。下の例を確認してください。
+
+```{r eval=FALSE}
+# showtext を、インストールしていない場合は、一回だけ、右上の三角をクリックして実行
+install.packages('showtext')
+```
+
+### パッケージをロード
+
+`library` によって、Package をロード（いつでも使えるように）します。
+
+```{r setup, echo=TRUE, message=FALSE}
+library(tidyverse)
+library(showtext) 
+#font_add_google('Noto Sans')
+#font_install(source_han_serif())
+showtext_auto()
+```
+
+## Test Code Chunk (1)
+
+```{r}
+head(cars)
+```
+
+## Test Code Chunk (2)
+
+```{r}
+plot(cars, main="散布図")
+```
+
+
+## Test Code Chunk (3)
+
+
+```{r}
+df_iris <- iris
+colnames(df_iris) <- c("萼長","萼幅","葉長","葉幅","Species" )
+tab <- data.frame(Species = c("setosa", "versicolor", "virginica"), 
+                  "種別" = c("ヒオウギアヤメ", "ブルーフラッグ", "バージニカ"))
+df_iris <- df_iris %>% left_join(tab, by=c("Species" = "Species")) %>% select(-5)
+df_iris %>% slice(1:2)
+```
+
+---
+
+```{r kableiris}
+knitr::kable(df_iris[1:6, ])
+```
+
+
+## Test Code Chunk (4)
+
+```{r echo=FALSE}
+ggplot(df_iris, aes(x = `葉長`, y = `葉幅`, col = `種別`)) +
+  geom_point() + labs(title = "散布図", x = "葉長", y = "葉幅")
+```
+
+
+## 新しいコード・チャンク
+
+あらたにコード・チャンクを挿入するときは、ツール・バーの *Insert Chunk* ボタンを押すか、または、 *Ctrl+Option+I* (Win) or *Cmd+Option+I* (Mac) でも可能です。
+
+### まずは、Preview がおすすめ
+
+ノートブックを保存すると、コードを含む HTML ファイルが作成されます。プレビュー（*Preview* ）ボタンまたは、  *Ctrl+Shift+K* (Win) または *Cmd+Shift+K* (Mac) でも可能です。
+
+
+## いろいろな出力形式を加えたYAML
+
+```
+output:
+  html_notebook: default
+  powerpoint_presentation: default
+  ioslides_presentation: 
+    widescreen: yes
+  beamer_presentation: 
+    latex_engine: xelatex
+    theme: Madrid
+    colortheme: rose
+  word_document: default
+  html_document:
+    df_print: paged
+  slidy_presentation: default
+  pdf_document: 
+    latex_engine: xelatex
+```
+
+Knit ボタンから、他の形式を選び、試してみてください。
+
+## 出力形式に関する備考
+
+* スライドの場合は、第二レベルの表題 \#\#　があると、あたらしいスライドとなります。
+* `---` または、Visual エディターの、Horizontal Line でも新しいスライドになります。
+* Word や PowerPoint は、一度、Knit して出力したファイルの書式を変更して、"my-styles.docx"、"my-styles.pptx"  などと名称を変更して、下のように、書式ファイルを付けることが可能です。参考文献を参照してください。
+```
+---
+ word_document:
+    reference_docx: my-styles.docx
+ powerpoint_presentation:
+    reference_doc: my-styles.pptx
+---
+```
+
+## さまざまな設定
+
+* *Knit* ボタンの隣のギアマーク の Output Option からそれぞれの書式を変更することが可能です。
+* 節番号自動振り付け、ページ番号、テーマ、出力する図のサイズなどが、それぞれの形式に応じて選択できます。
+* また、コード・チャンクの右上にある、ギア・マークからも、コードを出力するか否か、実行するか否か、コード・チャンクの名称、図のサイズなどが選択できます。
+* {r cache=TRUE} とすると、キャッシュしてくれるので、実行に時間がかかるコード・チャンクには、このようなオプションを加えるのも良いでしょう。
+
+## 参考文献 References
+
+* Posit Primers: [Report Reproducibly](https://rmarkdown.rstudio.com/lesson-1.html?_ga=2.60708591.317621277.1671142614-2004472742.1671142614)
+* Markdown Quick Reference: Top Menu Bar \> Help \> Markdown Quick Reference
+* Cheat Sheet (Top Menu Bar: Help \> Cheat Sheets): RMarkdown Cheat Sheet, RMarkdown Reference Guide
+* Books:
+  - [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
+  - [R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)
+* エラーが出て不明なときは、検索エンジンで、解決方法を探してください。このときに、エラーメッセージが英語の方が、解決方法が見つかりやすくなります。Post error messages to a web search engine.
+  
+

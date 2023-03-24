@@ -10,21 +10,31 @@ title: "いろいろな R Markdown フォーマット"
 author: "学籍番号　氏名"
 date: "`r Sys.Date()`"
 header-includes:
-  - \usepackage{ctex}
+  - \usepackage{xeCJK}
+  - \setCJKmainfont{ipaexm.ttf}
+  - \setCJKsansfont{ipaexg.ttf}
+  - \setCJKmonofont{ipaexg.ttf}
 output:
-  pdf_document: 
-    latex_engine: xelatex
+  html_notebook: default
   powerpoint_presentation: default
   ioslides_presentation: 
     widescreen: yes
-  html_notebook: default
+  beamer_presentation: 
+    latex_engine: xelatex
+    theme: Madrid
+    colortheme: rose
   word_document: default
   html_document:
     df_print: paged
   slidy_presentation: default
-  beamer_presentation: 
+  pdf_document: 
     latex_engine: xelatex
 ---
+```{r include=FALSE, eval=FALSE}
+# もし、IPA フォントがないと言われたら、このコードを実行。if error on ipa fonts
+tinytex::tlmgr_install("ipaex")
+```
+
 # R Markdown の出力形式をためしてみよう
 
 
@@ -38,7 +48,7 @@ R Notebook の、プレビューは、実際にコード・チャンクに表示
 
 ## 日本語・中国語・韓国語
 
-文字化けが、起こることが多く、対応が、一定せず、難しかったのですが、どうやら、現在は、どの場合も、次の設定で、解決しているようです。下の例を確認してください。
+文字化けが、起こることが多く、対応が、一定せず、難しかったのですが、現在は、どの場合も、次の設定で、解決しているようです。下の例を確認してください。
 
 ```{r eval=FALSE}
 # showtext を、インストールしていない場合は、一回だけ、右上の三角をクリックして実行
@@ -52,8 +62,6 @@ install.packages('showtext')
 ```{r setup, echo=TRUE, message=FALSE}
 library(tidyverse)
 library(showtext) 
-font_add_google('Noto Sans')
-font_install(source_han_serif())
 showtext_auto()
 ```
 
