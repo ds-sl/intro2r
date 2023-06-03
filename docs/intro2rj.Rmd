@@ -91,7 +91,7 @@ plot(df)
 
 ### 参考
 
-[データーサインスをはじめましょう](https://icu-hsuzuki.github.io/ds4aj/) の中[コンソールで実行](https://icu-hsuzuki.github.io/ds4aj/ronrstudio.html#コンソールで実行---run-in-console) に、簡単な説明があります。
+[データーサインスをはじめましょう](https://icu-hsuzuki.github.io/ds4aj/) の中[コンソールで実行](https://icu-hsuzuki.github.io/ds4aj/rbasics.html#コンソールで実行---run-in-console) に、簡単な説明があります。
 
 ## Package の確認とインストール
 
