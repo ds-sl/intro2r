@@ -521,7 +521,9 @@ df_indicators %>% distinct(indicator, name) %>% arrange(indicator)
 
 EDAはデータ分析において重要な役割を果たします。また、データの品質を保証するために、データの質を確認するために使用することもできます。
 
-![R4DS からのイメージ](data/data-science.png)
+![R4DS からのイメージ](https://d33wubrfki0l68.cloudfront.net/795c039ba2520455d833b4034befc8cf360a70ba/558a5/diagrams/data-science-explore.png)
+
+問いをもちデータを取得し、視覚化などを通して、データを理解し、さらに問いを深めるサイクルが、データサイエンスの核ではないかと思います。
 
 ## データの取得・読み込み - Importing Data
 
