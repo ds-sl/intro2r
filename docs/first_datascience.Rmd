@@ -105,6 +105,7 @@ summary(df_gdp)
 ```{r}
 df_gdp %>% distinct(country) %>% pull()
 ```
+
 ---
 
 今回は下のように、`%>%`（パイプと呼びます） で繋げてコードを書きました。
