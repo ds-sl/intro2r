@@ -818,111 +818,23 @@ WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name
 
 上のテンプレートをコピーして、下に貼り付け、指標 `indicator` と、略称 `short_name` と、いくつかの国名 `chosen_countries` を、入れ替えて、試してみてください。
 
-### 学生が選択した世界開発指標（WDI）の例
+<!-- ### 学生が選択した世界開発指標（WDI）の例 -->
 
-19人の受講生に、興味のある指標を選んで、テンプレートを使って、可視化をしてみてください、と課題に出した時に、調べてくれたものです。
+<!-- 19人の受講生に、興味のある指標を選んで、テンプレートを使って、可視化をしてみてください、と課題に出した時に、調べてくれたものです。 -->
 
-```{r}
-url_indicators <- "https://ds-sl.github.io/intro2r/data/indicators.csv"
-df_indicators <- read_csv(url_indicators) %>% left_join(wdi_cache$series)
-write_csv(df_indicators, "./data/indicators.csv")
-df_indicators %>% distinct(indicator, name) %>% arrange(indicator)
-```
+<!-- ```{r} -->
+<!-- url_indicators <- "https://ds-sl.github.io/intro2r/data/indicators.csv" -->
+<!-- df_indicators <- read_csv(url_indicators) %>% left_join(wdi_cache$series) -->
+<!-- write_csv(df_indicators, "./data/indicators.csv") -->
+<!-- df_indicators %>% distinct(indicator, name) %>% arrange(indicator) -->
+<!-- ``` -->
 
 自分で課題を考え、データを選べることは、とても大切だということだと思います。
-
-# 探索的データ解析　Exploratory Data Analysis (EDA)
-
-## 探索的データ解析とは？ ([Posit Primers](https://posit.cloud/learn/primers/3.1))
-
-1. EDAは、データが何を語っているかを理解するための反復的なサイクルです。
-
-2. まず、データに関する問いを作成します。
-
-3. データの可視化、変換、モデリングを行い、答えを探します。
-
-学習したことを活用して、問いを修正したり、新しい問いを考えたりします。そして、このサイクルを繰り返していきます。
-
-EDAはデータ分析において重要な役割を果たします。また、データの品質を保証するために、データの質を確認するために使用することもできます。
-
-![R4DS からのイメージ](https://d33wubrfki0l68.cloudfront.net/795c039ba2520455d833b4034befc8cf360a70ba/558a5/diagrams/data-science-explore.png)
-
-問いをもちデータを取得し、視覚化などを通して、データを理解し、さらに問いを深めるサイクルが、データサイエンスの核ではないかと思います。
-
-## データの取得・読み込み - Importing Data
-
-スタートは、本来は、データの作成・探索ですが、すでに、分析したいデータはすでにあるとして話を進めます。まずは、`data` フォルダ（directory）を作成しておくと良い。右下の窓枠の Files タブから、New Folder で作成してもよい。
-
-```{r eval=FALSE}
-dir.create("./data")
-```
-
-
-データの取得・読み込みを、四つの方法に分けて説明します。
-
-1. パッケージの利用
-  - 例：WDI など。何度も、ダウンロードしなくて良いよいに、書き出しておき、2 を使うとよい。`write(df_name, "./data/name.csv")`
-2. コンピュータ上にある CSV などのテキストファイルを読み込む
-  - 例：`df_name <- read_csv("./data/file_name.csv")`
-3. インターネット上のデータのアドレス（URL）を使って、CSV などのテキストファイルを読み込む。
-  - 例：`df_name <- read_csv(url_of_a_csv)`
-4. コンピュータ上にある、Excel ファイルなどのデジタルファイルを読み込む。まず、`library(readxl)`。
-  - 例：`df_name <- read_excel("./data/file_name.xlsx")`
-5. サイトからダウンロードして、Project のデータフォルダに移す。または、データのアドレス（URL）がわかっていれば、直接ダウンロード。
-  - 例：`download.file(url_of_a_data, destfile = "./data/data_name")
-6. クリップボードにコピーして読み込む。
-  - 例：`df_name <- read_delim(clipboard())`
-
-## `WDIcache()` の扱い
-
-二つの、ファイルが一つになった、リストであるため、違って命令を使います。
-
-```{r}
-wdi_cache <- WDIcache()
-write_rds(wdi_cache, "./data/wdi_cache.RData")
-```
-
-```{r}
-wdi_cache <- read_rds("./data/wdi_cache.RData")
-```
-
-## WDI での例
-
-```{r cache=TRUE}
-df_military6 <- WDI(country = c("CN","GB","JP","IN","US","DE"), indicator = c(military = "MS.MIL.XPND.CD"), extra=TRUE, cache=wdi_cache)
-df_military6 %>% filter(year == 2021) %>% arrange(desc(military))
-```
-
-```{r}
-df_military6 %>% drop_na(military) %>%
-  ggplot(aes(year, military, col=iso2c)) + geom_line()
-```
-
-```{r}
-df_military <- WDI(country = "all", indicator = c(military = "MS.MIL.XPND.CD"), extra=TRUE, cache=wdi_cache)
-```
-
-
-```{r warning=FALSE}
-df_military %>% drop_na(military) %>% filter(year==2021, income=="High income", military >0) %>%
-  ggplot(aes(military, fill=region)) + geom_density() + geom_vline(xintercept = 54123551702, col="red") + scale_x_log10() + geom_label(x=11.1, y=25, label = "Japan") + facet_wrap(~region) + theme(legend.position = "none") + labs(title="Military Expenses in high income countries")
-```
-
-```{r}
-df_military_gdp <- WDI(country = "all", indicator = c(military_gdp = "MS.MIL.XPND.GD.ZS"), extra=TRUE, cache=wdi_cache)
-df_military_gdp %>% filter(country == "Japan", year==2021)
-```
-
-```{r}
-df_military_gdp %>% drop_na(military_gdp) %>% filter(year==2021, income!="Aggregates") %>%
-  ggplot(aes(military_gdp, fill=income)) + geom_density(binwidth = 0.2, alpha=0.5) + geom_vline(xintercept = 2, col="red") + geom_vline(xintercept = 1, col="blue") + facet_wrap(~income)
-```
-
 
 
 ## プロジェクト
 
-他のデータで、同様のことをしてみましょう。
+他の WDI のデータで、はじめにの部分と、同様のことをしてみましょう。
 
 1. 最初に、`gdp = "NY.GDP.MKTP.CD"` としましたが、GNI per capita, Atlas method (current US$): NY.GNP.PCAP.CD に変えてみましょう。
 
@@ -945,26 +857,6 @@ df_gnppcap <- WDI(country = "all",
 
 Windows でも、Mac でも提供されている、Google Chrome の場合には、Code ボタンから、ダンロードされるはずです。
 
-## クラウド - Posit Cloud
-
-RStudio Cloudは、誰でもオンラインでデータサイエンスを行い、共有し、教え、学ぶことができる、軽量でクラウドベースのソリューションです。月25時間の制限がありますが、内容を共有して、他のアカウントから利用することも可能です。
-
-### クラウドサービス　How to Start Posit Cloud {-}
-
-1.  Go to <https://posit.cloud/>
-2.  Sign Up: top right
-3.  Email address or Google account
-4.  New Project: Project Name
-
-## 練習問題 Posit Primers
-
-Posit Primers <https://posit.cloud/learn/primers>
-
-### 最初の演習 {-}
-
--   [Visualization Basics](https://rstudio.cloud/learn/primers/1.1)
--   [Programming Basics](https://rstudio.cloud/learn/primers/1.2)
-
 
 ## 参考文献 References
 
@@ -978,14 +870,27 @@ Posit Primers <https://posit.cloud/learn/primers>
 
 -   [Introducton to R](https://ds-sl.github.io/intro2r/intro2r.nb.html#3_Data_Analysis_Using_RStudio)
 
+-   [Rではじめるデータ・サイエンス](https://ds-sl.github.io/intro2r/intro2rj.nb.html)
+
 -   [Data Analysis for Researchers 2022](https://icu-hsuzuki.github.io/da4r2022/)
 
 -   [データ・サイエンスを始めましょう - Data Science for All](https://icu-hsuzuki.github.io/ds4aj/)
 
+## 練習問題 Posit Primers
+
+Posit Primers <https://posit.cloud/learn/primers>
+
+### 最初の演習 {-}
+
+-   [Visualization Basics](https://rstudio.cloud/learn/primers/1.1)
+-   [Programming Basics](https://rstudio.cloud/learn/primers/1.2)
 
 
 ## R w/ Chat GPT
 
-* RTutor: https://rtutor.ai
+- RTutor: https://rtutor.ai
+  - アカウントを作成せずに、ChatGPT を使った、R プログラミングを体験できます。
+  - すでに読み込んである、データと、テンプレートが、あり日本語のテンプレートもあります。ChatGPT にコード作成を依頼するときは、英語の方が良いようです。
+  - 手元の、PC  からデータを読み込んで試すことも可能です。
 
 
