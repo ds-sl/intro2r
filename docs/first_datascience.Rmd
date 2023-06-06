@@ -3,15 +3,16 @@ title: "はじめてのデータ・サイエンス"
 author: "ゲスト講師：鈴木寛（Hiroshi Suzuki）"
 date: "Last Updated: `r Sys.Date()`"
 output:
+  ioslides_presentation: 
+    highlight: tango
+    widescreen: yes
+    smaller: yes
   html_notebook:
     toc: yes
     toc_float: yes
     highlight: tango
     theme: cerulean
     number_sections: yes
-  ioslides_presentation:
-    highlight: tango
-    widescreen: yes
   html_document:
     toc: yes
     df_print: paged
@@ -30,13 +31,13 @@ output:
 6. データを理解 Understand data
 7. レポートなどにまとめる Communicate data
 
-![R4DS からのイメージ](https://d33wubrfki0l68.cloudfront.net/795c039ba2520455d833b4034befc8cf360a70ba/558a5/diagrams/data-science-explore.png)
+![](https://d33wubrfki0l68.cloudfront.net/795c039ba2520455d833b4034befc8cf360a70ba/558a5/diagrams/data-science-explore.png)
 
 問いをもちデータを取得し、視覚化などを通して、データを理解し、さらに問いを深めるサイクルが、データサイエンスの核だと思います。
 
 ## R のパッケージを活用
 
-まず、R を使った分析の一つの例を、見て行きます。一つ一つのコード（コンピュータ・プログラム）の説明は、後に回し、まずは、雰囲気を味わってください。
+<!-- まず、R を使った分析の一つの例を、見て行きます。一つ一つのコード（コンピュータ・プログラム）の説明は、後に回し、まずは、雰囲気を味わってください。 -->
 
 ### 準備 Setup
 
@@ -49,6 +50,10 @@ NY.GDP.MKTP.CD は、データコードと言われるもので、世界開発�
 [World Development Indicators](https://datatopics.worldbank.org/world-development-indicators/) のサイトの下にある、Data Themes（テーマ）からテーマを選択し、下にスクロールすると、Code をみることができます。ちなみに、ここで利用する NY.GDP.MKTP.CD: GDP (current US$) は、テーマの Economy（経済）の、一番上にあります。
 
 経済用語の英語はよく知らないという方は、ブラウザー（Edge, Google Chrome, Safari など）の翻訳機能を使うのも良いでしょう。ただ、そのページの対話型の機能（interactive function）を利用するときは、翻訳機能をOFF にする必要がある場合もありますので、注意してください。
+
+---
+
+エラーメッセージを調べるときなどに、英語のほうが情報がたくさん得られますから、言語を、英語に変更しておきます。
 
 R には、WDI のデータを取得する R のツール（パッケージ）`WDI` がありますから、それを使います。また、データを取り扱うための基本的なツール（パッケージ）`tidyverse` を使いますので、次のコードで、これらを読み込みます。
 
@@ -257,13 +262,11 @@ df_gdp %>% filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR")) %>%
 
 ```{r}
 df_gdp %>% 
-  filter(region != "Aggregates") %>% 
-  drop_na(gdp) %>% 
-  group_by(year) %>% 
-  mutate(gdp_ratio = gdp/sum(gdp)) %>%
-  ungroup() %>%
+  filter(region != "Aggregates") %>% drop_na(gdp) %>% 
+  group_by(year) %>% mutate(gdp_ratio = gdp/sum(gdp)) %>% ungroup() %>%
   filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR"))  %>%
-  ggplot(aes(x = year, y = gdp_ratio, fill = iso2c)) + geom_area() + geom_line(col = "black", position = "stack", linewidth = 0.3) + 
+  ggplot(aes(x = year, y = gdp_ratio, fill = iso2c)) + geom_area() +
+  geom_line(col = "black", position = "stack", linewidth = 0.3) + 
   scale_y_continuous(labels = scales::percent_format(accuracy = 1))
 ```
 
@@ -272,15 +275,14 @@ df_gdp %>%
 まず、下の部分が新しいですが、ここでは、年毎にグループにして、その上で、新しい `dgp_ratio` という名前の列を追加し、その gdp の値を、gdp 合計で割っています。すなわち、世界の、GDP における割合が計算されています。
 
 ```
-  group_by(year) %>% 
-  mutate(gdp_ratio = gdp/sum(gdp)) %>%
-  ungroup() %>%
+  group_by(year) %>% mutate(gdp_ratio = gdp/sum(gdp)) %>% ungroup() %>%
 ```
 
 下の部分では、`geom_area` を使って、`fill=iso2c` により、`iso2c` ごとに、違う色を塗って、position = "stack" により、積み上げ型の、グラフを描き、境目がわかりやすいように、0.3  の太さの黒の線を描いてください。また、y 軸は、小数点以下を省いたパーセント表示に変えてください。というコードです。
 
 ```
-  ggplot(aes(x = year, y = gdp_ratio, fill = iso2c)) + geom_area() + geom_line(col = "black", position = "stack", linewidth = 0.3) + 
+  ggplot(aes(x = year, y = gdp_ratio, fill = iso2c)) + geom_area() +
+  geom_line(col = "black", position = "stack", linewidth = 0.3) + 
   scale_y_continuous(labels = scales::percent_format(accuracy = 1))
 ```
 
@@ -290,14 +292,12 @@ df_gdp %>%
 
 ```{r}
 df_gdp %>% 
-  filter(region != "Aggregates") %>% 
-  drop_na(gdp) %>% 
-  group_by(year) %>% 
-  mutate(gdp_ratio = gdp/sum(gdp)) %>%
-  ungroup() %>%
+  filter(region != "Aggregates") %>% drop_na(gdp) %>% 
+  group_by(year) %>% mutate(gdp_ratio = gdp/sum(gdp)) %>% ungroup() %>%
   filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR"))  %>%
   mutate(iso2co = factor(iso2c, levels = c("IN", "CN", "FR", "GB", "DE", "JP", "US"))) %>%
-  ggplot(aes(x = year, y = gdp_ratio, fill = iso2co)) + geom_area() + geom_line(col = "black", position = "stack", linewidth = 0.3) + 
+  ggplot(aes(x = year, y = gdp_ratio, fill = iso2co)) + geom_area() +
+  geom_line(col = "black", position = "stack", linewidth = 0.3) + 
   scale_y_continuous(labels = scales::percent_format(accuracy = 1))
 ```
 
@@ -386,10 +386,8 @@ df_gdp %>% drop_na(gdp) %>%
 いくつかのグループごとに分布をみてみることも可能です。それには、Boxplot が有効です。
 
 ```{r}
-df_gdp %>% drop_na(gdp) %>% 
-  filter(region != "Aggregates") %>%
-  drop_na(region) %>%
-  filter(year %in% c(2021)) %>%
+df_gdp %>% drop_na(gdp) %>% filter(region != "Aggregates") %>%
+  drop_na(region) %>% filter(year %in% c(2021)) %>%
   ggplot(aes(gdp, region, fill = region)) + 
   geom_boxplot() + scale_x_log10() + labs(y = "") + 
   theme(legend.position = "none")
@@ -400,10 +398,8 @@ df_gdp %>% drop_na(gdp) %>%
 #### Fig 11. 収入の多寡による分類ごとの GDP 分布
 
 ```{r}
-df_gdp %>% drop_na(gdp) %>% 
-  filter(region != "Aggregates") %>%
-  drop_na(income) %>%
-  filter(year %in% c(2021)) %>%
+df_gdp %>% drop_na(gdp) %>% filter(region != "Aggregates") %>%
+  drop_na(income) %>% filter(year %in% c(2021)) %>%
   mutate(level = factor(income, c("High income", "Upper middle income", "Lower middle income", "Low income"))) %>%
   ggplot(aes(gdp, level, fill = income)) + 
   geom_boxplot() + scale_x_log10() + labs(y = "") + 
