@@ -442,20 +442,6 @@ map_gdp %>% mutate(income_level = factor(income, levels = c("High income", "Uppe
 6. Fig 7, Fig 8, Fig 9 の年を変更してみてください。何がわかりますか。
 7. Fig 12, Fig 13 の年を変更してみてください。何がわかりますか。
 
-## プロジェクト
-
-他のデータで、同様のことをしてみましょう。
-
-1. 最初に、`gdp = "NY.GDP.MKTP.CD"` としましたが、GNI per capita, Atlas method (current US$): NY.GNP.PCAP.CD に変えてみましょう。
-
-```{r cache=TRUE}
-df_gnppcap <- WDI(country = "all", 
-              indicator = c(gnppcap = "NY.GNP.PCAP.CD"), 
-              extra = TRUE)
-```
-
-2. [World Development Indicators](https://datatopics.worldbank.org/world-development-indicators/) のサイトの下にある、Data Themes（テーマ）から自分が調べたいテーマを選び、そのテーマから、データコードを取得して、同様の分析をしてみてください。データがあまりない場合もありますので、ある程度データが多いものを選択することをお勧めします。
-
 ## まとめ
 
 今回は、経済指標である、GDP を使いました。データサイエンスについて少しずつ、学んでいきます。
@@ -473,5 +459,516 @@ df_gnppcap <- WDI(country = "all",
 * 理解したことを元にして、さらに、そのデータ、または、他のデータを使って、新たな発見をしていく。
 
 統計的な指標も用いますが、それらによって、新しい知識を生み出すとも表現しますが、そのような営み全体が、データサイエンスの核をなす部分だと思います。
+
+# World Bank: WDI
+
+
+## 日本から世界を見る
+
+以下では、世界銀行の、世界開発指標を利用する。
+
+他にも、活用できるサイトがいくつかある。
+
+* 国際連合　[UNdata](https://data.un.org)
+* 経済協力開発機構　[OECD data](https://data.oecd.org)、
+* 世界格差データベース（World Inequality Database）[WID](https://wid.world)、
+* 欧州連合の統計局　[Eurostat](https://ec.europa.eu/eurostat)、
+* データで見る私たちの世界　[Our World in Data](https://ourworldindata.org)
+
+なども、同様の、ダッシュボードを備えており、データの提供もしている。
+
+<p>
+日本では、
+
+* [e-Stat](https://www.e-stat.go.jp/)、
+* [ダッシュボード](https://dashboard.e-stat.go.jp)
+
+## 持続的開発目標（SDGs） データ
+
+* 世界銀行：https://databank.worldbank.org/source/sustainable-development-goals-(sdgs)
+* 国連：https://unstats.un.org/sdgs/dataportal/database
+* データで見る私たちの世界：Our World in Data SGD Tracker: https://sdg-tracker.org/
+* SDG Index: https://dashboards.sdgindex.org/map
+
+
+## World Bank: WDI - World Development Indicaters
+
+* 世界銀行（World Bank）: https://www.worldbank.org
+* [世界銀行について（Who we are）](https://www.worldbank.org/en/who-we-are):
+  - 極度の貧困状態の削減（To end extreme poverty）: 2030年までに、極度の貧困状態にある世界人口の割合を3%に削減する。By reducing the share of the global population that lives in extreme poverty to 3 percent by 2030.
+  - 繁栄を共に享受（To promote shared prosperity）: すべての国の最貧困層の40％の人々の所得を増加させることによって共栄を促進。By increasing the incomes of the poorest 40 percent of people in every country. 
+* 世界銀行オープンデータ（World Bank Open Data）: https://data.worldbank.org
+  - Data Bank, World Development Indicators, etc.
+  
+日本について：https://data.worldbank.org/country/japan?view=chart
+
+## 世界開発指標（WDI）
+
+* [World Development Indicators (WDI)](https://datatopics.worldbank.org/world-development-indicators/) : 世界銀行が開発に関する各国間比較可能なデータの集大成である1400の時系列指標（the World Bank’s premier compilation of cross-country comparable data on development; 1400 time series indicators）
+  - テーマ別（Themes）: 貧困と格差、人間、環境、経済、国家と市場、グローバルリンク集（Poverty and Inequality, People, Environment, Economy, States and Markets, Global Links）
+  - オープンデータとデータバンク（Open Data & DataBank）: Explore data, Query database
+  - Bulk Download: Excel, CSV
+  - API Documentation
+  
+## 世界のさまざまな課題
+
+https://datatopics.worldbank.org/world-development-indicators/
+
+1. 貧困と不平等（Poverty and Inequality）：貧困、繁栄、消費、所得分配
+2. 人々（People）：人口動態、教育、労働、健康、ジェンダー
+3. 環境（Environment）：農業、気候変動、エネルギー、生物多様性、水、衛生
+4. 経済（Economy）：成長、経済構造、所得と貯蓄、貿易、労働生産性
+5. 国家と市場（States and Markets）：ビジネス、株式市場、軍事、通信、輸送、テクノロジー
+6. グローバルリンク（Global Links）：債務、貿易、援助への依存、難民、観光、移住
+
+
+# R の パッケージ WDI の活用
+
+`WDI` パッケージで、データをダウンロードしたり、探したり、詳細情報を得たりできます。
+
+検索や、ダウンロード方法が理解できるように、例示してありますが、ざっと確認して、4.3.3 のテンプレートを利用すると、グラフを描くこともできます。
+
+## 指標 WDI 検索
+
+### 検索例 1（WDI名）
+
+```{r cache=TRUE}
+WDIsearch(string = "gdp", field = "name", short = TRUE, cache = NULL)
+```
+
+```{r}
+WDIsearch(string = "military expenditure", field = "name", short = TRUE, cache = NULL)
+```
+
+### 検索例 2（WDI）
+
+```{r cache=TRUE}
+WDIsearch(string = "NY.GDP.MKTP.CD", field = "indicator", short = TRUE, cache = NULL)
+```
+  
+### 練習 2. - 検索（short）
+
+名前で検索（"" の間に、（なるべく簡単な）検索文字列を入れてください。）
+
+```{r cache=TRUE}
+WDIsearch(string = "", field = "name", short = TRUE, cache = NULL)
+```
+
+Indicator で検索（"" の間に、調べたい indicator を入れてください。）
+
+```{r cache=TRUE}
+WDIsearch(string = "", field = "indicator", short = TRUE, cache = NULL)
+```
+
+### 詳しい情報を得るには
+
+`short = FALSE` とします。時間がかかるので、検索は、Indicator と、名前などの情報をもったファイルを手元に持っておくことにします。
+
+```{r cache=TRUE, eval=FALSE}
+wdi_cache <- WDIcache()
+```
+```{r echo=FALSE, eval=FALSE}
+write_rds(wdi_cache, "./data/wdi_cache.RData")
+```
+```{r echo=FALSE}
+wdi_cache <- read_rds("./data/wdi_cache.RData")
+```
+
+
+右上の窓枠（pane）から、`wdi_cache` を探して、中身を見てみましょう。series と、country の二つのデータ・フレームからなっているリストです。三角印や、右から二番目の巻物のようなアイコンをクリックすると中身が見えます。
+  
+### 検索例 3（WDI名）
+
+```{r}
+WDIsearch(string = "CPI Price", field = "name", short = FALSE, cache = wdi_cache)
+```
+
+- CPTOTNSXN: CPI Price, nominal
+  - The consumer price index reflects the change in prices for the average consumer of a constant basket of consumer goods. Data is not seasonally adjusted.
+
+### 検索例 4（WDI）
+
+```{r}
+WDIsearch(string = "NY.GDP.MKTP.KD.ZG", field = "indicator", short = FALSE, cache = wdi_cache)
+```
+
+  
+### 練習 2 - 検索（long w/ cache）
+
+`string` と、`field` を、ふたつとも入れてください。
+
+```{r eval=FALSE}
+WDIsearch(string = "", field = "", short = FALSE, cache = wdi_cache)
+```
+
+## 指標 WDI データのダウンロード
+
+Indicator が決まったら、ダウンロードします。
+
+右下の、Help Tab に WDI と入れると、使い方もわかります。
+
+```{r eval=FALSE}
+?WDI
+```
+  
+### ダウンロード例 1-1
+
+```{r cache=TRUE}
+df_gdp1 <- WDI(country = "all", indicator = "NY.GDP.MKTP.CD")
+df_gdp1
+```
+
+  
+### ダウンロード例 1-2
+
+```{r cache=TRUE}
+df_gdp2 <- WDI(country = "all", indicator = c(gdp = "NY.GDP.MKTP.CD"))
+df_gdp2
+```
+
+  
+### ダウンロード例 1-3
+
+```{r cache=TRUE}
+df_gdp3 <- WDI(country = "all", indicator = c(gdp = "NY.GDP.MKTP.CD"), extra=TRUE, cache=wdi_cache)
+df_gdp3
+```
+
+  
+### ダウンロード例 1-4
+
+```{r cache=TRUE}
+df_gdp4 <- WDI(country = c("CN","GB","JP","IN","US","DE"), indicator = c(gdp = "NY.GDP.MKTP.CD"), extra=TRUE, cache=wdi_cache)
+df_gdp4
+```
+
+#### ダウンロード例 2-1
+
+* NY.GDP.DEFL.KD.ZG: Inflation, GDP deflator (annual %)
+* CPTOTNSXN: CPI Price, nominal
+
+```{r cache=TRUE}
+df_gdp21 <- WDI(country = "all", 
+                indicator = c(gdp_deflator = "NY.GDP.DEFL.KD.ZG", 
+                              cpi_price = "CPTOTNSXN"), 
+                extra=TRUE, cache=wdi_cache)
+df_gdp21
+```
+
+```{r}
+str(df_gdp21)
+```
+
+```{r}
+summary(df_gdp21)
+```
+
+右上の窓枠の、Environment も見てみましょう。
+
+
+## 可視化 Visualization
+
+グラフ（Chart）を描いて視覚化しよう
+
+### グラフ 1
+
+```{r}
+df_gdp4 %>% ggplot(aes(year, gdp, col=country)) + geom_line()
+```
+
+### グラフ 2
+
+```{r}
+df_gdp4 %>% drop_na(gdp) %>% 
+  ggplot(aes(year, gdp, col=country)) + geom_line() +
+  labs(title = paste("WDI - NY.GDP.MKTP.CD: ", "gdp"))
+```
+
+### テンプレート Templates
+
+#### 一つの国についての、一つの指標（WDI）と、その略称から、折線グラフを作成
+
+Line Plot with one indicator with abbreviation and one country
+
+```{r cache=TRUE}
+chosen_indicator <- "SL.UEM.TOTL.NE.ZS"
+short_name <- "unemployment"
+chosen_country <- "United States"
+WDI(country = "all", indicator = c(short_name = chosen_indicator), extra=TRUE, cache=wdi_cache) %>%
+  filter(country == chosen_country) %>% 
+  ggplot(aes(year, short_name)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator, ": ", short_name, " - ", chosen_country),
+       y = short_name)
+```
+
+#### 一つの国についての、一つの指標（WDI）から、折線グラフを作成
+
+Line Plot with one indicator and one country
+
+```{r cache=TRUE}
+chosen_indicator <- "SL.UEM.TOTL.NE.ZS"
+chosen_country <- "United States"
+WDI(country = "all", indicator = c(chosen_indicator = chosen_indicator), 
+    extra=TRUE, cache=wdi_cache) %>%
+  filter(country == chosen_country) %>% 
+  ggplot(aes(year, chosen_indicator)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator, " - ", chosen_country), 
+       y = chosen_indicator)
+```
+
+#### いくつかの国についての、一つの指標（WDI）と、その略称から、折線グラフを作成
+
+Line Plot with one indicator with abbreviation and several countries
+
+```{r cache=TRUE}
+chosen_indicator <- "SL.UEM.TOTL.NE.ZS"
+short_name <- "unemployment"
+chosen_countries <- c("United States","United Kingdom", "Japan")
+WDI(country = "all", indicator = c(short_name = chosen_indicator), extra=TRUE, cache=wdi_cache) %>% drop_na(short_name) %>% 
+  filter(country %in% chosen_countries) %>% 
+  ggplot(aes(year, short_name, col = country)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator, ": ", short_name), y = short_name)
+```
+
+
+#### 一つの国についての、二つの指標（WDI）と、その略称から、折線グラフを作成
+
+Line Plot with two indicators with abbreviation and one country
+
+```{r cache=TRUE}
+chosen_indicator_1 <- "NY.GDP.DEFL.KD.ZG"
+short_name_1 <- "gdp_deflator"
+chosen_indicator_2 <- "CPTOTSAXNZGY"
+short_name_2 <- "cpi_price"
+chosen_country <- "United States"
+WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name_2 = chosen_indicator_2), extra=TRUE, cache=wdi_cache) %>% 
+  filter(country == chosen_country) %>% 
+  pivot_longer(c(short_name_1, short_name_2), names_to = "class", values_to = "value") %>% drop_na(value) %>%
+  ggplot(aes(year, value, col = class)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator_1, ": ", short_name_1, "\n", chosen_indicator_2, ": ", short_name_2, " - ", chosen_country)) +
+  scale_color_manual(labels = c(short_name_1, short_name_2), values = scales::hue_pal()(2))
+```
+
+```{r cache=TRUE}
+chosen_indicator_1 <- "SL.TLF.CACT.MA.NE.ZS"
+short_name_1 <- "male"
+chosen_indicator_2 <- "SL.TLF.CACT.FE.NE.ZS"
+short_name_2 <- "female"
+chosen_country <- "United States"
+WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name_2 = chosen_indicator_2), extra=TRUE, cache=wdi_cache) %>% 
+  filter(country == chosen_country) %>% 
+  pivot_longer(c(short_name_1, short_name_2), names_to = "class", values_to = "value") %>% drop_na(value) %>%
+  ggplot(aes(year, value, col = class)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator_1, ": ", short_name_1, "\n", chosen_indicator_2, ": ", short_name_2, " - ", chosen_country)) +
+  scale_color_manual(labels = c(short_name_1, short_name_2), values = scales::hue_pal()(2))
+```
+
+#### いくつかの国についての、二つの指標（WDI）と、その略称から、折線グラフを作成
+
+Line Plot with two indicators with abbreviation and several countries
+
+```{r cache=TRUE}
+chosen_indicator_1 <- "NY.GDP.DEFL.KD.ZG"
+short_name_1 <- "gdp_deflator"
+chosen_indicator_2 <- "CPTOTSAXNZGY"
+short_name_2 <- "cpi_price"
+chosen_countries <- c("United States", "France", "Japan")
+WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name_2 = chosen_indicator_2), extra=TRUE, cache=wdi_cache) %>% 
+  filter(country %in% chosen_countries) %>% 
+  pivot_longer(c(short_name_1, short_name_2), names_to = "class", values_to = "value") %>% drop_na(value) %>%
+  ggplot(aes(year, value, linetype = class, col = country)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator_1, ": ", short_name_1, "\n", chosen_indicator_2, ": ", short_name_2)) +
+  scale_linetype_manual(labels = c(short_name_1, short_name_2), values = c("solid", "dashed"))
+```
+
+
+```{r cache=TRUE}
+chosen_indicator_1 <- "SL.TLF.CACT.MA.NE.ZS"
+short_name_1 <- "male"
+chosen_indicator_2 <- "SL.TLF.CACT.FE.NE.ZS"
+short_name_2 <- "female"
+chosen_countries <- c("United States", "France", "Japan")
+WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name_2 = chosen_indicator_2), extra=TRUE, cache=wdi_cache) %>% 
+  filter(country %in% chosen_countries) %>% 
+  pivot_longer(c(short_name_1, short_name_2), names_to = "class", values_to = "value") %>% drop_na(value) %>%
+  ggplot(aes(year, value, linetype = class, col = country)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator_1, ": ", short_name_1, "\n", chosen_indicator_2, ": ", short_name_2)) +
+  scale_linetype_manual(labels = c(short_name_1, short_name_2), values = c("solid", "dashed"))
+```
+
+
+## 課題　Assignment
+
+上のテンプレートをコピーして、下に貼り付け、指標 `indicator` と、略称 `short_name` と、いくつかの国名 `chosen_countries` を、入れ替えて、試してみてください。
+
+### 学生が選択した世界開発指標（WDI）の例
+
+19人の受講生に、興味のある指標を選んで、テンプレートを使って、可視化をしてみてください、と課題に出した時に、調べてくれたものです。
+
+```{r}
+url_indicators <- "https://ds-sl.github.io/intro2r/data/indicators.csv"
+df_indicators <- read_csv(url_indicators) %>% left_join(wdi_cache$series)
+write_csv(df_indicators, "./data/indicators.csv")
+df_indicators %>% distinct(indicator, name) %>% arrange(indicator)
+```
+
+自分で課題を考え、データを選べることは、とても大切だということだと思います。
+
+# 探索的データ解析　Exploratory Data Analysis (EDA)
+
+## 探索的データ解析とは？ ([Posit Primers](https://posit.cloud/learn/primers/3.1))
+
+1. EDAは、データが何を語っているかを理解するための反復的なサイクルです。
+
+2. まず、データに関する問いを作成します。
+
+3. データの可視化、変換、モデリングを行い、答えを探します。
+
+学習したことを活用して、問いを修正したり、新しい問いを考えたりします。そして、このサイクルを繰り返していきます。
+
+EDAはデータ分析において重要な役割を果たします。また、データの品質を保証するために、データの質を確認するために使用することもできます。
+
+![R4DS からのイメージ](https://d33wubrfki0l68.cloudfront.net/795c039ba2520455d833b4034befc8cf360a70ba/558a5/diagrams/data-science-explore.png)
+
+問いをもちデータを取得し、視覚化などを通して、データを理解し、さらに問いを深めるサイクルが、データサイエンスの核ではないかと思います。
+
+## データの取得・読み込み - Importing Data
+
+スタートは、本来は、データの作成・探索ですが、すでに、分析したいデータはすでにあるとして話を進めます。まずは、`data` フォルダ（directory）を作成しておくと良い。右下の窓枠の Files タブから、New Folder で作成してもよい。
+
+```{r eval=FALSE}
+dir.create("./data")
+```
+
+
+データの取得・読み込みを、四つの方法に分けて説明します。
+
+1. パッケージの利用
+  - 例：WDI など。何度も、ダウンロードしなくて良いよいに、書き出しておき、2 を使うとよい。`write(df_name, "./data/name.csv")`
+2. コンピュータ上にある CSV などのテキストファイルを読み込む
+  - 例：`df_name <- read_csv("./data/file_name.csv")`
+3. インターネット上のデータのアドレス（URL）を使って、CSV などのテキストファイルを読み込む。
+  - 例：`df_name <- read_csv(url_of_a_csv)`
+4. コンピュータ上にある、Excel ファイルなどのデジタルファイルを読み込む。まず、`library(readxl)`。
+  - 例：`df_name <- read_excel("./data/file_name.xlsx")`
+5. サイトからダウンロードして、Project のデータフォルダに移す。または、データのアドレス（URL）がわかっていれば、直接ダウンロード。
+  - 例：`download.file(url_of_a_data, destfile = "./data/data_name")
+6. クリップボードにコピーして読み込む。
+  - 例：`df_name <- read_delim(clipboard())`
+
+## `WDIcache()` の扱い
+
+二つの、ファイルが一つになった、リストであるため、違って命令を使います。
+
+```{r}
+wdi_cache <- WDIcache()
+write_rds(wdi_cache, "./data/wdi_cache.RData")
+```
+
+```{r}
+wdi_cache <- read_rds("./data/wdi_cache.RData")
+```
+
+## WDI での例
+
+```{r cache=TRUE}
+df_military6 <- WDI(country = c("CN","GB","JP","IN","US","DE"), indicator = c(military = "MS.MIL.XPND.CD"), extra=TRUE, cache=wdi_cache)
+df_military6 %>% filter(year == 2021) %>% arrange(desc(military))
+```
+
+```{r}
+df_military6 %>% drop_na(military) %>%
+  ggplot(aes(year, military, col=iso2c)) + geom_line()
+```
+
+```{r}
+df_military <- WDI(country = "all", indicator = c(military = "MS.MIL.XPND.CD"), extra=TRUE, cache=wdi_cache)
+```
+
+
+```{r warning=FALSE}
+df_military %>% drop_na(military) %>% filter(year==2021, income=="High income", military >0) %>%
+  ggplot(aes(military, fill=region)) + geom_density() + geom_vline(xintercept = 54123551702, col="red") + scale_x_log10() + geom_label(x=11.1, y=25, label = "Japan") + facet_wrap(~region) + theme(legend.position = "none") + labs(title="Military Expenses in high income countries")
+```
+
+```{r}
+df_military_gdp <- WDI(country = "all", indicator = c(military_gdp = "MS.MIL.XPND.GD.ZS"), extra=TRUE, cache=wdi_cache)
+df_military_gdp %>% filter(country == "Japan", year==2021)
+```
+
+```{r}
+df_military_gdp %>% drop_na(military_gdp) %>% filter(year==2021, income!="Aggregates") %>%
+  ggplot(aes(military_gdp, fill=income)) + geom_density(binwidth = 0.2, alpha=0.5) + geom_vline(xintercept = 2, col="red") + geom_vline(xintercept = 1, col="blue") + facet_wrap(~income)
+```
+
+
+
+## プロジェクト
+
+他のデータで、同様のことをしてみましょう。
+
+1. 最初に、`gdp = "NY.GDP.MKTP.CD"` としましたが、GNI per capita, Atlas method (current US$): NY.GNP.PCAP.CD に変えてみましょう。
+
+```{r cache=TRUE}
+df_gnppcap <- WDI(country = "all", 
+              indicator = c(gnppcap = "NY.GNP.PCAP.CD"), 
+              extra = TRUE)
+```
+
+2. [World Development Indicators](https://datatopics.worldbank.org/world-development-indicators/) のサイトの下にある、Data Themes（テーマ）から自分が調べたいテーマを選び、そのテーマから、データコードを取得して、同様の分析をしてみてください。データがあまりない場合もありますので、ある程度データが多いものを選択することをお勧めします。
+
+# 参考 - 今後の学習のために
+
+## RNotebook の活用
+
+下のリンクを開き、右上の Code ボタンから、Download Rmd を選択すると、ダウンロードできますから、ダインロードしたものを、プロジェクト・フォールダーに移動またはコピーしてください。ダウンロードできないときは、Ctrl を押しながら、Download Rmd をクリックすると、Save As で保存できると思います。ブラウザーによって仕様が異なりますから、適切な方法を選んでください。
+
+-   <https://ds-sl.github.io/intro2r/RNotebook-J.nb.html>
+-   <https://ds-sl.github.io/intro2r/Rmarkdown-J.nb.html>
+
+Windows でも、Mac でも提供されている、Google Chrome の場合には、Code ボタンから、ダンロードされるはずです。
+
+## クラウド - Posit Cloud
+
+RStudio Cloudは、誰でもオンラインでデータサイエンスを行い、共有し、教え、学ぶことができる、軽量でクラウドベースのソリューションです。月25時間の制限がありますが、内容を共有して、他のアカウントから利用することも可能です。
+
+### クラウドサービス　How to Start Posit Cloud {-}
+
+1.  Go to <https://posit.cloud/>
+2.  Sign Up: top right
+3.  Email address or Google account
+4.  New Project: Project Name
+
+## 練習問題 Posit Primers
+
+Posit Primers <https://posit.cloud/learn/primers>
+
+### 最初の演習 {-}
+
+-   [Visualization Basics](https://rstudio.cloud/learn/primers/1.1)
+-   [Programming Basics](https://rstudio.cloud/learn/primers/1.2)
+
+
+## 参考文献 References
+
+-   R For Data Science, by H. Wickham: <https://r4ds.had.co.nz>
+
+    -   Introduction: <https://r4ds.had.co.nz/explore-intro.html#explore-intro>
+
+-   Bookdown: <https://bookdown.org>, [Archive](https://bookdown.org/home/archive/)
+
+-   [Get Started: R Studio で R をはじめよう、R Markdown](https://ds-sl.github.io/intro2r/getstarted.html)
+
+-   [Introducton to R](https://ds-sl.github.io/intro2r/intro2r.nb.html#3_Data_Analysis_Using_RStudio)
+
+-   [Data Analysis for Researchers 2022](https://icu-hsuzuki.github.io/da4r2022/)
+
+-   [データ・サイエンスを始めましょう - Data Science for All](https://icu-hsuzuki.github.io/ds4aj/)
+
+
+
+## R w/ Chat GPT
+
+* RTutor: https://rtutor.ai
 
 
