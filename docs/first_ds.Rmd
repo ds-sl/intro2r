@@ -462,33 +462,22 @@ map_gdp %>% mutate(income_level = factor(income, levels = c("High income", "Uppe
 
 # World Bank: WDI
 
+## 世界銀行（[World Bank](https://www.worldbank.org/en/home)）
 
-## 日本から世界を見る
+* [世界銀行オープンデータ](World Bank Open Data)
+* [データカタログ](https://datacatalog.worldbank.org/home)
+* [世界開発指標（WDI）](https://datatopics.worldbank.org/world-development-indicators/)
 
-以下では、世界銀行の、世界開発指標を利用する。
+### オープンデータの定義（[Open Data Defined](http://opendatatoolkit.worldbank.org/en/essentials.html)）
 
-他にも、活用できるサイトがいくつかある。
+オープンデータという言葉は、厳密な意味を持っています。データまたはコンテンツは、出所が明示されオープンという性質が維持されれば、誰でも自由に利用、再利用、再配布できるものを言います。
 
-* 国際連合　[UNdata](https://data.un.org)
-* 経済協力開発機構　[OECD data](https://data.oecd.org)、
-* 世界格差データベース（World Inequality Database）[WID](https://wid.world)、
-* 欧州連合の統計局　[Eurostat](https://ec.europa.eu/eurostat)、
-* データで見る私たちの世界　[Our World in Data](https://ourworldindata.org)
+1. データは法的にオープンでなければなりません。つまり、パブリックドメインに置かれ、最小限の制限で自由に使用できなければなりません。
 
-なども、同様の、ダッシュボードを備えており、データの提供もしている。
+2. データは技術的にオープンでなければなりません。つまり、誰でも自由に使える一般的なソフトウェアツールを使ってデータにアクセスし、機械で読み取ることが可読な電子フォーマットで提供されていなければならなりません。パスワードやファイアウォールによる制限を受けずに、公共のサーバーで、だれでもアクセスできなければなりません。また、オープンデータを見つけやすくするために、さまざまな組織がオープンデータカタログを作成し管理してく必要があります。
 
-<p>
-日本では、
+<center><font size="5">データはだれのものでしょうか?  パブリックデータのパブリックとは？</font></center>
 
-* [e-Stat](https://www.e-stat.go.jp/)、
-* [ダッシュボード](https://dashboard.e-stat.go.jp)
-
-## 持続的開発目標（SDGs） データ
-
-* 世界銀行：https://databank.worldbank.org/source/sustainable-development-goals-(sdgs)
-* 国連：https://unstats.un.org/sdgs/dataportal/database
-* データで見る私たちの世界：Our World in Data SGD Tracker: https://sdg-tracker.org/
-* SDG Index: https://dashboards.sdgindex.org/map
 
 
 ## World Bank: WDI - World Development Indicaters
@@ -520,6 +509,34 @@ https://datatopics.worldbank.org/world-development-indicators/
 4. 経済（Economy）：成長、経済構造、所得と貯蓄、貿易、労働生産性
 5. 国家と市場（States and Markets）：ビジネス、株式市場、軍事、通信、輸送、テクノロジー
 6. グローバルリンク（Global Links）：債務、貿易、援助への依存、難民、観光、移住
+
+
+## 日本から世界を見る
+
+以下では、世界銀行の、世界開発指標を利用する。
+
+他にも、活用できるサイトがいくつかある。
+
+* 国際連合　[UNdata](https://data.un.org)
+* 経済協力開発機構　[OECD data](https://data.oecd.org)、
+* 世界格差データベース（World Inequality Database）[WID](https://wid.world)、
+* 欧州連合の統計局　[Eurostat](https://ec.europa.eu/eurostat)、
+* データで見る私たちの世界　[Our World in Data](https://ourworldindata.org)
+
+なども、同様の、ダッシュボードを備えており、データの提供もしている。
+
+<p>
+日本では、
+
+* [e-Stat](https://www.e-stat.go.jp/)、
+* [ダッシュボード](https://dashboard.e-stat.go.jp)
+
+## 持続的開発目標（SDGs） データ
+
+* 世界銀行：https://databank.worldbank.org/source/sustainable-development-goals-(sdgs)
+* 国連：https://unstats.un.org/sdgs/dataportal/database
+* データで見る私たちの世界：Our World in Data SGD Tracker: https://sdg-tracker.org/
+* SDG Index: https://dashboards.sdgindex.org/map
 
 
 # R の パッケージ WDI の活用
