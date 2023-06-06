@@ -56,7 +56,11 @@ library(tidyverse)
 library(WDI)
 ```
 
+データを保存する場所を作成しておくことをお勧めします。保存しておくときは、このディレクトリを使います。
 
+```{r eval=FALSE}
+dir.create("./data")
+```
 
 ### データ取得 Import data
 
@@ -511,11 +515,8 @@ https://datatopics.worldbank.org/world-development-indicators/
 6. グローバルリンク（Global Links）：債務、貿易、援助への依存、難民、観光、移住
 
 
-## 日本から世界を見る
 
-以下では、世界銀行の、世界開発指標を利用する。
-
-他にも、活用できるサイトがいくつかある。
+## 世界銀行以外の国際機関のパブリックデータ
 
 * 国際連合　[UNdata](https://data.un.org)
 * 経済協力開発機構　[OECD data](https://data.oecd.org)、
@@ -538,12 +539,16 @@ https://datatopics.worldbank.org/world-development-indicators/
 * データで見る私たちの世界：Our World in Data SGD Tracker: https://sdg-tracker.org/
 * SDG Index: https://dashboards.sdgindex.org/map
 
+## 課題
+
+世界開発指標（WDI）の、データで、調べてみたい データコードをいくつか見つけて、書き出してください。
+
 
 # R の パッケージ WDI の活用
 
 `WDI` パッケージで、データをダウンロードしたり、探したり、詳細情報を得たりできます。
 
-検索や、ダウンロード方法が理解できるように、例示してありますが、ざっと確認して、4.3.3 のテンプレートを利用すると、グラフを描くこともできます。
+検索や、ダウンロード方法が理解できるように、例示してありますが、ざっと確認して、3.3 のテンプレートを利用すると、グラフを描くこともできます。
 
 ## 指標 WDI 検索
 
