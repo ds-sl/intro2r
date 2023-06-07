@@ -468,7 +468,7 @@ map_gdp %>% mutate(income_level = factor(income, levels = c("High income", "Uppe
 
 ## 世界銀行（[World Bank](https://www.worldbank.org/en/home)）
 
-* [世界銀行オープンデータ](World Bank Open Data)
+* [世界銀行オープンデータ](https://data.worldbank.org)
 * [データカタログ](https://datacatalog.worldbank.org/home)
 * [世界開発指標（WDI）](https://datatopics.worldbank.org/world-development-indicators/)
 
