@@ -466,11 +466,15 @@ map_gdp %>% mutate(income_level = factor(income, levels = c("High income", "Uppe
 
 # World Bank: WDI
 
+世界銀行（World Bank）の WDI を使いました。どのようなものか確認しておきましょう。
+
 ## 世界銀行（[World Bank](https://www.worldbank.org/en/home)）
 
 * [世界銀行オープンデータ](https://data.worldbank.org)
 * [データカタログ](https://datacatalog.worldbank.org/home)
 * [世界開発指標（WDI）](https://datatopics.worldbank.org/world-development-indicators/)
+
+世界開発指標は、世界銀行が提供している、オープンデータの一つで、他にも、たくさんのデータを提供しています。また、オープンデータについて、世界銀行は、厳密な定義をしています。
 
 ### オープンデータの定義（[Open Data Defined](http://opendatatoolkit.worldbank.org/en/essentials.html)）
 
@@ -480,20 +484,7 @@ map_gdp %>% mutate(income_level = factor(income, levels = c("High income", "Uppe
 
 2. データは技術的にオープンでなければなりません。つまり、誰でも自由に使える一般的なソフトウェアツールを使ってデータにアクセスし、機械で読み取ることが可読な電子フォーマットで提供されていなければならなりません。パスワードやファイアウォールによる制限を受けずに、公共のサーバーで、だれでもアクセスできなければなりません。また、オープンデータを見つけやすくするために、さまざまな組織がオープンデータカタログを作成し管理してく必要があります。
 
-<center><font size="5">データはだれのものでしょうか?  パブリックデータのパブリックとは？</font></center>
-
-
-
-## World Bank: WDI - World Development Indicaters
-
-* 世界銀行（World Bank）: https://www.worldbank.org
-* [世界銀行について（Who we are）](https://www.worldbank.org/en/who-we-are):
-  - 極度の貧困状態の削減（To end extreme poverty）: 2030年までに、極度の貧困状態にある世界人口の割合を3%に削減する。By reducing the share of the global population that lives in extreme poverty to 3 percent by 2030.
-  - 繁栄を共に享受（To promote shared prosperity）: すべての国の最貧困層の40％の人々の所得を増加させることによって共栄を促進。By increasing the incomes of the poorest 40 percent of people in every country. 
-* 世界銀行オープンデータ（World Bank Open Data）: https://data.worldbank.org
-  - Data Bank, World Development Indicators, etc.
-  
-日本について：https://data.worldbank.org/country/japan?view=chart
+<center><font size="3">データはだれのものでしょうか?  パブリックデータのパブリックとは？</font></center>
 
 ## 世界開発指標（WDI）
 
@@ -503,7 +494,7 @@ map_gdp %>% mutate(income_level = factor(income, levels = c("High income", "Uppe
   - Bulk Download: Excel, CSV
   - API Documentation
   
-## 世界のさまざまな課題
+### 世界のさまざまな課題
 
 https://datatopics.worldbank.org/world-development-indicators/
 
@@ -514,9 +505,24 @@ https://datatopics.worldbank.org/world-development-indicators/
 5. 国家と市場（States and Markets）：ビジネス、株式市場、軍事、通信、輸送、テクノロジー
 6. グローバルリンク（Global Links）：債務、貿易、援助への依存、難民、観光、移住
 
+### ダッシュボード・データの取得・データコード
+
+さまざまな国際機関では、データを、Excel 形式や、CSV (Comma Separated Values）形式などで、提供する以外に、ダッシュボード形式で、グラフを生成するなどして、データを視覚化をある程度できるようにしています。さらに、コンピュータのアプリケーションでデータを直接取得できるように、API (Application Program Interface) を提供しています。
+
+世界開発指標（WDI）は、これらを、すべて統一した形で提供しているために、非常に使いやすいデータベースになっています。また、上にリストしているように、1400余のさまざまなデータを提供しているために、最初に調べてみることをお勧めするデータベースです。
+
+分析を考えると、Excel や、CSV でダウンロードして、それから、データを読み込むよりも、R で直接データを取得する方が、便利ですので、このコースでは、その方法を、説明しています。
+
+データを探すことも、R の中ですることが可能ですが、データベースに慣れるためにも、WDI のホームページから、トピックを選択して、データを探し、説明も調べて、取得したいデータ・コードを調べることも非常に有効です。
+
+いろいろなトピックに、どのような指標があるか調べて、興味のある、データ・コードをリストしてください。データの名前も同時に、記録しておくと良いでしょう。
 
 
 ## 世界銀行以外の国際機関のパブリックデータ
+
+世界銀行以外にも、それぞれの機関がデータを提供しています。どれも、少しずつ使いやすくなってきています。少しずつ、いくつかのデータベースに、アクセスして、できれば、API の利用の仕方も、習得して、データを調べることに少しずつ慣れていっていただければと思います。
+
+下のリストは、私が個人的に、何度か使ったことのある、データベースです。他にも、たくさんのデータベースがありますので、ぜひ、調べてみてください。
 
 * 国際連合　[UNdata](https://data.un.org)
 * 経済協力開発機構　[OECD data](https://data.oecd.org)、
