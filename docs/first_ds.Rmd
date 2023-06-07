@@ -558,6 +558,20 @@ https://datatopics.worldbank.org/world-development-indicators/
 
 ## 指標 WDI 検索
 
+WDI のホームページで、データコードを調べることができますが、R の WDI のパッケージにも、`WDIsearch()` という関数があり、これを利用して、検索することが可能です。
+
+`string` に、検索語を入れ、`field` には、name または、indicator とします。すると、indicator と、name を調べられます。
+
+RStudio の右下の窓の、Help に、WDIsearch と入れると、使い方を示してくれます。
+
+下の Code でも　WDIsearch の Help を開いてくれます。
+
+```{r eval=FALSE}
+?WDIsearch
+```
+
+下にいくつか例を挙げてみましょう。
+
 ### 検索例 1（WDI名）
 
 ```{r cache=TRUE}
@@ -604,6 +618,14 @@ wdi_cache <- read_rds("./data/wdi_cache.RData")
 
 
 右上の窓枠（pane）から、`wdi_cache` を探して、中身を見てみましょう。series と、country の二つのデータ・フレームからなっているリストです。三角印や、右から二番目の巻物のようなアイコンをクリックすると中身が見えます。
+
+```{r}
+WDIsearch(string = "CPI Price", field = "name", short = FALSE, cache = NULL)
+```
+
+でも、下の、検索と同じ結果を得ますが、`cache = wdi_cache` を使うと、ダウンロードする情報を減らすことができるということです。
+
+short = FALSE では、データの概要 (description) も得ることができます。
   
 ### 検索例 3（WDI名）
 
@@ -825,7 +847,7 @@ WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name
 ```
 
 
-## 課題　Assignment
+## 練習
 
 上のテンプレートをコピーして、下に貼り付け、指標 `indicator` と、略称 `short_name` と、いくつかの国名 `chosen_countries` を、入れ替えて、試してみてください。
 
@@ -856,6 +878,8 @@ df_gnppcap <- WDI(country = "all",
 ```
 
 2. [World Development Indicators](https://datatopics.worldbank.org/world-development-indicators/) のサイトの下にある、Data Themes（テーマ）から自分が調べたいテーマを選び、そのテーマから、データコードを取得して、同様の分析をしてみてください。データがあまりない場合もありますので、ある程度データが多いものを選択することをお勧めします。
+
+3. 可能なら、3 の内容も含めて、選択した、WDI について、調べてみましょう。
 
 # 参考 - 今後の学習のために
 
@@ -903,5 +927,7 @@ Posit Primers <https://posit.cloud/learn/primers>
   - アカウントを作成せずに、ChatGPT を使った、R プログラミングを体験できます。
   - すでに読み込んである、データと、テンプレートが、あり日本語のテンプレートもあります。ChatGPT にコード作成を依頼するときは、英語の方が良いようです。
   - 手元の、PC  からデータを読み込んで試すことも可能です。
+
+Chat GPT などの、AI の利用に興味がある方は、この[リンク](https://icu-hsuzuki.github.io/ds_education/chatgpt.html)を参照してください。
 
 
