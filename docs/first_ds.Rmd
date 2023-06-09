@@ -173,7 +173,7 @@ df_gdp %>% filter(country == "Japan") %>%
 
 の部分が、グラフを描く部分で、「x 軸を、year、y 軸を、gdp として、それを、折線グラフで描いてください」というコードです。
 
-Warning: [38;5;238mRemoved 1 row containing missing values
+Warning: [38;5;238mRemoved 1 row containing missing values
 
 と表示されています。値がない年があることを言っています。2022年のデータがないことがわかっていますから、最初から削除してこくことも可能です。
 
@@ -411,11 +411,12 @@ df_gdp %>% drop_na(gdp) %>% filter(region != "Aggregates") %>%
 
 ```{r cache=TRUE}
 library(maps)
+gdp_short <- df_gdp %>% filter(year == 2021, region != "Aggregates") %>%
+  select(iso2c, gdp, income)
 map_world <- map_data('world')
 map_gdp <- map_world %>% 
   mutate(iso2c = iso.alpha(region, n=2)) %>% 
-  mutate(map_region = region) %>% select(-region) %>% 
-  left_join(df_gdp, by = "iso2c") 
+  left_join(gdp_short, by = "iso2c") 
 head(map_gdp)
 ```
 
@@ -424,16 +425,15 @@ head(map_gdp)
 ```{r cache = TRUE}
 map_gdp %>% mutate(income_level = factor(income, levels = c("High income", "Upper middle income", "Lower middle income", "Low income", "Not classified", NA))) %>%
   ggplot() +
-  geom_map(aes(long, lat, map_id = map_region, fill = income_level), map = map_world, col = "black", size = 0.1) 
+  geom_map(aes(long, lat, map_id = region, fill = income_level), map = map_world, col = "black", size = 0.1) 
 ```
 
 #### Fig 13. GDP による色分け地図
 
 ```{r cache = TRUE}
 map_gdp %>% mutate(income_level = factor(income, levels = c("High income", "Upper middle income", "Lower middle income", "Low income", "Not classified", NA))) %>%
-  filter(year == 2021) %>%
   ggplot() +
-  geom_map(aes(x=long, y=lat, map_id = map_region, fill = gdp), map = map_world, col = "black", size = 0.1) 
+  geom_map(aes(x=long, y=lat, map_id = region, fill = gdp), map = map_world, col = "black", size = 0.1) 
 ```
 
 ## 練習
