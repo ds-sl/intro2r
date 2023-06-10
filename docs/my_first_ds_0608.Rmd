@@ -126,7 +126,12 @@ glimpse(df_gdp)
 summary(df_gdp) 
 ```
 
+#### メモ
+
+年（year）は、1960 から 2022 であることなどがわかりますね。
+
 国のリストをみてみましょう。とても長いリストの中には、地域名も含まれています。
+
 
 ```{r}
 df_gdp %>% distinct(country) %>% pull()
@@ -153,7 +158,7 @@ df_gdp %>% head()
 df_gdp %>% str()
 ```
 
-なども可能です。かっこの中に最初に入るものが直前のもの、ここでは、データになっています。
+なども可能です。かっこの中に最初に入るものが直前のものという規則になっており、ここでは、データになっています。
 
 ### 必要に応じて整形 Transform data
 
@@ -206,6 +211,15 @@ df_gdp %>% filter(country == "Japan") %>% drop_na(gdp) %>%
   ggplot(aes(x = year, y = gdp)) + geom_line()
 ```
 
+1991年以降を見てみたいときは次のようにします。
+
+```{r}
+df_gdp %>% filter(country == "Japan", year > 1990) %>% 
+  drop_na(gdp) %>%
+  ggplot(aes(x = year, y = gdp)) + geom_line()
+```
+
+
 #### 練習 1-Fig.1
 
 1.  1993年ごろまでは増加しているが、そのあとは、増加減少、さまざま。いくつかのピークの年は、`df_gdp %>% filter(country == "Japan")` の下の Next を押して、見ていくと、確認できます。
@@ -226,6 +240,10 @@ df_gdp %>% filter(country == "India") %>%
 df_gdp %>% filter(country == "World") %>%
   ggplot(aes(x = year, y = gdp)) + geom_line()
 ```
+
+#### メモ
+
+どんなことがわかりますか。いろいろな国について、調べたら、さまざまなことがわかりますね。キリがないかもしれません。このように、一つのデータでも、学ぶことは山ほどあります。そして、考えることも。
 
 ### データの理解 Understand data
 
@@ -263,6 +281,8 @@ df_gdp %>% drop_na(gdp) %>% group_by(year) %>% summarize(n = n())
 1.  2000年ぐらいまでは、データがない国もそれなりにある。
 
 2.  2019年ぐらいから後も、データがない国がいくつかある。
+
+3.  2022年は、この、GDP のデータは一つもないようである。（WDI で統一したフォーマットになっていることが影響していると思います。）
 
 #### 2021年のGDPの降順での表示（１）
 
@@ -303,9 +323,24 @@ df_gdp %>% filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR")) %>%
 
 もう少し、このようなグラフをみてみたいというような、メモも大切です。
 
+#### メモ
+
+2021年のデータがない国は何なのか確認したいですよね。そのような国について、調べることも、たいせつだと思います。手間がかかることは確かですが。これらの国の、GDP を調べてみるのも良いかもしれません。それぞれに、理由があるように見えます。
+
+> 幸福な家族はどれも似通っているが、不幸な家族は不幸のあり方がそれぞれ異なっている。(トルストイ著「アンナ・カレーニナ」より)。All happy families are alike; each unhappy family is unhappy in its own way. は、アンナ・カレーニナ原則（Anna Karenina principle）とも言われ、いろいろな分野で重視されています。わたしがたいせつにしている言葉でもあります。
+
+
+```{r}
+df_gdp %>% filter(year == 2021, region != "Aggregates") %>% 
+  filter(is.na(gdp)) %>% distinct(country) %>% pull()
+```
+
+
 #### 練習 1-Fig.3
 
 1.  2010年ごろに、中国のGDP が日本の GDP を超え、それ以降、差が大きくなっている。
+
+2.  中国の、GDP が アメリカの GDP を越す年も、それほど遠くないように見える。そのときには、中国の人は豊かにもなるのだろうか。
 
 2.  アメリカと中国の、GDP が多いので、それを省いて、グラフを書いてみたい。
 
@@ -316,24 +351,30 @@ df_gdp %>% filter(iso2c %in% c("JP", "DE", "IN", "GB", "FR")) %>%
   ggplot(aes(x = year, y = gdp, col = iso2c)) + geom_line()
 ```
 
-期間も制限してみた。
+* 期間を制限してみる。
 
 ```{r}
 df_gdp %>% filter(iso2c %in% c("JP", "DE", "IN", "GB", "FR"), year > 1990) %>%
   ggplot(aes(x = year, y = gdp, col = iso2c)) + geom_line()
 ```
 
+* BRICS の国々はどうだろうか。
+
 ```{r}
 df_gdp %>% filter(iso2c %in% c("BR", "RU", "IN", "CN", "ZA")) %>%
   ggplot(aes(x = year, y = gdp, col = iso2c)) + geom_line()
 ```
 
-中国は他と桁が違うので、中国以外を見る
+* 中国は他と桁が違うので、中国以外を見る
 
 ```{r}
 df_gdp %>% filter(iso2c %in% c("BR", "RU", "IN", "ZA")) %>%
   ggplot(aes(x = year, y = gdp, col = iso2c)) + geom_line()
 ```
+
+#### メモ
+
+これらからも、わかることはたくさんありますね。さらに、考えたいことも、たくさん出てくると思います。みなさんは、どのようなことを考えますか。
 
 #### Fig 4. 世界のGDP における割合（１）
 
@@ -360,6 +401,8 @@ df_gdp %>%
   geom_line(col = "black", position = "stack", linewidth = 0.3) + 
   scale_y_continuous(labels = scales::percent_format(accuracy = 1))
 ```
+
+#### メモ
 
 ドイツがちょっと変なので、データを調べてみました。GDP の値が1969年以前はありませんね。
 
@@ -417,11 +460,26 @@ df_gdp %>%
   scale_y_continuous(labels = scales::percent_format(accuracy = 1))
 ```
 
+* BRICS ではどうだろうか。
+
 ```{r}
 df_gdp %>% 
   filter(region != "Aggregates") %>% drop_na(gdp) %>% 
   group_by(year) %>% mutate(gdp_ratio = gdp/sum(gdp)) %>% ungroup() %>%
   filter(iso2c %in% c("CN", "IN", "RU", "BR", "ZA"))  %>%
+  mutate(iso2co = factor(iso2c, levels = c("ZA", "BR", "RU", "IN", "CN"))) %>%
+  ggplot(aes(x = year, y = gdp_ratio, fill = iso2co)) + geom_area() +
+  geom_line(col = "black", position = "stack", linewidth = 0.3) + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+```
+
+* 中国は割合が大きいので省いてみる。
+
+```{r}
+df_gdp %>% 
+  filter(region != "Aggregates") %>% drop_na(gdp) %>% 
+  group_by(year) %>% mutate(gdp_ratio = gdp/sum(gdp)) %>% ungroup() %>%
+  filter(iso2c %in% c("IN", "RU", "BR", "ZA"))  %>%
   mutate(iso2co = factor(iso2c, levels = c("ZA", "BR", "RU", "IN", "CN"))) %>%
   ggplot(aes(x = year, y = gdp_ratio, fill = iso2co)) + geom_area() +
   geom_line(col = "black", position = "stack", linewidth = 0.3) + 
@@ -462,7 +520,7 @@ df_gdp %>% drop_na(gdp) %>%
 
 -   GDP が小さいところに集中している。
 
--   Log20 スケールを使うと、みやすくなる。
+-   Log10 スケールを使うと、みやすくなる。
 
 -   ここでは、地域なども含めていたので、上では、修正してあります。
 
@@ -509,6 +567,16 @@ df_gdp %>% drop_na(gdp)  %>% filter(region  != "Aggregates") %>%
   geom_density() + scale_x_log10() + facet_wrap(~year)
 ```
 
+* もう少し、年の数を減らしてみる。
+
+```{r}
+df_gdp %>% drop_na(gdp)  %>% filter(region  != "Aggregates") %>%
+  filter(year %in% c(1961, 1991, 2021)) %>%
+  ggplot(aes(gdp, fill = factor(year))) + geom_density(alpha = 0.4) + scale_x_log10()
+```
+
+これから、みててくることもありますね。
+
 #### Fig 10. 地域ごとの GDP の分布
 
 いくつかのグループごとに分布をみてみることも可能です。それには、Boxplot が有効です。
@@ -521,6 +589,18 @@ df_gdp %>% drop_na(gdp) %>% filter(region != "Aggregates") %>%
   ggplot(aes(gdp, region, fill = region)) + 
   geom_boxplot() + scale_x_log10() + labs(y = "") + 
   theme(legend.position = "none")
+```
+
+#### メモ
+
+経年変化も見てみると、見やすいかどうかは別ですが。
+
+```{r}
+df_gdp %>% drop_na(gdp) %>% filter(region != "Aggregates") %>%
+  drop_na(region) %>% filter(year %in% c(1961, 1991, 2021)) %>%
+  ggplot(aes(region, gdp, fill = factor(year))) + 
+  geom_boxplot() + scale_y_log10() + labs(x = "") +
+  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 10))
 ```
 
 #### Fig 11. 収入の多寡による分類ごとの GDP 分布
@@ -611,6 +691,10 @@ map_gdp %>% mutate(income_level = factor(income, levels = c("High income", "Uppe
 ```{r}
 df_gdp %>% filter(country == "China") %>% select(country, year, gdp, income) %>% arrange(year)
 ```
+
+#### メモ
+
+地図は、すこし、難しいですが、通常のグラフとは違う情報も得られます。最近は、さまざまな地図が使えるようになっており、例えば、日本の行政区域の名称に対応させると、県別や、市町村別などの地図も、使うことが可能です。
 
 ## 練習
 
