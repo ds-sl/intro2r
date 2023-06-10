@@ -316,7 +316,7 @@ GDP が大きな国と、小さな国があるのはわかりますが、それ�
 
 ```{r}
 df_gdp %>% drop_na(gdp) %>% 
-  filter(year == 2021) %>%
+  filter(year == 2021) %>% filter(region != "Aggregates") %>%
   ggplot(aes(gdp)) + geom_histogram()
 ```
 
@@ -333,7 +333,7 @@ $log10(1000) = 3$, $log10(1000000) = 6$, $log10(1000000000) = 9$ などになり
 
 ```{r}
 df_gdp %>% drop_na(gdp) %>% 
-  filter(year == 2021) %>%
+  filter(year == 2021) %>% filter(region != "Aggregates") %>%
   ggplot(aes(gdp)) + geom_histogram() + scale_x_log10()
 ```
 
@@ -347,7 +347,7 @@ df_gdp %>% drop_na(gdp) %>%
 
 ```{r}
 df_gdp %>% drop_na(gdp) %>% 
-  filter(year == 2021) %>%
+  filter(year == 2021) %>% filter(region != "Aggregates") %>%
   ggplot(aes(gdp)) + geom_density() + scale_x_log10()
 ```
 
