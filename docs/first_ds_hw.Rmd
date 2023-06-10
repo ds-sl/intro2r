@@ -1,0 +1,308 @@
+---
+title: "はじめてのデータ・サイエンス　課題"
+author: "ID, Your Name"
+date: "Last Updated: `r Sys.Date()`"
+output:
+  html_notebook:
+    toc: yes
+    toc_float: yes
+    highlight: tango
+    theme: cerulean
+    number_sections: yes
+---
+
+# プロジェクト
+
+他の WDI のデータで、データサイエンス。
+
+プロジェクト1 までが課題。余裕があれば、プロジェクト２、プロジェクト3 に挑戦してください。
+
+1.  最初に、`gdp = "NY.GDP.MKTP.CD"` としましたが、GNI per capita, Atlas method (current US\$): NY.GNP.PCAP.CD に変えてみましょう。
+
+GDP の時のコードを下につけますから、コードを確認して、国などを必要に応じて変更して、気づいたこと、わかったこと、疑問にわかったことを書いていってください。
+
+2.  [World Development Indicators](https://datatopics.worldbank.org/world-development-indicators/) のサイトの下にある、Data Themes（テーマ）から自分が調べたいテーマを選び、そのテーマから、データコードを取得して、同様の分析をしてみてください。データがあまりない場合もありますので、ある程度データが多いものを選択することをお勧めします。
+
+3.  可能なら、「3 R の パッケージ WDI の活用」の内容も含めて、選択した、WDI のデータについて、調べてみましょう。
+
+## 準備 Setup
+
+```{r}
+Sys.setenv(LANG = "en")
+library(tidyverse)
+library(WDI)
+```
+
+```{r eval=FALSE}
+dir.create("./data")
+```
+
+# プロジェクト１
+
+## データ取得 Import data
+
+GNI per capita, Atlas method (current US\$): NY.GNP.PCAP.CD ですから、名前を、`df_gnppcap` に変えてみました。
+
+```{r cache=TRUE}
+df_gnppcap <- WDI(country = "all", 
+              indicator = c(gnppcap = "NY.GNP.PCAP.CD"), 
+              extra = TRUE)
+```
+
+## データ構造の確認
+
+```{r}
+head(df_gnppcap)
+```
+
+```{r}
+str(df_gnppcap)
+```
+
+```{r}
+summary(df_gnppcap) 
+```
+
+```{r}
+df_gnppcap %>% distinct(country) %>% pull()
+```
+
+### メモ：あれば
+
+## 必要に応じて整形 Transform data
+
+*日本にしてありますが、他の国に変えてくださって構いません。*
+
+```{r}
+df_gnppcap %>% filter(country == "Japan") %>% head()
+```
+
+## 視覚化 data visualization
+
+### Fig 1. ある国のGNPPCAP の経年変化を折線グラフ（line graph）
+
+*日本にしてありますが、他の国に変えてくださって構いません。コードをコピーして、いくつかの国について調べてみるのも良いでしょう。*
+
+```{r}
+df_gnppcap %>% filter(country == "Japan") %>%
+  ggplot(aes(x = year, y = gnppcap)) + geom_line()
+```
+
+### Fig 1 について
+
+*気づいたこと、わかったこと、疑問にわかったこと（幾つでも）*
+
+-   
+
+-   
+
+## さまざまな視覚化
+
+### Fig 2. 各年ごとのデータの数
+
+```{r}
+df_gnppcap %>% drop_na(gnppcap) %>% ggplot(aes(x = year)) + geom_bar()
+```
+
+### 2021年のGNPCAPの降順・昇順での表示（１）
+
+GDP ではなく、GNP per Capita ですから、降順、昇順、地域ごとなど、いろいろと調べてみても良いですね。
+
+```{r}
+df_gnppcap %>% filter(year == 2021) %>% drop_na(gnppcap) %>% 
+  arrange(desc(gnppcap))
+```
+
+```{r}
+df_gnppcap %>% filter(year == 2021, region == "Aggregates") %>% 
+  drop_na(gnppcap) %>% arrange(gnppcap) 
+```
+
+### Fig 3. いくつかの国、または、グループのGNP per Capit の経年変化
+
+*iso2c の右の国のコードを入れ替えてみてください。*
+
+```{r}
+df_gnppcap %>% filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR")) %>%
+  ggplot(aes(x = year, y = gnppcap, col = iso2c)) + geom_line()
+```
+
+*下のはどんな地域でしょうか。*
+
+```{r}
+df_gnppcap %>% filter(iso2c %in% c("XE", "XL", "XI", "XH","XQ","XO", "XP", "XF", "XJ")) %>%
+  ggplot(aes(x = year, y = gnppcap, col = iso2c)) + geom_line()
+```
+
+### Fig 3 について
+
+*気づいたこと、わかったこと、疑問にわかったこと（幾つでも）*
+
+-   
+
+-   
+
+## 
+
+### Fig 4. Fig 5. に対応するものは、省略
+
+### Fig 5. 2021年の世界の国のGDP per Capita の分布（１）
+
+*幅を変更したり、分ける個数を変更するには `binwidth = 0.5` や、`bins = 20` を、`geom_histogram()` のかっこの中に入れます。*
+
+```{r}
+df_gnppcap %>% drop_na(gnppcap) %>% 
+  filter(year == 2021) %>% filter(region  != "Aggregates") %>%
+  ggplot(aes(gnppcap)) + geom_histogram()
+```
+
+### Fig 6. 2021年の世界の国のGDPの分布（２）
+
+```{r}
+df_gnppcap %>% drop_na(gnppcap) %>% 
+  filter(year == 2021) %>% filter(region  != "Aggregates") %>%
+  ggplot(aes(gnppcap)) + geom_histogram() + scale_x_log10()
+```
+
+### Fig 5, 6 について
+
+*気づいたこと、わかったこと、疑問にわかったこと（幾つでも）*
+
+-   
+
+-   
+
+-   
+
+### Fig 7. 2021年の世界の国のGDP per Capita の分布（３）
+
+また、密度曲線に変えるには、`geom_density` を使います。
+
+```{r}
+df_gnppcap %>% drop_na(gnppcap) %>% 
+  filter(year == 2021) %>% filter(region  != "Aggregates") %>%
+  ggplot(aes(gnppcap)) + geom_density()
+```
+
+```{r}
+df_gnppcap %>% drop_na(gnppcap) %>% 
+  filter(year == 2021) %>% filter(region  != "Aggregates") %>%
+  ggplot(aes(gnppcap)) + geom_density() + scale_x_log10()
+```
+
+### Fig 8. 2021年の世界の国のGDPの分布（４）
+
+*これは、2021年のデータですが、density の変化を見てみます。alpha の値は透明度です。*
+
+*log10 scale と log10 をつけないものと、どちらがみやすいですか。*
+
+```{r}
+df_gnppcap %>% drop_na(gnppcap) %>% filter(region  != "Aggregates") %>%
+  filter(year %in% c(1961, 1971, 1981, 1991, 2001, 2011, 2021)) %>%
+  ggplot(aes(gnppcap, fill = factor(year))) + geom_density(alpha = 0.4)
+```
+
+```{r}
+df_gnppcap %>% drop_na(gnppcap) %>% filter(region  != "Aggregates") %>%
+  filter(year %in% c(1961, 1971, 1981, 1991, 2001, 2011, 2021)) %>%
+  ggplot(aes(gnppcap, fill = factor(year))) + geom_density(alpha = 0.4) + scale_x_log10()
+```
+
+### Fig 9. 2021年の世界の国のGDP per Capita の分布（５）
+
+少しみにくいので、分けてみます。
+
+```{r}
+df_gnppcap %>% drop_na(gnppcap) %>% filter(region  != "Aggregates") %>%
+  filter(year %in% c(1971, 1981, 1991, 2001, 2011, 2021)) %>%
+  ggplot(aes(gnppcap, fill = factor(year))) + 
+  geom_density() + scale_x_log10() + facet_wrap(~year)
+```
+
+### Fig 7, 8, 9 について
+
+*気づいたこと、わかったこと、疑問にわかったこと（幾つでも）*
+
+-   
+
+-   
+
+-   
+
+### Fig 10. 地域ごとの GDP の分布
+
+いくつかのグループごとに分布をみてみることも可能です。それには、Boxplot が有効です。
+
+```{r}
+df_gnppcap %>% drop_na(gnppcap) %>% filter(region != "Aggregates") %>%
+  drop_na(region) %>% filter(year %in% c(2021)) %>%
+  ggplot(aes(gnppcap, region, fill = region)) + 
+  geom_boxplot() + scale_x_log10() + labs(y = "") + 
+  theme(legend.position = "none")
+```
+
+### Fig 11. 収入の多寡による分類ごとの GDP 分布
+
+```{r}
+df_gnppcap %>% drop_na(gnppcap) %>% filter(region != "Aggregates") %>%
+  drop_na(income) %>% filter(year %in% c(2021)) %>%
+  mutate(level = factor(income, c("High income", "Upper middle income", "Lower middle income", "Low income"))) %>%
+  ggplot(aes(gnppcap, level, fill = income)) + 
+  geom_boxplot() + scale_x_log10() + labs(y = "") + 
+  theme(legend.position = "none")
+```
+
+### Fig 10, 11 について
+
+*気づいたこと、わかったこと、疑問にわかったこと（幾つでも）*
+
+-   
+
+-   
+
+-   
+
+### 世界地図の準備
+
+地図で、国の income level をみてみましょう。
+
+```{r cache=TRUE}
+library(maps)
+gnppcap_short <- df_gnppcap %>% filter(year == 2021, region != "Aggregates") %>%
+  select(iso2c, gnppcap, income)
+map_world <- map_data('world')
+map_gnppcap <- map_world %>% 
+  mutate(iso2c = iso.alpha(region, n=2)) %>% 
+  left_join(gnppcap_short, by = "iso2c") 
+head(map_gnppcap)
+```
+
+### Fig 12. Income Level による色分け地図
+
+```{r cache = TRUE}
+map_gnppcap %>% mutate(income_level = factor(income, levels = c("High income", "Upper middle income", "Lower middle income", "Low income", "Not classified", NA))) %>%
+  ggplot() +
+  geom_map(aes(long, lat, map_id = region, fill = income_level), map = map_world, col = "black", size = 0.1) 
+```
+
+### Fig 13. GDP per Capita による色分け地図
+
+```{r cache = TRUE}
+map_gnppcap %>% 
+  ggplot() +
+  geom_map(aes(x=long, y=lat, map_id = region, fill = gnppcap), map = map_world, col = "black", size = 0.1) 
+```
+
+### Fig 12, 13 について
+
+*気づいたこと、わかったこと、疑問にわかったこと（幾つでも）*
+
+-   
+
+-   
+
+-   
+
+# プロジェクト2
+
+# プロジェクト3
