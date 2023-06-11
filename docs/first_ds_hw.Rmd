@@ -112,8 +112,8 @@ df_gnppcap %>% drop_na(gnppcap) %>% ggplot(aes(x = year)) + geom_bar()
 *GDP ではなく、GNP per Capita ですから、降順　`arrange(desc(gnppcap))`、昇順`arrange(gnppcap)`、地域ごとなど、調べてみてください。*
 
 ```{r}
-df_gnppcap %>% filter(year == 2021) %>% drop_na(gnppcap) %>% 
-  arrange(desc(gnppcap))
+df_gnppcap %>% filter(year == 2021, region != "Aggregates") %>% 
+  drop_na(gnppcap) %>% arrange(desc(gnppcap))
 ```
 
 ```{r}
@@ -161,7 +161,7 @@ df_gnppcap %>% filter(iso2c %in% c("XE", "XL", "XI", "XH","XQ","XO", "XP", "XF",
 
 *世界のGDP における割合に変えて、それぞれのグループに属する国の数を見てみましょう。*
 
-*income level は、毎年変更しているわけではないの、現在の income level の国について、データがあるかという数です。人口とかがわかると面白いかもしれませんね。*
+*income level は、毎年変更しているわけではないので、現在の income level の国について、データがあるかという数です。人口とかがわかると面白いかもしれませんね。*
 
 ```{r}
 df_gnppcap %>% drop_na(gnppcap) %>% filter(region != "Aggregates") %>%
