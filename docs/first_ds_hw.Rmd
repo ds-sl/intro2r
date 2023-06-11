@@ -17,13 +17,10 @@ output:
 
 プロジェクト1 までが課題。余裕があれば、プロジェクト２、プロジェクト3 に挑戦してください。
 
-1.  最初に、`gdp = "NY.GDP.MKTP.CD"` としましたが、GNI per capita, Atlas method (current US\$): NY.GNP.PCAP.CD に変えてみましょう。
-
-GDP の時のコードを下につけますから、コードを確認して、国などを必要に応じて変更して、気づいたこと、わかったこと、疑問にわかったことを書いていってください。
-
-2.  [World Development Indicators](https://datatopics.worldbank.org/world-development-indicators/) のサイトの下にある、Data Themes（テーマ）から自分が調べたいテーマを選び、そのテーマから、データコードを取得して、同様の分析をしてみてください。データがあまりない場合もありますので、ある程度データが多いものを選択することをお勧めします。
-
-3.  可能なら、「3 R の パッケージ WDI の活用」の内容も含めて、選択した、WDI のデータについて、調べてみましょう。
+-   プロジェクト1：`gdp = "NY.GDP.MKTP.CD"` を、GNI per capita, Atlas method (current US\$): NY.GNP.PCAP.CD に置き換えてデータサイエンス（視覚化を通してデータを理解）。
+    -   GDP の時のコードを下につけますから、コードを確認して、国などを必要に応じて変更して、気づいたこと、わかったこと、疑問に思ったことを書いていってください。
+-   プロジェクト2：[World Development Indicators](https://datatopics.worldbank.org/world-development-indicators/) のサイトの下にある、Data Themes（テーマ）などから自分が調べたいテーマを選び、そのテーマから、データコードを取得して、同様の分析をしてみてください。データがあまりない場合もありますので、ある程度データが多いものを選択することをお勧めします。
+-   プロジェクト3：可能なら、「3 R の パッケージ WDI の活用」の内容も含めて、選択した、WDI のデータについて、調べてみましょう。
 
 ## 準備 Setup
 
@@ -41,7 +38,7 @@ dir.create("./data")
 
 ## データ取得 Import data
 
-GNI per capita, Atlas method (current US\$): NY.GNP.PCAP.CD ですから、名前を、`df_gnppcap` に変えてみました。
+GNI per capita, Atlas method (current US\$): NY.GNP.PCAP.CD ですから、変数名を　`gnppcap` 名前を、`df_gnppcap` に変えてみました。他の名前でも構いません。そのときは、適宜変更していってください。
 
 ```{r cache=TRUE}
 df_gnppcap <- WDI(country = "all", 
@@ -63,23 +60,29 @@ str(df_gnppcap)
 summary(df_gnppcap) 
 ```
 
+*国と、その iso2c を調べるのに役立ちます。*
+
 ```{r}
-df_gnppcap %>% distinct(country) %>% pull()
+df_gnppcap %>% filter(region != "Aggregates") %>% distinct(country, iso2c)
+```
+
+*地域とその iso2c を調べるには、下のようなものが役に立ちます。*
+
+```{r}
+df_gnppcap %>% filter(region == "Aggregates") %>% distinct(country, iso2c)
 ```
 
 ### メモ：あれば
 
-## 必要に応じて整形 Transform data
+## 様々な視覚化によるデータ理解
 
-*日本にしてありますが、他の国に変えてくださって構いません。*
+### 特定の国の GNI per Capita の経年変化の折線グラフ
+
+*日本にしてありますが、他の国や地域に変えてみてください。*
 
 ```{r}
 df_gnppcap %>% filter(country == "Japan") %>% head()
 ```
-
-## 視覚化 data visualization
-
-### Fig 1. ある国のGNPPCAP の経年変化を折線グラフ（line graph）
 
 *日本にしてありますが、他の国に変えてくださって構いません。コードをコピーして、いくつかの国について調べてみるのも良いでしょう。*
 
@@ -88,7 +91,7 @@ df_gnppcap %>% filter(country == "Japan") %>%
   ggplot(aes(x = year, y = gnppcap)) + geom_line()
 ```
 
-### Fig 1 について
+#### 特定の国の GNI per Capita の経年変化 について
 
 *気づいたこと、わかったこと、疑問にわかったこと（幾つでも）*
 
@@ -96,17 +99,17 @@ df_gnppcap %>% filter(country == "Japan") %>%
 
 -   
 
-## さまざまな視覚化
+-   
 
-### Fig 2. 各年ごとのデータの数
+### 各年ごとのデータの数
 
 ```{r}
 df_gnppcap %>% drop_na(gnppcap) %>% ggplot(aes(x = year)) + geom_bar()
 ```
 
-### 2021年のGNPCAPの降順・昇順での表示（１）
+### 特定の年の GNI per Capita の降順または昇順での表示
 
-GDP ではなく、GNP per Capita ですから、降順、昇順、地域ごとなど、いろいろと調べてみても良いですね。
+*GDP ではなく、GNP per Capita ですから、降順　`arrange(desc(gnppcap))`、昇順`arrange(gnppcap)`、地域ごとなど、調べてみてください。*
 
 ```{r}
 df_gnppcap %>% filter(year == 2021) %>% drop_na(gnppcap) %>% 
@@ -118,7 +121,17 @@ df_gnppcap %>% filter(year == 2021, region == "Aggregates") %>%
   drop_na(gnppcap) %>% arrange(gnppcap) 
 ```
 
-### Fig 3. いくつかの国、または、グループのGNP per Capit の経年変化
+#### 特定の年の GNI per Capita の降順または昇順
+
+*気づいたこと、わかったこと、疑問にわかったこと（幾つでも）*
+
+-   
+
+-   
+
+-   
+
+### いくつかの国、またはグループの GNI per Capita の経年変化
 
 *iso2c の右の国のコードを入れ替えてみてください。*
 
@@ -127,14 +140,14 @@ df_gnppcap %>% filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR")) %>
   ggplot(aes(x = year, y = gnppcap, col = iso2c)) + geom_line()
 ```
 
-*下のはどんな地域でしょうか。*
+*下はどんな地域でしょうか。調べたい国や地域の iso2c を入れてください。*
 
 ```{r}
 df_gnppcap %>% filter(iso2c %in% c("XE", "XL", "XI", "XH","XQ","XO", "XP", "XF", "XJ")) %>%
   ggplot(aes(x = year, y = gnppcap, col = iso2c)) + geom_line()
 ```
 
-### Fig 3 について
+#### いくつかの国、またはグループの GNI per Capita の経年変化
 
 *気づいたこと、わかったこと、疑問にわかったこと（幾つでも）*
 
@@ -144,11 +157,35 @@ df_gnppcap %>% filter(iso2c %in% c("XE", "XL", "XI", "XH","XQ","XO", "XP", "XF",
 
 ## 
 
-### Fig 4. Fig 5. に対応するものは、省略
+### グループごとの国の数
 
-### Fig 5. 2021年の世界の国のGDP per Capita の分布（１）
+*世界のGDP における割合に変えて、それぞれのグループに属する国の数を見てみましょう。*
 
-*幅を変更したり、分ける個数を変更するには `binwidth = 0.5` や、`bins = 20` を、`geom_histogram()` のかっこの中に入れます。*
+*income level は、毎年変更しているわけではないの、現在の income level の国について、データがあるかという数です。人口とかがわかると面白いかもしれませんね。*
+
+```{r}
+df_gnppcap %>% drop_na(gnppcap) %>% filter(region != "Aggregates") %>%
+  filter(income != "Not classified") %>%
+  group_by(year, income) %>% summarize(number_of_countries = n()) %>% 
+  mutate(level = factor(income, c("High income", "Upper middle income", "Lower middle income", "Low income"))) %>%
+  ggplot(aes(x = year, y = number_of_countries, fill = level)) + 
+  geom_col(col = "black", linewidth = 0.1)
+```
+
+```{r}
+df_gnppcap %>% drop_na(gnppcap) %>% filter(region != "Aggregates") %>%
+  filter(income != "Not classified") %>%
+  group_by(year, income) %>% summarize(number_of_countries = n()) %>% 
+  mutate(ratio = number_of_countries/sum(number_of_countries)) %>%
+  mutate(level = factor(income, c("High income", "Upper middle income", "Lower middle income", "Low income"))) %>%
+  ggplot(aes(x = year, y = ratio, fill = income)) + 
+  geom_col(col = "black", linewidth = 0.1)  +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+```
+
+### 特定の年の世界の国の GNI per Capita の分布
+
+*年を変更したり、幅を変更したり、分ける個数を変更するなど。 `binwidth = 0.5` や、`bins = 20` を、`geom_histogram()` のかっこの中に入れます。*
 
 ```{r}
 df_gnppcap %>% drop_na(gnppcap) %>% 
@@ -156,25 +193,11 @@ df_gnppcap %>% drop_na(gnppcap) %>%
   ggplot(aes(gnppcap)) + geom_histogram()
 ```
 
-### Fig 6. 2021年の世界の国のGDPの分布（２）
-
 ```{r}
 df_gnppcap %>% drop_na(gnppcap) %>% 
   filter(year == 2021) %>% filter(region  != "Aggregates") %>%
   ggplot(aes(gnppcap)) + geom_histogram() + scale_x_log10()
 ```
-
-### Fig 5, 6 について
-
-*気づいたこと、わかったこと、疑問にわかったこと（幾つでも）*
-
--   
-
--   
-
--   
-
-### Fig 7. 2021年の世界の国のGDP per Capita の分布（３）
 
 また、密度曲線に変えるには、`geom_density` を使います。
 
@@ -189,8 +212,6 @@ df_gnppcap %>% drop_na(gnppcap) %>%
   filter(year == 2021) %>% filter(region  != "Aggregates") %>%
   ggplot(aes(gnppcap)) + geom_density() + scale_x_log10()
 ```
-
-### Fig 8. 2021年の世界の国のGDPの分布（４）
 
 *これは、2021年のデータですが、density の変化を見てみます。alpha の値は透明度です。*
 
@@ -208,8 +229,6 @@ df_gnppcap %>% drop_na(gnppcap) %>% filter(region  != "Aggregates") %>%
   ggplot(aes(gnppcap, fill = factor(year))) + geom_density(alpha = 0.4) + scale_x_log10()
 ```
 
-### Fig 9. 2021年の世界の国のGDP per Capita の分布（５）
-
 少しみにくいので、分けてみます。
 
 ```{r}
@@ -219,7 +238,7 @@ df_gnppcap %>% drop_na(gnppcap) %>% filter(region  != "Aggregates") %>%
   geom_density() + scale_x_log10() + facet_wrap(~year)
 ```
 
-### Fig 7, 8, 9 について
+#### 特定の年の GNI per Capita の分布について
 
 *気づいたこと、わかったこと、疑問にわかったこと（幾つでも）*
 
@@ -229,9 +248,9 @@ df_gnppcap %>% drop_na(gnppcap) %>% filter(region  != "Aggregates") %>%
 
 -   
 
-### Fig 10. 地域ごとの GDP の分布
+### グループごとの GNI per Capita の分布
 
-いくつかのグループごとに分布をみてみることも可能です。それには、Boxplot が有効です。
+*いくつかのグループごとに分布をみてみることも可能です。それには、Boxplot が有効です*。
 
 ```{r}
 df_gnppcap %>% drop_na(gnppcap) %>% filter(region != "Aggregates") %>%
@@ -241,7 +260,7 @@ df_gnppcap %>% drop_na(gnppcap) %>% filter(region != "Aggregates") %>%
   theme(legend.position = "none")
 ```
 
-### Fig 11. 収入の多寡による分類ごとの GDP 分布
+***収入の多寡による分類ごとの GNI per Capita の分布***
 
 ```{r}
 df_gnppcap %>% drop_na(gnppcap) %>% filter(region != "Aggregates") %>%
@@ -252,7 +271,7 @@ df_gnppcap %>% drop_na(gnppcap) %>% filter(region != "Aggregates") %>%
   theme(legend.position = "none")
 ```
 
-### Fig 10, 11 について
+### グループごとの GNI per Capita の分布について
 
 *気づいたこと、わかったこと、疑問にわかったこと（幾つでも）*
 
@@ -262,9 +281,9 @@ df_gnppcap %>% drop_na(gnppcap) %>% filter(region != "Aggregates") %>%
 
 -   
 
-### 世界地図の準備
+### 色分け地図
 
-地図で、国の income level をみてみましょう。
+***世界地図の準備***
 
 ```{r cache=TRUE}
 library(maps)
@@ -277,7 +296,7 @@ map_gnppcap <- map_world %>%
 head(map_gnppcap)
 ```
 
-### Fig 12. Income Level による色分け地図
+***Income Level による色分け地図***
 
 ```{r cache = TRUE}
 map_gnppcap %>% mutate(income_level = factor(income, levels = c("High income", "Upper middle income", "Lower middle income", "Low income", "Not classified", NA))) %>%
@@ -285,7 +304,7 @@ map_gnppcap %>% mutate(income_level = factor(income, levels = c("High income", "
   geom_map(aes(long, lat, map_id = region, fill = income_level), map = map_world, col = "black", size = 0.1) 
 ```
 
-### Fig 13. GDP per Capita による色分け地図
+***GNI per Capita による色分け地図***
 
 ```{r cache = TRUE}
 map_gnppcap %>% 
@@ -293,7 +312,7 @@ map_gnppcap %>%
   geom_map(aes(x=long, y=lat, map_id = region, fill = gnppcap), map = map_world, col = "black", size = 0.1) 
 ```
 
-### Fig 12, 13 について
+### 色分け地図 について
 
 *気づいたこと、わかったこと、疑問にわかったこと（幾つでも）*
 
@@ -305,4 +324,16 @@ map_gnppcap %>%
 
 # プロジェクト2
 
+## データ取得
+
+## データ構造の確認
+
+## 様々な視覚化によるデータ理解
+
+*気づいたこと、わかったこと、疑問にわかったことの記述をお忘れなく。*
+
 # プロジェクト3
+
+## 調べたWDI の名称と、データコード
+
+*WDI name と data code を最初に書いておいてください。*
