@@ -155,7 +155,7 @@ df_gnppcap %>% filter(iso2c %in% c("XE", "XL", "XI", "XH","XQ","XO", "XP", "XF",
 
 -   
 
-## 
+-   
 
 ### グループごとの国の数
 
