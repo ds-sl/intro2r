@@ -109,7 +109,7 @@ df_gnppcap %>% drop_na(gnppcap) %>% ggplot(aes(x = year)) + geom_bar()
 
 ### 特定の年の GNI per Capita の降順または昇順での表示
 
-*GDP ではなく、GNP per Capita ですから、降順　`arrange(desc(gnppcap))`、昇順`arrange(gnppcap)`、地域ごとなど、調べてみてください。*
+*GDP ではなく、GNP per Capita ですから、降順　`arrange(desc(gnppcap))`、昇順`arrange(gnppcap)`、地域ごとなど、調べてみてください。下の二つのコードは何が違うかわかりますか。違っているのは、１箇所だけですね。`!=`* は否定です。
 
 ```{r}
 df_gnppcap %>% filter(year == 2021, region != "Aggregates") %>% 
