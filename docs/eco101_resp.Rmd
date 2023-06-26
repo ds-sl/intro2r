@@ -428,7 +428,7 @@ _みなさんも様々な考察があるのではないでしょうか。同時�
 
 ## グループごとの比較
 
-_それぞれのグループにたくさんの国があるので、そのまま、折れ線グラフを書くことはできません。いくつかの年を抽出して、Boxplot を使うてもありますが、下では、それぞれのグループで、平均をとって、曲線で表しています。_
+_それぞれのグループにたくさんの国があるので、そのまま、折れ線グラフを書くことはできません。いくつかの年を抽出して、Boxplot を使う手もありますが、下では、それぞれのグループで、平均をとって、曲線で表しています。_
 
 ```{r}
 df %>% filter(region != "Aggregates", income != "Not classified") %>% drop_na(gnppcap, income) %>%  mutate(level = factor(income, c("High income", "Upper middle income", "Lower middle income", "Low income"))) %>%
@@ -459,6 +459,8 @@ df %>% filter(region != "Aggregates", year == 2019) %>%
   drop_na(gnppcap, emission) %>% 
   ggplot(aes(gnppcap, emission, col = income)) + geom_point() + scale_x_log10()
 ```
+
+_このグラフと、上で描いた「Boxplot of CO2 Emission Capita by Income Level」とは、どのように関係していますか。それぞれの長所・欠点などは、どのようなことでしょうか。みなさんは、このグラフから、どのような考察を得ますか。_
 
 # 最後に
 
