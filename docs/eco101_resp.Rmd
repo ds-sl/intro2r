@@ -160,7 +160,7 @@ df %>% filter(is.na(income) | income == "Not classified") %>% distinct(country) 
 
 ### 収入レベルについて
 
-_下のような問いは、World Bank のサイトに回答が書かれています。探してみてください。（[参照：所得レベル・地域](https://datatopics.worldbank.org/world-development-indicators/the-world-by-income-and-region.html)）しかし、概要をしるには、AI も便利なので、AI の回答をつけておきます。_
+_下のような問いは、World Bank のサイトに回答が書かれています。探してみてください。（[参照：所得レベル・地域](https://datatopics.worldbank.org/world-development-indicators/the-world-by-income-and-region.html)）しかし、概要を知るには、AI も便利なので、AI の回答をつけておきます。_
 
 **Q.** WDI の 表の income 列に書かれている、収入レベル はどのように決定されているのでしょうか。
 
