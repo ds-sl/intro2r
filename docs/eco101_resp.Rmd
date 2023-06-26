@@ -1,6 +1,6 @@
 ---
 title: "はじめてのデータ・サイエンス　課題について"
-author: "ID, Your Name"
+author: "鈴木寛（H. Suzuki）"
 date: "Last Updated: `r Sys.Date()`"
 output:
   html_notebook:
