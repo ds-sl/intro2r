@@ -1,0 +1,478 @@
+---
+title: "はじめてのデータ・サイエンス　課題について"
+author: "ID, Your Name"
+date: "Last Updated: `r Sys.Date()`"
+output:
+  html_notebook:
+    toc: yes
+    toc_float: yes
+    highlight: tango
+    theme: cerulean
+    number_sections: yes
+---
+
+# プロジェクト
+
+他の WDI のデータで、データサイエンス。
+
+プロジェクト1 までが課題。余裕があれば、プロジェクト２、プロジェクト3 に挑戦してください。
+
+-   プロジェクト1：`gdp = "NY.GDP.MKTP.CD"` を、GNI per capita, Atlas method (current US\$): NY.GNP.PCAP.CD に置き換えてデータサイエンス（視覚化を通してデータを理解）。
+    -   GDP の時のコードを下につけますから、コードを確認して、国などを必要に応じて変更して、気づいたこと、わかったこと、疑問に思ったことを書いていってください。
+-   プロジェクト2：[World Development Indicators](https://datatopics.worldbank.org/world-development-indicators/) のサイトの下にある、Data Themes（テーマ）などから自分が調べたいテーマを選び、そのテーマから、データコードを取得して、同様の分析をしてみてください。データがあまりない場合もありますので、ある程度データが多いものを選択することをお勧めします。
+-   プロジェクト3：可能なら、「3 R の パッケージ WDI の活用」の内容も含めて、選択した、WDI のデータについて、調べてみましょう。
+
+## 準備 Setup
+
+```{r}
+Sys.setenv(LANG = "en")
+library(tidyverse)
+library(WDI)
+```
+
+```{r eval=FALSE}
+dir.create("./data")
+```
+
+# プロジェクト
+
+GNI per Capita の分析が課題でしたが、プロジェクト2 で、CO2 emissoins (metric tons per capita) を選択された方がおられたので、それとあわせて、二つのデータを取得して、三つ目のプロジェクトも視野に入れて、少し、例として書いてみたいと思います。
+
+## データについて
+
+### GDP, GDP per Capita, GNI, GNI per Capita
+
+**Q.** GDP per Capita は、GDP を Population で割ったもの、
+GNI per Capita は、GNI を Pupulation で割ったものであっていますか。
+GDP と　GNI の違い、GDP per Capita と GNI per Capita の違いを教えてください。
+
+**ChatGPT 応答**
+
+はい、GDP per Capitaは、GDPを人口で割ったものであり、GNI per Capitaも、GNIを人口で割ったものです。
+
+GDPは、ある国の国内で生産された全ての商品やサービスの市場価値を表す指標であり、国内総生産（Gross Domestic Product）の略称です。一方、GNIは、ある国の国民が海外で生産した富の総額に国内で生産された富を加えたものであり、国民総所得（Gross National Income）の略称です。
+
+GDP per CapitaとGNI per Capitaの違いは、計算対象となる富の種類にあります。GDP per Capitaは、国内で生産された全ての商品やサービスの市場価値を人口で割ったものを表すのに対して、GNI per Capitaは、国民が海外で生産した富の総額に国内で生産された富を加えたものを人口で割ったものを表します。
+
+このため、GDP per Capitaは、ある国の国内経済活動の規模を示す指標であり、一方、GNI per Capitaは、ある国の国民の経済的な豊かさを示す指標として用いられます。GDP per CapitaとGNI per Capitaは、それぞれの指標が示すものが異なるため、必ずしも同じ値になるわけではありません。
+
+### CO2 emissions 
+
+**Q.** WDI の EN.ATM.CO2E.PC: CO2 emissions (metric tons per capita) の定義はどのようなもので、また、どのように、求めているのでしょうか。
+
+**ChatGPT の応答**
+
+EN.ATM.CO2E.PCは、World Development Indicators（WDI）の一部で、国ごとの1人当たりの二酸化炭素（CO2）排出量を表す指標です。具体的には、単位はメトリックトン（1トン = 1,000キログラム）で、国の総CO2排出量を人口で割った値を示します。
+
+この指標は、国ごとにCO2排出量を比較するために用いられます。CO2排出量は、主に燃料の燃焼によって発生します。このため、EN.ATM.CO2E.PCは、国のエネルギー使用量や産業構造、交通量、人口密度などの要因に応じて異なる値を示すことがあります。
+
+EN.ATM.CO2E.PCは、気候変動や環境問題の影響を測るための指標として、政府や研究者、企業などによって広く利用されています。また、国際的なCO2排出削減目標の策定や、国際協力の枠組みの中でのCO2排出削減の責任分担などにも利用されます。
+
+_みなさんの知識を付合していますか。もし、誤っていたらお知らせください。_
+
+## データ取得 Import data
+
+- NY.GNP.PCAP.CD: GNI per capita, Atlas method (current US\$)
+  - https://data.worldbank.org/indicator/NY.GNP.PCAP.CD
+  - [Data files](https://datahub.io/world-bank/ny.gnp.pcap.cd#readme)
+- EN.ATM.CO2E.PC: CO2 emissions (metric tons per capita)
+  - https://data.worldbank.org/indicator/EN.ATM.CO2E.PC
+  - [Meta Data:Grossary]( https://databank.worldbank.org/metadataglossary/ida-results-measurement-system/series/EN.ATM.CO2E.PC)
+  
+_データのページの形式に慣れていれば、URL だけ、わかっていれば、他は、難しくなく、取得することができます。たとえば、データについては、Details に書かれていますね。詳細な情報は最初は不要ですが、あとで、レポートなどを作成する時は必要ですから、かならず、リンクを残しておくことが大切です。これが、データを根拠とした考察に不可欠な、Reproducibility （再現可能性）につながります。_
+
+データの名前は、`df` にしてみましょう。 
+
+_何種類かデータを扱う時は、もう少しわかりやすい（descriptive な）名前をつけた方がよいですが、今回は一つだけであることと、他の指標に置き換えやすいので、データの形式、data frame からの頭文字にしておきます。_
+
+```{r cache=TRUE}
+df <- WDI(country = "all", 
+              indicator = c(gnppcap = "NY.GNP.PCAP.CD", 
+                            emission = "EN.ATM.CO2E.PC"), 
+              extra = TRUE)
+```
+
+
+_それぞれの指標の値が、列に現れますが、列の名前が指標の名前ではなくて、わかりやすい方がよいので、上のようにしてあります。_
+
+## データ構造の確認
+
+_Posit Cloud ではなく、RStudio を使っています。そこで、メモリーを気にせず、`head(df)` ではなく、ページごとの表示を使います。データを、10行ずつ、100ページ確認することができます。_
+
+```{r}
+df
+```
+
+_Structure `str(df)` とあまり変わりませんが、`tidyverse` の命令 `glimpse(df)` を使います。_
+
+```{r}
+glimpse(df)
+```
+
+_`summary(df)` でも多少情報がわかりますね。年や、それぞれの指標の最小値、小さい方から25パーセントの値、中央値、平均、小さい方から75パーセントの値、最大値です。ただし、年は、そのデータがすべてあるわけではありませんので注意してください。_
+
+```{r}
+summary(df)
+```
+
+_年毎のそれぞれの指標のデータの数を調べておきます。いくつぐらいの国についてのデータがあるかを知りたいので、地域などについてまとめてあるデータをまず除外し、年毎に分けて、それぞれの指標が、NA（not available）ではない、つまりデータがある数を数えています。_
+
+```{r}
+df %>% filter(region != "Aggregates") %>%
+  group_by(year) %>% 
+  summarize(gnp_data = sum(!is.na(gnppcap)), co2_data = sum(!is.na(emission)))
+```
+
+_表でも十分かもしれませんが、グラフにもしてみます。_
+
+```{r}
+df %>% filter(region != "Aggregates") %>%
+  group_by(year) %>% 
+  summarize(gnp_data = sum(!is.na(gnppcap)), co2_data = sum(!is.na(emission))) %>%
+  pivot_longer(-year, names_to = "type", values_to = "value") %>%
+  ggplot(aes(year, value, col = type)) + geom_line()
+```
+
+**考察**
+
+- GNI per Capita のデータは、1962 年から2020 年まで増え続け、2021年は微減。
+- CO2 Emissions per Capita のデータは、1990年から、2019年までほぼ一定してある。
+
+_気づいたこと、わかったこと、不明なことなどを、残しておくことがたいせつです。今回のProject 1 はそれが課題でした。_
+
+### いくつかの、指標について
+
+_Region はどのようなものがあるかみておきます。_
+
+```{r}
+df %>% distinct(region) %>% pull()
+```
+_Region に NA とあるので、Region が NA になるような国はどのような国か、確認しておきましょう。_
+
+```{r}
+df %>% filter(is.na(region)) %>% distinct(country) %>% pull()
+```
+_次に、income の項目を調べておきます。income が "Not classified" となっている国についても、調べておきます。Venezuela は、経済が安定してないため、"Not classified" になっているようですね。_
+
+```{r}
+df %>% filter(is.na(income) | income == "Not classified") %>% distinct(country) %>% pull()
+```
+
+### 収入レベルについて
+
+_下のような問いは、World Bank のサイトに回答が書かれています。探してみてください。（[参照：所得レベル・地域](https://datatopics.worldbank.org/world-development-indicators/the-world-by-income-and-region.html)）しかし、概要をしるには、AI も便利なので、AI の回答をつけておきます。_
+
+**Q.** WDI の 表の income 列に書かれている、収入レベル はどのように決定されているのでしょうか。
+
+**ChatGPT**
+
+WDIの表のincome列に書かれている収入レベルは、国や地域の1人当たりの国民総所得（GNI）に基づいて決定されています。国連が定めた世界銀行の収入レベル分類に基づいて、国や地域を低所得国、中所得国、高所得国に分類しています。
+
+具体的には、国連が定めた基準に従って、国の1人当たりのGNIが一定の値以上の場合に高所得国、一定の値以上一定の値以下の場合に中所得国、一定の値以下の場合に低所得国に分類されます。この基準は、国際的な開発援助や貿易政策などにおいて、国の経済的・社会的な発展状況を考慮するために利用されています。
+
+ただし、収入レベルの分類は、あくまでも目安であり、国や地域によっては、1人当たりのGNI以外にも、人口の分布や経済活動の構造などの要因を考慮する必要があります。また、GNI自体も、国や地域によって計算方法が異なるため、比較する際には注意が必要です。
+
+**Q.** 何年の基準と決まっていますか。実は、2021 のデータを見ると、upper middle income の国の、GNI per Capita の値で、lower middle income の国の GNI per Capita の値よりも、低いものがあります。
+
+**ChatGPT**
+
+国連が定めた世界銀行の収入レベル分類において、収入レベルの基準年は定められていません。一般的には、最新のデータを元に決定されますが、収入レベルの基準年が変更される場合もあります。
+
+また、2021年のデータを見ると、upper middle incomeの国のGNI per Capitaの値がlower middle incomeの国のGNI per Capitaの値よりも低い場合があるということは、国や地域の経済発展状況が複雑であることを示しています。GNI自体も、国や地域によって計算方法が異なるため、比較する際には注意が必要です。
+
+なお、世界銀行は定期的に収入レベル分類の見直しを行っており、国の経済的・社会的な発展状況に応じて収入レベルの分類が変更されることがあります。
+
+_視覚化の基本は、一つの指標の分布と、二つの指標の相関（関係性）をみることです。分布を見るには、ヒストグラムなどがよく使われますが、概観するには、箱ひげ図（Boxplot）も有効です。ただし、箱ひげ図の定義を理解しておくことも大切です。_ 
+
+_箱ひげ図（Boxplot）の説明の[ビデオ](https://vimeo.com/222358034)をみてください。みなさんにおすすめした、[Posit Primers](https://posit.cloud/learn/primers) の Visualization のものです。_
+
+```{r}
+df %>% drop_na(gnppcap) %>% filter(region != "Aggregates") %>%
+  drop_na(income) %>% filter(year %in% c(2021)) %>%
+  mutate(level = factor(income, c("High income", "Upper middle income", "Lower middle income", "Low income"))) %>%
+  ggplot(aes(gnppcap, level, fill = income)) + 
+  geom_boxplot() + scale_x_log10() + labs(y = "") + 
+  theme(legend.position = "none") +
+  labs(title = "Boxplot of GNI per Capita by Income Level")
+```
+
+```{r}
+df %>% drop_na(gnppcap) %>% filter(region != "Aggregates") %>%
+  drop_na(income) %>% filter(year %in% c(2021)) %>%
+  mutate(level = factor(income, c("High income", "Upper middle income", "Lower middle income", "Low income"))) %>%
+  group_by(level) %>%
+  summarize(max = max(gnppcap), median = median(gnppcap), mean = mean(gnppcap), min = min(gnppcap), n = n())
+```
+
+**考察**
+
+* 大体、GNI per Capita の値によって、収入レベルが分かれていることがわかるが、一部、重なっている部分がある。
+* Low Income の外れ値（outlier）が気になる。
+
+Upper middle income に分類されているが、Lower middle income に分類されている国の、GNI per Capita の最高より GNI per Capita が低い国
+
+```{r}
+df %>% drop_na(gnppcap) %>% filter(region != "Aggregates") %>%
+  drop_na(income) %>% filter(year %in% c(2021)) %>% 
+  filter(income == "Upper middle income", gnppcap < 5110)
+```
+
+Lower middle income に分類されているが、Upper middle income に分類されている国の、GNI per Capita の最低より GNI per Capita が高い国
+
+```{r}
+df %>% drop_na(gnppcap) %>% filter(region != "Aggregates") %>%
+  drop_na(income) %>% filter(year %in% c(2021)) %>% 
+  filter(income == "Lower middle income", gnppcap > 4170)
+```
+
+Low income の外れ値の国
+
+```{r}
+df %>% drop_na(gnppcap) %>% filter(region != "Aggregates") %>%
+  drop_na(income) %>% filter(year %in% c(2021)) %>% 
+  filter(income == "Low income", gnppcap == min(gnppcap))
+```
+
+### GNI per Capita by Region
+
+_地域ごとの、GNI per Capita の分布もみておきましょう。_
+
+```{r}
+df %>% drop_na(gnppcap) %>% filter(region != "Aggregates") %>%
+  drop_na(region) %>% filter(year %in% c(2021)) %>%
+  mutate(level = factor(income, c("High income", "Upper middle income", "Lower middle income", "Low income"))) %>%
+  ggplot(aes(gnppcap, region, fill = region)) + 
+  geom_boxplot() + scale_x_log10() + labs(y = "") + 
+  theme(legend.position = "none") +
+  labs(title = "Boxplot of GNI per Capita by Region")
+```
+
+**考察**
+
+- 北アメリカは突出しているだけでなく、幅も小さい。
+- 幅は地域により異なる。
+- それぞれの地域の国の個数も気になる。
+
+_最大、中央値、平均、最小、国数 をまとめてみます。_
+
+```{r}
+df %>% drop_na(gnppcap) %>% filter(region != "Aggregates") %>%
+  drop_na(region) %>% filter(year %in% c(2021)) %>%
+  group_by(region) %>%
+  summarize(max = max(gnppcap), median = median(gnppcap), mean = mean(gnppcap), min = min(gnppcap), n = n())
+```
+
+
+_それぞれの値域の国の数もかなり違っていることに気をつけないといけませんね。北アメリカの三つの国は、おそらく、みなさんもわかるのではないかと思います。_
+
+### CO2 Emission per Capita
+
+_GNI per Capita が大きければ、CO2 Emission per Capita も大きいことが予測できる。まずは、箱ひげ図（Boxplot）でみてみる。_
+
+```{r}
+df %>% drop_na(emission) %>% filter(region != "Aggregates", income !="Not classified") %>%
+  drop_na(income) %>% filter(year %in% c(2019)) %>%
+  mutate(level = factor(income, c("High income", "Upper middle income", "Lower middle income", "Low income"))) %>%
+  ggplot(aes(emission, level, fill = income)) + 
+  geom_boxplot() + labs(y = "") + 
+  theme(legend.position = "none") +
+  labs(title = "Boxplot of CO2 Emission Capita by Income Level")
+```
+
+_大体の予測が当たっていたが、外れ値（Outliers）が、それぞれのカテゴリーにいくつかあるので、これらを調べてみましょう。収入レベルの分類は、便宜的なものだとも言えますから、High Income Countries以外のの、外れ値はあまり重要ではないかもしれませんが、一応、すべて調べてみます。まずは、外れ値を計算するためには、中央値（median）と、IQR 四分位値が必要ですから、それを求めます。同時に、最大と最少も調べておきましょう。_
+
+```{r}
+df %>% drop_na(emission) %>% 
+  filter(region != "Aggregates", income != "Not classified") %>%
+  drop_na(income) %>% filter(year %in% c(2019)) %>%
+  mutate(level = factor(income, c("High income", "Upper middle income", "Lower middle income", "Low income"))) %>%
+  group_by(level) %>%
+  summarize(max = max(emission), median = median(emission), iqr = IQR(emission), n = n())
+```
+
+**Outliers in High Income Countries**
+
+```{r}
+df %>% drop_na(emission) %>% filter(region != "Aggregates") %>%
+  drop_na(income) %>% filter(year %in% c(2019)) %>% 
+  filter(income == "High income") %>%
+  filter(emission > median(emission) + 1.5*IQR(emission)) %>%
+  arrange(desc(emission))
+```
+
+**Outliers in Upper Middle Income Countries**
+
+```{r}
+df %>% drop_na(emission) %>% filter(region != "Aggregates") %>%
+  drop_na(income) %>% filter(year %in% c(2019)) %>% 
+  filter(income == "Upper middle income") %>%
+  filter(emission > median(emission) + 1.5*IQR(emission)) %>%
+  arrange(desc(emission))
+```
+
+**Outliers in Lower Middle Income Countries**
+
+```{r}
+df %>% drop_na(emission) %>% filter(region != "Aggregates") %>%
+  drop_na(income) %>% filter(year %in% c(2019)) %>% 
+  filter(income == "Lower middle income") %>%
+  filter(emission > median(emission) + 1.5*IQR(emission)) %>%
+  arrange(desc(emission))
+```
+
+**Outliers in Low Income Countries**
+
+```{r}
+df %>% drop_na(emission) %>% filter(region != "Aggregates") %>%
+  drop_na(income) %>% filter(year %in% c(2019)) %>% 
+  filter(income == "Low income") %>%
+  filter(emission > median(emission) + 1.5*IQR(emission))
+```
+
+_いろいろなことがわかると思います。高所得の国においても、理由は一通りではないかもしれませんね。中東の産油国が多くなっているのはなぜか考える必要があるかもしれません。また、同時に、一人当たりではなく、トータルのデータ（GDP や、CO2 emission total）をみてみないと、いけないこともわかりますね。_
+
+
+## いくつかの国について
+
+### 世界の平均、日本
+
+_まず、contry == "World" として、大体の傾向をみてみましょう。_
+
+```{r}
+df %>% filter(country == "World") %>% drop_na(gnppcap) %>% 
+  ggplot(aes(year, gnppcap)) + geom_line() + 
+  labs(title = "GNI per Capita of the World")
+```
+
+
+```{r}
+df %>% filter(country == "World") %>% drop_na(emission) %>% 
+  ggplot(aes(year, emission)) + geom_line() + 
+  labs(title = "CO2 emissions per Capita of the World")
+```
+
+_これらをみると、どちらも、増加しています。GNI per Capita は、直線的に、増加しているように見え、CO2 emissions per Capita  の方は、直線的とは言えないように見えます。これも、年次変化をみているので、その相関だとも言えます。直線的かどうかを見るのが、線形回帰モデルという考え方で、一番、近い直線を描いて、それが、上向か、下向きかや、どの程度の割合あっているかを表す、R-squared という値で、適合率を表したりします。回帰直線を表したグラフと、線形回帰モデルの、評価値を載せておきます。計量経済学で学ぶと思います。_
+
+```{r}
+df %>% filter(country == "World") %>% drop_na(gnppcap) %>% 
+  ggplot(aes(year, gnppcap)) + geom_line() +
+  geom_smooth(method = "lm", formular = y~x, se = FALSE) + 
+  labs(title = "GNI per Capita of the World", subtitle = "with a regression line")
+```
+
+```{r}
+df %>% filter(country == "World") %>% drop_na(gnppcap) %>% 
+  lm(gnppcap ~ year, .) %>% summary()
+```
+
+```{r}
+df %>% filter(country == "World") %>% drop_na(emission) %>% 
+  ggplot(aes(year, emission)) + geom_line() +
+  geom_smooth(method = "lm", formular = y~x, se = FALSE)  + 
+  labs(title = "CO2 emissions per Capita of the World", subtitle = "with a regression line")
+```
+
+```{r}
+df %>% filter(country == "World") %>% drop_na(emission) %>% 
+  lm(emission ~ year, .) %>% summary()
+```
+
+_これらから、どちらも、増加していると言えるが、適合度は、GNI per Capita のほうは、95.1 パーセント、CO2 emissions per Capita のほうは、82.6 パーセントだとわかります。_
+
+_上の、World のところを、国名に変更すると、その国の状態がわかります。日本にしてみましょう。_
+
+```{r}
+df %>% filter(country == "Japan") %>% drop_na(gnppcap) %>% 
+  ggplot(aes(year, gnppcap)) + geom_line() + 
+  labs(title = "GNI per Capita of Japan")
+```
+
+
+```{r}
+df %>% filter(country == "Japan") %>% drop_na(emission) %>% 
+  ggplot(aes(year, emission)) + geom_line() + 
+  labs(title = "CO2 emissions per Capita of Japan")
+```
+
+**考察**
+
+- GNI per Capita のほうは、以前に、日本の GDP でみたグラフと似ている。人口があまり変化していないと思われるので、一人あたりにしても、あまり違わないと思われるので、当然とも言えるが、GDP と GNI の違いもあり、もう少し詳細に見る必要がある。
+- CO2 emissions per Capita の方は、かなり変動が大きい。ただ、データが、ちょうど、日本の経済動向が変化した、1990年からのものであることに、注意する必要がある。
+
+_ほかにはどんなことがわかりますか。他の国についても調べてみたいですね。_
+
+### いくつかの国の比較
+
+_GDP のときに考察した、2021年度に、3兆ドルを超えている国についてみてみよう。_
+
+```{r}
+df %>% filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR")) %>%
+  ggplot(aes(x = year, y = gnppcap, col = iso2c)) + geom_line() + 
+  labs(title = "GNI per Capita of Top GDP countries")
+```
+
+```{r}
+df %>% filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR")) %>%
+  drop_na(emission) %>%
+  ggplot(aes(x = year, y = emission, col = iso2c)) + geom_line() + 
+  labs(title = "CO2 Emissions per Capita of Top GDP countries")
+```
+
+**考察**
+
+- GNI per Capita は、二つのグループに分かれていて、CN, IN はまだかなり低いが、CN は急激に上昇している。
+- CO2 Emissions per Capita は、増加している国と、減少している国とがあり、もう少し、詳細に見る必要がある。
+
+_みなさんも様々な考察があるのではないでしょうか。同時に、こんなことを見てみたいというようなこと。数を減らしてチェックしてみることなど。_
+
+## グループごとの比較
+
+_それぞれのグループにたくさんの国があるので、そのまま、折れ線グラフを書くことはできません。いくつかの年を抽出して、Boxplot を使うてもありますが、下では、それぞれのグループで、平均をとって、曲線で表しています。_
+
+```{r}
+df %>% filter(region != "Aggregates", income != "Not classified") %>% drop_na(gnppcap, income) %>%  mutate(level = factor(income, c("High income", "Upper middle income", "Lower middle income", "Low income"))) %>%
+  ggplot(aes(year, gnppcap, color = level)) + geom_smooth(se = FALSE) +
+  labs(title = "GNI per Capita by Income Level")
+```
+
+
+```{r}
+df %>% filter(region != "Aggregates", income != "Not classified") %>% drop_na(emission, income) %>%  mutate(level = factor(income, c("High income", "Upper middle income", "Lower middle income", "Low income"))) %>%
+  ggplot(aes(year, emission, color = level)) + geom_smooth(se = FALSE) +
+  labs(title = "CO2 Emissions per Capita by Income Level")
+```
+
+**考察**
+
+- どの所得グループも、GNI per Capita は、2010 年ごろからあまり増加しておらず、差は、固定してきているように見える。
+- CO2 Emissions per Capita は、高所得グループでは、減少に転じているが、一人当たりでも、大きな格差があることがわかる。
+
+_他にもいろいろと見てみたいことはあるのではないかと思います。_
+
+### GNP vs CO2 Emissions
+
+_最後に、2019年に限って、横軸に、GNI per Caapita をとり、縦軸に、CO2 Emissions per Capita をとり、それぞれの国に対応する値を、プロットしてみましょう。このような図を、散布図（Scatter Plot）と言います。相関をみるのには、基本的なグラフです。_
+
+```{r}
+df %>% filter(region != "Aggregates", year == 2019) %>% 
+  drop_na(gnppcap, emission) %>% 
+  ggplot(aes(gnppcap, emission, col = income)) + geom_point() + scale_x_log10()
+```
+
+# 最後に
+
+すこしだけ、二つの指標について、調べてみました。調べることは多いですね。でも、わかることも多いのではないでしょうか。データを根拠にした（data-based）、または、証拠に則った (evidence based argument) 議論は、地道なものですし、あまり、簡単ではないと見えるかもしれませんが、理論との両輪で考えていくことは大切なのではないでしょうか。
+
+ひとつだけ、わたしが大切にしていることを最後に書いておきます。それは、上でも少し、調べましたが、外れ値を丁寧にみていくことです。中央値や、平均などで、一般的傾向をみることは、基本ですが、外れ値を丁寧にみていくことで、なぜ、そのようになるのかを、少しずつ理解することもできます。
+
+わたしの好きな言葉に、アンナカレーニナの法則 (Anna Karenina Principle: AKP) があります。いろいろな使い方がされますが、もともとは、トルストイの小説、アンナカレーニナの冒頭の文章からきています。
+
+**アンナカレーニナの法則 (AKP)**
+
+“幸せな家庭はみな似たりよったりだが、不幸な家庭はみなそれぞれに不幸である”
+
+実は、様々な指標をみていくと、どの国も、そして、おそらく、皆が、いくつかの指標に関しては、外れ値に対応しています。そして、世界のデータに関する傾向だけではなくや、外れ値や、少数派を理解することで、得られる知見がとても多いからです。
+
+わたしは、大学を退職してから、児童養護施設や、障害者支援施設の働きをお手伝いしていますが、そのような関わりから、見えてくることがとてもたいせつだと感じています。
+
+データサイエンス、学んでみませんか。

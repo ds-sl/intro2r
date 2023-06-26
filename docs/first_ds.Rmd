@@ -3,6 +3,10 @@ title: "はじめてのデータ・サイエンス"
 author: "鈴木寛（Hiroshi Suzuki）"
 date: "Last Updated: `r Sys.Date()`"
 output:
+  ioslides_presentation: 
+    highlight: tango
+    widescreen: yes
+    smaller: yes
   html_notebook:
     toc: yes
     toc_float: yes
