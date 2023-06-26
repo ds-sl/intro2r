@@ -230,7 +230,8 @@ Low income の外れ値の国
 ```{r}
 df %>% drop_na(gnppcap) %>% filter(region != "Aggregates") %>%
   drop_na(income) %>% filter(year %in% c(2021)) %>% 
-  filter(income == "Low income", gnppcap == min(gnppcap))
+  filter(income == "Low income") %>% 
+  filter(log10(gnppcap) < median(log10(gnppcap)) - 1.5*IQR(log10(gnppcap)))
 ```
 
 ### GNI per Capita by Region
