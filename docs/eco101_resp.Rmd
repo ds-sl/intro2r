@@ -172,7 +172,7 @@ WDIの表のincome列に書かれている収入レベルは、国や地域の1�
 
 ただし、収入レベルの分類は、あくまでも目安であり、国や地域によっては、1人当たりのGNI以外にも、人口の分布や経済活動の構造などの要因を考慮する必要があります。また、GNI自体も、国や地域によって計算方法が異なるため、比較する際には注意が必要です。
 
-**Q.** 何年の基準と決まっていますか。実は、2021 のデータを見ると、upper middle income の国の、GNI per Capita の値で、lower middle income の国の GNI per Capita の値よりも、低いものがあります。
+**Q.** 何年を基準として決まっていますか。実は、2021 のデータを見ると、upper middle income の国の、GNI per Capita の値で、lower middle income の国の GNI per Capita の値よりも、低いものがあります。
 
 **ChatGPT**
 
