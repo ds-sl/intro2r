@@ -280,7 +280,7 @@ df %>% drop_na(emission) %>% filter(region != "Aggregates", income !="Not classi
   labs(title = "Boxplot of CO2 Emission Capita by Income Level")
 ```
 
-_大体の予測が当たっていたが、外れ値（Outliers）が、それぞれのカテゴリーにいくつかあるので、これらを調べてみましょう。収入レベルの分類は、便宜的なものだとも言えますから、High Income Countries以外のの、外れ値はあまり重要ではないかもしれませんが、一応、すべて調べてみます。まずは、外れ値を計算するためには、中央値（median）と、IQR 四分位値が必要ですから、それを求めます。同時に、最大と最少も調べておきましょう。_
+_大体の予測が当たっていたが、外れ値（Outliers）が、それぞれのカテゴリーにいくつかあるので、これらを調べてみましょう。収入レベルの分類は、便宜的なものだとも言えますから、High Income Countries以外の、外れ値はあまり重要ではないかもしれませんが、一応、すべて調べてみます。まずは、外れ値を計算するためには、中央値（median）と、IQR 四分位値が必要ですから、それを求めます。同時に、最大と最少も調べておきましょう。_
 
 ```{r}
 df %>% drop_na(emission) %>% 
