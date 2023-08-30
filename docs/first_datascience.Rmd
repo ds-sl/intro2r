@@ -176,7 +176,7 @@ df_gdp %>% filter(country == "Japan") %>%
 
 の部分が、グラフを描く部分で、「x 軸を、year、y 軸を、gdp として、それを、折線グラフで描いてください」というコードです。
 
-Warning: [38;5;238mRemoved 1 row containing missing values
+Warning: [38;5;238mRemoved 1 row containing missing values
 
 と表示されています。値がない年があることを言っています。2022年のデータがないことがわかっていますから、最初から削除してこくことも可能です。
 
