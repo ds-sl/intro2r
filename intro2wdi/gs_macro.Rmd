@@ -1,0 +1,250 @@
+---
+title: "GS Macro 2023"
+output: html_notebook
+---
+
+# Datascience for Macroeconomics using WDI
+
+## Introduction
+
+### AI and Datascience
+
+### Macroeconomics
+
+### World Development Indicator
+
+## Open Data and Public Data
+
+Datascience and Artificial Intelligence
+
+-   Computer Resources
+
+-   Data
+
+    -   Big Data
+
+    -   Open and Public Data
+
+## R on RStudio
+
+### Posit Cloud
+
+## Datascience Workflow
+
+![*The image above is from [R4DS(2e)](https://r4ds.hadley.nz) by Hadley Wickham, Mine Çetinkaya-Rundel and Garrett Grolemund*](data/data-science.png)
+
+## First Datascience
+
+### Setup
+
+```{r eval = FALSE}
+install.packages("tidyverse")
+install.packages("WDI")
+```
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+```{r create-dirs, eval = FALSE}
+dir.create("data")
+```
+
+```{r eval = FALSE}
+Sys.setenv(LANG = "en")
+```
+
+### Importing GDP Data
+
+```{r cache = TRUE}
+df_gdp <- WDI(indicator = "NY.GDP.MKTP.PP.KD")
+```
+
+```{r}
+write_csv(df_gdp, "data/gdp.csv")
+```
+
+```{r eval=FALSE}
+df_gdp <- read_csv("data/gdp.csv")
+```
+
+```{r}
+head(df_gdp)
+```
+
+```{r}
+str(df_gdp)
+```
+
+```{r}
+summary(df_gdp)
+```
+
+### Visualization
+
+```{r}
+COUNTRY <- "Japan"
+df_gdp |> filter(country == COUNTRY) |>
+  ggplot(aes(year, NY.GDP.MKTP.PP.KD)) + geom_line()
+```
+
+```{r}
+COUNTRY <- "World"
+df_gdp |> filter(country == COUNTRY) |>
+  ggplot(aes(year, NY.GDP.MKTP.PP.KD)) + geom_line()
+```
+
+```{r}
+COUNTRIES <- c("Japan", "China", "India", "United Kingdom", "United States", "Germany", "France")
+df_gdp |> filter(country %in% COUNTRIES) |>
+  ggplot(aes(year, NY.GDP.MKTP.PP.KD, color = country)) + geom_line()
+```
+
+## World Development Indicator
+
+## GDP and GDP per Capita
+
+1.  GDP, PPP (constant 2017 international \$): NY.GDP.MKTP.PP.KD
+
+2.  Population, total: SP.POP.TOTL
+
+3.  Calculate GDP per Capita
+
+    -   GDP per capita, PPP (constant 2017 international \$): NY.GDP.PCAP.PP.KD
+
+-   GDP, PPP (constant 2017 international \$) PPP GDP is gross domestic product converted to international dollars using purchasing power parity rates. An international dollar has the same purchasing power over GDP as the U.S. dollar has in the United States. GDP is the sum of gross value added by all resident producers in the country plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in constant 2017 international dollars. ID: NY.GDP.MKTP.PP.KD
+
+-   Population, total Total population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship. The values shown are midyear estimates. SP.POP.TOTL
+
+```{r cache = TRUE}
+df_gdppcap <- WDI(indicator = c(gdp = "NY.GDP.MKTP.PP.KD", pop = "SP.POP.TOTL"), extra = TRUE)
+```
+
+```{r}
+write_csv(df_gdppcap, "data/gdppcap.csv")
+```
+
+```{r eval=FALSE}
+df_dgppcap <- read_csv("data/gdppcap.csv")
+```
+
+```{r}
+COUNTRY <- "World"
+df_gdppcap |> filter(country == COUNTRY) |>
+  ggplot(aes(year, gdp)) + geom_line()
+```
+
+```{r}
+df_gdppcap2 <- df_gdppcap |> drop_na(pop) |> 
+  mutate(gdppcap = gdp/pop)
+```
+
+```{r}
+COUNTRY <- "World"
+df_gdppcap2 |> filter(country == COUNTRY) |>
+  ggplot(aes(year, gdppcap)) + geom_line()
+```
+
+## CO2 Emissions Per Capita vs GDP Per Capita
+
+1.  CO2 emissions (metric tons per capita): EN.ATM.CO2E.PC
+
+2.  GDP per capita, PPP (constant 2017 international \$): NY.GDP.PCAP.PP.KD
+
+-   CO2 emissions (metric tons per capita) Carbon dioxide emissions are those stemming from the burning of fossil fuels and the manufacture of cement. They include carbon dioxide produced during consumption of solid, liquid, and gas fuels and gas flaring. EN.ATM.CO2E.PC
+
+-   GDP per capita, PPP (constant 2017 international \$) GDP per capita based on purchasing power parity (PPP). PPP GDP is gross domestic product converted to international dollars using purchasing power parity rates. An international dollar has the same purchasing power over GDP as the U.S. dollar has in the United States. GDP at purchaser's prices is the sum of gross value added by all resident producers in the country plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in constant 2017 international dollars. ID: NY.GDP.PCAP.PP.KD
+
+```{r cache = TRUE}
+df_co2gdp <- WDI(indicator = c(co2pcap = "EN.ATM.CO2E.PC", gdppcap = "NY.GDP.PCAP.PP.KD"), extra = TRUE)
+```
+
+```{r}
+write_csv(df_co2gdp, "data/co2gdp.csv")
+```
+
+```{r eval=FALSE}
+df_co2gdp <- read_csv("data/co2gdp.csv")
+```
+
+```{r}
+COUNTRY <- "World"
+df_co2gdp |> filter(country == COUNTRY) |>
+  ggplot(aes(year, co2pcap)) + geom_line()
+```
+
+```{r}
+df_co2gdp |> filter(year == 2020) |> drop_na(co2pcap) |>
+  ggplot(aes(gdppcap, co2pcap)) + geom_point()
+```
+
+```{r}
+df_co2gdp |> filter(year == 2020) |> 
+  drop_na(gdppcap, co2pcap) |>
+  ggplot(aes(gdppcap, co2pcap)) + geom_point() +
+  scale_x_log10() + scale_y_log10()
+```
+
+```{r}
+df_co2gdp |> filter(year == 2020) |> 
+  drop_na(gdppcap, co2pcap) |>
+  ggplot(aes(gdppcap, co2pcap)) + geom_point() +
+  geom_smooth(method = "lm", formula = 'y~x', se = FALSE) +
+  scale_x_log10() + scale_y_log10()
+```
+
+```{r}
+df_co2gdp |> lm(co2pcap~gdppcap, data = _) |> summary()
+```
+
+## School Enrollment vs GDP Per Capita
+
+1.  School enrollment, secondary (% gross): SE.SEC.ENRR
+
+2.  GDP per capita, PPP (constant 2017 international \$): NY.GDP.PCAP.PP.KD
+
+-   School enrollment, secondary (% gross) Gross enrollment ratio is the ratio of total enrollment, regardless of age, to the population of the age group that officially corresponds to the level of education shown. Secondary education completes the provision of basic education that began at the primary level, and aims at laying the foundations for lifelong learning and human development, by offering more subject- or skill-oriented instruction using more specialized teachers. SE.SEC.ENRR
+
+-   GDP per capita, PPP (constant 2017 international \$) GDP per capita based on purchasing power parity (PPP). PPP GDP is gross domestic product converted to international dollars using purchasing power parity rates. An international dollar has the same purchasing power over GDP as the U.S. dollar has in the United States. GDP at purchaser's prices is the sum of gross value added by all resident producers in the country plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in constant 2017 international dollars. ID: NY.GDP.PCAP.PP.KD
+
+```{r cache = TRUE}
+df_secgdp <- WDI(indicator = c(sec = "SE.SEC.ENRR", gdppcap = "NY.GDP.PCAP.PP.KD"), extra = TRUE)
+```
+
+```{r}
+write_csv(df_secgdp, "data/secgdp.csv")
+```
+
+```{r eval=FALSE}
+df_secgdp <- read_csv("data/secgdp.csv")
+```
+
+
+```{r}
+COUNTRY <- "World"
+df_secgdp |> filter(country == COUNTRY) |>
+  ggplot(aes(year, sec)) + geom_line()
+```
+
+```{r}
+df_secgdp |> filter(year == 2020) |> drop_na(sec) |>
+  ggplot(aes(gdppcap, sec)) + geom_point()
+```
+
+```{r}
+df_secgdp |> filter(year == 2020) |> drop_na(gdppcap, sec) |>
+  ggplot(aes(gdppcap, sec)) + geom_point() +
+  scale_x_log10()
+```
+
+```{r}
+df_secgdp |> filter(year == 2020) |> drop_na(gdppcap, sec) |>
+  ggplot(aes(gdppcap, sec)) + geom_point() +
+  geom_smooth(method = "lm", formula = 'y~x', se = FALSE) +
+  scale_x_log10()
+```
+
+```{r}
+df_secgdp |> lm(sec~gdppcap, data = _) |> summary()
+```
