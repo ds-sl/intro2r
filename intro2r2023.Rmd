@@ -1,0 +1,1044 @@
+---
+title: "Introduction to R"
+date: '2023-10-13 Updated'
+output:
+  html_notebook:
+    df_print: paged
+    number_sections: yes
+    toc: yes
+    toc_float: yes
+  word_document:
+    toc: yes
+    reference_docx: intro2rw.docx
+  pdf_document:
+    toc: yes
+---
+
+> RStudio became Posit on November 2, 2022. (<https://posit.co/>)
+
+# Introduction
+
+## Before We Start
+
+1.  We will introduce the basics of the Data Analysis focusing on handling and visualizing data.
+
+-   Handle Data: Importing, Viewing, Tidying, and Transforming
+-   Visualize Data
+-   Analyse Data using Models
+
+![*The image above is from [R4DS(2e)](https://r4ds.hadley.nz) by Hadley Wickham, Mine Çetinkaya-Rundel and Garrett Grolemund*](./fig/data-science.png)
+
+2.  Two Keys and One Comment:
+
+-   Data Science is an **empirical science** rather than theoretical, and we must **'Learn by Doing'**.
+-   In every scientific research, we need to keep in mind to **replicate** the process and results, and we must **'Keep Records'** to communicate.
+-   The Instructor is not an experienced data scientist or a researcher using data analysis, but a beginner and a learner of data science. Let's learn together!
+
+3.  What do we learn?
+
+-   R, a statistical computing language, using RStudio
+-   The `tidyverse` package attaches `ggplot2`, `purrr`, `tibble`, `dplyr`, `tidyr`, `stringr`, `readr`, `forcats` as well.
+-   The `rmarkdown` package to analyze, share and reproduce.
+
+## R, RStudio and Packages
+
+### Setup {#intro:setup}
+
+We need both R and RStudio. If you have not installed R and RStudio, please follow the instruction in ModernDive: [Chapter 1 Getting Started with Data in R](https://moderndive.netlify.app/1-getting-started.html#getting-started) .
+
+#### R
+
+> R is 'GNU S', a freely available language and environment for statistical computing and graphics which provides a wide variety of statistical and graphical techniques: linear and nonlinear modelling, statistical tests, time series analysis, classification, clustering, etc.
+
+**The R Project for Statistical Computing:** <https://www.r-project.org>
+
+-   The R Manuals: <https://cran.r-project.org/manuals.html>
+
+**Update R**
+
+Currently, `r R.version.string` is running on this system, recommended to update once a year. If you are Windows user, you can use the following code.
+
+```{r eval = FALSE}
+if( !("installr" %in% installed.packages()) ){install.packages("installr")}
+installr::updateR(TRUE)
+```
+
+**System Language**
+
+It is more convenient to set the system language of R to be English. You can copy and paste error message for search solutions.
+
+```{r eval = FALSE}
+Sys.setenv(LANG = "en")
+```
+
+#### RStudio IDE
+
+**Posit Site:** <https://posit.co>
+
+> Our mission is to create open-source software for data science, scientific research, and technical communication. We do this to enhance the production and consumption of knowledge by everyone, regardless of economic means. ([About US: Open source for a better world](https://posit.co/about/))
+
+**Update RStudio**
+
+Top Menu \> Help \> Check Updates
+
+#### Packages
+
+> R packages are extensions to the R statistical programming language. R packages contain code, data, and documentation in a standardised collection format that can be installed by users of R, typically via a centralised software repository such as CRAN (the Comprehensive R Archive Network).
+
+**Install packages**
+
+We need two packages, `rmarkdown` and `tidyverse`. Install these by the following code. You can also copy `install.packages(c("rmarkdown", "tidyverse"))` and paste in Console. You can also use Tools \> Install Packages in the top menu.
+
+-   `tidyverse`: <https://www.tidyverse.org>, <https://cran.r-project.org/package=tidyverse>
+-   `rmarkdown`: <https://rmarkdown.rstudio.com>, <https://cran.r-project.org/package=rmarkdown>
+
+The standard link to an R package is in the form: `https://cran.r-project.org/package=<Package Name>`.
+
+```{r eval = FALSE}
+install.packages(c("rmarkdown", "tidyverse"))
+```
+
+The following code does the same. `c("rmarkdown", "tidyverse")` is a vector notation in R to concatenate, or combine, two values "rmarkdown", and "tidyverse".
+
+```{r eval = FALSE}
+install.packages("rmarkdown")
+install.packages("tidyverse")
+```
+
+When you use a package you need to attach it by the following code.
+
+```{r}
+library(tidyverse)
+```
+
+Tidyverse is a collection of packages designed with consistency. If you are interested in the undelying philosophy, please take a look at [Tidyverse design guide](https://design.tidyverse.org). See the messages of attaching packages and conflicts.
+
+### Brief Introduction to R on RStudio
+
+#### Four Panes and Tabs
+
+1.  Top Left: Source Editor
+2.  Top Right: Environment, History, etc.
+3.  Bottom Left: Console, Terminal, Render, Background Jobs
+4.  Bottom Right: Files, Plots, Packages, Help, Viewer, Presentation
+
+#### Three Ways to Run Codes
+
+1.  Console - Bottom Left Pane
+2.  R Script - pull down menu under File
+3.  R Notebook, R Markdown - pull down menu under File
+
+#### Posit Cloud
+
+Create an account of Posit (RStudio) Cloud: <https://posit.cloud/>
+
+GET STARTED FREE
+
+-   Share Posit Cloud
+    -   The following is the URL of the workspace of this presentation: <https://posit.cloud/content/5539763>
+    -   First login to your RStudio Cloud account and then open the link above.
+    -   If you want to work on it you can "Save a Permanent Copy" from the top bar.
+-   [Posit Primers](https://posit.cloud/learn/primers)
+-   [Cheatsheets](https://posit.cloud/learn/cheat-sheets)
+
+#### R Markdown
+
+We mainly use one of the formats of R Markdwon called R Notebook.
+
+-   An introduction is in [RStudio Primers: Report Reproducibly](https://rmarkdown.rstudio.com/lesson-1.html)
+    -   [What is R Markdown](https://vimeo.com/178485416)
+
+### References
+
+-   ModernDive: [Chapter 1 Getting Started with Data in R](https://moderndive.netlify.app/1-getting-started.html#getting-started)
+-   R-Ladies Sydney: [BasicBasics](https://rladiessydney.org/courses/ryouwithme/01-basicbasics-1/)
+
+# Introduction to Data Analysis
+
+## First Example
+
+### Importing data
+
+Let us assign the `iris` data in the pre-installed package `datasets` to `df_iris`. You can give any name starting from an alphabet, though there are some rules.
+
+```{r}
+df_iris <- datasets::iris
+class(df_iris)
+```
+
+The class of data `iris` is `data.frame`, the basic data class of R. You can assign the same data as a `tibble`, the data class of `tidyverse` as follows.
+
+```{r}
+tbl_iris <- as_tibble(datasets::iris)
+class(tbl_iris)
+```
+
+-   `df_iris <- iris` can replace `df_iris <- datasets::iris` because the package `datasets` is installed and attached as default. Since you may have other data called `iris` included in a differenct package or you may have changed `iris` before, it is safer to specify the name of the package with the name of the data.
+-   Within R Notebook or in Console, you may get different output, and `tf_iris` and `tbl_iris` behave differently. It is because of the default settings of R Markdown.
+
+### Look at the data
+
+#### Several ways to view the data.
+
+The `View` command open up a window to show the contents of the data and you can use the filter as well.
+
+```{r viewiris, eval = FALSE}
+View(df_iris)
+```
+
+The following simple command also shows the data.
+
+```{r dfiris}
+df_iris
+```
+
+The output within R Notebook is a tibble style. Try the same command in Console.
+
+```{r slice10iris}
+slice(df_iris, 1:10)
+```
+
+```{r elevenplustwo}
+11+2
+```
+
+```{r one2ten}
+1:10
+```
+
+```{r sequence}
+seq(1,10, by = 2)
+```
+
+#### Data Structure
+
+Let us look at the structure of the data. You can try `str(df_iris)` on Console or by adding a code chunk in R Notebook introducing later.
+
+```{r glimpse:eiris}
+glimpse(df_iris)
+```
+
+There are six types of data in R; Double, Integer, Character, Logical, Raw, Complex.
+
+The names after \$ are column names. If you call `df_iris$Species`, you have the Species column. Species is in the 5th collumn, `typeof(df_iris[[5]])` does the same as the next. ``` df_iris[2,4] = ``r df_iris[2,4] ``` is the fourth entry of Sepal.Width.
+
+```{r}
+typeof(df_iris$Species)
+```
+
+```{r}
+class(df_iris$Species)
+```
+
+For `factors = fct` see [the R Document](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/factor) or an explanation in [Factor in R: Categorical Variable & Continuous Variables](https://www.guru99.com/r-factor-categorical-continuous.html).
+
+```{r}
+typeof(df_iris$Sepal.Length)
+class(df_iris$Sepal.Length)
+```
+
+**Q1.** What are the differences of`df_iris`, `slice(df_iris, 1:10)` and `glimpse(df_iris)` above?
+
+**Q2.** What are the differences of`df_iris`, `slice(df_iris, 1:10)` and `glimpse(df_iris)` in the console?
+
+#### Summary of the Data
+
+The following is very convenient to get the summary information of a data.
+
+```{r}
+summary(df_iris)
+```
+
+Minimum, 1st Quadrant (25%), Median, Mean, 3rd Quadrant (75%), Maximum, and the count of each factor.
+
+### Visualizing Data
+
+#### Scatter Plot
+
+We use `ggplot` to draw graphs. The scatter plot is a projection of data with two variables $x$ and $y$.
+
+```         
+ggplot(data = <data>, aes(x = <column name for x>, y = <column name for y>)) +
+  geom_point()
+```
+
+```{r}
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point()
+```
+
+#### Scatter Plot with Labels
+
+Add title and labels adding `labs()`. See [Modify axis, legend, and plot labels](https://ggplot2.tidyverse.org/reference/labs.html).
+
+```         
+ggplot(data = <data>, aes(x = <column name for x>, y = <column name for y>)) +
+  geom_point() +
+  labs(title = "Title", x = "Label for x", y = "Label for y")
+```
+
+```{r}
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point() + 
+  labs(title = "Scatter Plot of Sepal Data of Iris", x = "Sepal Length", y = "Sepal Width")
+```
+
+#### Scatter Plot with Colors
+
+Add different colors automatically to each spieces. See [Colour related aesthetics: colour, fill, and alpha](https://ggplot2.tidyverse.org/reference/aes_colour_fill_alpha.html). Can you see each group?
+
+```{r}
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
+  geom_point()
+```
+
+#### Boxplot
+
+The boxplot compactly displays the distribution of a continuous variable. See [A box and whiskers plot (in the style of Tukey)](https://ggplot2.tidyverse.org/reference/geom_boxplot.html).
+
+```{r}
+ggplot(data = df_iris, aes(x = Species, y = Sepal.Length)) +
+  geom_boxplot()
+```
+
+#### Histogram
+
+Visualize the distribution of a single continuous variable by dividing the x axis into bins and counting the number of observations in each bin. Histograms (geom_histogram()) display the counts with bars. See [Histograms and frequency polygons](https://ggplot2.tidyverse.org/reference/geom_histogram.html).
+
+```{r}
+ggplot(data = df_iris, aes(x = Sepal.Length)) +
+  geom_histogram()
+```
+
+Change the number of bins by `bins =` `<number>`.
+
+```{r}
+ggplot(data = df_iris, aes(x = Sepal.Length)) +
+  geom_histogram(bins = 10)
+```
+
+### Various Plots of Density
+
+Three denity plots of the same data.
+
+```{r}
+ggplot(data = df_iris, aes(x = Species, y = Sepal.Length)) +
+  geom_violin()
+```
+
+```{r}
+ggplot(data = df_iris, aes(x = Species, y = Sepal.Length)) +
+  geom_jitter(width = 0.2)
+```
+
+```{r}
+ggplot(data = df_iris, aes(x = Sepal.Length, fill = Species)) +
+  geom_density(alpha = 0.5)
+```
+
+### Data Modeling
+
+We will not get into the mathematical models and hypothesis testings. The following is a simple linear regression model and the graph of the fitted line.
+
+```{r}
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+```{r}
+lm(Sepal.Width ~ Sepal.Length, data = df_iris)
+```
+
+The formula of the line in the scattered plot is the following. $$y = (-0.06188)x + 3.41895$$ The slope is $-0.06188$ and the $y$-intercept is 3.41895.
+
+It is a little strange and counter intuitive, because it claims that as the sepal width gets smaller as the sepal length gets larger. What is hidden behind?
+
+```{r}
+lm(Sepal.Width ~ Sepal.Length, data = df_iris) |> summary()
+```
+
+```{r}
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+```{r iris:sepal:confounder}
+ggplot(df_iris, aes(x = Sepal.Length, y = Sepal.Width)) + 
+  geom_point(aes(color = Species)) + 
+  geom_smooth(aes(color = Species), formula = y ~ x, method = "lm", se = FALSE) +
+  geom_smooth(formula =  y ~ x, method = "lm", se = FALSE, color = "black", linetype = "twodash", size = 1.5)
+```
+
+The column Species is a confounding variable. See [Wikipedia: Confounding](https://en.wikipedia.org/wiki/Confounding), [Confounding Variables \| Definition, Examples & Controls](https://www.scribbr.com/methodology/confounding-variables/).
+
+# Data Analysis Using RStudio
+
+## Setup
+
+Open RStudio first.
+
+1.  Create a project.
+2.  Create a data folder. Not absolutely necessary but recommended.
+3.  Create a new R Notebook, R Markdown, or an R Script to keep a record.
+4.  Edit YAML of R Notebook or R Markdown if necessary.
+5.  Create a code chunk to attach packages, and install packages if necessary.
+6.  Find data to analyze.
+
+### Create a Project
+
+1.  Choose *New Project* from File menu.\
+    You need to save files if you are working with an other project.
+2.  Choose *New Directory*.
+3.  Project Type: *New Project*
+4.  Directory Name: Choose or create a directory of a workplace.
+
+### Create a Data Folder
+
+Run the following code by clicking the triangle or Run Current Chunk on Top bar. Alternately, you can use New Folder button in the Files tab in the right bottom pane.
+
+```{r create-dirs, eval = FALSE}
+dir.create("data")
+```
+
+### Create a New R Notebook
+
+Choose R Notebook from the pull down File menu in the top bar.
+
+### Edit YAML
+
+**Default\* is as follows**
+
+```         
+---
+title: "R Notebook"
+output: html_notebook
+---
+```
+
+**Template**
+
+```         
+---
+title: "Title of R Notebook"
+author: "ID and Your Name"
+date: "`r Sys.Date()`" 
+output: 
+  html_notebook:
+#    number_sections: yes
+#    toc: true
+#    toc_float: true
+---
+```
+
+-   Don't change the format. Indention matters.
+-   The statement after \# is ignored.
+-   Date is automatically inserted when you compile the file.
+-   You can replace "`r Sys.Date()`" by "2022-11-02" or in any date format surrounded by double quotation marks.
+-   Section numbers: - default is `number_sections: no`.
+-   Table of contents, `toc: true` - default is `toc: false`.
+-   Floating table of contents in HTML output, `toc_float: true` - default is `toc_float: false`
+
+### Create a Code Chunk to Attach Packages
+
+See [the Setup Section Above](#intro:setup)
+
+Insert Chunk in Code pull down menu in the top bar, or use the <kbd>C</kbd> button on top. You can use shortcut keys listed under Tools in the top bar.
+
+```{r}
+library(tidyverse)
+```
+
+### Find Data
+
+There are many sites we can get data. Here we learn how to get two types of data, i.e, a data with comma separated values in `*.csv`, and a Microsoft Excel Data in `*.xslx` or `*.xsl` in three ways. We have used a data in a package of R, e.g. `datasets::iris`, and there are many other data packages of R. However, we focus on how we get so called open public data. The folowing is the definition of Open Data by World Bank.
+
+### [World Bank:Open Data Defined](http://opendatatoolkit.worldbank.org) {.unnumbered}
+
+> The term "Open Data" has a very precise meaning. Data or content is open if anyone is free to use, re-use or redistribute it, subject at most to measures that preserve provenance and openness.\
+> 1. The data must be \underline{legally open}, which means they must be placed in the public domain or under liberal terms of use with minimal restrictions.\
+> 2. The data must be \underline{technically open}, which means they must be published in electronic formats that are machine readable and non-proprietary, so that anyone can access and use the data using common, freely available software tools. Data must also be publicly available and accessible on a public server, without password or firewall restrictions. To make Open Data easier to find, most organizations create and manage Open Data catalogs.
+
+See a list of open public data [below](#chap:data).
+
+## Import Data
+
+1.  Use the file link
+2.  Read the data in `data` folder
+3.  Use the API, application program interface
+
+### Use the File Link
+
+```         
+url_class <- "<URL of the data>"
+download.file(url = url_class, destfile = "data/<file name>")
+```
+
+#### Example: [UN Data](https://data.un.org)
+
+Copy the link by Right Click or <kbd>Ctrl</kbd>+Click and paste it in the URL.
+
+```{r cache = TRUE}
+url <- "https://data.un.org/_Docs/SYB/CSV/SYB65_1_202209_Population,%20Surface%20Area%20and%20Density.csv" # long file name
+(pop <- read_csv(url))
+```
+
+`(pop <- read_csv(url))` is a short hand of the following:
+
+```         
+pop <- read_csv(url)
+pop
+```
+
+The first row is not the column names, so skip the first row.
+
+```{r cache = TRUE}
+url <- "https://data.un.org/_Docs/SYB/CSV/SYB65_1_202209_Population,%20Surface%20Area%20and%20Density.csv"
+(pop <- read_csv(url, skip = 1))
+```
+
+It is better to save it in the data folder.
+
+```{r cache = TRUE}
+url <- "https://data.un.org/_Docs/SYB/CSV/SYB65_1_202209_Population,%20Surface%20Area%20and%20Density.csv"
+download.file(url = url, destfile = "data/pop.csv")
+pop <- read_csv("data/pop.csv", skip = 1)
+pop
+```
+
+#### Example: Importing Excel Files {#class.xlsx}
+
+-   CLASS.xlsx: - *copy the following link*
+    -   [The current classification by income in XLS format](https://datacatalogfiles.worldbank.org/ddh-published/0037712/DR0090755/CLASS.xlsx)
+-   readxl: <https://readxl.tidyverse.org>
+-   Help: `read_excel`, `read_xls`, `read_xlsx`
+
+```{r cache = TRUE}
+url_class <- "https://datacatalogfiles.worldbank.org/ddh-published/0037712/DR0090755/CLASS.xlsx"
+download.file(url = url_class, destfile = "data/CLASS.xlsx", mode = "wb")
+```
+
+Let us look at the first sheet.
+
+1.  The column names are in the 5th row.
+2.  The country data starts from the 7th row.
+3.  Zimbabue is at the last row.
+
+```{r cache = TRUE}
+library(readxl)
+wb_countries_tmp <- read_excel("data/CLASS.xlsx", sheet = 1, n_max =218) 
+wb_countries <- wb_countries_tmp |> 
+  select(country = Economy, iso3c = Code, region = Region, income = `Income group`, lending = "Lending category")
+wb_countries
+```
+
+-   `readxl`: <https://readxl.tidyverse.org>\
+    `readxl` is a part of the `tidyverse` family but not automatically attached. So attach it by `library(readxl)`.
+-   Help: `read_excel`, `read_xls`, `read_xlsx`
+
+1.  Regions start from the 221th row.
+2.  Regions end at the 266th row.
+
+```{r cache = TRUE}
+wb_regions_tmp <- read_excel("data/CLASS.xlsx", sheet = 1, skip = 0, n_max =267) |> 
+  slice(-(1:219))
+wb_regions <- wb_regions_tmp |> 
+  select(region = Economy, iso3c = Code) |> drop_na()
+wb_regions
+```
+
+### Read from the `data` Folder
+
+```         
+object <- read_csv("data/<file name>)
+```
+
+### Use the API
+
+Install `WDI` package for the first time by `install.packages("WDI")`. See [the Setup Section Above](#intro:setup).
+
+```{r eval = FALSE}
+install.packages("WDI")
+```
+
+```{r}
+library(WDI)
+```
+
+#### Pakcage Site: [WDI](https://CRAN.R-project.org/package=WDI): World Development Indicators and Other World Bank Data
+
+#### Usage
+
+Try `?WDI` in Console or `WDI` in the Help tab on the right buttom pane.
+
+```         
+WDI(country = "all",
+    indicator = "NY.GDP.PCAP.KD",
+    start = 1960,
+    end = 2025,
+    extra = FALSE,
+    cache = NULL)
+```
+
+**Arguments** - country: Vector of countries (ISO-2 character codes, e.g. "BR", "US", "CA", or "all") - indicator: If you supply a named vector, the indicators will be automatically renamed: `c('women_private_sector' = 'BI.PWK.PRVS.FE.ZS')`
+
+### Function WDIsearch
+
+```{r cache = TRUE}
+WDIsearch(string = "NY.GDP.PCAP.KD", 
+          field = "indicator", cache = NULL)
+```
+
+```{r cache = TRUE}
+WDIsearch(string = "NY.GDP.PCAP.KD", 
+  field = "indicator", short = FALSE, cache = NULL) 
+```
+
+Default: short = TRUE
+
+```{r cache = TRUE}
+WDIsearch(string = "gdp per capita", 
+  field = "name", cache = NULL)
+```
+
+```{r}
+WDIsearch(string = "6.0.GDP_current", field = "indicator", short = FALSE)
+```
+
+**Another way to find the indicator**
+
+Go to the World Bank Open Data site and select Browse by Indicators and find the data. Then the indicator is included in the URL.
+
+-   [World Bank Open Data](https://data.worldbank.org)
+    -   [Browse by Indicators](https://data.worldbank.org/indicator): Choose a Tab of Featured Indicators and All Indicators
+    -   [WORLD DEVELOPMENT INDICATORS](https://datatopics.worldbank.org/world-development-indicators/): Choose from Data Themes
+
+[CO2 emissions (metric tons per capita)](https://data.worldbank.org/indicator/EN.ATM.CO2E.PC?view=chart)
+
+Indicator: EN.ATM.CO2E.PC
+
+Check the indicator by `WDIsearch`.
+
+```{r}
+WDIsearch(string = "EN.ATM.CO2E.PC", field = "indicator", short = FALSE)
+```
+
+**Further Examples**
+
+```{r}
+WDIsearch(string = "population, total", field = "name", short = FALSE)
+```
+
+```{r}
+WDIsearch(string = "SP.POP.TOTL", field = "indicator", short = FALSE)
+```
+
+**Exercise.** Try the following on Console or in a new code chunk, and choose one interesting data with its indicator, name and description.
+
+-   `?WDIsearch`
+-   `View(WDIsearch(string = "gdp per capita", field = "name", cache = NULL))`
+-   `View(WDIsearch(string = "gdp per capita", field = "name", short = FALSE, cache = NULL))`
+-   `View(WDIsearch(string = "gdp", field = "name", short = FALSE, cache = NULL))`
+-   `View(WDIsearch(string = "gender", field = "name", short = FALSE, cache = NULL))`
+
+### Download Data by `WDI`
+
+#### GDP per capita (constant 2015 US\$)
+
+**Description**: GDP per capita is gross domestic product divided by midyear population. GDP is the sum of gross value added by all resident producers in the economy plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in constant 2015 U.S. dollars.
+
+```{r cache = TRUE}
+gdpcap <- WDI(country = "all", indicator = "NY.GDP.PCAP.KD")
+gdpcap
+```
+
+Avoiding downloading the data repeatedly as a CSV file, let us sage it in the `data` folder created above.
+
+```{r cache = TRUE}
+write_csv(gdpcap, "data/gdpcap.csv")
+```
+
+#### GDP per capita and CO2 emission per capita
+
+We can download two data as one data! The GDP per capita data and the CO2 emission per capita data with indicator `EN.ATM.CO2E.PC`.
+
+**Description**: Carbon dioxide emissions are those stemming from the burning of fossil fuels and the manufacture of cement. They include carbon dioxide produced during consumption of solid, liquid, and gas fuels and gas flaring.
+
+```{r cache = TRUE}
+gdpcap_co2 <- WDI(country = "all", indicator = c("NY.GDP.PCAP.KD", "EN.ATM.CO2E.PC"), extra = TRUE)
+gdpcap_co2
+```
+
+Let us save this data as well. It is very large, i.e., 14 columns and 16,492 rows, 1.9MB.
+
+```{r cache = TRUE}
+write_csv(gdpcap_co2, "data/gdpcap_co2.csv")
+```
+
+## Wrangle Data
+
+### `dplyr` [Overview](https://dplyr.tidyverse.org)
+
+dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges:
+
+-   `select()` picks variables based on their names.
+-   `filter()` picks cases based on their values.
+-   `arrange()` changes the ordering of the rows.
+-   `mutate()` adds new variables that are functions of existing variables
+-   `group_by()` takes an existing tbl and converts it into a grouped tbl.
+-   `summarise()` reduces multiple values down to a single summary.
+
+You can learn more about them in vignette("dplyr"). As well as these single-table verbs, dplyr also provides a variety of two-table verbs, which you can learn about in vignette("two-table").
+
+If you are new to dplyr, the best place to start is [the data transformation chapter in R for data science](http://r4ds.had.co.nz/transform.html).
+
+### [`select`](https://dplyr.tidyverse.org/reference/select.html): Subset columns using their names and types
+
+| Helper Function | Use                                          | Example                                       |
+|-----------------|----------------------------------------------|-----------------------------------------------|
+| \-              | Columns except                               | select(babynames, -prop)                      |
+| :               | Columns between (inclusive)                  | select(babynames, year:n)                     |
+| contains()      | Columns that contains a string               | select(babynames, contains("n"))              |
+| ends_with()     | Columns that ends with a string              | select(babynames, ends_with("n"))             |
+| matches()       | Columns that matches a regex                 | select(babynames, matches("n"))               |
+| num_range()     | Columns with a numerical suffix in the range | Not applicable with babynames                 |
+| one_of()        | Columns whose name appear in the given set   | select(babynames, one_of(c("sex", "gender"))) |
+| starts_with()   | Columns that starts with a string            | select(babynames, starts_with("n"))           |
+
+### [`filter`](https://dplyr.tidyverse.org/reference/filter.html): Subset rows using column values
+
+| Logical operator | tests                            | Example   |
+|------------------|----------------------------------|-----------|
+| \>               | Is x greater than y?             | x \> y    |
+| \>=              | Is x greater than or equal to y? | x \>= y   |
+| \<               | Is x less than y?                | x \< y    |
+| \<=              | Is x less than or equal to y?    | x \<= y   |
+| ==               | Is x equal to y?                 | x == y    |
+| !=               | Is x not equal to y?             | x != y    |
+| is.na()          | Is x an NA?                      | is.na(x)  |
+| !is.na()         | Is x not an NA?                  | !is.na(x) |
+
+### [`arrange`](https://dplyr.tidyverse.org/reference/arrange.html) and `Pipe |>`
+
+-   `arrange()` orders the rows of a data frame by the values of selected columns.
+
+Unlike other `dplyr` verbs, `arrange()` largely ignores grouping; you need to explicitly mention grouping variables (`or use .by_group = TRUE) in order to group by them, and functions of variables are evaluated once per data frame, not once per group. * [`pipes\`](<https://r4ds.had.co.nz/pipes.html>) in R for Data Science.
+
+**Examples**
+
+```         
+arrange(<data>, <varible>)
+arrange(<data>, desc(<variable>))
+```
+
+### [`mutate`](https://dplyr.tidyverse.org/reference/mutate.html)
+
+-   Create, modify, and delete columns
+
+-   Useful mutate functions
+
+    -   +, -, log(), etc., for their usual mathematical meanings
+
+    -   lead(), lag()
+
+    -   dense_rank(), min_rank(), percent_rank(), row_number(), cume_dist(), ntile()
+
+    -   cumsum(), cummean(), cummin(), cummax(), cumany(), cumall()
+
+    -   na_if(), coalesce()
+
+    -   if_else(), recode(), case_when()
+
+## Visualize Data
+
+### ggplot2
+
+See <https://ggplot2.tidyverse.org/reference/>
+
+```         
+ggplot(<data>) + geom_point(aes(x = <>, y = <>))
+```
+
+```         
+<data> |> ggplot() + geom_point(aes(x = <>, y = <>))
+```
+
+#### Geoms
+
+-   `geom_point()`: Points
+-   `geom_boxplot()`: A box plot
+-   `geom_histogram()`: Histograms
+-   `geom_smooth()`: Smoothed conditional means
+-   and much more
+
+#### References
+
+-   [R for Data Science](https://r4ds.had.co.nz/)
+    -   [3. Data Visualisation](https://r4ds.had.co.nz/data-visualisation.html#data-visualisation)
+    -   [28. Graphics for communication](https://r4ds.had.co.nz/graphics-for-communication.html)
+-   [ggplot2 page in tidyverse](https://ggplot2.tidyverse.org)
+-   [ggplot2 extensions - gallery](https://exts.ggplot2.tidyverse.org/gallery/)
+-   [ggplot2 Cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)
+
+## Examples
+
+### GDP Per Capita
+
+```{r cache = TRUE}
+gdpcap <- read_csv("data/gdpcap.csv")
+gdpcap
+```
+
+```{r}
+summary(gdpcap)
+```
+
+```{r}
+gdpcap |> distinct(country, iso2c)
+```
+
+```{r}
+gdpcap |> filter(country == "World") |>
+  ggplot(aes(x = year, y = NY.GDP.PCAP.KD)) + 
+  geom_line()
+```
+
+```{r warning = FALSE}
+gdpcap |> filter(iso2c %in% c("BR", "RU", "IN", "CN")) |> 
+  ggplot(aes(x = year, y = NY.GDP.PCAP.KD, color = country)) + 
+  geom_line() +
+  labs(title = "GDP per capta of BRICs", y = "GDP per capita (constant 2015 US$)")
+```
+
+#### Exercises
+
+1.  Draw the line graph for ASEAN countries: Brunei, Cambodia, Indonesia, Laos, Malaysia, Myanmar, the Philippines, Singapore, Thailand and Vietnam.
+2.  Choose all Low income countries and do the same.\
+    Hint: use `wb_countries` [above](#class.xlsx).
+
+```{r}
+(low_countries <- wb_countries |> filter(income == "Low income"))
+```
+
+```{r}
+(gdpcap_low <- semi_join(gdpcap, low_countries))
+```
+
+```{r}
+gdpcap_low |> 
+  ggplot(aes(x = year, y = NY.GDP.PCAP.KD, color = country)) + 
+  geom_line() +
+  labs(title = "GDP per capta of low income countries", y = "GDP per capita (constant 2015 US$)")
+```
+
+### CO2 Emission Per Capita
+
+Let us use the saved data.
+
+```{r cache = TRUE}
+gdpcap_co2 <- read_csv("data/gdpcap_co2.csv")
+gdpcap_co2
+```
+
+```{r}
+co2 <- gdpcap_co2 |> 
+  select(country, iso2c, iso3c, year, co2 = EN.ATM.CO2E.PC, region)
+```
+
+```{r}
+co2 |> filter(country %in% c("France", "Germany", "Italy", "Japan", "United Kingdom", "United States", "Canada", "Russian Federation")) |> distinct(country, iso2c, iso3c, region)
+```
+
+Successfully chosen data of G8 countries.
+
+```{r}
+co2 |> filter(country %in% c("France", "Germany", "Italy", "Japan", "United Kingdom", "United States", "Canada", "Russian Federation")) |> 
+  filter(!is.na(co2)) |>
+  ggplot(aes(x = year, y = co2, color = country)) + geom_line() +
+  labs(title = "CO2 Emission Per Capita of G8 Countries")
+```
+
+### GDP Per Capita vs CO2 Emission Per Capita
+
+Let us use the saved data.
+
+```{r cache = TRUE}
+gdpcap_co2 <- read_csv("data/gdpcap_co2.csv")
+gdpcap_co2
+```
+
+```{r}
+summary(gdpcap_co2)
+```
+
+Since the most recent year seems to be 2021, let us choose the year.
+
+```{r cache = TRUE}
+gdpcap_co2 |> filter(year == 2021) |>
+  ggplot(aes(x = NY.GDP.PCAP.KD, y = EN.ATM.CO2E.PC)) + 
+  geom_point()
+```
+
+What is wrong? There seems to be many missing values. First use `filter` to choose countries, i.e., non-aggregates and see how many data are in each year.
+
+```{r}
+gdpcap_co2 |> filter(region != "Aggregates", year == "2021") 
+```
+
+Alternately, we can find the data points in each year except NA, i.e., not available.
+
+```{r}
+gdpcap_co2 |> filter(region != "Aggregates", !is.na(NY.GDP.PCAP.KD), !is.na(EN.ATM.CO2E.PC)) |> 
+  group_by(year) |> summarize(n = n())
+```
+
+```{r}
+gdpcap_co2 |> filter(region != "Aggregates", !is.na(NY.GDP.PCAP.KD), !is.na(EN.ATM.CO2E.PC), year == 2019) |>
+  ggplot(aes(x = NY.GDP.PCAP.KD, y = EN.ATM.CO2E.PC)) + 
+  geom_point()
+```
+
+Most of the points are near origin. Let's try the log-log scale.
+
+```{r}
+gdpcap_co2 |> filter(region != "Aggregates", !is.na(NY.GDP.PCAP.KD), !is.na(EN.ATM.CO2E.PC), year == 2019) |>
+  ggplot(aes(x = log10(NY.GDP.PCAP.KD), y = log10(EN.ATM.CO2E.PC))) + 
+  geom_point() 
+```
+
+```{r}
+gdpco2_2019 <- gdpcap_co2 |> select(region, year, gdp = NY.GDP.PCAP.KD, co2 = EN.ATM.CO2E.PC) |>
+  filter(region != "Aggregates", !is.na(gdp), !is.na(co2), year == 2019)
+gdpco2_2019 |> ggplot(aes(x = log10(gdp), y = log10(co2))) + 
+  geom_point() + 
+  labs(title = bquote(~CO[2]~ "Log10 Scale Plot of "~CO[2]~" Emission Per Capita Against GDP Per Capitain 2019"),
+       subtitle = bquote(~CO[2]~": metric tons per capita, GDP: constant 2015 US$"),
+       x = bquote(~CO[2]~ "Emission Per Capita (Log10))"), y = "GDP Per Capita (Log10)") + 
+  geom_smooth(formula = y ~ x, method = "lm", se = FALSE) + 
+  geom_smooth(formula = y ~ x, method = "loess", col = "red")
+```
+
+```{r}
+summary(gdpco2_2019)
+```
+
+```{r}
+lm(log10(co2) ~ log10(gdp), data = gdpco2_2019) |> summary()
+```
+
+-   **Call**: The R feature to show what function and parameters were used to create the model.
+-   **Residuals**: Difference between what the model predicted and the actual value of y.\
+-   **Coefficients**: The coefficients of a linear model (line) that minimize the sum of the square of the errors.\
+    $$y = 0.90200 x -3.08818$$
+-   **Std. Error**: Residual Standard Error divided by the square root of the sum of the square of that particular x variable.
+-   **t value**: Estimate divided by Std. Error
+-   **Pr(\>\|t\|)**: t value in a T distribution table (with the given degrees of freedom).
+
+There are $n = 184$ data. So gdp = $x_1, x_2, \ldots, x_{184}$ and co2 = $y_1, y_2, \ldots, y_{184}$. In log10 scale, log10(gdp) = $\log_{10}(x_1), \log_{10}(x_2), \ldots, \log_{10}(x_{184})$ and log10(co2) = $\log_{10}(y_1), \log_{10}(y_2), \ldots, \log_{10}(y_{184})$, and call them $x_1', x_2', \ldots, x_{184}'$ and $y_1', y_2', \ldots, y_{184}'$. The scatter plot is the points $(x_1', y_1'), (x_2', y_2'), \ldots, (x_{184}', y_{184}')$. Let $\mathrm{mean}(x')$ and $\mathrm{mean}(y')$ be mean of $x_1', x_2', \ldots, x_{184}'$ and $y_1', y_2', \ldots, y_{184}'$.
+
+$$\mathrm{SSxx} = \sum_{i=1}^{184} (x_i' - \mathrm{mean}(x'))^2, \quad  \mathrm{SSxy} = \sum_{i=1}^{184} (x_i' - \mathrm{mean}(x'))(y_i' - \mathrm{mean}(y')).$$ Then, by theory, we know the slope and the y-inetrcept as follows. $$\mathrm{Slope} = \frac{\mathrm{SSxy}}{\mathrm{SSxx}}, \quad  \mathrm{Intercept} = \mathrm{mean}(y') - \mathrm{Slope}\cdot \mathrm{mean}(x').$$
+
+```{r}
+gdpco2log_ssxx <- sum((log10(gdpco2_2019$gdp)- mean(log10(gdpco2_2019$gdp)))^2)
+gdpco2log_ssxy <- sum((log10(gdpco2_2019$gdp)- mean(log10(gdpco2_2019$gdp)))*(log10(gdpco2_2019$co2)- mean(log10(gdpco2_2019$co2))))
+gdpco2log_slope <- gdpco2log_ssxy/gdpco2log_ssxx
+gdpco2log_intercept <- mean(log10(gdpco2_2019$co2)) - gdpco2log_slope*mean(log10(gdpco2_2019$gdp))
+c(Intercept = gdpco2log_intercept, Slope = gdpco2log_slope)
+```
+
+Now consider, the squared difference at $\log_{10}(x_i)$ between the actual value $\log_{10}(y_i)$ and the linear estimation $m\cdot \log_{10}(x_i) + b$. Since it is a square, it is positive. Now take the sum and want to determine $m$ and $b$ to minimize the sum, which is called the errors. $$\mathrm{SSE} = \sum_{i=1}^{184} (m\cdot \log_{10}(x_i) + b - \log_{10}(y_i))^2 = \sum_{i=1}^{184} (m\cdot x_i' + b - y_i')^2.$$ Let $k$ be the number of variables for estimation. In our case we estimate using only one variable, we set $k=1$. The following value is called the Residual Standard Error. $n-(k+1) = 182$ is called the degree of freedom. $$\mbox{Residual Standard Error} = \sqrt{\frac{\mathrm{SSE}}{n-(k+1)}} = \sqrt{\frac{\mathrm{SSE}}{182}}$$
+
+```{r gdpco2log:RSE}
+gdpco2log_model <- lm(log10(co2) ~ log10(gdp), data = gdpco2_2019)
+gdpco2log_sse <- sum((log10(gdpco2_2019$co2) - gdpco2log_model$fitted.values)^2)
+(gdpco2log_rse <- sqrt(gdpco2log_sse/182))
+```
+
+The estimated value of $b$ appears in the row (Intercept) and $m$ appears in the row log10(gdp). Roughly speaking it is the best fit line against the data points minimizing the sum of the squared distances.
+
+To normalize the scale, we divide the value $\mathrm{SSyy}$ and consider the following. $$\mathrm{SSyy} = \sum_{i=1}^{184} (\log_{10}(y_i) - \mathrm{mean})^2 = \sum_{i=1}^{184} (y_i'-\mathrm{mean})^2, \quad \mbox{Multiple R Squared} = 1-\frac{\mathrm{SSE}}{\mathrm{SSyy}}$$
+
+```{r gdpco2log:MRS}
+gdpco2log_ssyy <- sum((log10(gdpco2_2019$co2)- mean(log10(gdpco2_2019$co2)))^2)
+1-gdpco2log_sse/gdpco2log_ssyy
+```
+
+**Conclusion**: Roughly speaking, the linear model fits much better than the estimation by means and the model explains about 77% of the scattered points.
+
+# References
+
+## Data {#chap:data}
+
+### A List of Open Data Catalogue
+
+#### International Institutions
+
+-   World Bank: *New Ways of Looking at Poverty*
+    -   Open Data: <https://data.worldbank.org>
+    -   World Development Indicators: <http://datatopics.worldbank.org/world-development-indicators/>
+-   UN Data: <http://data.un.org>
+-   WHO Data: <https://www.who.int/gho/en/>
+-   OECD: <https://data.oecd.org>
+-   European Union: <http://data.europa.eu/euodp/en/home>
+-   African Union: <https://au.int/en/ea/statistics>
+
+#### Goverments
+
+-   United States: <https://www.data.gov>
+-   United Kingdom: <https://data.gov.uk>
+-   China: <http://www.stats.gov.cn/english/>
+-   Japan: <https://www.data.go.jp/list-of-database/?lang=en>
+
+#### Other Open Public Data
+
+-   Google Public Data Explore: <https://www.google.com/publicdata/directory?hl=en_US>
+    -   Google Dataset Search: <https://toolbox.google.com/datasetsearch>
+    -   Google Trends: <https://trends.google.com/trends/?geo=US>
+-   Open Knowledge Foundation: <https://okfn.org>
+    -   Global Open Data Index: <https://index.okfn.org>
+    -   A global, non-profit network that promotes and shares information at no charge, including both content and data. It was founded by Rufus Pollock on 20 May 2004 and launched on 24 May 2004 in Cambridge, UK. It is incorporated in England and Wales as a company limited by guarantee. \hfill (Wikipedia)
+-   Our World in Data: <https://ourworldindata.org>
+    -   A scientific online publication that focuses on large global problems such as poverty, disease, hunger, climate change, war, existential risks, and inequality. The publication's founder is the social historian and development economist Max Roser. The research team is based at the University of Oxford. \hfill (Wikipedia)
+
+#### Miscellaneous Data sets
+
+1.  [DFID portal](https://devtracker.dfid.gov.uk/)
+2.  [EU Aid portal](https://euaidexplorer.ec.europa.eu/)
+3.  [Eurostat](https://ec.europa.eu/eurostat)
+4.  [FAOSTAT](http://www.fao.org/faostat/en/#home)
+5.  [Openaid Netherlands](http://openaid.nl/)
+6.  [Openaid Sweden](http://openaid.se/aid/)
+7.  [Oxfam data sets](https://policy-practice.oxfam.org.uk/our-approach/accountability-and-transparency/our-data)
+8.  [Sea Around Us (University of British Columbia)](http://www.seaaroundus.org/data/#/eez)
+9.  [UN Habitat portal](http://open.unhabitat.org/)
+10. [UNESCO portal](http://opendata.unesco.org/)
+11. [USAID portal](http://open.undp.org/)
+12. [World Poverty Clock (World Data Lab)](https://aidscape.usaid.gov/)
+
+## Books
+
+You can read many excellent books online.
+
+-   [RStudio \> Resources \> Books](https://www.rstudio.com/resources/books/)
+-   [Bookdown](https://bookdown.org) and its [archive](https://bookdown.org/home/archive/) page
+
+## Websites
+
+-   [RStudio](https://posit.co)
+    -   Education: <https://education.rstudio.com>
+-   R Basics:
+    -   [R for Beginners](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) in PDF
+    -   [Quick-R by DataCamp](https://www.statmethods.net/r-tutorial/index.html)
+-   Data Science for Social Scientists: <https://datascience.tntlab.org>
+    -   R for Social Scientists: <https://datacarpentry.org/r-socialsci/>
+-   RMarkdown
+    -   [RStudio Site](https://rmarkdown.rstudio.coml)
+
+## Interactive Exercises
+
+-   [RStudio Primers](https://rstudio.cloud/learn/primers): The following four sets of interactive exercises written using `learnr` package help you to review and consolidate your understanding of basis of R.
+    -   The Basics
+    -   Work with Data
+    -   Visualize Data
+    -   Tidy Your Data
