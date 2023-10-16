@@ -9,9 +9,15 @@ output: html_notebook
 
 ### AI and Datascience
 
+Evidence based, data based thinking
+
 ### Macroeconomics
 
+The study of the entire economy of a region, a country, or the entire world
+
 ### World Development Indicator
+
+Open social science database.
 
 ## Open Data and Public Data
 
@@ -25,9 +31,39 @@ Datascience and Artificial Intelligence
 
     -   Open and Public Data
 
+> Q. Explain 'Open Data' and 'Public Data', and their differences. AI: Poe Assistant.
+>
+> A. AI Poe Assistant. ([Poe.com](https://poe.com))
+>
+> "Open data" and "public data" are related concepts that refer to different aspects of data accessibility and usage.
+>
+> Open Data: Open data refers to the idea that certain data should be freely available to the public, without restrictions on access, usage, or redistribution. Open data is typically released in a machine-readable format, such as CSV, JSON, or XML, and is accompanied by an open license that allows anyone to use, reuse, and distribute the data for any purpose. The goal of open data is to promote transparency, collaboration, and innovation by enabling individuals, organizations, and communities to analyze and build upon the data.
+
+> Open data often includes government data, scientific research data, public records, and other datasets that are deemed to be of public interest. Governments, international organizations, and various institutions actively promote the release of open data to foster accountability, drive economic growth, and empower citizens to make informed decisions.
+>
+> Public Data: Public data, on the other hand, refers to any data that is accessible or available to the public. It is a broader term that encompasses both open data and other types of data that may have certain restrictions on access or usage. Public data can include information that is freely and openly available, as well as data that is accessible through specific channels, such as public libraries, government agencies, or subscription-based services.
+>
+> Public data can include a wide range of information, such as government reports, census data, legal documents, financial statements, and more. While public data may be accessible to the public, it does not necessarily guarantee the same level of openness, usability, or freedom as open data. Public data may have limitations on its usage, copyright restrictions, or conditions imposed by the data provider.
+>
+> In summary, open data specifically refers to data that is freely accessible, usable, and redistributable without restrictions, often accompanied by an open license. Public data, on the other hand, is a broader term that includes both open data and other data that may have varying degrees of accessibility and usage restrictions.
+
+#### World Bank on Open Data for Open Government
+
+Visit [Open Government Data Toolkit](https://opendatatoolkit.worldbank.org/en/data/opendatatoolkit/home).
+
 ## R on RStudio
 
 ### Posit Cloud
+
+-   Posit.cloud: <https://posit.cloud/>
+
+    -   [Posit Primers](https://posit.cloud/learn/primers)
+
+    -   [Cheatsheets](https://posit.cloud/learn/cheat-sheets)
+
+-   Shared Project: <https://posit.cloud/content/5539763>
+
+-   Create Your Copy and Download it.
 
 ## Datascience Workflow
 
@@ -37,19 +73,27 @@ Datascience and Artificial Intelligence
 
 ### Setup
 
+Step 1. Install packages if necessary.
+
 ```{r eval = FALSE}
 install.packages("tidyverse")
 install.packages("WDI")
 ```
+
+Step 2. Load packages.
 
 ```{r}
 library(tidyverse)
 library(WDI)
 ```
 
+Step 3. Create a data directory for the first time.
+
 ```{r create-dirs, eval = FALSE}
 dir.create("data")
 ```
+
+Step 4. Set 'System Language' to be English, recommended.
 
 ```{r eval = FALSE}
 Sys.setenv(LANG = "en")
@@ -57,31 +101,78 @@ Sys.setenv(LANG = "en")
 
 ### Importing GDP Data
 
-```{r cache = TRUE}
+The following code chunk is to download GDP data with the following indicator code.
+
+WDI indicator: NY.GDP.MKTP.PP.KD
+
+```{r cache = TRUE, eval = FALSE}
 df_gdp <- WDI(indicator = "NY.GDP.MKTP.PP.KD")
 ```
 
-```{r}
+N.B. There are many GDP related data in WDI.
+
+To avoid the internet traffic, save the data and reuse it.
+
+CSV: comma separated values, a text format of a data.
+
+```{r eval = FALSE}
 write_csv(df_gdp, "data/gdp.csv")
 ```
 
-```{r eval=FALSE}
+Run codes above only once to download and write the data into the data directory.
+
+```{r}
 df_gdp <- read_csv("data/gdp.csv")
 ```
+
+### Viewing Data
+
+`head`: print the first 6 rows by default
 
 ```{r}
 head(df_gdp)
 ```
 
+2.561800e+12 is in scientific notation, i.e., 2.561800 $\times10^{12} = 2,562,800,000,000$.
+
+`str`: display the structure of an object
+
 ```{r}
 str(df_gdp)
 ```
+
+`summary`: display the summary of an object
 
 ```{r}
 summary(df_gdp)
 ```
 
+In RNotebook, the following also displays the first 1000 rows of the data in the paged format.
+
+```{r eval = FALSE}
+df_gdp
+```
+
+### Transformation
+
+`|>` is called a pipe operator and the following is same as
+
+`filter(df_gdp, country == COUNTRY)` .
+
+`filter` : Keep rows that match a condition
+
+```{r}
+COUNTRY <- "Japan"
+df_gdp |> filter(country == COUNTRY)
+```
+
 ### Visualization
+
+#### GDP of Japan
+
+`ggplot + geom_line`: A tidyverse function of draw a line graph
+
+`aes(year, NY.GDP.MKTP.PP.KD)` : aesthetic mapping sending year to x-axis and `NY.GDP.MKTP.PP.KD` to y-axis
 
 ```{r}
 COUNTRY <- "Japan"
@@ -89,19 +180,106 @@ df_gdp |> filter(country == COUNTRY) |>
   ggplot(aes(year, NY.GDP.MKTP.PP.KD)) + geom_line()
 ```
 
+Let's delete the rows with missing values using drop_na(NY.GDP.MKTP.PP.KD). A transformation.
+
+```{r}
+COUNTRY <- "Japan"
+df_gdp |> filter(country == COUNTRY) |> drop_na(NY.GDP.MKTP.PP.KD) |>
+  ggplot(aes(year, NY.GDP.MKTP.PP.KD)) + geom_line()
+```
+
+#### GDP of the World
+
 ```{r}
 COUNTRY <- "World"
 df_gdp |> filter(country == COUNTRY) |>
   ggplot(aes(year, NY.GDP.MKTP.PP.KD)) + geom_line()
 ```
 
+#### Exercise.
+
+1.  Delete the missing data of the GDP of the World mimicking the one of Japan.
+2.  Write down your observations and questions.
+
+```{r eval = FALSE}
+COUNTRY <- "World"
+df_gdp |> filter(country == COUNTRY) |>
+  ggplot(aes(year, NY.GDP.MKTP.PP.KD)) + geom_line()
+```
+
+**Observations and Questions**
+
+-   e.g. The GDP of the world is continuously increasing since 1990.
+
+-   
+
+#### GDP of the countries
+
+By country names
+
 ```{r}
 COUNTRIES <- c("Japan", "China", "India", "United Kingdom", "United States", "Germany", "France")
-df_gdp |> filter(country %in% COUNTRIES) |>
+df_gdp |> filter(country %in% COUNTRIES) |> drop_na(NY.GDP.MKTP.PP.KD) |>
   ggplot(aes(year, NY.GDP.MKTP.PP.KD, color = country)) + geom_line()
 ```
 
+```{r}
+ISO2C <- c("JP", "CN", "ID", "UK", "US", "DE", "FR")
+df_gdp |> filter(iso2c %in% ISO2C) |> drop_na(NY.GDP.MKTP.PP.KD) |>
+  ggplot(aes(year, NY.GDP.MKTP.PP.KD, color = iso2c)) + geom_line()
+```
+
+#### Exercise.
+
+What happens if you replace `color = iso2c` at the bottom of the code above with `colour = iso2c` , `color = country` , `col = country` ?
+
+#### List of Countries and iso2c
+
+```{r}
+df_gdp |> distinct(country, iso2c)
+```
+
+#### **Exercise.**
+
+Set COUNTRIES and/or ISO2C to draw line graphs of GDP.
+
+```{r eval = FALSE}
+COUNTRIES <- c() # surround the country name with quotation marks, and use a comma as a separator
+df_gdp |> filter(country %in% COUNTRIES) |> drop_na(NY.GDP.MKTP.PP.KD) |>
+  ggplot(aes(year, NY.GDP.MKTP.PP.KD, color = country)) + geom_line()
+```
+
+```{r}
+ISO2C <- c() # surround the iso2c code with quotation marks, and use a comma as a separator
+df_gdp |> filter(iso2c %in% ISO2C) |> drop_na(NY.GDP.MKTP.PP.KD) |>
+  ggplot(aes(year, NY.GDP.MKTP.PP.KD, color = iso2c)) + geom_line()
+```
+
 ## World Development Indicator
+
+### Find Indicator Codes
+
+1.  World Bank Home Page
+
+    -   World Development Indicators: [Link](https://datatopics.worldbank.org/world-development-indicators/)
+
+    -   World Bank Open Data: [Link](https://data.worldbank.org)
+
+    -   WDI Statistical Tables: [Link](https://wdi.worldbank.org/tables)
+
+2.  Excel Files
+
+    -   Data Catalogues: [Link](https://datacatalog.worldbank.org/search/dataset/0037712/World-Development-Indicators) Download Excel File
+
+3.  API Search
+
+```{r}
+WDIsearch(string = "gdp", field = "name")
+```
+
+```{r}
+WDIsearch(string = "NY.GDP.MKTP.PP.KD", field = "indicator")
+```
 
 ## GDP and GDP per Capita
 
@@ -115,7 +293,7 @@ df_gdp |> filter(country %in% COUNTRIES) |>
 
 -   GDP, PPP (constant 2017 international \$) PPP GDP is gross domestic product converted to international dollars using purchasing power parity rates. An international dollar has the same purchasing power over GDP as the U.S. dollar has in the United States. GDP is the sum of gross value added by all resident producers in the country plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in constant 2017 international dollars. ID: NY.GDP.MKTP.PP.KD
 
--   Population, total Total population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship. The values shown are midyear estimates. SP.POP.TOTL
+-   Population, total Total population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship. The values shown are midyear estimates. ID: SP.POP.TOTL
 
 ```{r cache = TRUE}
 df_gdppcap <- WDI(indicator = c(gdp = "NY.GDP.MKTP.PP.KD", pop = "SP.POP.TOTL"), extra = TRUE)
@@ -136,14 +314,133 @@ df_gdppcap |> filter(country == COUNTRY) |>
 ```
 
 ```{r}
+COUNTRY <- "World"
+df_gdppcap |> filter(country == COUNTRY) |>
+  ggplot(aes(year, pop)) + geom_line()
+```
+
+#### Exercise.
+
+Write your observations.
+
+### GDP Per Capita
+
+```{r}
 df_gdppcap2 <- df_gdppcap |> drop_na(pop) |> 
-  mutate(gdppcap = gdp/pop)
+  mutate(gdppcap = gdp/pop, .before = gdp)
+```
+
+```{r}
+df_gdppcap2
 ```
 
 ```{r}
 COUNTRY <- "World"
 df_gdppcap2 |> filter(country == COUNTRY) |>
   ggplot(aes(year, gdppcap)) + geom_line()
+```
+
+#### Check against GDP per capita, PPP
+
+```{r eval = FALSE}
+df_gdppcap_check <- WDI(indicator = c(PCAP = "NY.GDP.PCAP.PP.KD", gdp = "NY.GDP.MKTP.PP.KD", pop = "SP.POP.TOTL"), extra = TRUE) |>
+  drop_na(pop) |>
+  mutate(gdppcap = gdp/pop, .before = gdp)
+```
+
+```{r eval = FALSE}
+write_csv(df_gdppcap_check, "data/gdppcap_check.csv")
+```
+
+```{r}
+df_gdppcap_check <- read_csv("data/gdppcap_check.csv")
+```
+
+```{r}
+df_gdppcap_check |> drop_na(gdppcap) |> mutate(near = near(PCAP, gdppcap)) |> 
+  summarize(n = n(), sum(near))
+```
+
+#### Visualization
+
+Two useful questions.
+
+1.  What type of **variation** occurs **within** my variables?
+
+2.  What type of **covariation** occurs **between** my variables?
+
+#### Variation 1. Histogram
+
+```{r}
+df_gdppcap2 |> filter(year == 2020) |> drop_na(gdp) |> 
+  ggplot(aes(gdp)) + geom_histogram()
+```
+
+```{r}
+df_gdppcap2 |> filter(year == 2020) |> drop_na(gdppcap) |> 
+  ggplot(aes(gdppcap)) + geom_histogram()
+```
+
+```{r}
+df_gdppcap2 |> filter(year == 2020) |> drop_na(gdp) |> 
+  ggplot(aes(gdp)) + geom_histogram() + scale_x_log10()
+```
+
+#### Exercise.
+
+Change bins, i.e., `geom_histogram(bins = 20)`, etc.
+
+```{r eval = FALSE}
+df_gdppcap2 |> filter(year == 2020) |> drop_na(gdp) |> 
+  ggplot(aes(gdp)) + geom_histogram(bins = 20) + scale_x_log10()
+```
+
+#### Exercise.
+
+Create a similar histogram by using `scale_x_log10()` and adjusting the number of bins.
+
+```{r eval = FALSE}
+df_gdppcap2 |> filter(year == 2020) |> drop_na(gdppcap) |> 
+  ggplot(aes(gdppcap)) + geom_histogram() + scale_x_log10()
+```
+
+#### Variation 2. Boxplot
+
+```{r}
+df_gdppcap2 |> filter(year == 2020) |> drop_na(gdppcap) |> 
+  ggplot(aes(gdppcap)) + geom_boxplot() + scale_x_log10()
+```
+
+```{r}
+df_gdppcap2 |> filter(year == 2020) |> drop_na(gdppcap) |> 
+  filter(income != "Aggregates") |> 
+  ggplot(aes(gdppcap, income, fill = income)) + geom_boxplot() + scale_x_log10() +
+  theme(legend.position = "none")
+```
+
+```{r}
+df_gdppcap2 |> filter(year == 2020) |> drop_na(gdp) |> 
+  filter(income != "Aggregates") |> 
+  ggplot(aes(gdp, region, fill = region)) + geom_boxplot() + scale_x_log10() +
+  theme(legend.position = "none")
+```
+
+```{r}
+df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |> drop_na(gdp, pop) |> 
+  ggplot(aes(pop, gdp, color = region)) + geom_point() + 
+  scale_x_log10() + scale_y_log10()
+```
+
+```{r eval = FALSE}
+install.packages("plotly")
+```
+
+```{r}
+library(plotly)
+test <- df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |> drop_na(gdp, pop) |> 
+  ggplot(aes(color = country, shape = region, pop, gdp)) + geom_point() + 
+  scale_x_log10() + scale_y_log10() + theme(legend.position = "none")
+test |> ggplotly()
 ```
 
 ## CO2 Emissions Per Capita vs GDP Per Capita
@@ -220,7 +517,6 @@ write_csv(df_secgdp, "data/secgdp.csv")
 df_secgdp <- read_csv("data/secgdp.csv")
 ```
 
-
 ```{r}
 COUNTRY <- "World"
 df_secgdp |> filter(country == COUNTRY) |>
@@ -248,3 +544,13 @@ df_secgdp |> filter(year == 2020) |> drop_na(gdppcap, sec) |>
 ```{r}
 df_secgdp |> lm(sec~gdppcap, data = _) |> summary()
 ```
+
+## References
+
+1.  R for Data Science (2e): [Link](https://r4ds.hadley.nz). The First Edition: [Link](https://r4ds.had.co.nz).
+
+2.  Posit Primers: [Link](https://posit.cloud/learn/primers).
+
+3.  Cheat Sheet: [Link](https://posit.cloud/learn/cheat-sheets).
+
+4.  Input data set: Historical country-level Gross Domestic Product (GDP): [Link](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/33/)
