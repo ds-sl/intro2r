@@ -342,7 +342,15 @@ write_csv(df_gdppcap, "data/gdppcap.csv")
 ```
 
 ```{r}
-df_dgppcap <- read_csv("data/gdppcap.csv")
+df_gdppcap <- read_csv("data/gdppcap.csv")
+```
+
+```{r}
+str(df_gdppcap)
+```
+
+```{r}
+df_gdppcap |> select(region, income, lending) |> lapply(unique)
 ```
 
 ```{r}
@@ -416,6 +424,65 @@ df_gdppcap |> filter(year == 2022, region != "Aggregates") |>
 
 4.  Find the top 10 of the countries with the smallest population.
 
+#### Scatter Plot
+
+What type of **covariation** occurs **between** my variables?
+
+```{r}
+df_gdppcap2 |> filter(year == 2022, region !="Aggregates") |> 
+  drop_na(gdp, pop) |> 
+  ggplot(aes(pop, gdp)) + geom_point()
+```
+
+```{r}
+df_gdppcap2 |> filter(year == 2022, region !="Aggregates") |> 
+  drop_na(gdp, pop) |> 
+  ggplot(aes(pop, gdp)) + geom_point() + 
+  scale_x_log10() + scale_y_log10()
+```
+
+```{r}
+df_gdppcap2 |> filter(year == 2022, region !="Aggregates") |> 
+  drop_na(gdp, pop) |> 
+  ggplot(aes(pop, gdp)) + geom_point() + 
+  geom_smooth(method = "lm", se = FALSE) +
+  scale_x_log10() + scale_y_log10()
+```
+
+
+```{r}
+df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |> drop_na(gdp, pop) |> 
+  ggplot(aes(pop, gdp, color = region)) + geom_point() + 
+  scale_x_log10() + scale_y_log10()
+```
+```{r}
+df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |> 
+  drop_na(gdp, pop) |> 
+  ggplot(aes(pop, gdp, color = region, shape = income)) + geom_point() + 
+  scale_x_log10() + scale_y_log10()
+```
+
+```{r}
+df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |> 
+  drop_na(gdp, gdppcap, pop) |> 
+  ggplot(aes(gdppcap, gdp, color = region, size = pop)) + geom_point() + 
+  scale_x_log10() + scale_y_log10()
+```
+
+
+```{r eval = FALSE}
+install.packages("plotly")
+```
+
+```{r}
+library(plotly)
+test <- df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |> drop_na(gdp, pop) |> 
+  ggplot(aes(color = country, shape = region, pop, gdp)) + geom_point() + 
+  scale_x_log10() + scale_y_log10() + theme(legend.position = "none")
+test |> ggplotly()
+```
+
+
 #### Variation 1. Histogram
 
 ```{r}
@@ -456,7 +523,8 @@ df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(gdppcap) |
 
 ```{r}
 df_gdppcap |> filter(year == 2022,region != "Aggregates") |> drop_na(pop) |> 
-  ggplot(aes(pop)) + geom_histogram() + scale_x_log10()
+  group_by(region) |> 
+  ggplot(aes(pop, fill = region)) + geom_histogram(col = "black", linewidth = 0.2) + scale_x_log10()
 ```
 
 #### Variation 2. Boxplot
@@ -478,24 +546,6 @@ df_gdppcap2 |> filter(year == 2020) |> drop_na(gdp) |>
   filter(income != "Aggregates") |> 
   ggplot(aes(gdp, region, fill = region)) + geom_boxplot() + scale_x_log10() +
   theme(legend.position = "none")
-```
-
-```{r}
-df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |> drop_na(gdp, pop) |> 
-  ggplot(aes(pop, gdp, color = region)) + geom_point() + 
-  scale_x_log10() + scale_y_log10()
-```
-
-```{r eval = FALSE}
-install.packages("plotly")
-```
-
-```{r}
-library(plotly)
-test <- df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |> drop_na(gdp, pop) |> 
-  ggplot(aes(color = country, shape = region, pop, gdp)) + geom_point() + 
-  scale_x_log10() + scale_y_log10() + theme(legend.position = "none")
-test |> ggplotly()
 ```
 
 ## CO2 Emissions Per Capita vs GDP Per Capita
