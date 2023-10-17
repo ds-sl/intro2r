@@ -7,17 +7,33 @@ output: html_notebook
 
 ## Introduction
 
-### AI and Datascience
+### Datascience
 
-Evidence based, data based thinking
+Datascience is an interdisciplinary academic field to extract or extrapolate knowledge and insights from noisy, structured, and unstructured data.
+
+Why datascience? There are many reasons, but I believe it would promote evidence based, non-biased thinking.
+
+#### Exploratory Data Analysis, EDA
+
+EDA is an iterative cycle that helps you understand what your data says. When you do EDA, you:
+
+1.  Generate questions about your data
+
+2.  Search for answers by visualising, transforming, and/or modeling your data
+
+3.  Use what you learn to refine your questions and/or generate new questions
+
+EDA is an important part of any data analysis. You can use EDA to make discoveries about the world; or you can use EDA to ensure the quality of your data, asking questions about whether the data meets your standards or not. (Posit Primers: [EDA](https://posit.cloud/learn/primers/3.1))
 
 ### Macroeconomics
 
 The study of the entire economy of a region, a country, or the entire world
 
-### World Development Indicator
+### World Development Indicators
 
-Open social science database.
+World Development Indicators (WDI) is the World Bank\'s premier compilation of international statistics on global development. Drawing from officially recognized sources and including national, regional, and global estimates, the WDI provides access to approximately 1,600 indicators for 217 economies, with some time series extending back more than 50 years. The database helps users find information related to development, both current and historical. The topics covered in the WDI range from poverty, health, and demographics to GDP, trade, and the environment.
+
+The World Development Indicators website provides access to data as well as information about data coverage, curation, and methodologies, and allows users to discover what type of indicators are available, how they are collected, and how they can be visualized to analyze development trends. (Wikipedia: [Link](https://en.wikipedia.org/wiki/World_Development_Indicators))
 
 ## Open Data and Public Data
 
@@ -31,14 +47,14 @@ Datascience and Artificial Intelligence
 
     -   Open and Public Data
 
-> Q. Explain 'Open Data' and 'Public Data', and their differences. AI: Poe Assistant.
+> **Q. Explain 'Open Data' and 'Public Data', and their differences.**
 >
-> A. AI Poe Assistant. ([Poe.com](https://poe.com))
+> **A. AI Poe Assistant**. ([Poe.com](https://poe.com))
 >
 > "Open data" and "public data" are related concepts that refer to different aspects of data accessibility and usage.
 >
 > Open Data: Open data refers to the idea that certain data should be freely available to the public, without restrictions on access, usage, or redistribution. Open data is typically released in a machine-readable format, such as CSV, JSON, or XML, and is accompanied by an open license that allows anyone to use, reuse, and distribute the data for any purpose. The goal of open data is to promote transparency, collaboration, and innovation by enabling individuals, organizations, and communities to analyze and build upon the data.
-
+>
 > Open data often includes government data, scientific research data, public records, and other datasets that are deemed to be of public interest. Governments, international organizations, and various institutions actively promote the release of open data to foster accountability, drive economic growth, and empower citizens to make informed decisions.
 >
 > Public Data: Public data, on the other hand, refers to any data that is accessible or available to the public. It is a broader term that encompasses both open data and other types of data that may have certain restrictions on access or usage. Public data can include information that is freely and openly available, as well as data that is accessible through specific channels, such as public libraries, government agencies, or subscription-based services.
@@ -57,9 +73,9 @@ Visit [Open Government Data Toolkit](https://opendatatoolkit.worldbank.org/en/da
 
 -   Posit.cloud: <https://posit.cloud/>
 
-    -   [Posit Primers](https://posit.cloud/learn/primers)
+    -   [Posit Primers](https://posit.cloud/learn/primers): interactive tutorials
 
-    -   [Cheatsheets](https://posit.cloud/learn/cheat-sheets)
+    -   [Cheatsheets](https://posit.cloud/learn/cheat-sheets): RStudio IDE, Data Visualization, Data Transformation, Data Import, RMarkdown, etc.
 
 -   Shared Project: <https://posit.cloud/content/5539763>
 
@@ -70,6 +86,14 @@ Visit [Open Government Data Toolkit](https://opendatatoolkit.worldbank.org/en/da
 ![*The image above is from [R4DS(2e)](https://r4ds.hadley.nz) by Hadley Wickham, Mine Çetinkaya-Rundel and Garrett Grolemund*](data/data-science.png)
 
 ## First Datascience
+
+We use two packages, `tidyverse` and `WDI`.
+
+R packages are extensions to the R statistical programming language. R packages contain code, data, and documentation in a standardized collection format that can be installed by users of R, typically via a centralized software repository such as CRAN (the Comprehensive R Archive Network). [[CRAN Link](https://cran.r-project.org)]
+
+-   **tidyverse**: The tidyverse is a collection of open source packages for the R programming language introduced by Hadley Wickham and his team that "share an underlying design philosophy, grammar, and data structures" of tidy data. Characteristic features of tidyverse packages include extensive use of non-standard evaluation and encouraging piping. [[CRAN Link](https://cran.r-project.org/web/packages/tidyverse/index.html)]
+
+-   **WDI**: Search and download data from over 40 databases hosted by the World Bank, including the World Development Indicators ('WDI'), International Debt Statistics, Doing Business, Human Capital Index, and Sub-national Poverty indicators. [[CRAN Link](https://cran.r-project.org/web/packages/WDI/index.html)]
 
 ### Setup
 
@@ -109,7 +133,7 @@ WDI indicator: NY.GDP.MKTP.PP.KD
 df_gdp <- WDI(indicator = "NY.GDP.MKTP.PP.KD")
 ```
 
-N.B. There are many GDP related data in WDI.
+N.B. There are many GDP related data in WDI, for example, "NY.GDP.MKTP.CD"
 
 To avoid the internet traffic, save the data and reuse it.
 
@@ -127,13 +151,15 @@ df_gdp <- read_csv("data/gdp.csv")
 
 ### Viewing Data
 
-`head`: print the first 6 rows by default
+First, look at the data by `head`, `str` ucture, and `summary`.
+
+`head`: display the first 6 rows by default
 
 ```{r}
 head(df_gdp)
 ```
 
-2.561800e+12 is in scientific notation, i.e., 2.561800 $\times10^{12} = 2,562,800,000,000$.
+2.561800e+12 is in scientific notation, i.e., $2.561800 \times10^{12} = 2,562,800,000,000$.
 
 `str`: display the structure of an object
 
@@ -155,7 +181,7 @@ df_gdp
 
 ### Transformation
 
-`|>` is called a pipe operator and the following is same as
+`|>` , or `%>%`, is called a pipe operator and `df_gdp |> filter(country == COUNTRY)` is same as
 
 `filter(df_gdp, country == COUNTRY)` .
 
@@ -170,7 +196,7 @@ df_gdp |> filter(country == COUNTRY)
 
 #### GDP of Japan
 
-`ggplot + geom_line`: A tidyverse function of draw a line graph
+`ggplot() + geom_line()`: A tidyverse function of draw a line graph
 
 `aes(year, NY.GDP.MKTP.PP.KD)` : aesthetic mapping sending year to x-axis and `NY.GDP.MKTP.PP.KD` to y-axis
 
@@ -180,7 +206,7 @@ df_gdp |> filter(country == COUNTRY) |>
   ggplot(aes(year, NY.GDP.MKTP.PP.KD)) + geom_line()
 ```
 
-Let's delete the rows with missing values using drop_na(NY.GDP.MKTP.PP.KD). A transformation.
+Let's delete the rows with missing values using `drop_na(NY.GDP.MKTP.PP.KD)`. a transformation.
 
 ```{r}
 COUNTRY <- "Japan"
@@ -198,7 +224,7 @@ df_gdp |> filter(country == COUNTRY) |>
 
 #### Exercise.
 
-1.  Delete the missing data of the GDP of the World mimicking the one of Japan.
+1.  Delete the missing data of the GDP of the World by mimicking the one of Japan.
 2.  Write down your observations and questions.
 
 ```{r eval = FALSE}
@@ -233,6 +259,12 @@ df_gdp |> filter(iso2c %in% ISO2C) |> drop_na(NY.GDP.MKTP.PP.KD) |>
 
 What happens if you replace `color = iso2c` at the bottom of the code above with `colour = iso2c` , `color = country` , `col = country` ?
 
+```{r eval = FALSE}
+ISO2C <- c("JP", "CN", "ID", "UK", "US", "DE", "FR")
+df_gdp |> filter(iso2c %in% ISO2C) |> drop_na(NY.GDP.MKTP.PP.KD) |>
+  ggplot(aes(year, NY.GDP.MKTP.PP.KD, color = iso2c)) + geom_line()
+```
+
 #### List of Countries and iso2c
 
 ```{r}
@@ -249,15 +281,15 @@ df_gdp |> filter(country %in% COUNTRIES) |> drop_na(NY.GDP.MKTP.PP.KD) |>
   ggplot(aes(year, NY.GDP.MKTP.PP.KD, color = country)) + geom_line()
 ```
 
-```{r}
+```{r eval = FALSE}
 ISO2C <- c() # surround the iso2c code with quotation marks, and use a comma as a separator
 df_gdp |> filter(iso2c %in% ISO2C) |> drop_na(NY.GDP.MKTP.PP.KD) |>
   ggplot(aes(year, NY.GDP.MKTP.PP.KD, color = iso2c)) + geom_line()
 ```
 
-## World Development Indicator
+# World Development Indicators
 
-### Find Indicator Codes
+## Find Indicator Codes
 
 1.  World Bank Home Page
 
@@ -278,8 +310,14 @@ WDIsearch(string = "gdp", field = "name")
 ```
 
 ```{r}
-WDIsearch(string = "NY.GDP.MKTP.PP.KD", field = "indicator")
+WDIsearch(string = "NY.GDP.MKTP.PP.KD", field = "indicator", short = FALSE)
 ```
+
+#### Assignment
+
+1.  Find at least one WDI indicator with its name and its code.
+
+2.  Find at least one pair of WDI indicators with their names and their codes you want to study their relation.
 
 ## GDP and GDP per Capita
 
@@ -295,22 +333,22 @@ WDIsearch(string = "NY.GDP.MKTP.PP.KD", field = "indicator")
 
 -   Population, total Total population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship. The values shown are midyear estimates. ID: SP.POP.TOTL
 
-```{r cache = TRUE}
-df_gdppcap <- WDI(indicator = c(gdp = "NY.GDP.MKTP.PP.KD", pop = "SP.POP.TOTL"), extra = TRUE)
+```{r cache = TRUE, eval = FALSE}
+df_gdppcap <- WDI(indicator = c(gdp = "NY.GDP.MKTP.PP.KD", pop = "SP.POP.TOTL", gdppcap = "NY.GDP.PCAP.PP.KD"), extra = TRUE)
 ```
 
-```{r}
+```{r eval = FALSE}
 write_csv(df_gdppcap, "data/gdppcap.csv")
 ```
 
-```{r eval=FALSE}
+```{r}
 df_dgppcap <- read_csv("data/gdppcap.csv")
 ```
 
 ```{r}
 COUNTRY <- "World"
 df_gdppcap |> filter(country == COUNTRY) |>
-  ggplot(aes(year, gdp)) + geom_line()
+  ggplot(aes(year, gdppcap)) + geom_line()
 ```
 
 ```{r}
@@ -321,47 +359,35 @@ df_gdppcap |> filter(country == COUNTRY) |>
 
 #### Exercise.
 
-Write your observations.
+Write your observations and questions.
 
 ### GDP Per Capita
 
 ```{r}
 df_gdppcap2 <- df_gdppcap |> drop_na(pop) |> 
-  mutate(gdppcap = gdp/pop, .before = gdp)
+  mutate(PCAP = gdp/pop, .after = gdppcap)
 ```
 
 ```{r}
 df_gdppcap2
 ```
 
-```{r}
-COUNTRY <- "World"
-df_gdppcap2 |> filter(country == COUNTRY) |>
-  ggplot(aes(year, gdppcap)) + geom_line()
-```
-
 #### Check against GDP per capita, PPP
 
 ```{r eval = FALSE}
-df_gdppcap_check <- WDI(indicator = c(PCAP = "NY.GDP.PCAP.PP.KD", gdp = "NY.GDP.MKTP.PP.KD", pop = "SP.POP.TOTL"), extra = TRUE) |>
-  drop_na(pop) |>
-  mutate(gdppcap = gdp/pop, .before = gdp)
-```
-
-```{r eval = FALSE}
-write_csv(df_gdppcap_check, "data/gdppcap_check.csv")
+df_gdppcap2 |> drop_na(gdppcap, PCAP) |> mutate(near = near(gdppcap, PCAP)) |> 
+  summarize(numberofdata = n(), sum(near))
 ```
 
 ```{r}
-df_gdppcap_check <- read_csv("data/gdppcap_check.csv")
+df_gdppcap2 |> filter(!near(gdppcap, PCAP))
 ```
 
-```{r}
-df_gdppcap_check |> drop_na(gdppcap) |> mutate(near = near(PCAP, gdppcap)) |> 
-  summarize(n = n(), sum(near))
-```
+#### Exercise.
 
-#### Visualization
+Write your observations and questions.
+
+### Visualization
 
 Two useful questions.
 
@@ -369,39 +395,68 @@ Two useful questions.
 
 2.  What type of **covariation** occurs **between** my variables?
 
+See [Link](https://posit.cloud/learn/primers/3.1).
+
+#### Ranks.
+
+`arrange(desc(gdp))` is to reorder in descending order of `gdp,` `arrange(gdp)` in ascending order.
+
+```{r}
+df_gdppcap |> filter(year == 2022, region != "Aggregates") |> 
+  drop_na(gdp) |> arrange(desc(gdp))
+```
+
+#### Exercises.
+
+1.  Find the top 10 of the countries with the highest GDP per capita.
+
+2.  Find the top 10 of the countries with the lowest GDP per capita.
+
+3.  Find the top 10 of the countries with the largest population.
+
+4.  Find the top 10 of the countries with the smallest population.
+
 #### Variation 1. Histogram
 
 ```{r}
-df_gdppcap2 |> filter(year == 2020) |> drop_na(gdp) |> 
+df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(gdp) |> 
   ggplot(aes(gdp)) + geom_histogram()
 ```
 
 ```{r}
-df_gdppcap2 |> filter(year == 2020) |> drop_na(gdppcap) |> 
+df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(gdppcap) |> 
   ggplot(aes(gdppcap)) + geom_histogram()
 ```
 
 ```{r}
-df_gdppcap2 |> filter(year == 2020) |> drop_na(gdp) |> 
+df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(gdp) |> 
   ggplot(aes(gdp)) + geom_histogram() + scale_x_log10()
 ```
 
-#### Exercise.
+#### Exercises.
 
-Change bins, i.e., `geom_histogram(bins = 20)`, etc.
+1.  Change bins, i.e., `geom_histogram(bins = 20)`, etc.
 
 ```{r eval = FALSE}
-df_gdppcap2 |> filter(year == 2020) |> drop_na(gdp) |> 
+df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(gdp) |> 
   ggplot(aes(gdp)) + geom_histogram(bins = 20) + scale_x_log10()
 ```
 
-#### Exercise.
-
-Create a similar histogram by using `scale_x_log10()` and adjusting the number of bins.
+2.  Create a similar histogram of gdppcap by using `scale_x_log10()` and adjust the number of bins.
 
 ```{r eval = FALSE}
-df_gdppcap2 |> filter(year == 2020) |> drop_na(gdppcap) |> 
+df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(gdppcap) |> 
   ggplot(aes(gdppcap)) + geom_histogram() + scale_x_log10()
+```
+
+3.  Create a similar histogram for population.
+4.  Write your observations and comments.
+
+#### Extra.
+
+```{r}
+df_gdppcap |> filter(year == 2022,region != "Aggregates") |> drop_na(pop) |> 
+  ggplot(aes(pop)) + geom_histogram() + scale_x_log10()
 ```
 
 #### Variation 2. Boxplot
