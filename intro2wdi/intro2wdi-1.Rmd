@@ -2,6 +2,8 @@
 title: "Introduction to WDI, Part I"
 date: "`r Sys.Date()`"
 output:
+  pdf_document:
+    toc: yes
   html_notebook:
     df_print: paged
     number_sections: yes
@@ -10,8 +12,6 @@ output:
   word_document:
     toc: yes
     reference_docx: intro2wdi_tmp.docx
-  pdf_document:
-    toc: yes
 ---
 
 # Datascience for Macroeconomics using WDI
