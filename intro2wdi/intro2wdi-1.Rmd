@@ -42,7 +42,7 @@ The study of the entire economy of a region, a country, or the entire world
 
 ### World Development Indicators
 
-World Development Indicators (WDI) is the World Bank\'s premier compilation of international statistics on global development. Drawing from officially recognized sources and including national, regional, and global estimates, the WDI provides access to approximately 1,600 indicators for 217 economies, with some time series extending back more than 50 years. The database helps users find information related to development, both current and historical. The topics covered in the WDI range from poverty, health, and demographics to GDP, trade, and the environment.
+World Development Indicators (WDI) is the World Bank's premier compilation of international statistics on global development. Drawing from officially recognized sources and including national, regional, and global estimates, the WDI provides access to approximately 1,600 indicators for 217 economies, with some time series extending back more than 50 years. The database helps users find information related to development, both current and historical. The topics covered in the WDI range from poverty, health, and demographics to GDP, trade, and the environment.
 
 The World Development Indicators website provides access to data as well as information about data coverage, curation, and methodologies, and allows users to discover what type of indicators are available, how they are collected, and how they can be visualized to analyze development trends. (Wikipedia: [Link](https://en.wikipedia.org/wiki/World_Development_Indicators))
 
@@ -79,6 +79,11 @@ Datascience and Artificial Intelligence
 Visit [Open Government Data Toolkit](https://opendatatoolkit.worldbank.org/en/data/opendatatoolkit/home).
 
 ## R on RStudio
+
+### Install R and RStudio
+
+-   R: <https://www.r-project.org>
+-   RStudio: <https://posit.co>
 
 ### Posit Cloud
 
@@ -217,7 +222,7 @@ df_gdp |> filter(country == COUNTRY) |>
   ggplot(aes(year, NY.GDP.MKTP.PP.KD)) + geom_line()
 ```
 
-Let's delete the rows with missing values using `drop_na(NY.GDP.MKTP.PP.KD)`. a transformation.
+Let's delete the rows with missing values using `drop_na(NY.GDP.MKTP.PP.KD)`, a transformation.
 
 ```{r}
 COUNTRY <- "Japan"
@@ -279,7 +284,7 @@ df_gdp |> filter(iso2c %in% ISO2C) |> drop_na(NY.GDP.MKTP.PP.KD) |>
 #### List of Countries and iso2c
 
 ```{r}
-df_gdp |> distinct(country, iso2c)
+(df_codes <- df_gdp |> distinct(country, iso2c))
 ```
 
 #### **Exercise.**
@@ -460,12 +465,12 @@ df_gdppcap2 |> filter(year == 2022, region !="Aggregates") |>
   scale_x_log10() + scale_y_log10()
 ```
 
-
 ```{r}
 df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |> drop_na(gdp, pop) |> 
   ggplot(aes(pop, gdp, color = region)) + geom_point() + 
   scale_x_log10() + scale_y_log10()
 ```
+
 ```{r}
 df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |> 
   drop_na(gdp, pop) |> 
@@ -480,7 +485,6 @@ df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |>
   scale_x_log10() + scale_y_log10()
 ```
 
-
 ```{r eval = FALSE}
 install.packages("plotly")
 ```
@@ -492,4 +496,3 @@ test <- df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |> drop_na(gd
   scale_x_log10() + scale_y_log10() + theme(legend.position = "none")
 test |> ggplotly()
 ```
-
