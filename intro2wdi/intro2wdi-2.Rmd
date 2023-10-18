@@ -183,7 +183,7 @@ df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |>
 install.packages("plotly")
 ```
 
-```{r}
+```{r eval = FALSE}
 library(plotly)
 test <- df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |> drop_na(gdp, pop) |> 
   ggplot(aes(color = country, shape = region, pop, gdp)) + geom_point() + 
