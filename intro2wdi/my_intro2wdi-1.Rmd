@@ -488,6 +488,11 @@ df_gdppcap2 |> filter(year == 2022, region !="Aggregates") |>
 ```
 
 ```{r}
+df_gdppcap2 |> filter(year == 2022, region !="Aggregates") |> 
+  drop_na(gdp, pop) |> lm(log10(gdp) ~ log10(pop), data = _) |> summary()
+```
+
+```{r}
 df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |> drop_na(gdp, pop) |> 
   ggplot(aes(pop, gdp, color = region)) + geom_point() + 
   scale_x_log10() + scale_y_log10()
