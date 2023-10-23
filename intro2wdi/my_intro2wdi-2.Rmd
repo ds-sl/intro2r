@@ -1,0 +1,518 @@
+---
+title: "(My) Introduction to WDI, Part II"
+date: "`r Sys.Date()`"
+output:
+  html_notebook:
+    df_print: paged
+    number_sections: yes
+    toc: yes
+    toc_float: yes
+    pandoc_args: --number-offset=2
+  word_document:
+    toc: yes
+    reference_docx: intro2wdi_tmp.docx
+  pdf_document:
+    toc: yes
+---
+
+# Exploratory Data Analysis (EDA)
+
+![*The image above is from [R4DS(2e)](https://r4ds.hadley.nz) by Hadley Wickham, Mine Çetinkaya-Rundel and Garrett Grolemund*](data/data-science.png)
+
+**EDA** is an iterative cycle that helps you understand what your data says. When you do EDA, you:
+
+1.  Generate questions about your data
+
+2.  Search for answers by visualising, transforming, and/or modeling your data
+
+3.  Use what you learn to refine your questions and/or generate new questions
+
+EDA is an important part of any data analysis. You can use EDA to make discoveries about the world; or you can use EDA to ensure the quality of your data, asking questions about whether the data meets your standards or not. (Posit Primers: [EDA](https://posit.cloud/learn/primers/3.1))
+
+## GDP and GDP per Capita
+
+1.  GDP, PPP (constant 2017 international \$): NY.GDP.MKTP.PP.KD
+
+2.  Population, total: SP.POP.TOTL
+
+3.  Calculate GDP per Capita
+
+    -   GDP per capita, PPP (constant 2017 international \$): NY.GDP.PCAP.PP.KD
+
+-   GDP, PPP (constant 2017 international \$) PPP GDP is gross domestic product converted to international dollars using purchasing power parity rates. An international dollar has the same purchasing power over GDP as the U.S. dollar has in the United States. GDP is the sum of gross value added by all resident producers in the country plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in constant 2017 international dollars. ID: NY.GDP.MKTP.PP.KD
+
+-   Population, total Total population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship. The values shown are midyear estimates. ID: SP.POP.TOTL
+
+```{r cache = TRUE, eval = FALSE}
+df_gdppcap <- WDI(indicator = c(gdp = "NY.GDP.MKTP.PP.KD", pop = "SP.POP.TOTL", gdppcap = "NY.GDP.PCAP.PP.KD"), extra = TRUE)
+```
+
+```{r eval = FALSE}
+write_csv(df_gdppcap, "data/gdppcap.csv")
+```
+
+```{r}
+df_gdppcap <- read_csv("data/gdppcap.csv")
+```
+
+```{r}
+str(df_gdppcap)
+```
+
+```{r}
+df_gdppcap |> select(region, income, lending) |> lapply(unique)
+```
+
+```{r}
+COUNTRY <- "World"
+df_gdppcap |> filter(country == COUNTRY) |>
+  ggplot(aes(year, gdppcap)) + geom_line()
+```
+
+```{r}
+COUNTRY <- "World"
+df_gdppcap |> filter(country == COUNTRY) |>
+  ggplot(aes(year, pop)) + geom_line()
+```
+
+#### Exercise.
+
+Write your observations and questions.
+
+### GDP Per Capita
+
+```{r}
+df_gdppcap2 <- df_gdppcap |> drop_na(pop) |> 
+  mutate(PCAP = gdp/pop, .after = gdppcap)
+```
+
+```{r}
+df_gdppcap2
+```
+
+#### Check against GDP per capita, PPP
+
+```{r eval = FALSE}
+df_gdppcap2 |> drop_na(gdppcap, PCAP) |> mutate(near = near(gdppcap, PCAP)) |> 
+  summarize(numberofdata = n(), sum(near))
+```
+
+```{r}
+df_gdppcap2 |> filter(!near(gdppcap, PCAP))
+```
+
+#### Exercise.
+
+Write your observations and questions.
+
+### Visualization
+
+Two useful questions.
+
+1.  What type of **variation** occurs **within** my variables?
+
+2.  What type of **covariation** occurs **between** my variables?
+
+See [Link](https://posit.cloud/learn/primers/3.1).
+
+#### Ranks.
+
+`arrange(desc(gdp))` is to reorder in descending order of `gdp,` `arrange(gdp)` in ascending order.
+
+```{r}
+df_gdppcap |> filter(year == 2022, region != "Aggregates") |> 
+  drop_na(gdp) |> arrange(desc(gdp))
+```
+
+#### Exercises.
+
+1.  Find the top 10 of the countries with the highest GDP per capita.
+
+2.  Find the top 10 of the countries with the lowest GDP per capita.
+
+3.  Find the top 10 of the countries with the largest population.
+
+4.  Find the top 10 of the countries with the smallest population.
+
+#### Scatter Plot
+
+What type of **covariation** occurs **between** my variables?
+
+```{r}
+df_gdppcap2 |> filter(year == 2022, region !="Aggregates") |> 
+  drop_na(gdp, pop) |> 
+  ggplot(aes(pop, gdp)) + geom_point()
+```
+
+```{r}
+df_gdppcap2 |> filter(year == 2022, region !="Aggregates") |> 
+  drop_na(gdp, pop) |> 
+  ggplot(aes(pop, gdp)) + geom_point() + 
+  scale_x_log10() + scale_y_log10()
+```
+
+```{r}
+df_gdppcap2 |> filter(year == 2022, region !="Aggregates") |> 
+  drop_na(gdp, pop) |> 
+  ggplot(aes(pop, gdp)) + geom_point() + 
+  geom_smooth(method = "lm", se = FALSE) +
+  scale_x_log10() + scale_y_log10()
+```
+
+```{r}
+df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |> drop_na(gdp, pop) |> 
+  ggplot(aes(pop, gdp, color = region)) + geom_point() + 
+  scale_x_log10() + scale_y_log10()
+```
+
+```{r}
+df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |> 
+  drop_na(gdp, pop) |> 
+  ggplot(aes(pop, gdp, color = region, shape = income)) + geom_point() + 
+  scale_x_log10() + scale_y_log10()
+```
+
+```{r}
+df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |> 
+  drop_na(gdp, gdppcap, pop) |> 
+  ggplot(aes(gdppcap, gdp, color = region, size = pop)) + geom_point() + 
+  scale_x_log10() + scale_y_log10()
+```
+
+```{r eval = FALSE}
+install.packages("plotly")
+```
+
+```{r eval = FALSE}
+library(plotly)
+test <- df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |> drop_na(gdp, pop) |> 
+  ggplot(aes(color = country, shape = region, pop, gdp)) + geom_point() + 
+  scale_x_log10() + scale_y_log10() + theme(legend.position = "none")
+test |> ggplotly()
+```
+
+#### Variation 1. Histogram
+
+Histogram Video in Posit Primers: [Link](https://vimeo.com/221607341)
+
+```{r}
+df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(gdp) |> 
+  ggplot(aes(gdp)) + geom_histogram()
+```
+
+```{r}
+df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(gdppcap) |> 
+  ggplot(aes(gdppcap)) + geom_histogram()
+```
+
+```{r}
+df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(gdp) |> 
+  ggplot(aes(gdp)) + geom_histogram() + scale_x_log10()
+```
+
+#### Exercises.
+
+1.  Change bins, i.e., `geom_histogram(bins = 20)`, etc.
+
+```{r}
+df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(gdp) |> 
+  ggplot(aes(gdp)) + geom_histogram(bins = 20) + scale_x_log10()
+```
+
+```{r}
+df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(gdppcap) |> 
+  ggplot(aes(gdppcap)) + geom_histogram(binwidth = 10000)
+```
+
+2.  Create a similar histogram of gdppcap by using `scale_x_log10()` and adjust the number of bins.
+
+```{r eval = FALSE}
+df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(gdppcap) |> 
+  ggplot(aes(gdppcap)) + geom_histogram(bins = 10) + scale_x_log10()
+```
+
+3.  Create a similar histogram for population.
+
+```{r}
+df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(pop) |> 
+  ggplot(aes(pop)) + geom_histogram(bins = 20) + scale_x_log10()
+```
+
+4.  Write your observations and comments.
+
+#### Extra.
+
+```{r}
+df_gdppcap |> filter(year == 2022,region != "Aggregates") |> drop_na(pop) |> 
+  group_by(region) |> 
+  ggplot(aes(pop, fill = region)) + geom_histogram(col = "black", linewidth = 0.2) + scale_x_log10()
+```
+
+```{r}
+df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(pop) |> 
+  group_by(region) |> 
+  ggplot(aes(pop, fill = income)) + geom_histogram(col = "black", linewidth = 0.2) + scale_x_log10()
+```
+
+World by Income and Region: [[Link](https://datatopics.worldbank.org/world-development-indicators/the-world-by-income-and-region.html)]
+
+#### Variation 2. Boxplot
+
+Boxplot Video in Posit Primers: [Link](https://vimeo.com/222358034)
+
+```{r}
+df_gdppcap2 |> filter(year %in% c(1990,2000, 2010, 2020)) |> drop_na(gdppcap) |> 
+  ggplot(aes(gdppcap, factor(year))) + geom_boxplot() + scale_x_log10()
+```
+
+```{r}
+df_gdppcap2 |> filter(year %in% c(1990,2000, 2010, 2020)) |> drop_na(gdppcap) |> 
+  ggplot(aes(gdppcap, factor(year))) + geom_boxplot() + scale_x_log10() +
+  labs(title = "Distribution of the GDP per Capita of Countries", subtitle = "Year 1990, 2000, 2010, 2020", 
+       y = "Year", x = "GDP per capita in log10 scale")
+```
+
+```{r}
+df_gdppcap2 |> filter(year == 2020) |> drop_na(gdppcap) |> 
+  filter(income != "Aggregates") |> 
+  ggplot(aes(gdppcap, income, fill = income)) + geom_boxplot() + scale_x_log10() +
+  theme(legend.position = "none")
+```
+
+```{r}
+df_gdppcap2 |> filter(year == 2020) |> drop_na(gdppcap) |> 
+  filter(income != "Aggregates") |> 
+  ggplot(aes(gdppcap, factor(income, levels = c("High income", "Upper middle income", "Lower middle income", "Low income")), fill = income)) + geom_boxplot() + scale_x_log10() +
+  labs(y = "") +
+  theme(legend.position = "none")
+```
+
+```{r}
+df_gdppcap2 |> filter(year == 2020) |> drop_na(gdp) |> 
+  filter(income != "Aggregates") |> 
+  ggplot(aes(gdp, region, fill = region)) + geom_boxplot() + scale_x_log10() +
+  theme(legend.position = "none")
+```
+
+## CO2 Emissions Per Capita vs GDP Per Capita
+
+1.  CO2 emissions (metric tons per capita): EN.ATM.CO2E.PC
+
+2.  GDP per capita, PPP (constant 2017 international \$): NY.GDP.PCAP.PP.KD
+
+-   CO2 emissions (metric tons per capita) Carbon dioxide emissions are those stemming from the burning of fossil fuels and the manufacture of cement. They include carbon dioxide produced during consumption of solid, liquid, and gas fuels and gas flaring. EN.ATM.CO2E.PC
+
+-   GDP per capita, PPP (constant 2017 international \$) GDP per capita based on purchasing power parity (PPP). PPP GDP is gross domestic product converted to international dollars using purchasing power parity rates. An international dollar has the same purchasing power over GDP as the U.S. dollar has in the United States. GDP at purchaser's prices is the sum of gross value added by all resident producers in the country plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in constant 2017 international dollars. ID: NY.GDP.PCAP.PP.KD
+
+### Importing Data
+
+```{r cache = TRUE, eval = FALSE}
+df_co2gdp <- WDI(indicator = c(co2pcap = "EN.ATM.CO2E.PC", gdppcap = "NY.GDP.PCAP.PP.KD"), extra = TRUE)
+```
+
+```{r eval = FALSE}
+write_csv(df_co2gdp, "data/co2gdp.csv")
+```
+
+```{r}
+df_co2gdp <- read_csv("data/co2gdp.csv")
+```
+
+### Visualization by Line Graphs
+
+```{r}
+COUNTRY <- "World"
+df_co2gdp |> filter(country == COUNTRY) |>
+  ggplot(aes(year, co2pcap)) + geom_line()
+```
+
+```{=html}
+<span style="color: red;">"UK" should be "GB"</span>
+```
+```{r}
+ISO2C <- c("JP", "CN", "ID", "GB", "US", "DE", "FR")
+df_co2gdp |> filter(iso2c %in% ISO2C) |> drop_na(co2pcap) |>
+  ggplot(aes(year, co2pcap, linetype = iso2c)) + geom_line()
+```
+
+#### Exercises.
+
+1.  Change `iso2c` codes to those you want to investigate. Use `df_codes` under Environment
+2.  Change `linetype` to col.
+
+```{r}
+ISO2C <- c("JP", "CN", "ID", "GB", "US", "DE", "FR")
+df_co2gdp |> filter(iso2c %in% ISO2C) |> drop_na(co2pcap) |>
+  ggplot(aes(year, co2pcap, col = iso2c)) + geom_line()
+```
+
+### Scatterplot for Covariation
+
+```{r}
+df_co2gdp |> filter(year == 2020) |> drop_na(co2pcap) |>
+  ggplot(aes(gdppcap, co2pcap)) + geom_point()
+```
+
+```{r}
+df_co2gdp |> filter(year == 2020) |> 
+  drop_na(gdppcap, co2pcap) |>
+  ggplot(aes(gdppcap, co2pcap)) + geom_point() +
+  scale_x_log10() + scale_y_log10()
+```
+
+#### Scatterplot with a regression line
+
+```{r}
+df_co2gdp |> filter(year == 2020) |> 
+  drop_na(gdppcap, co2pcap) |>
+  ggplot(aes(gdppcap, co2pcap)) + geom_point() +
+  geom_smooth(method = "lm", formula = 'y~x', se = FALSE) +
+  scale_x_log10() + scale_y_log10()
+```
+
+#### Summary of a linear model
+
+```{r}
+df_co2gdp |> filter(year == 2020) |> drop_na(gdppcap, co2pcap) |>
+  lm(log10(co2pcap)~log10(gdppcap), data = _) |> summary()
+```
+
+## School Enrollment vs GDP Per Capita
+
+1.  School enrollment, secondary (% gross): SE.SEC.ENRR
+
+2.  GDP per capita, PPP (constant 2017 international \$): NY.GDP.PCAP.PP.KD
+
+-   School enrollment, secondary (% gross) Gross enrollment ratio is the ratio of total enrollment, regardless of age, to the population of the age group that officially corresponds to the level of education shown. Secondary education completes the provision of basic education that began at the primary level, and aims at laying the foundations for lifelong learning and human development, by offering more subject- or skill-oriented instruction using more specialized teachers. SE.SEC.ENRR
+
+-   GDP per capita, PPP (constant 2017 international \$) GDP per capita based on purchasing power parity (PPP). PPP GDP is gross domestic product converted to international dollars using purchasing power parity rates. An international dollar has the same purchasing power over GDP as the U.S. dollar has in the United States. GDP at purchaser's prices is the sum of gross value added by all resident producers in the country plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in constant 2017 international dollars. ID: NY.GDP.PCAP.PP.KD
+
+### Importing Data
+
+```{r cache = TRUE, eval = FALSE}
+df_secgdp <- WDI(indicator = c(sec = "SE.SEC.ENRR", gdppcap = "NY.GDP.PCAP.PP.KD"), extra = TRUE)
+```
+
+```{r eval = FALSE}
+write_csv(df_secgdp, "data/secgdp.csv")
+```
+
+```{r}
+df_secgdp <- read_csv("data/secgdp.csv")
+```
+
+### Visualization by Line Graphs
+
+```{r}
+COUNTRY <- "World"
+df_secgdp |> filter(country == COUNTRY) |>
+  ggplot(aes(year, sec)) + geom_line()
+```
+
+```{r}
+COUNTRIES <- c("Low income", "Low & middle income", "Lower middle income", "Middle income", "Upper middle income", "High income")
+df_secgdp |> filter(country %in% COUNTRIES) |> drop_na(sec) |>
+  ggplot(aes(year, sec, linetype = factor(country, levels = COUNTRIES))) + geom_line() +
+  labs(linetype = "Income Levels")
+```
+
+#### Exercise.
+
+Change `COUNTRIES` to `ISO2C` of countries you want to investigate. Use `df_codes` under Environment
+
+```{r}
+df_secgdp |> filter(year == 2020) |> drop_na(sec) |>
+  ggplot(aes(gdppcap, sec)) + geom_point()
+```
+
+```{r}
+df_secgdp |> filter(year == 2020) |> drop_na(gdppcap, sec) |>
+  ggplot(aes(gdppcap, sec)) + geom_point() +
+  scale_x_log10()
+```
+
+```{r}
+df_secgdp |> filter(year == 2020) |> drop_na(gdppcap, sec) |>
+  ggplot(aes(gdppcap, sec)) + geom_point() +
+  geom_smooth(method = "lm", formula = 'y~x', se = FALSE) +
+  scale_x_log10()
+```
+
+```{r}
+df_secgdp |> filter(year == 2020) |> drop_na(gdppcap, sec) |>
+  lm(sec~log10(gdppcap), data = _) |> summary()
+```
+
+## References
+
+1.  R for Data Science (2e): [Link](https://r4ds.hadley.nz). The First Edition: [Link](https://r4ds.had.co.nz).
+
+2.  Posit Primers: [Link](https://posit.cloud/learn/primers).
+
+3.  Cheat Sheet: [Link](https://posit.cloud/learn/cheat-sheets).
+
+4.  Shared Project: <https://posit.cloud/content/5539763>
+
+    -   intro2r: Revised version of the materials used in QPFD411 AY22022 (2 periods)
+
+        -   intro2r-1, intro2r-2 or intro2r2023
+
+    -   intro2rj (ECO232) and first_ds (ECO101) are in Japanese
+
+5.  R for Social Scientists: <https://datacarpentry.org/r-socialsci/>
+
+    -   Old Shared Project: <https://rstudio.cloud/content/4858948>
+
+        -   r4ss.Rmd, r4ss.nb.html - Old version of R for Social Scientists
+
+6.  Data Analysis for Researchers AY2022: [Link.](https://icu-hsuzuki.github.io/da4r2022/index.html)
+
+# Your Turn
+
+## Exercises.
+
+Do a similar investigation by selecting WDI codes.
+
+### WDI Code
+
+Choose at least two WDI codes with their names
+
+1.  Name: Code:
+
+2.  Name: Code:
+
+### Importing Data
+
+Replace the following data_frame_name and shortname1, shortname2.
+
+```{r eval = FALSE}
+df_dataframe_name <- WDI(indicator = c(shortname1 = "", shortname2 = "", extra = TRUE))
+```
+
+```{r eval = FALSE}
+write_csv(df_dataframe_name, "data/dataframe_name.csv")
+```
+
+```{r eval = FALSE}
+df_dataframe_name <- read_csv("data/dataframe_name.csv")
+```
+
+### Viewing Data
+
+`head()`, `str()`, `summary()`, and try `df_dataframe_name`
+
+### Visualization
+
+Try as many visualization as possible.
+
+-   rank for each variable
+
+-   line graph
+
+-   scatterplot
+
+-   scatterplot with a regression line
+
+-   histogram
+
+-   boxplot

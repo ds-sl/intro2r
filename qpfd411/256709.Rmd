@@ -1,0 +1,133 @@
+---
+title: "Gini Coefficients"
+output: html_notebook
+---
+
+# Setup
+
+If you have installed the package "tidyverse", you do not need to run the next code chunk.
+
+```{r eval = FALSE}
+install.packages("tidyverse")
+```
+
+Although "readxl" and "broom" are part of the package "tidyverse', you need to load separately as they are not core and not loaded with 'tidyverse'.
+
+```{r}
+library(tidyverse)
+library(readxl) # a package for Excel files, a part of tidyverse but not core
+library(broom) # a package for modeling, a part of tidyverse but not core
+```
+
+# Importing
+
+For Excel, you need to specify wich sheet you want to import by name as below or the number. You also need to skip several rows when blank rows are included.
+
+```{r}
+df_gini <- read_excel("data/Data with Provinces 18.10.2023.xlsx", sheet = "Gini", skip = 5,
+                      col_types = c("numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric"))
+df_pci <-  read_excel("data/Data with Provinces 18.10.2023.xlsx", sheet = "GDP", skip = 4, 
+                      col_types = c("numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric"))
+```
+
+Check the data frames.
+
+```{r}
+df_gini
+```
+
+```{r}
+df_pci
+```
+
+# Tidying
+
+```{r}
+df_gini_long <- df_gini |> pivot_longer(-1, names_to = "province", values_to = "gini")
+df_gini_long
+```
+
+```{r}
+df_pci_long <- df_pci |> pivot_longer(-1, names_to = "province", values_to = "pci")
+df_pci_long
+```
+
+# Transforming
+
+```{r}
+df_work <- df_gini_long |> full_join(df_pci_long, by = c("Year", "province")) |> rename(year = "Year")
+df_work
+```
+
+# Models
+
+![formula](data/image.png)
+
+Since $log(x^2) = 2log(x)$, I believe that the square part should be the square of the log, so the Model1.
+
+## Model 1
+
+$$\text{gini}_{\text{year}, \text{province}} = \beta_1\cdot (\log \text{pci}_{\text{year}, \text{province}})^2 + \beta_2\cdot \log \text{pci}_{\text{year}, \text{province}} + \beta_0 + \varepsilon_{\text{year}, \text{province}}$$
+
+```{r}
+model <- df_work |> lm(gini ~ I(log(pci)*log(pci)) + I(log(pci)), data = _)
+```
+
+```{r}
+model |> summary()
+```
+
+### Mutating
+
+The result seems to be the same.
+
+```{r}
+df_work |> mutate(log = log(pci), log2 = (log(pci))^2) |>
+  lm(gini ~ log + log2, data = _) |> summary()
+```
+
+```{r}
+model |> summary() |> glance()
+```
+```{r}
+model |> summary() |> tidy()
+```
+
+
+```{r}
+model |> augment()
+```
+
+## Model 2
+
+$$\text{gini}_{\text{year}, \text{province}} = \beta_1\cdot \log (\text{pci}_{\text{year}, \text{province}})^2 + \beta_2\cdot \log \text{pci}_{\text{year}, \text{province}} + \beta_0 + \varepsilon_{\text{year}, \text{province}}$$
+
+```{r}
+model2 <- df_work |> lm(gini ~ I(log(pci^2)) + I(log(pci)), data = _)
+```
+
+```{r}
+model2 |> summary()
+```
+
+### Mutating
+
+The result seems to be the same.
+
+```{r}
+df_work |> mutate(log = log(pci), logsq = (log(pci^2))) |>
+  lm(gini ~ log + logsq, data = _) |> summary()
+```
+
+```{r}
+model2 |> summary() |> glance()
+```
+```{r}
+model2 |> summary() |> tidy()
+```
+
+
+```{r}
+model2 |> augment()
+```
+
