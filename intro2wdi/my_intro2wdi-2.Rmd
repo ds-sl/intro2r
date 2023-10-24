@@ -17,6 +17,14 @@ output:
 
 # Exploratory Data Analysis (EDA)
 
+```{=html}
+<span style = "color: red;">Add the following code chunk!</span>
+```
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
 ![*The image above is from [R4DS(2e)](https://r4ds.hadley.nz) by Hadley Wickham, Mine Çetinkaya-Rundel and Garrett Grolemund*](data/data-science.png)
 
 **EDA** is an iterative cycle that helps you understand what your data says. When you do EDA, you:
@@ -55,6 +63,9 @@ write_csv(df_gdppcap, "data/gdppcap.csv")
 df_gdppcap <- read_csv("data/gdppcap.csv")
 ```
 
+```{=html}
+<span style = "color: red;">Check the data frame by View(df_gdppcap).</span>
+```
 ```{r}
 str(df_gdppcap)
 ```
@@ -193,8 +204,9 @@ test |> ggplotly()
 
 #### Variation 1. Histogram
 
-Histogram Video in Posit Primers: [Link](https://vimeo.com/221607341)
-
+```{=html}
+<span style = "color: red;">Histogram Video in Posit Primers: <a href = "https://vimeo.com/221607341">[Link]</a></span>
+```
 ```{r}
 df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(gdp) |> 
   ggplot(aes(gdp)) + geom_histogram()
@@ -244,22 +256,34 @@ df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(pop) |>
 
 ```{r}
 df_gdppcap |> filter(year == 2022,region != "Aggregates") |> drop_na(pop) |> 
-  group_by(region) |> 
+#  group_by(region) |> 
   ggplot(aes(pop, fill = region)) + geom_histogram(col = "black", linewidth = 0.2) + scale_x_log10()
 ```
 
 ```{r}
 df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(pop) |> 
-  group_by(region) |> 
+#  group_by(region) |> 
   ggplot(aes(pop, fill = income)) + geom_histogram(col = "black", linewidth = 0.2) + scale_x_log10()
 ```
 
-World by Income and Region: [[Link](https://datatopics.worldbank.org/world-development-indicators/the-world-by-income-and-region.html)]
+```{r}
+df_gdppcap |> filter(income == "Not classified") |> distinct(country) |> pull()
+```
 
+```{r}
+df_gdppcap |> filter(year == 2022, region != "Aggregates", income != "Not classified") |> drop_na(pop) |> 
+#  group_by(region) |> 
+  ggplot(aes(pop, fill = income)) + geom_histogram(col = "black", linewidth = 0.2) + scale_x_log10()
+```
+
+```{=html}
+<span style = "color: red;">World by Income and Region: <a href = "https://datatopics.worldbank.org/world-development-indicators/the-world-by-income-and-region.html">[Link]</a></span>
+```
 #### Variation 2. Boxplot
 
-Boxplot Video in Posit Primers: [Link](https://vimeo.com/222358034)
-
+```{=html}
+<span style = "color: red;">Boxplot Video in Posit Primers: <a href = "https://vimeo.com/222358034">[Link]</a></span>
+```
 ```{r}
 df_gdppcap2 |> filter(year %in% c(1990,2000, 2010, 2020)) |> drop_na(gdppcap) |> 
   ggplot(aes(gdppcap, factor(year))) + geom_boxplot() + scale_x_log10()
@@ -275,7 +299,8 @@ df_gdppcap2 |> filter(year %in% c(1990,2000, 2010, 2020)) |> drop_na(gdppcap) |>
 ```{r}
 df_gdppcap2 |> filter(year == 2020) |> drop_na(gdppcap) |> 
   filter(income != "Aggregates") |> 
-  ggplot(aes(gdppcap, income, fill = income)) + geom_boxplot() + scale_x_log10() +
+  ggplot(aes(gdppcap, income, fill = income)) + geom_boxplot() + 
+  scale_x_log10() +
   theme(legend.position = "none")
 ```
 
@@ -292,6 +317,14 @@ df_gdppcap2 |> filter(year == 2020) |> drop_na(gdp) |>
   filter(income != "Aggregates") |> 
   ggplot(aes(gdp, region, fill = region)) + geom_boxplot() + scale_x_log10() +
   theme(legend.position = "none")
+```
+
+```{r}
+df_gdppcap2 |> filter(year == 2020) |> drop_na(gdp) |> 
+  filter(income != "Aggregates") |> 
+  filter(region == "Sub-Saharan Africa") |> 
+# "Middle East & North Africa", "Sub-Saharan Africa"
+  arrange(gdp)
 ```
 
 ## CO2 Emissions Per Capita vs GDP Per Capita
