@@ -103,7 +103,7 @@ df_gdppcap2
 
 #### Check against GDP per capita, PPP
 
-```{r eval = FALSE}
+```{r}
 df_gdppcap2 |> drop_na(gdppcap, PCAP) |> mutate(near = near(gdppcap, PCAP)) |> 
   summarize(numberofdata = n(), sum(near))
 ```
@@ -194,7 +194,7 @@ df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |>
 install.packages("plotly")
 ```
 
-```{r eval = FALSE}
+```{r}
 library(plotly)
 test <- df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |> drop_na(gdp, pop) |> 
   ggplot(aes(color = country, shape = region, pop, gdp)) + geom_point() + 
@@ -486,11 +486,16 @@ df_secgdp |> filter(year == 2020) |> drop_na(gdppcap, sec) |>
 
 4.  Shared Project: <https://posit.cloud/content/5539763>
 
-    -   intro2r: Revised version of the materials used in QPFD411 AY22022 (2 periods)
+    -   intro2r: Revised version of the materials used in QPFD411 AY2022 (2 periods)
 
         -   intro2r-1, intro2r-2 or intro2r2023
+        -   [HP Link](https://ds-sl.github.io/intro2r/intro2r.nb.html)
 
     -   intro2rj (ECO232) and first_ds (ECO101) are in Japanese
+
+        -   [HP Link](https://ds-sl.github.io/intro2r/first_ds.nb.html) - use English translation of Google Chrome
+
+            -   Lecture Videos in Japanese [<a href="https://youtu.be/I7TI3dSuKLI">video1</a>]・[<a href="https://youtu.be/LU3NKTNwPDA">video2</a>]・[<a href="https://youtu.be/UFmAho1iLXc">video3</a>]
 
 5.  R for Social Scientists: <https://datacarpentry.org/r-socialsci/>
 
@@ -500,9 +505,13 @@ df_secgdp |> filter(year == 2020) |> drop_na(gdppcap, sec) |>
 
 6.  Data Analysis for Researchers AY2022: [Link.](https://icu-hsuzuki.github.io/da4r2022/index.html)
 
+7.  みんなのデータサイエンス - Data Science for All (in Japanese)
+
+    -   Digital Book [Link](https://icu-hsuzuki.github.io/ds4aj/) - use English translation of Google Chrome
+
 # Your Turn
 
-## Exercises.
+## Exercises
 
 Do a similar investigation by selecting WDI codes.
 
@@ -518,8 +527,11 @@ Choose at least two WDI codes with their names
 
 Replace the following data_frame_name and shortname1, shortname2.
 
+```{=html}
+<span style = "color: red;">The following code chunk is revised.</span>
+```
 ```{r eval = FALSE}
-df_dataframe_name <- WDI(indicator = c(shortname1 = "", shortname2 = "", extra = TRUE))
+df_dataframe_name <- WDI(indicator = c(shortname1 = "", shortname2 = "), extra = TRUE)
 ```
 
 ```{r eval = FALSE}

@@ -304,7 +304,7 @@ df_co2gdp |> filter(country == COUNTRY) |>
 ```
 
 ```{r}
-ISO2C <- c("JP", "CN", "ID", "UK", "US", "DE", "FR")
+ISO2C <- c("JP", "CN", "ID", "GB", "US", "DE", "FR")
 df_co2gdp |> filter(iso2c %in% ISO2C) |> drop_na(co2pcap) |>
   ggplot(aes(year, co2pcap, linetype = iso2c)) + geom_line()
 ```
