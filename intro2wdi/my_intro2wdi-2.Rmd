@@ -228,19 +228,19 @@ df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(gdp) |>
 
 ```{r}
 df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(gdp) |> 
-  ggplot(aes(gdp)) + geom_histogram(bins = 20) + scale_x_log10()
+  ggplot(aes(gdp)) + geom_histogram(bins = 15) + scale_x_log10()
 ```
 
 ```{r}
 df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(gdppcap) |> 
-  ggplot(aes(gdppcap)) + geom_histogram(binwidth = 10000)
+  ggplot(aes(gdppcap)) + geom_histogram(binwidth = 5000)
 ```
 
 2.  Create a similar histogram of gdppcap by using `scale_x_log10()` and adjust the number of bins.
 
-```{r eval = FALSE}
+```{r}
 df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(gdppcap) |> 
-  ggplot(aes(gdppcap)) + geom_histogram(bins = 10) + scale_x_log10()
+  ggplot(aes(gdppcap)) + geom_histogram(binwidth = 0.5) + scale_x_log10()
 ```
 
 3.  Create a similar histogram for population.
@@ -292,7 +292,8 @@ df_gdppcap2 |> filter(year %in% c(1990,2000, 2010, 2020)) |> drop_na(gdppcap) |>
 ```{r}
 df_gdppcap2 |> filter(year %in% c(1990,2000, 2010, 2020)) |> drop_na(gdppcap) |> 
   ggplot(aes(gdppcap, factor(year))) + geom_boxplot() + scale_x_log10() +
-  labs(title = "Distribution of the GDP per Capita of Countries", subtitle = "Year 1990, 2000, 2010, 2020", 
+  labs(title = "Distribution of the GDP per Capita of Countries", 
+       subtitle = "Year 1990, 2000, 2010, 2020", 
        y = "Year", x = "GDP per capita in log10 scale")
 ```
 
@@ -305,9 +306,10 @@ df_gdppcap2 |> filter(year == 2020) |> drop_na(gdppcap) |>
 ```
 
 ```{r}
+INCOME <- c("Low income", "Low & middle income", "Lower middle income", "Middle income", "Upper middle income", "High income")
 df_gdppcap2 |> filter(year == 2020) |> drop_na(gdppcap) |> 
   filter(income != "Aggregates") |> 
-  ggplot(aes(gdppcap, factor(income, levels = INCOME)), fill = income)) + geom_boxplot() + scale_x_log10() +
+  ggplot(aes(gdppcap, factor(income, levels = INCOME)), fill = income) + geom_boxplot() + scale_x_log10() +
   labs(y = "") +
   theme(legend.position = "none")
 ```
@@ -322,7 +324,7 @@ df_gdppcap2 |> filter(year == 2020) |> drop_na(gdp) |>
 ```{r}
 df_gdppcap2 |> filter(year == 2020) |> drop_na(gdp) |> 
   filter(income != "Aggregates") |> 
-  filter(region == "Sub-Saharan Africa") |> 
+  filter(region == "Middle East & North Africa") |> 
 # "Middle East & North Africa", "Sub-Saharan Africa"
   arrange(gdp)
 ```
@@ -355,7 +357,7 @@ df_co2gdp <- read_csv("data/co2gdp.csv")
 
 ```{r}
 COUNTRY <- "World"
-df_co2gdp |> filter(country == COUNTRY) |>
+df_co2gdp |> filter(country == COUNTRY) |> 
   ggplot(aes(year, co2pcap)) + geom_line()
 ```
 

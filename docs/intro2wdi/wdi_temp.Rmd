@@ -68,7 +68,7 @@ df_dataframe_name |> mutate(var_new = var1 * var2)}
 
 ```         
 df_dataframe_name |> arrange(var)
-df_dataframe_name |> arrange(dsc(var))
+df_dataframe_name |> arrange(desc(var))
 ```
 
 5.  Visualizing using ggplot() + geom\_\*()
@@ -131,16 +131,17 @@ We study the relation between the CO~2~ emission per capita and the GDP per capi
 
 1.  CO2 emissions (metric tons per capita): EN.ATM.CO2E.PC
 
--   Description: CO2 emissions (metric tons per capita) Carbon dioxide emissions are those stemming from the burning of fossil fuels and the manufacture of cement. They include carbon dioxide produced during consumption of solid, liquid, and gas fuels and gas flaring. EN.ATM.CO2E.PC
+-   Description: CO2 emissions (metric tons per capita) Carbon dioxide emissions are those stemming from the burning of fossil fuels and the manufacture of cement. They include carbon dioxide produced during consumption of solid, liquid, and gas fuels and gas flaring.
 
 2.  GDP per capita, PPP (constant 2017 international \$): NY.GDP.PCAP.PP.KD
 
--   Description: GDP per capita, PPP (constant 2017 international \$) GDP per capita based on purchasing power parity (PPP). PPP GDP is gross domestic product converted to international dollars using purchasing power parity rates. An international dollar has the same purchasing power over GDP as the U.S. dollar has in the United States. GDP at purchaser's prices is the sum of gross value added by all resident producers in the country plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in constant 2017 international dollars. ID: NY.GDP.PCAP.PP.KD
+-   Description: GDP per capita, PPP (constant 2017 international \$) GDP per capita based on purchasing power parity (PPP). PPP GDP is gross domestic product converted to international dollars using purchasing power parity rates. An international dollar has the same purchasing power over GDP as the U.S. dollar has in the United States. GDP at purchaser's prices is the sum of gross value added by all resident producers in the country plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in constant 2017 international dollars.
 
 ### Importing Data
 
 ```{r cache = TRUE, eval = FALSE}
-df_co2gdp <- WDI(indicator = c(co2pcap = "EN.ATM.CO2E.PC", gdppcap = "NY.GDP.PCAP.PP.KD"),
+df_co2gdp <- WDI(indicator = c(co2pcap = "EN.ATM.CO2E.PC", 
+                               gdppcap = "NY.GDP.PCAP.PP.KD"),
                  extra = TRUE)
 ```
 
@@ -231,6 +232,7 @@ df_co2gdp |> filter(year == 2020) |> filter(region != "Aggregates") |>
 #### CO~2~ per capita
 
 ```{r}
+INCOME <- c("Low income", "Low & middle income", "Lower middle income", "Middle income", "Upper middle income", "High income")
 df_co2gdp |> filter(year == 2020) |> filter(region != "Aggregates") |> 
   drop_na(co2pcap) |> filter(income != "Not classified") |>
   ggplot(aes(co2pcap, fill = factor(income, levels = INCOME))) + geom_histogram(bins = 15, col = "black", linewidth = 0.1) + 
@@ -349,7 +351,7 @@ WDIsearch(string = "school enrollment.*(% gross)", field = "name", short = FALSE
 
 1.  School enrollment, secondary (% gross): SE.SEC.ENRR
 
--   School enrollment, secondary (% gross) Gross enrollment ratio is the ratio of total enrollment, regardless of age, to the population of the age group that officially corresponds to the level of education shown. Secondary education completes the provision of basic education that began at the primary level, and aims at laying the foundations for lifelong learning and human development, by offering more subject- or skill-oriented instruction using more specialized teachers. SE.SEC.ENRR
+-   School enrollment, secondary (% gross) Gross enrollment ratio is the ratio of total enrollment, regardless of age, to the population of the age group that officially corresponds to the level of education shown. Secondary education completes the provision of basic education that began at the primary level, and aims at laying the foundations for lifelong learning and human development, by offering more subject- or skill-oriented instruction using more specialized teachers.
 
 2.  School enrollment, tertiary (% gross): SE.TER.ENRR
 
@@ -357,7 +359,7 @@ WDIsearch(string = "school enrollment.*(% gross)", field = "name", short = FALSE
 
 3.  GDP per capita, PPP (constant 2017 international \$): NY.GDP.PCAP.PP.KD
 
--   GDP per capita, PPP (constant 2017 international \$) GDP per capita based on purchasing power parity (PPP). PPP GDP is gross domestic product converted to international dollars using purchasing power parity rates. An international dollar has the same purchasing power over GDP as the U.S. dollar has in the United States. GDP at purchaser's prices is the sum of gross value added by all resident producers in the country plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in constant 2017 international dollars. ID: NY.GDP.PCAP.PP.KD
+-   GDP per capita, PPP (constant 2017 international \$) GDP per capita based on purchasing power parity (PPP). PPP GDP is gross domestic product converted to international dollars using purchasing power parity rates. An international dollar has the same purchasing power over GDP as the U.S. dollar has in the United States. GDP at purchaser's prices is the sum of gross value added by all resident producers in the country plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in constant 2017 international dollars.
 
 ### Importing Data
 
@@ -480,8 +482,8 @@ We study .....
 <span style = "color: red;">Edit the following code chunk!</span>
 ```
 ```{r}
-chosen_indicator_1 <- "EN.ATM.CO2E.PC"
-short_name_1 <- "co2pcap"
+chosen_indicator_1 <- "SE.SEC.ENRR"
+short_name_1 <- "sec"
 chosen_indicator_2 <- "NY.GDP.PCAP.PP.KD"
 short_name_2 <- "gdppcap"
 ```
