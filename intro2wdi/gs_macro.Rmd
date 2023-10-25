@@ -617,7 +617,6 @@ df_gdppcap |> filter(year == 2022, region != "Aggregates") |>
 
 4.  Find the top 10 of the countries with the smallest population.
 
-
 #### Variation 1. Histogram
 
 Histogram Video in Posit Primers: [Link](https://vimeo.com/221607341)
@@ -1365,8 +1364,8 @@ We study .....
 <span style = "color: red;">Edit the following code chunk!</span>
 ```
 ```{r}
-chosen_indicator_1 <- "EN.ATM.CO2E.PC"
-short_name_1 <- "co2pcap"
+chosen_indicator_1 <- "SE.SEC.ENRR"
+short_name_1 <- "sec"
 chosen_indicator_2 <- "NY.GDP.PCAP.PP.KD"
 short_name_2 <- "gdppcap"
 ```
