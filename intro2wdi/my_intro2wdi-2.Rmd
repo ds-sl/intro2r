@@ -307,7 +307,7 @@ df_gdppcap2 |> filter(year == 2020) |> drop_na(gdppcap) |>
 ```{r}
 df_gdppcap2 |> filter(year == 2020) |> drop_na(gdppcap) |> 
   filter(income != "Aggregates") |> 
-  ggplot(aes(gdppcap, factor(income, levels = INCOME)), fill = income)) + geom_boxplot() + scale_x_log10() +
+  ggplot(aes(gdppcap, factor(income, levels = INCOME)), fill = income) + geom_boxplot() + scale_x_log10() +
   labs(y = "") +
   theme(legend.position = "none")
 ```
