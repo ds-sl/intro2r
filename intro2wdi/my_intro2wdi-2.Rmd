@@ -307,7 +307,7 @@ df_gdppcap2 |> filter(year == 2020) |> drop_na(gdppcap) |>
 ```{r}
 df_gdppcap2 |> filter(year == 2020) |> drop_na(gdppcap) |> 
   filter(income != "Aggregates") |> 
-  ggplot(aes(gdppcap, factor(income, levels = c("High income", "Upper middle income", "Lower middle income", "Low income")), fill = income)) + geom_boxplot() + scale_x_log10() +
+  ggplot(aes(gdppcap, factor(income, levels = INCOME)), fill = income)) + geom_boxplot() + scale_x_log10() +
   labs(y = "") +
   theme(legend.position = "none")
 ```
@@ -443,9 +443,9 @@ df_secgdp |> filter(country == COUNTRY) |>
 ```
 
 ```{r}
-COUNTRIES <- c("Low income", "Low & middle income", "Lower middle income", "Middle income", "Upper middle income", "High income")
-df_secgdp |> filter(country %in% COUNTRIES) |> drop_na(sec) |>
-  ggplot(aes(year, sec, linetype = factor(country, levels = COUNTRIES))) + geom_line() +
+INCOME <- c("Low income", "Low & middle income", "Lower middle income", "Middle income", "Upper middle income", "High income")
+df_secgdp |> filter(country %in% INCOME) |> drop_na(sec) |>
+  ggplot(aes(year, sec, linetype = factor(country, levels = INCOME))) + geom_line() +
   labs(linetype = "Income Levels")
 ```
 

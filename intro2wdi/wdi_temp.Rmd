@@ -102,6 +102,7 @@ transformed_data |> ggplot(aes(name1, name2)) + geom_point() +
 
 -   histogram
 
+
 ```         
 transformed_data |> ggplot(aes(name1)) + geom_histogram()
 ```
@@ -231,6 +232,7 @@ df_co2gdp |> filter(year == 2020) |> filter(region != "Aggregates") |>
 #### CO~2~ per capita
 
 ```{r}
+INCOME <- c("Low income", "Low & middle income", "Lower middle income", "Middle income", "Upper middle income", "High income")
 df_co2gdp |> filter(year == 2020) |> filter(region != "Aggregates") |> 
   drop_na(co2pcap) |> filter(income != "Not classified") |>
   ggplot(aes(co2pcap, fill = factor(income, levels = INCOME))) + geom_histogram(bins = 15, col = "black", linewidth = 0.1) + 
