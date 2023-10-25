@@ -1,0 +1,792 @@
+---
+title: "WDI Template"
+author: "1234567 Suzuki, Hiroshi"
+date: "`r Sys.Date()`"
+output:
+  html_notebook:
+    df_print: paged
+    number_sections: yes
+    toc: yes
+    toc_float: yes
+  word_document:
+    toc: yes
+    reference_docx: intro2wdi_tmp.docx
+  pdf_document:
+    toc: yes
+---
+
+# EDA using WDI
+
+## Exploratory Data Analysis, EDA
+
+EDA is an iterative cycle that helps you understand what your data says. When you do EDA, you:
+
+1.  Generate questions about your data
+
+2.  Search for answers by visualising, transforming, and/or modeling your data
+
+3.  Use what you learn to refine your questions and/or generate new questions
+
+EDA is an important part of any data analysis. You can use EDA to make discoveries about the world; or you can use EDA to ensure the quality of your data, asking questions about whether the data meets your standards or not. (Posit Primers: [EDA](https://posit.cloud/learn/primers/3.1))
+
+## Workflow
+
+1.  Importing data by WDI
+
+```         
+df_dataframe_name <- WDI(indicators = c(name1 = "Indicator Code 1", 
+name2 = "Indicator Code 2"), extra = TRUE)
+```
+
+Write and read:
+
+```         
+write_csv(df_dataframe_name, "data/dataframe_name.csv")
+df_dataframe_name <- read_csv("data/dataframe_name.csv")
+```
+
+2.  Viewing data by
+
+`head()`, `str()`, `summary()`, and try `df_dataframe_name`. See also Environment Tab of RStudio.
+
+3.  Transforming data by restricting the values of a variable.
+
+```         
+df_dataframe_name |> filter(var == "value") 
+df_dataframe_name |> filter(var %in% c("value_1", ... , "value_n") 
+df_dataframe_name |> filter(var != "value") 
+df_dataframe_name |> drop_na(var)
+```
+
+-   Creating a new variable by mutation. (A little advanced. PCAP = gdp/pop)
+
+```         
+df_dataframe_name |> mutate(var_new = var1 * var2)}
+```
+
+4.  Change orders by `arrange()`
+
+```         
+df_dataframe_name |> arrange(var)
+df_dataframe_name |> arrange(desc(var))
+```
+
+5.  Visualizing using ggplot() + geom\_\*()
+
+    What type of **variation** occurs **within** my variables?
+
+    What type of **covariation** occurs **between** my variables?
+
+-   line graph
+
+```         
+transformed_data |> ggplot(aes(year, name1)) + geom_line()
+transformed_data |> ggplot(aes(year, name2)) + geom_line()
+```
+
+-   scatterplot
+
+```         
+transformed_data |> ggplot(aes(name1, name2)) + geom_point()
+transformed_data |> ggplot(aes(name1, name2)) + geom_point() + scale_x_log10()
+```
+
+-   scatterplot with a regression line
+
+```         
+transformed_data |> ggplot(aes(name1, name2)) + geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+transformed_data |> ggplot(aes(name1, name2)) + geom_point() + 
+  geom_smooth(method = "lm", se = FALSE) + scale_x_log10()
+```
+
+-   histogram
+
+```         
+transformed_data |> ggplot(aes(name1)) + geom_histogram()
+```
+
+-   boxplot
+
+`categorical_var`: `factor(year)`, `income`, `region`
+
+```         
+transformed_data |> ggplot(aes(categorical_var, name1)) + geom_boxplot()
+```
+
+6.  Do not forget to add your observations and questions.
+
+## Setup
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+# Examples
+
+## CO~2~ Emissions Per Capita vs GDP Per Capita
+
+We study the relation between the CO~2~ emission per capita and the GDP per capita using the following two World Development Indicators.
+
+1.  CO~2~ emissions (metric tons per capita): EN.ATM.CO2E.PC
+
+-   Description: CO2 emissions (metric tons per capita) Carbon dioxide emissions are those stemming from the burning of fossil fuels and the manufacture of cement. They include carbon dioxide produced during consumption of solid, liquid, and gas fuels and gas flaring.
+
+2.  GDP per capita, PPP (constant 2017 international \$): NY.GDP.PCAP.PP.KD
+
+-   Description: GDP per capita, PPP (constant 2017 international \$) GDP per capita based on purchasing power parity (PPP). PPP GDP is gross domestic product converted to international dollars using purchasing power parity rates. An international dollar has the same purchasing power over GDP as the U.S. dollar has in the United States. GDP at purchaser's prices is the sum of gross value added by all resident producers in the country plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in constant 2017 international dollars.
+
+### Importing Data
+
+```{r cache = TRUE, eval = FALSE}
+df_co2gdp <- WDI(indicator = c(co2pcap = "EN.ATM.CO2E.PC", 
+                               gdppcap = "NY.GDP.PCAP.PP.KD"),
+                 extra = TRUE)
+```
+
+```{r eval = FALSE}
+write_csv(df_co2gdp, "data/co2gdp.csv")
+```
+
+```{r}
+df_co2gdp <- read_csv("data/co2gdp.csv")
+```
+
+### Visualization by Line Graphs
+
+#### CO~2~ per capita
+
+```{r}
+COUNTRY <- "World"
+df_co2gdp |> filter(country == COUNTRY) |> drop_na(co2pcap) |>
+  ggplot(aes(year, co2pcap)) + geom_line() +
+  labs(title = expression(paste(CO[2], " per capita of the World")),
+       y = expression(paste(CO[2], " per capita in tons")))
+```
+
+```{r}
+ISO2C <- c("JP", "CN", "ID", "GB", "US", "DE", "FR")
+df_co2gdp |> filter(iso2c %in% ISO2C) |> drop_na(co2pcap) |>
+  ggplot(aes(year, co2pcap, col = iso2c)) + geom_line() +
+  labs(title = expression(paste(CO[2], " per capita of seven conutries with large GDP")),
+       subtitle = "China, Germany, France, United Kingdom, India, Japan, United States", 
+       y = expression(paste(CO[2], " per capita in tons")))
+```
+
+#### GDP per capita
+
+```{r}
+COUNTRY <- "World"
+df_co2gdp |> filter(country == COUNTRY) |> drop_na(gdppcap) |>
+  ggplot(aes(year, gdppcap)) + geom_line() +
+  labs(title = "GDP per capita of the World")
+```
+
+```{r}
+ISO2C <- c("JP", "CN", "ID", "GB", "US", "DE", "FR")
+df_co2gdp |> filter(iso2c %in% ISO2C) |> drop_na(gdppcap) |>
+  ggplot(aes(year, gdppcap, col = iso2c)) + geom_line() +
+  labs(title = "GDP per capita of seven countries with large GDP",
+       subtitle = "China, Germany, France, United Kingdom, India, Japan, United States", 
+       y = "GDP per capita PPP",
+       caption = "constant 2017 international usd")
+```
+
+#### Ranking of CO~2~ per capita
+
+```{r}
+df_co2gdp |> filter(year == 2020) |> filter(region != "Aggregates") |>
+  drop_na(co2pcap) |> arrange(desc(co2pcap))
+```
+
+```{r}
+df_co2gdp |> filter(year == 2020) |> filter(region != "Aggregates") |>
+  drop_na(co2pcap) |> arrange(co2pcap)
+```
+
+**Observations and Questions:**
+
+-   Top 10 countries of CO~2~ emission per capita:
+
+    -   Qtar, Bahrain, Brunei Darussalam, Kuwait, United Arab Emirates, Oman, Australia, Saudi Arabia, Canada, and United States
+
+-   Lowest 10 countries of CO~2~ emission per capita:
+
+    -   Congo, Dem. Rep., Somalia, Central African Republic, Burundi, Malawi, Niger, Chad, Madagascar, Rwanda, Sierra Leone
+
+#### Ranking of GDP per capita
+
+```{r}
+df_co2gdp |> filter(year == 2020) |> filter(region != "Aggregates") |>
+  drop_na(gdppcap) |> arrange(desc(gdppcap))
+```
+
+```{r}
+df_co2gdp |> filter(year == 2020) |> filter(region != "Aggregates") |>
+  drop_na(gdppcap) |> arrange(gdppcap)
+```
+
+### Histograms and Boxplots for Variation
+
+#### CO~2~ per capita
+
+```{r}
+INCOME <- c("Low income", "Low & middle income", "Lower middle income", "Middle income", "Upper middle income", "High income")
+df_co2gdp |> filter(year == 2020) |> filter(region != "Aggregates") |> 
+  drop_na(co2pcap) |> filter(income != "Not classified") |>
+  ggplot(aes(co2pcap, fill = factor(income, levels = INCOME))) + geom_histogram(bins = 15, col = "black", linewidth = 0.1) + 
+  scale_x_log10() +
+  labs(title = "Histogram of CO2 per capita in 2020", fill = "")
+```
+
+```{r}
+df_co2gdp |> filter(year %in% c(1990, 2000, 2010, 2020)) |> filter(region != "Aggregates") |> 
+  drop_na(co2pcap) |> filter(co2pcap > 0) |> filter(income != "Not classified") |> 
+  ggplot(aes(co2pcap, fill = factor(year))) + 
+  geom_histogram(bins = 15, col = "black", linewidth = 0.1) + 
+  scale_x_log10() + facet_wrap(~year) +
+  labs(title = "Histogram of CO2 per capita in 1990, 2000, 2010, 2020", fill = "")
+```
+
+```{r}
+df_co2gdp |> filter(year %in% c(1990, 2000, 2010, 2020)) |> filter(region != "Aggregates") |> 
+  drop_na(co2pcap) |> filter(co2pcap > 0) |> filter(income != "Not classified") |> 
+  ggplot(aes(co2pcap, factor(year), fill = factor(year))) + 
+  geom_boxplot() + scale_x_log10() + labs(y = "") + theme(legend.position = "none")
+```
+
+```{r}
+df_co2gdp |> filter(year == 2020) |> filter(region != "Aggregates") |> 
+  drop_na(co2pcap) |> filter(co2pcap > 0) |> filter(income != "Not classified") |> 
+  ggplot(aes(co2pcap, factor(income, levels = INCOME), fill = income)) + 
+  geom_boxplot() + scale_x_log10() + 
+  labs(title = "CO2 per capita by income level", y = "", fill = "") +
+  theme(legend.position = "none")
+```
+
+```{r}
+df_co2gdp |> filter(year == 2020) |> filter(region != "Aggregates") |> 
+  drop_na(co2pcap) |> filter(co2pcap > 0) |> 
+  ggplot(aes(co2pcap, region, fill = region)) + 
+  geom_boxplot() + scale_x_log10() + 
+  labs(title = "CO2 per capita by region", y = "", fill = "") +
+  theme(legend.position = "none")
+```
+
+#### GDP per capita
+
+```{r}
+df_co2gdp |> filter(year == 2020) |> filter(region != "Aggregates") |> 
+  drop_na(gdppcap) |> filter(income != "Not classified") |>
+  ggplot(aes(gdppcap, fill = factor(income, levels = INCOME))) + geom_histogram(bins = 15, col = "black", linewidth = 0.1) + 
+  scale_x_log10() +
+  labs(title = "Histogram of GDP per capita in 2020", fill = "")
+```
+
+```{r}
+df_co2gdp |> filter(year %in% c(1990, 2000, 2010, 2020)) |> filter(region != "Aggregates") |> 
+  drop_na(gdppcap) |> filter(gdppcap > 0) |> filter(income != "Not classified") |> 
+  ggplot(aes(gdppcap, fill = factor(year))) + 
+  geom_histogram(bins = 15, col = "black", linewidth = 0.1) + 
+  scale_x_log10() + facet_wrap(~year) +
+  labs(title = "Histogram of GDP per capita in 1990, 2000, 2010, 2020", fill = "") +
+  theme(legend.position = "none")
+```
+
+```{r}
+df_co2gdp |> filter(year %in% c(1990, 2000, 2010, 2020)) |> filter(region != "Aggregates") |> 
+  drop_na(gdppcap) |> filter(gdppcap > 0) |> filter(income != "Not classified") |> 
+  ggplot(aes(gdppcap, factor(year), fill = factor(year))) + 
+  geom_boxplot() + scale_x_log10() + labs(y = "") + theme(legend.position = "none")
+```
+
+```{r}
+df_co2gdp |> filter(year == 2020) |> filter(region != "Aggregates") |> 
+  drop_na(gdppcap) |> filter(gdppcap > 0) |> filter(income != "Not classified") |> 
+  ggplot(aes(gdppcap, factor(income, levels = INCOME), fill = income)) + 
+  geom_boxplot() + scale_x_log10() + 
+  labs(title = "GDP per capita by income level", y = "", fill = "") +
+  theme(legend.position = "none")
+```
+
+```{r}
+df_co2gdp |> filter(year == 2020) |> filter(region != "Aggregates") |> 
+  drop_na(gdppcap) |> filter(gdppcap > 0) |> 
+  ggplot(aes(gdppcap, region, fill = region)) + 
+  geom_boxplot() + scale_x_log10() + 
+  labs(title = "GDP per capita by region", y = "", fill = "") +
+  theme(legend.position = "none")
+```
+
+### Scatterplot for Covariation
+
+#### Scatterplot with a regression line
+
+```{r}
+df_co2gdp |> filter(year == 2020) |> 
+  drop_na(gdppcap, co2pcap) |>
+  ggplot(aes(gdppcap, co2pcap)) + geom_point(aes(col = region)) +
+  geom_smooth(method = "lm", formula = 'y~x', se = FALSE) +
+  scale_x_log10() + scale_y_log10() +
+  labs(title = "GDP per capita vs CO2 per capita",
+       x = "GDP per capita",
+       y = expression(paste(CO[2], " per capita in tons")))
+```
+
+#### Summary of a linear model
+
+```{r}
+df_co2gdp |> filter(year == 2020) |> drop_na(gdppcap, co2pcap) |>
+  lm(log10(co2pcap)~log10(gdppcap), data = _) |> summary()
+```
+
+## School Enrollment vs GDP Per Capita
+
+### Index Search
+
+```{r}
+WDIsearch(string = "school enrollment.*(% gross)", field = "name", short = FALSE)
+```
+
+1.  School enrollment, secondary (% gross): SE.SEC.ENRR
+
+-   School enrollment, secondary (% gross) Gross enrollment ratio is the ratio of total enrollment, regardless of age, to the population of the age group that officially corresponds to the level of education shown. Secondary education completes the provision of basic education that began at the primary level, and aims at laying the foundations for lifelong learning and human development, by offering more subject- or skill-oriented instruction using more specialized teachers.
+
+2.  School enrollment, tertiary (% gross): SE.TER.ENRR
+
+-   Gross enrollment ratio is the ratio of total enrollment, regardless of age, to the population of the age group that officially corresponds to the level of education shown. Tertiary education, whether or not to an advanced research qualification, normally requires, as a minimum condition of admission, the successful completion of education at the secondary level.
+
+3.  GDP per capita, PPP (constant 2017 international \$): NY.GDP.PCAP.PP.KD
+
+-   GDP per capita, PPP (constant 2017 international \$) GDP per capita based on purchasing power parity (PPP). PPP GDP is gross domestic product converted to international dollars using purchasing power parity rates. An international dollar has the same purchasing power over GDP as the U.S. dollar has in the United States. GDP at purchaser's prices is the sum of gross value added by all resident producers in the country plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in constant 2017 international dollars.
+
+### Importing Data
+
+```{r cache = TRUE}
+df_sec_ter_gdp <- WDI(indicator = c(sec = "SE.SEC.ENRR", ter = "SE.TER.ENRR", 
+                                    gdppcap = "NY.GDP.PCAP.PP.KD"), extra = TRUE)
+```
+
+```{r}
+write_csv(df_secgdp, "data/sec_ter_gdp.csv")
+```
+
+```{r}
+df_secgdp <- read_csv("data/sec_ter_gdp.csv")
+```
+
+### Visualization by Line Graphs
+
+```{r}
+COUNTRY <- "World"
+df_sec_ter_gdp |> filter(country == COUNTRY) |> drop_na(sec, ter) |>
+  ggplot() + geom_line(aes(year, sec), col = "blue") + geom_line(aes(year, ter), col = "red") +
+  labs(title = "School enrollment; Secondary and Tertiary", 
+       subtitle = "secondary in blue and tertiary in red", y = "")
+```
+
+```{r}
+INCOME <- c("Low income", "Low & middle income", "Lower middle income", "Middle income", "Upper middle income", "High income")
+df_sec_ter_gdp |> filter(country %in% INCOME) |> drop_na(sec, ter) |>
+  ggplot(aes(linetype = factor(country, levels = INCOME))) + geom_line(aes(year, sec), col = "blue") + geom_line(aes(year, ter), col = "red") + ylim(c(0,110)) +
+  labs(title = "School enrollment; Secondary and Tertiary", 
+       subtitle = "secondary in blue and tertiary in red", linetype = "Income Levels", y = "")
+```
+
+### Scatterplot for Covariation
+
+```{r}
+df_sec_ter_gdp |> filter(year == 2020) |> drop_na(sec, ter, gdppcap) |>
+  ggplot() + geom_point(aes(gdppcap, sec), col = "blue") + 
+  geom_point(aes(gdppcap, ter), col = "red") +
+  labs(title = "School enrollment; Secondary and Tertiary vs GDP per capita", 
+       subtitle = "secondary in blue and tertiary in red", y = "")
+```
+
+```{r}
+df_sec_ter_gdp |> filter(year == 2020) |> drop_na(sec, ter, gdppcap) |>
+  ggplot() + geom_point(aes(gdppcap, sec), col = "blue") + 
+  geom_point(aes(gdppcap, ter), col = "red") + 
+  scale_x_log10() +
+  labs(title = "School enrollment; Secondary and Tertiary vs GDP per capita in log10 scale", 
+       subtitle = "secondary in blue and tertiary in red", y = "")
+```
+
+```{r}
+df_sec_ter_gdp |> filter(year == 2020) |> drop_na(sec, ter, gdppcap) |>
+  ggplot() + geom_point(aes(gdppcap, sec), col = "blue") + 
+  geom_point(aes(gdppcap, ter), col = "red") +
+  geom_smooth(aes(gdppcap, sec), col = "blue", method = "lm", formula = 'y~x', se = FALSE) +
+  geom_smooth(aes(gdppcap, ter), col = "red", method = "lm", formula = 'y~x', se = FALSE) +
+  scale_x_log10() +
+  labs(title = "School enrollment; Secondary and Tertiary vs GDP per capita in log10 scale", 
+       subtitle = "secondary in blue and tertiary in red with regression lines", y = "")
+```
+
+```{r}
+df_sec_ter_gdp |> filter(year == 2020) |> drop_na(gdppcap, sec) |>
+  lm(sec~log10(gdppcap), data = _) |> summary()
+```
+
+```{r}
+df_sec_ter_gdp |> filter(year == 2020) |> drop_na(gdppcap, ter) |>
+  lm(ter~log10(gdppcap), data = _) |> summary()
+```
+
+```{r}
+df_sec_ter_gdp |> filter(year == 2020, region != "Aggregates") |> drop_na(sec, region) |>
+  ggplot(aes(sec, region, fill = region)) + geom_boxplot() + 
+  labs(x = "School enrollment, secondary (% gross)", y = "") + theme(legend.position = "none")
+```
+
+```{r}
+df_sec_ter_gdp |> filter(year == 2020, income !="Aggregates") |> drop_na(sec, income) |>
+  ggplot(aes(sec, factor(income, levels = INCOME), fill = income)) + geom_boxplot() + 
+  labs(title = "Seconary education: School enrollment by income level", x = "School enrollment, secondary (% gross)", y = "") + theme(legend.position = "none")
+```
+
+```{r}
+df_sec_ter_gdp |> filter(year == 2020, region != "Aggregates") |> drop_na(ter, region) |>
+  ggplot(aes(ter, region, fill = region)) + geom_boxplot() + 
+  labs(x = "School enrollment, tertiary (% gross)", y = "") + theme(legend.position = "none")
+```
+
+```{r}
+df_sec_ter_gdp |> filter(year == 2020, income != "Aggregates") |> drop_na(ter, income) |>
+  ggplot(aes(ter, factor(income, levels = INCOME), fill = income)) + geom_boxplot() + 
+  labs(title = "Tertiary education: School enrollment by income level", x = "School enrollment, tertiary (% gross)", y = "") + theme(legend.position = "none")
+```
+
+**Observations**
+
+-   Income level has more effect on school enrollment to tertiary education
+
+# Your Project
+
+## Title of your project
+
+We study .....
+
+1.  Name of the indicator 1: Indicator Code 1
+
+-   Description:
+
+2.  Name of the indicator 2: Indicator Code 2
+
+-   Description:
+
+### Importing Data
+
+```{=html}
+<span style = "color: red;">Edit the following code chunk!</span>
+```
+```{r}
+chosen_indicator_1 <- "EN.ATM.CO2E.PC"
+short_name_1 <- "co2pcap"
+chosen_indicator_2 <- "NY.GDP.PCAP.PP.KD"
+short_name_2 <- "gdppcap"
+```
+
+```{r cache = TRUE}
+df_yourdata <- WDI(indicator = c(short_name_1 = chosen_indicator_1, short_name_2 = chosen_indicator_2),
+                 extra = TRUE)
+```
+
+```{r}
+write_csv(df_yourdata, "data/yourdata.csv")
+```
+
+```{r}
+df_yourdata <- read_csv("data/yourdata.csv")
+```
+
+### Visualization by Line Graphs
+
+#### Name of the Indicator 1
+
+```{=html}
+<span style = "color: red;">Edit the title and the label of y-axis.</span>
+```
+```{r}
+COUNTRY <- "World"
+df_yourdata |> filter(country == COUNTRY) |> drop_na(short_name_1) |>
+  ggplot(aes(year, short_name_1)) + geom_line() +
+  labs(title = "",
+       y = "")
+```
+
+**Observations and Questions:**
+
+-   
+
+```{=html}
+<span style = "color: red;">Edit ISO2C, title, subtitle, and the label of y-axis.</span>
+```
+```{r}
+ISO2C <- c("JP", "CN", "ID", "GB", "US", "DE", "FR")
+df_yourdata |> filter(iso2c %in% ISO2C) |> drop_na(short_name_1) |>
+  ggplot(aes(year, short_name_1, col = iso2c)) + geom_line() +
+  labs(title = "",
+       subtitle = "China, Germany, France, United Kingdom, India, Japan, United States", 
+       y = "")
+```
+
+**Observations and Questions:**
+
+-   
+
+#### Name of the Indicator 2
+
+```{=html}
+<span style = "color: red;">Edit COUNTRY and the title.</span>
+```
+```{r}
+COUNTRY <- "World"
+df_yourdata |> filter(country == COUNTRY) |> drop_na(short_name_2) |>
+  ggplot(aes(year, short_name_2)) + geom_line() +
+  labs(title = "")
+```
+
+**Observations and Questions:**
+
+-   
+
+```{=html}
+<span style = "color: red;">Edit ISO2C, title, subtitle, and the label of y-axis, and add caption if preferable.</span>
+```
+```{r}
+ISO2C <- c("JP", "CN", "ID", "GB", "US", "DE", "FR")
+df_yourdata |> filter(iso2c %in% ISO2C) |> drop_na(short_name_2) |>
+  ggplot(aes(year, short_name_2, col = iso2c)) + geom_line() +
+  labs(title = "",
+       subtitle = "China, Germany, France, United Kingdom, India, Japan, United States", 
+       y = "",
+       caption = "")
+```
+
+**Observations and Questions:**
+
+-   
+
+#### Ranking of the indicator 1
+
+```{=html}
+<span style = "color: red;">Edit year if necessary.</span>
+```
+```{r}
+df_yourdata |> filter(year == 2020) |> filter(region != "Aggregates") |>
+  drop_na(short_name_1) |> arrange(desc(short_name_1))
+```
+
+```{r}
+df_yourdata |> filter(year == 2020) |> filter(region != "Aggregates") |>
+  drop_na(short_name_1) |> arrange(short_name_1)
+```
+
+**Observations and Questions:**
+
+-   
+
+#### Ranking of the Indicator 2
+
+```{r}
+df_yourdata |> filter(year == 2020) |> filter(region != "Aggregates") |>
+  drop_na(short_name_2) |> arrange(desc(short_name_2))
+```
+
+**Observations and Questions:**
+
+-   
+
+```{r}
+df_yourdata |> filter(year == 2020) |> filter(region != "Aggregates") |>
+  drop_na(short_name_2) |> arrange(short_name_2)
+```
+
+**Observations and Questions:**
+
+-   
+
+### Histograms and Boxplots for Variation
+
+#### Name of the Indicator 1
+
+```{=html}
+<span style = "color: red;">Edit the title and year.</span>
+```
+```{r}
+df_yourdata |> filter(year == 2020) |> filter(region != "Aggregates") |> 
+  drop_na(short_name_1) |> filter(income != "Not classified") |>
+  ggplot(aes(short_name_1, fill = factor(income, levels = INCOME))) + geom_histogram(bins = 15, col = "black", linewidth = 0.1) + 
+  scale_x_log10() +
+  labs(title = "", fill = "")
+```
+
+**Observations and Questions:**
+
+-   
+
+```{=html}
+<span style = "color: red;">Edit the title and the years.</span>
+```
+```{r}
+df_yourdata |> filter(year %in% c(1990, 2000, 2010, 2020)) |> filter(region != "Aggregates") |> 
+  drop_na(short_name_1) |> filter(short_name_1 > 0) |> filter(income != "Not classified") |> 
+  ggplot(aes(short_name_1, fill = factor(year))) + 
+  geom_histogram(bins = 15, col = "black", linewidth = 0.1) + 
+  scale_x_log10() + facet_wrap(~year) +
+  labs(title = "", fill = "")
+```
+
+**Observations and Questions:**
+
+-   
+
+```{r}
+df_yourdata |> filter(year %in% c(1990, 2000, 2010, 2020)) |> filter(region != "Aggregates") |> 
+  drop_na(short_name_1) |> filter(short_name_1 > 0) |> filter(income != "Not classified") |> 
+  ggplot(aes(short_name_1, factor(year), fill = factor(year))) + 
+  geom_boxplot() + scale_x_log10() + labs(y = "") + theme(legend.position = "none")
+```
+
+**Observations and Questions:**
+
+-   
+
+```{=html}
+<span style = "color: red;">Edit the title, and the year if necessary.</span>
+```
+```{r}
+df_yourdata |> filter(year == 2020) |> filter(region != "Aggregates") |> 
+  drop_na(short_name_1) |> filter(short_name_1 > 0) |> filter(income != "Not classified") |> 
+  ggplot(aes(short_name_1, factor(income, levels = INCOME), fill = income)) + 
+  geom_boxplot() + scale_x_log10() + 
+  labs(title = "", y = "", fill = "") +
+  theme(legend.position = "none")
+```
+
+**Observations and Questions:**
+
+-   
+
+```{=html}
+<span style = "color: red;">Edit the title and year if necessary.</span>
+```
+```{r}
+df_yourdata |> filter(year == 2020) |> filter(region != "Aggregates") |> 
+  drop_na(short_name_1) |> filter(short_name_1 > 0) |> 
+  ggplot(aes(short_name_1, region, fill = region)) + 
+  geom_boxplot() + scale_x_log10() + 
+  labs(title = "", y = "", fill = "") +
+  theme(legend.position = "none")
+```
+
+**Observations and Questions:**
+
+-   
+
+#### GDP per capita
+
+```{=html}
+<span style = "color: red;">Edit the title, and year if necessary.</span>
+```
+```{r}
+df_yourdata |> filter(year == 2020) |> filter(region != "Aggregates") |> 
+  drop_na(short_name_2) |> filter(income != "Not classified") |>
+  ggplot(aes(short_name_2, fill = factor(income, levels = INCOME))) + geom_histogram(bins = 15, col = "black", linewidth = 0.1) + 
+  scale_x_log10() +
+  labs(title = "", fill = "")
+```
+
+```{=html}
+<span style = "color: red;">Edit the title and the year if necessary.</span>
+```
+```{r}
+df_yourdata |> filter(year %in% c(1990, 2000, 2010, 2020)) |> filter(region != "Aggregates") |> 
+  drop_na(short_name_2) |> filter(short_name_2 > 0) |> filter(income != "Not classified") |> 
+  ggplot(aes(short_name_2, fill = factor(year))) + 
+  geom_histogram(bins = 15, col = "black", linewidth = 0.1) + 
+  scale_x_log10() + facet_wrap(~year) +
+  labs(title = "", fill = "") +
+  theme(legend.position = "none")
+```
+
+**Observations and Questions:**
+
+-   
+
+```{r}
+df_yourdata |> filter(year %in% c(1990, 2000, 2010, 2020)) |> filter(region != "Aggregates") |> 
+  drop_na(short_name_2) |> filter(short_name_2 > 0) |> filter(income != "Not classified") |> 
+  ggplot(aes(short_name_2, factor(year), fill = factor(year))) + 
+  geom_boxplot() + scale_x_log10() + labs(y = "") + theme(legend.position = "none")
+```
+
+**Observations and Questions:**
+
+-   
+
+```{=html}
+<span style = "color: red;">Edit the title, and the year if necessary.</span>
+```
+```{r}
+df_yourdata |> filter(year == 2020) |> filter(region != "Aggregates") |> 
+  drop_na(short_name_2) |> filter(short_name_2 > 0) |> filter(income != "Not classified") |> 
+  ggplot(aes(short_name_2, factor(income, levels = INCOME), fill = income)) + 
+  geom_boxplot() + scale_x_log10() + 
+  labs(title = "", y = "", fill = "") +
+  theme(legend.position = "none")
+```
+
+**Observations and Questions:**
+
+-   
+
+```{=html}
+<span style = "color: red;">Edit the title and the year if necessary.</span>
+```
+```{r}
+df_yourdata |> filter(year == 2020) |> filter(region != "Aggregates") |> 
+  drop_na(short_name_2) |> filter(short_name_2 > 0) |> 
+  ggplot(aes(short_name_2, region, fill = region)) + 
+  geom_boxplot() + scale_x_log10() + 
+  labs(title = "", y = "", fill = "") +
+  theme(legend.position = "none")
+```
+
+### Scatterplot for Covariation
+
+#### Scatterplot with a regression line
+
+```{=html}
+<span style = "color: red;">Edit the title, the labels of x- and y- axes.</span>
+```
+```{r}
+df_yourdata |> filter(year == 2020) |> 
+  drop_na(short_name_2, short_name_1) |>
+  ggplot(aes(short_name_2, short_name_1)) + geom_point(aes(col = region)) +
+  geom_smooth(method = "lm", formula = 'y~x', se = FALSE) +
+  scale_x_log10() + scale_y_log10() +
+  labs(title = "",
+       x = "",
+       y = "")
+```
+
+**Observations and Questions:**
+
+-   
+
+#### Summary of a linear model
+
+```{=html}
+<span style = "color: red;">Edit year if necessary.</span>
+```
+```{r}
+df_yourdata |> filter(year == 2020) |> drop_na(short_name_2, short_name_1) |>
+  lm(log10(short_name_1)~log10(short_name_2), data = _) |> summary()
+```
+
+**Observations and Questions:**
+
+-   
