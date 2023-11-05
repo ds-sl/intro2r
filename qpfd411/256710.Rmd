@@ -1,0 +1,107 @@
+---
+title: "Nguyen Thi Viet Linh final assignment"
+output: html_notebook
+---
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+```{r}
+dir.create("./data")
+```
+##1. GNI per capita (current US$) in East Asian & Pacific
+
+```{r}
+GNI <- WDI(indicator = c(GNI = "NY.GNP.PCAP.CD"), extra = TRUE)
+```
+```{r}
+write_csv(GNI, "data/GNI.csv")
+```
+```{r}
+GNI <- read_csv("data/GNI.csv")
+```
+```{r}
+GNI |> select(country, GNI) |> lapply(unique)
+```
+
+```{r}
+COUNTRY <- "East Asia & Pacific"
+GNI |> filter(year >= 1990, year <= 2020, country == COUNTRY) |>
+  ggplot(aes(year, GNI)) + geom_line(size = 1.0)
+
+```
+##2. CO2 emissions (metric tons per capita) in East Asian & Pacific
+
+```{r}
+CO2 <- WDI(indicator = c(CO2 = "EN.ATM.CO2E.PC"), extra = TRUE)
+```
+```{r}
+write_csv(CO2, "data/CO2.csv")
+```
+```{r}
+CO2 <- read_csv("data/CO2.csv")
+```
+```{r}
+CO2 |> select(country, CO2) |> lapply(unique)
+```
+
+```{r}
+COUNTRY <- "East Asia & Pacific"
+CO2 |> filter(year >= 1990, year <= 2020, country == COUNTRY) |>
+  ggplot(aes(year, CO2)) + geom_line(size = 1.0)
+
+```
+##3. Renewable energy consumption (% of total final energy consumption) in East Asia & Pacific
+
+```{r}
+energy <- WDI(indicator = c(energy = "EG.FEC.RNEW.ZS"), extra = TRUE)
+```
+```{r}
+write_csv(energy, "data/energy.csv")
+```
+```{r}
+energy <- read_csv("data/energy.csv")
+```
+```{r}
+energy |> select(country, iso2c, energy) |> lapply(unique)
+```
+
+```{r}
+COUNTRY <- "East Asia & Pacific"
+energy |> filter(year >= 1990, year <= 2020, country == COUNTRY) |>
+  ggplot(aes(year, energy)) + geom_line(size = 1.0)
+
+```
+##4. Test relation between GNI and CO2 emissions, renewable energy consumption in East Asia and Pacific
+```{r}
+df_GNI <- WDI(indicator = c(GNI = "NY.GNP.PCAP.CD", CO2 = "EN.ATM.CO2E.PC", energy = "EG.FEC.RNEW.ZS"), extra = TRUE)
+```
+
+
+```
+library(plm)
+filtered_data <- df_GNI |>
+  filter(country == "East Asia & Pacific") |>
+linear_model <- lm(log(GNI) ~ log(CO2) + log(energy), data = filtered_data)
+
+```
+
+```{r}
+library(plm)
+filtered_data <- df_GNI |>
+  filter(country == "East Asia & Pacific") 
+linear_model <- lm(log(GNI) ~ log(CO2) + log(energy), data = filtered_data)
+
+```
+
+```{r}
+REGION <- "South Asia"
+library(plm)
+filtered_data <- df_GNI |>
+filter(year >= 1990, year <= 2020, region == "South Asia")|>
+drop_na(GNI, CO2, energy)
+linear_model <- lm(log(GNI) ~ log(CO2) + log(energy), data = filtered_data)
+summary(linear_model)
+```
+
