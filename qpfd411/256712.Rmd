@@ -1,0 +1,104 @@
+---
+title: "Gini Coefficients and GDP Growth"
+output:
+  pdf_document: default
+  html_notebook: default
+---
+
+# Setup
+
+If you have installed the package "tidyverse", you do not need to run the next code chunk.
+
+```{r eval = FALSE}
+install.packages("tidyverse")
+```
+
+Although "readxl" and "broom" are part of the package "tidyverse', you need to load separately as they are not core and not loaded with 'tidyverse'.
+
+```{r}
+library(tidyverse)
+library(readxl) # a package for Excel files, a part of tidyverse but not core
+library(broom) # a package for modeling, a part of tidyverse but not core
+library(WDI)
+```
+
+# Importing
+
+For Excel, you need to specify wich sheet you want to import by name as below or the number. You also need to skip several rows when blank rows are included.
+
+```{r warning = FALSE}
+df_gini_gdpgrowth_orig <- read_excel("data/P_Data_Extract_From_World_Development_Indicators 20 years db.xlsx", 
+    col_types = c("text", "text", "text", 
+        "text", "numeric", "numeric", "numeric", 
+        "numeric", "numeric", "numeric", 
+        "numeric", "numeric", "numeric", 
+        "numeric", "numeric", "numeric", 
+        "numeric", "numeric", "numeric", 
+        "numeric", "numeric", "numeric", 
+        "numeric", "numeric"), na = "\t ..", n_max = 532)
+```
+
+Check the data frames.
+
+```{r}
+df_gini_gdpgrowth_orig |> head()
+```
+
+```{r}
+df_gini_gdpgrowth2 <- WDI(indicator = c(gini = "SI.POV.GINI", gdpgrowth = "NY.GDP.MKTP.KD.ZG"))
+df_gini_gdpgrowth2 |> head()
+```
+
+
+# Tidying
+
+After tidying the original data, we obtained about the same as the one obtained above using WDI package. So I recommend you to get the data using WDI.
+
+```{r}
+df_gini_gdpgrowth <- df_gini_gdpgrowth_orig |> pivot_longer(5:24, names_to = "year", values_to = "value") |>
+  mutate(year = as.numeric(str_sub(year, 1, 4))) |> select(-4) |> 
+  pivot_wider(names_from = `Series Name`, values_from = value)
+df_gini_gdpgrowth |> head()
+```
+
+# Number of available data
+
+```{r}
+df_gini_gdpgrowth2 |> drop_na(gini, gdpgrowth) |> 
+  ggplot(aes(year)) + geom_bar()
+```
+
+# Scatter Plots
+
+It is better to fix a year.
+
+```{r}
+YEAR <- 2018
+df_gini_gdpgrowth2 |> filter (year == YEAR) |> drop_na(gini, gdpgrowth) |>
+  ggplot(aes(gini, gdpgrowth)) + geom_point() + geom_smooth(method = "lm", formula = y~x, se = FALSE)
+```
+
+# Models
+
+
+```{r}
+YEAR <- 2018
+model0 <- df_gini_gdpgrowth2 |> filter (year == YEAR) |> drop_na(gini, gdpgrowth) |> lm(gdpgrowth ~ gini, data = _) 
+```
+
+```{r}
+model0 |> summary()
+```
+
+```{r}
+model0 |> summary() |> glance()
+```
+```{r}
+model0 |> summary() |> tidy()
+```
+
+
+```{r}
+model0 |> augment() |> head()
+```
+
