@@ -2067,7 +2067,7 @@ By studying macroeconomics, you can better understand the changes that are takin
 
 ## 
 
-2023.11.20
+2023.11.20, 2023.12.3
 
 ### Key Concepts: Preview of Macroeconomics I 
 
@@ -2209,7 +2209,7 @@ When we look more closely at these fluctuations around an economy's long-term tr
 
 ### **Lecture: 4 Key Macro Variables**
 
-2023.11.20
+2023.11.20, 2023.12.3
 
 ### Key Concepts: 4 Key Macro Variables
 
@@ -2335,7 +2335,9 @@ Finally, we turn our attention to measuring Real GDP, which is simply nominal GD
 
 ### **Lecture: Elements of National Income & Product Accounting (21A)**
 
-2023.11.21
+2023.11.21, 2023.12.4
+
+the National Income and Product Accounts, 
 
 ### Key Concepts: Lecture: Elements of National Income & Product Accounting
 
