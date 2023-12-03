@@ -1,0 +1,479 @@
+---
+title: "edX: Principle of Economics"
+format: html
+editor: visual
+---
+
+## 
+
+# Chapter 1. The Basic Core of Economics
+
+## Section 1.1. [Getting Started: Welcome to Choice, Scarcity, Opportunity Cost & Production Possibilities](https://learning.edx.org/course/course-v1:StanfordOnline+ECONX0001+1T2021/block-v1:StanfordOnline+ECONX0001+1T2021+type@sequential+block@1fda2d9eb33843969449a8ae324dacd4)
+
+## Introduction: Getting Started
+
+Let's begin with the basics. We'll start by discussing the goal of the course which is to learn how to use economics to better understand and address the major issues of the day\--to think and do like an economist.  The course will cover the two main branches of economics\--microeconomics and macroeconomics.  We will discuss the differences between micro and macro in the first video. We will then define the basic mantra of economics in the second video and examine some foundational concepts: opportunity costs, the gains from trade, and the production possibilities curve.
+
+### Lecture: Welcome to the Principles of Economics (1A)
+
+### Key Concepts: Welcome to the Principles of Economics
+
+Microeconomics examines the behavior and decisions of individual firms and households and the way they interact in specific industries and markets. We would use microeconomics to analyze decisions made by individual firms, or to look at how certain factors can affect the market for a specific good.
+
+Macroeconomics focuses on the whole national economy or even the whole world economy. Macroeconomics examines the workings and problems of the whole economy, looking at features such as GDP growth and unemployment. We would use macroeconomics to examine the factors that contribute to a country or region's overall economic growth, or to determine the cause of economic fluctuations (e.g. recessions).
+
+### Lecture: The Central Idea - Choice, Scarcity, and Interaction
+
+### Key Concepts: The Central Idea
+
+Economics mantra: people make choices with scarce resources, and they interact with others when they make these choices.
+
+Opportunity cost is the value of the next-best forgone alternative to making a choice. Economists consider this the real cost of a decision; for example, if a baseball player decides to attend college on a scholarship instead of entering the MLB draft, then even if he is going to school for free, the opportunity cost of that decision is the salary he could be making as a professional.
+
+Gains from trade are improvements in income, production, or satisfaction owing to the exchange of goods or services.
+
+This economic interaction can lead to the following:
+
+Specialization: a concentration of production effort on a single specific task.
+
+Division of labor: the division of production into various parts in which different groups of workers specialize.
+
+Comparative advantage: a situation in which a person or group can produce one good at a lower opportunity cost than another person or group.
+
+These can lead to greater production due to greater efficiency which can make all actors better off.
+
+Trade can make two individuals or firms better off than if the trade did not happen. Because of this, in this framework, an important role of government is to ensure that trade can happen. There are five main components to this:
+
+Predictable policy framework: the government needs to be predictable in its decision-making process.
+
+Rule of law (e.g. property rights): property rights need to be clearly defined and enforced.
+
+Reliance on market economy: the government needs to allow the market to determine prices and quantities produced.
+
+Good incentives: the government needs to provide good incentives for economic activity, such as patents to encourage innovation.
+
+Specific role of government: the government needs to be able to intervene in the case of market failure, when the market would fail to reach the efficient outcome.
+
+### Lecture: Production Possibilities and Economic Growth (2A)
+
+### Key Concepts: Production Possibilities and Economic Growth
+
+## Key Concepts: Production Possibilities and Economic Growth
+
+The **production possibilities curve** (or **production possibilities frontier**) is a graph which illustrates the tradeoffs that an economy faces when deciding what to produce. It has a bowed-out shape, implying that opportunity costs increase as production increases. The curve below illustrates a hypothetical tradeoff between computers (on the y-axis) and movies (on the x-axis).
+
+![](images/Screenshot_2014-03-28_10.40.53__2_-01.png)
+
+Points on the curve are considered to be **efficient** levels of production. Points below the curve are **inefficient** because the economy could produce more of one good without sacrificing production of the other. Points outside the curve are **impossible**; given its current capabilities, the economy cannot reach those levels of production. Note that the production possibilities curve does not indicate which good we prefer, or the optimal point on the curve; it merely indicates what amounts of production it is possible to achieve.
+
+Over time, the production possibilities curve shifts out. The magnitude of this shift depends on investment in the economy; more investment will eventually lead to greater growth, and less investment will lead to slower growth.
+
+### Discussion: Getting Started
+
+The National Basketball Association (NBA) has a rule that players must be at least one year removed from their high school graduation in order to enter the league. In many cases, this leads to players playing one year of basketball in college, then forgoing the remainder of their college career to enter the NBA. From an economic perspective, why might so many players make this decision? Use the concept of opportunity cost to make a case for either dropping this restriction altogether (allowing players to enter the NBA immediately after graduating high school) or increasing the limit, requiring players to graduate college before entering the NBA.
+
+To participate in course discussions, please post in the Discussion forum. Discussion topics have been created for each topic presented.
+
+### Conclusion: Getting Started
+
+In this unit we looked at the foundational ideas of economics and some of the questions that we can use them to answer. We introduced the mantra of economics: people make choices with scarce resources, and they interact with others when they make these choices. We applied this idea in particular to the production possibilities curve, which illustrates how countries face tradeoffs between producing different types of goods. Many of these ideas will be fundamental throughout this course. For example, whenever we discuss the costs of a choice, we will take that to mean the *opportunity* cost of that choice.
+
+### Key Terms: Getting Started
+
+**Microeconomics**: the study of individual firms and households in specific industries and markets
+
+**Macroeconomics**: the study of the entire economy of a region, a country, or the entire world
+
+**Opportunity Cost**: is the value of the next-best forgone alternative to making a choice
+
+**Gains from Trade**: improvements in income, production, or satisfaction owing to the exchange of goods or services
+
+**Specialization**: a concentration of production effort on a single specific task
+
+**Division of Labor**: the division of production into various parts in which different groups of workers specialize
+
+**Comparative Advantage**: a situation in which a person or group can produce one good at a lower opportunity cost than another person or group
+
+**Production Possibilities Curve**: a graph illustrating the tradeoffs an economy faces when producing two different goods
+
+**Increasing Opportunity Costs**: the idea that as the production of a good increases, the opportunity cost of producing that good becomes higher
+
+## Section 1.2 [Observing and Explaining the Economy](https://learning.edx.org/course/course-v1:StanfordOnline+ECONX0001+1T2021/block-v1:StanfordOnline+ECONX0001+1T2021+type@sequential+block@79b5e64f300b42dabd370b1c9b3ff83b)
+
+### Introduction: Observing and Explaining the Economy
+
+In this lessson we learn how economists work with data to study the economy.  We also learn how economics can be used to explain important observations revealed by the data.  The lesson focuses on an example in which data on people's incomes reveal a widening gap between the rich and the poor. An economic explanation for the growing gap is that the benefits to education have increased, so that those with more education earn increasingly larger amounts than those with less education. This explanation implies that a policy that improves educational opportunity will reduce the gap. Using this example, we highlight key problems that arise when economists make policy recommendations.
+
+### Lecture: Observing and Explaining the Economy
+
+### Key Concepts: Observing and Explaining the Economy
+
+The work of an economist includes observation (describing economic events), explanation (identifying potential causes of the events) and policy recommendations (courses of action for government or business to follow).
+
+Analyzing economic data and finding trends is a challenge.  Data often come in widely different magnitudes and units. They can be uninformative or misleading if they are not appropriately transformed, say by considering percentages.
+
+Finding an economic explanation for an economic event is also challenging. Often there are several explanations that must be tested against each other.  Even if you can find variables that are correlated with the events in question, correlation does not imply causation.
+
+Research on the causes of economic events often has policy implications. Making recommendations is called normative economics, in contrast with the economic analysis of the event, which is called positive economics.
+
+Economists often disagree, and it is important to understand why. Disagreement is often greater in macroeconomics than in microeconomics.  The inability to run controlled experiments makes it difficult for economists to establish definitively a cause for an economic event.  Sometimes partisanship or personal beliefs may also affect their conclusions.
+
+### Discussion: Observing and Explaining the Economy
+
+Many economists and politicians have been writing and talking about the change in income distribution in the United States, noting the growing gap between the rich and the poor. The article "For richer, for poorer" from The Economist magazine covers a number of key issues. What economic explanations are offered in the article, in addition to changes in the return to education? Do you agree with the key policy recommendations?  Do they follow from the economic explanation?  Also one article on how economists use new data to measure income inequality if you are interested.
+
+### Conclusion: Observing and Explaining the Economy
+
+In this lesson we showed how economists work with data to draw observations about the world around us. We found that discovering key trends or patterns requires looking at percentage changes or other transformations of the data and plotting the data in a graph. We illustrated these ideas with the example of income distribution, noting that the income gap between the top 10 percent and the lower 90 percent grew in the 1980s and 1990s.
+
+An important task of economics is to explain such observations. For example, the widening income gap may be caused  by increased returns to education.
+
+Another important task of economics is to make policy recommendations, based on economic explanations. For example, if increased returns to education caused the widening income gap, then an economic policy recommendation to reduce the gap is to give more access to education.
+
+### Key Terms: Observing and Explaining the Economy
+
+Causation: the concept that one event brings about another event.
+
+Correlation: the concept that one event is usually observed to occur along with another event; note that correlation does not imply causation.
+
+Normative Economics: economic analysis that makes recommendations about economic policy.
+
+Positive Economics: economic analysis that explains what happens in the economy and why, without making recommendations about economic policy.
+
+## Section 1.3 Introduction: The Supply and Demand Model
+
+This lesson will introduce one of the most basic and important models in economics: the supply and demand model. This model is simple but powerful, and can explain a wide range of economic phenomena.  The lesson will first introduce two of the most important concepts in economics, supply and demand. You will learn how to express these concepts in figures. Then you will learn how to distinguish between shifts and movements in the supply and demand curves. Next you will learn how prices and quantities adjust the market into equilibrium and how shifts in supply and demand affect quantities and prices.
+
+### Lecture: Supply and Demand (3A)
+
+### Key Concepts: Supply and Demand
+
+**Demand** is a *negative relationship* between the price of a good and the quantity demanded by consumers. It can be shown graphically by a downward-sloping demand curve. 
+
+ 
+
+It is very important to note what results in a *movement along* the demand curve and what results in a *shift* of the demand curve.
+
+-   A *movement along* the demand curve occurs when a higher price reduces the quantity demanded or a lower price increases the quantity demanded. This is illustrated in the figure below as a movement from point A to point B or C.
+
+-   A *shift* of the demand curve occurs when something besides a change in price changes the quantity of a good that people are willing to buy. An increase in demand is a shift to the right of the demand curve. A decrease in demand is a shift to the left of the demand curve.
+
+**Shifts of and Movements Along a Demand Curve:**
+
+![](images/SS3-demandShift.png)
+
+**Supply** is a *positive relationship* between the price of a good and the quantity supplied by firms. It can be shown graphically by an upward-sloping supply curve. 
+
+ 
+
+Like demand we can differentiate between *movements along* and *shifts* of the supply curve.
+
+-   A *movement along* the supply curve occurs when a higher price increases the quantity supplied or a lower price decreases the quantity supplied. This is shown in the figure below as a movement from point D to point E or F.
+
+-   A *shift* of the supply curve occurs when something besides a change in price changes the quantity of a good that firms are willing to sell. An increase in supply is a shift to the right of the supply curve. A decrease in supply is a shift to the left of the supply curve.
+
+**Shifts of versus Movements Along the Supply Curve**
+
+![](images/SS3-supplyShift.png)
+
+### Lecture: Market Equilibrium (3B)
+
+### Key Concepts: Market Equilibrium
+
+The *equilibrium price* and *equilibrium quantity* are determined by the intersection of the supply curve and the demand curve. At this intersection point, *the quantity supplied equals the quantity demanded*--- there are no shortages or surpluses.
+
+![](images/equilibrium-01.png)
+
+The adjustment of prices moves the market into equilibrium. In situations where there is a shortage or an excess demand for goods, price will rise, increasing the quantity supplied and reducing the quantity demanded. In situations where there is a surplus or an excess supply of goods, price will fall, decreasing the quantity supplied and increasing the quantity demanded.
+
+We can use the supply and demand model to analyze the impact of changes in factors that move the supply curve or the demand curve or both. By shifting either the supply curve or the demand curve, observations of prices can be explained and predictions about prices can be made.
+
+ When the demand curve shifts to the right (left), both equilibrium price and equilibrium quantity will increase (decrease). When the supply curve shifts to the right (left), the equilibrium price will fall (rise), and the equilibrium quantity will rise (fall).
+
+### Quiz: Market Equilibrium
+
+Level 2 headings may be created by course providers in the future.
+
+Consider the following supply and demand model of the world tea market (in billions of pounds.)
+
+ 
+
+[**Price Per Pound          Quantity Supplied          Quantity Demanded**]{.underline}
+
+     \$.38                                   1,500                                     525
+
+     \$.37                                   1,000                                     600
+
+     \$.36                                    700                                       700
+
+     \$.35                                    600                                       900
+
+     \$.34                                    550                                       1,200
+
+### Discussion: The Supply and Demand Model
+
+A recent [article](https://www.nytimes.com/2020/04/25/us/coronavirus-trump-chloroquine-hydroxychloroquine.html) discusses a surge in prescription for two anti-malaria drugs. How would you model this using our supply and demand model? Do you think whether the surge is sustainable in the long-run?
+
+### Conclusion: The Supply and Demand Model
+
+In this lesson you have learned the basic definitions of supply and demand. You have also learned to analyze the concepts of supply and demand graphically. Demand is a relationship between two economic variables: (1) the price of a particular good and (2) the quantity of that good that consumers are willing to buy at that price during a specific time period, *all other things being equal*. For short, we call the first variable the price and the second variable the quantity demanded. The relationship between price and quantity demanded is called a demand schedule. The relationship shows price and quantity demanded moving in opposite directions. Supply is a relationship between two variables: (1) the price of a particular good and (2) the quantity of the good that firms are willing to sell at that price, all other things being the same. For short, we call the first variable the price and the second variable the quantity supplied. 
+
+Economists sometimes refer to demand and supply as the *law* *of demand* and the *law* *of supply*. The law of demand says that the higher the price, the lower the quantity demanded in the market; and the lower the price, the higher the quantity demanded in the market. In other words, the law of demand says that the price and the quantity demanded are negatively related, all other things being equal. The law of supply says that the higher the price, the higher the quantity supplied; and the lower the price, the lower the quantity supplied. In other words, the law of supply says that the price and the quantity supplied are positively related, all other things being equal.
+
+This lesson has also shown how to use the supply and demand model to find out how equilibrium price and quantity are determined in markets where buyers and sellers interact freely. The supply and demand model is probably the most frequently used model in economics, and it has been in existence for over a hundred years in pretty much the same form as economists use it now. You will come to appreciate it more and more as you study economics. A key feature of the model is that the equilibrium price and quantity are found at the intersection of the supply and demand curves. We can use the model to analyze how a change in factors that shift either the supply curve or the demand curve (or both) will affect equilibrium price and quantity in the market. 
+
+### Key Terms: The Supply and Demand Model
+
+**-Demand**: A relationship between price and quantity demanded.
+
+**-Price**: The amount of money or other goods that one must pay to obtain a particular good.
+
+**-Quantity Demanded**: The quantity of a good that people want to buy at a given price during a specific time period.
+
+**-Demand Schedule**: A tabular presentation of demand showing the price and quantity demanded for a particular good, all else being equal. Below is an example of a demand schedule for bicycles.
+
+![](images/table1.png)
+
+**-Law of Demand**: The tendency for the quantity demanded of a good in a market to decline as its price rises.
+
+**-Demand Curve**: A graph of demand showing the down-ward sloping relationship between price and quanity demanded. Below is an example of a demand curve for bicycles, showing shifts of the demand curve versus movements along the demand curve.
+
+**-Supply**: A relationship between price and quantity supplied.
+
+**-Quantity Supplied**: The quantity of a good that firms are willing to sell at a given price.
+
+**-Supply Schedule**: A tabular presentation of supply showing the price and quantity supplied of a particular good, all else being equal. Below is an example of a supply schedule for bicycles.
+
+![](images/table2.png)
+
+**-Law of Supply**: The tendence for the quantity supplied of a good in a market to increase a its price rises.
+
+**-Supply Curve**: A graph of supply showing the upward-sloping relationship between price and quantity supplied. Below is an example of a supply curve for bicycles, showing shifts of versus movements along the supply curve.
+
+**-Shortage** (excess demand): A situation in which quantity demanded is greater than quantity supplied.
+
+**-Surplus** (excess supply): A situation in which quantity supplied is greater than quantity demanded.
+
+**-Equilibrium Price**: The price at which quantity supplied equals quantity demanded.
+
+**-Equilibrium Quantity**: The quantity traded at the equilibrium price.
+
+**-Market Equilibrium**: The situation in which the price is equal to the equilibrium price and the quantity traded equals the equilibrium quantity.
+
+##  Section 1.4 Introduction: Using the Supply and Demand Model
+
+This lesson builds upon what we have seen thus far in our analysis of the supply and demand model. 
+
+First we discuss a key point in economics: *elasticity*.
+
+The concept of elasticity helps us understand *how much* the equilibrium price and quantity change in response to changes in supply or demand. This has very important implications for policymaking. In addition, this concept will help solidify your understanding of the important role played by prices in the allocation of resources.
+
+Second we turn to government interventions in the market, specifically *price ceilings* and *price floors*.
+
+We consider two ways in which government interventions can affect market prices. When the government perceives that an equilibrium price is "too high," it might intervene and impose a *price ceiling*. Or the government might intervene and impose a *price floor* when a price is perceived to be "too low." We use the supply and demand model to analyze the impact of these interventions.
+
+### Lecture: The Role of Prices and Elasticity (4A)
+
+### Key Concepts: Price and Elasticity
+
+Understanding the roles of prices in a market economy is extremely important.
+
+Prices have three major roles:
+
+-   Prices are signals
+
+-   Prices provide incentives
+
+-   Prices affect income distribution
+
+ 
+
+**Elasticity** is a measure of the sensitivity of one economic variable to another.
+
+**Price Elasticity of Demand** is the percentage change in the quantity demanded of a good divided by the percentage change in the price of that good.
+
+Elasticity is important because it is a way in which economists quantify how responsive economic actors are to price signals. If a consumer changes how much of a good they purchase by *a large amount* when price changes by a certain amount then their demand is thought to be *relatively elastic*. If consumers change how much of a good they purchase *very little* when price changes, then their demand is thought to be *relatively inelastic*.
+
+So that we can compare elasticities across different goods elasticity is always measured in percentage terms. Elasticity is a *unit-free measure*.
+
+Demand is said to be elastic if the price elasticity of demand is greater than 1 and inelastic if the price elasticity of demand is less than 1. The elasticity of demand for a good depends on whether the good has close substitutes, whether its value is a large or a small fraction of total income, and the time period of the change.
+
+Examples of goods that generally have low price elasticity of demand include cigarettes and gasoline. Consumers change their purchasing behavior relatively little with changes in price. Examples of goods with higher price elasticity of demand include luxury goods such as jewelry. 
+
+The graphs below illustrate the concept of price elasticity of demand by using an example of the market for crude oil.
+
+In this figure we can see that with a relatively high price elasticity of demand consumers change how much they consume very much in response to a price change.
+
+![](images/SS4-highPrElasOfDem.png)
+
+However, in the next figure we can see an example of relatively low price elasticity of demand where consumers change their quantity purchased much less in response to a change in price.
+
+![](images/SS4-lowPrElasOfDem.png) 
+
+Price elasticity of demand can be represented mathematically as:
+
+Here:  price elasticity of demand  quantity demanded  price
+
+ This is the percent change in quantity demanded divided by the percent change in price. Price elasticity of demand measures how much a consumer changes his or her purchasing decisions based on price signals.
+
+As we saw in earlier lessons, for most goods there is a negative relationship between price and quantity demanded. If an economist says that   1, we usually take this to mean that for a 1% increase in price there will be a 1% decrease in quantity demanded.
+
+ 
+
+Similar to price elasticity of demand we can measure a supplier's willingness to supply more or less of a good in response to price changes as **price elasticity of supply**.
+
+This is the percentage change in quantity supplied divided by the percentage change in price.
+
+If a good has a high price elasticity of supply, then a change in price will cause a big change in the quantity supplied. Conversely, if a good has a low price elasticity of supply, then a change in price will have only a small impact on the quantity supplied.
+
+### Lecture: Real World Applications of the Supply and Demand Model (4B)
+
+### Key Concepts: Applying the Supply and Demand Model
+
+One of the most important applications of the supply and demand model is the analysis of government interventions in markets. The case of price ceilings and price floors is an important example. Such interventions occur when people in government, or those that influence people in government, perceive the market equilibrium price to be too high or too low. 
+
+A **price ceiling** is a government price control that sets the maximum allowable price for a good or a service. For a price ceiling to have any effect at all in a market it must be below the market equilibrium price. A price ceiling may be put into place because policymakers believe the price of a good is too high and thus not afforable for certain citizens (i.e. rent control). However, the low price will lead firms to reduce the quantity they will supply and result in a *shortage*. 
+
+*Example:*
+
+Rent control: a government price control that sets a maximum allowable rent to a house or an apartment.
+
+![](images/SS4-PriceCeiling.png)
+
+A **price floor** is a government price control that sets the minimum allowable price for a good or a service. For a price floor to have any effect at all it must be above the market equilibrium price. A price floor might be put into place to try to help suppliers of a good because policymakers believe the price being received by suppliers is too low (i.e. a higher minimum wage is intended to help workers\--the suppliers of labor). However, this reduces the quantity demanded and results in a surplus. In the case of a labor market this surplus is known as unemployment. In the market for a good, the government often must purchase the suplus of goods to support this price at a great cost to government. 
+
+*Example:*
+
+Minimum wage: a wage per hour below which it is illegal to pay workers.
+
+![](en-cache://tokenKey%3D%22AuthToken%3AUser%3A2533650%22+b17ea0d3-dfa5-0098-b189-39bff1b19870+2ae269ff2e78cd2d8749bfe2b0753682+https://www.evernote.com/shard/s22/res/ccac3670-87e8-7e06-cfd1-cdbcb9582dd1)
+
+### Discussion: Using the Supply and Demand Model
+
+[This article ](https://www.sfchronicle.com/opinion/editorials/article/Editorial-Rent-control-still-can-t-solve-13694380.php?psid=aG7F8)is an opinion piece on rent control in San Francisco. If rent control is economically inefficient, why is it still used as a public policy tool? What might some consequences of rent control that may hurt those that they are trying to help?
+
+![](images/SS4-PriceFloor.png)
+
+### Conclusion: Using the Supply and Demand Model
+
+In this lesson we covered some key economic concepts that help us understand the interaction of firms, consumers and workers in a market. We discussed the roles of prices, elasticity, and price controls. Price elasticity of demand helps us understand how consumers respond to price, while price elasticity of supply helps us understand how suppliers respond to price.  We also examined how the supply and demand model can be used to analyze the impact of real world events such as a reduction in the demand for oil in the United States.
+
+Price controls include price ceilings that might be imposed when government believes that a price is too high and price floors that might be imposed when government believes a price is too low. The supply and demand model helps us understand some basic issues related to minimum wage or rent control policies, which frequently appear in the news today.
+
+ 
+
+### Key Terms: Using the Supply and Demand Model
+
+**-Elastic Demand:** demand for which the price elasticity is greater than 1.
+
+**-Inelastic Demand:** demand for which the price elasticity is less than 1.
+
+**-Minimum Wage:** a wage per hour below which it is illegal to pay workers.
+
+**-Perfectly Elastic Demand:** demand for which the price elasticity is infinite, indicating an infinite response to a change in price and therefore a horizontal demand curve.
+
+**-Perfectly Elastic Supply:** supply for which the price elasticity is infinite, indicating an infinite response of quantity supplied to a change in price and therefore a horizontal supply curve.
+
+**-Perfectly Inelastic Demand:** demand for which the price elasticity is zero, indicating no response to a change in price and therefore a vertical demand curve.
+
+**-Perfectly Inelastic Supply:** supply for which the price elasticity is zero, indicating no response of quantity supplied to a change in price and therefore a vertical supply curve.
+
+**-Price Ceiling:** a government price control that sets the maximum allowable price for a good.
+
+**-Price Control:** a government law or regulation that sets or limits the price to be charged for a particular good.
+
+**-Price Elasticity of Demand:** the percentage change in the quantity demanded of a good divided by the percentage change in the price of that good.
+
+**-Price Elasticity of Supply:** the percentage change in quantity supplied divided by the percentage change in price.
+
+**-Price Floor:** a government price control that sets the minimum allowable price for a good.
+
+**-Rent Control:** a government price control that sets the maximum allowable rent on a house or apartment.
+
+**-Unit-Free Measure:** a measure that does not depend on a unit of measurement.
+
+### Chapter 2. The Competitive Equilibrium Model, Completed section
+
+1.  Deriving Demand, Completed
+
+2.  Deriving Supply, Completed
+
+3.  Market Equilibrium and Efficiency, Completed
+
+### Chapter 3. Firms and Industries Changing Over Time, Completed section
+
+1.  Cost and the Changes at Firms Over Time, Completed
+
+2.  The Rise and Fall of Firms and Industries, Completed
+
+### Chapter 4. Deviations from Competition, Completed section
+
+1.  Monopoly and Market Power, Completed
+
+2.  Between Monopoly and Competition, Completed
+
+3.  Antitrust Policy and Regulation, Completed
+
+### Chapter 5. Labor Markets, Completed section
+
+1.  The Labor Supply and Demand Model, Completed
+
+2.  Labor Model Cont. -- Min. Wage and Discrimination, Completed
+
+### Chapter 6. Key Economic Policy Issues, Completed section
+
+Tax Policy, Transfers and Income Distribution, Completed
+
+Public Goods and Externalities, Completed
+
+Government Failure and Success, Completed
+
+### Chapter 7. Financial and Capital Markets, Completed section
+
+### 
+
+1.  Markets for Physical Capital, Completed
+
+2.  Financial Markets: Risk and Return, Completed
+
+### Chapter 8. Macroeconomics: The Big Picture, Completed section
+
+1.  Getting Started with Macroeconomic Ideas, Completed
+
+2.  Measuring Production, Income and Spending of Nations, Completed
+
+### Chapter 9. Long Run Macro, Completed section
+
+1.  Determining Consumption, Investment and Government Shares, Completed
+
+2.  Employment and Unemployment, Completed
+
+3.  Productivity, Econ. Growth and Determining Factors, Completed
+
+4.  A Look at Money, Inflation and the Fed, Completed
+
+### Chapter 10. Short Run Macro, Completed section
+
+1.  Introduction to Economic Fluctuations, Completed
+
+2.  The Economic Fluctuations Model, Completed
+
+3.  Using the ADIA Model, Completed
+
+### Chapter 11. Macro Policy Issues, Completed section
+
+1.  Intro to Macro Policy, Completed
+
+2.  Fiscal Policy, Completed
+
+3.  Monetary Policy, Completed
+
+4.  Monetary Policy Analysis, Completed
+
+### Chapter 12. International Trade, Completed section
+
+1.  Gains From International Trade, Completed
+
+2.  Key Policy Issues, Completed
+
+### Post-Course Survey
