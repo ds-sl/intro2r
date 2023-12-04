@@ -6,7 +6,7 @@ output:
   html_notebook: default
 ---
 
-### 第6週
+## 第6週
 
 01/25(TH)　気候変動問題の原因：気候変動と経済活動1
 
@@ -18,7 +18,7 @@ output:
 
 をテキストに使っています。
 
-01/30(TU)　Rでデータサイエンス6：気候変動　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-6.nb.html)]・[授業]
+01/30(TU)　Rでデータサイエンス6：気候変動　 [[Main](https://ds-sl.github.io/intro2r/ges001/ges001-main.nb.html)]・[授業]
 
 Environment-Climate　
 
@@ -35,3 +35,5 @@ Electricity production from nuclear sources (% of total)：EG.ELC.NUCL.ZS
 IEA:　Energy Statistics Data Browser　データ元
 
 <https://www.iea.org/data-and-statistics/data-tools/energy-statistics-data-browser?country=WORLD&fuel=Energy%20supply&indicator=ElecGenByFuel>
+
+## 内容

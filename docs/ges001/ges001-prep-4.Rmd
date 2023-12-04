@@ -6,7 +6,7 @@ output:
   html_notebook: default
 ---
 
-### 第4週
+## 第4週
 
 01/11(TH)　南部アフリカ諸国の貧困と不平等の現状1
 
@@ -16,7 +16,7 @@ output:
 
 World BankのINEQUALITY IN SOUTHERN AFRICA:AN ASSESSMENT OF THE SOUTHERN AFRICAN CUSTOMS UNION (<https://wir2022.wid.world/>)をテキストにしています。教育、失業、COVID-19の貧困に与える影響などを取り上げます。
 
-01/16(TU)　Rでデータサイエンス4:貧困（データが少ない難点） [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-4.nb.html)]・[授業]
+01/16(TU)　Rでデータサイエンス4:貧困（データが少ない難点） [[Main](https://ds-sl.github.io/intro2r/ges001/ges001-main.nb.html)]・[授業]
 
 **Poverty rates at national poverty lines**
 
@@ -29,3 +29,5 @@ Poverty headcount ratio at \$2.15 a day (2017 PPP) (% of population)：SI.POV.DD
 Poverty headcount ratio at \$3.65 a day (2017 PPP) (% of population)：SI.POV.LMIC
 
 Poverty headcount ratio at \$6.85 a day (2017 PPP) (% of population)：SI.POV.UMIC
+
+## 内容

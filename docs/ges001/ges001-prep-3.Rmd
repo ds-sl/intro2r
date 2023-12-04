@@ -6,7 +6,7 @@ output:
   html_notebook: default
 ---
 
-### 第3週
+## 第3週
 
 12/21(TH)　不平等を無くすために何をするべきか1
 
@@ -14,7 +14,7 @@ output:
 
 講義では、所得の世界的格差の現状を踏まえて、高所得者に対する資産課税、金融取引税の可能性について議論します。
 
-01/09(TU)　Rでデータサイエンス3：GNI係数と所得分布　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-3.nb.html)]・[授業]
+01/09(TU)　Rでデータサイエンス3：GNI係数と所得分布　 [[Main](https://ds-sl.github.io/intro2r/ges001/ges001-main.nb.html)]・[授業]
 
 **Poverty and Inequality―Distribution of income or consumption（データが少ない難点）**
 
@@ -33,3 +33,5 @@ Income share held by fourth 20%：SI.DST.04TH.20
 Income share held by highest 20%：SI.DST.05TH.20
 
 Income share held by highest 10%：SI.DST.10TH.10
+
+## 内容

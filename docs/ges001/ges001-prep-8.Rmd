@@ -6,7 +6,7 @@ output:
   html_notebook: default
 ---
 
-### 第8週
+## 第8週
 
 02/08(TH)　紛争と貧困の連鎖1
 
@@ -14,10 +14,12 @@ output:
 
 第8週と第9週では、戦争、気候変動、COVID-19の複合的要因が世界的な食糧危機を引き起こし、格差と貧困を加速させている現状について、議論します。
 
-02/13(TU)　Rでデータサイエンス8：難民、軍事支出　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-8.nb.html)]・[授業]
+02/13(TU)　Rでデータサイエンス8：難民、軍事支出　 [[Main](https://ds-sl.github.io/intro2r/ges001/ges001-main.nb.html)]・[授業]
 
 **Global Link-Refugees**
 
 Refugee population by country or territory of asylum：SM.POP.REFG
 
 Refugee population by country or territory of origin：SM.POP.REFG.OR
+
+## 内容

@@ -6,7 +6,7 @@ output:
   html_notebook: default
 ---
 
-### 第1週
+## 第1週
 
 12/07(TH)　イントロダクション: 市場の失敗とSDGs 1
 
@@ -14,8 +14,42 @@ output:
 
 資本主義経済が引き起こす問題：不平等の拡大、気候変動などとSDGｓが提案された理由を簡単に講義します。
 
-12/12(TU)　Rでデータサイエンス１：導入 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-1.nb.html)]・[授業]
+12/12(TU)　Rでデータサイエンス１：導入 [[Main](https://ds-sl.github.io/intro2r/ges001/ges001-main.nb.html)]・[授業]
 
 変更期間です。次週から参加する学生がいることを想定する必要があります。RとRStudioのインストールやRを使うことのメリット、Rの簡単な使い方など。GDPを例にする。（ECO101の鈴木先生にRコード）。
+
+## 内容
+
+1.  自己紹介
+
+2.  データサイエンスについて
+
+    -   データ取得・整形・視覚化・モデル・コミュニケーション
+
+    -   データの視覚化・モデルなどを通して、考えながら、問いや課題を発見し、共有し、議論などを通して、より精緻なものにしていく営み
+
+3.  Gapminder　[リンク](https://www.gapminder.org)
+
+    -   Upgrade Your Worldview
+
+    -   Bubble Chart
+
+    -   Dollar Street
+
+    -   Videos
+
+4.  視覚化
+
+    -   市場の失敗と SDGs から
+
+5.  R と RStudio
+
+    -   インストレーションの手引き
+
+6.  PositCloud
+
+    -   使ってみよう
+
+    -   Posit Primers
 
 ### 

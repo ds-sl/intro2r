@@ -6,7 +6,7 @@ output:
   html_notebook: default
 ---
 
-### 第7週
+## 第7週
 
 02/01(TH) 　気候変動に対する対策
 
@@ -14,7 +14,7 @@ output:
 
 第7週は、南部アフリカや南アジアなど気候変動から大きな影響を受けている国々の現状を取り上げます。
 
-02/06 (TU)　Rでデータサイエンス7：都市部と農村部の生活状況の格差　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-7.nb.html)]・[授業]
+02/06 (TU)　Rでデータサイエンス7：都市部と農村部の生活状況の格差　 [[Main](https://ds-sl.github.io/intro2r/ges001/ges001-main.nb.html)]・[授業]
 
 Urban and rural development
 
@@ -37,3 +37,5 @@ SH.STA.BASS.UR.ZS
 People using at least basic drinking water services, rural (% of rural population)：
 
 SH.H2O.BASW.RU.ZS
+
+## 内容
