@@ -6,6 +6,8 @@ output:
   html_notebook: default
 ---
 
+> 2023年12月2日に海蔵寺さんからいただいた文書をもとに作成。リンクを知っている者は、だれでも見ることが可能であるが、学生用は別途作成。
+
 ## **このコースについて**
 
 ### スケジュール・担当教員・教室
@@ -56,7 +58,7 @@ output:
 
 資本主義経済が引き起こす問題：不平等の拡大、気候変動などとSDGｓが提案された理由を簡単に講義します。
 
-12/12(TU)　Rでデータサイエンス１：導入
+12/12(TU)　Rでデータサイエンス１：導入 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-1.nb.html)]・[授業]
 
 変更期間です。次週から参加する学生がいることを想定する必要があります。RとRStudioのインストールやRを使うことのメリット、Rの簡単な使い方など。GDPを例にする。（ECO101の鈴木先生にRコード）。
 
@@ -68,7 +70,7 @@ output:
 
 講義では、第2週、第3週とWorld Inequality report 2022を使って、所得と富の不平等について議論します。
 
-12/19(TU)　Rでデータサイエンス2：人口の少子高齢化
+12/19(TU)　Rでデータサイエンス2：人口の少子高齢化　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-2.nb.html)]・[授業]
 
 **People- Population dynamics**
 
@@ -90,7 +92,7 @@ Age dependency ratio, old (% of working-age population)：SP.POP.DPND.OL
 
 講義では、所得の世界的格差の現状を踏まえて、高所得者に対する資産課税、金融取引税の可能性について議論します。
 
-01/09(TU)　Rでデータサイエンス3：GNI係数と所得分布
+01/09(TU)　Rでデータサイエンス3：GNI係数と所得分布　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-3.nb.html)]・[授業]
 
 **Poverty and Inequality―Distribution of income or consumption（データが少ない難点）**
 
@@ -120,7 +122,7 @@ Income share held by highest 10%：SI.DST.10TH.10
 
 World BankのINEQUALITY IN SOUTHERN AFRICA:AN ASSESSMENT OF THE SOUTHERN AFRICAN CUSTOMS UNION (<https://wir2022.wid.world/>)をテキストにしています。教育、失業、COVID-19の貧困に与える影響などを取り上げます。
 
-01/16(TU)　Rでデータサイエンス4:貧困（データが少ない難点）
+01/16(TU)　Rでデータサイエンス4:貧困（データが少ない難点） [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-4.nb.html)]・[授業]
 
 **Poverty rates at national poverty lines**
 
@@ -140,7 +142,7 @@ Poverty headcount ratio at \$6.85 a day (2017 PPP) (% of population)：SI.POV.UM
 
 　　　　　　COVID-19が貧困に与えた影響
 
-01/23(TU)　Rでデータサイエンス5
+01/23(TU)　Rでデータサイエンス5　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-5.nb.html)]・[授業]
 
 **People-Education**
 
@@ -190,7 +192,7 @@ DT.ODA.ALLD.CD
 
 をテキストに使っています。
 
-01/30(TU)　Rでデータサイエンス6：気候変動
+01/30(TU)　Rでデータサイエンス6：気候変動　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-6.nb.html)]・[授業]
 
 Environment-Climate　
 
@@ -216,7 +218,7 @@ IEA:　Energy Statistics Data Browser　データ元
 
 第7週は、南部アフリカや南アジアなど気候変動から大きな影響を受けている国々の現状を取り上げます。
 
-02/06 (TU)　Rでデータサイエンス7：都市部と農村部の生活状況の格差
+02/06 (TU)　Rでデータサイエンス7：都市部と農村部の生活状況の格差　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-7.nb.html)]・[授業]
 
 Urban and rural development
 
@@ -248,7 +250,7 @@ SH.H2O.BASW.RU.ZS
 
 第8週と第9週では、戦争、気候変動、COVID-19の複合的要因が世界的な食糧危機を引き起こし、格差と貧困を加速させている現状について、議論します。
 
-02/13(TU)　Rでデータサイエンス8：難民、軍事支出
+02/13(TU)　Rでデータサイエンス8：難民、軍事支出　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-8.nb.html)]・[授業]
 
 **Global Link-Refugees**
 

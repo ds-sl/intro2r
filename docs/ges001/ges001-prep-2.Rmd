@@ -1,0 +1,29 @@
+---
+title: "GES 001 演習2"
+author: "H. Suzuki"
+date: "`r Sys.Date()`"
+output:
+  html_notebook: default
+---
+
+### 第2週
+
+12/14(TH)　所得と富の不平等の現状１
+
+　　　　　  所得と富の不平等の現状２
+
+講義では、第2週、第3週とWorld Inequality report 2022を使って、所得と富の不平等について議論します。
+
+12/19(TU)　Rでデータサイエンス2：人口の少子高齢化　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-2.nb.html)]・[授業]
+
+**People- Population dynamics**
+
+Population, total：SP.POP.TOTL
+
+Birth rate, crude (per 1,000 people)：SP.DYN.CBRT.IN
+
+Death rate, crude (per 1,000 people)：SP.DYN.CDRT.IN
+
+Age dependency ratio, young (% of working-age population)：SP.POP.DPND.YG
+
+Age dependency ratio, old (% of working-age population)：SP.POP.DPND.OL

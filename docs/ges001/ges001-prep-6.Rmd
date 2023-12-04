@@ -1,0 +1,37 @@
+---
+title: "GES 001 演習6"
+author: "H. Suzuki"
+date: "`r Sys.Date()`"
+output:
+  html_notebook: default
+---
+
+### 第6週
+
+01/25(TH)　気候変動問題の原因：気候変動と経済活動1
+
+　　　　　　気候変動問題の原因：気候変動と経済活2
+
+第6週、第7週の講義では、気候変動が我々の生活にもたらす影響と対策を議論します。
+
+基本的にIPCCの第6次評価報告書（<https://www.data.jma.go.jp/cpdinfo/ipcc/index.html> ）
+
+をテキストに使っています。
+
+01/30(TU)　Rでデータサイエンス6：気候変動　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-6.nb.html)]・[授業]
+
+Environment-Climate　
+
+CO2 emissions (metric tons per capita) ：EN.ATM.CO2E.PC
+
+Forest area (% of land area)：AG.LND.FRST.ZS
+
+Renewable electricity output (% of total electricity output)：EG.ELC.RNEW.ZS
+
+Electricity production from oil, gas and coal sources (% of total)：EG.ELC.FOSL.ZS
+
+Electricity production from nuclear sources (% of total)：EG.ELC.NUCL.ZS
+
+IEA:　Energy Statistics Data Browser　データ元
+
+<https://www.iea.org/data-and-statistics/data-tools/energy-statistics-data-browser?country=WORLD&fuel=Energy%20supply&indicator=ElecGenByFuel>

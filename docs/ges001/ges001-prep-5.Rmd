@@ -1,0 +1,51 @@
+---
+title: "GES 001 演習5"
+author: "H. Suzuki"
+date: "`r Sys.Date()`"
+output:
+  html_notebook: default
+---
+
+### 第5週
+
+01/18(TH)　南部アフリカ諸国の貧困と不平等に対する対策
+
+　　　　　　COVID-19が貧困に与えた影響
+
+01/23(TU)　Rでデータサイエンス5　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-5.nb.html)]・[授業]
+
+**People-Education**
+
+Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS
+
+School enrollment, primary (% gross)：SE.PRM.ENRR
+
+School enrollment, secondary (% gross)：SE.SEC.ENRR
+
+School enrollment, tertiary (% gross)：SE.TER.ENRR
+
+**Health**
+
+Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT
+
+Incidence of HIV (% of uninfected population ages 15-49)：SH.HIV.INCD.ZS
+
+**Gender**
+
+School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS
+
+Ratio of female to male labor force participation rate (%) (modeled ILO estimate)：
+
+SL.TLF.CACT.FM.ZS
+
+**Labor**
+
+Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS
+
+Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS
+
+Global Link - Aid dependency
+
+Net official development assistance and official aid received (current US\$)
+
+DT.ODA.ALLD.CD
