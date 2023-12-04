@@ -1,0 +1,206 @@
+---
+title: "ges001prep"
+author: "H.S"
+format: html
+editor: visual
+---
+
+## **データサイエンスの演習**
+
+World BankのWDIの中から、World Viewのデータに着目して、データをWebサイトから収集し、可視化、分析する手法を身に着ける。
+
+**習得したいtool：**
+
+-   データの収集、保存、読み出しの方法
+
+-   ライングラフ
+
+-   散布図
+
+-   Boxプロット
+
+-   ヒストグラム
+
+-   回帰線
+
+など
+
+-   RNotebookを使った文書の作成
+
+**利用するデータベース**
+
+色々な可能性がありますが、下記のサイトのWorld Viewのファイルに載っているデータに絞って見てはと思います。下記サイトから、データの内容（どの国にどのぐらいデータがあるかを確認できます）が見れるので、利用しやすいと思います。また、貧困、気候変動、紛争などのデータも適度に含まれているので、あれこれ迷う必要がないだろうと思います。
+
+**ご意見、お聞かせください。**
+
+**World Development Indicators**
+
+<https://wdi.worldbank.org/tables>
+
+**World View**
+
+World Development Indicators includes data spanning more than 60 years from 1960. World view frames global trends with indicators on population, population density, urbanization, GNI, and GDP. As in previous years, the World view online tables present indicators measuring the world\'s economy and progress toward improving lives, achieving sustainable development, providing support for vulnerable populations, and reducing gender disparities. Highlights of progress toward the Sustainable Development Goals are presented in the companion publication, Atlas of Sustainable Development Goals
+
+(https://datatopics.worldbank.org/sdgatlas/).
+
+The global highlights in this section draw on the six themes of World Development Indicators:
+
+• Poverty and shared prosperity, which presents indicators that measure progress toward the World Bank Group\'s twin goals of ending extreme poverty by 2030 and promoting shared prosperity in every country.
+
+• People, which showcases indicators covering education, health, jobs, social protection, and gender and provides a portrait of societal progress across the world.
+
+• Environment, which presents indicators on the use of natural resources, such as water and energy, and various measures of environmental degradation, including pollution, deforestation, and loss of habitat, all of which must be considered in shaping development strategies.
+
+• Economy, which provides a window on the global economy through indicators that describe the economic activity of the more than 200 countries and territories that produce, trade, and consume the world\'s output.
+
+• States and markets, which encompasses indicators on private investment and performance, financial system development, quality and availability of infrastructure, and the role of the public sector in nurturing investment and growth.
+
+• Global links, which presents indicators on the size and direction of the flows and links that enable economies to grow, including measures of trade, remittances, equity, and debt, as well as tourism and migration.
+
+**WV.1    World Development Indicators: Size of the economy**
+
+<https://wdi.worldbank.org/table/WV.1>
+
+-   Population
+
+-   Surface area
+
+-   Population density
+
+-   Gross national income, Atlas method
+
+-   Gross national income per capita, Atlas method
+
+-   Purchasing power parity gross national income
+
+-   Gross domestic product
+
+Selected Series
+
+-   Population, total: SP.POP.TOTL
+
+-   Surface area (sq. km): AG.SRF.TOTL.K2
+
+-   Population density (people per sq. km of land area): EN.POP.DNST
+
+-   GNI, Atlas method (current US\$): NY.GNP.ATLS.CD)
+
+-   GNI per capita, Atlas method (current US\$): (NY.GNP.PCAP.CD
+
+-   GNI, PPP (current international \$): NY.GNP.MKTP.PP.CD
+
+-   GNI per capita, PPP (current international \$): NY.GNP.PCAP.PP.CD
+
+-   GDP growth (annual %): NY.GDP.MKTP.KD.ZG
+
+-   GDP per capita growth (annual %): NY.GDP.PCAP.KD.ZG
+
+**WV.2    World Development Indicators: Global goals: ending poverty and improving lives**
+
+<https://wdi.worldbank.org/table/WV.2>
+
+-   International poverty lines
+
+-   Prevalence of child malnutrition
+
+-   Under-five mortality rate
+
+-   Maternal mortality ratio
+
+-   Incidence of HIV, ages 15-49 (per 1,000 uninfected population ages 15-49)
+
+-   Incidence of tuberculosis
+
+-   Mortality caused by road traffic injury
+
+-   Primary completion rate
+
+-   Vulnerable employment
+
+-   Labor productivity
+
+**WV.3    World Development Indicators: WV.3 Global goals promoting sustainability**
+
+<https://wdi.worldbank.org/table/WV.3>
+
+-   People using safely managed drinking water services
+
+-   People using safely managed sanitation services
+
+-   Access to electricity
+
+-   Renewable energy consumption
+
+-   Urban population living in slums
+
+-   Ambient PM2.5 air pollution
+
+-   Adjusted net savings
+
+-   Carbon dioxide emissions
+
+-   Nationally protected terrestrial and marine areas
+
+-   Intentional homicides
+
+-   Internet use
+
+**WV.4    World Development Indicators: Global goals: strengthening partnership**
+
+-   Official development assistance (ODA) by donor        
+
+-   Least developed countries' access to high-income markets        
+
+-   Support to agriculture
+
+**WV.5    World Development Indicators: Women and Development**
+
+<https://wdi.worldbank.org/table/WV.5>
+
+-   **Life expectancy at birth**
+
+    -   Women who were first married by age 18
+
+    -   Account ownership at a financial institution or with a mobile-money-service provider, male (% of population ages 15+)
+
+    -   Account ownership at a financial institution or with a mobile-money-service provider, female (% of population ages 15+)
+
+-   **Wage and salary workers**
+
+-   **Wage and salaried workers**
+
+    -   Firms with female participation in ownership
+
+    -   Female share of employment in senior and middle management
+
+    -   Women in parliaments
+
+    -   Women Business and the Law Index Score
+
+**Series： Wage and salary workers (SL.EMP.WORK.MA.ZS)**
+
+Indicator Name： Wage and salaried workers, male (% of male employment) (modeled ILO estimate) (SL.EMP.WORK.MA.ZS)
+
+Long definition： Wage and salaried workers (employees) are those workers who hold the type of jobs defined as "paid employment jobs," where the incumbents hold explicit (written or oral) or implicit employment contracts that give them a basic remuneration that is not directly dependent upon the revenue of the unit for which they work.
+
+Source：International Labour Organization. \"ILO modelled estimates database\" ILOSTAT. Accessed January 2021. https://ilostat.ilo.org/data/.
+
+Topic：  Social Protection & Labor: Economic activity
+
+Periodicity：Annual
+
+Aggregation method：Weighted average
+
+**Series： Wage and salaried workers (SL.EMP.WORK.FE.ZS)**
+
+Indicator Name： Wage and salaried workers, female (% of female employment) (modeled ILO estimate) (SL.EMP.WORK.FE.ZS)
+
+Long definition： Wage and salaried workers (employees) are those workers who hold the type of jobs defined as "paid employment jobs," where the incumbents hold explicit (written or oral) or implicit employment contracts that give them a basic remuneration that is not directly dependent upon the revenue of the unit for which they work.
+
+Source：International Labour Organization. \"ILO modelled estimates database\" ILOSTAT. Accessed January 2021. <https://ilostat.ilo.org/data/>.
+
+Topic：  Social Protection & Labor: Economic activity
+
+Periodicity：Annual
+
+Aggregation method：Weighted average
