@@ -18,15 +18,15 @@ output:
 
 **People- Population dynamics**
 
-Population, total：SP.POP.TOTL
+総人口　Population, total：SP.POP.TOTL [[Link](https://data.worldbank.org/indicator/SP.POP.TOTL)]
 
-Birth rate, crude (per 1,000 people)：SP.DYN.CBRT.IN
+出生率（千人）Birth rate, crude (per 1,000 people)：SP.DYN.CBRT.IN [[Link](https://data.worldbank.org/indicator/SP.DYN.CBRT.IN)]
 
-Death rate, crude (per 1,000 people)：SP.DYN.CDRT.IN
+死亡率（千人）Death rate, crude (per 1,000 people)：SP.DYN.CDRT.IN [[Link](https://data.worldbank.org/indicator/SP.DYN.CDRT.IN)]
 
-Age dependency ratio, young (% of working-age population)：SP.POP.DPND.YG
+若年労働人口率　Age dependency ratio, young (% of working-age population)：SP.POP.DPND.YG [[Link](https://data.worldbank.org/indicator/SP.POP.DPND.YG)]
 
-Age dependency ratio, old (% of working-age population)：SP.POP.DPND.OL
+高齢者労働人口率　Age dependency ratio, old (% of working-age population)：SP.POP.DPND.OL [[Link to Metadata](https://databank.worldbank.org/metadataglossary/health-nutrition-and-population-statistics/series/SP.POP.DPND.OL)]
 
 ## 内容
 
@@ -65,4 +65,130 @@ df_pop <- read_csv("data/pop.csv")
 
 ```{r}
 df_pop
+```
+
+それぞれ十分なデータがあるかチェック
+
+```{r}
+df_pop_long <- df_pop |> 
+  pivot_longer(5:9, names_to = "name", values_to = "value")
+```
+
+```{r}
+df_pop_long |> 
+  group_by(year, name) |> drop_na(value) |>
+  summarize(num = n()) |> arrange(desc(year))
+```
+
+```{r}
+df_pop_long |> 
+  group_by(year, name) |> drop_na(value) |>
+  summarize(num = n()) |> 
+  ggplot(aes(year, num, col = name)) + geom_line()
+```
+
+253から265の国・地域のデータがあり、問題なし
+
+```{r eval = FALSE}
+df_pop_extra <- WDI(indicator = c(pop = "SP.POP.TOTL",
+                            birth_rate = "SP.DYN.CBRT.IN",
+                            death_rate = "SP.DYN.CDRT.IN",
+                            young = "SP.POP.DPND.YG",
+                            old = "SP.POP.DPND.OL"), extra = TRUE)
+```
+
+```{r eval = FALSE}
+write_csv(df_pop_extra, "data/pop_extra.csv")
+```
+
+```{r}
+df_pop_extra <- read_csv("data/pop_extra.csv")
+```
+
+```{r}
+glimpse(df_pop_extra)
+```
+
+```{r}
+REGION <- df_pop_extra |> filter(region %in% c("Aggregates", NA)) |> distinct(iso2c) |> pull()
+```
+
+```{r}
+df_pop %>% filter(iso2c %in% REGION) %>% distinct(country, iso2c)
+```
+
+```{r}
+df_pop_extra |> distinct(country, iso2c)
+```
+
+```{r}
+df_pop_extra |> filter(iso2c == "VN")
+```
+
+```{r}
+length(REGION)
+REGION <- REGION[REGION !="VN"]
+length(REGION)
+REGION
+```
+
+```{r}
+df_pop |> filter(!(iso2c %in% REGION)) |> 
+  distinct(country, iso2c) |> arrange(country)
+```
+
+### 総人口
+
+総人口　Population, total：SP.POP.TOTL [[Link](https://data.worldbank.org/indicator/SP.POP.TOTL)]
+
+```{r}
+df_pop |> filter(country == "World") |> 
+  ggplot(aes(year, pop)) + geom_line()
+```
+
+```{r}
+df_pop |> filter(country == "Japan") |> 
+  ggplot(aes(year, pop)) + geom_line()
+```
+
+```{r}
+df_pop |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
+  arrange(desc(pop))
+```
+
+```{r}
+df_pop |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
+  arrange(desc(pop)) |> slice_head(n=10)
+```
+
+```{r}
+pop_top11 <- df_pop |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
+  arrange(desc(pop)) |> slice_head(n=11) |> pull(iso2c)
+```
+
+```{r}
+df_pop |> filter(iso2c %in% pop_top11) |>
+  ggplot(aes(year, pop, color = iso2c)) + geom_line()
+```
+
+```{r}
+df_pop |> filter(iso2c %in% pop_top11) |> 
+  filter(!(iso2c %in% c("CN", "IN"))) |> 
+  ggplot(aes(year, pop, color = country)) + geom_line()
+```
+
+```{r}
+df_pop |> filter(iso2c %in% pop_top11) |> 
+  filter(!(iso2c %in% c("CN", "IN"))) |> 
+  ggplot(aes(year, pop, color = factor(iso2c, levels = pop_top11))) + geom_line() + labs(color = "iso2c")
+```
+
+### 出生率と死亡率
+
+出生率（千人）Birth rate, crude (per 1,000 people)：SP.DYN.CBRT.IN [[Link](https://data.worldbank.org/indicator/SP.DYN.CBRT.IN)]
+
+死亡率（千人）Death rate, crude (per 1,000 people)：SP.DYN.CDRT.IN [[Link](https://data.worldbank.org/indicator/SP.DYN.CDRT.IN)]
+
+```{r}
+
 ```

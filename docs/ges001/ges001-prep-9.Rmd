@@ -1,0 +1,17 @@
+---
+title: "GES 001 演習8"
+author: "H. Suzuki"
+date: "`r Sys.Date()`"
+output:
+  html_notebook: default
+---
+
+## 第9週
+
+02/15(TH)  紛争と貧困の連鎖3
+
+　　　　　  紛争と貧困の連鎖を断ち切る方法
+
+02/20(TU)　Rでデータサイエンス9：まとめと演習　[[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-9.nb.html)]・[授業]
+
+## 内容
