@@ -48,6 +48,8 @@ output:
 
     -   Videos
 
+        -   Let my dataset change your mindset: [[Link](https://www.ted.com/talks/hans_rosling_let_my_dataset_change_your_mindset)]
+
 4.  視覚化
 
     -   市場の失敗と SDGs から
