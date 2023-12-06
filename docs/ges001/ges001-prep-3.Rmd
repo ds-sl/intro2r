@@ -36,6 +36,54 @@ Income share held by highest 10%：SI.DST.10TH.10 [[Link](https://data.worldbank
 
 ### 指標について
 
+-   GINI index (World Bank estimate)；SI.POV.GINI [[Link](https://data.worldbank.org/indicator/SI.POV.GINI)]
+
+    -   Gini index measures the extent to which the distribution of income (or, in some cases, consumption expenditure) among individuals or households within an economy deviates from a perfectly equal distribution. A Lorenz curve plots the cumulative percentages of total income received against the cumulative number of recipients, starting with the poorest individual or household. The Gini index measures the area between the Lorenz curve and a hypothetical line of absolute equality, expressed as a percentage of the maximum area under the line. Thus a Gini index of 0 represents perfect equality, while an index of 100 implies perfect inequality.
+
+    -   ジニ指数は、経済内の個人または世帯間の所得（または場合によっては消費支出）の分布が、完全に平等な分布からどの程度逸脱しているかを測定する。ローレンツ曲線は、最も貧しい個人または世帯から始まり、受給者の累積数に対する総所得の累積割合をプロットしたものである。ジニ指数は、ローレンツ曲線と絶対的平等の仮想線との間の面積を測定するもので、線の下の最大面積の百分率で表される。したがって、ジニ指数0は完全な平等を表し、指数100は完全な不平等を意味する。
+
+-   Income share held by lowest 10%：SI.DST.FRST.10 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.FRST.10)]
+
+    -   Percentage share of income or consumption is the share that accrues to subgroups of population indicated by deciles or quintiles.
+
+    -   所得または消費の割合は、デシルまたは五分位数で示される人口のサブグループに発生する割合です。
+
+-   Income share held by lowest 20%：SI.DST.FRST.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.FRST.20)]
+
+    -   Percentage share of income or consumption is the share that accrues to subgroups of population indicated by deciles or quintiles. Percentage shares by quintile may not sum to 100 because of rounding.
+
+    -   所得または消費の割合は、デシルまたは五分位数で示される人口のサブグループに発生する割合です。五分位数によるシェアの割合は、四捨五入のため100にならない場合があります。(Apple)
+
+-   Income share held by second 20%：SI.DST.02ND.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.02ND.20)]
+
+    -   Percentage share of income or consumption is the share that accrues to subgroups of population indicated by deciles or quintiles. Percentage shares by quintile may not sum to 100 because of rounding.
+
+    -   若年年齢依存率は、生産年齢人口 (15 ～ 64 歳) に対する若年扶養者 (15 歳未満の人々) の比率です。データは、生産年齢人口 100 人あたりの扶養家族の割合として表示されます。
+
+-   Income share held by third 20%：SI.DST.03RD.20 [[Link](https://data.worldbank.org/indicator/SI.DST.03RD.20)]
+
+    -   Percentage share of income or consumption is the share that accrues to subgroups of population indicated by deciles or quintiles. Percentage shares by quintile may not sum to 100 because of rounding.
+
+    -   所得または消費に占める割合は、10分位または5分位で示される人口のサブグループに帰属する割合である。四捨五入の関係上、五分位階級別の割合の合計が100にならない場合がある。（DeepL）
+
+-   Income share held by fourth 20%：SI.DST.04TH.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.04TH.20)]
+
+    -   Percentage share of income or consumption is the share that accrues to subgroups of population indicated by deciles or quintiles. Percentage shares by quintile may not sum to 100 because of rounding.
+
+    -   所得または消費の割合は、十分位数または五分位数で示される人口のサブグループに生じる割合です。四捨五入のため、五分位別の割合の合計が 100 にならない場合があります。(Google)
+
+-   Income share held by highest 20%：SI.DST.05TH.20 [[Link](https://data.worldbank.org/indicator/SI.DST.05TH.20)]
+
+    -   Percentage share of income or consumption is the share that accrues to subgroups of population indicated by deciles or quintiles. Percentage shares by quintile may not sum to 100 because of rounding.
+
+    -   所得または消費の割合は、十分位数または五分位数で示される人口のサブグループに生じる割合です。四捨五入のため、五分位別の割合の合計が 100 にならない場合があります。
+
+-   Income share held by highest 10%：SI.DST.10TH.10 [[Link](https://data.worldbank.org/indicator/SI.DST.10TH.10)]
+
+    -   Percentage share of income or consumption is the share that accrues to subgroups of population indicated by deciles or quintiles.
+
+    -   所得または消費の割合は、十分位数または五分位数で示される人口のサブグループに生じる割合です。
+
 ## 内容
 
 ```{r}
