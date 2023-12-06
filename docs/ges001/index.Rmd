@@ -1,0 +1,286 @@
+---
+title: "GES 001 経済と経済学"
+author: "H. Suzuki"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    df_print: paged
+---
+
+## Rでデータサイエンス
+
+3/TU
+
+演習助手：鈴木寛（Hiroshi Suzuki）
+
+場所：3/TU ILC106
+
+### 概要
+
+世界銀行のデータを使ったデータサイエンスの基礎を学び、実際のデータを分析する基礎的な方法を演習を通じて学ぶ予定である。データ分析ソフトとしてRとRStudioを使う。火曜日の演習はILC-106で行う予定である。
+
+データサイエンス演習の目的は次の２つである。
+
+1.  国際機関が公表しているデータベースからデータを収集し、自由に利用できる基本的なスキルを身に着ける。
+2.  講義で学習した内容に関連するデータを世界的なレベルで調べてみる。問題を「世界ごと」として考える視点を養う。
+3.  WDIの関連するデータを調査することで、「自分なりの問い」を持てるようになる。
+
+### コメントの提出
+
+開講日中（23：59まで）にコメントを提出してください。コメントには、講義の内容に関するコメント、質問を書いてください。講義への参加としてカウントしています。
+
+### 資料
+
+このページにリンクします。
+
+## **スケジュール**
+
+### 第1週
+
+12/07(TH)　イントロダクション: 市場の失敗とSDGs 1
+
+　　　　　 　　市場の失敗とSDGs 2
+
+資本主義経済が引き起こす問題：不平等の拡大、気候変動などとSDGｓが提案された理由を簡単に講義します。
+
+12/12(TU)　Rでデータサイエンス１：導入 [[授業資料](https://ds-sl.github.io/intro2r/ges001/ges00100.nb.html)]
+
+変更期間です。次週から参加する学生がいることを想定する必要があります。RとRStudioのインストールやRを使うことのメリット、Rの簡単な使い方など。GDPを例にする。（ECO101の鈴木先生にRコード）。
+
+### 第2週
+
+12/14(TH)　所得と富の不平等の現状１
+
+　　　　　  所得と富の不平等の現状２
+
+講義では、第2週、第3週とWorld Inequality report 2022を使って、所得と富の不平等について議論します。
+
+12/19(TU)　Rでデータサイエンス2：人口の少子高齢化　 [授業資料]
+
+**People- Population dynamics**
+
+<!-- Population, total：SP.POP.TOTL -->
+
+<!-- Birth rate, crude (per 1,000 people)：SP.DYN.CBRT.IN -->
+
+<!-- Death rate, crude (per 1,000 people)：SP.DYN.CDRT.IN -->
+
+<!-- Age dependency ratio, young (% of working-age population)：SP.POP.DPND.YG -->
+
+<!-- Age dependency ratio, old (% of working-age population)：SP.POP.DPND.OL -->
+
+### 第3週
+
+12/21(TH)　不平等を無くすために何をするべきか1
+
+　　　　　  不平等を無くすために何をするべきか2
+
+講義では、所得の世界的格差の現状を踏まえて、高所得者に対する資産課税、金融取引税の可能性について議論します。
+
+01/09(TU)　Rでデータサイエンス3：GNI係数と所得分布　 [授業資料]
+
+**Poverty and Inequality―Distribution of income or consumption（データが少ない難点）**
+
+<!-- GINI index (World Bank estimate)；SI.POV.GINI -->
+
+<!-- Income share held by lowest 10%：SI.DST.FRST.10 -->
+
+<!-- Income share held by lowest 20%：SI.DST.FRST.20 -->
+
+<!-- Income share held by second 20%：SI.DST.02ND.20 -->
+
+<!-- Income share held by third 20%：SI.DST.03RD.20 -->
+
+<!-- Income share held by fourth 20%：SI.DST.04TH.20 -->
+
+<!-- Income share held by highest 20%：SI.DST.05TH.20 -->
+
+<!-- Income share held by highest 10%：SI.DST.10TH.10 -->
+
+### 第4週
+
+01/11(TH)　南部アフリカ諸国の貧困と不平等の現状1
+
+　　　　　　南部アフリカ諸国の貧困と不平等の現状2
+
+第4週、第5週の講義では、貧困の問題が特に深刻な南部アフリカ諸国の問題を議論します。
+
+World BankのINEQUALITY IN SOUTHERN AFRICA:AN ASSESSMENT OF THE SOUTHERN AFRICAN CUSTOMS UNION (<https://wir2022.wid.world/>)をテキストにしています。教育、失業、COVID-19の貧困に与える影響などを取り上げます。
+
+01/16(TU)　Rでデータサイエンス4:貧困（データが少ない難点） [授業資料]
+
+**Poverty rates at national poverty lines**
+
+<!-- Poverty headcount ratio at national poverty lines (% of population)：SI.POV.NAHC -->
+
+**Poverty and Inequality―Poverty rates at international poverty lines**
+
+<!-- Poverty headcount ratio at \$2.15 a day (2017 PPP) (% of population)：SI.POV.DDAY -->
+
+<!-- Poverty headcount ratio at \$3.65 a day (2017 PPP) (% of population)：SI.POV.LMIC -->
+
+<!-- Poverty headcount ratio at \$6.85 a day (2017 PPP) (% of population)：SI.POV.UMIC -->
+
+### 第5週
+
+01/18(TH)　南部アフリカ諸国の貧困と不平等に対する対策
+
+　　　　　　COVID-19が貧困に与えた影響
+
+01/23(TU)　Rでデータサイエンス5　 [授業資料]
+
+**People-Education**
+
+<!-- Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS -->
+
+<!-- School enrollment, primary (% gross)：SE.PRM.ENRR -->
+
+<!-- School enrollment, secondary (% gross)：SE.SEC.ENRR -->
+
+<!-- School enrollment, tertiary (% gross)：SE.TER.ENRR -->
+
+**Health**
+
+<!-- Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT -->
+
+<!-- Incidence of HIV (% of uninfected population ages 15-49)：SH.HIV.INCD.ZS -->
+
+**Gender**
+
+<!-- School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS -->
+
+<!-- Ratio of female to male labor force participation rate (%) (modeled ILO estimate)： -->
+
+<!-- SL.TLF.CACT.FM.ZS -->
+
+**Labor**
+
+<!-- Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS -->
+
+<!-- Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS -->
+
+<!-- Global Link - Aid dependency -->
+
+<!-- Net official development assistance and official aid received (current US\$) -->
+
+<!-- DT.ODA.ALLD.CD -->
+
+### 第6週
+
+01/25(TH)　気候変動問題の原因：気候変動と経済活動1
+
+　　　　　　気候変動問題の原因：気候変動と経済活2
+
+第6週、第7週の講義では、気候変動が我々の生活にもたらす影響と対策を議論します。
+
+基本的にIPCCの第6次評価報告書（<https://www.data.jma.go.jp/cpdinfo/ipcc/index.html> ）
+
+をテキストに使っています。
+
+01/30(TU)　Rでデータサイエンス6：気候変動　 [授業資料]
+
+**Environment-Climate**　
+
+<!-- CO2 emissions (metric tons per capita) ：EN.ATM.CO2E.PC -->
+
+<!-- Forest area (% of land area)：AG.LND.FRST.ZS -->
+
+<!-- Renewable electricity output (% of total electricity output)：EG.ELC.RNEW.ZS -->
+
+<!-- Electricity production from oil, gas and coal sources (% of total)：EG.ELC.FOSL.ZS -->
+
+<!-- Electricity production from nuclear sources (% of total)：EG.ELC.NUCL.ZS -->
+
+<!-- IEA:　Energy Statistics Data Browser　データ元 -->
+
+<!-- <https://www.iea.org/data-and-statistics/data-tools/energy-statistics-data-browser?country=WORLD&fuel=Energy%20supply&indicator=ElecGenByFuel> -->
+
+### 第7週
+
+02/01(TH) 　気候変動に対する対策
+
+　　　　　　 気候変動と貧困の連鎖
+
+第7週は、南部アフリカや南アジアなど気候変動から大きな影響を受けている国々の現状を取り上げます。
+
+02/06 (TU)　Rでデータサイエンス7：都市部と農村部の生活状況の格差　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-7.nb.html)]・[授業資料]
+
+**Urban and rural development**
+
+<!-- Access to electricity, urban (% of urban population)：EG.ELC.ACCS.UR.ZS -->
+
+<!-- Access to electricity, rural (% of rural population)：EG.ELC.ACCS.RU.ZS -->
+
+<!-- People using at least basic drinking water services, urban (% of urban population)： -->
+
+<!-- SH.H2O.BASW.UR.ZS -->
+
+<!-- People using at least basic sanitation services, rural (% of rural population)： -->
+
+<!-- SH.STA.BASS.RU.ZS -->
+
+<!-- People using at least basic sanitation services, urban (% of urban population)： -->
+
+<!-- SH.STA.BASS.UR.ZS -->
+
+<!-- People using at least basic drinking water services, rural (% of rural population)： -->
+
+<!-- SH.H2O.BASW.RU.ZS -->
+
+### 第8週
+
+02/08(TH)　紛争と貧困の連鎖1
+
+            紛争と貧困の連鎖2
+
+第8週と第9週では、戦争、気候変動、COVID-19の複合的要因が世界的な食糧危機を引き起こし、格差と貧困を加速させている現状について、議論します。
+
+02/13(TU)　Rでデータサイエンス8：難民、軍事支出　 [授業資料]
+
+**Global Link-Refugees**
+
+<!-- Refugee population by country or territory of asylum：SM.POP.REFG -->
+
+<!-- Refugee population by country or territory of origin：SM.POP.REFG.OR -->
+
+### 第9週
+
+02/15(TH)  紛争と貧困の連鎖3
+
+　　　　　  紛争と貧困の連鎖を断ち切る方法
+
+02/20(TU)　Rでデータサイエンス9：まとめと演習　[授業資料]
+
+### 第10週
+
+02/22(TH)　特別講義（千葉真先生）
+
+資本主義と民主主義の関係について、政治学の立場から議論します。
+
+02/27(TU)　まとめ
+
+**03月02日：レポート提出**
+
+## 演習における課題や質問など
+
+Moodle 内の、課題・質問提出ボックスに、提出してください。点数はつけませんが、できるだけ、質問には、答え、コメントをつける予定です。講義への参加の部分にどの程度、含めるかは、担当教員に聞いてください。
+
+### 評価
+
+*演習助手は、成績評価には関わりません*
+
+経済学パートではレポートが60%程度、講義への参加（コメントシートを含む）が40%程度の合計で評価される。
+
+### 期末レポート
+
+講義では、貧困と不平等の拡大の原因として、「富裕層への富の集中」、「機会の不平等」、「気候変動」、「紛争」、などを取り上げ、貧困や不平等の拡大を防ぐ対策について考えた。また、気候変動については今後の自然環境や人間生活に与える影響を分析し、気候変動対策について考えた。講義の内容を踏まえて、下記の課題から一つを選び、経済学的な視点からレポートを作成しなさい。
+
+１．貧困と不平等拡大の原因を調べ、貧困がもたらす悪影響を解決する方法を経済的視点から論じなさい。
+
+２．気候変動問題の現状と原因を調べ、気候変動がもたらす悪影響を解決する方法を経済的視点から論じなさい。
+
+３．紛争の現状と原因を調べ、紛争がもたらす悪影響を解決する方法を経済的視点から論じなさい。
+
+長さ：A45枚程度　PDFファイルで提出すること。（ファイル名にID、氏名を書いてください。）
+
+締め切り：03月02日（23：59）；　提出場所：Moodle上の提出Box

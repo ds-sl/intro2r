@@ -190,5 +190,77 @@ df_pop |> filter(iso2c %in% pop_top11) |>
 死亡率（千人）Death rate, crude (per 1,000 people)：SP.DYN.CDRT.IN [[Link](https://data.worldbank.org/indicator/SP.DYN.CDRT.IN)]
 
 ```{r}
+df_pop_long |> filter(name %in% c("birth_rate", "death_rate")) |>
+  filter(country == "World") |> 
+  ggplot(aes(year, value, col = name)) + geom_line()
+```
 
+```{r}
+df_pop_long |> filter(name %in% c("birth_rate", "death_rate")) |>
+  filter(iso2c %in% c("BD", "BR", "CN", "ID", "NG", "JP")) |> 
+  ggplot(aes(year, value, col = country, linetype = name)) + 
+  geom_line()
+```
+
+```{r}
+df_pop_extra |> 
+  filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> 
+  filter(!(income %in% c(NA, "Not classified"))) |>
+  drop_na(birth_rate, death_rate) |>
+  ggplot(aes(birth_rate,death_rate,col=income)) + geom_point()
+```
+
+```{r}
+df_pop_extra |> 
+  filter(!(iso2c %in% REGION)) |> 
+  filter(year %in% c(1960, 1990, 2020)) |> 
+  filter(!(income %in% c(NA, "Not classified"))) |>
+  drop_na(birth_rate, death_rate) |>
+  ggplot(aes(birth_rate,death_rate,col=income)) + geom_point() + 
+  facet_wrap(~ year) + theme(legend.position = "bottom") +
+  labs(col = "")
+```
+
+Google Public Data Explorer: [Link](https://www.google.com/publicdata/explore?ds=d5bncppjof8f9_&ctype=b&strail=false&bcs=d&nselm=s&met_y=sp_dyn_cdrt_in&scale_y=lin&ind_y=false&met_x=SP_DYN_CBRT_IN&scale_x=lin&ind_x=false&dimp_c=country:region&ifdim=country&tunit=Y&pit=1512486000000&ind=false&icfg)
+
+### 扶養家族の労働人口に対する割合
+
+若年労働人口率　Age dependency ratio, young (% of working-age population)：SP.POP.DPND.YG [[Link](https://data.worldbank.org/indicator/SP.POP.DPND.YG)]
+
+Age dependency ratio, young, is the ratio of younger dependents\--people younger than 15\--to the working-age population\--those ages 15-64. Data are shown as the proportion of dependents per 100 working-age population.
+
+年齢別扶養比率（若年）は、15歳未満の扶養家族の、15歳から64歳までの生産年齢人口に対する比率である。データは、生産年齢人口100人当たりの扶養家族の割合で示されている。
+
+高齢者労働人口率　Age dependency ratio, old (% of working-age population)：SP.POP.DPND.OL [[Link to Metadata](https://databank.worldbank.org/metadataglossary/health-nutrition-and-population-statistics/series/SP.POP.DPND.OL)]
+
+Age dependency ratio, old, is the ratio of older dependents\--people older than 64\--to the working-age population\--those ages 15-64. Data are shown as the proportion of dependents per 100 working-age population.
+
+年齢別扶養比率（高齢）は、生産年齢人口（15～64歳）に対する高齢扶養家族（64歳以上）の比率。データは、生産年齢人口100人当たりの扶養家族の割合で示されている。
+
+```{r}
+df_pop_long |> filter(name %in% c("young", "old")) |>
+  filter(country == "World") |> 
+  ggplot(aes(year, value, col = name)) + geom_line()
+```
+
+```{r}
+df_pop_long |> filter(name %in% c("young", "old")) |>
+  filter(iso2c %in% c("BD", "BR", "CN", "ID", "NG", "JP")) |> 
+  ggplot(aes(year, value, col = country, linetype = name)) + 
+  geom_line()
+```
+
+```{r}
+df_pop_extra |> 
+  filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> 
+  filter(!(income %in% c(NA, "Not classified"))) |>
+  drop_na(young, old) |>
+  ggplot(aes(young, old, col=income)) + geom_point()
+```
+
+```{r}
+df_pop_extra |> 
+  filter(region == "Sub-Saharan Africa") |> filter(year == 2020) |> 
+  drop_na(young, old) |>
+  ggplot(aes(young, old, col=income)) + geom_point()
 ```

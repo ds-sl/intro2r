@@ -58,7 +58,7 @@ output:
 
 資本主義経済が引き起こす問題：不平等の拡大、気候変動などとSDGｓが提案された理由を簡単に講義します。
 
-12/12(TU)　Rでデータサイエンス１：導入 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-1.nb.html)]・[授業]
+12/12(TU)　Rでデータサイエンス１：導入 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-1.nb.html)]・[[授業](https://ds-sl.github.io/intro2r/ges001/ges00100.nb.html)]
 
 変更期間です。次週から参加する学生がいることを想定する必要があります。RとRStudioのインストールやRを使うことのメリット、Rの簡単な使い方など。GDPを例にする。（ECO101の鈴木先生にRコード）。
 
@@ -264,7 +264,7 @@ Refugee population by country or territory of origin：SM.POP.REFG.OR
 
 　　　　　  紛争と貧困の連鎖を断ち切る方法
 
-02/20(TU)　Rでデータサイエンス9：まとめと演習
+02/20(TU)　Rでデータサイエンス9：まとめと演習　[[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-9.nb.html)]・[授業]
 
 ### 第10週
 
