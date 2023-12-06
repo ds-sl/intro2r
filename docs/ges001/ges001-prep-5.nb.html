@@ -11,7 +11,7 @@
 
 <meta name="author" content="H. Suzuki" />
 
-<meta name="date" content="2023-12-04" />
+<meta name="date" content="2023-12-06" />
 
 <title>GES 001 演習5</title>
 
@@ -1750,7 +1750,7 @@ display: none;
 
 <h1 class="title toc-ignore">GES 001 演習5</h1>
 <h4 class="author">H. Suzuki</h4>
-<h4 class="date">2023-12-04</h4>
+<h4 class="date">2023-12-06</h4>
 
 </div>
 
@@ -1763,36 +1763,37 @@ display: none;
 <p>01/23(TU)　Rでデータサイエンス5　 [<a href="https://ds-sl.github.io/intro2r/ges001/ges001-main.nb.html">Main</a>]・[授業]</p>
 <p><strong>People-Education</strong></p>
 <p>Government expenditure on education, total (% of
-GDP)：SE.XPD.TOTL.GD.ZS</p>
-<p>School enrollment, primary (% gross)：SE.PRM.ENRR</p>
-<p>School enrollment, secondary (% gross)：SE.SEC.ENRR</p>
-<p>School enrollment, tertiary (% gross)：SE.TER.ENRR</p>
+GDP)：SE.XPD.TOTL.GD.ZS [Link]</p>
+<p>School enrollment, primary (% gross)：SE.PRM.ENRR [Link]</p>
+<p>School enrollment, secondary (% gross)：SE.SEC.ENRR [Link]</p>
+<p>School enrollment, tertiary (% gross)：SE.TER.ENRR [Link]</p>
 <p><strong>Health</strong></p>
-<p>Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT</p>
+<p>Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT
+[Link]</p>
 <p>Incidence of HIV (% of uninfected population ages
-15-49)：SH.HIV.INCD.ZS</p>
+15-49)：SH.HIV.INCD.ZS [Link]</p>
 <p><strong>Gender</strong></p>
 <p>School enrollment, primary and secondary (gross), gender parity index
-(GPI)：SE.ENR.PRSC.FM.ZS</p>
+(GPI)：SE.ENR.PRSC.FM.ZS [Link]</p>
 <p>Ratio of female to male labor force participation rate (%) (modeled
 ILO estimate)：</p>
-<p>SL.TLF.CACT.FM.ZS</p>
+<p>SL.TLF.CACT.FM.ZS [Link]</p>
 <p><strong>Labor</strong></p>
 <p>Unemployment, female (% of female labor force) (modeled ILO
-estimate)：SL.UEM.TOTL.FE.ZS</p>
+estimate)：SL.UEM.TOTL.FE.ZS [Link]</p>
 <p>Unemployment, male (% of male labor force) (modeled ILO
-estimate)：SL.UEM.TOTL.MA.ZS</p>
+estimate)：SL.UEM.TOTL.MA.ZS [Link]</p>
 <p>Global Link - Aid dependency</p>
 <p>Net official development assistance and official aid received
 (current US$)</p>
-<p>DT.ODA.ALLD.CD</p>
+<p>DT.ODA.ALLD.CD [Link]</p>
 </div>
 <div id="内容" class="section level2">
 <h2>内容</h2>
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiR0VTIDAwMSDmvJTnv5I1IgphdXRob3I6ICJILiBTdXp1a2kiCmRhdGU6ICJgciBTeXMuRGF0ZSgpYCIKb3V0cHV0OgogIGh0bWxfbm90ZWJvb2s6IGRlZmF1bHQKLS0tCgojIyDnrKw16YCxCgowMS8xOChUSCnjgIDljZfpg6jjgqLjg5Xjg6rjgqvoq7jlm73jga7osqflm7DjgajkuI3lubPnrYnjgavlr77jgZnjgovlr77nrZYKCuOAgOOAgOOAgOOAgOOAgOOAgENPVklELTE544GM6LKn5Zuw44Gr5LiO44GI44Gf5b2x6Z+/CgowMS8yMyhUVSnjgIBS44Gn44OH44O844K/44K144Kk44Ko44Oz44K5NeOAgCBbW01haW5dKGh0dHBzOi8vZHMtc2wuZ2l0aHViLmlvL2ludHJvMnIvZ2VzMDAxL2dlczAwMS1tYWluLm5iLmh0bWwpXeODu1vmjojmpa1dCgoqKlBlb3BsZS1FZHVjYXRpb24qKgoKR292ZXJubWVudCBleHBlbmRpdHVyZSBvbiBlZHVjYXRpb24sIHRvdGFsICglIG9mIEdEUCnvvJpTRS5YUEQuVE9UTC5HRC5aUwoKU2Nob29sIGVucm9sbG1lbnQsIHByaW1hcnkgKCUgZ3Jvc3Mp77yaU0UuUFJNLkVOUlIKClNjaG9vbCBlbnJvbGxtZW50LCBzZWNvbmRhcnkgKCUgZ3Jvc3Mp77yaU0UuU0VDLkVOUlIKClNjaG9vbCBlbnJvbGxtZW50LCB0ZXJ0aWFyeSAoJSBncm9zcynvvJpTRS5URVIuRU5SUgoKKipIZWFsdGgqKgoKTW9ydGFsaXR5IHJhdGUsIHVuZGVyLTUgKHBlciAxLDAwMCBsaXZlIGJpcnRocynvvJpTSC5EWU4uTU9SVAoKSW5jaWRlbmNlIG9mIEhJViAoJSBvZiB1bmluZmVjdGVkIHBvcHVsYXRpb24gYWdlcyAxNS00OSnvvJpTSC5ISVYuSU5DRC5aUwoKKipHZW5kZXIqKgoKU2Nob29sIGVucm9sbG1lbnQsIHByaW1hcnkgYW5kIHNlY29uZGFyeSAoZ3Jvc3MpLCBnZW5kZXIgcGFyaXR5IGluZGV4IChHUEkp77yaU0UuRU5SLlBSU0MuRk0uWlMKClJhdGlvIG9mIGZlbWFsZSB0byBtYWxlIGxhYm9yIGZvcmNlIHBhcnRpY2lwYXRpb24gcmF0ZSAoJSkgKG1vZGVsZWQgSUxPIGVzdGltYXRlKe+8mgoKU0wuVExGLkNBQ1QuRk0uWlMKCioqTGFib3IqKgoKVW5lbXBsb3ltZW50LCBmZW1hbGUgKCUgb2YgZmVtYWxlIGxhYm9yIGZvcmNlKSAobW9kZWxlZCBJTE8gZXN0aW1hdGUp77yaU0wuVUVNLlRPVEwuRkUuWlMKClVuZW1wbG95bWVudCwgbWFsZSAoJSBvZiBtYWxlIGxhYm9yIGZvcmNlKSAobW9kZWxlZCBJTE8gZXN0aW1hdGUp77yaU0wuVUVNLlRPVEwuTUEuWlMKCkdsb2JhbCBMaW5rIC0gQWlkIGRlcGVuZGVuY3kKCk5ldCBvZmZpY2lhbCBkZXZlbG9wbWVudCBhc3Npc3RhbmNlIGFuZCBvZmZpY2lhbCBhaWQgcmVjZWl2ZWQgKGN1cnJlbnQgVVNcJCkKCkRULk9EQS5BTExELkNECgojIyDlhoXlrrkK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiR0VTIDAwMSDmvJTnv5I1IgphdXRob3I6ICJILiBTdXp1a2kiCmRhdGU6ICJgciBTeXMuRGF0ZSgpYCIKb3V0cHV0OgogIGh0bWxfbm90ZWJvb2s6IGRlZmF1bHQKLS0tCgojIyDnrKw16YCxCgowMS8xOChUSCnjgIDljZfpg6jjgqLjg5Xjg6rjgqvoq7jlm73jga7osqflm7DjgajkuI3lubPnrYnjgavlr77jgZnjgovlr77nrZYKCuOAgOOAgOOAgOOAgOOAgOOAgENPVklELTE544GM6LKn5Zuw44Gr5LiO44GI44Gf5b2x6Z+/CgowMS8yMyhUVSnjgIBS44Gn44OH44O844K/44K144Kk44Ko44Oz44K5NeOAgCBbW01haW5dKGh0dHBzOi8vZHMtc2wuZ2l0aHViLmlvL2ludHJvMnIvZ2VzMDAxL2dlczAwMS1tYWluLm5iLmh0bWwpXeODu1vmjojmpa1dCgoqKlBlb3BsZS1FZHVjYXRpb24qKgoKR292ZXJubWVudCBleHBlbmRpdHVyZSBvbiBlZHVjYXRpb24sIHRvdGFsICglIG9mIEdEUCnvvJpTRS5YUEQuVE9UTC5HRC5aUyBbTGlua10KClNjaG9vbCBlbnJvbGxtZW50LCBwcmltYXJ5ICglIGdyb3NzKe+8mlNFLlBSTS5FTlJSIFtMaW5rXQoKU2Nob29sIGVucm9sbG1lbnQsIHNlY29uZGFyeSAoJSBncm9zcynvvJpTRS5TRUMuRU5SUiBbTGlua10KClNjaG9vbCBlbnJvbGxtZW50LCB0ZXJ0aWFyeSAoJSBncm9zcynvvJpTRS5URVIuRU5SUiBbTGlua10KCioqSGVhbHRoKioKCk1vcnRhbGl0eSByYXRlLCB1bmRlci01IChwZXIgMSwwMDAgbGl2ZSBiaXJ0aHMp77yaU0guRFlOLk1PUlQgW0xpbmtdCgpJbmNpZGVuY2Ugb2YgSElWICglIG9mIHVuaW5mZWN0ZWQgcG9wdWxhdGlvbiBhZ2VzIDE1LTQ5Ke+8mlNILkhJVi5JTkNELlpTIFtMaW5rXQoKKipHZW5kZXIqKgoKU2Nob29sIGVucm9sbG1lbnQsIHByaW1hcnkgYW5kIHNlY29uZGFyeSAoZ3Jvc3MpLCBnZW5kZXIgcGFyaXR5IGluZGV4IChHUEkp77yaU0UuRU5SLlBSU0MuRk0uWlMgW0xpbmtdCgpSYXRpbyBvZiBmZW1hbGUgdG8gbWFsZSBsYWJvciBmb3JjZSBwYXJ0aWNpcGF0aW9uIHJhdGUgKCUpIChtb2RlbGVkIElMTyBlc3RpbWF0ZSnvvJoKClNMLlRMRi5DQUNULkZNLlpTIFtMaW5rXQoKKipMYWJvcioqCgpVbmVtcGxveW1lbnQsIGZlbWFsZSAoJSBvZiBmZW1hbGUgbGFib3IgZm9yY2UpIChtb2RlbGVkIElMTyBlc3RpbWF0ZSnvvJpTTC5VRU0uVE9UTC5GRS5aUyBbTGlua10KClVuZW1wbG95bWVudCwgbWFsZSAoJSBvZiBtYWxlIGxhYm9yIGZvcmNlKSAobW9kZWxlZCBJTE8gZXN0aW1hdGUp77yaU0wuVUVNLlRPVEwuTUEuWlMgW0xpbmtdCgpHbG9iYWwgTGluayAtIEFpZCBkZXBlbmRlbmN5CgpOZXQgb2ZmaWNpYWwgZGV2ZWxvcG1lbnQgYXNzaXN0YW5jZSBhbmQgb2ZmaWNpYWwgYWlkIHJlY2VpdmVkIChjdXJyZW50IFVTXCQpCgpEVC5PREEuQUxMRC5DRCBbTGlua10KCiMjIOWGheWuuQo=</div>
 
 
 

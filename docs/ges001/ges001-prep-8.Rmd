@@ -18,8 +18,8 @@ output:
 
 **Global Link-Refugees**
 
-Refugee population by country or territory of asylum：SM.POP.REFG
+Refugee population by country or territory of asylum：SM.POP.REFG [Link]
 
-Refugee population by country or territory of origin：SM.POP.REFG.OR
+Refugee population by country or territory of origin：SM.POP.REFG.OR [Link]
 
 ## 内容

@@ -18,24 +18,24 @@ output:
 
 Urban and rural development
 
-Access to electricity, urban (% of urban population)：EG.ELC.ACCS.UR.ZS
+Access to electricity, urban (% of urban population)：EG.ELC.ACCS.UR.ZS [Link]
 
-Access to electricity, rural (% of rural population)：EG.ELC.ACCS.RU.ZS
+Access to electricity, rural (% of rural population)：EG.ELC.ACCS.RU.ZS [Link]
 
 People using at least basic drinking water services, urban (% of urban population)：
 
-SH.H2O.BASW.UR.ZS
+SH.H2O.BASW.UR.ZS [Link]
 
 People using at least basic sanitation services, rural (% of rural population)：
 
-SH.STA.BASS.RU.ZS
+SH.STA.BASS.RU.ZS [Link]
 
 People using at least basic sanitation services, urban (% of urban population)：
 
-SH.STA.BASS.UR.ZS
+SH.STA.BASS.UR.ZS [Link]
 
 People using at least basic drinking water services, rural (% of rural population)：
 
-SH.H2O.BASW.RU.ZS
+SH.H2O.BASW.RU.ZS [Link]
 
 ## 内容

@@ -22,15 +22,15 @@ output:
 
 Environment-Climate　
 
-CO2 emissions (metric tons per capita) ：EN.ATM.CO2E.PC
+CO2 emissions (metric tons per capita) ：EN.ATM.CO2E.PC [Link]
 
-Forest area (% of land area)：AG.LND.FRST.ZS
+Forest area (% of land area)：AG.LND.FRST.ZS [Link]
 
-Renewable electricity output (% of total electricity output)：EG.ELC.RNEW.ZS
+Renewable electricity output (% of total electricity output)：EG.ELC.RNEW.ZS [Link]
 
-Electricity production from oil, gas and coal sources (% of total)：EG.ELC.FOSL.ZS
+Electricity production from oil, gas and coal sources (% of total)：EG.ELC.FOSL.ZS [Link]
 
-Electricity production from nuclear sources (% of total)：EG.ELC.NUCL.ZS
+Electricity production from nuclear sources (% of total)：EG.ELC.NUCL.ZS [Link]
 
 IEA:　Energy Statistics Data Browser　データ元
 

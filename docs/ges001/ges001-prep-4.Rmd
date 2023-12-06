@@ -20,14 +20,14 @@ World BankのINEQUALITY IN SOUTHERN AFRICA:AN ASSESSMENT OF THE SOUTHERN AFRICAN
 
 **Poverty rates at national poverty lines**
 
-Poverty headcount ratio at national poverty lines (% of population)：SI.POV.NAHC
+Poverty headcount ratio at national poverty lines (% of population)：SI.POV.NAHC [Link]
 
 **Poverty and Inequality―Poverty rates at international poverty lines**
 
-Poverty headcount ratio at \$2.15 a day (2017 PPP) (% of population)：SI.POV.DDAY
+Poverty headcount ratio at \$2.15 a day (2017 PPP) (% of population)：SI.POV.DDAY [Link]
 
-Poverty headcount ratio at \$3.65 a day (2017 PPP) (% of population)：SI.POV.LMIC
+Poverty headcount ratio at \$3.65 a day (2017 PPP) (% of population)：SI.POV.LMIC [Link]
 
-Poverty headcount ratio at \$6.85 a day (2017 PPP) (% of population)：SI.POV.UMIC
+Poverty headcount ratio at \$6.85 a day (2017 PPP) (% of population)：SI.POV.UMIC [Link]
 
 ## 内容

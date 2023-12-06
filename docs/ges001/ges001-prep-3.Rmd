@@ -18,20 +18,88 @@ output:
 
 **Poverty and Inequality―Distribution of income or consumption（データが少ない難点）**
 
-GINI index (World Bank estimate)；SI.POV.GINI
+GINI index (World Bank estimate)；SI.POV.GINI [[Link](https://data.worldbank.org/indicator/SI.POV.GINI)]
 
-Income share held by lowest 10%：SI.DST.FRST.10
+Income share held by lowest 10%：SI.DST.FRST.10 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.FRST.10)]
 
-Income share held by lowest 20%：SI.DST.FRST.20
+Income share held by lowest 20%：SI.DST.FRST.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.FRST.20)]
 
-Income share held by second 20%：SI.DST.02ND.20
+Income share held by second 20%：SI.DST.02ND.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.02ND.20)]
 
-Income share held by third 20%：SI.DST.03RD.20
+Income share held by third 20%：SI.DST.03RD.20 [[Link](https://data.worldbank.org/indicator/SI.DST.03RD.20)]
 
-Income share held by fourth 20%：SI.DST.04TH.20
+Income share held by fourth 20%：SI.DST.04TH.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.04TH.20)]
 
-Income share held by highest 20%：SI.DST.05TH.20
+Income share held by highest 20%：SI.DST.05TH.20 [[Link](https://data.worldbank.org/indicator/SI.DST.05TH.20)]
 
-Income share held by highest 10%：SI.DST.10TH.10
+Income share held by highest 10%：SI.DST.10TH.10 [[Link](https://data.worldbank.org/indicator/SI.DST.10TH.10)]
+
+### 指標について
 
 ## 内容
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+```{r eval = FALSE}
+df_gini <- WDI(indicator = c(gini = "SI.POV.GINI",
+                            `5` = "SI.DST.FRST.10",
+                            `10` = "SI.DST.FRST.20",
+                            `30` = "SI.DST.02ND.20",
+                            `50` = "SI.DST.03RD.20",
+                            `70` = "SI.DST.04TH.20",
+                            `90` = "SI.DST.05TH.20",
+                            `95` = "SI.DST.10TH.10"))
+```
+
+```{r}
+df_gini
+```
+
+```{r eval = FALSE}
+write_csv(df_gini, "data/gini.csv")
+```
+
+```{r}
+df_gini <- read_csv("data/gini.csv")
+```
+
+```{r}
+df_gini_long <- df_gini |> 
+  pivot_longer(-(1:5), names_to = "levels", values_to = "value") |>
+  mutate(levels = as.numeric(levels))
+df_gini_long
+```
+
+```{r}
+df_gini |> group_by(year) |> drop_na(gini) |> 
+  summarize(n = n()) |>
+  ggplot(aes(year, n)) + geom_col()
+```
+
+```{r}
+df_gini_long |> 
+  group_by(year, levels) |> drop_na(value) |>
+  summarize(num = n()) |> distinct(year, num) |> arrange(desc(year))
+```
+
+```{r}
+df_gini_long |> 
+  group_by(year, levels) |> drop_na(value) |>
+  summarize(num = n()) |> distinct(year, num) |> 
+  ggplot(aes(year, num)) + geom_col()
+```
+
+```{r}
+df_gini_long |> filter(year == 2022) |> drop_na(gini) |>
+  distinct(country)
+```
+
+定義にもどって要確認
+
+```{r}
+df_gini_long |> filter(year == 2022) |> drop_na(gini) |>
+  ggplot(aes(x = levels, y = value, col = country)) + geom_line()
+```

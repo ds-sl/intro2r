@@ -84,7 +84,8 @@ df_pop_long |>
 df_pop_long |> 
   group_by(year, name) |> drop_na(value) |>
   summarize(num = n()) |> 
-  ggplot(aes(year, num, col = name)) + geom_line()
+  ggplot(aes(year, num, col = name)) + geom_line() +
+  labs(title = "各指標の年毎のデータ数", y = "データ数", x = "年")
 ```
 
 253から265の国・地域のデータがあり、問題なし
@@ -143,12 +144,14 @@ df_pop |> filter(!(iso2c %in% REGION)) |>
 
 ```{r}
 df_pop |> filter(country == "World") |> 
-  ggplot(aes(year, pop)) + geom_line()
+  ggplot(aes(year, pop)) + geom_line() + 
+  labs(title = "世界の人口")
 ```
 
 ```{r}
 df_pop |> filter(country == "Japan") |> 
-  ggplot(aes(year, pop)) + geom_line()
+  ggplot(aes(year, pop)) + geom_line() +
+  labs(title = "日本の人口")
 ```
 
 ```{r}
@@ -263,4 +266,11 @@ df_pop_extra |>
   filter(region == "Sub-Saharan Africa") |> filter(year == 2020) |> 
   drop_na(young, old) |>
   ggplot(aes(young, old, col=income)) + geom_point()
+```
+
+```{r}
+df_pop_long |> filter(name %in% c("young", "old")) |>
+  filter(iso2c %in% c("US", "GB", "CN", "DE", "FR", "JP", "IN")) |> 
+  ggplot(aes(year, value, col = country, linetype = name)) + 
+  geom_line()
 ```
