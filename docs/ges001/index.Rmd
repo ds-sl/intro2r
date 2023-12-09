@@ -284,3 +284,21 @@ Moodle 内の、課題・質問提出ボックスに、提出してください�
 長さ：A45枚程度　PDFファイルで提出すること。（ファイル名にID、氏名を書いてください。）
 
 締め切り：03月02日（23：59）；　提出場所：Moodle上の提出Box
+
+## 演習（R でデータサイエンス）の参考文献
+
+1.  「みんなのデータサイエンス - Data Science for All」[[Link](https://icu-hsuzuki.github.io/ds4aj/index.html)]
+
+    -   少しずつ書いているデジタルブックです。私の[ホームページ](https://icu-hsuzuki.github.io/science/computer/learning/ds.html)には、このデジタルブックへのリンクとともに、他の授業で話した時の資料もあります。
+
+2.  H. Wickham. *R for Data Science (2e)*, [[Link](https://r4ds.hadley.nz)]・[O'Railly]. 標準的な教科書。[[第1版](https://r4ds.had.co.nz/)] の日本語版は、[書籍](https://www.amazon.co.jp/Rではじめるデータサイエンス-Hadley-Wickham/dp/487311814X)としても最近出版されました。
+
+3.  Bookdown: デジタルブックの出版形式の一つですが、Archive も含めると、膨大なデジタルブックが、無償で提供されています。[[Link](https://bookdown.org)] [[Archive Link](https://bookdown.org/home/archive/)]
+
+4.  Y. Xie et al. *R Markdown Cookbook,* RMarkdown の詳細が書かれています。デジタルでの翻訳版 R Markdown クックブックも、上の、Bookdown Site に公開されています。[[Link](https://bookdown.org/yihui/rmarkdown/)] [[日本語版 Link](https://gedevan-aleksizde.github.io/rmarkdown-cookbook/)]
+
+5.  Posit Primers. 対話型の演習サイトです。最初の4つ（The Basics, Work with Data, Visualize Data, Tidy Your Data）の一部と、R Reproducibly を、このコースで扱います。 [[Link](https://posit.cloud/learn/primers)]
+
+6.  Cheat Sheet. 早見表です。印刷して使うために、PDF も提供しています。[[Site Link](https://rstudio.github.io/cheatsheets/)]
+
+7.  Posit Cloud. R Studio のクラウド版です。無償版は、機能限定ですが、ある程度使えます。[[Link](https://posit.cloud)] 私が公開している Project の GES001 に、ファイルを追加していきます。[[公開プロジェクト Link](https://posit.cloud/content/5539763)] [[Posit Cloud Guide Link](https://posit.cloud/learn/guide)]
