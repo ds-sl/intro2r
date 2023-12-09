@@ -38,7 +38,7 @@ output:
 
     -   データの視覚化・モデルなどを通して、考えながら、問いや課題を発見し、共有し、議論などを通して、より精緻なものにしていく営み
 
-3.  Gapminder　[リンク](https://www.gapminder.org)
+3.  Gapminder　[[Link](https://www.gapminder.org)]
 
     -   Upgrade Your Worldview
 
@@ -52,14 +52,18 @@ output:
 
     -   市場の失敗と SDGs から
 
-5.  R と RStudio
+5.  PositCloud
 
-    -   インストレーションの手引き
+    -   使ってみよう [[Link](https://icu-hsuzuki.github.io/ds4aj/ronrstudio.html#positcloud)]
 
-6.  PositCloud
+    -   Posit Primers [[Link](https://posit.cloud/learn/primers)]
 
-    -   使ってみよう
+6.  R と RStudio
 
-    -   Posit Primers
+    -   インストレーションの手引き [[Link](https://icu-hsuzuki.github.io/ds4aj/ronrstudio.html#ronrstudio)]
+
+### 参考文献
+
+-   [[Link](index.html#references)]
 
 ### 

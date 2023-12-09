@@ -285,7 +285,7 @@ Moodle 内の、課題・質問提出ボックスに、提出してください�
 
 締め切り：03月02日（23：59）；　提出場所：Moodle上の提出Box
 
-## 演習（R でデータサイエンス）の参考文献
+## 演習（R でデータサイエンス）の参考文献 {#references}
 
 1.  「みんなのデータサイエンス - Data Science for All」[[Link](https://icu-hsuzuki.github.io/ds4aj/index.html)]
 
