@@ -3,9 +3,9 @@ title: "GES 001 演習1"
 author: "H. Suzuki"
 date: "`r Sys.Date()`"
 output:
+  html_notebook: default
   ioslides_presentation: 
     widescreen: yes
-  html_notebook: default
 ---
 
 ## 第1週
