@@ -39,19 +39,19 @@ World BankのWDIの中から、World Viewのデータに着目して、データ
 
 **World View**
 
-World Development Indicators includes data spanning more than 60 years from 1960. World view frames global trends with indicators on population, population density, urbanization, GNI, and GDP. As in previous years, the World view online tables present indicators measuring the world\'s economy and progress toward improving lives, achieving sustainable development, providing support for vulnerable populations, and reducing gender disparities. Highlights of progress toward the Sustainable Development Goals are presented in the companion publication, Atlas of Sustainable Development Goals
+World Development Indicators includes data spanning more than 60 years from 1960. World view frames global trends with indicators on population, population density, urbanization, GNI, and GDP. As in previous years, the World view online tables present indicators measuring the world's economy and progress toward improving lives, achieving sustainable development, providing support for vulnerable populations, and reducing gender disparities. Highlights of progress toward the Sustainable Development Goals are presented in the companion publication, Atlas of Sustainable Development Goals
 
 (https://datatopics.worldbank.org/sdgatlas/).
 
 The global highlights in this section draw on the six themes of World Development Indicators:
 
-• Poverty and shared prosperity, which presents indicators that measure progress toward the World Bank Group\'s twin goals of ending extreme poverty by 2030 and promoting shared prosperity in every country.
+• Poverty and shared prosperity, which presents indicators that measure progress toward the World Bank Group's twin goals of ending extreme poverty by 2030 and promoting shared prosperity in every country.
 
 • People, which showcases indicators covering education, health, jobs, social protection, and gender and provides a portrait of societal progress across the world.
 
 • Environment, which presents indicators on the use of natural resources, such as water and energy, and various measures of environmental degradation, including pollution, deforestation, and loss of habitat, all of which must be considered in shaping development strategies.
 
-• Economy, which provides a window on the global economy through indicators that describe the economic activity of the more than 200 countries and territories that produce, trade, and consume the world\'s output.
+• Economy, which provides a window on the global economy through indicators that describe the economic activity of the more than 200 countries and territories that produce, trade, and consume the world's output.
 
 • States and markets, which encompasses indicators on private investment and performance, financial system development, quality and availability of infrastructure, and the role of the public sector in nurturing investment and growth.
 
@@ -183,7 +183,7 @@ Indicator Name： Wage and salaried workers, male (% of male employment) (modele
 
 Long definition： Wage and salaried workers (employees) are those workers who hold the type of jobs defined as "paid employment jobs," where the incumbents hold explicit (written or oral) or implicit employment contracts that give them a basic remuneration that is not directly dependent upon the revenue of the unit for which they work.
 
-Source：International Labour Organization. \"ILO modelled estimates database\" ILOSTAT. Accessed January 2021. https://ilostat.ilo.org/data/.
+Source：International Labour Organization. "ILO modelled estimates database" ILOSTAT. Accessed January 2021. https://ilostat.ilo.org/data/.
 
 Topic：  Social Protection & Labor: Economic activity
 
@@ -197,7 +197,7 @@ Indicator Name： Wage and salaried workers, female (% of female employment) (mo
 
 Long definition： Wage and salaried workers (employees) are those workers who hold the type of jobs defined as "paid employment jobs," where the incumbents hold explicit (written or oral) or implicit employment contracts that give them a basic remuneration that is not directly dependent upon the revenue of the unit for which they work.
 
-Source：International Labour Organization. \"ILO modelled estimates database\" ILOSTAT. Accessed January 2021. <https://ilostat.ilo.org/data/>.
+Source：International Labour Organization. "ILO modelled estimates database" ILOSTAT. Accessed January 2021. <https://ilostat.ilo.org/data/>.
 
 Topic：  Social Protection & Labor: Economic activity
 

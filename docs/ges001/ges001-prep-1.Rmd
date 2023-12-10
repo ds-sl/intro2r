@@ -3,7 +3,9 @@ title: "GES 001 演習1"
 author: "H. Suzuki"
 date: "`r Sys.Date()`"
 output:
-  html_notebook: default
+  ioslides_presentation: 
+    widescreen: yes
+  html_notebook: defaul
 ---
 
 ## 第1週
@@ -32,36 +34,29 @@ output:
 
     -   趣味：散歩・読書・Duolingo
 
-2.  データサイエンスについて
+2.  あなたの思考のもととなっているものは、データと合っていますか - Videos: Let my dataset change your mindset: [[Link](https://www.ted.com/talks/hans_rosling_let_my_dataset_change_your_mindset)] - Hans Rosling ハンス・ロスリング
 
-    -   データ取得・整形・視覚化・モデル・コミュニケーション
-
-    -   データの視覚化・モデルなどを通して、考えながら、問いや課題を発見し、共有し、議論などを通して、より精緻なものにしていく営み
+    -   「ファクトフルネス〜10の思い込みを乗り越え、データを基に世界を正しく見る習慣〜」ハンス・ロスリング、オーラ・ロスリング、アンナ・ロスリング・ロランド著、日経BP社 ("Factfulness" by Hans Rosling)
+    -   「私はこうして世界を理解できるようになった」ハンス・ロスリング、ファニー・ヘルエスタム著、青土社 ("How I learned to understand the world" by Hans Rosling with Fanny Haergestam)
 
 3.  Gapminder　[リンク](https://www.gapminder.org)
 
-    -   Upgrade Your Worldview
+    -   データを視覚化つーるでみてみよう
 
-    -   Bubble Chart
+        -   Bubble Chart 拡張散布図のアニメーションなど
 
-    -   Dollar Street
+            -   例：一人の女性が産む赤ちゃんの数 vs 平均寿命
 
-    -   Videos
+    -   あなたの世界観はアップグレードしなくて大丈夫ですか。
 
-        -   Let my dataset change your mindset: [[Link](https://www.ted.com/talks/hans_rosling_let_my_dataset_change_your_mindset)]
+        -   変化する世界を理解する Upgrade Your Worldview
 
-4.  視覚化
+    -   実際にどのような生活をしているの Dollar Street
 
-    -   市場の失敗と SDGs から
+4.  R と RStudio
 
-5.  R と RStudio
+    -   PositCloud
+        -   使ってみよう
 
+        -   Posit Primers
     -   インストレーションの手引き
-
-6.  PositCloud
-
-    -   使ってみよう
-
-    -   Posit Primers
-
-### 

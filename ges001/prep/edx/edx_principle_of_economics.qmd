@@ -449,7 +449,7 @@ Utility is a concept used by economists to indicate how much a consumer values a
 
 -   The units that utility is measured in do not matter
 
--   You can\'t compare utility levels across people
+-   You can't compare utility levels across people
 
  
 
@@ -471,7 +471,7 @@ The following one-minute video was originally filmed in a classroom at Stanford 
 
 **Willingness to Pay and the Demand Curve**
 
-People\'s preferences are reflected in their willingness to pay for different amounts of a good. Because dollars can be used to buy any good, willingness to pay compares one good with all other goods.
+People's preferences are reflected in their willingness to pay for different amounts of a good. Because dollars can be used to buy any good, willingness to pay compares one good with all other goods.
 
 The marginal benefit from a good is the increase in the benefit from, or the additional willingness to pay for, one more unit of a good.  The marginal benefit that an individual derives from a good will typically decline as the individual increases consumption of that good.  An individual demand curve can be traced out by changing the price of a good and looking at how many units consumers are willing to buy at each price. 
 
@@ -499,13 +499,13 @@ Next we will move on to the supply side and look at producer decisions.
 
 ### Key Terms: Deriving Demand
 
-**utility:** a numerical indicator of a person\'s preferences in which higher levels of utility indicate a greater preference.
+**utility:** a numerical indicator of a person's preferences in which higher levels of utility indicate a greater preference.
 
 **marginal utility:** the increase in utility when consumption of a good increases by one unit.
 
 **diminishing marginal utility:** the tendency for a consumer to derive less additional benefit from adding to the consumption of a good as consumption of that good increases.
 
-**budget constraint:** an income limitation on a person\'s expenditure on goods and services.
+**budget constraint:** an income limitation on a person's expenditure on goods and services.
 
 **utility maximization:** an assumption that people try to achieve the highest level of utility given their budget constraint.
 
@@ -555,7 +555,7 @@ In the second video-lesson in this subsection we examine the connection between 
 
 ### Key Concepts: Derivation of the supply curve
 
-In this video lesson, you learned how to derive the supply curve. While the demand curve is determined by consumers' choices, the supply curve is determined by the decisions of *firms*. We looked under the surface of the supply curve and examined how the profit-maximizing behavior of a firm determines how much of a good that firm will choose to produce at a given market price. Then we showed how aggregating individual firms\' supply curves generates a supply curve for the entire market.
+In this video lesson, you learned how to derive the supply curve. While the demand curve is determined by consumers' choices, the supply curve is determined by the decisions of *firms*. We looked under the surface of the supply curve and examined how the profit-maximizing behavior of a firm determines how much of a good that firm will choose to produce at a given market price. Then we showed how aggregating individual firms' supply curves generates a supply curve for the entire market.
 
 It is important to understand that a firm in a competitive market is a *price taker*. This means that the firm does not set the price. It has to sell at the market price and decide how much to produce based on what the market price is. Furthermore, production decisions of firms in a competitive market do not affect the market price. 
 
@@ -577,7 +577,7 @@ This derivation leads to a very important conclusion:
 
 **A competitive profit-maximizing firm produces at a quantity such that marginal cost equals the price.**
 
-In the process of deriving the supply curve this way we also showed how to define and measure the \"producer surplus\" of firms. Producer surplus is the amount that a producer gains from participating in the market; it is the area above the supply curve and below the price. In conjunction with consumer surplus, producer surplus is extremely useful for measuring how well a market economy actually works to produce and allocate goods and resources.
+In the process of deriving the supply curve this way we also showed how to define and measure the "producer surplus" of firms. Producer surplus is the amount that a producer gains from participating in the market; it is the area above the supply curve and below the price. In conjunction with consumer surplus, producer surplus is extremely useful for measuring how well a market economy actually works to produce and allocate goods and resources.
 
 ### Quiz: Derivation of the Supply Curve
 
@@ -655,7 +655,7 @@ We also explored the connection between the marginal product of labor and margi
 
 ### Conclusion: Deriving supply
 
-In this lesson, we derived the supply curve in a competitive market by looking at the behavior of firms. We assumed that a firm decides how much to produce at a given market price by choosing the quantity that maximizes profits. The firm makes this decision taking prices as given and considering its production function, which relates the number of hours of work at the firm to the output of the firm. The production function enters the firm\'s profit calculations through its effects on the firm\'s costs. Because the production function has diminishing returns to labor, the firm faces increasing marginal cost.
+In this lesson, we derived the supply curve in a competitive market by looking at the behavior of firms. We assumed that a firm decides how much to produce at a given market price by choosing the quantity that maximizes profits. The firm makes this decision taking prices as given and considering its production function, which relates the number of hours of work at the firm to the output of the firm. The production function enters the firm's profit calculations through its effects on the firm's costs. Because the production function has diminishing returns to labor, the firm faces increasing marginal cost.
 
 Profit maximization implies that the firm will produce the quantity where marginal cost equals price. As the price rises, the firm will respond by increasing production until marginal cost and price are equal. As a result, the supply curve for an individual firm will be upward-sloping. The slope of the supply curve will be steep when marginal cost increases rapidly as more units are produced, and it will be flat when marginal cost does not rise by very much as more units are produced. The supply curve will shift out when marginal cost falls because of some event like a change in technology and shift in when marginal cost rises.
 
@@ -691,7 +691,7 @@ We have examined firm behavior and consumer behavior in this subsection. We have
 
 \-**Profit Maximization**: An assumption that firms try to achieve the highest possible level of profits---total revenue minus total costs---given their production function. 
 
-\-**Producer Surplus**: The difference between the price received by a firm for an additional item sold and the marginal cost of the item\'s production; for the market as a whole, it is the sum of all the individual firms\' producer surpluses, or the area above the market supply curve and below the market price.
+\-**Producer Surplus**: The difference between the price received by a firm for an additional item sold and the marginal cost of the item's production; for the market as a whole, it is the sum of all the individual firms' producer surpluses, or the area above the market supply curve and below the market price.
 
 ## Section 2.3. [[Market Equilibrium and Efficiency]{.underline}](https://learning.edx.org/course/course-v1:StanfordOnline+ECONX0001+1T2021/block-v1:StanfordOnline+ECONX0001+1T2021+type@sequential+block@aeae646c2ad04660af7367919e301e6d)
 
@@ -827,7 +827,7 @@ The short run and the long run are two broad categories into which economists ca
 
 Total costs are all the costs incurred by the firm in producing goods or services. Fixed costs are the portion of total costs that do not vary with the amount produced in the short run. Variable costs are the remaining portion of total costs that do vary as production changes.
 
-Average total cost, average variable cost and marginal cost are widely used by economists, accountants, and investors to assess a firm\'s behavior. They can be shown graphically as in the important diagram below. We will see that the profit made by the firm in the short run depends on the difference between the price and average total cost at the quantity corresponding to that price. 
+Average total cost, average variable cost and marginal cost are widely used by economists, accountants, and investors to assess a firm's behavior. They can be shown graphically as in the important diagram below. We will see that the profit made by the firm in the short run depends on the difference between the price and average total cost at the quantity corresponding to that price. 
 
 ![](en-cache://tokenKey%3D%22AuthToken%3AUser%3A2533650%22+b17ea0d3-dfa5-0098-b189-39bff1b19870+82cf28f15966371d3ef7fc19d1492b72+https://www.evernote.com/shard/s22/res/1f74f47d-a021-8440-a0ac-d3dff6abb3ca)
 
@@ -893,9 +893,9 @@ https://www.businessinsider.com/tech-companies-worth-billions-unprofitable-tesla
 
 ### Conclusion: The Costs and Changes at Firms Over Time
 
-In the two lessons of this subsection we have developed a model for studying when firms shut down or stay in operation. This model will be used in subsequent lessons to analyze how changes at firms occur over time in the long run. It is an extension of the analysis of a firm\'s short-run behavior.
+In the two lessons of this subsection we have developed a model for studying when firms shut down or stay in operation. This model will be used in subsequent lessons to analyze how changes at firms occur over time in the long run. It is an extension of the analysis of a firm's short-run behavior.
 
-The centerpiece of the model is a graph that shows the firm\'s average total cost, average variable cost, and marginal cost. Using this graph, we can determine both the breakeven point and the shutdown point for the firm.
+The centerpiece of the model is a graph that shows the firm's average total cost, average variable cost, and marginal cost. Using this graph, we can determine both the breakeven point and the shutdown point for the firm.
 
 ## 
 
@@ -1137,7 +1137,7 @@ Monopolists have the ability to set prices above the perfectly competitive price
 
 -   **monopoly**:   one firm sells a product for which there are no close substitutes. 
 
--   **market power**:  a firm\'s power to set its price without losing its entire share of the market.
+-   **market power**:  a firm's power to set its price without losing its entire share of the market.
 
 -   **price-maker**: a firm that has the power to set its price, rather than taking the price set by the market.
 
@@ -1157,7 +1157,7 @@ Monopolists have the ability to set prices above the perfectly competitive price
 
 So far in this course we have considered two possible models of an industry: competition and monopoly.  In this subsection, we develop two more models that can be considered half way houses between competition and monopoly. One is called the model of monopolistic competition. Monopolistic competition occurs in an industry with many firms and free entry, but in which each firm sells a product slightly differentiated from other firms' products; this product differentiation gives the firm some market power to set its price.
 
-In the other model there are few firms in the industry and each firm thus has market power through which it can significantly affect the price. In this oligopoly model, each firm needs to anticipate what the others will do and develop a strategy to respond. To develop a model of oligopoly, therefore, we need to extend our tools of economic analysis to deal with strategic behavior: how firms think about, anticipate, and react to other firms\' moves.
+In the other model there are few firms in the industry and each firm thus has market power through which it can significantly affect the price. In this oligopoly model, each firm needs to anticipate what the others will do and develop a strategy to respond. To develop a model of oligopoly, therefore, we need to extend our tools of economic analysis to deal with strategic behavior: how firms think about, anticipate, and react to other firms' moves.
 
 ### **Lecture: Monopolistic Competition**
 
@@ -1165,7 +1165,7 @@ In the other model there are few firms in the industry and each firm thus has ma
 
 The model of monopolistic competition is designed to describe the behavior of firms operating in differentiated product markets. Monopolistic competition gets its name from the fact that it is a hybrid of monopoly and competition. Recall that monopoly has one seller facing a downward-sloping market demand curve with barriers to the entry of other firms. Competition has many sellers, each facing a horizontal demand curve with no barriers to entry and exit. Monopolistic competition, like competition, has many firms with free entry and exit, but, as in monopoly, each firm faces a downward-sloping demand curve for its product.
 
-The monopolistically competitive firm\'s demand curve slopes downward because of product differentiation. When a monopolistically competitive firm raises its price, the quantity demanded of its product goes down but does not plummet to zero, as in the case of a competitive firm. For example, if Nike raises the price of its running shoes, it will lose some sales to Reebok, but it will still sell a considerable number of running shoes because some people prefer Nike shoes to other brands. Nike running shoes and Reebok running shoes are differentiated products to many consumers.
+The monopolistically competitive firm's demand curve slopes downward because of product differentiation. When a monopolistically competitive firm raises its price, the quantity demanded of its product goes down but does not plummet to zero, as in the case of a competitive firm. For example, if Nike raises the price of its running shoes, it will lose some sales to Reebok, but it will still sell a considerable number of running shoes because some people prefer Nike shoes to other brands. Nike running shoes and Reebok running shoes are differentiated products to many consumers.
 
 The demand curve facing a monopolistically competitive firm has a different interpretation because other firms are in the industry. The demand curve is not the market demand curve; rather, it is the demand curve that is specific to a particular firm. When new firms enter the industry---for example, when Converse enters with Nike and Reebok---the demand curves specific to both Nike and Reebok shift to the left. When firms leave, the demand curves of the remaining firms shift to the right. The reason is that new firms take some of the quantity demanded away from existing firms, and when some firms exit, a greater quantity is demanded for the remaining firms.
 
@@ -1195,7 +1195,7 @@ In monopolistic competition, price is also greater than marginal cost. Thus, con
 
 ### An example: golden balls
 
-Observing people play an actual game helps you remember some of the strategic interactions that come into consideration in duopoly situations.  Golden Balls is a TV game show that aired a few years ago. There are two contestants and a host. The payoffs for the two contestants are much like those in the payoff matrix for the two duopolies in the example that Professor Taylor used in the previous lecture-video.  [Here](https://www.youtube.com/watch?v=7FbkwrhW_0I) (<https://www.youtube.com/watch?v=7FbkwrhW_0I>[)](http://www.youtube.com/watch?v=p3Uos2fzIJ0) is a link to a YouTube video of one of the episodes of the game show. The contestants are Sarah and Steve. Professor Taylor will refer to this episode in the next video-lecture \"Oligopoly, Part 2"
+Observing people play an actual game helps you remember some of the strategic interactions that come into consideration in duopoly situations.  Golden Balls is a TV game show that aired a few years ago. There are two contestants and a host. The payoffs for the two contestants are much like those in the payoff matrix for the two duopolies in the example that Professor Taylor used in the previous lecture-video.  [Here](https://www.youtube.com/watch?v=7FbkwrhW_0I) (<https://www.youtube.com/watch?v=7FbkwrhW_0I>[)](http://www.youtube.com/watch?v=p3Uos2fzIJ0) is a link to a YouTube video of one of the episodes of the game show. The contestants are Sarah and Steve. Professor Taylor will refer to this episode in the next video-lecture "Oligopoly, Part 2"
 
 2023.11.14
 
@@ -1243,7 +1243,7 @@ These models are useful in situations where the models of competition or monopol
 
 ### Introduction: Antitrust Policy and Regulation
 
-In the next two video-lectures, you will learn about some of the different ways that government can promote competition and limit market power. We consider two broad types of policy. In the first video lecture we consider regulatory policy, in which the government sets the firm's price at a prescribed level and limits entry. In the second video we consider antitrust policy, which is concerned with preventing anticompetitive practices like price fixing and with limiting firms\' market power by preventing mergers or breaking up existing firms.
+In the next two video-lectures, you will learn about some of the different ways that government can promote competition and limit market power. We consider two broad types of policy. In the first video lecture we consider regulatory policy, in which the government sets the firm's price at a prescribed level and limits entry. In the second video we consider antitrust policy, which is concerned with preventing anticompetitive practices like price fixing and with limiting firms' market power by preventing mergers or breaking up existing firms.
 
 We also will talk about the limits and difficulties of government intervention.  The government has sometimes stepped in and regulated firms even when a clear indication of anticompetitive behavior is lacking. In fact, because government agencies are susceptible to external influences, sometimes the regulators may end up limiting competition through their interventions. The ability to understand and appreciate the problems associated with both market failure and government failure is an important skill for an economist to possess.
 
@@ -1257,13 +1257,13 @@ The rationale for economic regulation centers around the existence of **natural
 
 What is the best government policy toward a natural monopoly? On the one hand, having one firm in an industry will result in a lower average cost of production, but inefficiencies will be associated with a monopoly: Price will be higher than marginal cost, and there will be a deadweight loss. On the other hand, breaking up the monopoly into two firms will result in more competition, but each firm will be saddled with a higher average cost of production and it will be inefficient to have both firms incur the high fixed costs. To get both the advantages of one firm producing at a lower average cost and a lower price, the government can regulate the firm.
 
-If the firm\'s price is regulated, then the government can require the firm to set a lower price, thereby raising output and eliminating some of the deadweight loss associated with the monopoly. The government can regulate price in three ways: marginal cost pricing, average total cost pricing, and incentive regulation.  The figure below illustrates the price and quantity decisions made by the natural monopolist under each of the three regulation schemes.
+If the firm's price is regulated, then the government can require the firm to set a lower price, thereby raising output and eliminating some of the deadweight loss associated with the monopoly. The government can regulate price in three ways: marginal cost pricing, average total cost pricing, and incentive regulation.  The figure below illustrates the price and quantity decisions made by the natural monopolist under each of the three regulation schemes.
 
  
 
 ![](en-cache://tokenKey%3D%22AuthToken%3AUser%3A2533650%22+b17ea0d3-dfa5-0098-b189-39bff1b19870+264fd73b1eee9108584fb213b35374b5+https://www.evernote.com/shard/s22/res/626df3fd-43f8-eac2-3017-c72cc51d91a1)
 
-One possibility is for the government to require the monopoly to set its price equal to marginal cost. This method is called **marginal cost pricing**. However, with declining average total cost, the marginal cost is lower than average total cost. Thus, if price were equal to marginal cost, the price would be less than average total cost, and the monopoly\'s profits would be negative (a loss). Firms would not have an incentive to enter the market. Although the idea of mimicking a competitive firm by setting price equal to marginal cost might sound reasonable, it fails to work in practice.
+One possibility is for the government to require the monopoly to set its price equal to marginal cost. This method is called **marginal cost pricing**. However, with declining average total cost, the marginal cost is lower than average total cost. Thus, if price were equal to marginal cost, the price would be less than average total cost, and the monopoly's profits would be negative (a loss). Firms would not have an incentive to enter the market. Although the idea of mimicking a competitive firm by setting price equal to marginal cost might sound reasonable, it fails to work in practice.
 
 Another method of regulation requires the firm to set the price equal to average total cost. This method is called **average total cost pricing** or, sometimes, cost-of-service pricing. When price is equal to average total cost, we know that economic profits will be equal to zero. With the economic profits equal to zero, there will be enough to pay the managers and the investors in the firm their opportunity costs. Although price is still above marginal cost, it is less than the monopoly price. 
 
@@ -1283,13 +1283,13 @@ Starting in the late 1970s under Jimmy Carter and continuing in the 1980s under 
 
 **Antitrust policy** refers to the actions the government takes to promote competition among firms in the economy. Antitrust policy includes challenging and breaking up existing firms with significant market power, preventing mergers that would increase monopoly power significantly, prohibiting price fixing, and limiting anticompetitive arrangements between firms and their suppliers.
 
-The **Sherman Antitrust Act of 1890** was passed in an effort to prevent large companies from using their monopoly power. Section 2 of the act focused on the large existing firms. It stated, \'\'Every person who shall monopolize, or attempt to monopolize ... any part of the trade or commerce among the several states, or with foreign nations, shall be deemed guilty of a felony.\'\'
+The **Sherman Antitrust Act of 1890** was passed in an effort to prevent large companies from using their monopoly power. Section 2 of the act focused on the large existing firms. It stated, ''Every person who shall monopolize, or attempt to monopolize ... any part of the trade or commerce among the several states, or with foreign nations, shall be deemed guilty of a felony.''
 
 The Sherman Antitrust Act dealt with monopolies that were already in existence. The **Clayton Antitrust Act of 1914** aimed to prevent the creation of monopolies and now provides the legal basis for preventing mergers that would reduce competition significantly. The Federal Trade Commission (FTC) was set up in 1914 to help enforce these acts along with the Justice Department.
 
 How does the government decide whether a merger by firms reduces competition in the market? The economists and lawyers in the U.S. Department of Justice and the FTC provide much of the analysis. They focus on the market power of the firm. The more concentrated the firms in an industry, the more likely it is that the firms have significant market power.
 
-Concentration usually is measured by the **Herfindahl-Hirschman Index (HHI)**. This index is used so frequently to analyze the impact of mergers on the competitive structure of an industry that it has a nickname: the \'\'Herf.\'\' The HHI is defined as the sum of the squares of the market shares of all the firms in the industry. The more concentrated the industry, the larger the shares and, therefore, the larger the HHI.
+Concentration usually is measured by the **Herfindahl-Hirschman Index (HHI)**. This index is used so frequently to analyze the impact of mergers on the competitive structure of an industry that it has a nickname: the ''Herf.'' The HHI is defined as the sum of the squares of the market shares of all the firms in the industry. The more concentrated the industry, the larger the shares and, therefore, the larger the HHI.
 
 According to the merger guidelines put forth by the U.S. Justice Department and the FTC, mergers in industries with a postmerger HHI above 1,800 are likely to be challenged if the HHI rises by 50 points or more. When the HHI is below 1,000, a challenge is unlikely. Between 1,000 and 1,800, a challenge is likely to occur if the HHI rises by 100 points or more.
 
@@ -1619,7 +1619,7 @@ Are there some cases in which outcomes should not be left to the market? When is
 
 The purpose of this lesson is to examine two important concepts---public goods and externalities---that economists use to determine if government intervention in the economy is needed. Public goods are frequently underprovided by the private sector, creating a rationale for government to step in. Externalities are situations where the production or consumption of a good or a service by a consumer or a firm in the private sector has a spillover effect on others in the economy. This often creates a situation where the government can step in to either increase (if the spillover is positive) or restrict (if the spillover is negative) production of the good.
 
-Economists can play an important role in identifying the costs and benefits of the different government interventions. We will discuss how to use cost-benefit analysis to evaluate policy interventions. In the next subsection , we examine different models of government behavior to understand why the best economic arguments do not always win and why government intervention may fails. We will show that politicians are influenced by incentives as much as anyone else, and do not always implement policies that enhance society\'s well-being.
+Economists can play an important role in identifying the costs and benefits of the different government interventions. We will discuss how to use cost-benefit analysis to evaluate policy interventions. In the next subsection , we examine different models of government behavior to understand why the best economic arguments do not always win and why government intervention may fails. We will show that politicians are influenced by incentives as much as anyone else, and do not always implement policies that enhance society's well-being.
 
 ### **Lecture: Public Goods (17A)**
 
@@ -1629,7 +1629,7 @@ Economists can play an important role in identifying the costs and benefits of t
 
 • Public goods have two characteristics: **nonrivalry**, which means that more consumption of the good by one person does not mean that there would be less of the good available for someone else, and **nonexcludability**, which means that it is not possible to exclude those who do not pay for the good from consuming the good. Note that politicians and others often misuse the definition of a public good in day to day discourse.
 
-• These two characteristics lead public goods to have a free-rider problem---people who do not pay for the good can use it without interfering with the ability of those who paid for the good to use it. Instead of objecting to nonpayers\' use of the good, the paying customers will soon stop paying. This means that private producers have little incentive to produce this good; thus, government production is frequently necessary.
+• These two characteristics lead public goods to have a free-rider problem---people who do not pay for the good can use it without interfering with the ability of those who paid for the good to use it. Instead of objecting to nonpayers' use of the good, the paying customers will soon stop paying. This means that private producers have little incentive to produce this good; thus, government production is frequently necessary.
 
 • If the goods are not completely nonexcludable, the private sector may be able to come up with ways to charge at least some users of the good, enabling it to deal with the free-rider problem and produce goods in the market. Changes in technology can also help make previously nonexcludable goods and services at least partially excludable. Sometimes, even the government may levy user fees on users of some public goods that the government provides.
 
@@ -1739,7 +1739,7 @@ One of the reasons for studying what governments actually do is that governments
 
 ### Conclusion: Government Failure and Success
 
-In recent years, there has been an effort to use incentives to improve the efficiency of government by using market-like incentives such as more competition. Vouchers---including food stamps, housing vouchers, school vouchers, college tuition grants, and elementary school grants---have been suggested by economists as a way to add competition and improve government efficiency. The successes of these policies are often hotly debated, with both opponents and proponents being able to point to specific cases that bolster their side\'s arguments.
+In recent years, there has been an effort to use incentives to improve the efficiency of government by using market-like incentives such as more competition. Vouchers---including food stamps, housing vouchers, school vouchers, college tuition grants, and elementary school grants---have been suggested by economists as a way to add competition and improve government efficiency. The successes of these policies are often hotly debated, with both opponents and proponents being able to point to specific cases that bolster their side's arguments.
 
 Analyzing how governments attempt to deal with public goods and correct externalities requires developing models of government behavior and recognizing the possibility of government failure. In reality, political considerations enter into the production of public goods. A member of Congress from one part of the country might push for a public works project in his or her local district in order to be reelected. Moreover, the externality argument emphasized in the earlier lessons is frequently abused as a political device, providing justification for wasteful expenditures. Thus, finding ways to improve decision-making in government, such as through market-based incentives, is needed if government is to play its role in providing remedies for market failures.
 
@@ -1751,15 +1751,15 @@ Analyzing how governments attempt to deal with public goods and correct external
 
 -   **Median Voter Theorem**: a theorem stating that the median or middle of political preferences will be reflected in government decisions.
 
--   **Convergence of Positions**: the concentration of the stances of political parties around the center of citizens\' opinions.
+-   **Convergence of Positions**: the concentration of the stances of political parties around the center of citizens' opinions.
 
--   **Voting Paradox**: a situation where voting patterns will not consistently reflect citizens\' preferences because of multiple issues on which people vote.
+-   **Voting Paradox**: a situation where voting patterns will not consistently reflect citizens' preferences because of multiple issues on which people vote.
 
 -   **Arrow Impossibility Theorem**: a theorem that says that no democratic voting scheme can avoid a voting paradox.
 
 # Chapter 7. Financial and Capital Markets
 
-## Section 7.1 [Markets for Physical Capital](https://learning.edx.org/course/course-v1:StanfordOnline+ECONX0001+1T2021/block-v1:StanfordOnline+ECONX0001+1T2021+type@sequential+block@3285f2f0454b479eb04823a0ba125e89) 
+## Section 7.1 [Markets for Physical Capital](https://learning.edx.org/course/course-v1:StanfordOnline+ECONX0001+1T2021/block-v1:StanfordOnline+ECONX0001+1T2021+type@sequential+block@3285f2f0454b479eb04823a0ba125e89)
 
 ### Introduction: Markets for physical capital
 
@@ -1875,7 +1875,7 @@ In this section we identified that:
 
 ### introduction: Financial Markets - Risk and Return
 
-Firms that want to expand their operations need to get the funds to do so.  One way they can acquire the funds is by obtaining financial capital; that is, by issuing stocks and bonds. Once issued, stocks and bonds can be traded on financial markets. Their prices are determined by the actions of buyers and sellers, like prices in any other market. Understanding what drives the prices of stocks and bonds is important for determining firms\' ability to acquire financial capital. It is also important for investors who buy stocks and bonds as a way to save for their future.
+Firms that want to expand their operations need to get the funds to do so.  One way they can acquire the funds is by obtaining financial capital; that is, by issuing stocks and bonds. Once issued, stocks and bonds can be traded on financial markets. Their prices are determined by the actions of buyers and sellers, like prices in any other market. Understanding what drives the prices of stocks and bonds is important for determining firms' ability to acquire financial capital. It is also important for investors who buy stocks and bonds as a way to save for their future.
 
 One of the hallmarks of financial markets is volatility. The prices of individual stocks and bonds rise and fall over time.  Because of such variability, buying stocks and bonds is a risky activity. In this subsection we show that the riskiness of stocks and bonds affects the decisions of people to trade in financial markets. To do so, we explain how bonds are priced and examine how individuals behave when they face risk.
 
@@ -1983,7 +1983,7 @@ So investing in stocks is risky. 
 
 The **efficient market hypothesis** implies that profit opportunities are eliminated in financial markets as stock prices adjust quickly to new information. 
 
-The shares of firms\' stock on the market can be traded quickly at any time of day. For most large and medium-size companies, some people are always willing to buy and sell. If people hear that Intel has made a discovery that is expected to raise its profits, they rush to buy Intel stock. If people suddenly learn about a decline in a company's profits or about losses, then people rush to sell that company's stock. This rush to buy and sell changes prices instantaneously, so that the price adjusts rapidly to good news or bad news.
+The shares of firms' stock on the market can be traded quickly at any time of day. For most large and medium-size companies, some people are always willing to buy and sell. If people hear that Intel has made a discovery that is expected to raise its profits, they rush to buy Intel stock. If people suddenly learn about a decline in a company's profits or about losses, then people rush to sell that company's stock. This rush to buy and sell changes prices instantaneously, so that the price adjusts rapidly to good news or bad news.
 
 The rapid adjustment means that unexploited profit opportunities are rare for regular investors without inside information or a special ability to anticipate news, whether good or bad. Rates of return greater than those resulting from the price of risk disappear soon after any good news about a stock appears.
 
@@ -1991,7 +1991,7 @@ Many empirical tests over the years have found the efficient market hypothesis t
 
  **Diversification**
 
-The familiar saying \"Don't put all your eggs in one basket\" is particularly relevant to stock markets. Rather than a basket of eggs, you have a portfolio of stocks. A **portfolio** is a collection of stocks. Putting your funds into a portfolio of two or more stocks, whose prices do not always move in the same direction, rather than one stock is called **portfolio diversification**. The risks from holding a single stock can be reduced significantly by putting half your funds in one stock and half in another. If one stock falls in price, the other stock may fall less, may not fall at all, or may even rise. 
+The familiar saying "Don't put all your eggs in one basket" is particularly relevant to stock markets. Rather than a basket of eggs, you have a portfolio of stocks. A **portfolio** is a collection of stocks. Putting your funds into a portfolio of two or more stocks, whose prices do not always move in the same direction, rather than one stock is called **portfolio diversification**. The risks from holding a single stock can be reduced significantly by putting half your funds in one stock and half in another. If one stock falls in price, the other stock may fall less, may not fall at all, or may even rise. 
 
 Holding two stocks in equal amounts is the most elementary form of diversification. With thousands of stocks to choose from, however, diversification is not limited to two. The example in the figure below demonstrates how diversification can reduce risk dramatically. By holding ten different stocks rather than one, you can reduce your risk to about 30 percent of what it would be with one stock. If you hold some international stocks, whose behavior will be even more different from that of any one U.S. stock, you can reduce the risk even further. Mutual fund companies provide a way for an investor with only limited funds to diversify by holding 500 or even 5,000 stocks along with other investors. Some mutual funds consist of all the stocks in the Standard & Poor's 500 Index (S&P 500).
 
@@ -2025,7 +2025,7 @@ Second, be aware of the efficient market hypothesis that profit opportunity disa
 
 Third, if you do try to pick your own portfolio rather than use a mutual fund, concentrate on areas you are familiar with. If you go into a medical career, you may know more than even the best investors about the promise of a new medical device or drug.
 
-Fourth, over the short run, holding corporate stocks is more risky than putting your funds in a bank account, but over the long term, the higher rate of return on stocks outweighs the risks for most people. However, if you need money in the short term---to pay next year\'s tuition, for example---stocks may not be worth the risk. Years like 2008 where stocks fall by as much as 38 percent are a reminder of these risks.
+Fourth, over the short run, holding corporate stocks is more risky than putting your funds in a bank account, but over the long term, the higher rate of return on stocks outweighs the risks for most people. However, if you need money in the short term---to pay next year's tuition, for example---stocks may not be worth the risk. Years like 2008 where stocks fall by as much as 38 percent are a reminder of these risks.
 
 ### Key Terms: Financial Markets - Risk and Return
 
@@ -2059,7 +2059,7 @@ Fourth, over the short run, holding corporate stocks is more risky than putting�
 
  
 
-Macroeconomics is the study of the whole market economy. Like other parts of economics, macroeconomics uses the central idea that people make purposeful decisions with scarce resources. However, instead of focusing on the workings of one market---whether the market for peanuts or the market for bicycles---macroeconomics focuses on the economy as a whole. Macroeconomics looks at the big picture: Economic growth, recessions, unemployment, and inflation are among its subject matter. You should accordingly put on your \"big picture glasses\" when you study macroeconomics.
+Macroeconomics is the study of the whole market economy. Like other parts of economics, macroeconomics uses the central idea that people make purposeful decisions with scarce resources. However, instead of focusing on the workings of one market---whether the market for peanuts or the market for bicycles---macroeconomics focuses on the economy as a whole. Macroeconomics looks at the big picture: Economic growth, recessions, unemployment, and inflation are among its subject matter. You should accordingly put on your "big picture glasses" when you study macroeconomics.
 
 By studying macroeconomics, you can better understand the changes that are taking place in the economy, better understand the role of good economic policies in driving economic growth and reducing unemployment, and become a more informed and educated citizen. Hopefully, you will be inspired by the study of macroeconomics to do your part to bring about strong economic growth, which in turn can help alleviate poverty, free up resources to improve the environment, and lead to a brighter future for your generation.
 
@@ -2473,7 +2473,7 @@ Economists arrive at a single percentage by simply averaging the two percentag
 
 **Repeat the Process for Longer Periods** 
 
-To correct for inflation across more than two years, economists simply do a series of these two-year corrections and then \"chain\" them together. Each year is a link in the chain. For example, if the growth rate from 2007 to 2008 was 12.15 percent, then chaining this together with the 14.15 percent from 2008 to 2009 would imply an average annual growth rate of 13.15 percent for the two years from 2007 to 2009.
+To correct for inflation across more than two years, economists simply do a series of these two-year corrections and then "chain" them together. Each year is a link in the chain. For example, if the growth rate from 2007 to 2008 was 12.15 percent, then chaining this together with the 14.15 percent from 2008 to 2009 would imply an average annual growth rate of 13.15 percent for the two years from 2007 to 2009.
 
  
 
@@ -2491,7 +2491,7 @@ GDP Deflator = (nominal GDP)/ (Real GDP)
 
 **Consumer Price Inflation**
 
-The percentage change in the GDP deflator is not the most widely used measure of inflation. A much more frequently cited measure of inflation is based on the percentage change in the consumer price index (CPI), which is the price of a fixed collection---a \"market basket\"---of consumer goods and services in a given year divided by the price of the same collection in some base year. For example, if the market basket consists of one DVD and two CDs, then the CPI for 2009 compared with the base year 2008 in the previous example would be
+The percentage change in the GDP deflator is not the most widely used measure of inflation. A much more frequently cited measure of inflation is based on the percentage change in the consumer price index (CPI), which is the price of a fixed collection---a "market basket"---of consumer goods and services in a given year divided by the price of the same collection in some base year. For example, if the market basket consists of one DVD and two CDs, then the CPI for 2009 compared with the base year 2008 in the previous example would be
 
 ![](images/cpi.png)
 
@@ -2623,7 +2623,7 @@ Now let's use our model to examine the effect of a decrease in the share of GDP 
 
 [A May 2014 article ](http://www.washingtonpost.com/business/economy/northrop-grumman-improperly-charged-government-more-than-100-million-ig-says/2014/05/19/d13fdb3a-df8c-11e3-9743-bb9b59cde7b9_story.html))discusses how the US government incurred more than 100 million dollars in improper charges for defense contracts with Northrop Grumman between October 2007 and December 2013. Some of the charges arose from employees' excessive billing for overtime, "including one employee who billed \$176,900 for 1,208 hours in a 12-day period." 
 
-"Other improper charges included compensation for individuals who did not have the required qualifications for the job." "In one case, a program manager who billed 5,729 hours over a year and a half, totaling \$1.2 million, did not have a bachelor\'s degree, which was a requirement of the position. Another employee billed 16,270 hours worth \$2 million over five years but was qualified for only 161 hours of the work."
+"Other improper charges included compensation for individuals who did not have the required qualifications for the job." "In one case, a program manager who billed 5,729 hours over a year and a half, totaling \$1.2 million, did not have a bachelor's degree, which was a requirement of the position. Another employee billed 16,270 hours worth \$2 million over five years but was qualified for only 161 hours of the work."
 
 How do you think these additional expenditures by the US government would affect the GDP shares of consumption, investment, and net exports?
 
@@ -2671,7 +2671,7 @@ As the following graph illustrates, the unemployment rate fluctuates over time,
 
 ![](images/SS20-1.png)
 
-Economists use the term natural unemployment rate to refer to the unemployment rate that exists when the economy is not in a recession or a boom and real GDP is equal to potential GDP. The CBO estimates that the natural unemployment rate is 5.3%. When economists use the term natural unemployment rate, they do not mean to say that this is \'\'okay\'\' or \'\'just fine.\'\' They simply mean that whenever the operation of the overall macroeconomy is close to normal in the sense that real GDP is near potential GDP, the unemployment rate hovers around this natural rate. All else equal, having a low natural rate of unemployment is preferable because it means that, in normal times, fewer workers who are looking for work are unable to find it.
+Economists use the term natural unemployment rate to refer to the unemployment rate that exists when the economy is not in a recession or a boom and real GDP is equal to potential GDP. The CBO estimates that the natural unemployment rate is 5.3%. When economists use the term natural unemployment rate, they do not mean to say that this is ''okay'' or ''just fine.'' They simply mean that whenever the operation of the overall macroeconomy is close to normal in the sense that real GDP is near potential GDP, the unemployment rate hovers around this natural rate. All else equal, having a low natural rate of unemployment is preferable because it means that, in normal times, fewer workers who are looking for work are unable to find it.
 
 Economists are interested in the reasons for why the natural unemployment rate is greater than zero. Two possible explanations are
 
@@ -2721,7 +2721,7 @@ We have examined the trends in the unemployment rate over time and provided an e
 
 -   **job rationing:** a reason for unemployment in which the quantity of labor supplied is greater than the quantity demanded because the real wage is too high.
 
--   **job search:** a reason for unemployment in which uncertainty in the labor market and workers\' limited information require people to spend time searching for a job.
+-   **job search:** a reason for unemployment in which uncertainty in the labor market and workers' limited information require people to spend time searching for a job.
 
 ## 
 
@@ -2789,13 +2789,13 @@ A June 2020 [report (http://www.bls.gov/news.release/prod2.nr0.htm) ](http://
 
 In this subsection, we defined productivity growth and discussed how capital and technology are its essential determinants. We also pointed out that capital, like labor, is subject to diminishing returns, so that technological progress must be an essential part of productivity growth in the long run.
 
-If economic policy makers want to increase people\'s income and reduce poverty---whether in the United States or in other countries---they must focus on increasing and maintaining productivity growth. Economists differ about the best way to accomplish this goal. For example, they debate whether policy should focus more on stimulating technology by subsidizing research or on increasing incentives for investment by keeping taxes on investment low. The growth accounting formula helps resolve some of these differences by determining the relative importance of capital and technology. In recent years in the United States, technology and capital both have contributed substantially to productivity growth, suggesting that policy should not focus solely on one determinant at the expense of the other.
+If economic policy makers want to increase people's income and reduce poverty---whether in the United States or in other countries---they must focus on increasing and maintaining productivity growth. Economists differ about the best way to accomplish this goal. For example, they debate whether policy should focus more on stimulating technology by subsidizing research or on increasing incentives for investment by keeping taxes on investment low. The growth accounting formula helps resolve some of these differences by determining the relative importance of capital and technology. In recent years in the United States, technology and capital both have contributed substantially to productivity growth, suggesting that policy should not focus solely on one determinant at the expense of the other.
 
 ### Key Terms: Productivity, Econ. Growth AND Determining Factors
 
 -   **diminishing returns:** a situation in which successive increases in the use of an input, holding other inputs constant, eventually will cause a decline in the additional production derived from one more unit of that input.
 
--   **growth accounting formula:** an equation stating that the growth rate of productivity equals capital\'s share of income times the growth rate of capital per hour of work plus the growth rate of technology. 
+-   **growth accounting formula:** an equation stating that the growth rate of productivity equals capital's share of income times the growth rate of capital per hour of work plus the growth rate of technology. 
 
 -   **productivity:** output per hour of work. 
 
@@ -2875,7 +2875,7 @@ We have examined the role that money plays in the economy as well as the relatio
 
 -   **medium of exchange:** something that generally is accepted as a means of payment.
 
--   **money:** that part of a person\'s wealth that can be used readily for transactions; money also serves as a store of value and a unit of account.
+-   **money:** that part of a person's wealth that can be used readily for transactions; money also serves as a store of value and a unit of account.
 
 -   **money supply:** the sum of currency (coin and paper money) and deposits at banks.
 
@@ -2883,7 +2883,7 @@ We have examined the role that money plays in the economy as well as the relatio
 
 -   **quantity equation of money:** the equation relating the price level and real GDP to the quantity of money and the velocity of money: The quantity of money times its velocity equals the price level times real GDP. 
 
--   **required reserve ratio:** the fraction of a bank\'s deposits that it is required to hold at the Fed. 
+-   **required reserve ratio:** the fraction of a bank's deposits that it is required to hold at the Fed. 
 
 -   **reserves:** deposits that commercial banks hold at the Fed. 
 
@@ -2899,7 +2899,7 @@ We have examined the role that money plays in the economy as well as the relatio
 
 ### Introduction: Economic Fluctuations
 
-Studying economic fluctuations is important because recessions bring unemployment and hardship to many people. Although the importance of long-run economic growth cannot be overstated, fluctuations around the growth trend also affect the livelihood of millions of people. John Maynard Keynes once said that \"Economists set themselves too easy, too useless a task if in tempestuous seasons they can only tell us that when the storm is long past the ocean is flat again.\"  Few economists, in fact, choose that \"too easy\" task alone.  Economist Milton Friedman spent a great deal of his professional life studying the Great Depression of the 1930s. The causes and consequences of the more recent Great Recession of 2007-2009 is similarly the subject of continuing study by many economists. Hence, the study of economic fluctuations is vital to understanding economics.
+Studying economic fluctuations is important because recessions bring unemployment and hardship to many people. Although the importance of long-run economic growth cannot be overstated, fluctuations around the growth trend also affect the livelihood of millions of people. John Maynard Keynes once said that "Economists set themselves too easy, too useless a task if in tempestuous seasons they can only tell us that when the storm is long past the ocean is flat again."  Few economists, in fact, choose that "too easy" task alone.  Economist Milton Friedman spent a great deal of his professional life studying the Great Depression of the 1930s. The causes and consequences of the more recent Great Recession of 2007-2009 is similarly the subject of continuing study by many economists. Hence, the study of economic fluctuations is vital to understanding economics.
 
 In this set of lectures we look at fluctuations in the economy and then develop a model to explain these outcomes. This model will be useful for analyzing public policy in future lectures.
 
@@ -2931,9 +2931,8 @@ In this set of lectures we look at fluctuations in the economy and then develop 
 
 -   The graph on the right illustrates a rise in the real GDP above the potential GDP in Year 3. This is caused by an increase in aggregate demand.
 
-```{=html}
 <!-- -->
-```
+
 -   Finally, the figure below illustrates the relationship between the unemployment rate and the deviations of the real GDP from potential GDP.
 
 ![](images/unemployment_fluctuation.png)
@@ -3180,7 +3179,7 @@ Key points to take away:
 
 -   Investment, net exports, and consumption depend negatively on the real interest rate. Hence, real gross domestic product (GDP), which includes investment, net exports, and consumption, depends negatively on the real interest rate.
 
--   Central banks\' actions to adjust the nominal interest rate to maintain low inflation result in a relationship between the real interest rate and inflation. When inflation rises, the real interest rate rises. When inflation falls, the real interest rate falls.
+-   Central banks' actions to adjust the nominal interest rate to maintain low inflation result in a relationship between the real interest rate and inflation. When inflation rises, the real interest rate rises. When inflation falls, the real interest rate falls.
 
 -   The combined behavior of (1) the real interest rate response to inflation and (2) the private sector adjusting spending in response to the interest rate generates an inverse relationship between real GDP and inflation---the aggregate demand curve.
 
@@ -3360,9 +3359,9 @@ Key Points to Remember:
 
 ### Introduction: Intro to Macro Policy 
 
-On February 17, 2009, newly elected President Barack Obama signed into law a \$787 billion stimulus package that he claimed would \"begin making the immediate investments necessary to put people back to work doing the work America needs done.\" The bill represented one of the most significant fiscal interventions in the history of the United States, yet it was enacted only 17 days after being proposed. Democrats and Republicans were bitterly divided on the bill, with Democratic leaders in Congress arguing that the bill would create millions of jobs, rebuild the nation's infrastructure, and give the economy a much-needed shot in the arm. On the other hand, not a single Republican member of the House and only three Republican senators voted for the bill. The Republican opponents argued that the bill was wasteful and would have little stimulative impact on the economy.
+On February 17, 2009, newly elected President Barack Obama signed into law a \$787 billion stimulus package that he claimed would "begin making the immediate investments necessary to put people back to work doing the work America needs done." The bill represented one of the most significant fiscal interventions in the history of the United States, yet it was enacted only 17 days after being proposed. Democrats and Republicans were bitterly divided on the bill, with Democratic leaders in Congress arguing that the bill would create millions of jobs, rebuild the nation's infrastructure, and give the economy a much-needed shot in the arm. On the other hand, not a single Republican member of the House and only three Republican senators voted for the bill. The Republican opponents argued that the bill was wasteful and would have little stimulative impact on the economy.
 
-Eighteen months later, in the run up to the mid-term Congressional elections, the debate raged on. The Council of Economic Advisers issued a report evaluating the American Recovery and Reinvestment Act (ARRA, the official name of the stimulus package) in which it concluded that the package had \"raised the level of GDP \[gross domestic product\] as of the third quarter of 2010, relative to what it otherwise would have been, by 2.7 percent\" and that \"as of the third quarter of 2010, the ARRA has raised employment relative to what it otherwise would have been by between 2.7 and 3.7 million.\" Other economists disagreed with this assessment. In an article in the *Wall Street Journal,* the economists John F. Cogan and John B. Taylor (the lecturer in this course) argued that the stimulus package did not have much of an impact because it did not lead to an increase in the purchase of goods and services. They concluded that \"\[t\]he bottom-line is the federal government borrowed funds from the public, transferred these funds to state and local governments, who then used the funds mainly to reduce borrowing from the public. The net impact on aggregate economic activity is zero.\"
+Eighteen months later, in the run up to the mid-term Congressional elections, the debate raged on. The Council of Economic Advisers issued a report evaluating the American Recovery and Reinvestment Act (ARRA, the official name of the stimulus package) in which it concluded that the package had "raised the level of GDP \[gross domestic product\] as of the third quarter of 2010, relative to what it otherwise would have been, by 2.7 percent" and that "as of the third quarter of 2010, the ARRA has raised employment relative to what it otherwise would have been by between 2.7 and 3.7 million." Other economists disagreed with this assessment. In an article in the *Wall Street Journal,* the economists John F. Cogan and John B. Taylor (the lecturer in this course) argued that the stimulus package did not have much of an impact because it did not lead to an increase in the purchase of goods and services. They concluded that "\[t\]he bottom-line is the federal government borrowed funds from the public, transferred these funds to state and local governments, who then used the funds mainly to reduce borrowing from the public. The net impact on aggregate economic activity is zero."
 
 Bitter political debates over economic issues, such as the 2009 stimulus bill, are a common sight in U.S. politics as well as in many other political systems around the world. As an observer of this debate, you should try to evaluate the validity of the underlying economic arguments made by the opposing parties and come to your own informed conclusion about which view is more tenable position. This evaluation requires that you have a framework for understanding the fascinating, dynamic process through which a recession ends and a new expansion begins, and for deciding which government actions, if any, can cut the length of a recession or speed up the expansion. In the next few lessons we will show how the economic fluctuations model developed in the previous section provides such a framework.
 
@@ -3778,7 +3777,7 @@ The economic effect of a quota is illustrated in the figure below.
 
 -   The export supply curve and the import demand curve are identical to those in the tariff diagram. 
 
--   The quota, the maximum that foreign firms can export to the United States, is indicated  by the solid orange vertical line labeled \"quota.\" Exporters cannot supply more goods than the quota, and, therefore, U.S. consumers cannot buy more than this amount. We have chosen the quota amount to equal the quantity imported with the tariff in the previous figure. 
+-   The quota, the maximum that foreign firms can export to the United States, is indicated  by the solid orange vertical line labeled "quota." Exporters cannot supply more goods than the quota, and, therefore, U.S. consumers cannot buy more than this amount. We have chosen the quota amount to equal the quantity imported with the tariff in the previous figure. 
 
 -   This shows that if it wants to, the government can achieve the same effects on the quantity imported using either a quota or a tariff. Moreover, the price increases in both figures are the same.
 

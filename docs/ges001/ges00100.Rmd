@@ -3,6 +3,8 @@ title: "GES 001 演習1"
 author: "H. Suzuki"
 date: "`r Sys.Date()`"
 output:
+  ioslides_presentation: 
+    widescreen: yes
   html_notebook: default
 ---
 
@@ -18,51 +20,53 @@ output:
 
 変更期間です。次週から参加する学生がいることを想定する必要があります。RとRStudioのインストールやRを使うことのメリット、Rの簡単な使い方など。GDPを例にする。（ECO101の鈴木先生にRコード）。
 
-## 内容
+## 自己紹介
 
-1.  自己紹介
+1.  数学
 
-    -   数学
+2.  データサイエンス・AI
 
-    -   データサイエンス・AI
+3.  ボランティア（児童養護施設・障害者就労支援施設）
 
-    -   ボランティア（児童養護施設・障害者就労支援施設）
+4.  聖書の会・聖書通読の会
 
-    -   聖書の会・聖書通読の会
+5.  趣味：散歩・読書・Duolingo
 
-    -   趣味：散歩・読書・Duolingo
+## Mindset = Dataset?
 
-2.  データサイエンスについて
+### あなたの思考のもととなっているものは、データと合っていますか
 
-    -   データ取得・整形・視覚化・モデル・コミュニケーション
+Videos: Let my dataset change your mindset: [[Link](https://www.ted.com/talks/hans_rosling_let_my_dataset_change_your_mindset)] - Hans Rosling ハンス・ロスリング
 
-    -   データの視覚化・モデルなどを通して、考えながら、問いや課題を発見し、共有し、議論などを通して、より精緻なものにしていく営み
+-   「ファクトフルネス〜10の思い込みを乗り越え、データを基に世界を正しく見る習慣〜」ハンス・ロスリング、オーラ・ロスリング、アンナ・ロスリング・ロランド著、日経BP社
+    -   "Factfulness" by Hans Rosling
+-   「私はこうして世界を理解できるようになった」ハンス・ロスリング、ファニー・ヘルエスタム著、青土社
+    -   "How I learned to understand the world" by Hans Rosling with Fanny Haergestam
 
-3.  Gapminder　[[Link](https://www.gapminder.org)]
+## Gapminder [[Link](https://www.gapminder.org)]
 
-    -   Upgrade Your Worldview
+-   データを視覚化つーるでみてみよう
 
-    -   Bubble Chart
+    -   Bubble Chart 拡張散布図のアニメーションなど
 
-    -   Dollar Street
+        -   例：一人の女性が産む赤ちゃんの数 vs 平均寿命
 
-    -   Videos
+-   あなたの世界観はアップグレードしなくて大丈夫ですか。
 
-4.  視覚化
+    -   変化する世界を理解する Upgrade Your Worldview
 
-    -   市場の失敗と SDGs から
+-   実際にどのような生活をしているの Dollar Street
 
-5.  PositCloud
+## PositCloud
 
+-   PositCloud
     -   使ってみよう [[Link](https://icu-hsuzuki.github.io/ds4aj/ronrstudio.html#positcloud)]
 
     -   Posit Primers [[Link](https://posit.cloud/learn/primers)]
-
-6.  R と RStudio
-
+-   R と RStudio
     -   インストレーションの手引き [[Link](https://icu-hsuzuki.github.io/ds4aj/ronrstudio.html#ronrstudio)]
 
-### 参考文献
+## 参考文献
 
 -   [[Link](index.html#references)]
 
