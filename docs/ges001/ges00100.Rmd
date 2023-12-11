@@ -3,9 +3,9 @@ title: "GES 001 演習1"
 author: "H. Suzuki"
 date: "`r Sys.Date()`"
 output:
-  html_notebook: default
   ioslides_presentation: 
     widescreen: yes
+  html_notebook: default
 ---
 
 ## 第1週
@@ -62,6 +62,10 @@ Videos: Let my dataset change your mindset: [[Link](https://www.ted.com/talks/ha
 -   PositCloud
     -   使ってみよう [[Link](https://icu-hsuzuki.github.io/ds4aj/ronrstudio.html#positcloud)]
 
+    -   公開プロジェクト [[Link](https://posit.cloud/content/5539763)]
+
+        -   極度に貧しい！？ [[Link](https://ds-sl.github.io/intro2r/ges001/poverty.nb.html)]
+
     -   Posit Primers [[Link](https://posit.cloud/learn/primers)]
 -   R と RStudio
     -   インストレーションの手引き [[Link](https://icu-hsuzuki.github.io/ds4aj/ronrstudio.html#ronrstudio)]
@@ -69,5 +73,3 @@ Videos: Let my dataset change your mindset: [[Link](https://www.ted.com/talks/ha
 ## 参考文献
 
 -   [[Link](index.html#references)]
-
-### 

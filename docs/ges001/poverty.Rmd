@@ -1,0 +1,166 @@
+---
+title: "極度に貧しい！？"
+date: "`r Sys.Date()`"
+output:
+  html_notebook:
+    df_print: paged
+  word_document: default
+---
+
+> UNICEF [[Link](https://www.unicef.or.jp/kodomo/sdgs/17goals/1-poverty/)]
+>
+> 1.  世界では、六人に一人（3億5600万人）の子どもたちが「極度にまずしい」暮らしをしています。
+
+どのようなデータから、このようなことがわかるのでしょうか。まずは、極度の貧困とは、どのように定義しているのでしょうか。
+
+#### Fact Sheet: An Adjustment to Global Poverty Lines [[Link](https://www.worldbank.org/en/news/factsheet/2022/05/02/fact-sheet-an-adjustment-to-global-poverty-lines)]
+
+The World Bank updated the global poverty lines in September 2022. The decision, announced in May, follows the release in 2020 of new purchasing power parities (PPPs)---the main data used to convert different currencies into a common, comparable unit and account for price differences across countries. The new extreme poverty line of \$2.15 per person per day, which replaces the \$1.90 poverty line, is based on 2017 PPPs. Here you find more information about this change and what it means for measuring global poverty.
+
+世界銀行は2022年9月に世界の貧困ラインを更新した。5月に発表されたこの決定は、2020年に新購買力平価（PPP）が発表されたことを受けてのものである。新購買力平価（PPP）とは、さまざまな通貨を共通の比較可能な単位に変換し、貧困の範囲を説明するために使用される主要なデータである。国ごとの価格差。1.90ドルの貧困線に代わる、1人当たり1日当たり2.15ドルという新たな極度の貧困線は、2017年のPPPに基づいている。ここでは、この変化とそれが世界の貧困の測定に何を意味するかに関する詳細情報をご覧いただけます。
+
+そこで、この購買力平価（PPP: purchasing power parities）をまずは、調べてみましょう。国や、地域ごとの、GDP, PPP （国内総生産（Gross Domestic Prodoct））を、人口で割った、一人当たりの、GDP PPP です。2017年を基準として、インフレ率を調整し、ドル換算されています。総人口の指標も使います。
+
+-   GDP per capita, PPP (constant 2017 international \$): NY.GDP.PCAP.PP.KD
+
+GDP per capita, PPP (constant 2017 international \$) を、指標名（Indicator Name）といい、NY.GDP.PCAP.PP.KD を、指標コード（Indicator Code）と言います。後者を、WDI（世界開発指標、World Development Indicator）と呼ぶこともあります。
+
+### 準備
+
+Step 1. （R に機能を付け加える）パッケージのインストール（最初だけ）
+
+```{r eval = FALSE}
+install.packages("tidyverse")
+install.packages("WDI")
+install.packages('showtext')
+```
+
+Step 2. パッケージを使えるように読み込みます。
+
+```{r}
+library(tidyverse)
+library(WDI)
+library(showtext)
+showtext_auto(FALSE)
+# showtext_auto() # for Word remove # 
+```
+
+Step 3. データを保存するための data という名前のディレクトリ（フォルダー）を作成します。（最初だけ）
+
+```{r create-dirs}
+dir.create("data")
+```
+
+Step 4. エラーが生じた時に、調べやすいので、'システム言語（System Language）' を英語にしておきます。（最初だけ）
+
+```{r eval = FALSE}
+Sys.setenv(LANG = "en")
+```
+
+Step 5. データを読み込みます。WDI パッケージをつかうと、簡単に、データを読み込むことができます。わかりやすい名前（gdppcap, pop）をつけ、人口（pop）も読み込んでおきます。extra = TRUE としておくと、使い情報を一緒に読み込むことができます。
+
+```{r cache = TRUE}
+df_pcap <- WDI(indicator = c(gdppcap = "NY.GDP.PCAP.PP.KD"), extra = TRUE)
+```
+
+Step 6. データをみてみます。
+
+```{r}
+head(df_pcap)
+```
+
+Step 7. データの列（columns、変数　variables）はどのようなものがあるかを表示します。
+
+```{r}
+str(df_pcap)
+```
+
+Step 8. 必要な列だけ取り出します。
+
+```{r}
+df_pcap <- df_pcap |> select(c(1,2,4,5,8,12))
+head(df_pcap)
+```
+
+Step 9. （ちょっと高度ですが）region, income, lending には、どのようなものがあるか、みてみます。
+
+```{r}
+df_pcap |> select(region, income) |> lapply(unique)
+```
+
+### 視覚化（Visualization）
+
+図 1. 世界の　GDP per Capita の推移（経年変化）を見てみます。
+
+```{r}
+COUNTRY <- "World"
+df_pcap |> filter(country == COUNTRY) |> drop_na(gdppcap) |>
+  ggplot(aes(year, gdppcap)) + geom_line() +
+  labs(title = "世界の一人当たりの GDP の平均の推移")
+```
+
+図 2. Low Income の 推移をみてみましょう。
+
+```{r}
+COUNTRY <- "Low income"
+df_pcap |> filter(country == COUNTRY) |> drop_na(gdppcap) |>
+  ggplot(aes(year, gdppcap)) + geom_line() +
+  labs(title = "低所得国の一人当たりの GDP の平均の推移")
+```
+
+図 3. Low Income の 推移を、１日あたりに変えてみてみましょう。
+
+```{r}
+COUNTRY <- "Low income"
+df_pcap |> filter(country == COUNTRY) |> drop_na(gdppcap) |>
+  ggplot(aes(year, gdppcap/365)) + geom_line() +
+  labs(title = "世界の１日一人当たりの GDP の平均の推移")
+```
+
+図 4. 2022年の、Low Income Country について、GDP per Capita の少ないから順に並べてみましょう。
+
+```{r eval = FALSE}
+df_pcap |> filter(year == 2022, region != "Aggregates") |> 
+  filter(income == "Low income") |>
+  drop_na(gdppcap) |> arrange(gdppcap)
+```
+
+図 5. 一人当たりのGDP の2022年の分布をみてみましょう。
+
+```{r}
+df_pcap |> filter(year == 2022, region != "Aggregates") |> drop_na(gdppcap) |> 
+  ggplot(aes(gdppcap)) + geom_histogram(binwidth = 10000) +
+  labs(title = "2022年の 一人当たりの GDP の国の分布")
+```
+
+図 6. 地域ごとに色分けしてみてみましょう。
+
+```{r}
+df_pcap |> filter(year == 2022, region != "Aggregates") |> 
+  drop_na(gdppcap) |> 
+  ggplot(aes(gdppcap, fill = region)) + 
+  geom_histogram(col = "black", linewidth = 0.2, binwidth = 10000) +
+  labs(title = "2022年の 一人当たりの GDP の国の分布", 
+       subtitle = "地域情報付き")
+```
+
+図 7. 箱ひげ図で見てみましょう。
+
+```{r}
+df_pcap |> filter(year == 2020) |> drop_na(gdppcap) |> 
+  filter(income != "Aggregates") |> 
+  ggplot(aes(gdppcap, factor(income, levels = c("High income", "Upper middle income", "Lower middle income", "Low income")), fill = income)) + geom_boxplot() + scale_x_log10() +
+  labs(y = "") +
+  theme(legend.position = "none") +
+  labs(title = "一人当たりの GDP の所得レベル毎の分布")
+```
+
+### 課題
+
+-   図1から図7 それぞれからどんなことが分かりましたか。
+
+-   図1から図7 でわからなかったことで、このデータから、どのようなことが知りたいですか。
+
+-   こんな図は、描けないかなどの提案はありますか。
+
+-   極度の貧困の人について知りたいときには、あとどのような情報が必要でしょうか。
