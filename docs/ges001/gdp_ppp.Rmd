@@ -1,5 +1,5 @@
 ---
-title: "GDP - 国内総生産"
+title: "極度に貧しい！？"
 date: "`r Sys.Date()`"
 output:
   html_notebook:
@@ -9,75 +9,106 @@ output:
     toc_float: yes
 ---
 
-# 一人当たりのGDP（購買力平価 PPP\$2017）
+> UNICEF [[Link](https://www.unicef.or.jp/kodomo/sdgs/17goals/1-poverty/)]
+>
+> 1.  世界では、六人に一人（3億5600万人）の子どもたちが「極度にまずしい」暮らしをしています。
+
+どのようなデータから、このようなことがわかるのでしょうか。まずは、極度の貧困とは、どのように定義しているのでしょうか。
+
+#### Fact Sheet: An Adjustment to Global Poverty Lines [[Link](https://www.worldbank.org/en/news/factsheet/2022/05/02/fact-sheet-an-adjustment-to-global-poverty-lines)]
+
+The World Bank updated the global poverty lines in September 2022. The decision, announced in May, follows the release in 2020 of new purchasing power parities (PPPs)---the main data used to convert different currencies into a common, comparable unit and account for price differences across countries. The new extreme poverty line of \$2.15 per person per day, which replaces the \$1.90 poverty line, is based on 2017 PPPs. Here you find more information about this change and what it means for measuring global poverty.
+
+世界銀行は2022年9月に世界の貧困ラインを更新した。5月に発表されたこの決定は、2020年に新購買力平価（PPP）が発表されたことを受けてのものである。新購買力平価（PPP）とは、さまざまな通貨を共通の比較可能な単位に変換し、貧困の範囲を説明するために使用される主要なデータである。国ごとの価格差。1.90ドルの貧困線に代わる、1人当たり1日当たり2.15ドルという新たな極度の貧困線は、2017年のPPPに基づいている。ここでは、この変化とそれが世界の貧困の測定に何を意味するかに関する詳細情報をご覧いただけます。
+
+そこで、この購買力平価（PPP: purchasing power parities）をまずは、調べてみましょう。国や、地域ごとの、GDP, PPP と言われるものと、それを、人口で割った、一人当たりの、GDP PPP と言われるものです。2017年を基準として、インフレ率を調整してあります。GDP は国内総生産（Gross Domestic Prodoct）の略で、何種類か計算方法がありますが、基本的な経済指標で、ドル換算されています。
+
+-   GDP, PPP (constant 2017 international \$): NY.GDP.MKTP.PP.KD
+-   GDP per capita, PPP (constant 2017 international \$): NY.GDP.PCAP.PP.KD
+
+GDP, PPP (constant 2017 international \$) とか、GDP per capita, PPP (constant 2017 international \$) を、指標名（Indicator Name）といい、NY.GDP.MKTP.PP.KD とか、NY.GDP.PCAP.PP.KD を、指標コード（Indicator Code）と言います。後者を、WDI（世界開発指標、World Development Indicator）と呼ぶこともあります。
 
 ### 準備
 
-Step 1. Install packages if necessary.
+Step 1. （R に機能を付け加える）パッケージのインストール（最初だけ）
 
 ```{r eval = FALSE}
 install.packages("tidyverse")
 install.packages("WDI")
 ```
 
-Step 2. Load packages.
+Step 2. パッケージを使えるように読み込みます。
 
 ```{r}
 library(tidyverse)
 library(WDI)
 ```
 
-Step 3. Create a data directory for the first time.
+Step 3. データを保存するための data という名前のディレクトリ（フォルダー）を作成します。（最初だけ）
 
 ```{r create-dirs}
 dir.create("data")
 ```
 
-Step 4. Set 'System Language' to be English, recommended.
+Step 4. エラーが生じた時に、調べやすいので、'システム言語（System Language）' を英語にしておきます。（最初だけ）
 
 ```{r eval = FALSE}
 Sys.setenv(LANG = "en")
 ```
 
-## GDP and GDP per Capita
+Step 5. データを読み込みます。WDI パッケージをつかうと、簡単に、データを読み込むことができます。わかりやすい名前（gdp、gdppcap）をつけ、人口（pop）も読み込んでおきます。extra = TRUE としておくと、使い情報を一緒に読み込むことができます。（すでに、data に、gdppcap.csv というのがあるときは、Step 5, Step 6 はスキップして、Step 7 だけを実行します。）
 
-1.  GDP, PPP (constant 2017 international \$): NY.GDP.MKTP.PP.KD
-
-2.  Population, total: SP.POP.TOTL
-
-3.  Calculate GDP per Capita
-
-    -   GDP per capita, PPP (constant 2017 international \$): NY.GDP.PCAP.PP.KD
-
--   GDP, PPP (constant 2017 international \$) PPP GDP is gross domestic product converted to international dollars using purchasing power parity rates. An international dollar has the same purchasing power over GDP as the U.S. dollar has in the United States. GDP is the sum of gross value added by all resident producers in the country plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in constant 2017 international dollars. ID: NY.GDP.MKTP.PP.KD
-
--   Population, total Total population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship. The values shown are midyear estimates. ID: SP.POP.TOTL
-
-```{r cache = TRUE}
+```{r cache = TRUE, eval = FALSE}
 df_gdppcap <- WDI(indicator = c(gdp = "NY.GDP.MKTP.PP.KD", pop = "SP.POP.TOTL", gdppcap = "NY.GDP.PCAP.PP.KD"), extra = TRUE)
 ```
 
-```{rE}
+Step 6. 何度も読み込むのは、時間もかかりますから、最初に作った、data という、ディレクトリー（フォルダ）に保存しておきます。（すでに、data に、gdppcap.csv というのがあるときは、Step 5, Step 6 はスキップして、Step 7 だけを実行します。）
+
+```{r eval = FALSE}
 write_csv(df_gdppcap, "data/gdppcap.csv")
 ```
+
+Step 7. 保存したものを読み込みます。（すでに、data に、gdppcap.csv というのがあるときは、Step 5, Step 6 はスキップして、Step 7 だけを実行します。）
 
 ```{r}
 df_gdppcap <- read_csv("data/gdppcap.csv")
 ```
 
+Step 8. データの最初の６行（rows）をみてみます。
+
+```{r}
+head(df_gdppcap)
+```
+
+Step 9. データの列（columns、変数　variables）はどのようなものがあるかを表示します。
+
 ```{r}
 str(df_gdppcap)
 ```
+
+Step 10. （ちょっと高度ですが）region, income, lending には、どのようなものがあるか、みてみます。
 
 ```{r}
 df_gdppcap |> select(region, income, lending) |> lapply(unique)
 ```
 
+Step 11. 世界の　GDP の推移（経年変化）を見てみます。
+
 ```{r}
 COUNTRY <- "World"
-df_gdppcap |> filter(country == COUNTRY) |>
+df_gdppcap |> filter(country == COUNTRY) |> drop_na(gdppcap) |>
+  ggplot(aes(year, gdp)) + geom_line()
+```
+
+Step 12. 世界の　GDP per Capita の推移（経年変化）を見てみます。
+
+```{r}
+COUNTRY <- "World"
+df_gdppcap |> filter(country == COUNTRY) |> drop_na(gdppcap) |>
   ggplot(aes(year, gdppcap)) + geom_line()
 ```
+
+Step 13. 人口の推移（経年変化）もみてみましょう。
 
 ```{r}
 COUNTRY <- "World"
@@ -85,92 +116,38 @@ df_gdppcap |> filter(country == COUNTRY) |>
   ggplot(aes(year, pop)) + geom_line()
 ```
 
-#### Exercise.
+Step 14. 2022年の、GDP の多い国から順に並べてみましょう。
 
-Write your observations and questions.
-
--   GDP chart looks simiar to GDPPerCapit.
-
-### GDP Per Capita
-
-```{r}
-df_gdppcap2 <- df_gdppcap |> drop_na(pop) |> 
-  mutate(PCAP = gdp/pop, .after = gdppcap)
-```
-
-```{r}
-df_gdppcap2
-```
-
-#### Check against GDP per capita, PPP
-
-```{r}
-df_gdppcap2 |> drop_na(gdppcap, PCAP) |> mutate(near = near(gdppcap, PCAP)) |> 
-  summarize(numberofdata = n(), sum(near))
-```
-
-```{r}
-df_gdppcap2 |> filter(!near(gdppcap, PCAP))
-```
-
-```{r}
-df_gdppcap2 |> filter(!near(gdppcap, PCAP)) |> distinct(country) |> pull()
-```
-
-#### Exercise.
-
-Write your observations and questions.
-
--   
-
-### Visualization
-
-Two useful questions.
-
-1.  What type of **variation** occurs **within** my variables?
-
-2.  What type of **covariation** occurs **between** my variables?
-
-See [Link](https://posit.cloud/learn/primers/3.1).
-
-#### Ranks.
-
-`arrange(desc(gdp))` is to reorder in descending order of `gdp,` `arrange(gdp)` in ascending order.
+`arrange(desc(gdp))` とすると、大きい順`,` `arrange(gdp)` とすると小さい順に並びます。
 
 ```{r}
 df_gdppcap |> filter(year == 2022, region != "Aggregates") |> 
   drop_na(gdp) |> arrange(desc(gdp))
 ```
 
-#### Exercises.
-
-1.  Find the top 10 of the countries with the highest GDP per capita.
+Step 15. 2022年の、GDP per Capita の多い国から順に並べてみましょう。
 
 ```{r eval = FALSE}
 df_gdppcap |> filter(year == 2022, region != "Aggregates") |> 
   drop_na(gdppcap) |> arrange(desc(gdppcap))
 ```
 
-1.  Find the top 10 of the countries with the lowest GDP per capita.
+Step 16. 2022年の、Population（人口） の多い国から順に並べてみましょう。
 
-```{r eval = FALSE}
+```{r}
 df_gdppcap |> filter(year == 2022, region != "Aggregates") |> 
-  drop_na(gdppcap) |> arrange(gdppcap)
+  drop_na(pop) |> arrange(desc(pop))
 ```
 
-1.  Find the top 10 of the countries with the largest population.
-
-2.  Find the top 10 of the countries with the smallest population.
-
-#### Scatter Plot
-
-What type of **covariation** occurs **between** my variables?
+Step 17. 2022年の、GDP と Population（人口） の関係性を、散布図（Scatter Plot）で見てみましょう。
 
 ```{r}
 df_gdppcap2 |> filter(year == 2022, region !="Aggregates") |> 
   drop_na(gdp, pop) |> 
   ggplot(aes(pop, gdp)) + geom_point()
 ```
+
+Step 18. 左横に固まっていましたから、対数表示にしてみます。
 
 ```{r}
 df_gdppcap2 |> filter(year == 2022, region !="Aggregates") |> 
