@@ -5,6 +5,8 @@ date: "`r Sys.Date()`"
 output:
   html_document:
     df_print: paged
+    toc: yes
+    toc_float: yes
 ---
 
 ## Rでデータサイエンス
@@ -291,7 +293,7 @@ Moodle 内の、課題・質問提出ボックスに、提出してください�
 
     -   少しずつ書いているデジタルブックです。私の[ホームページ](https://icu-hsuzuki.github.io/science/computer/learning/ds.html)には、このデジタルブックへのリンクとともに、他の授業で話した時の資料もあります。
 
-2.  H. Wickham. *R for Data Science (2e)*, [[Link](https://r4ds.hadley.nz)]・[O'Railly]. 標準的な教科書。[[第1版](https://r4ds.had.co.nz/)] の日本語版は、[書籍](https://www.amazon.co.jp/Rではじめるデータサイエンス-Hadley-Wickham/dp/487311814X)としても最近出版されました。
+2.  H. Wickham. *R for Data Science (2e)*, [[Link](https://r4ds.hadley.nz)]・[[O'REILLY](https://www.oreilly.com/library/view/r-for-data/9781492097396/)]. 標準的な教科書。[[第1版](https://r4ds.had.co.nz/)] の日本語版は、[書籍](https://www.amazon.co.jp/Rではじめるデータサイエンス-Hadley-Wickham/dp/487311814X)としても最近出版されました。
 
 3.  Bookdown: デジタルブックの出版形式の一つですが、Archive も含めると、膨大なデジタルブックが、無償で提供されています。[[Link](https://bookdown.org)] [[Archive Link](https://bookdown.org/home/archive/)]
 
