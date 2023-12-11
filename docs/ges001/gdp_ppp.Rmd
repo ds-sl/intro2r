@@ -4,9 +4,9 @@ date: "`r Sys.Date()`"
 output:
   html_notebook:
     df_print: paged
-    number_sections: yes
-    toc: yes
-    toc_float: yes
+#    number_sections: yes
+#    toc: yes
+#    toc_float: yes
 ---
 
 > UNICEF [[Link](https://www.unicef.or.jp/kodomo/sdgs/17goals/1-poverty/)]
@@ -156,24 +156,24 @@ df_gdppcap2 |> filter(year == 2022, region !="Aggregates") |>
   scale_x_log10() + scale_y_log10()
 ```
 
+Step 19. 直線的に増加しているように、見えますから、近似直線（回帰直線といいます）を描いてみます。
+
 ```{r}
 df_gdppcap2 |> filter(year == 2022, region !="Aggregates") |> 
   drop_na(gdp, pop) |> 
   ggplot(aes(pop, gdp)) + geom_point() + 
-  geom_smooth(method = "lm", se = FALSE) +
+  geom_smooth(method = "lm", formula = 'y ~ x', se = FALSE) +
   scale_x_log10() + scale_y_log10()
 ```
+
+Step 20. 直線の方程式（Coefficients）や、どのぐらい、当てはまっているか（Residual R-squared）もみることができます。
 
 ```{r}
 df_gdppcap2 |> filter(year == 2022, region !="Aggregates") |> 
   drop_na(gdp, pop) |> lm(log10(gdp) ~ log10(pop), data = _) |> summary()
 ```
 
-```{r}
-df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |> drop_na(gdp, pop) |> 
-  ggplot(aes(pop, gdp, color = region)) + geom_point() + 
-  scale_x_log10() + scale_y_log10()
-```
+Step 21. 地域や、収入レベルも色や、形で表示することが可能です。
 
 ```{r}
 df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |> 
@@ -182,6 +182,8 @@ df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |>
   scale_x_log10() + scale_y_log10()
 ```
 
+Step 22. これは、一人当たりの GDP を地域と、人口の情報も入れて表示したものです。
+
 ```{r}
 df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |> 
   drop_na(gdp, gdppcap, pop) |> 
@@ -189,11 +191,15 @@ df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |>
   scale_x_log10() + scale_y_log10()
 ```
 
+Step 23. 他のパッケージを使うと、対話型のグラフを作成することも可能です。
+
 ```{r}
 install.packages("plotly")
 ```
 
-```{r eval = FALSE}
+Step 23. これは、一人当たりの GDP を地域と、人口の情報も入れて表示したものです。
+
+```{r}
 library(plotly)
 test <- df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |> drop_na(gdp, pop) |> 
   ggplot(aes(color = country, shape = region, pop, gdp)) + geom_point() + 
@@ -201,198 +207,26 @@ test <- df_gdppcap2 |> filter(year == 2020, region !="Aggregates") |> drop_na(gd
 test |> ggplotly()
 ```
 
-# Exploratory Data Analysis (EDA)
-
-![*The image above is from [R4DS(2e)](https://r4ds.hadley.nz) by Hadley Wickham, Mine Çetinkaya-Rundel and Garrett Grolemund*](data/data-science.png)
-
-**EDA** is an iterative cycle that helps you understand what your data says. When you do EDA, you:
-
-1.  Generate questions about your data
-
-2.  Search for answers by visualising, transforming, and/or modeling your data
-
-3.  Use what you learn to refine your questions and/or generate new questions
-
-EDA is an important part of any data analysis. You can use EDA to make discoveries about the world; or you can use EDA to ensure the quality of your data, asking questions about whether the data meets your standards or not. (Posit Primers: [EDA](https://posit.cloud/learn/primers/3.1))
-
-## GDP and GDP per Capita
-
-1.  GDP, PPP (constant 2017 international \$): NY.GDP.MKTP.PP.KD
-
-2.  Population, total: SP.POP.TOTL
-
-3.  Calculate GDP per Capita
-
-    -   GDP per capita, PPP (constant 2017 international \$): NY.GDP.PCAP.PP.KD
-
--   GDP, PPP (constant 2017 international \$) PPP GDP is gross domestic product converted to international dollars using purchasing power parity rates. An international dollar has the same purchasing power over GDP as the U.S. dollar has in the United States. GDP is the sum of gross value added by all resident producers in the country plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in constant 2017 international dollars. ID: NY.GDP.MKTP.PP.KD
-
--   Population, total Total population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship. The values shown are midyear estimates. ID: SP.POP.TOTL
-
-```{r cache = TRUE}
-df_gdppcap <- WDI(indicator = c(gdp = "NY.GDP.MKTP.PP.KD", pop = "SP.POP.TOTL", gdppcap = "NY.GDP.PCAP.PP.KD"), extra = TRUE)
-```
-
-```{r}
-write_csv(df_gdppcap, "data/gdppcap.csv")
-```
-
-```{r}
-df_gdppcap <- read_csv("data/gdppcap.csv")
-```
-
-```{r}
-str(df_gdppcap)
-```
-
-```{r}
-df_gdppcap |> select(region, income, lending) |> lapply(unique)
-```
-
-```{r}
-COUNTRY <- "World"
-df_gdppcap |> filter(country == COUNTRY) |>
-  ggplot(aes(year, gdppcap)) + geom_line()
-```
-
-```{r}
-COUNTRY <- "World"
-df_gdppcap |> filter(country == COUNTRY) |>
-  ggplot(aes(year, pop)) + geom_line()
-```
-
-#### Exercise.
-
-Write your observations and questions.
-
-### Visualization
-
-Two useful questions.
-
-1.  What type of **variation** occurs **within** my variables?
-
-2.  What type of **covariation** occurs **between** my variables?
-
-See [Link](https://posit.cloud/learn/primers/3.1).
-
-#### Ranks.
-
-`arrange(desc(gdp))` is to reorder in descending order of `gdp,` `arrange(gdp)` in ascending order.
-
-```{r}
-df_gdppcap |> filter(year == 2022, region != "Aggregates") |> 
-  drop_na(gdp) |> arrange(desc(gdp))
-```
-
-#### Exercises.
-
-1.  Find the top 10 of the countries with the highest GDP per capita.
-
-2.  Find the top 10 of the countries with the lowest GDP per capita.
-
-3.  Find the top 10 of the countries with the largest population.
-
-4.  Find the top 10 of the countries with the smallest population.
-
-#### Variation 1. Histogram
-
-Histogram Video in Posit Primers: [Link](https://vimeo.com/221607341)
-
-```{r}
-df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(gdp) |> 
-  ggplot(aes(gdp)) + geom_histogram()
-```
-
-```{r}
-df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(gdppcap) |> 
-  ggplot(aes(gdppcap)) + geom_histogram()
-```
-
-```{r}
-df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(gdp) |> 
-  ggplot(aes(gdp)) + geom_histogram() + scale_x_log10()
-```
-
-#### Exercises.
-
-1.  Change bins, i.e., `geom_histogram(bins = 20)`, etc.
-
-```{r}
-df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(gdp) |> 
-  ggplot(aes(gdp)) + geom_histogram(bins = 20) + scale_x_log10()
-```
+Step 24. 一人当たりのGDP の2022年の分布をみてみましょう。
 
 ```{r}
 df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(gdppcap) |> 
   ggplot(aes(gdppcap)) + geom_histogram(binwidth = 10000)
 ```
 
-2.  Create a similar histogram of gdppcap by using `scale_x_log10()` and adjust the number of bins.
+Step 25. 対数表示にするとどうなるでううか。
 
 ```{r}
 df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(gdppcap) |> 
   ggplot(aes(gdppcap)) + geom_histogram(bins = 10) + scale_x_log10()
 ```
 
-3.  Create a similar histogram for population.
-
-```{r}
-df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(pop) |> 
-  ggplot(aes(pop)) + geom_histogram(bins = 20) + scale_x_log10()
-```
-
-4.  Write your observations and comments.
-
-#### Extra.
-
-```{r}
-df_gdppcap |> filter(year == 2022,region != "Aggregates") |> drop_na(pop) |> 
-  group_by(region) |> 
-  ggplot(aes(pop, fill = region)) + geom_histogram(col = "black", linewidth = 0.2) + scale_x_log10()
-```
-
-```{r}
-df_gdppcap |> filter(year == 2022, region != "Aggregates") |> drop_na(pop) |> 
-  group_by(region) |> 
-  ggplot(aes(pop, fill = income)) + geom_histogram(col = "black", linewidth = 0.2) + scale_x_log10()
-```
-
-World by Income and Region: [[Link](https://datatopics.worldbank.org/world-development-indicators/the-world-by-income-and-region.html)]
-
-#### Variation 2. Boxplot
-
-Boxplot Video in Posit Primers: [Link](https://vimeo.com/222358034)
-
-```{r}
-df_gdppcap2 |> filter(year %in% c(1990,2000, 2010, 2020)) |> drop_na(gdppcap) |> 
-  ggplot(aes(gdppcap, factor(year))) + geom_boxplot() + scale_x_log10()
-```
-
-```{r}
-df_gdppcap2 |> filter(year %in% c(1990,2000, 2010, 2020)) |> drop_na(gdppcap) |> 
-  ggplot(aes(gdppcap, factor(year))) + geom_boxplot() + scale_x_log10() +
-  labs(title = "Distribution of the GDP per Capita of Countries", subtitle = "Year 1990, 2000, 2010, 2020", 
-       y = "Year", x = "GDP per capita in log10 scale")
-```
-
-```{r}
-df_gdppcap2 |> filter(year == 2020) |> drop_na(gdppcap) |> 
-  filter(income != "Aggregates") |> 
-  ggplot(aes(gdppcap, income, fill = income)) + geom_boxplot() + scale_x_log10() +
-  theme(legend.position = "none")
-```
+Step 26. 箱ひげ図で見てみましょう。
 
 ```{r}
 df_gdppcap2 |> filter(year == 2020) |> drop_na(gdppcap) |> 
   filter(income != "Aggregates") |> 
   ggplot(aes(gdppcap, factor(income, levels = c("High income", "Upper middle income", "Lower middle income", "Low income")), fill = income)) + geom_boxplot() + scale_x_log10() +
   labs(y = "") +
-  theme(legend.position = "none")
-```
-
-```{r}
-df_gdppcap2 |> filter(year == 2020) |> drop_na(gdp) |> 
-  filter(income != "Aggregates") |> 
-  ggplot(aes(gdp, region, fill = region)) + geom_boxplot() + scale_x_log10() +
   theme(legend.position = "none")
 ```
