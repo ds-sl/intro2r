@@ -1,0 +1,148 @@
+---
+title: "Data Analysis for Researchers"
+author: "Hiroshi Suzuki"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    df_print: paged
+    toc: yes
+    toc_float: yes
+---
+
+## Week 1 (2023/12/13) 
+
+Only Part II.
+
+-   R and RStudio
+
+-   PositCloud
+
+-   Installation of R and RStudio
+
+## Week 2 (2023/12/20) 
+
+Exploratory Data Analysis I
+
+-   Introduction to EDA
+
+-   Introduction to WDI
+
+-   Basics
+
+-   WDI
+
+-   dplyr
+
+    -   filter
+
+    -   drop_na
+
+-   ggplot2
+
+    -   Line Graph
+
+    -   Histogram
+
+    -   Boxplot
+
+## Week 3 (2024/01/10) 
+
+Exploratory Data Analysis II
+
+-   WDI search
+
+-   WDI more than one indicator, extra = TRUE
+
+-   dplyr
+
+    -   select
+
+    -   group_by
+
+    -   summarize
+
+-   ggplot2
+
+    -   scatter plot
+
+    -   bar plot and column plot
+
+    -   histogram with colors
+
+    -   smooth plot
+
+## Week 4 (2024/01/17) 
+
+Exploratory Data Analysis III
+
+-   readr, readxl
+
+-   tidyr
+
+    -   pivot_longer
+
+    -   pivot_wider
+
+-   ggplot2
+
+    -   map
+
+    -   labs
+
+    -   theme
+
+-   model
+
+## Week 5 (2024/01/24) 
+
+Exploratory Data Analysis IV
+
+-   dplyr
+
+    -   two tables verbs
+
+## Week 6 (2024/01/31)
+
+Exploratory Data Analysis V
+
+-   Examples of EDA
+
+## Week 7 (2024/02/07)  
+
+Professor Taisei Kaizoji
+
+Data Analysis Project 1
+
+## Week 8 (2024/02/14)  
+
+Professor Taisei Kaizoji
+
+Data Analysis Project 2
+
+## Week 9 (2024/02/21)  
+
+Professor Taisei Kaizoji
+
+Data Analysis Project 3
+
+## Week 10 (2024/02/28)  
+
+Student Presentations
+
+## References
+
+1.  Data Analysis for Researchers. [[Link](https://icu-hsuzuki.github.io/da4r/)]
+
+2.  H. Wickham. *R for Data Science (2e)*. [[Link](https://r4ds.hadley.nz)]・[[O'REILLY](https://www.oreilly.com/library/view/r-for-data/9781492097396/)].
+
+    -   Standard Textbook, revised from the first edition in 2023. [[1e](https://r4ds.had.co.nz/)]
+
+3.  Bookdown. [[Link](https://bookdown.org)] [[Archive Link](https://bookdown.org/home/archive/)]
+
+4.  Y. Xie et al. *R Markdown Cookbook.* [[Link](https://bookdown.org/yihui/rmarkdown/)]
+
+5.  Posit Primers.（The Basics, Work with Data, Visualize Data, Tidy Your Data, R Reproducibly. [[Link](https://posit.cloud/learn/primers)]
+
+6.  Cheat Sheet. [[Site Link](https://rstudio.github.io/cheatsheets/)]
+
+7.  Posit Cloud. [[Link](https://posit.cloud)] [[Shared Link](https://posit.cloud/content/5539763)] [[Posit Cloud Guide Link](https://posit.cloud/learn/guide)]
