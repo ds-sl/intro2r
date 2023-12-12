@@ -1,0 +1,75 @@
+---
+title: "Data Analysis for Researchers 2023, Week 1"
+author: "Hiroshi Suzuki"
+date: "2023/12/12"
+output:
+  html_notebook: default
+  html_document:
+    df_print: paged
+  ioslides_presentation:
+    widescreen: yes
+---
+
+## R and RStudio
+
+-   About R and RStudio [[Link](https://icu-hsuzuki.github.io/da4r/randrstudio.html#randrstudio)]
+
+    -   R is a programming language and free software environment for statistical computing and graphics.
+
+    -   RStudio is an integrated development environment, or IDE, for R programming.
+
+-   Three ways to use R and RStudio
+
+    1.  Install R and RStudio into your computer.
+
+    2.  Use PositCloud
+
+    3.  Use PC at ILC102 and upload files to a PositCloud project or Google Drive, etc.
+
+## PositCloud
+
+-   About PositCloud [[Link](https://icu-hsuzuki.github.io/da4r/randrstudio.html#cloud-free)]
+-   PositCloud [[Link](https://posit.cloud/)]
+    -   Sign Up (by Google)
+    -   New Project
+-   Shared Project [[Link](#0)]
+    -   TEMPORARY COPY \> Save a Permanent Copy
+
+    -   RNotebook
+-   Posit Primers [[Link](https://posit.cloud/learn/primers)]
+
+## Installation of R and RStudio
+
+1.  If installed, check your R version with R.version.string ("R version 4.3.2 (2023-10-31)", and About RStudio (2023.09.1+494).
+
+2.  Go to RStudio IDE site [[Link](https://posit.co/download/rstudio-desktop/)], and install both R and RStudio.
+
+3.  Check by the following:
+
+    1.  Install Packages: tidyverse, WDI, rmarkdown, tinytex
+
+        -   If not successful, check Tools \> Global Options \> Packages \> Set the Primary CRAN Repository to be one in Tokyo.
+
+    2.  New Project
+
+    3.  RNotebook
+
+        -   Preview, Word, PDF
+
+## Refereces
+
+1.  Data Analysis for Researchers. [[Link](https://icu-hsuzuki.github.io/da4r/)]
+
+2.  H. Wickham. *R for Data Science (2e)*. [[Link](https://r4ds.hadley.nz)]・[[O'REILLY](https://www.oreilly.com/library/view/r-for-data/9781492097396/)].
+
+    -   Standard Textbook, revised from the first edition in 2023. [[1e](https://r4ds.had.co.nz/)]
+
+3.  Bookdown. [[Link](https://bookdown.org)] [[Archive Link](https://bookdown.org/home/archive/)]
+
+4.  Y. Xie et al. *R Markdown Cookbook.* [[Link](https://bookdown.org/yihui/rmarkdown/)]
+
+5.  Posit Primers.（The Basics, Work with Data, Visualize Data, Tidy Your Data, R Reproducibly. [[Link](https://posit.cloud/learn/primers)]
+
+6.  Cheat Sheet. [[Site Link](https://rstudio.github.io/cheatsheets/)]
+
+7.  Posit Cloud. [[Link](https://posit.cloud)] [[Shared Link](https://posit.cloud/content/5539763)] [[Posit Cloud Guide Link](https://posit.cloud/learn/guide)]
