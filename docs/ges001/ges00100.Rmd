@@ -1,11 +1,11 @@
 ---
 title: "GES 001 演習1"
 author: "H. Suzuki"
-date: "`r Sys.Date()`"
+date: "2023年12月12日`"
 output:
+  html_notebook: default
   ioslides_presentation: 
     widescreen: yes
-  html_notebook: default
 ---
 
 ## 第1週
@@ -24,9 +24,9 @@ output:
 
 1.  数学
 
-2.  データサイエンス・AI
+2.  データサイエンス・AI [[Link](https://icu-hsuzuki.github.io/science/computer/learning/ds.html)]
 
-3.  ボランティア（児童養護施設・障害者就労支援施設）
+3.  ボランティア（児童養護施設・障害者就労支援施設など）
 
 4.  聖書の会・聖書通読の会
 
@@ -36,7 +36,7 @@ output:
 
 ### あなたの思考のもととなっているものは、データと合っていますか
 
-Videos: Let my dataset change your mindset: [[Link](https://www.ted.com/talks/hans_rosling_let_my_dataset_change_your_mindset)] - Hans Rosling ハンス・ロスリング
+Video: Let my dataset change your mindset by Hans Rosling ハンス・ロスリング　[[Link](https://www.ted.com/talks/hans_rosling_let_my_dataset_change_your_mindset)]
 
 -   「ファクトフルネス〜10の思い込みを乗り越え、データを基に世界を正しく見る習慣〜」ハンス・ロスリング、オーラ・ロスリング、アンナ・ロスリング・ロランド著、日経BP社
     -   "Factfulness" by Hans Rosling
@@ -45,7 +45,7 @@ Videos: Let my dataset change your mindset: [[Link](https://www.ted.com/talks/ha
 
 ## Gapminder [[Link](https://www.gapminder.org)]
 
--   データを視覚化つーるでみてみよう
+-   データを視覚化ツールでみてみよう
 
     -   Bubble Chart 拡張散布図のアニメーションなど
 
@@ -55,21 +55,62 @@ Videos: Let my dataset change your mindset: [[Link](https://www.ted.com/talks/ha
 
     -   変化する世界を理解する Upgrade Your Worldview
 
--   実際にどのような生活をしているの Dollar Street
+-   実際の生活は？ Dollar Street
+
+## R と RStudio
+
+三通りの方法があります。その場に応じて、上手に使い分けてください。
+
+1.  自分のPC に、R と RStudio（両方とも必要です）をインストールして使う。
+
+2.  PositCloud（クラウド上に最新のRとRStudio を提供）
+
+    -   無償版は機能限定ですが、簡単なことには使えます。
+
+    -   演習で活用するファイルを私の公開サイトで提供します。
+
+3.  教室のPCの R と RStudio
+
+    -   インストールされていますから、すぐ使えます。
+
+    -   ログアウトすると、ファイルは消去されます。必ず、PositCloud の自分のプロジェクト、または、Google Drive などに保存してください。
 
 ## PositCloud
 
--   PositCloud
-    -   使ってみよう [[Link](https://icu-hsuzuki.github.io/ds4aj/ronrstudio.html#positcloud)]
+-   PositCloud [[Link](https://posit.cloud/)]
+    -   使ってみよう（PositCloud について） [[Link](https://icu-hsuzuki.github.io/ds4aj/ronrstudio.html#positcloud)]
+
+        -   アカウントの作成（Sign Up）
+
+        -   パッケージのインストール（tidyverse, WDI）
+
+        -   RNotebook の使い方: 作成・保存・実行（Run）方法・コードチャンク
 
     -   公開プロジェクト [[Link](https://posit.cloud/content/5539763)]
+
+        -   TEMPORARY COPY \> Save a Permanent Copy
 
         -   極度に貧しい！？ [[Link](https://ds-sl.github.io/intro2r/ges001/poverty.nb.html)]
 
     -   Posit Primers [[Link](https://posit.cloud/learn/primers)]
--   R と RStudio
-    -   インストレーションの手引き [[Link](https://icu-hsuzuki.github.io/ds4aj/ronrstudio.html#ronrstudio)]
+
+## R と RStudio
+
+Rは、データ分析のために開発されたプログラム言語で、RStudio は、R （等）を使いやすくする、統合開発環境（IDE）で、両方とも、インストールが必要です。
+
+二年前に、会社名が、RStudio から、Posit と変更になりました。
+
+-   The R Project for Statistical Computing [[Link](https://www.r-project.org)]
+    -   最新は、R version 4.3.2 (2023-10-03)：R.version.string で確認
+-   Download RStudio Desktop [[Link](https://posit.co/download/rstudio-desktop/)] 現在は、バージョン2023.09.1+494
+-   インストレーションの手引き [[Link](https://icu-hsuzuki.github.io/ds4aj/ronrstudio.html#ronrstudio)]
+-   確認
+    -   Top Menu \> Tools \>Global Options \> Packages \> Primary CRAN Repository
+    -   パッケージのインストール
+    -   RNotebook でチェック
 
 ## 参考文献
 
 -   [[Link](index.html#references)]
+
+-   データサイエンスを学びませんか・データサイエンス教育 [[Link](https://icu-hsuzuki.github.io/science/computer/learning/ds.html)]

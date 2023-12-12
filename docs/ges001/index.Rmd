@@ -47,7 +47,7 @@ output:
 
 12/12(TU)　Rでデータサイエンス１：導入 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00100.html)]・[[RNotebook](https://ds-sl.github.io/intro2r/ges001/ges00100.nb.html)]
 
-変更期間です。次週から参加する学生がいることを想定する必要があります。RとRStudioのインストールやRを使うことのメリット、Rの簡単な使い方など。GDPを例にする。（ECO101の鈴木先生にRコード）。
+変更期間です。次週から参加する学生がいることを想定する必要があります。RとRStudioのインストールやRを使うことのメリット、Rの簡単な使い方など。
 
 ### 第2週
 
