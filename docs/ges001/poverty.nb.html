@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2023-12-11" />
+<meta name="date" content="2023-12-13" />
 
 <title>極度に貧しい！？</title>
 
@@ -1748,7 +1748,7 @@ display: none;
 
 
 <h1 class="title toc-ignore">極度に貧しい！？</h1>
-<h4 class="date">2023-12-11</h4>
+<h4 class="date">2023-12-13</h4>
 
 </div>
 
@@ -1803,11 +1803,17 @@ install.packages(&#39;showtext&#39;)</code></pre>
 <p>Step 2. パッケージを使えるように読み込みます。</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KFdESSlcbmxpYnJhcnkoc2hvd3RleHQpXG5zaG93dGV4dF9hdXRvKEZBTFNFKVxuIyBzaG93dGV4dF9hdXRvKCkgIyBmb3IgV29yZCByZW1vdmUgIyBcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KFdESSlcbmxpYnJhcnkoc2hvd3RleHQpXG5gYGAifQ== -->
 <pre class="r"><code>library(tidyverse)
 library(WDI)
-library(showtext)
-showtext_auto(FALSE)
+library(showtext)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBzeXNmb250c1xuTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBzaG93dGV4dGRiXG4ifQ== -->
+<pre><code>Loading required package: sysfonts
+Loading required package: showtextdb</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2hvd3RleHRfYXV0byhGQUxTRSlcbiMgc2hvd3RleHRfYXV0bygpICMgZm9yIFdvcmQgcmVtb3ZlICMgXG5gYGAifQ== -->
+<pre class="r"><code>showtext_auto(FALSE)
 # showtext_auto() # for Word remove # </code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
@@ -1850,7 +1856,7 @@ pop）をつけ、人口（pop）も読み込んでおきます。extra = TRUE
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaGVhZChkZl9wY2FwKVxuYGBgIn0= -->
 <pre class="r"><code>head(df_pcap)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibnJvdyI6NiwibmNvbCI6MTMsInN1bW1hcnkiOnsiRGVzY3JpcHRpb24iOlsiZGYgWzYgw5cgMTNdIl19fSwicmRmIjoiSDRzSUFBQUFBQUFBQTdWVXkwNkRRQlNkMGdJV1V6WHhCOXk2Z0xSVXE2NlV4TlFZWGZsSTNJNUE2VVNjSVRDa2RxV2ZZdndWWDUvUUR6Qng3UmRVTHkyalpUYWEyaTV1N21QbVBzNkJ1U2Y3RjAzandrQUlsVkdsWEVKbEZVeWtucCsxelcyRUtnbzRKVlJCMVV6ZndLVlZNR29nS3lCYWZyRG9kSUl1cGlUaG1NNDdWT3lzT08wcHJHS05zdE0rbU5ZY2M2RWhwTCtDUElLOGdEeURQSUc4d2RsU2RuNzdrWkdxUC95bTkrNTNCOFAxd2JzMElmcXpMdVlaZHQxdW1vMjZhYmZtR0pGNm5yS1VkOWVjaE9BNVJvbzkxU044bVliL2Q0cFY5ZGFPMWRocU5XYnBTaDJhRzlhbWJXL1AwcFcreGpIcnJSSHFzbXQvamhIcFBSM3VPOU9heFlXalVuenRKM241bWtEcXNwVHl1Qy91a0lUWjdvVFRGRTZsNytOWUpBVmVGTGs0eWwwTlZnbFBFN0ZmUXB6d05QSXc5ejF4SWZZRHd1aDNTeHdSanNYZlVnMFpEUWhQUGNIRlFvajVwSzhWbU5KRG4zcUVCaEs0YXN4NmxnQ1liUkhsYnZ5Q05aa0ZGK1lUTElpZ0FkTmlxeFBqRWYxREtVVm5FWWZ4SVVuSjlyVXFKWmRpS2JDYzBtd1N6M1M3S2IweXQ3SUdvK094MUhLdFRkaTFjVXZsTXkrbEN1dytjRU1GZGpYRWw3N2diUWtRandCYlVVd29GMGdnbWxpYy9mQnJ1Q3dVa1JFMk5Qd0NxRnhsSDZZR0FBQT0ifQ== -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibnJvdyI6NiwibmNvbCI6MTMsInN1bW1hcnkiOnsiRGVzY3JpcHRpb24iOlsiZGYgWzYgw5cgMTNdIl19fSwicmRmIjoiSDRzSUFBQUFBQUFBQTdWVXkwNkRRQlFkYVFHTHFacjRBMjVkUUN4bzFaV1NtQnFqS3g5SnQxT2dkQ0xPRUJoU1hlbW5HSC9GMXlmNEFTYXUvWUxxcFdXMHpFWlQyOFhOZmN6Y3h6a3c5MlMvN1JodEF5RlVRZFdLZ2lvcW1FZzlQMnVaMndoVkZYRG1VQlhWY24wRmwxYkFxSU1zZzJqRndZTGJEWHVZa3BSak91dFF1YlBpdGlhd3lqVXFidXRnVW5QRWhZYVEvZ0x5QVBJTThnVHlDUElHWjR2NStjMUhUcXArLzV2ZXU5dDlIYXk5dmtzVG9qL3JjcDVocjl1TzJWZzM3ZVlNSTFMUFU1YngzcXFiRWp6RFNMbW5lb1E3V2ZSL3AxeFZiKzVZamExbVk1cXUxTUhac0RadGUzdWFydlExamxsL2xWQ1BYUVl6akVqdjZYRGZuZFFzTHh5VjRzc2dMY3JYQlZLUFpaUW4xK0lPU1pudGpUbU9jS3JYQVU1RVV1akhzWWZqd3RWZ2xmQXNGZnNsd2luUFloL3p3QmNYa2lBa2pINjN4REhoV1B3dHRZalJrUERNRjF6TVI1aVArMXFKS1QwS3FFOW9LSUdySmF4dkNZRDVGbEZ1Unk5WWsxbndZRDdCZ2dnYU1DMjJ1Z2tlMGorUVVuUVdjeGdma3BSOFg2dFM4bHdpQlpZeW1rL2ltMTR2b3hlbWt6Y1lIbytrWG1odHpLNlBXaXFmUlNsVllBK0FHeXF3cXhIdUJJSzNSVUE4Qkd6RkNhRmNJSUZvYW5IMnc2L2hzVWhFaHRqUTRBdS9uMjVncGdZQUFBPT0ifQ== -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["iso2c"],"name":[2],"type":["chr"],"align":["left"]},{"label":["iso3c"],"name":[3],"type":["chr"],"align":["left"]},{"label":["year"],"name":[4],"type":["int"],"align":["right"]},{"label":["gdppcap"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["status"],"name":[6],"type":["chr"],"align":["left"]},{"label":["lastupdated"],"name":[7],"type":["chr"],"align":["left"]},{"label":["region"],"name":[8],"type":["chr"],"align":["left"]},{"label":["capital"],"name":[9],"type":["chr"],"align":["left"]},{"label":["longitude"],"name":[10],"type":["chr"],"align":["left"]},{"label":["latitude"],"name":[11],"type":["chr"],"align":["left"]},{"label":["income"],"name":[12],"type":["chr"],"align":["left"]},{"label":["lending"],"name":[13],"type":["chr"],"align":["left"]}],"data":[{"1":"Afghanistan","2":"AF","3":"AFG","4":"1991","5":"NA","6":"","7":"2023-10-26","8":"South Asia","9":"Kabul","10":"69.1761","11":"34.5228","12":"Low income","13":"IDA","_rn_":"1"},{"1":"Afghanistan","2":"AF","3":"AFG","4":"1987","5":"NA","6":"","7":"2023-10-26","8":"South Asia","9":"Kabul","10":"69.1761","11":"34.5228","12":"Low income","13":"IDA","_rn_":"2"},{"1":"Afghanistan","2":"AF","3":"AFG","4":"1990","5":"NA","6":"","7":"2023-10-26","8":"South Asia","9":"Kabul","10":"69.1761","11":"34.5228","12":"Low income","13":"IDA","_rn_":"3"},{"1":"Afghanistan","2":"AF","3":"AFG","4":"1989","5":"NA","6":"","7":"2023-10-26","8":"South Asia","9":"Kabul","10":"69.1761","11":"34.5228","12":"Low income","13":"IDA","_rn_":"4"},{"1":"Afghanistan","2":"AF","3":"AFG","4":"1988","5":"NA","6":"","7":"2023-10-26","8":"South Asia","9":"Kabul","10":"69.1761","11":"34.5228","12":"Low income","13":"IDA","_rn_":"5"},{"1":"Afghanistan","2":"AF","3":"AFG","4":"2019","5":"2079.922","6":"","7":"2023-10-26","8":"South Asia","9":"Kabul","10":"69.1761","11":"34.5228","12":"Low income","13":"IDA","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10],"total":[13]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
@@ -1892,7 +1898,7 @@ pop）をつけ、人口（pop）も読み込んでおきます。extra = TRUE
 <pre class="r"><code>df_pcap &lt;- df_pcap |&gt; select(c(1,2,4,5,8,12))
 head(df_pcap)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibnJvdyI6NiwibmNvbCI6Niwic3VtbWFyeSI6eyJEZXNjcmlwdGlvbiI6WyJkZiBbNiDDlyA2XSJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUE3VlNTMDdETUJDZHB2bW9RUzFJWEtCYkZzMENOckNDU3FnclZueWtibzJicGhhcEhUbU9TbGR3Rk1SVm9IQ0VIZ0NKTlNjb2pOTjRFUXNKQ1NtV25tYm16ZGh2eHZibCtmZ29ISWNBMEFhMzNZSzJoeTU0TjllandUR0E2MkRRQWhjNjJ0NWowVDQ2UG1LdnROdkV6bkNhekFobnVTSzhhYXF1N0F4SC8vQUF1dHNwZ25mRUMrSU5zVUs4SWo0dzE5UDVoeTk5RmNIelgvYnM2WFM5T1ZoL1dyMkZWNkpRcy80d1o2UkJ4dEs4RUlzKzQxVE00d2FaK3Jmd09Kbkh1ZFZJUUVYQmxWeWFHcGFMUTFvRjdqSW0wdFFsa3l5akpLdENYOFlKRStiaC9WLzFPbElzSXFPcEg5SjVoSEw1ZG1NMEpibHB6SkRoaENnU1RTWFI1OExHMmhLSVRLRStibkwwUi9lc3pTMXBFYnNGMTUxTUJuUlc4THZCaVJZbzAxdDBLK3ZYZlMzcGZGZEhlV2JZbUNlTW0rdjJVbklicDFYUXc0bkxnYU5NTXE3TUpNam1rUktLbUxxUWl0UXc1V3l3K1FIbFBPTmYzd01BQUE9PSJ9 -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibnJvdyI6NiwibmNvbCI6Niwic3VtbWFyeSI6eyJEZXNjcmlwdGlvbiI6WyJkZiBbNiDDlyA2XSJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUE3VlN6VW9ETVJDZWJ2ZUhyclFLdmtDdkhuWVBpdUJOQzlLVEozK2cxNWh1dDhGdHNtU3oxSjcwVWNSWDBlb2o5QUVFeno1QmRiTGRIRFlJZ3REQXg4eDhNOGszaytUeWZIUVVqa0lBYUlQYmRxRHRvUXZlemZVd09nRndIUXhhNEVKSDIzc3Mya2ZIUit4VmRwUFlHVXpTS2VHc1VJUnZtMm9xTzRQaFB6eUE3bWFLNEIzeGduaERMQkd2aUEvTTlYVCs0VXRmUmZEOGx6MTdPbDJ0RDFhZlZtL2hsU2pWdEQ4b0dOa2lZMmxlaUhtZmNTcG15UmFaNXJmd09Ka2xoZFZJUUVYSmxWeVlHbGFJUTFvSDdpSWgwdFNsNHp5bkpLOURYeVlwRStiaC9WLzFPbExNWTZPcEg5SjVoR3I1ZG1NMEk0VnB6SkRobUNnU1R5VFI1OExhMmhLSVhLRStibkwwUi9lc3pTMXBFYnNsMTUyTUl6b3QrVjEwckFXcTlBYmQydnBOWDBzNjMvVlJuaGsyNFNuajVycTlqTndtV1IzMGNPSnE0RGlYakNzekNiSkZySVFpcGk2a0lqTk1OUnVzZndDWUo5T2Ezd01BQUE9PSJ9 -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["iso2c"],"name":[2],"type":["chr"],"align":["left"]},{"label":["year"],"name":[3],"type":["int"],"align":["right"]},{"label":["gdppcap"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["region"],"name":[5],"type":["chr"],"align":["left"]},{"label":["income"],"name":[6],"type":["chr"],"align":["left"]}],"data":[{"1":"Afghanistan","2":"AF","3":"1991","4":"NA","5":"South Asia","6":"Low income","_rn_":"1"},{"1":"Afghanistan","2":"AF","3":"1987","4":"NA","5":"South Asia","6":"Low income","_rn_":"2"},{"1":"Afghanistan","2":"AF","3":"1990","4":"NA","5":"South Asia","6":"Low income","_rn_":"3"},{"1":"Afghanistan","2":"AF","3":"1989","4":"NA","5":"South Asia","6":"Low income","_rn_":"4"},{"1":"Afghanistan","2":"AF","3":"1988","4":"NA","5":"South Asia","6":"Low income","_rn_":"5"},{"1":"Afghanistan","2":"AF","3":"2019","4":"2079.922","5":"South Asia","6":"Low income","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10],"total":[6]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
