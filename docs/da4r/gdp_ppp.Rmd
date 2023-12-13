@@ -1,0 +1,196 @@
+---
+title: "Purchasing power parities (PPPs)"
+author: "H. Suzuki"
+date: "`r Sys.Date()`"
+output: html_notebook
+---
+
+> The World Bank announced an adjustment to Global Poverty Lines based on the new purchasing power parities (PPPs). In this note, we compare three GDPs, the nominal GDP [WDI: GDP (current \$)], the real GDP [WDI: GDP (constant 2005 \$)], and the GDP based on PPP [WDI: GDP per capita, PPP (constant 2011 international \$)] to understand differences.
+
+#### Fact Sheet: An Adjustment to Global Poverty Lines [[Link](https://www.worldbank.org/en/news/factsheet/2022/05/02/fact-sheet-an-adjustment-to-global-poverty-lines)]
+
+The World Bank updated the global poverty lines in September 2022. The decision, announced in May, follows the release in 2020 of new purchasing power parities (PPPs)---the main data used to convert different currencies into a common, comparable unit and account for price differences across countries. The new extreme poverty line of \$2.15 per person per day, which replaces the \$1.90 poverty line, is based on 2017 PPPs. Here you find more information about this change and what it means for measuring global poverty.
+
+-   GDP per capita, PPP (constant 2017 international \$): NY.GDP.PCAP.PP.KD
+
+Step 1. If not installed, run only once.
+
+```{r eval = FALSE}
+install.packages("tidyverse")
+install.packages("WDI")
+```
+
+Step 2. Load the packages.
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+Step 3. Change the system language if your system language is not English.
+
+```{r eval = FALSE}
+Sys.setenv(LANG = "en")
+```
+
+Step 4. Indicators and descriptions of three types of GDP.
+
+-   GDP (current US\$): NY.GDP.MKTP.CD
+
+-   GDP (constant 2015 US\$): NY.GDP.MKTP.KD
+
+-   GDP, PPP (constant 2017 international \$): NY.GDP.MKTP.PP.KD
+
+```{r}
+rbind(WDIsearch(string = "NY.GDP.MKTP.CD", field = "indicator", short = FALSE), 
+      WDIsearch(string = "NY.GDP.MKTP.KD", field = "indicator", short = FALSE),
+      WDIsearch(string = "NY.GDP.MKTP.PP.KD", field = "indicator", short = FALSE)) |>
+  filter(name %in% c("GDP (current US$)", "GDP (constant 2015 US$)", "GDP, PPP (constant 2017 international $)"))
+```
+
+Step 4. Download data.
+
+```{r cache = TRUE}
+df_3gdp <- WDI(indicator = c(gdp_nominal = "NY.GDP.MKTP.CD", gdp_real = "NY.GDP.MKTP.KD", gdp_ppp = "NY.GDP.MKTP.PP.KD"), extra = TRUE)
+```
+
+Step 5. Head, showing the first 6 rows.
+
+```{r}
+head(df_3gdp)
+```
+
+Step 6. Structure, showing all the columns, i.e., variables.
+
+```{r}
+str(df_3gdp)
+```
+
+Step 7. Select columns.
+
+```{r}
+df_gdps <- df_3gdp |> select(c("country", "iso2c", "year", "gdp_nominal", "gdp_real", "gdp_ppp", "region", "income"))
+head(df_gdps)
+```
+
+Step 8. List regions and income levels.
+
+```{r}
+df_gdps |> select(region, income) |> lapply(unique)
+```
+
+Step 9. Make a long table using `pivot_longer` .
+
+```{r}
+df_gdps_long <- df_gdps |> 
+  pivot_longer(cols = c("gdp_nominal", "gdp_real", "gdp_ppp"),
+               names_to = "gdp", values_to = "value")
+```
+
+Step 10. Set groups.
+
+```{r}
+INCOME <- c("Low income", "Low & middle income", "Lower middle income", "Middle income", "Upper middle income", "High income")
+REGION <- c("South Asia", "Europe & Central Asia", "Middle East & North Africa", "East Asia & Pacific", "Sub-Saharan Africa", "Latin America & Caribbean",  "North America")
+```
+
+Step 11. Find an appropriate list of countries.
+
+```{r}
+df_gdps_long |> 
+  filter(!(region %in% c("Aggregates"))) |> 
+  filter(!(country %in% c(INCOME, REGION, "Not classified"))) |> 
+  distinct(country, iso2c, region)
+```
+
+Step 12. Create new tables, `df_gdps_countries` and `df_gdps_long_countries`with countries only.
+
+```{r}
+df_gdps_countries <- df_gdps |> 
+  filter(!(region %in% c("Aggregates"))) |> 
+  filter(!(country %in% c(INCOME, REGION, "Not classified")))
+df_gdps_long_countries <- df_gdps_long |> 
+  filter(!(region %in% c("Aggregates"))) |> 
+  filter(!(country %in% c(INCOME, REGION, "Not classified")))
+```
+
+### Visualization
+
+Chart 1. GDPs of the World.
+
+```{r}
+df_gdps_long |> filter(country == "World") |>
+  ggplot(aes(year, value, col = gdp)) + geom_line()
+```
+
+Chart 2. GDPs of the World after 1990.
+
+```{r}
+df_gdps_long |> filter(country == "World") |> 
+  filter(year >= 1990) |>
+  ggplot(aes(year, value, col = gdp)) + geom_line()
+```
+
+Chart 3. Ranks of countries in each GDP.
+
+```{r}
+df_gdps_countries |> filter(year == 2022) |> drop_na(gdp_nominal, gdp_real, gdp_ppp) |>
+  arrange(desc(gdp_nominal)) |> select(country, iso2c, gdp_nominal)
+```
+
+```{r}
+df_gdps_countries |> filter(year == 2022) |> drop_na(gdp_nominal, gdp_real, gdp_ppp) |>
+  arrange(desc(gdp_real)) |> select(country, iso2c, gdp_real)
+```
+
+```{r}
+df_gdps_countries |> filter(year == 2022) |> drop_na(gdp_nominal, gdp_real, gdp_ppp) |>
+  arrange(desc(gdp_ppp)) |> select(country, iso2c, gdp_ppp)
+```
+
+Chart 4. Line graphs of top 10 countries in each GDP.
+
+```{r}
+ISO2CN10 <- c("US", "CN", "JP", "DE", "GB", "IN", "FR", "RU", "CA","IT")
+df_gdps_countries |> filter(year >=1990) |> 
+  filter(iso2c %in% ISO2CN10) |> 
+  ggplot(aes(year, gdp_nominal, col = factor(iso2c, levels = ISO2CN10))) + geom_line() + scale_y_log10() +labs(title = "Nominal GDP of Top 10 Countries", col = "")
+```
+
+```{r}
+ISO2CR10 <- c("US", "CN", "JP", "DE", "GB", "IN", "FR", "IT", "BR","CA")
+df_gdps_countries |> filter(year >=1990) |> 
+  filter(iso2c %in% ISO2CR10) |> 
+  ggplot(aes(year, gdp_nominal, col = factor(iso2c, levels = ISO2CR10))) + geom_line() + scale_y_log10() +labs(title = "Real GDP of Top 10 Countries", col = "")
+```
+
+```{r}
+ISO2CP10 <- c("CN", "US", "IN", "JP", "DE", "RU", "ID", "BR", "GB","FR")
+df_gdps_countries |> filter(year >=1990) |> 
+  filter(iso2c %in% ISO2CP10) |> 
+  ggplot(aes(year, gdp_nominal, col = factor(iso2c, levels = ISO2CP10))) + geom_line() + scale_y_log10() +labs(title = "GDP PPP of Top 10 Countries", col = "")
+```
+
+Chart 5. Line graph of chosen countries.
+
+```{r}
+ISO2C_selected <- c("CN", "IN", "RU", "ID", "BR")
+df_gdps_long |> filter(iso2c %in% ISO2C_selected) |> 
+  filter(year >= 1990) |>
+  ggplot(aes(year, value, col = iso2c, linetype = gdp)) + 
+  geom_line() + scale_y_log10() +
+  labs(title = "Three types of GDP of five countries", 
+       subtitle = "China, India, Russia, Indonesia and Brazil")
+```
+
+### Notes
+
+-   There are many world development indicators related gdp.
+
+```{r}
+WDIsearch(string = "gdp", field = "name", short = TRUE, cache = NULL)
+```
+
+-   Regions are not available in some countries. We need to be careful to select a list of countries.
+
+-   Write your observations and questions.
