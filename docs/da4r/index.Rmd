@@ -11,7 +11,7 @@ output:
 
 ## Week 1 (2023/12/13) 
 
-Only Part II.
+Only Part II. [[Slides](https://ds-sl.github.io/intro2r/da4r/qall401-01.html#1)], [[R Notebook](https://ds-sl.github.io/intro2r/da4r/qall401-01.nb.html)], [[Video](https://youtu.be/mpnoKZgpBYY)]
 
 -   R and RStudio
 
