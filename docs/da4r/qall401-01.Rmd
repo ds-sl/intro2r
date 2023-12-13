@@ -1,12 +1,10 @@
 ---
 title: "Data Analysis for Researchers 2023, Week 1"
 author: "Hiroshi Suzuki"
-date: "2023/12/12"
+date: "2023/12/13"
 output:
   ioslides_presentation:
     widescreen: yes
-  html_document:
-    df_print: paged
   html_notebook: default
 ---
 
