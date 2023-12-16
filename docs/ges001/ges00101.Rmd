@@ -1,9 +1,13 @@
 ---
 title: "GES 001 演習2"
 author: "H. Suzuki"
-date: "`r Sys.Date()`"
+date: "2023年12月19日`"
 output:
   html_notebook: default
+  html_document:
+    df_print: paged
+  ioslides_presentation:
+    widescreen: yes
 ---
 
 ## 第2週
@@ -14,9 +18,9 @@ output:
 
 講義では、第2週、第3週とWorld Inequality report 2022を使って、所得と富の不平等について議論します。
 
-12/19(TU)　Rでデータサイエンス2：人口の少子高齢化　 [[Main](https://ds-sl.github.io/intro2r/ges001/ges001-main.nb.html)]・[授業]
+12/19(TU)　Rでデータサイエンス２：人口の少子高齢化　 [[Main](https://ds-sl.github.io/intro2r/ges001/index.html)]
 
-**People- Population dynamics**
+## **People- Population dynamics**
 
 総人口　Population, total：SP.POP.TOTL [[Link](https://data.worldbank.org/indicator/SP.POP.TOTL)]
 
@@ -410,3 +414,9 @@ df_pop_long |> filter(name %in% c("young", "old")) |>
   labs(title = "地域別の労働人口に対する高齢・若年扶養率（％）", 
        subtitle = "実線：高齢者、点線：若年者", x = "", y = "")
 ```
+
+## 参考文献
+
+-   [[Link](index.html#references)]
+
+-   データサイエンスを学びませんか・データサイエンス教育 [[Link](https://icu-hsuzuki.github.io/science/computer/learning/ds.html)]

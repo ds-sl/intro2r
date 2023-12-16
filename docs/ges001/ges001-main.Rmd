@@ -184,6 +184,66 @@ UNICEF [[Link](https://www.unicef.or.jp/kodomo/sdgs/17goals/9-industry/)]
 
 講義では、第2週、第3週とWorld Inequality report 2022を使って、所得と富の不平等について議論します。[[wir2022](https://wir2022.wid.world/www-site/uploads/2023/03/D_FINAL_WIL_RIM_RAPPORT_2303.pdf)]
 
+-   演習について：Questions and Comments
+
+-   前回の授業のコメントについて
+
+    -   極度の貧困の、１日二ドルがなにを意味するか。
+
+    -   資本主義は、主義主張ではなく、生産様式。
+
+    -   食品ロスなど、身近な問題にどう向き合うか。
+
+    -   経済格差と再分配の関係性の問題。
+
+    -   厚生経済学（Welfare Economics）
+
+#### 所得と富の不平等
+
+World Inequality Report 2022 [[Link](https://wir2022.wid.world)]・[[みんなのデータサイエンスへのリンク](https://icu-hsuzuki.github.io/ds4aj/wid.html#wid)]
+
+-   執筆者：エマニュエル・ザイズ、ガブリエル・ザックマン、トマ・ピケティ
+
+    -   The Triumph of of Injustice「つくられた格差」エマニュエル・ザイズ、ガブリエル・ザックマン [[Link](https://www.kobunsha.com/shelf/book/isbn/9784334962432)]
+
+    -   LE CAPITAL「21世紀の資本」トマ・ピケティ [[概要](https://www.flierinc.com/summary/337)]
+
+-   Executive Summary [[Link](https://wir2022.wid.world/executive-summary/)]
+
+-   Introduction [[Link](https://wir2022.wid.world/introduction/)]
+
+-   Chapter 1 Global economic inequality: insights: [[Link](https://wir2022.wid.world/chapter-1/)]
+
+-   Chapter 2 Global inequality from 1820 to now: the persistence and mutation of extreme inequality [[Link](https://wir2022.wid.world/chapter-2/)]
+
+-   Chapter 3 Rich countries, poor governments [[Link](https://wir2022.wid.world/chapter-3/)]
+
+    -   Figure 3.4 [[Link](https://wir2022.wid.world/www-site/uploads/2021/10/CH3-F3.4-4.jpg)]
+
+        -   ロシア：ウルガルヒが民営化のときの財を買い取った
+
+-   Chapter 4 Global wealth inequality: the rise of multimillionaires [[Link](https://wir2022.wid.world/chapter-4/)]
+
+    -   Figure 4.2 Average annual wealth growth rate [[Link](https://wir2022.wid.world/www-site/uploads/2021/10/CH4-F4.2-2.jpg)]
+
+    -   Figure 4.4 Top 1% versus bottom 50% wealth shared in Western Europe and the US, 1910-2020 [[Link](https://wir2022.wid.world/www-site/uploads/2021/10/CH4-F4.4-3.jpg)]
+
+    -   Figure 4.5 Top 1% wealth shared in the BRICs [[Link](https://wir2022.wid.world/www-site/uploads/2021/10/CH4-F4.5-2.jpg)]
+
+-   Chapter 5 Half the sky? The Female Labor Income Share in a Global PerspectiveHalf the sky? The Female Labor Income Share in a Global Perspective [[Link](https://wir2022.wid.world/chapter-5/)]
+
+-   Chapter 6 Global carbon inequality [[Link](https://wir2022.wid.world/chapter-6/)]
+
+-   Chapter 7 The road to redistributing wealth [[Link](https://wir2022.wid.world/chapter-7/)]
+
+-   Chapter 8 Taxing Multinationals or Taxing Wealthy Individuals? [[Link](https://wir2022.wid.world/chapter-8/)]
+
+-   Chapter 9 Global vs Unilateral Perspectives on Tax Justice [[Link](https://wir2022.wid.world/chapter-9/)]
+
+-   Chapter 10 Emancipation, redistribution and sustainability [[Link](https://wir2022.wid.world/chapter-10/)]
+
+-   Glossary Country appendix [[Link](https://wir2022.wid.world/country-appendix-glossary/)]
+
 12/19(TU)　Rでデータサイエンス2：人口の少子高齢化　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-2.nb.html)]・[授業]
 
 **People- Population dynamics**
