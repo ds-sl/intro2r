@@ -3,10 +3,10 @@ title: "GES 001 演習2"
 author: "H. Suzuki"
 date: "2023年12月19日`"
 output:
-  html_notebook: default
   ioslides_presentation:
     widescreen: yes
     df_print: paged
+  html_notebook: default
 ---
 
 ## 準備
@@ -111,14 +111,10 @@ library(showtext)
 
 R Notebook の Preview で図のタイトルが小さい場合には、２行目（`showtext_auto()`）を \# で、コメントアウト。
 
--   <div>
-
-    ```{r}
-    showtext_auto(FALSE) 
-    # showtext_auto() # for slides etc remove # 
-    ```
-
-    </div>
+```{r}
+showtext_auto(FALSE) 
+showtext_auto() # for slides etc remove # 
+```
 
 ## データの読み込み（1）
 
@@ -186,8 +182,7 @@ str(df_pop_related[])
 str(df_pop_related[])
 ```
 
-```{glimpse(df_pop_extra)}
-```
+`{glimpse(df_pop_extra)}`
 
 ## `REGION`
 
@@ -220,7 +215,7 @@ df_pop |> filter(!(iso2c %in% REGION)) |>
 
     -   `filter`(*変数* `==` "*文字列*") ：変数が文字列と一致するものを抽出（= ではなく、== に注意）
 
-    -   `filter`(*変数* `%in% c`(*"文字列1", ..., \"文字列n"*) ： 変数が文字列1 から 文字列n のどれかに一致したものを抽出
+    -   `filter`(*変数* `%in% c`(*"文字列1", ..., "文字列n"*) ： 変数が文字列1 から 文字列n のどれかに一致したものを抽出
 
     -   `filter`(`!`*条件*) ：条件と一致しないものを抽出。
 
@@ -321,7 +316,7 @@ wide データを long データに変形します。いずれ説明します。
 
 ```{r}
 df_pop_long <- df_pop_related |> 
-  pivot_longer(5:9, names_to = "name", values_to = "value")
+  pivot_longer(pop:old, names_to = "name", values_to = "value")
 ```
 
 ## 出生率と死亡率
