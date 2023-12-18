@@ -1,0 +1,191 @@
+---
+title: "Data Analysis for Researchers 2023, Week 2"
+author: "Hiroshi Suzuki"
+date: "2023/12/20"
+output:
+  html_notebook: default
+  ioslides_presentation:
+    widescreen: yes
+---
+
+# Part I
+
+## R, RStudio and Posit Cloud
+
+-   R and RStudio: Installation +
+
+    -   Get started with RStudio
+
+    -   Creating a project, starting with a project
+
+    -   `R.version.string`, Package updates
+
+    -   Installation of Packages
+
+-   Posit Cloud
+
+    -   Update R version
+
+    -   Package updates
+
+## A short introduction to R
+
+### First three or four
+
+The data `iris` is a part of the preinstalled package `datasets.` [[Link](https://en.wikipedia.org/wiki/Iris_flower_data_set)]
+
+-   head(iris): the first 6 rows
+
+-   str(iris): the structure of the object
+
+-   summary(iris): the summary of the object
+
+-   plot(iris\$Petal.Length, iris\$Petal.Width): plot x = iris\$Petal.Length, y = iris\$Petal.Width
+
+------------------------------------------------------------------------
+
+### Assignment and piping
+
+-   df_iris \<- iris: assignment
+
+-   df_iris[c(3,4)] \|\> plot() :plot x = column 3, y = column 4
+
+-   lm(iris\$Petal.Length \~ iris\$Petal.Width, df_iris): the coefficients of the formula of the regression line
+
+-   df_iris \|\> lm(iris\$Petal.Length \~ iris\$Petal.Width, data = \_): same as above
+
+------------------------------------------------------------------------
+
+### Subsetting
+
+-   df_iris[3,4]: the value in the third row, the fourth column
+
+-   df_iris[c(3,4)]: the data table consisting of the third and the fourth columns
+
+-   df_iris[c(3,4,5)]: the data table consisting of the columns three, four and five
+
+-   df_iris[3:5]: same as above, 3:5 returns a sequence from 3 to 4
+
+-   df_iris[[5]] \|\> unique(): distinct entries in the fifth column
+
+-   df_iris\$Species \|\> unique(): same as above
+
+------------------------------------------------------------------------
+
+### Classes and Types
+
+Types: Current values are the vector types `"logical"`, `"integer"`, `"double"`, `"character"`, `"list"`, etc.
+
+-   class(df_iris): class of `df_iris` is a "data.frame"
+
+-   class(df_iris[5]): "data.frame"
+
+-   class(df_iris[[5]]): "factor"
+
+-   typeof(df_iris[[1]]): "double"
+
+-   typeof(df_iris[[5]]): "integer"
+
+## Gapminder [[Link](https://www.gapminder.org)]
+
+-   Upgrade Your Worldview
+
+-   Dollar Street
+
+-   Animation Charts
+
+    -   Babies per woman vs Life expectancy [[Link](https://www.gapminder.org/tools/#$model$markers$bubble$encoding$x$data$concept=children_per_woman_total_fertility&source=sg&space@=country&=time;;&scale$domain:null&zoomed:null&type:null;;;;;;&chart-type=bubbles&url=v1)]
+
+        -   Total fertility vs Life expectancy at birth
+
+        -   How many variables?
+
+    -   About Data: Fact \> Data [[Link](https://www.gapminder.org/data/)]
+
+## World Development Indicators
+
+### Data themes [[Link](https://datatopics.worldbank.org/world-development-indicators/)]
+
+-   Find data you want to study. Record the name, WDI code, and possibly the URL.
+
+-   People [[Link](https://datatopics.worldbank.org/world-development-indicators/themes/people.html)]
+
+    -   Population, total: SP.POP.TOTL [[Link](https://data.worldbank.org/indicator/SP.POP.TOTL)]
+
+    -   Fertility rate, total (births per woman): SP.DYN.TFRT.IN [[Link](https://data.worldbank.org/indicator/SP.DYN.TFRT.IN)]
+
+    -   Life expectancy at birth, total: SP.DYN.LE00.IN [[Link](https://data.worldbank.org/indicator/SP.DYN.LE00.IN)]
+
+# Part II: Practicum
+
+## Life-expectancy
+
+-   R Notebook
+
+-   World Development Indicators: life-expectancy
+
+    -   Population, total: SP.POP.TOTL [[Link](https://data.worldbank.org/indicator/SP.POP.TOTL)]
+
+    -   Fertility rate, total (births per woman): SP.DYN.TFRT.IN [[Link](https://data.worldbank.org/indicator/SP.DYN.TFRT.IN)]
+
+    -   Life expectancy at birth, total: SP.DYN.LE00.IN [[Link](https://data.worldbank.org/indicator/SP.DYN.LE00.IN)]
+
+------------------------------------------------------------------------
+
+### Data Importing
+
+-   df_lifeexp \<- WDI(indicator = c(pop = " SP.POP.TOTL", fertility = "SP.DYN.TFRT.IN", lifeexp = "SP.DYN.LE00.IN"), extra = TRUE)
+
+-   WDI: help
+
+    -   WDI(country = "all", indicator = c(pop = " SP.POP.TOTL", fertility = "SP.DYN.TFRT.IN", lifeexp = "SP.DYN.LE00.IN"), start = 1960, end = NULL, extra = TRUE, caches = NULL, latest = NULL, language = "en")
+
+    -   WDI()
+
+------------------------------------------------------------------------
+
+### Data Transforming
+
+-   `dplyr`, a package in tidyverse
+
+    -   `filter()`
+
+    -   `distinct()`
+
+    -   `drop_na()`
+
+------------------------------------------------------------------------
+
+### Data Visualizing
+
+-   ggplot2
+
+    -   `ggplot(aes(x=var1, y=var2))`
+
+    -   Scatter Plot: `geom_point(aes(col=var3, size=var4, shape=var5))`
+
+    -   Line Graph: `geom_line(aes(col=var3, linetype=var4)))`
+
+## Assignment 1
+
+-   Self-introduction and 'Please call me ... .'
+
+-   What do you expect from this course?
+
+-   Write the name and the WDI code of the WDI data you are interested in. Reason?
+
+-   List the data you want to study and investigate, if any.
+
+## Recommended Readings and Activities
+
+1.  World Development Indicators: Data themes [[Link](https://datatopics.worldbank.org/world-development-indicators/)]
+
+    -   Find data you want to study. Record the name, WDI code, and possibly the URL.
+
+2.  Posit Primers - interactive exercises: The Basics [[Link](https://posit.cloud/learn/primers/1)]
+
+    1.  [Visualization Basics](https://posit.cloud/learn/primers/1.1)
+
+    2.  [Programming Basics](https://posit.cloud/learn/primers/1.2)
+
+3.  RStudio IDE Cheat Sheet. PDF is available on the top right. [[Site Link](https://rstudio.github.io/cheatsheets/html/rstudio-ide.html)]

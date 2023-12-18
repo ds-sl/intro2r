@@ -9,7 +9,7 @@ output:
     toc_float: yes
 ---
 
-## Week 1 (2023/12/13) 
+## Week 1 (2023/12/13)
 
 Only Part II. [[Slides](https://ds-sl.github.io/intro2r/da4r/qall401-01.html#1)], [[R Notebook](https://ds-sl.github.io/intro2r/da4r/qall401-01.nb.html)], [[Video](https://youtu.be/mpnoKZgpBYY)]
 
@@ -19,39 +19,153 @@ Only Part II. [[Slides](https://ds-sl.github.io/intro2r/da4r/qall401-01.html#1)]
 
 -   Installation of R and RStudio
 
-## Week 2 (2023/12/20) 
+## Week 2 (2023/12/20)
 
-Exploratory Data Analysis I
+Exploratory Data Analysis I [Slides], [R Notebook], [Video1], [Video2]
 
--   Introduction to EDA
+### Part I 
 
--   Introduction to WDI
+-   R and RStudio: Installation +
 
--   Basics
+    -   Get started with RStudio
 
--   WDI
+    -   Creating a project, starting with a project
 
--   dplyr
+    -   `R.version.string`, Package updates
 
-    -   filter
+    -   Installation of Packages
 
-    -   drop_na
+-   Posit Cloud
+
+    -   Update R version
+
+    -   Package updates
+
+-   A short introduction to R
+
+    -   First three or four
+
+        -   head(iris)
+
+        -   str(iris)
+
+        -   summary(iris)
+
+        -   plot(iris\$Petal.Length, iris\$Petal.Width)
+
+    -   Assignment and piping
+
+        -   df_iris \<- iris
+
+        -   df_iris[c(3,4)] \|\> plot()
+
+        -   lm(iris\$Petal.Length \~ iris\$Petal.Width, df_iris)
+
+        -   df_iris \|\> lm(iris\$Petal.Length \~ iris\$Petal.Width, data = \_)
+
+    -   Subsetting
+
+        -   df_iris[3,4]
+
+        -   df_iris[c(3,4)]
+
+        -   df_iris[c(3,4,5)]
+
+        -   df_iris[3:5]
+
+        -   df_iris[[5]] \|\> unique()
+
+        -   df_iris\$Species \|\> unique()
+
+    -   Classes and Types
+
+        -   class(df_iris)
+
+        -   class(df_iris[5])
+
+        -   class(df_iris[[5]])
+
+        -   typeof(df_iris[[1]])
+
+        -   typeof(df_iris[[5]])
+
+-   Gapminder [[Link](https://www.gapminder.org)]
+
+    -   Upgrade Your Worldview
+
+    -   Dollar Street
+
+    -   Animation Charts
+
+        -   Babies per woman vs Life expectancy [[Link](https://www.gapminder.org/tools/#$model$markers$bubble$encoding$x$data$concept=children_per_woman_total_fertility&source=sg&space@=country&=time;;&scale$domain:null&zoomed:null&type:null;;;;;;&chart-type=bubbles&url=v1)]
+
+            -   Total fertility vs Life expectancy at birth
+
+            -   How many variables?
+
+        -   About Data: Fact \> Data [[Link](https://www.gapminder.org/data/)]
+
+-   World Development Indicators: Data themes [[Link](https://datatopics.worldbank.org/world-development-indicators/)]
+
+    -   Find data you want to study. Record the name, WDI code, and possibly the URL.
+
+    -   People [[Link](https://datatopics.worldbank.org/world-development-indicators/themes/people.html)]
+
+        -   Population, total: SP.POP.TOTL [[Link](https://data.worldbank.org/indicator/SP.POP.TOTL)]
+
+        -   Fertility rate, total (births per woman): SP.DYN.TFRT.IN [[Link](https://data.worldbank.org/indicator/SP.DYN.TFRT.IN)]
+
+        -   Life expectancy at birth, total: SP.DYN.LE00.IN [[Link](https://data.worldbank.org/indicator/SP.DYN.LE00.IN)]
+
+### Part II
+
+-   R Notebook: life-expectancy
+
+-   df_lifeexp \<- WDI(indicator = c(pop = " SP.POP.TOTL", fertility = "SP.DYN.TFRT.IN", lifeexp = "SP.DYN.LE00.IN"))
+
+-   `dplyr`, a package in tidyverse
+
+    -   `filter()`
+
+    -   `distinct()`
+
+    -   `drop_na()`
 
 -   ggplot2
 
-    -   Line Graph
+    -   `ggplot(aes(x=var1, y=var2))`
 
-    -   Histogram
+    -   Scatter Plot: `geom_point(aes(``col=var3, size=var4, shape=var5``))`
 
-    -   Boxplot
+    -   Line Graph: `geom_line(``aes(col=var3, linetype=var4))``)`
 
-## Week 3 (2024/01/10) 
+### Assignment 1
 
-Exploratory Data Analysis II
+-   Self-introduction and 'Please call me ... .'
 
--   WDI search
+-   What do you expect from this course?
 
--   WDI more than one indicator, extra = TRUE
+-   Write the name and the WDI code of the WDI data you are interested in. Reason?
+
+-   List the data you want to study and investigate, if any.
+
+### Recommended Readings and Activities
+
+1.  World Development Indicators: Data themes [[Link](https://datatopics.worldbank.org/world-development-indicators/)]
+
+    -   Find data you want to study. Record the name, WDI code, and possibly the URL.
+
+2.  Posit Primers - interactive exercises: The Basics [[Link](https://posit.cloud/learn/primers/1)]
+
+    1.  [Visualization Basics](https://posit.cloud/learn/primers/1.1)
+
+    2.  [Programming Basics](https://posit.cloud/learn/primers/1.2)
+
+RStudio IDE Cheat Sheet. PDF is available on the top right. [[Site Link](https://rstudio.github.io/cheatsheets/html/rstudio-ide.html)]
+
+## Week 3 (2024/01/10)
+
+Exploratoryfromore than one indicator, extra = TRUE
 
 -   dplyr
 
@@ -63,6 +177,10 @@ Exploratory Data Analysis II
 
 -   ggplot2
 
+    -   line graph
+
+    -   box plot
+
     -   scatter plot
 
     -   bar plot and column plot
@@ -71,7 +189,9 @@ Exploratory Data Analysis II
 
     -   smooth plot
 
-## Week 4 (2024/01/17) 
+### Assignment 2
+
+## Week 4 (2024/01/17)
 
 Exploratory Data Analysis III
 
@@ -87,13 +207,15 @@ Exploratory Data Analysis III
 
     -   map
 
-    -   labs
+    -   readers
 
     -   theme
 
--   model
+-   tidyr
 
-## Week 5 (2024/01/24) 
+### Assignment 3
+
+## Week 5 (2024/01/24)
 
 Exploratory Data Analysis IV
 
@@ -101,31 +223,35 @@ Exploratory Data Analysis IV
 
     -   two tables verbs
 
+### Assignment 4
+
 ## Week 6 (2024/01/31)
 
 Exploratory Data Analysis V
 
 -   Examples of EDA
 
-## Week 7 (2024/02/07)  
+### Assignment 5
+
+## Weekof  7 (2024/02/07)
 
 Professor Taisei Kaizoji
 
 Data Analysis Project 1
 
-## Week 8 (2024/02/14)  
+## Week 8 (2024/02/14)
 
 Professor Taisei Kaizoji
 
 Data Analysis Project 2
 
-## Week 9 (2024/02/21)  
+## Week 9 (2024/02/21)
 
 Professor Taisei Kaizoji
 
 Data Analysis Project 3
 
-## Week 10 (2024/02/28)  
+## Week 10 (2024/02/28)
 
 Student Presentations
 
