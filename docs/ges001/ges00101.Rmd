@@ -19,13 +19,13 @@ output:
 
         -   Moodle の GES001 経済と経済学のサイトから、このスライドのページを表示（リンク「Rでデータサイエンス」の第2週）
 
-        -   （別のタブまたは ウィンドウで）PositCloud にログイン（アカウントのない人はサイン・アップ）
+        -   （別のタブまたは ウィンドウで）PositCloud にログイン（アカウントのない人はサイン・アップ）[[Posit.co リンク](https://posit.cloud/)]・[[共有プロジェクト](https://posit.cloud/content/5539763)]
 
     3.  RStudio を起動
 
         -   自分のPCにR と RStudio をインストールしていないひとは不要。
 
-        -   最後に時間があれば、インストールについて説明します。
+        -   最後に時間があれば、インストールについて説明します。[[リンク](https://posit.co/download/rstudio-desktop/)]
 
 ## 第2週
 
@@ -56,6 +56,8 @@ output:
 ## 演習 12月19日（木）人口と少子高齢化
 
 ### 世界開発指標（World Development Indicators）[[Link](https://datatopics.worldbank.org/world-development-indicators/)]
+
+**練習1.** WDI のサイトで、興味のある指標の、名前と、WDI コードを選んでください。できれば、選択した理由も記録してください。
 
 #### **人々（People）- 人口動態（Population dynamics）**
 
@@ -261,13 +263,24 @@ df_pop |> filter(country == "Japan") |>
 
 ------------------------------------------------------------------------
 
-**練習：Germany と ドイツの部分を他の国名に変えてみてください。**
+**練習2. Germany と ドイツの部分を他の国名に変えてみてください。**
 
-```{r}
+```{r eval = FALSE}
 COUNTRY <- "Germany"
 df_pop |> filter(country == COUNTRY) |> 
   ggplot(aes(year, pop)) + geom_line() +
   labs(title = "ドイツの総人口")
+```
+
+------------------------------------------------------------------------
+
+**練習3. COUNTRIES を編集して、イギリスとドイツとフランスと日本を他の国に変えてください。**
+
+```{r eval = FALSE}
+COUNTRIES <- c("United Kingdom", "Germany", "France", "Japan")
+df_pop |> filter(country %in% COUNTRIES) |> 
+  ggplot(aes(year, pop, col =  country)) + geom_line() +
+  labs(title = "イギリスとドイツとフランスと日本の総人口")
 ```
 
 ## 2022年の総人口の多い順
@@ -284,6 +297,15 @@ pop_top11 <- df_pop |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |>
   arrange(desc(pop)) |> slice_head(n=11) |> pull(iso2c)
 pop_top11
 dput(pop_top11)
+```
+
+**練習4. 1960年の総人口が多い順に五番目までリストしてください。**
+
+```{r eval = FALSE}
+pop_top5 <- df_pop |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
+  arrange(desc(pop)) |> slice_head(n=5) |> pull(iso2c)
+pop_top5
+dput(pop_top5)
 ```
 
 ------------------------------------------------------------------------
@@ -336,6 +358,17 @@ df_pop_long |> filter(name %in% c("birth_rate", "death_rate")) |>
 
 ------------------------------------------------------------------------
 
+**練習5. 国を選択して、出生率、死亡率のグラフを描いてください。**
+
+```{r eval = FALSE}
+df_pop_long |> filter(name %in% c("birth_rate", "death_rate")) |>
+  filter(country == "World") |> drop_na(value) |> # NA value を削除
+  ggplot(aes(year, value, col = name)) + geom_line() + 
+  labs(title = "出生率、死亡率（1000人当たり）")
+```
+
+------------------------------------------------------------------------
+
 ```{r}
 df_pop_long |> filter(name %in% c("birth_rate", "death_rate")) |>
   filter(iso2c %in% c("BD", "BR", "CN", "ID", "NG", "JP")) |> drop_na(value) |>
@@ -352,6 +385,17 @@ df_pop_long |> filter(name %in% c("birth_rate", "death_rate")) |>
   geom_line() + labs(title = "地域ごとの出生率・死亡率（1000人あたり）")
 ```
 
+------------------------------------------------------------------------
+
+**練習6. いくつかの国または地域の、出生率、死亡率のグラフを描いてください。**
+
+```{r eval = FALSE}
+df_pop_long |> filter(name %in% c("birth_rate", "death_rate")) |>
+  filter(iso2c %in% c("BD", "BR", "CN", "ID", "NG", "JP")) |> drop_na(value) |>
+  ggplot(aes(year, value, col = country, linetype = name)) + 
+  geom_line() + labs(title = "国々の、出生率、死亡率（1000人当たり）")
+```
+
 ## 扶養家族の労働人口に対する割合
 
 若年労働人口率　Age dependency ratio, young (% of working-age population)：SP.POP.DPND.YG [[Link](https://data.worldbank.org/indicator/SP.POP.DPND.YG)]
@@ -365,6 +409,17 @@ df_pop_long |> filter(name %in% c("birth_rate", "death_rate")) |>
 ------------------------------------------------------------------------
 
 ```{r}
+df_pop_long |> filter(name %in% c("young", "old")) |>
+  filter(country == "World") |> 
+  ggplot(aes(year, value, col = name)) + geom_line() + 
+  labs(title = "世界の高齢者・若年者扶養率")
+```
+
+------------------------------------------------------------------------
+
+**練習7. 国を選択して、高齢者・若年者の扶養率のグラフを描いてください。**
+
+```{r eval = FALSE}
 df_pop_long |> filter(name %in% c("young", "old")) |>
   filter(country == "World") |> 
   ggplot(aes(year, value, col = name)) + geom_line() + 
@@ -402,6 +457,17 @@ df_pop_long |> filter(name %in% c("young", "old")) |>
 
 ------------------------------------------------------------------------
 
+**練習8. いくつかの国または地域の、高齢者・若年者の扶養率のグラフを描いてください。**
+
+```{r eval = FALSE}
+df_pop_long |> filter(name %in% c("young", "old")) |>
+  filter(iso2c %in% c("US", "GB", "CN", "DE", "FR", "JP", "IN")) |> 
+  ggplot(aes(year, value, col = country, linetype = name)) + 
+  geom_line()　+ labs(title = "国々の高齢者・若年者扶養率")
+```
+
+------------------------------------------------------------------------
+
 ```{r fig.height=7, fig.width=7}
 df_pop_long |> filter(name %in% c("young", "old")) |>
   filter(country %in% c("South Asia", "Europe & Central Asia", "Middle East & North Africa", 
@@ -426,6 +492,44 @@ df_pop_long |> filter(name %in% c("young", "old")) |>
        subtitle = "実線：高齢者、点線：若年者", x = "", y = "")
 ```
 
+------------------------------------------------------------------------
+
+```{r}
+df_pop_long |> filter(name %in% c("birth_rate", "death_rate", "young", "old")) |>
+  filter(country == "Japan") |> drop_na(value) |>
+  ggplot(aes(year, value, col = name)) + geom_line() +
+  labs(title = "日本の出生率・死亡率・労働人口に対する高齢・若年扶養率（％）")
+```
+
+------------------------------------------------------------------------
+
+```{r}
+df_pop_long |> filter(name %in% c("birth_rate", "death_rate", "young", "old")) |>
+  filter(country == "Germany") |> drop_na(value) |>
+  ggplot(aes(year, value, col = name)) + geom_line() +
+  labs(title = "ドイツの出生率・死亡率・労働人口に対する高齢・若年扶養率（％）")
+```
+
+------------------------------------------------------------------------
+
+```{r}
+df_pop_long |> filter(name %in% c("birth_rate", "death_rate", "young", "old")) |>
+  filter(country  %in%  c("Germany", "Japan")) |> drop_na(value) |>
+  ggplot(aes(year, value, col = country, linetype = name)) + geom_line() +
+  labs(title = "ドイツと日本の出生率・死亡率\n労働人口に対する高齢・若年扶養率（％）")
+```
+
+------------------------------------------------------------------------
+
+```{r}
+df_pop_long |> filter(name == "pop") |>
+  filter(country  %in%  c("Germany", "Japan")) |> drop_na(value) |>
+  ggplot(aes(year, value, col = country)) + geom_line() +
+  labs(title = "ドイツと日本の人口")
+```
+
+問い：どんなことがわかりますか。
+
 ## 復習
 
 -   パッケージ（Package）の利用：
@@ -448,21 +552,21 @@ df_pop_long |> filter(name %in% c("young", "old")) |>
 
 提出はしなくて良いですが、ぜひ実際に手を動かして実行してください。
 
-1.  WDI のサイトで、興味のある指標の、名前と、WDI コードを選んでください。できれば、選択した理由も記録してください。
+1.  WDI のサイトで、興味のある指標の、名前と、WDI コードを選んでください。できれば、選択した理由も記録してください。[練習1]
 
-2.  Germany と ドイツの部分を他の国名に変えてみてください。
+2.  Germany と ドイツの部分を他の国名に変えてみてください。[練習2]
 
-3.  1960年の総人口が多い順に五番目までリストしてみましょう。
+3.  イギリスとドイツとフランスと日本を他の国に変えてください。[練習3]
 
-4.  いくつかの国を選択して、総人口の推移のグラフを描いてください。
+4.  1960年の総人口が多い順に五番目までリストしてください。[練習4]
 
-5.  国を選択して、出生率、死亡率のグラフを描いてください。
+5.  国を選択して、出生率、死亡率のグラフを描いてください。[練習5]
 
-6.  いくつかの国または地域の、出生率、死亡率のグラフを描いてください。
+6.  いくつかの国または地域の、出生率、死亡率のグラフを描いてください。[練習6]
 
-7.  国を選択して、高齢者・若年者の扶養率のグラフを描いてください。
+7.  国を選択して、高齢者・若年者の扶養率のグラフを描いてください。[練習7]
 
-8.  いくつかの国または地域の、高齢者・若年者の扶養率のグラフを描いてください。
+8.  いくつかの国または地域の、高齢者・若年者の扶養率のグラフを描いてください。[練習8]
 
 ## 参考文献
 
