@@ -3,18 +3,16 @@ title: "Data Analysis for Researchers 2023, Week 2"
 author: "Hiroshi Suzuki"
 date: "2023/12/20"
 output:
-  html_notebook: default
   ioslides_presentation:
     widescreen: yes
+  html_notebook: default
 ---
 
-# Part I
+# Part I: R and RStudio 
 
 ## R, RStudio and Posit Cloud
 
--   R and RStudio: Installation +
-
-    -   Get started with RStudio
+-   R and RStudio: Install from [[Link](https://posit.co/download/rstudio-desktop/)] and start RStudio
 
     -   Creating a project, starting with a project
 
@@ -24,15 +22,29 @@ output:
 
 -   Posit Cloud
 
-    -   Update R version
+    -   (Sign Up at [[posit Cloud](https://posit.cloud/)], and save [[Shared Project](https://posit.cloud/content/5539763)] as a permanent copy)
 
-    -   Package updates
+    -   Log In to your Posit Cloud account, and open `intro2rj` project.
+
+    -   Update R version: R 4.3.2
+
+    -   Package updates: Tools \> Check for Package Updates ...
 
 ## A short introduction to R
 
+We use an R script
+
+1.  Create an R script from the [Files] tab in the right below pane
+
+2.  Go to the the following [[Link](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/baseR_basics.R)]
+
+3.  Copy and paste the contents by using [Copy raw file] button next to [Raw] on top right.
+
+------------------------------------------------------------------------
+
 ### First three or four
 
-The data `iris` is a part of the preinstalled package `datasets.` [[Link](https://en.wikipedia.org/wiki/Iris_flower_data_set)]
+The data `iris` is a part of the pre-installed package `datasets.` [[Link](https://en.wikipedia.org/wiki/Iris_flower_data_set)]
 
 -   head(iris): the first 6 rows
 
