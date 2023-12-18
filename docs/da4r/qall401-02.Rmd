@@ -3,6 +3,8 @@ title: "Data Analysis for Researchers 2023, Week 2"
 author: "Hiroshi Suzuki"
 date: "2023/12/20"
 output:
+  html_document:
+    df_print: paged
   ioslides_presentation:
     widescreen: yes
   html_notebook: default
@@ -160,11 +162,19 @@ Types: Current values are the vector types `"logical"`, `"integer"`, `"double"`,
 
 -   `dplyr`, a package in tidyverse
 
-    -   `filter()`
+    -   `select()` : select columns `select(c(1,2,4,5,7,8))`
 
-    -   `distinct()`
+    -   `filter()` : select rows meeting a condition
 
-    -   `drop_na()`
+        -   `filter(country == "World")`
+
+        -   `filter(iso2c %in% c("JP", "IN", "CN"))`
+
+        -   `filter(region != "Aggregates")`
+
+    -   `distinct()` : select rows with distinct values of a variable `distinct(country)`
+
+    -   `drop_na()` : drop rows with NA values, e.g. `drop_na(pop)`
 
 ------------------------------------------------------------------------
 
@@ -177,6 +187,10 @@ Types: Current values are the vector types `"logical"`, `"integer"`, `"double"`,
     -   Scatter Plot: `geom_point(aes(col=var3, size=var4, shape=var5))`
 
     -   Line Graph: `geom_line(aes(col=var3, linetype=var4)))`
+
+    -   Title, Subtitle, Legend and Axis labels
+
+        -   `labs(title = "", subtitle ="", x  = "", y = "", col = "")`
 
 ## Assignment 1
 
