@@ -57,7 +57,7 @@ output:
 
 講義では、第2週、第3週とWorld Inequality report 2022を使って、所得と富の不平等について議論します。
 
-12/19(TU)　Rでデータサイエンス2：人口の少子高齢化 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00101.html)]・[[RNotebook](https://ds-sl.github.io/intro2r/ges001/ges00101.nb.html)]
+12/19(TU)　Rでデータサイエンス2：人口の少子高齢化 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00101.html)]・[[RNotebook](https://ds-sl.github.io/intro2r/ges001/ges00101.nb.html)]・[[Video](https://youtu.be/AFNVhNdWZ_Y)]
 
 **People- Population dynamics**
 
