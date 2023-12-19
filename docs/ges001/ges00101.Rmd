@@ -3,10 +3,10 @@ title: "GES 001 演習2"
 author: "H. Suzuki"
 date: "2023年12月19日`"
 output:
+  html_notebook: default
   ioslides_presentation:
     widescreen: yes
     df_print: paged
-  html_notebook: default
 ---
 
 ## 準備
@@ -19,7 +19,7 @@ output:
 
         -   Moodle の GES001 経済と経済学のサイトから、このスライドのページを表示（リンク「Rでデータサイエンス」の第2週）
 
-        -   （別のタブまたは ウィンドウで）PositCloud にログイン（アカウントのない人はサイン・アップ）[[Posit.co リンク](https://posit.cloud/)]・[[共有プロジェクト](https://posit.cloud/content/5539763)]
+        -   （別のタブまたは ウィンドウで）PositCloud にログイン（アカウントのない人はサイン・アップ）[[Posit.cloud](https://posit.cloud/)]・[[共有プロジェクト](https://posit.cloud/content/5539763)]
 
     3.  RStudio を起動
 
@@ -85,6 +85,12 @@ output:
 
 -   折れ線グラフ：ggplot(...) + geom_point()
 
+### ファイルリンク
+
+-   PositCloud 共有リンク：<https://posit.cloud/content/5539763>
+
+    -   demography1.Rmd [[リンク](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/demography1.Rmd)], demography2.Rmd [[リンク](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/demography2.Rmd)], demography.Rmd [[リンク](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/demography.Rmd)]
+
 ## パッケージとそのインストール
 
 > R のパッケージは、R の機能を拡張するもので、コード（プログラム）や、データなどが収められています。インストール（install: コンピュータに入れて使えるようにすること）と、ロード（load: いつでも使えるようにすること）が必要です。
@@ -128,8 +134,16 @@ showtext_auto() # for slides etc remove #
 
 読み込みには、少し時間がかかります。
 
-```{r cache = TRUE}
+```{r eval = FALSE}
 df_pop <- WDI(indicator = c(pop = "SP.POP.TOTL"))
+```
+
+```{r eval=FALSE, include=FALSE}
+write_csv(df_pop, "data/pop.csv")
+```
+
+```{r echo=FALSE}
+df_pop <- read_csv("data/pop.csv")
 ```
 
 ## データを見てみましょう

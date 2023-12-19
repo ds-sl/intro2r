@@ -124,8 +124,16 @@ R Notebook の Preview で図のタイトルが小さい場合には、２行目
 
 読み込みには、少し時間がかかります。
 
-```{r cache = TRUE}
+```{r eval = FALSE}
 df_pop <- WDI(indicator = c(pop = "SP.POP.TOTL"))
+```
+
+```{r eval=FALSE, include=FALSE}
+write_csv(df_pop, "data/pop.csv")
+```
+
+```{r echo=FALSE}
+df_pop <- read_csv("data/pop.csv")
 ```
 
 ## データを見てみましょう
