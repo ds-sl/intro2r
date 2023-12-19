@@ -40,3 +40,16 @@ df_iris[3:5]
 df_iris[[5]] |> unique()
   
 df_iris$Species |> unique()
+  
+### Classes and Types
+    
+class(df_iris)
+  
+class(df_iris[5])
+  
+class(df_iris[[5]])
+  
+typeof(df_iris[[1]])
+  
+typeof(df_iris[[5]])
+  

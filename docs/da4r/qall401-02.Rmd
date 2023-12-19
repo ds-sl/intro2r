@@ -3,14 +3,14 @@ title: "Data Analysis for Researchers 2023, Week 2"
 author: "Hiroshi Suzuki"
 date: "2023/12/20"
 output:
-  html_document:
-    df_print: paged
+  html_notebook: default
   ioslides_presentation:
     widescreen: yes
-  html_notebook: default
+  html_document:
+    df_print: paged
 ---
 
-# Part I: R and RStudio 
+# Part I: R and RStudio
 
 ## R, RStudio and Posit Cloud
 
@@ -84,22 +84,6 @@ The data `iris` is a part of the pre-installed package `datasets.` [[Link](https
 
 -   df_iris\$Species \|\> unique(): same as above
 
-------------------------------------------------------------------------
-
-### Classes and Types
-
-Types: Current values are the vector types `"logical"`, `"integer"`, `"double"`, `"character"`, `"list"`, etc.
-
--   class(df_iris): class of `df_iris` is a "data.frame"
-
--   class(df_iris[5]): "data.frame"
-
--   class(df_iris[[5]]): "factor"
-
--   typeof(df_iris[[1]]): "double"
-
--   typeof(df_iris[[5]]): "integer"
-
 ## Gapminder [[Link](https://www.gapminder.org)]
 
 -   Upgrade Your Worldview
@@ -134,7 +118,7 @@ Types: Current values are the vector types `"logical"`, `"integer"`, `"double"`,
 
 ## Life-expectancy
 
--   R Notebook
+-   R Notebook [[Link](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/life_expectancy.Rmd) to the source], [[R Notebook](https://ds-sl.github.io/intro2r/da4r/life_expectancy.nb.html)]
 
 -   World Development Indicators: life-expectancy
 
@@ -192,15 +176,19 @@ Types: Current values are the vector types `"logical"`, `"integer"`, `"double"`,
 
         -   `labs(title = "", subtitle ="", x  = "", y = "", col = "")`
 
-## Assignment 1
+## Week Two Assignment
 
--   Self-introduction and 'Please call me ... .'
+**Self-introduction Plus**
 
--   What do you expect from this course?
+1.  Self-introduction and 'Please call me ... .'
 
--   Write the name and the WDI code of the WDI data you are interested in. Reason?
+2.  What do you expect from this course?
 
--   List the data you want to study and investigate, if any.
+3.  Write the name and the WDI code of the WDI data you are interested in. Reason?
+
+4.  List the data you want to study and investigate, if any. (Optional)
+
+***Due Sunday 24, December 2023, 11:59 PM***
 
 ## Recommended Readings and Activities
 
