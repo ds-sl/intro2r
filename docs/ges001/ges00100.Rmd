@@ -100,7 +100,7 @@ Video: Let my dataset change your mindset by Hans Rosling ハンス・ロスリ�
 
 Rは、データ分析のために開発されたプログラム言語で、RStudio は、R （等）を使いやすくする、統合開発環境（IDE）で、両方とも、インストールが必要です。
 
-二年前に、会社名が、RStudio から、Posit と変更になりました。
+2021年に、会社名が、RStudio から、Posit と変更になりました。
 
 -   The R Project for Statistical Computing [[Link](https://www.r-project.org)]
     -   最新は、R version 4.3.2 (2023-10-03)：R.version.string で確認
