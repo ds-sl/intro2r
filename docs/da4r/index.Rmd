@@ -23,7 +23,7 @@ Only Part II. [[Slides](https://ds-sl.github.io/intro2r/da4r/qall401-01.html#1)]
 
 Exploratory Data Analysis I [Slides], [R Notebook], [Video1], [Video2]
 
-### Part I 
+### Part I
 
 -   R and RStudio: Installation +
 
@@ -135,9 +135,9 @@ Exploratory Data Analysis I [Slides], [R Notebook], [Video1], [Video2]
 
     -   `ggplot(aes(x=var1, y=var2))`
 
-    -   Scatter Plot: `geom_point(aes(``col=var3, size=var4, shape=var5``))`
+    -   Scatter Plot: ``` geom_point(aes(``col=var3, size=var4, shape=var5``)) ```
 
-    -   Line Graph: `geom_line(``aes(col=var3, linetype=var4))``)`
+    -   Line Graph: ``` geom_line(``aes(col=var3, linetype=var4))``) ```
 
 ### Assignment 1
 
@@ -233,7 +233,7 @@ Exploratory Data Analysis V
 
 ### Assignment 5
 
-## Weekof  7 (2024/02/07)
+## Weekof 7 (2024/02/07)
 
 Professor Taisei Kaizoji
 

@@ -31,9 +31,11 @@ output:
 
 開講日中（23：59まで）にコメントを提出してください。コメントには、講義の内容に関するコメント、質問を書いてください。講義への参加としてカウントしています。
 
-### 資料
+### 資料 {#documents}
 
 このページにリンクします。
+
+R と R Studio のインストールについて [[リンク](https://icu-hsuzuki.github.io/ds4aj/ronrstudio.html#r-と-r-studio-のインストール)]・[[ビデオ](https://youtu.be/Q8TpC-e0Mfg)]
 
 ## **スケジュール**
 
