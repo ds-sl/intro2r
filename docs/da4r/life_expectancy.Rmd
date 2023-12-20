@@ -107,23 +107,6 @@ df_life |> filter(is.na(region)) |> distinct(country, iso2c)
 df_life |> filter(region != "Aggregates" | country %in% c("Viet Nam", "Czechia")) |> distinct(country, iso2c, region, income)
 ```
 
-```{r}
-df_life_revised <- df_life
-df_life_revised <- df_life_revised |> mutate(
-  region = case_when(
-    is.na(region) & country == "Viet Nam" ~ "East Asia & Pacific",
-    is.na(region) & country == "Czechia" ~ "Europe & Central Asia", 
-    TRUE ~ region))
-df_life_revised |> filter(country %in% c("Viet Nam", "Czechia")) |> distinct(country, region)
-```
-
-```{r}
-df_life_revised <- df_life
-df_life_revised$region[df_life_revised$country == "Viet Nam"] <- "East Asia & Pacific"
-df_life_revised$region[df_life_revised$country == "Czechia"] <- "Europe & Central Asia"
-df_life_revised |> filter(country %in% c("Viet Nam", "Czechia")) |> distinct(country, region)
-```
-
 Step 9. Set groups.
 
 ```{r}
@@ -204,4 +187,25 @@ df_life |> filter(year == 2021) |>
 df_life |> filter(year == 1960) |>
   filter(region != "Aggregates") |> drop_na(fertility_rate, life_expectancy) |>
   ggplot(aes(fertility_rate, life_expectancy, col = region, size = population)) + geom_point()
+```
+
+## Addendum
+
+The region and the income level of Viet Nuam and Czechia are NA. If you want to revise it, there are two ways to change entries. There is yet another way to be introduced later.
+
+```{r}
+df_life_revised <- df_life
+df_life_revised <- df_life_revised |> mutate(
+  region = case_when(
+    is.na(region) & country == "Viet Nam" ~ "East Asia & Pacific",
+    is.na(region) & country == "Czechia" ~ "Europe & Central Asia", 
+    TRUE ~ region))
+df_life_revised |> filter(country %in% c("Viet Nam", "Czechia")) |> distinct(country, region)
+```
+
+```{r}
+df_life_revised <- df_life
+df_life_revised$region[df_life_revised$country == "Viet Nam"] <- "East Asia & Pacific"
+df_life_revised$region[df_life_revised$country == "Czechia"] <- "Europe & Central Asia"
+df_life_revised |> filter(country %in% c("Viet Nam", "Czechia")) |> distinct(country, region)
 ```
