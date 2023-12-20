@@ -24,7 +24,7 @@ install.packages("tidyverse")
 install.packages("WDI")
 ```
 
-Step 0-2. Create data directory, run only once.
+Step 0-2. Create data directory, run only once. You can also create a new directory (or folder) from the Files tab in the right below pane.
 
 ```{r eval = FALSE}
 dir.create("data")
@@ -43,7 +43,7 @@ library(tidyverse)
 library(WDI)
 ```
 
-Step 2. Download data.
+Step 2. Download data. See Help. (Put WDI in the search window under the Help tab in the right below pane. Run only once.
 
 ```{r eval = FALSE}
 df_wdi_life <- WDI(indicator = c(life_expectancy = "SP.DYN.LE00.IN",
@@ -52,7 +52,7 @@ df_wdi_life <- WDI(indicator = c(life_expectancy = "SP.DYN.LE00.IN",
                    extra = TRUE)
 ```
 
-Step 3. Write the data.
+Step 3. Write the data. Run only once.
 
 ```{r eval = FALSE}
 write_csv(df_wdi_life, "data/wdi_life.csv")
@@ -76,11 +76,23 @@ Step 6. Structure, showing all the columns, i.e., variables.
 str(df_wdi_life)
 ```
 
-Step 7. Select columns.
+Step 7. Select columns. Same as `select(c(1,2,4,7,8,9,10,14))` .
 
 ```{r}
 df_life <- df_wdi_life |> select(c("country", "iso2c", "year", "life_expectancy", "fertility_rate", "population", "region", "income"))
 head(df_life)
+```
+
+`7:10 is same as 7, 8, 9, 10`
+
+```{r}
+df_wdi_life |> select(c(1,2,4,7:10,14)) |> identical(df_life)
+```
+
+```{r}
+df_wdi_life |> select(
+  c("country", "iso2c", "year", "life_expectancy":"region", "income")) |>
+  identical(df_life)
 ```
 
 Step 8. List regions and income levels.
@@ -99,15 +111,19 @@ Step 9. Aggregates
 df_life |> filter(region == "Aggregates") |> distinct(country, iso2c)
 ```
 
+Step 10. Check the countries with NA in region.
+
 ```{r}
 df_life |> filter(is.na(region)) |> distinct(country, iso2c)
 ```
+
+Step 11. List country names, iso2c's with their region and income level.
 
 ```{r}
 df_life |> filter(region != "Aggregates" | country %in% c("Viet Nam", "Czechia")) |> distinct(country, iso2c, region, income)
 ```
 
-Step 9. Set groups.
+Step 11. Set groups.
 
 ```{r}
 INCOME <- c("Low income", "Lower middle income", "Upper middle income", "High income")
@@ -123,47 +139,53 @@ df_life |> filter(country == "World") |>
   ggplot(aes(year, life_expectancy)) + geom_line()
 ```
 
-Chart 2. Remove rows with missing values
+Chart 2. Remove rows with missing values and add the chart title.
 
 ```{r}
 df_life |> filter(country == "World") |> drop_na(life_expectancy) |>
-  ggplot(aes(year, life_expectancy)) + geom_line()
+  ggplot(aes(year, life_expectancy)) + geom_line() +
+  labs(title = "Life expectancy of the World")
 ```
 
-Chart 3 Life expectancy of countries of choice
+Chart 3 Life expectancy of chosen countries with chart title and y-label.
 
 ```{r}
 df_life |> filter(country %in% c("Afghanistan", "China", "India", "Japan", "United States", "Viet Nam", "Russian Federation", "Somalia")) |> drop_na(life_expectancy) |>
-  ggplot(aes(year, life_expectancy, col = country)) + geom_line()
+  ggplot(aes(year, life_expectancy, col = country)) + geom_line() +
+  labs(title = "Life expectancy of eight countries", y = "life expectancy")
 ```
 
 Chart 4. Life expectancy by regions
 
 ```{r}
 df_life |> filter(country %in% REGION) |> drop_na(life_expectancy) |>
-  ggplot(aes(year, life_expectancy, col = country)) + geom_line()
+  ggplot(aes(year, life_expectancy, col = country)) + geom_line() +
+  labs(title = "Life expectancy by region")
 ```
 
 Chart 5. Life expectancy by income levels
 
 ```{r}
 df_life |> filter(country %in% INCOME) |> drop_na(life_expectancy) |>
-  ggplot(aes(year, life_expectancy, col = country)) + geom_line()
+  ggplot(aes(year, life_expectancy, col = country)) + geom_line() +
+  labs(title = "Life expectancy by income level")
 ```
 
-Exercise 1. Select a country.
+***Exercise 1. Select a country (or a region name listed under country).***
 
 ```{r}
 df_life |> filter(country == "World") |> drop_na(life_expectancy) |>
   ggplot(aes(year, life_expectancy)) + geom_line()
 ```
 
-Exercise 2 Select countries of your choice
+***Exercise 2. Select countries of your choice***
 
 ```{r}
 df_life |> filter(country %in% c("Afghanistan", "China", "India", "Japan", "United States", "Viet Nam", "Russian Federation", "Somalia")) |> drop_na(life_expectancy) |>
   ggplot(aes(year, life_expectancy, col = country)) + geom_line()
 ```
+
+Chart 6. Relation between fertility rate and life expectancy in 2021 by a scatter plot with regions in color.
 
 ```{r}
 df_life |> filter(year == 2021) |>
@@ -171,11 +193,15 @@ df_life |> filter(year == 2021) |>
   ggplot(aes(fertility_rate, life_expectancy, col = region)) + geom_point()
 ```
 
+***Exercise 3. Change the year.***
+
 ```{r}
-df_life |> filter(year == 1960) |>
+df_life |> filter(year == 2021) |>
   filter(region != "Aggregates") |> drop_na(fertility_rate, life_expectancy) |>
   ggplot(aes(fertility_rate, life_expectancy, col = region)) + geom_point()
 ```
+
+Chart 7. Relation between fertility rate and life expectancy in 2021 by a scatter plot with regions in color and population in size.
 
 ```{r}
 df_life |> filter(year == 2021) |>
@@ -183,8 +209,10 @@ df_life |> filter(year == 2021) |>
   ggplot(aes(fertility_rate, life_expectancy, col = region, size = population)) + geom_point()
 ```
 
+***Exercise 4. Change the year.***
+
 ```{r}
-df_life |> filter(year == 1960) |>
+df_life |> filter(year == 2021) |>
   filter(region != "Aggregates") |> drop_na(fertility_rate, life_expectancy) |>
   ggplot(aes(fertility_rate, life_expectancy, col = region, size = population)) + geom_point()
 ```
