@@ -230,7 +230,7 @@ World Inequality Report 2022 [[Link](https://wir2022.wid.world)]・[[みんな�
 
     -   Figure 4.5 Top 1% wealth shared in the BRICs [[Link](https://wir2022.wid.world/www-site/uploads/2021/10/CH4-F4.5-2.jpg)]
 
--   Chapter 5 Half the sky? The Female Labor Income Share in a Global PerspectiveHalf the sky? The Female Labor Income Share in a Global Perspective [[Link](https://wir2022.wid.world/chapter-5/)]
+-   Chapter 5 Half the sky? The Female Labor Income Share in a Global Perspective [[Link](https://wir2022.wid.world/chapter-5/)]
 
 -   Chapter 6 Global carbon inequality [[Link](https://wir2022.wid.world/chapter-6/)]
 
@@ -265,6 +265,111 @@ Age dependency ratio, old (% of working-age population)：SP.POP.DPND.OL
 　　　　　  不平等を無くすために何をするべきか2
 
 講義では、所得の世界的格差の現状を踏まえて、高所得者に対する資産課税、金融取引税の可能性について議論します。
+
+#### コメント・レビュー
+
+-   PPP 購買力平価（Purchasing Power Parity）:　日本では、100円〜1USD
+
+    -   どの地域の、富の分配がより不平等になっているか。
+
+-   貧富の差の拡大：自動的ではなく、政治的選択、不平等は仕方がないのではないか。
+
+-   給付金・税の軽減、一時的・中長期的
+
+-   富と所得の違い、その影響。資産はどのように、計算するのか。
+
+-   バイアスの克服、Infographics
+
+-   富の格差：共産国・社会主義国、資本主義国、貧しい国（MENA: Middle East and North Africa）
+
+#### 不平等をなくすために何をなすべきか
+
+World Inequality Report 2022 [[Link](https://wir2022.wid.world)]
+
+-   Chapter 5 Half the sky? The Female Labor Income Share in a Global Perspective [[Link](https://wir2022.wid.world/chapter-5/)]
+
+    -    ジェンダーの不平等は世界レベルで依然としてかなりのものであり、国内での進展は遅すぎる
+
+        -   Figure 12. in Executive Sammary? Men's and Women's shares in global labor incomes, 1990-2020 [[Link](https://wir2022.wid.world/chapter-5/)]
+
+    -   Figure 5.2 Female income share across the world, 1990-2020 [[Link](https://wir2022.wid.world/chapter-5/)]
+
+        -   中国の格差は拡大している。
+
+    -   Figure B5.1 <https://wir2022.wid.world/chapter-5/> UN Gender Inequality Index [[Link](https://hdr.undp.org/data-center/thematic-composite-indices/gender-inequality-index#/indicies/GII)]
+
+    -   ほとんどの国では、1990年代以降、国民労働所得に占める女性の 割合が増加している。例外は中国と旧東欧圏の一部の国（リトアニア 、ポーランド、ロシア、スロベニア、スロバキア）で、女性の労働所得 シェアは国際比較ですでに高い水準から低下している。MENA "地 域の女性の所得シェアは15％と最も低く、旧東欧圏は41％と最も高 い。
+
+    -   日本の男女間賃金格差
+
+        -   男女間の教育水準の違いがなくなりつつあるが、一方で人的資本の条 件（教育水準など）をコントロールしてもなお残る男女間賃金格差（ residual gap）が存在している。
+
+        -   子供を持つことによって所得が低下する 「Child Penalty 」が観察され 、 女性の所得減少 （=Motherhood Penalty）につながっている可能性が指 摘されている。
+
+-   Chapter 6 Global carbon inequality [[Link](https://wir2022.wid.world/chapter-6/)]
+
+    -   気候変動の箇所で取り扱う
+
+-   Chapter 7 The road to redistributing wealth [[Link](https://wir2022.wid.world/chapter-7/)]
+
+    -   富の再分配は将来に投資するための鍵
+
+        -   世界の大富豪に対する富裕税シナリオからの税収の増加についての分析
+
+        -   資本が富裕層の集中していることを考えると、適度な累進課税は政府に かなりの収入を生み出す可能性がある。ここで提案された適度な累進税 率のシナリオでは、世界の税収の1.6％が生み出され、教育、健康、そし て気候変動問題への取り組みに税収を再投資することが可能になる。
+
+    -   富の不平等は分布の最も富裕な層で増加している
+
+        -   個人資産税の近代化：アメリカ、イギリス、ドイツ、あるいは日本では、1936年から1980年の間、最高所得税率は一貫して70％以上でした。ほとんどの国が1980年以
+            来最高所得税率を引き下げた。
+
+        -   固定資産税を近代化する最善の方法は、その基盤を不動産だけでなくあらゆる形態の資産に拡大し、均一税率から累進課税スケジュールに移行することである。実際には、これはフラットな固定資産税を富に対する現代の累進課税に変換することになります。
+
+    -   世界的な累進富裕税の試算
+
+        -   [表7.1](https://wir2022.wid.world/chapter-7/)は、2021年のさまざまな富裕層の個人の人数と、3つの世界的
+            な富裕税のシナリオに従って支払うべき純資産の合計と税金を示し
+            ている。
+
+        -   世界の億万長者は合計で13兆ドル以上を所有（世界の富の3.5％）
+            • 資産100万ドル以上 6200万人（世界の成人人口の1.2％）。
+            • 資産1,000万ドル以上 180万人弱（上位0.04％）
+            • 資産1億ドル以上 76,500人（上位0.001％）
+            • 資産10億ドル以上 2,750人（上位0.00005％）
+
+        -   国内総生産（GDP）：世界96.51兆ドル
+
+        -   米国：23.32兆ドル；
+
+        -   中国17.73兆ドル；日本4.941兆ドル（2021）
+
+-   Chapter 8 Taxing Multinationals or Taxing Wealthy Individuals? [[Link](https://wir2022.wid.world/chapter-8/)]
+
+    -   Total texes paid by Income [Link](https://wir2022.wid.world/chapter-8/)]
+
+-   Chapter 9 Global vs Unilateral Perspectives on Tax Justice [[Link](https://wir2022.wid.world/chapter-9/)]
+
+    -   タックスヘイブンは法人税や所得税の税率をゼロか、極めて低くしている国や地域を指します。
+
+        -   パナマ文書: Panama Papers
+
+    -   2021 年 10 月 8 日、経済協力開発機構（OECD）で検討が進められ てきた、いわゆるデジタル課税とミニマムタックスの主要な項目につ いて最終合意に至った。2023 年からの導入を目指すこととされた。
+
+    -   ミニマムタックスは、実際に負担している税率（実効税率）が「 最低税率15％」を下回る場合に、本国の親会社等に上乗せ課税を 行うものである。⇒タックスヘブンへの税回避の動きを止めることが 期待されている。
+
+-   Chapter 10 Emancipation, redistribution and sustainability [[Link](https://wir2022.wid.world/chapter-10/)]
+
+    -   The rise of the Welfare State in rich countries (1910-1980) [[Link](https://wir2022.wid.world/chapter-10/)]
+
+    -   Lessons from failed trickle-down economics [[Link](https://wir2022.wid.world/chapter-10/)], 10.4 [[Link](https://wir2022.wid.world/chapter-10/)]
+
+        -   1980年代に大幅に減税した後、一人当たり所得の成長率は低下し ている。トリクルダウン経済学（減税による経済成長の促進）の主張 は正しくないことが実証されつつある。
+
+        -   不平等が中間層の所得を減らし、経済停滞を招く原因になる。
+
+    -   南北問題の間の資本と所得の流れの大きな不均衡に終止符を打つた めには、グローバリゼーションの基本原則を再評価する必要がある。
+
+-   Glossary Country appendix [[Link](https://wir2022.wid.world/country-appendix-glossary/)]
 
 01/09(TU)　Rでデータサイエンス3：GNI係数と所得分布　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-3.nb.html)]・[授業]
 
