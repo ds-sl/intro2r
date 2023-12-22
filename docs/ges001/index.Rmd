@@ -61,6 +61,14 @@ R と R Studio のインストールについて [[リンク](https://icu-hsuzuk
 
 12/19(TU)　Rでデータサイエンス2：人口の少子高齢化 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00101.html)]・[[RNotebook](https://ds-sl.github.io/intro2r/ges001/ges00101.nb.html)]・[[Video](https://youtu.be/AFNVhNdWZ_Y)]
 
+演習ファイル：[[demography1.Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/demography1.Rmd)]・[[demography2.Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/demography2.Rmd)]
+
+作業例：[my_demograpny1.nb.html]・[my_demograpny1.nb.html]
+
+（R Markdown ファイル（ソース・ファイル） は、右上の、Code ボタンからダウンロードすることが可能です。）
+
+作業ビデオ：[Video1]・[Video2]
+
 **People- Population dynamics**
 
 <!-- Population, total：SP.POP.TOTL -->

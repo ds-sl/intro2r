@@ -288,9 +288,11 @@ World Inequality Report 2022 [[Link](https://wir2022.wid.world)]
 
 -   Chapter 5 Half the sky? The Female Labor Income Share in a Global Perspective [[Link](https://wir2022.wid.world/chapter-5/)]
 
-    -    ジェンダーの不平等は世界レベルで依然としてかなりのものであり、国内での進展は遅すぎる
+    -   ジェンダーの不平等は世界レベルで依然としてかなりのものであり、国内での進展は遅すぎる
 
-        -   Figure 12. in Executive Sammary? Men's and Women's shares in global labor incomes, 1990-2020 [[Link](https://wir2022.wid.world/chapter-5/)]
+    ```         
+    -   Figure 12. in Executive Sammary? Men's and Women's shares in global labor incomes, 1990-2020 [[Link](https://wir2022.wid.world/chapter-5/)]
+    ```
 
     -   Figure 5.2 Female income share across the world, 1990-2020 [[Link](https://wir2022.wid.world/chapter-5/)]
 
@@ -320,22 +322,15 @@ World Inequality Report 2022 [[Link](https://wir2022.wid.world)]
 
     -   富の不平等は分布の最も富裕な層で増加している
 
-        -   個人資産税の近代化：アメリカ、イギリス、ドイツ、あるいは日本では、1936年から1980年の間、最高所得税率は一貫して70％以上でした。ほとんどの国が1980年以
-            来最高所得税率を引き下げた。
+        -   個人資産税の近代化：アメリカ、イギリス、ドイツ、あるいは日本では、1936年から1980年の間、最高所得税率は一貫して70％以上でした。ほとんどの国が1980年以 来最高所得税率を引き下げた。
 
         -   固定資産税を近代化する最善の方法は、その基盤を不動産だけでなくあらゆる形態の資産に拡大し、均一税率から累進課税スケジュールに移行することである。実際には、これはフラットな固定資産税を富に対する現代の累進課税に変換することになります。
 
     -   世界的な累進富裕税の試算
 
-        -   [表7.1](https://wir2022.wid.world/chapter-7/)は、2021年のさまざまな富裕層の個人の人数と、3つの世界的
-            な富裕税のシナリオに従って支払うべき純資産の合計と税金を示し
-            ている。
+        -   [表7.1](https://wir2022.wid.world/chapter-7/)は、2021年のさまざまな富裕層の個人の人数と、3つの世界的 な富裕税のシナリオに従って支払うべき純資産の合計と税金を示し ている。
 
-        -   世界の億万長者は合計で13兆ドル以上を所有（世界の富の3.5％）
-            • 資産100万ドル以上 6200万人（世界の成人人口の1.2％）。
-            • 資産1,000万ドル以上 180万人弱（上位0.04％）
-            • 資産1億ドル以上 76,500人（上位0.001％）
-            • 資産10億ドル以上 2,750人（上位0.00005％）
+        -   世界の億万長者は合計で13兆ドル以上を所有（世界の富の3.5％） • 資産100万ドル以上 6200万人（世界の成人人口の1.2％）。 • 資産1,000万ドル以上 180万人弱（上位0.04％） • 資産1億ドル以上 76,500人（上位0.001％） • 資産10億ドル以上 2,750人（上位0.00005％）
 
         -   国内総生産（GDP）：世界96.51兆ドル
 
@@ -345,7 +340,7 @@ World Inequality Report 2022 [[Link](https://wir2022.wid.world)]
 
 -   Chapter 8 Taxing Multinationals or Taxing Wealthy Individuals? [[Link](https://wir2022.wid.world/chapter-8/)]
 
-    -   Total texes paid by Income [Link](https://wir2022.wid.world/chapter-8/)]
+    -   Total taxes paid by Income [[Link](https://wir2022.wid.world/chapter-8/)]
 
 -   Chapter 9 Global vs Unilateral Perspectives on Tax Justice [[Link](https://wir2022.wid.world/chapter-9/)]
 
