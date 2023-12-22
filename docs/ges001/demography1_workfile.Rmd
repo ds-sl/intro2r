@@ -1,0 +1,328 @@
+---
+title: "GES 001 演習2"
+author: "ID, Your Name"
+date: "2023年12月19日"
+output: html_notebook
+---
+
+## 準備
+
+-   自分のPCまたは教室のPC
+
+    1.  ログイン
+
+    2.  ウェッブ・ブラウザー（Google Chrome など）を起動
+
+        -   Moodle の GES001 経済と経済学のサイトから、このスライドのページを表示（リンク「Rでデータサイエンス」の第2週）
+
+        -   （別のタブまたは ウィンドウで）PositCloud にログイン（アカウントのない人はサイン・アップ）
+
+    3.  RStudio を起動
+
+        -   自分のPCにR と RStudio をインストールしていないひとは不要。
+
+        -   最後に時間があれば、インストールについて説明します。
+
+## 第2週
+
+12/14(TH)　所得と富の不平等の現状１
+
+　　　　　  所得と富の不平等の現状２
+
+講義では、第2週、第3週とWorld Inequality report 2022を使って、所得と富の不平等について議論します。
+
+12/19(TU)　Rでデータサイエンス２：人口の少子高齢化　 [[Main](https://ds-sl.github.io/intro2r/ges001/index.html)]
+
+## 講義 12月14日（木）所得と富の不平等
+
+### World Inequality Report 2022 [[Link](https://wir2022.wid.world)]
+
+-   Executive Summary [[Link](https://wir2022.wid.world/executive-summary/)]・[[みんなのデータサイエンスへのリンク](https://icu-hsuzuki.github.io/ds4aj/wid.html#wid)]
+
+-   Introduction [[Link](https://wir2022.wid.world/introduction/)]
+
+-   Chapter 1 Global economic inequality: insights: [[Link](https://wir2022.wid.world/chapter-1/)]
+
+-   Chapter 2 Global inequality from 1820 to now: the persistence and mutation of extreme inequality [[Link](https://wir2022.wid.world/chapter-2/)]
+
+-   Chapter 3 Rich countries, poor governments [[Link](https://wir2022.wid.world/chapter-3/)]
+
+-   Chapter 4 Global wealth inequality: the rise of multimillionaires [[Link](https://wir2022.wid.world/chapter-4/)]
+
+## 演習 12月19日（木）人口と少子高齢化
+
+### 世界開発指標（World Development Indicators）[[Link](https://datatopics.worldbank.org/world-development-indicators/)]
+
+**練習1.** WDI のサイトで、興味のある指標の、名前と、WDI コードを選んでください。できれば、選択した理由も記録してください。
+
+#### **人々（People）- 人口動態（Population dynamics）**
+
+総人口　Population, total：SP.POP.TOTL [[Link](https://data.worldbank.org/indicator/SP.POP.TOTL)]
+
+出生率（千人）Birth rate, crude (per 1,000 people)：SP.DYN.CBRT.IN [[Link](https://data.worldbank.org/indicator/SP.DYN.CBRT.IN)]
+
+死亡率（千人）Death rate, crude (per 1,000 people)：SP.DYN.CDRT.IN [[Link](https://data.worldbank.org/indicator/SP.DYN.CDRT.IN)]
+
+若年労働人口率　Age dependency ratio, young (% of working-age population)：SP.POP.DPND.YG [[Link](https://data.worldbank.org/indicator/SP.POP.DPND.YG)]
+
+高齢者労働人口率　Age dependency ratio, old (% of working-age population)：SP.POP.DPND.OL [[Link](https://data.worldbank.org/indicator/SP.POP.DPND.OL)]
+
+## 演習の内容
+
+-   パッケージ（Package）インストール（コンピュータに入れておく）
+
+-   パッケージのロード（すぐ使えるようにする）：tidyverse, WDI, showtext
+
+-   データの取得：WDI()
+
+-   特定の条件にあった行を選択：filter()
+
+-   順番に、変形、視覚化などをするためのパイプ：`|>` （または、`%>%`）
+
+-   折れ線グラフ：ggplot(...) + geom_point()
+
+## パッケージとそのインストール
+
+> R のパッケージは、R の機能を拡張するもので、コード（プログラム）や、データなどが収められています。インストール（install: コンピュータに入れて使えるようにすること）と、ロード（load: いつでも使えるようにすること）が必要です。
+
+### インストール
+
+-   RStudio （または、Posit Cloud）の、上のメニュー・バーの、Tools の Pull down から、Install Packages を選び、Packages にパッケージ名を入れて、インストール。途中まで、パッケージ名を入れると下に候補がでるので、tab キーを押すと、自動入力になり、スペルミスが防げます。（右下の窓枠（Pane）の、Packages タブの、左上の　Install を押しても、同じものが出ます。）
+
+    -   `install.packages("パッケージ名")` でも、インストールできます。
+
+## パッケージのロード
+
+-   パッケージに収められている、コード（プログラム、命令）や、データをすぐに使えるようにします。`library(パッケージ名)` とします。
+
+毎回 tidyverse と WDI を使いますから、R Notebook の最初には、次のコードチャンクを作成し、実行（Run）します。
+
+```{r}
+library(tidyverse)
+library(WDI)
+#library(showtext)
+```
+
+## 日本語表示のために
+
+図のタイトルなどが、日本語で文字化けしないようにおまじないです。
+
+R Notebook の Preview で図のタイトルが小さい場合には、２行目（`showtext_auto()`）を \# で、コメントアウト。
+
+```{r}
+#showtext_auto(FALSE) 
+#showtext_auto() # for slides etc remove # 
+```
+
+## データの読み込み（1）
+
+データの読み込み方法はデータの種類などにより何種類もありますが、まず、WDI パッケージの、WDI という名前のデータ取得のコード（命令、プログラム）を使って、総人口のデータを読み込みます。それには、WDI コードと呼ばれる、SP.POP.TOTL を使います。
+
+総人口　Population, total：SP.POP.TOTL
+
+取得した、データをそのあとで、呼び出して使うために、`<-` を使って、名前をつけ（assign）ます。データの形式が、data frame と呼ばれるものなので、わたしは、いつも、最初に df として、簡単な名前をつけます。名前はなんでも良いのですが、覚えやすいように、また、日本語も受け付けますが、扱いが複雑になるので、英数のみ、スペースや、ハイフンは使えないので、区切りには、\_ を使っています。
+
+読み込みには、少し時間がかかります。
+
+```{r eval = FALSE}
+df_pop <- WDI(indicator = c(pop = "SP.POP.TOTL"))
+```
+
+```{r eval=FALSE, include=FALSE}
+write_csv(df_pop, "data/pop.csv")
+```
+
+```{r echo=FALSE}
+df_pop <- read_csv("data/pop.csv")
+```
+
+## データを見てみましょう
+
+```{r}
+df_pop
+```
+
+## `REGION`
+
+地域名に対応する iso2c コードの取得
+
+```{r}
+REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
+"S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
+"V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL", 
+"XM", "XN", "XO", "XP", "XQ", "XT", "XU", "XY", "Z4", "Z7", "ZF", 
+"ZG", "ZH", "ZI", "ZJ", "ZQ", "ZT")
+```
+
+## 地域名の確認
+
+```{r}
+df_pop |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
+```
+
+## 国名確認
+
+```{r}
+df_pop |> filter(!(iso2c %in% REGION)) |> 
+  distinct(country, iso2c) |> arrange(country)
+```
+
+## 行の選択（`filter()`）
+
+-   `filter`(*条件*) ：条件にあった行を選択抽出します。
+
+    -   `filter`(*変数* `==` "*文字列*") ：変数が文字列と一致するものを抽出（= ではなく、== に注意）
+
+    -   `filter`(*変数* `%in% c`(*"文字列1", ..., "文字列n"*) ： 変数が文字列1 から 文字列n のどれかに一致したものを抽出
+
+    -   `filter`(`!`*条件*) ：条件と一致しないものを抽出。
+
+    -   `filter`(*条件1, 条件2*)：条件1 に一致するもののなかで、条件2 に一致するものを抽出。
+
+    -   `filter`(*条件1 \| 条件2*)：条件1 に一致するか、条件2 に一致するものを抽出。
+
+    -   `filter`(*変数* `<` *数値*)：数値のときは、引用符なし。`<=, >, >=` も同様。
+
+-   `distinct`(変数)：変数の値が異なるもののみ抽出
+
+-   `drop_na`(変数)：変数の値が *NA* のものは、削除
+
+## パイプ・折れ線グラフ
+
+-   `|>` : パイプ（pipe operator）次々にデータを送って実行させるために使います。
+
+    -   `data |> filter(条件)` は、`filter(data, 条件)` と同じ
+
+    -   `data |> filter(iso2c %in% REGION)` は、`filter(data, iso2c %in% REGION)` と同じ。
+
+-   `ggplot(aes(year, pop)) + geom_line()`：折れ線グラフを描画します。
+
+    -   `aes(year, pop)`：year が x 軸、pop（総人口）を y 軸に指定します。
+
+        -   `aes(x = year, y = pop)` の省略形。
+
+    -   グラフの描画については、次回以降に少しずつ説明。
+
+------------------------------------------------------------------------
+
+```{r}
+df_pop |> filter(country == "World") |> 
+  ggplot(aes(year, pop)) + geom_line() + 
+  labs(title = "世界の総人口")
+```
+
+------------------------------------------------------------------------
+
+```{r}
+df_pop |> filter(country == "Japan") |> 
+  ggplot(aes(year, pop)) + geom_line() +
+  labs(title = "日本の総人口")
+```
+
+------------------------------------------------------------------------
+
+**練習1：Germany と ドイツの部分を他の国名に変えてみてください。**
+
+```{r}
+COUNTRY <- "Germany"
+df_pop |> filter(country == COUNTRY) |> 
+  ggplot(aes(year, pop)) + geom_line() +
+  labs(title = "ドイツの総人口")
+```
+
+```{r}
+COUNTRY <- "France"
+df_pop |> filter(country == COUNTRY) |> 
+  ggplot(aes(year, pop)) + geom_line() +
+  labs(title = "フランスの総人口")
+```
+
+```{r}
+COUNTRY <- "Korea, Rep."
+df_pop |> filter(country == COUNTRY) |> 
+  ggplot(aes(year, pop)) + geom_line() +
+  labs(title = paste0(COUNTRY,"の総人口"))
+```
+
+```{r}
+COUNTRY <- "Sub-Saharan Africa"
+df_pop |> filter(country == COUNTRY) |> 
+  ggplot(aes(year, pop)) + geom_line() +
+  labs(title = paste(COUNTRY,"の総人口"))
+```
+
+------------------------------------------------------------------------
+
+**練習2. COUNTRIES を編集して、イギリスとドイツとフランスと日本を他の国に変えてみてください。**
+
+```{r}
+COUNTRIES <- c("United Kingdom", "Germany", "France", "Japan")
+df_pop |> filter(country %in% COUNTRIES) |> 
+  ggplot(aes(year, pop, col =  country)) + geom_line() +
+  labs(title = "イギリスとドイツとフランスと日本の総人口")
+```
+
+```{r}
+COUNTRIES <- c("Brazil", "Russian Federation", "India", "China", "South Africa")
+df_pop |> filter(country %in% COUNTRIES) |> 
+  ggplot(aes(year, pop, col =  country)) + geom_line() +
+  labs(title = "BRICS の総人口")
+```
+
+## 2022年の総人口の多い順
+
+```{r}
+df_pop |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
+  arrange(desc(pop))
+```
+
+## 2022年の総人口の TOP 11
+
+```{r}
+pop_top11 <- df_pop |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
+  arrange(desc(pop)) |> slice_head(n=11) |> pull(iso2c)
+pop_top11
+dput(pop_top11)
+```
+
+**練習4. 1960年の総人口が多い順に五番目までリストしてください。**
+
+```{r}
+pop_top5 <- df_pop |> filter(!(iso2c %in% REGION)) |> 
+  filter(year == 1960) |> 
+  arrange(desc(pop)) |> slice_head(n=5) |> pull(iso2c)
+pop_top5
+dput(pop_top5)
+```
+
+```{r}
+df_pop |> filter(!(iso2c %in% REGION)) |> 
+  filter(year == 1960) |> 
+  arrange(desc(pop)) |> slice_head(n=5)
+```
+
+------------------------------------------------------------------------
+
+## TOP11 の人口推移
+
+```{r}
+df_pop |> filter(iso2c %in% pop_top11) |>
+  ggplot(aes(year, pop, color = iso2c)) + geom_line() + labs(title = "TOP11の総人口")
+```
+
+## 中国とインド以外のTOP11 の人口推移
+
+```{r}
+df_pop |> filter(iso2c %in% pop_top11) |> 
+  filter(!(iso2c %in% c("CN", "IN"))) |> 
+  ggplot(aes(year, pop, color = country)) + geom_line() +
+  labs(title = "中国とインド以外のTOP11の総人口")
+```
+
+## 地域ごとの人口推移
+
+```{r}
+df_pop |> filter(country %in% c("South Asia", "Europe & Central Asia", "Middle East & North Africa", 
+"East Asia & Pacific", "Sub-Saharan Africa", "Latin America & Caribbean", "North America")) |>
+  ggplot(aes(year, pop, color = country)) + geom_line() + labs(title = "地域ごとの総人口")
+```

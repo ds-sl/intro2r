@@ -1,0 +1,368 @@
+---
+title: "GES 001 演習2, Part II"
+author: "ID, Your Name"
+date: "2023年12月19日`"
+output: html_notebook
+---
+
+> データサイエンスは、コード（プログラム）を書くことではなく、データを可視化してみることによって、考え、疑問を持ち、新しい発見をしていくことだ
+>
+> 考察・疑問をたいせつにし、書き残してください。
+
+```{r}
+library(tidyverse)
+library(WDI)
+#library(showtext)
+```
+
+## データの読み込み（2）
+
+総人口　Population, total：SP.POP.TOTL
+
+出生率（千人）Birth rate, crude (per 1,000 people)：SP.DYN.CBRT.IN
+
+死亡率（千人）Death rate, crude (per 1,000 people)：SP.DYN.CDRT.IN
+
+若年労働人口率　Age dependency ratio, young (% of working-age population)：SP.POP.DPND.YG
+
+高齢者労働人口率　Age dependency ratio, old (% of working-age population)：SP.POP.DPND.OL
+
+```{r eval = FALSE}
+df_pop_related <- WDI(indicator = c(pop = "SP.POP.TOTL",
+                            birth_rate = "SP.DYN.CBRT.IN",
+                            death_rate = "SP.DYN.CDRT.IN",
+                            young = "SP.POP.DPND.YG",
+                            old = "SP.POP.DPND.OL"))
+```
+
+## 保存と読み込み
+
+```{r eval = FALSE}
+write_csv(df_pop_related, "data/pop_related.csv")
+```
+
+```{r}
+df_pop_related <- read_csv("data/pop_related.csv")
+```
+
+## データの確認
+
+```{r}
+head(df_pop_related)
+```
+
+## データの構造（Structure）
+
+```{r eval = FALSE}
+str(df_pop_related[])
+```
+
+```{r echo=FALSE}
+str(df_pop_related)
+```
+
+`{glimpse(df_pop_related)}`
+
+```{r}
+glimpse(df_pop_related)
+```
+
+## 変形
+
+wide データを long データに変形します。いずれ説明します。
+
+```{r}
+df_pop_long <- df_pop_related |> 
+  pivot_longer(pop:old, names_to = "name", values_to = "value")
+```
+
+## 出生率と死亡率
+
+出生率（千人）Birth rate, crude (per 1,000 people)：SP.DYN.CBRT.IN [[Link](https://data.worldbank.org/indicator/SP.DYN.CBRT.IN)]
+
+死亡率（千人）Death rate, crude (per 1,000 people)：SP.DYN.CDRT.IN [[Link](https://data.worldbank.org/indicator/SP.DYN.CDRT.IN)]
+
+------------------------------------------------------------------------
+
+```{r}
+df_pop_long |> filter(name %in% c("birth_rate", "death_rate")) |>
+  filter(country == "World") |> drop_na(value) |> # NA value を削除
+  ggplot(aes(year, value, col = name)) + geom_line() + 
+  labs(title = "出生率、死亡率（1000人当たり）")
+```
+
+------------------------------------------------------------------------
+
+**練習5 国を選択して、出生率、死亡率のグラフを描いてください。**
+
+```{r}
+df_pop_long |> filter(name %in% c("birth_rate", "death_rate")) |>
+  filter(country == "Japan") |> drop_na(value) |> # NA value を削除
+  ggplot(aes(year, value, col = name)) + geom_line() + 
+  labs(title = "日本の出生率、死亡率（1000人当たり）")
+```
+
+考察：1968年ごろの落ち込みは何だろうか。丙午（丙午）？
+
+```{r}
+df_pop_long |> filter(name %in% c("birth_rate", "death_rate")) |>
+  filter(country == "Afghanistan") |> drop_na(value) |> # NA value を削除
+  ggplot(aes(year, value, col = name)) + geom_line() + 
+  labs(title = "アフガニスタンの出生率、死亡率（1000人当たり）")
+```
+
+考察：
+
+-   アフガニスタンで、1980年代に何があったのだろうか。
+
+-   全体としては、出生率も、死亡率も下がっている。
+
+------------------------------------------------------------------------
+
+```{r}
+df_pop_long |> filter(name %in% c("birth_rate", "death_rate")) |>
+  filter(iso2c %in% c("BD", "BR", "CN", "ID", "NG", "JP")) |> drop_na(value) |>
+  ggplot(aes(year, value, col = country, linetype = name)) + 
+  geom_line() + labs(title = "国々の、出生率、死亡率（1000人当たり）")
+```
+
+考察
+
+-   それぞれの国についてどのようなことがわかりますか。疑問点を挙げてみましょう。
+
+------------------------------------------------------------------------
+
+```{r}
+df_pop_long |> filter(name %in% c("birth_rate", "death_rate")) |>
+  filter(iso2c %in% c("Z4", "Z7", "ZJ", "ZQ", "XU", "8S", "ZG")) |> drop_na() |>
+  ggplot(aes(year, value, col = country, linetype = name)) + 
+  geom_line() + labs(title = "地域ごとの出生率・死亡率（1000人あたり）")
+```
+
+考察・疑問
+
+-   どのような特徴がありますか。気づいたことを書いておきましょう。
+
+------------------------------------------------------------------------
+
+```{r}
+df_pop_long |> filter(name %in% c("birth_rate", "death_rate")) |>
+  filter(iso2c %in% c("BD", "BR", "CN", "ID", "NG", "JP")) |> drop_na(value) |>
+  ggplot(aes(year, value, col = country, linetype = name)) + 
+  geom_line() + labs(title = "国々の、出生率、死亡率（1000人当たり）")
+```
+
+------------------------------------------------------------------------
+
+**練習6. いくつかの国または地域の、出生率、死亡率のグラフを描いてください。**
+
+```{r}
+df_pop_long |> filter(name %in% c("birth_rate", "death_rate")) |>
+  filter(iso2c %in% c("BR", "RU", "IN", "CN", "ZA")) |> drop_na(value) |>
+  ggplot(aes(year, value, col = country, linetype = name)) + 
+  geom_line() + labs(title = "BRICSの出生率、死亡率（1000人当たり）")
+```
+
+考察
+
+-   BRICS の国々の特徴で、気づいたことを書いてみましょう。
+
+## 扶養家族の労働人口に対する割合
+
+若年労働人口率　Age dependency ratio, young (% of working-age population)：SP.POP.DPND.YG [[Link](https://data.worldbank.org/indicator/SP.POP.DPND.YG)]
+
+年齢別扶養比率（若年）は、15歳未満の扶養家族の、15歳から64歳までの生産年齢人口に対する比率である。データは、生産年齢人口100人当たりの扶養家族の割合で示されている。
+
+高齢者労働人口率　Age dependency ratio, old (% of working-age population)：SP.POP.DPND.OL [[Link to Metadata](https://databank.worldbank.org/metadataglossary/health-nutrition-and-population-statistics/series/SP.POP.DPND.OL)]
+
+年齢別扶養比率（高齢）は、生産年齢人口（15～64歳）に対する高齢扶養家族（65歳以上）の比率。データは、生産年齢人口100人当たりの扶養家族の割合で示されている。
+
+------------------------------------------------------------------------
+
+```{r}
+df_pop_long |> filter(name %in% c("young", "old")) |>
+  filter(country == "World") |> 
+  ggplot(aes(year, value, col = name)) + geom_line() + 
+  labs(title = "世界の高齢者・若年者扶養率")
+```
+
+**練習7. 国を選択して、高齢者・若年者の扶養率のグラフを描いてください。**
+
+```{r}
+df_pop_long |> filter(name %in% c("young", "old")) |>
+  filter(country == "Japan") |> 
+  ggplot(aes(year, value, col = name)) + geom_line() + 
+  labs(title = "日本の高齢者・若年者扶養率")
+```
+
+考察
+
+-   どんなことがわかりますか。
+
+```{r}
+df_pop_long |> filter(name %in% c("young", "old")) |>
+  filter(country == "France") |> 
+  ggplot(aes(year, value, col = name)) + geom_line() + 
+  labs(title = "フランスの高齢者・若年者扶養率")
+```
+
+考察
+
+-   どんなことがわかりますか。日本のグラフと比べるとどうでしょうか。
+
+------------------------------------------------------------------------
+
+```{r}
+df_pop_long |> filter(name %in% c("young", "old")) |>
+  filter(iso2c %in% c("BD", "BR", "CN", "ID", "NG", "JP")) |> 
+  ggplot(aes(year, value, col = country, linetype = name)) + 
+  geom_line() + labs(title = "国々の高齢者・若年者扶養率")
+```
+
+考察
+
+-   どんな特徴が分かりますか。
+
+------------------------------------------------------------------------
+
+```{r}
+df_pop_long |> filter(name %in% c("young", "old")) |>
+  filter(iso2c %in% c("US", "GB", "CN", "DE", "FR", "JP", "IN")) |> 
+  ggplot(aes(year, value, col = country, linetype = name)) + 
+  geom_line() + labs(title = "国々の高齢者・若年者扶養率")
+```
+
+考察
+
+-   どんな特徴が分かりますか。
+
+------------------------------------------------------------------------
+
+```{r}
+df_pop_long |> filter(name %in% c("young", "old")) |>
+  filter(country %in% c("South Asia", "Europe & Central Asia", "Middle East & North Africa", 
+"East Asia & Pacific", "Sub-Saharan Africa", "Latin America & Caribbean", "North America")) |> 
+  ggplot(aes(year, value, col = country, linetype = name)) + 
+  geom_line() + labs(title = "地域別の労働人口に対する高齢・若年扶養率（％）", 
+       subtitle = "実線：高齢者、点線：若年者", x = "", col = "", linetype = "")
+```
+
+**練習8. いくつかの国または地域の、高齢者・若年者の扶養率のグラフを描いてください。**
+
+```{r}
+df_pop_long |> filter(name %in% c("young", "old")) |>
+  filter(iso2c %in% c("BR", "RU", "IN", "CN", "ZA", "JP", "IN")) |> 
+  ggplot(aes(year, value, col = country, linetype = name)) + 
+  geom_line() + labs(title = "国々の高齢者・若年者扶養率")
+```
+
+考察
+
+-   どんなことがわかりますか。
+
+------------------------------------------------------------------------
+
+```{r}
+df_pop_long |> filter(name %in% c("birth_rate", "death_rate", "young", "old")) |>
+  filter(country == "Japan") |> drop_na(value) |>
+  ggplot(aes(year, value, col = name)) + geom_line() +
+  labs(title = "日本の出生率・死亡率・労働人口に対する高齢・若年扶養率（％）")
+```
+
+------------------------------------------------------------------------
+
+**練習7. 国を選択し（ドイツを変更し）て、高齢者・若年者の扶養率のグラフを描いてください。**
+
+```{r}
+df_pop_long |> filter(name %in% c("birth_rate", "death_rate", "young", "old")) |>
+  filter(country == "Germany") |> drop_na(value) |>
+  ggplot(aes(year, value, col = name)) + geom_line() +
+  labs(title = "ドイツの出生率・死亡率・労働人口に対する高齢・若年扶養率（％）")
+```
+
+------------------------------------------------------------------------
+
+```{r}
+df_pop_long |> filter(name %in% c("birth_rate", "death_rate", "young", "old")) |>
+  filter(country  %in%  c("Germany", "Japan")) |> drop_na(value) |>
+  ggplot(aes(year, value, col = country, linetype = name)) + geom_line() +
+  labs(title = "ドイツと日本の出生率・死亡率・労働人口に対する高齢・若年扶養率（％）")
+```
+
+------------------------------------------------------------------------
+
+```{r}
+df_pop_long |> filter(name == "pop") |>
+  filter(country  %in%  c("Germany", "Japan")) |> drop_na(value) |>
+  ggplot(aes(year, value, col = country)) + geom_line() +
+  labs(title = "ドイツと日本の人口")
+```
+
+**問い：どんなことがわかりますか。**
+
+------------------------------------------------------------------------
+
+**練習8. （ドイツと日本を変更し）いくつかの国または地域の、高齢者・若年者の扶養率のグラフを描いてください。**
+
+```{r}
+df_pop_long |> filter(name %in% c("birth_rate", "death_rate", "young", "old")) |>
+  filter(country  %in%  c("Korea, Rep.", "Japan")) |> drop_na(value) |>
+  ggplot(aes(year, value, col = country, linetype = name)) + geom_line() +
+  labs(title = "韓国と日本の出生率・死亡率・労働人口に対する\n高齢・若年扶養率（％）")
+```
+
+考察
+
+-   どんなことがわかりますか。
+
+## 復習
+
+-   パッケージ（Package）の利用：
+
+    -   インストール（installation）：Tools \> Install Packages
+
+    -   ロード（load）`library(tidyverse); library(WDI); library(showtext)`
+
+-   データの取得：`WDI(indicator = c(pop = "SP.POP.TOTL"))`
+
+-   特定の行の取得：`filter(), drop_na(), distinct()`
+
+-   折れ線グラフ
+
+    -   `ggplot(aes(x = year, y = pop) + geom_line()`
+
+    -   `ggplot(aes(x = year, y = pop, col = country) + geom_line()`
+
+## 課題・練習
+
+提出はしなくて良いですが、ぜひ実際に手を動かして実行してください。考えたこと、疑問があれば、記録しておいてください。
+
+1.  WDI のサイトで、興味のある指標の、名前と、WDI コードを選んでください。できれば、選択した理由も記録してください。
+
+2.  Germany と ドイツの部分を他の国名に変えてみてください。(図
+
+3.  1960年の総人口が多い順に五番目までリストしてみましょう。
+
+4.  いくつかの国を選択して、総人口の推移のグラフを描いてください。
+
+5.  国を選択して、出生率、死亡率のグラフを描いてください。
+
+6.  いくつかの国または地域の、出生率、死亡率のグラフを描いてください。
+
+7.  国を選択して、高齢者・若年者の扶養率のグラフを描いてください。
+
+8.  いくつかの国または地域の、高齢者・若年者の扶養率のグラフを描いてください。
+
+## 参考文献
+
+1.  「みんなのデータサイエンス - Data Science for All」[[はじめてのデータサイエンス](https://icu-hsuzuki.github.io/ds4aj/first-example.html#first-example)]
+
+    -   導入として、GDP（国内総生産）のデータを使って説明しています。
+
+2.  Posit Primers: The Basics 対話型の演習サイトの最初 [[Link](https://posit.cloud/learn/primers/1)]
+
+    1.  [Visualization Basics](https://posit.cloud/learn/primers/1.1)
+
+    2.  [Programming Basics](https://posit.cloud/learn/primers/1.2)
+
+3.  RStudio IDE Cheat Sheet. 早見表です。印刷して使うために、PDF も提供しています。[[Site Link](https://rstudio.github.io/cheatsheets/html/rstudio-ide.html)]

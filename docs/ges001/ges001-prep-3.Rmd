@@ -58,7 +58,7 @@ Income share held by highest 10%：SI.DST.10TH.10 [[Link](https://data.worldbank
 
     -   Percentage share of income or consumption is the share that accrues to subgroups of population indicated by deciles or quintiles. Percentage shares by quintile may not sum to 100 because of rounding.
 
-    -   若年年齢依存率は、生産年齢人口 (15 ～ 64 歳) に対する若年扶養者 (15 歳未満の人々) の比率です。データは、生産年齢人口 100 人あたりの扶養家族の割合として表示されます。
+    -   所得または消費に占める割合は、10分位または5分位で示される人口のサブグループに帰属する割合である。四捨五入の関係上、五分位階級別の割合の合計が100にならない場合がある。（DeepL）
 
 -   Income share held by third 20%：SI.DST.03RD.20 [[Link](https://data.worldbank.org/indicator/SI.DST.03RD.20)]
 
@@ -93,13 +93,13 @@ library(WDI)
 
 ```{r eval = FALSE}
 df_gini <- WDI(indicator = c(gini = "SI.POV.GINI",
-                            `5` = "SI.DST.FRST.10",
-                            `10` = "SI.DST.FRST.20",
-                            `30` = "SI.DST.02ND.20",
-                            `50` = "SI.DST.03RD.20",
-                            `70` = "SI.DST.04TH.20",
-                            `90` = "SI.DST.05TH.20",
-                            `95` = "SI.DST.10TH.10"))
+                            `0-10` = "SI.DST.FRST.10",
+                            `0-20` = "SI.DST.FRST.20",
+                            `20-40` = "SI.DST.02ND.20",
+                            `40-60` = "SI.DST.03RD.20",
+                            `60-80` = "SI.DST.04TH.20",
+                            `80-100` = "SI.DST.05TH.20",
+                            `90-100` = "SI.DST.10TH.10"))
 ```
 
 ```{r}
@@ -116,14 +116,77 @@ df_gini <- read_csv("data/gini.csv")
 
 ```{r}
 df_gini_long <- df_gini |> 
-  pivot_longer(-(1:5), names_to = "levels", values_to = "value") |>
-  mutate(levels = as.numeric(levels))
+  pivot_longer(-(1:5), names_to = "levels", values_to = "value")
 df_gini_long
 ```
 
-和をとったものを計算しないといけない。
+どのくらい GINI のデータがあるか確かめる
 
 ```{r}
+df_gini |> group_by(year) |> drop_na(gini) |> 
+  summarize(n = n()) |>
+  ggplot(aes(year, n)) + geom_col()
+```
+実際のデータの個数も計算してみる。
+
+```{r}
+df_gini_long |> 
+  group_by(year, levels) |> drop_na(value) |>
+  summarize(num = n()) |> distinct(year, num) |> arrange(desc(year))
+```
+GINIだけでなく、他の値についても調べる。
+
+```{r}
+df_gini_long |> 
+  group_by(year, levels) |> drop_na(value) |>
+  summarize(num = n()) |> distinct(year, num) |> 
+  ggplot(aes(year, num)) + geom_col()
+```
+
+2022年は、7カ国分しかデータがないがその国名を表示する。
+
+```{r}
+df_gini_long |> filter(year == 2022) |> drop_na(gini) |>
+  distinct(country, gini)
+```
+
+```{r}
+COUNTRY_GINI <- "Bangladesh"
+YEAR_GINI <- 2022
+df_gini_long |> 
+  filter(country == COUNTRY_GINI, year == YEAR_GINI) |>
+  ggplot(aes(levels, value)) + geom_col()
+```
+```{r}
+COUNTRY_GINI <- "Bhutan"
+YEAR_GINI <- 2022
+df_gini_long |> 
+  filter(country == COUNTRY_GINI, year == YEAR_GINI) |>
+  ggplot(aes(levels, value)) + geom_col()
+```
+
+```{r}
+COUNTRY_GINI <- "Costa Rica"
+YEAR_GINI <- 2022
+df_gini_long |> 
+  filter(country == COUNTRY_GINI, year == YEAR_GINI) |>
+  ggplot(aes(levels, value)) + geom_col()
+```
+
+
+定義にもどって要確認
+
+```{r}
+df_gini_long |> filter(year == 2022) |> drop_na(gini)
+```
+
+```{r}
+df_gini_long |> filter(year == 2022) |> drop_na(gini) |>
+  ggplot(aes(x = levels, y = adj, col = country)) + geom_line()
+```
+和をとったものを計算しないといけない。
+
+```{r eval = FALSE}
 df_gini_long <- df_gini |> 
   pivot_longer(-(1:5), names_to = "levels", values_to = "value") |>
   mutate(levels = as.numeric(levels)) |> 
@@ -138,39 +201,4 @@ df_gini_long <- df_gini |>
                          levels == 95 ~ value*2,
                          .default = value))
 df_gini_long
-```
-
-```{r}
-df_gini |> group_by(year) |> drop_na(gini) |> 
-  summarize(n = n()) |>
-  ggplot(aes(year, n)) + geom_col()
-```
-
-```{r}
-df_gini_long |> 
-  group_by(year, levels) |> drop_na(value) |>
-  summarize(num = n()) |> distinct(year, num) |> arrange(desc(year))
-```
-
-```{r}
-df_gini_long |> 
-  group_by(year, levels) |> drop_na(value) |>
-  summarize(num = n()) |> distinct(year, num) |> 
-  ggplot(aes(year, num)) + geom_col()
-```
-
-```{r}
-df_gini_long |> filter(year == 2022) |> drop_na(gini) |>
-  distinct(country)
-```
-
-定義にもどって要確認
-
-```{r}
-df_gini_long |> filter(year == 2022) |> drop_na(gini)
-```
-
-```{r}
-df_gini_long |> filter(year == 2022) |> drop_na(gini) |>
-  ggplot(aes(x = levels, y = adj, col = country)) + geom_line()
 ```
