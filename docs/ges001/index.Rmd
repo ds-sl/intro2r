@@ -63,11 +63,11 @@ R と R Studio のインストールについて [[リンク](https://icu-hsuzuk
 
 演習ファイル：[[demography1.Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/demography1.Rmd)]・[[demography2.Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/demography2.Rmd)]
 
-作業例：[my_demograpny1.nb.html]・[my_demograpny1.nb.html]
+作業例：[[demograpny1_workfile.nb.html](https://ds-sl.github.io/intro2r/ges001/demography1_workfile.nb.html)]・[[my_demograpny2_workfile.nb.html](https://ds-sl.github.io/intro2r/ges001/demography2_workfile.nb.html)]
 
 （R Markdown ファイル（ソース・ファイル） は、右上の、Code ボタンからダウンロードすることが可能です。）
 
-作業ビデオ：[Video1]・[Video2]
+作業ビデオ：[[Video1](https://youtu.be/WdJGH223e4g)]・[[Video2](https://youtu.be/1IdpGlA0FbQ)]
 
 **People- Population dynamics**
 
