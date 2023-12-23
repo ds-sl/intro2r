@@ -190,12 +190,12 @@ df_gini_long |>
 
 ```{r}
 df_gini_calc <- df_gini |> 
-  mutate(`0` = 0, `10` = `0-10`, `20` = `0-20`, `40` = `0-20` + `20-40`, `60` = `0-20` + `20-40` + `40-60`, `80` = `0-20` + `20-40` + `40-60` + `60-80`, `90` = 100-`90-100`, `100` = 100) 
+  mutate(`0` = 0, `10` = `0-10`, `20` = `0-20`, `40` = `0-20` + `20-40`, `60` = `0-20` + `20-40` + `40-60`, `80` = `0-20` + `20-40` + `40-60` + `60-80`, `90` = `0-20` + `20-40` + `40-60` + `60-80` + `80-100`-`90-100`, `100` = 100) 
 df_gini_calc %>% drop_na() |> filter(country == "Bangladesh")
 ```
 
 ```{r}
-df_gini_calc_long <- df_gini_calc |> pivot_longer(`0-10`:`90-100`, names_to = "levels", values_to = "value") |> pivot_longer(`0`:`100`, names_to = "classes", values_to = "cumulative_share") |> mutate(classes = as.numeric(classes))
+df_gini_calc_long <- df_gini_calc |>  pivot_longer(`0`:`100`, names_to = "classes", values_to = "cumulative_share") |> mutate(classes = as.numeric(classes))
 df_gini_calc_long %>% drop_na() |> filter(country == "Bangladesh")
 ```
 
@@ -203,7 +203,10 @@ df_gini_calc_long %>% drop_na() |> filter(country == "Bangladesh")
 
 ```{r}
 df_gini_calc_long |> filter(country == "Bangladesh") |> 
-  filter(year == 2022) |> ggplot() + geom_line(aes(classes, cumulative_share)) + geom_segment(aes(x = 0, y = 0, xend = 100, yend = 100), color = 'red') 
+  filter(year == 2022) |> ggplot() + geom_line(aes(classes, cumulative_share)) + geom_segment(aes(x = 0, y = 0, xend = 100, yend = 100), color = 'red') + 
+  scale_x_continuous(breaks = seq(0,100,by=20)) + 
+  scale_y_continuous(breaks = seq(0,100,by=20)) #+
+  #annotate("text", x = 10, y = 80, label = gini)
 ```
 
 Shade region between two lines with ggplot: [[リンク](https://stackoverflow.com/questions/28586635/shade-region-between-two-lines-with-ggplot)]
@@ -215,9 +218,104 @@ df_gini_calc |> group_by(country, year) |>
   distinct(country, year, gini, gini_trapezoid)
 ```
 
-AUC: Calculating Area under a Curve [[リンク](https://www.smin95.com/dataviz/calculating-area-under-a-curve#calculating-area-under-a-curve)]
+```{r}
+#### For the calcualtion of the area under the curve
+    #### Trapezoidal rule
+    trapezoid <- function(x, y) {
+                     sum(diff(x)*(y[-1]+y[-length(y)]))/2
+                 }
+    #### Simpson's rule: more accurate
+    simpson <- function(x, y){
+                   n <- length(y)
+                   odd <- n %% 2
+                   if (odd)
+                       area <- 1/3*sum( y[1] + 2*sum(y[seq(3,(n-2),by=2)]) + 4*sum(y[seq(2,(n-1),by=2)]) + y[n])
+                   if (!odd)
+                       area <- 1/3*sum( y[1] + 2*sum(y[seq(3,(n-3),by=2)]) + 4*sum(y[seq(2,(n-2),by=2)]) + y[n-1]) + 1/2*(y[n-1] + y[n])
+                   dx <- x[2] - x[1]
+                   return(area * dx)
+    }
+    
+SIMPSON <- function(x, h=1){
+  # AUC function computes the Area Under the Curve of a time serie using
+  # the Simpson's Rule (numerical method).
+  # https://link.springer.com/chapter/10.1007/978-1-4612-4974-0_26
+  
+  # Arguments
+  # x: (vector) time serie values
+  # h: (int) temporal resolution of the time serie. default h=1
+  
+  n = length(x)-1
+  
+  xValues = seq(from=1, to=n, by=2)
+  
+  sum <- list()
+  for(i in 1:length(xValues)){
+    n_sub <- xValues[[i]]-1
+    n <- xValues[[i]]
+    n_add <- xValues[[i]]+1
+    
+    v1 <- x[[n_sub+1]]
+    v2 <- x[[n+1]]
+    v3 <- x[[n_add+1]]
+    
+    s <- (h/3)*(v1+4*v2+v3)
+    sum <- append(sum, s)
+  }
+  sum <- unlist(sum)
+  
+  auc <- sum(sum)
+  
+  return(auc)
+  
+}
+```
+
+```{r}
+simpson(c(0,0.2,0.4,0.6,0.8,1),c(0,0.04,0.16,0.36,0.64,1))
+```
+
+```{r}
+library(DescTools)
+```
 
 Area Under the Curve: [[リンク](https://search.r-project.org/CRAN/refmans/DescTools/html/AUC.html)]
+
+```{r}
+df_gini_calc_long |> group_by(country, year) |> 
+  drop_na(gini) |>
+  summarize(gini, gini_spline = round(100-AUC(classes, cumulative_share, method = "spline")/50, digits = 1), gini_trapezoid = round(100-AUC(classes, cumulative_share)/50, digits = 1), gini_simpson = round(100 - simpson(classes, cumulative_share)/50, digits = 1)) |> 
+  distinct(country, year, gini, gini_spline, gini_trapezoid, gini_simpson)
+```
+
+```{r}
+df_gini_calc_long |> group_by(country, year) |> 
+  drop_na(gini) |>
+  summarize(gini, gini_spline = round(100-AUC(classes, cumulative_share, method = "spline")/50, digits = 1), gini_trapezoid = round(100-AUC(classes, cumulative_share)/50, digits = 1), gini_simpson = round(100 - simpson(classes, cumulative_share)/50, digits = 1)) |> 
+  distinct(country, year, gini, gini_spline, gini_trapezoid, gini_simpson)
+```
+
+AUC: Calculating Area under a Curve [[リンク](https://www.smin95.com/dataviz/calculating-area-under-a-curve#calculating-area-under-a-curve)]
+
+### GINI Calculator 
+
+x に、数の列を入れるとその分配に関する、GINI を計算します。
+
+```{r}
+x <- c(1,1,1,4,10)
+Lc(x)[c(1,2)] |> as.tibble() |> mutate(d = p, .after = 1) |> 
+  pivot_longer(-1, names_to = "name", values_to = "value") |>
+  ggplot(aes(p, value, fill = name)) + geom_area(position = "identity") +
+  annotate("text", x = 0.25, y = 0.75, label = paste("GINI = ",round(Lc(x)$Gini, digits = 2)))
+```
+
+```{r}
+SER <- c(0,5,3,1,1)
+SER1 <- c(0,sort(SER))
+SER1
+N = length(SER1)
+Y <- 0:N/N; Y
+```
 
 定義にもどって要確認
 
@@ -225,12 +323,14 @@ Area Under the Curve: [[リンク](https://search.r-project.org/CRAN/refmans/Des
 df_gini_long |> filter(year == 2022) |> drop_na(gini)
 ```
 
+他の見せ方に修正
+
 ```{r}
 df_gini_long |> filter(year == 2022) |> drop_na(gini) |>
   ggplot(aes(x = levels, y = adj, col = country)) + geom_line()
 ```
 
-和をとったものを計算しないといけない。
+和をとったものを計算しないといけない。以下はあとで利用
 
 ```{r eval = FALSE}
 df_gini_long <- df_gini |> 
