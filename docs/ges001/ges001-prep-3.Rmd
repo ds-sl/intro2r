@@ -206,6 +206,19 @@ df_gini_calc_long |> filter(country == "Bangladesh") |>
   filter(year == 2022) |> ggplot() + geom_line(aes(classes, cumulative_share)) + geom_segment(aes(x = 0, y = 0, xend = 100, yend = 100), color = 'red') 
 ```
 
+Shade region between two lines with ggplot: [[リンク](https://stackoverflow.com/questions/28586635/shade-region-between-two-lines-with-ggplot)]
+
+```{r}
+df_gini_calc |> group_by(country, year) |> 
+  drop_na(gini) |>
+  summarize(gini, gini_trapezoid = 100-(2*`10` + 3*`20` + 4*`40` + 4*`60` + 3*`80` + 2*`90` + 100)/10) |> 
+  distinct(country, year, gini, gini_trapezoid)
+```
+
+AUC: Calculating Area under a Curve [[リンク](https://www.smin95.com/dataviz/calculating-area-under-a-curve#calculating-area-under-a-curve)]
+
+Area Under the Curve: [[リンク](https://search.r-project.org/CRAN/refmans/DescTools/html/AUC.html)]
+
 定義にもどって要確認
 
 ```{r}
