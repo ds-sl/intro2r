@@ -424,3 +424,18 @@ df_gini_rev |> filter(year == YEAR_GINI) |> drop_na(gini) |>
 -   いくつかの、Lorentz 曲線と、その下を透明度をつけて、重ね合わすことをトライ。
 
 -   0-10, 90-100 についての扱いをどうするかを考える。
+
+```{r}
+df_gini_rev |> filter(iso2c == "ID", year == 2022)
+```
+```{r}
+df_gini_rev  |> mutate('10-20' = `0-20`-`0-10`, .before = `0-20`) |> mutate('80-90' = `80-100`-`90-100`, .before = `80-100`) |> select(-c(`0-20`, `80-100`)) |>
+  filter(iso2c == "ID", year == 2022)
+```
+
+```{r}
+df_gini_rev  |> mutate('10-20' = `0-20`-`0-10`, .before = `0-20`) |> mutate('80-90' = `80-100`-`90-100`, .before = `80-100`) |> select(-c(`0-20`, `80-100`)) |>
+  pivot_longer(-(1:5), names_to = "range", values_to = "value") |> 
+  filter(iso2c == "ID", year == 2022) |> pull() |> Gini(weights = c(1,1,2,2,2,1,1))
+```
+37.9
