@@ -186,7 +186,7 @@ df_gini_long |>
 
 ![](images/clipboard-436554368.png)
 
-[リンク](https://upload.wikimedia.org/wikipedia/commons/e/e7/Lorenz_curve_global_income_2011.svg)
+Derivation of the Lorenz curve and Gini coefficient for global income in 2011 [[リンク](https://upload.wikimedia.org/wikipedia/commons/e/e7/Lorenz_curve_global_income_2011.svg)]
 
 ```{r}
 df_gini_calc <- df_gini |> 
@@ -412,3 +412,15 @@ YEAR_GINI <- 2000
 df_gini_rev |> filter(year == YEAR_GINI) |> drop_na(gini) |>
   ggplot(aes(gini)) + geom_histogram(binwidth = 5)
 ```
+
+## To Do 
+
+-   extra = TRUE で分析を始める方がよい。
+
+-   Distribution を大切にする回にしてもよい。
+
+-   weight を使えば、DescTools::Gini で、Lorentz Curve を作り出し、それから計算できるかもしれないので、試してみる。
+
+-   いくつかの、Lorentz 曲線と、その下を透明度をつけて、重ね合わすことをトライ。
+
+-   0-10, 90-100 についての扱いをどうするかを考える。
