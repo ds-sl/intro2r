@@ -348,3 +348,67 @@ df_gini_long <- df_gini |>
                          .default = value))
 df_gini_long
 ```
+
+```{r}
+df_gini_rev <- WDI(indicator = c(gini = "SI.POV.GINI",
+                            '0-10' = "SI.DST.FRST.10",
+                            '0-20' = "SI.DST.FRST.20",
+                            '20-40' = "SI.DST.02ND.20",
+                            '40-60' = "SI.DST.03RD.20",
+                            '60-80' = "SI.DST.04TH.20",
+                            '80-100' = "SI.DST.05TH.20",
+                            '90-100' = "SI.DST.10TH.10"))
+```
+
+```{r}
+df_gini_rev_long <- df_gini_rev |> 
+  pivot_longer(-(1:5), names_to = "levels", values_to = "value")
+df_gini_rev_long
+```
+
+```{r}
+COUNTRY_GINI <- "Bangladesh"
+YEAR_GINI <- 2022
+df_gini_rev_long |> 
+  filter(country == COUNTRY_GINI, year == YEAR_GINI) |>
+  ggplot(aes(levels, value)) + geom_col()
+```
+
+```{r}
+df_gini_rev_long2 <- df_gini_rev |> drop_na(gini) |> 
+  mutate('0-10' = `0-10` *2, '90-100' = `90-100` *2) |>
+  pivot_longer(-(1:5), names_to = "levels", values_to = "value")
+COUNTRY_GINI <- "Bangladesh"
+YEAR_GINI <- 2022
+df_gini_rev_long2 |> 
+  filter(country == COUNTRY_GINI, year == YEAR_GINI) |>
+  ggplot(aes(levels, value)) + geom_col()
+```
+
+```{r}
+COUNTRIES_GINI <- c("Bhutan", "Bangladesh","Indonesia","Costa Rica")
+YEAR_GINI <- 2022
+df_gini_rev_long2 |> 
+  filter(country %in% COUNTRIES_GINI, year == YEAR_GINI) |>
+  ggplot(aes(levels, value, fill = factor(country, levels = COUNTRIES_GINI))) + geom_col(position = "dodge") + labs(fill = "")
+```
+
+```{r}
+YEAR_GINI <- 2000
+df_gini_rev |> 
+  filter(year == YEAR_GINI) |> drop_na(gini) |>
+  ggplot(aes(gini, `90-100`)) + geom_point() + geom_smooth(method = "lm")
+```
+
+```{r}
+YEAR_GINI <- 2000
+df_gini_rev |> 
+  filter(year == YEAR_GINI) |> drop_na(gini) |>
+  ggplot(aes(gini, `80-100`)) + geom_point() + geom_smooth(method = "lm")
+```
+
+```{r}
+YEAR_GINI <- 2000
+df_gini_rev |> filter(year == YEAR_GINI) |> drop_na(gini) |>
+  ggplot(aes(gini)) + geom_histogram(binwidth = 5)
+```
