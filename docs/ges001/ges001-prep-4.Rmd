@@ -20,14 +20,88 @@ World BankのINEQUALITY IN SOUTHERN AFRICA:AN ASSESSMENT OF THE SOUTHERN AFRICAN
 
 **Poverty rates at national poverty lines**
 
-Poverty headcount ratio at national poverty lines (% of population)：SI.POV.NAHC [Link]
+Poverty headcount ratio at national poverty lines (% of population)：SI.POV.NAHC [[Link](https://data.worldbank.org/indicator/SI.POV.NAHC)]
+
+National poverty headcount ratio is the percentage of the population living below the national poverty line(s). National estimates are based on population-weighted subgroup estimates from household surveys. For economies for which the data are from EU-SILC, the reported year is the income reference year, which is the year before the survey year.
+
+全国貧困人口比率は、全国貧困線以下で生活している人口の割合です。国の推定値は、世帯調査からの人口加重サブグループ推定値に基づいています。データが EU-SILC からのものである経済の場合、報告される年は所得基準年、つまり調査年の前年です。
 
 **Poverty and Inequality―Poverty rates at international poverty lines**
 
-Poverty headcount ratio at \$2.15 a day (2017 PPP) (% of population)：SI.POV.DDAY [Link]
+Poverty headcount ratio at \$2.15 a day (2017 PPP) (% of population)：SI.POV.DDAY [[Link](https://data.worldbank.org/indicator/SI.POV.DDAY)]
 
-Poverty headcount ratio at \$3.65 a day (2017 PPP) (% of population)：SI.POV.LMIC [Link]
+Poverty headcount ratio at \$2.15 a day is the percentage of the population living on less than \$2.15 a day at 2017 purchasing power adjusted prices. As a result of revisions in PPP exchange rates, poverty rates for individual countries cannot be compared with poverty rates reported in earlier editions.
 
-Poverty headcount ratio at \$6.85 a day (2017 PPP) (% of population)：SI.POV.UMIC [Link]
+1日2.15ドルの貧困人口比率は、2017年の購買力調整後価格で1日2.15ドル未満で生活している人口の割合です。PPP 為替レートの改定により、各国の貧困率を以前の版で報告された貧困率と比較することができなくなりました。
+
+Poverty headcount ratio at \$3.65 a day (2017 PPP) (% of population)：SI.POV.LMIC [[Link](https://data.worldbank.org/indicator/SI.POV.LMIC)]
+
+Poverty headcount ratio at \$3.65 a day is the percentage of the population living on less than \$3.65 a day at 2017 international prices.
+
+1 日 3.65 ドルの貧困人口比率は、2017 年の国際価格で 1 日 3.65 ドル未満で生活している人口の割合です。
+
+Poverty headcount ratio at \$6.85 a day (2017 PPP) (% of population)：SI.POV.UMIC [[Link](https://data.worldbank.org/indicator/SI.POV.UMIC)]
+
+Poverty headcount ratio at \$6.85 a day is the percentage of the population living on less than \$6.85 a day at 2017 international prices.
+
+1日6.85ドルの貧困人口比率は、2017年の国際価格で1日6.85ドル未満で生活している人口の割合です。
 
 ## 内容
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+```{r}
+df_poverty_rate <- WDI(
+  indicator = c(ratio = "SI.POV.NAHC",
+                under_2.15 = "SI.POV.DDAY",
+                under_3.65 = "SI.POV.LMIC",
+                under_6.85 = "SI.POV.UMIC"),
+  extra = TRUE)
+```
+
+```{r}
+df_poverty_rate_long <- df_poverty_rate |> 
+  pivot_longer(ratio:under_6.85, names_to = "level", values_to = "value")
+```
+
+```{r}
+df_poverty_rate_long |> 
+  filter(country %in% c("World", "Sub-Saharan Africa")) |> drop_na() |>
+  ggplot(aes(year, value, col = level, linetype = country)) + geom_line()
+```
+
+```{r}
+df_poverty_rate |> filter(country == "China") |>
+  drop_na(ratio) |>
+  ggplot(aes(year, ratio)) + geom_line()
+```
+
+```{r}
+df_poverty_rate_long |> 
+  filter(country == "Indonesia") |> drop_na() |>
+  ggplot(aes(year, value, col = level)) + geom_line()
+```
+
+```{r}
+df_poverty_rate_long |> filter(year == 2022) |> 
+  drop_na(value) |>
+  ggplot(aes(value, level, fill = region)) + 
+  geom_boxplot()
+```
+
+```{r}
+df_poverty_rate_long |> filter(year == 2022) |> 
+  drop_na(value) |>
+  ggplot(aes(value, level, fill = income)) + 
+  geom_boxplot() + labs(fill = "")
+```
+
+```{r}
+df_poverty_rate_long |> filter(region == "Sub-Saharan Africa", year == 2020) |> 
+  drop_na(value) |>
+  ggplot(aes(value, level)) + 
+  geom_boxplot()
+```
