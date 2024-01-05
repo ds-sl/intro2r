@@ -370,21 +370,21 @@ World Inequality Report 2022 [[Link](https://wir2022.wid.world)]
 
 **Poverty and Inequality―Distribution of income or consumption（データが少ない難点）**
 
-GINI index (World Bank estimate)；SI.POV.GINI
+GINI index (World Bank estimate)；SI.POV.GINI [[Link](https://data.worldbank.org/indicator/SI.POV.GINI)]
 
-Income share held by lowest 10%：SI.DST.FRST.10
+Income share held by lowest 10%：SI.DST.FRST.10 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.FRST.10)]
 
-Income share held by lowest 20%：SI.DST.FRST.20
+Income share held by lowest 20%：SI.DST.FRST.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.FRST.20)]
 
-Income share held by second 20%：SI.DST.02ND.20
+Income share held by second 20%：SI.DST.02ND.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.02ND.20)]
 
-Income share held by third 20%：SI.DST.03RD.20
+Income share held by third 20%：SI.DST.03RD.20 [[Link](https://data.worldbank.org/indicator/SI.DST.03RD.20)]
 
-Income share held by fourth 20%：SI.DST.04TH.20
+Income share held by fourth 20%：SI.DST.04TH.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.04TH.20)]
 
-Income share held by highest 20%：SI.DST.05TH.20
+Income share held by highest 20%：SI.DST.05TH.20 [[Link](https://data.worldbank.org/indicator/SI.DST.05TH.20)]
 
-Income share held by highest 10%：SI.DST.10TH.10
+Income share held by highest 10%：SI.DST.10TH.10 [[Link](https://data.worldbank.org/indicator/SI.DST.10TH.10)]
 
 ### 第4週
 
@@ -400,15 +400,31 @@ World BankのINEQUALITY IN SOUTHERN AFRICA:AN ASSESSMENT OF THE SOUTHERN AFRICAN
 
 **Poverty rates at national poverty lines**
 
-Poverty headcount ratio at national poverty lines (% of population)：SI.POV.NAHC
+Poverty headcount ratio at national poverty lines (% of population)：SI.POV.NAHC [[Link](https://data.worldbank.org/indicator/SI.POV.NAHC)]
+
+National poverty headcount ratio is the percentage of the population living below the national poverty line(s). National estimates are based on population-weighted subgroup estimates from household surveys. For economies for which the data are from EU-SILC, the reported year is the income reference year, which is the year before the survey year.
+
+全国貧困人口比率は、全国貧困線以下で生活している人口の割合です。国の推定値は、世帯調査からの人口加重サブグループ推定値に基づいています。データが EU-SILC からのものである経済の場合、報告される年は所得基準年、つまり調査年の前年です。
 
 **Poverty and Inequality―Poverty rates at international poverty lines**
 
-Poverty headcount ratio at \$2.15 a day (2017 PPP) (% of population)：SI.POV.DDAY
+Poverty headcount ratio at \$2.15 a day (2017 PPP) (% of population)：SI.POV.DDAY [[Link](https://data.worldbank.org/indicator/SI.POV.DDAY)]
 
-Poverty headcount ratio at \$3.65 a day (2017 PPP) (% of population)：SI.POV.LMIC
+Poverty headcount ratio at \$2.15 a day is the percentage of the population living on less than \$2.15 a day at 2017 purchasing power adjusted prices. As a result of revisions in PPP exchange rates, poverty rates for individual countries cannot be compared with poverty rates reported in earlier editions.
 
-Poverty headcount ratio at \$6.85 a day (2017 PPP) (% of population)：SI.POV.UMIC
+1日2.15ドルの貧困人口比率は、2017年の購買力調整後価格で1日2.15ドル未満で生活している人口の割合です。PPP 為替レートの改定により、各国の貧困率を以前の版で報告された貧困率と比較することができなくなりました。
+
+Poverty headcount ratio at \$3.65 a day (2017 PPP) (% of population)：SI.POV.LMIC [[Link](https://data.worldbank.org/indicator/SI.POV.LMIC)]
+
+Poverty headcount ratio at \$3.65 a day is the percentage of the population living on less than \$3.65 a day at 2017 international prices.
+
+1 日 3.65 ドルの貧困人口比率は、2017 年の国際価格で 1 日 3.65 ドル未満で生活している人口の割合です。
+
+Poverty headcount ratio at \$6.85 a day (2017 PPP) (% of population)：SI.POV.UMIC [[Link](https://data.worldbank.org/indicator/SI.POV.UMIC)]
+
+Poverty headcount ratio at \$6.85 a day is the percentage of the population living on less than \$6.85 a day at 2017 international prices.
+
+1日6.85ドルの貧困人口比率は、2017年の国際価格で1日6.85ドル未満で生活している人口の割合です。
 
 ### 第5週
 
@@ -420,39 +436,81 @@ Poverty headcount ratio at \$6.85 a day (2017 PPP) (% of population)：SI.POV.UM
 
 **People-Education**
 
-Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS
+Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)]
 
-School enrollment, primary (% gross)：SE.PRM.ENRR
+General government expenditure on education (current, capital, and transfers) is expressed as a percentage of GDP. It includes expenditure funded by transfers from international sources to government. General government usually refers to local, regional and central governments.
 
-School enrollment, secondary (% gross)：SE.SEC.ENRR
+教育に対する政府の一般支出（経常、資本、移転）は GDP の割合で表されます。これには、国際資金源から政府への送金によって資金提供された支出が含まれます。一般政府とは通常、地方自治体、地域政府、中央政府を指します。
 
-School enrollment, tertiary (% gross)：SE.TER.ENRR
+School enrollment, primary (% gross)：SE.PRM.ENRR [[Link](https://data.worldbank.org/indicator/SE.PRM.ENRR)]
+
+Gross enrollment ratio is the ratio of total enrollment, regardless of age, to the population of the age group that officially corresponds to the level of education shown. Primary education provides children with basic reading, writing, and mathematics skills along with an elementary understanding of such subjects as history, geography, natural science, social science, art, and music.
+
+総就学率は、年齢に関係なく、表示されている教育レベルに正式に対応する年齢層の人口に対する総就学者数の比率です。初等教育では、子供たちに基本的な読み書き、数学のスキルと、歴史、地理、自然科学、社会科学、芸術、音楽などの科目の初歩的な理解を提供します。
+
+School enrollment, secondary (% gross)：SE.SEC.ENRR [[Link](https://data.worldbank.org/indicator/SE.SEC.ENRR)]
+
+Gross enrollment ratio is the ratio of total enrollment, regardless of age, to the population of the age group that officially corresponds to the level of education shown. Secondary education completes the provision of basic education that began at the primary level, and aims at laying the foundations for lifelong learning and human development, by offering more subject- or skill-oriented instruction using more specialized teachers.
+
+総就学率は、年齢に関係なく、表示されている教育レベルに正式に対応する年齢層の人口に対する総就学者数の比率です。中等教育は、初等段階から始まった基礎教育の提供を完了し、より専門性の高い教師によるより教科や技能に特化した指導を行うことにより、生涯学習と人間形成の基礎を築くことを目的としています。
+
+School enrollment, tertiary (% gross)：SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)]
+
+Gross enrollment ratio is the ratio of total enrollment, regardless of age, to the population of the age group that officially corresponds to the level of education shown. Tertiary education, whether or not to an advanced research qualification, normally requires, as a minimum condition of admission, the successful completion of education at the secondary level.
+
+総就学率は、年齢に関係なく、表示されている教育レベルに正式に対応する年齢層の人口に対する総就学者数の比率です。高等教育では、高度な研究資格の有無にかかわらず、通常、入学の最低条件として中等教育レベルの教育を無事に修了することが求められます。
 
 **Health**
 
-Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT
+Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SH.DYN.MORT)]
 
-Incidence of HIV (% of uninfected population ages 15-49)：SH.HIV.INCD.ZS
+Under-five mortality rate is the probability per 1,000 that a newborn baby will die before reaching age five, if subject to age-specific mortality rates of the specified year.
+
+```         
+5 歳未満死亡率は、指定された年の年齢別死亡率が適用される場合に、新生児が 5 歳に達する前に死亡する 1,000 人あたりの確率です。
+```
+
+Incidence of HIV (% of uninfected population ages 15-49)：SH.HIV.INCD.ZS [[Link](https://data.worldbank.org/indicator/SH.HIV.INCD.ZS?locations=SZ)]
+
+Number of new HIV infections among uninfected populations ages 15-49 expressed per 1,000 uninfected population in the year before the period.
+
+期間の前の年間の非感染人口 1,000 人当たりの 15 ～ 49 歳の非感染集団における新規 HIV 感染者数。
 
 **Gender**
 
-School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS
+School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS [[Link](https://data.worldbank.org/indicator/SE.ENR.PRSC.FM.ZS)]
 
-Ratio of female to male labor force participation rate (%) (modeled ILO estimate)：
+Gender parity index for gross enrollment ratio in primary and secondary education is the ratio of girls to boys enrolled at primary and secondary levels in public and private schools.
 
-SL.TLF.CACT.FM.ZS
+初等中等教育における総就学率の男女平等指数は、公立および私立学校の初等および中等教育レベルに在籍する女子と男子の比率です。
+
+Ratio of female to male labor force participation rate (%) (modeled ILO estimate)：SL.TLF.CACT.FM.ZS [[Link](https://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS)]
+
+Labor force participation rate is the proportion of the population ages 15 and older that is economically active: all people who supply labor for the production of goods and services during a specified period. Ratio of female to male labor force participation rate is calculated by dividing female labor force participation rate by male labor force participation rate and multiplying by 100.
+
+労働参加率とは、経済的に活動している 15 歳以上の人口の割合であり、指定された期間に商品やサービスの生産に労働力を供給するすべての人々を指します。女性労働力率と男性労働力率の比率は、女性労働力率を男性労働力率で割って100を乗じて算出します。
 
 **Labor**
 
-Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS
+Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.FE.ZS)]
 
-Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS
+Unemployment refers to the share of the labor force that is without work but available for and seeking employment.
+
+失業率とは、仕事はなくても職に就くことができ、求職している労働力の割合を指します。
+
+Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.ZS)]
+
+Unemployment refers to the share of the labor force that is without work but available for and seeking employment.
+
+失業率とは、仕事はなくても職に就くことができ、求職している労働力の割合を指します。
 
 Global Link - Aid dependency
 
-Net official development assistance and official aid received (current US\$)
+Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
 
-DT.ODA.ALLD.CD
+Net official development assistance (ODA) consists of disbursements of loans made on concessional terms (net of repayments of principal) and grants by official agencies of the members of the Development Assistance Committee (DAC), by multilateral institutions, and by non-DAC countries to promote economic development and welfare in countries and territories in the DAC list of ODA recipients. It includes loans with a grant element of at least 25 percent (calculated at a rate of discount of 10 percent). Net official aid refers to aid flows (net of repayments) from official donors to countries and territories in part II of the DAC list of recipients: more advanced countries of Central and Eastern Europe, the countries of the former Soviet Union, and certain advanced developing countries and territories. Official aid is provided under terms and conditions similar to those for ODA. Part II of the DAC List was abolished in 2005. The collection of data on official aid and other resource flows to Part II countries ended with 2004 data. Data are in current U.S. dollars.
+
+政府開発援助（ODA）の純額は、開発援助委員会（DAC）メンバーの公的機関、多国間機関、DAC非加盟国による、譲許的条件（元本返済を除く）で行われた融資の実行と助成金で構成されます。 DAC の ODA 受領者リストに含まれる国および地域の経済発展と福祉を促進する。これには、少なくとも 25 パーセント（割引率 10 パーセントで計算）の補助金要素を持つローンが含まれます。純公的援助とは、公的ドナーからDACの受取人リストのパートIIにある国および地域への援助の流れ（返済額を差し引いた額）を指します：中央および東ヨーロッパのより先進国、旧ソ連諸国、および一部の先進途上国国と地域。公的援助は、ODA と同様の条件で提供されます。DAC リストのパート II は 2005 年に廃止されました。パート II 諸国への公的援助およびその他の資源の流れに関するデータの収集は 2004 年のデータで終了しました。データは現在の米ドルで表示されます。
 
 ### 第6週
 
@@ -470,15 +528,15 @@ DT.ODA.ALLD.CD
 
 Environment-Climate　
 
-CO2 emissions (metric tons per capita) ：EN.ATM.CO2E.PC
+CO2 emissions (metric tons per capita) ：EN.ATM.CO2E.PC [[Link](https://data.worldbank.org/indicator/EN.ATM.CO2E.PC)]
 
-Forest area (% of land area)：AG.LND.FRST.ZS
+Forest area (% of land area)：AG.LND.FRST.ZS [[Link](https://data.worldbank.org/indicator/AG.LND.FRST.ZS)]
 
-Renewable electricity output (% of total electricity output)：EG.ELC.RNEW.ZS
+Renewable electricity output (% of total electricity output)：EG.ELC.RNEW.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.RNEW.ZS)]
 
-Electricity production from oil, gas and coal sources (% of total)：EG.ELC.FOSL.ZS
+Electricity production from oil, gas and coal sources (% of total)：EG.ELC.FOSL.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.FOSL.ZS)]
 
-Electricity production from nuclear sources (% of total)：EG.ELC.NUCL.ZS
+Electricity production from nuclear sources (% of total)：EG.ELC.NUCL.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.NUCL.ZS)]
 
 IEA:　Energy Statistics Data Browser　データ元
 
@@ -496,25 +554,17 @@ IEA:　Energy Statistics Data Browser　データ元
 
 Urban and rural development
 
-Access to electricity, urban (% of urban population)：EG.ELC.ACCS.UR.ZS
+Access to electricity, urban (% of urban population)：EG.ELC.ACCS.UR.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.ACCS.UR.ZS)]
 
-Access to electricity, rural (% of rural population)：EG.ELC.ACCS.RU.ZS
+Access to electricity, rural (% of rural population)：EG.ELC.ACCS.RU.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.ACCS.RU.ZS)]
 
-People using at least basic drinking water services, urban (% of urban population)：
+People using at least basic drinking water services, urban (% of urban population)：SH.H2O.BASW.UR.ZS [[Link](https://data.worldbank.org/indicator/SH.H2O.BASW.ZS)]
 
-SH.H2O.BASW.UR.ZS
+People using at least basic sanitation services, rural (% of rural population)：SH.STA.BASS.RU.ZS [[Link](https://data.worldbank.org/indicator/SH.STA.BASS.RU.ZS)]
 
-People using at least basic sanitation services, rural (% of rural population)：
+People using at least basic sanitation services, urban (% of urban population)：SH.STA.BASS.UR.ZS [[Link](https://data.worldbank.org/indicator/SH.STA.BASS.UR.ZS)]
 
-SH.STA.BASS.RU.ZS
-
-People using at least basic sanitation services, urban (% of urban population)：
-
-SH.STA.BASS.UR.ZS
-
-People using at least basic drinking water services, rural (% of rural population)：
-
-SH.H2O.BASW.RU.ZS
+People using at least basic drinking water services, rural (% of rural population)：SH.H2O.BASW.RU.ZS [[Link](https://data.worldbank.org/indicator/SH.H2O.BASW.RU.ZS)]
 
 ### 第8週
 
@@ -530,9 +580,23 @@ Fragility and Conflict: On the Front Lines of the Fight against Poverty [[Link](
 
 **Global Link-Refugees**
 
-Refugee population by country or territory of asylum：SM.POP.REFG
+Refugee population by country or territory of asylum：SM.POP.REFG [[Link](https://data.worldbank.org/indicator/SM.POP.REFG)]
 
-Refugee population by country or territory of origin：SM.POP.REFG.OR
+Refugee population by country or territory of origin：SM.POP.REFG.OR [[Link](https://data.worldbank.org/indicator/SM.POP.REFG.OR)]
+
+Net ODA received (% of GNI)：DT.ODA.ODAT.GN.ZS [[Link](https://data.worldbank.org/indicator/DT.ODA.ODAT.GN.ZS)]
+
+Net official development assistance and official aid received (current US\$)：DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
+
+Net ODA received (% of central government expense)：DT.ODA.ODAT.XP.ZS [[Link](https://data.worldbank.org/indicator/DT.ODA.ODAT.XP.ZS)]
+
+Military expenditure (current USD)：MS.MIL.XPND.CD [[Link](https://data.worldbank.org/indicator/MS.MIL.XPND.CD)]
+
+Military expenditure (% of general government expenditure)：MS.MIL.XPND.ZS [[Link](https://data.worldbank.org/indicator/MS.MIL.XPND.ZS)]
+
+Arms imports (SIPRI trend indicator values)：MS.MIL.MPRT.KD [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/MS.MIL.MPRT.KD)]
+
+Arms exports (SIPRI trend indicator values)：MS.MIL.XPRT.KD [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/MS.MIL.XPRT.KD)]
 
 ### 第9週
 

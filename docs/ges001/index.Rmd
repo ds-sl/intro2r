@@ -81,6 +81,44 @@ R と R Studio のインストールについて [[リンク](https://icu-hsuzuk
 
 <!-- Age dependency ratio, old (% of working-age population)：SP.POP.DPND.OL -->
 
+#### 演習で学んだ内容
+
+基本的には、PositCloud（<https://posit.cloud/>）を使って実習
+
+-   パッケージのインストールとロード
+
+    -   インストールは一回だけ、ロードはその日のセッションの最初に（eg. `library(tidyverse）; library(WDI)`）
+
+-   データの読み込み
+
+    -   eg. `df_pop <- WDI(indicator = c(pop = "SP.POP.TOTL"))`
+
+-   データの確認
+
+    -   eg. `df_pop` , `head(df_pop)` , `str(df_pop)`
+
+-   行の選択（filter()）
+
+    -   filter(条件) ：条件にあった行の選択抽出
+
+        -   filter(変数 == “文字列”) ：変数が文字列と一致するものを抽出（= ではなく、== に注意）
+
+        -   filter(変数 %in% c(“文字列1”, …, “文字列n”) ： 変数が文字列1 から 文字列n のどれかに一致したものを抽出
+
+        -   filter(!条件) ：条件と一致しないものを抽出。
+
+        -   filter(条件1, 条件2)：条件1 に一致するもののなかで、条件2 に一致するものを抽出。
+
+        -   filter(変数 \< 数値)：数値のときは、引用符なし。\<=, \>, \>= も同様。
+
+    -   distinct(変数)：変数の値が異なるもののみ抽出
+
+    -   drop_na(変数)：変数の値が NA のものは、削除
+
+-   パイプ・折れ線グラフ
+
+    -   `df_pop |> filter(country == "World") |> ggplot(aes(year, pop)) + geom_line() + labs(title = "世界の総人口")`
+
 ### 第3週
 
 12/21(TH)　不平等を無くすために何をするべきか1

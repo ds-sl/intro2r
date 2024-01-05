@@ -11,7 +11,7 @@
 
 <meta name="author" content="H. Suzuki" />
 
-<meta name="date" content="2023-12-22" />
+<meta name="date" content="2024-01-05" />
 
 <title>GES 001 経済と経済学</title>
 
@@ -2752,7 +2752,7 @@ border-radius: 0px;
 
 <h1 class="title toc-ignore">GES 001 経済と経済学</h1>
 <h4 class="author">H. Suzuki</h4>
-<h4 class="date">2023-12-22</h4>
+<h4 class="date">2024-01-05</h4>
 
 </div>
 
@@ -2810,6 +2810,48 @@ border-radius: 0px;
 <!-- Death rate, crude (per 1,000 people)：SP.DYN.CDRT.IN -->
 <!-- Age dependency ratio, young (% of working-age population)：SP.POP.DPND.YG -->
 <!-- Age dependency ratio, old (% of working-age population)：SP.POP.DPND.OL -->
+<div id="演習で学んだ内容" class="section level4">
+<h4>演習で学んだ内容</h4>
+<p>基本的には、PositCloud（<a href="https://posit.cloud/" class="uri">https://posit.cloud/</a>）を使って実習</p>
+<ul>
+<li><p>パッケージのインストールとロード</p>
+<ul>
+<li>インストールは一回だけ、ロードはその日のセッションの最初に（eg.
+<code>library(tidyverse）; library(WDI)</code>）</li>
+</ul></li>
+<li><p>データの読み込み</p>
+<ul>
+<li>eg.
+<code>df_pop &lt;- WDI(indicator = c(pop = &quot;SP.POP.TOTL&quot;))</code></li>
+</ul></li>
+<li><p>データの確認</p>
+<ul>
+<li>eg. <code>df_pop</code> , <code>head(df_pop)</code> ,
+<code>str(df_pop)</code></li>
+</ul></li>
+<li><p>行の選択（filter()）</p>
+<ul>
+<li><p>filter(条件) ：条件にあった行の選択抽出</p>
+<ul>
+<li><p>filter(変数 == “文字列”) ：変数が文字列と一致するものを抽出（=
+ではなく、== に注意）</p></li>
+<li><p>filter(変数 %in% c(“文字列1”, …, “文字列n”) ： 変数が文字列1 から
+文字列n のどれかに一致したものを抽出</p></li>
+<li><p>filter(!条件) ：条件と一致しないものを抽出。</p></li>
+<li><p>filter(条件1, 条件2)：条件1 に一致するもののなかで、条件2
+に一致するものを抽出。</p></li>
+<li><p>filter(変数 &lt; 数値)：数値のときは、引用符なし。&lt;=, &gt;,
+&gt;= も同様。</p></li>
+</ul></li>
+<li><p>distinct(変数)：変数の値が異なるもののみ抽出</p></li>
+<li><p>drop_na(変数)：変数の値が NA のものは、削除</p></li>
+</ul></li>
+<li><p>パイプ・折れ線グラフ</p>
+<ul>
+<li><code>df_pop |&gt; filter(country == &quot;World&quot;) |&gt; ggplot(aes(year, pop)) + geom_line() + labs(title = &quot;世界の総人口&quot;)</code></li>
+</ul></li>
+</ul>
+</div>
 </div>
 <div id="第3週" class="section level3">
 <h3>第3週</h3>
