@@ -22,18 +22,74 @@ output:
 
 Environment-Climate　
 
-CO2 emissions (metric tons per capita) ：EN.ATM.CO2E.PC [Link]
+CO2 emissions (metric tons per capita) ：EN.ATM.CO2E.PC [[Link](https://data.worldbank.org/indicator/EN.ATM.CO2E.PC)]
 
-Forest area (% of land area)：AG.LND.FRST.ZS [Link]
+Forest area (% of land area)：AG.LND.FRST.ZS [[Link](https://data.worldbank.org/indicator/AG.LND.FRST.ZS)]
 
-Renewable electricity output (% of total electricity output)：EG.ELC.RNEW.ZS [Link]
+Renewable electricity output (% of total electricity output)：EG.ELC.RNEW.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.RNEW.ZS)]
 
-Electricity production from oil, gas and coal sources (% of total)：EG.ELC.FOSL.ZS [Link]
+Electricity production from oil, gas and coal sources (% of total)：EG.ELC.FOSL.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.FOSL.ZS)]
 
-Electricity production from nuclear sources (% of total)：EG.ELC.NUCL.ZS [Link]
+Electricity production from nuclear sources (% of total)：EG.ELC.NUCL.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.NUCL.ZS)]
 
 IEA:　Energy Statistics Data Browser　データ元
 
 <https://www.iea.org/data-and-statistics/data-tools/energy-statistics-data-browser?country=WORLD&fuel=Energy%20supply&indicator=ElecGenByFuel>
 
 ## 内容
+
+-   CO2 emissions (metric tons per capita) ：EN.ATM.CO2E.PC [[Link](https://data.worldbank.org/indicator/EN.ATM.CO2E.PC)]
+
+-   Forest area (% of land area)：AG.LND.FRST.ZS [[Link](https://data.worldbank.org/indicator/AG.LND.FRST.ZS)]
+
+-   Renewable electricity output (% of total electricity output)：EG.ELC.RNEW.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.RNEW.ZS)]
+
+-   Electricity production from oil, gas and coal sources (% of total)：EG.ELC.FOSL.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.FOSL.ZS)]
+
+-   Electricity production from nuclear sources (% of total)：EG.ELC.NUCL.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.NUCL.ZS)]
+
+```{r}
+df_environment <- WDI(
+  indicator = c(co2pcap = "EN.ATM.CO2E.PC",
+                forest = "AG.LND.FRST.ZS",
+                renewable = "EG.ELC.RNEW.ZS",
+                fossil = "EG.ELC.FOSL.ZS",
+                nuclea = "EG.ELC.NUCL.ZS"
+                ), extra = TRUE)
+```
+
+```{r}
+write_csv(df_environment, "data/environment.csv")
+```
+
+```{r}
+df_environment <- read_csv("data/environment.csv")
+```
+
+```{r}
+df_environment_long <- df_environment |> 
+  pivot_longer(7:11, names_to = "name", values_to = "value")
+```
+
+```{r}
+df_environment_long |> 
+  group_by(year, name) |> drop_na(value) |>
+  summarize(num = n()) |> arrange(desc(year))
+```
+
+```{r}
+df_environment_long |> 
+  group_by(year, name) |> drop_na(value) |>
+  summarize(num = n()) |> 
+  ggplot(aes(year, num, col = name)) + geom_line() +
+  labs(title = "各指標の年毎のデータ数", y = "データ数", x = "年")
+```
+
+World Development Indicators: [[Link](https://datacatalog.worldbank.org/search/dataset/0037712/World-Development-Indicators)]
+
+```{r}
+df_environment_long |> 
+  filter(name %in% c("fossil", "renewable", "nuclea")) |>
+  filter(iso2c %in% c("1W", "ZF", "T6")) |> drop_na(value) |>
+  ggplot(aes(year, value, col = name, linetype = iso2c)) + geom_line()
+```

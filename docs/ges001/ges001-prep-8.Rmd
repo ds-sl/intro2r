@@ -18,8 +18,89 @@ output:
 
 **Global Link-Refugees**
 
-Refugee population by country or territory of asylum：SM.POP.REFG [Link]
+Refugee population by country or territory of asylum：SM.POP.REFG [[Link](https://data.worldbank.org/indicator/SM.POP.REFG)]
 
-Refugee population by country or territory of origin：SM.POP.REFG.OR [Link]
+Refugee population by country or territory of origin：SM.POP.REFG.OR [[Link](https://data.worldbank.org/indicator/SM.POP.REFG.OR)]
+
+Net ODA received (% of GNI)：DT.ODA.ODAT.GN.ZS [[Link](https://data.worldbank.org/indicator/DT.ODA.ODAT.GN.ZS)]
+
+Net official development assistance and official aid received (current US\$)：DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
+
+Net ODA received (% of central government expense)：DT.ODA.ODAT.XP.ZS [[Link](https://data.worldbank.org/indicator/DT.ODA.ODAT.XP.ZS)]
+
+Military expenditure (current USD)：MS.MIL.XPND.CD [[Link](https://data.worldbank.org/indicator/MS.MIL.XPND.CD)]
+
+Military expenditure (% of general government expenditure)：MS.MIL.XPND.ZS [[Link](https://data.worldbank.org/indicator/MS.MIL.XPND.ZS)]
+
+Arms imports (SIPRI trend indicator values)：MS.MIL.MPRT.KD [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/MS.MIL.MPRT.KD)]
+
+Arms exports (SIPRI trend indicator values)：MS.MIL.XPRT.KD [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/MS.MIL.XPRT.KD)]
 
 ## 内容
+
+-   Refugee population by country or territory of asylum：SM.POP.REFG [[Link](https://data.worldbank.org/indicator/SM.POP.REFG)]
+
+-   Refugee population by country or territory of origin：SM.POP.REFG.OR [[Link](https://data.worldbank.org/indicator/SM.POP.REFG.OR)]
+
+-   Net ODA received (% of GNI)：DT.ODA.ODAT.GN.ZS [[Link](https://data.worldbank.org/indicator/DT.ODA.ODAT.GN.ZS)]
+
+-   Net official development assistance and official aid received (current US\$)：DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
+
+-   Net ODA received (% of central government expense)：DT.ODA.ODAT.XP.ZS [[Link](https://data.worldbank.org/indicator/DT.ODA.ODAT.XP.ZS)]
+
+-   Military expenditure (current USD)：MS.MIL.XPND.CD [[Link](https://data.worldbank.org/indicator/MS.MIL.XPND.CD)]
+
+-   Military expenditure (% of general government expenditure)：MS.MIL.XPND.ZS [[Link](https://data.worldbank.org/indicator/MS.MIL.XPND.ZS)]
+
+-   Arms imports (SIPRI trend indicator values)：MS.MIL.MPRT.KD [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/MS.MIL.MPRT.KD)]
+
+-   Arms exports (SIPRI trend indicator values)：MS.MIL.XPRT.KD [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/MS.MIL.XPRT.KD)]
+
+```{r}
+df_peace <- WDI(
+  indicator = c(refugee_asylum = "SM.POP.REFG",
+                refugee_origin = "SM.POP.REFG.OR",
+                oda_gni = "DT.ODA.ODAT.GN.ZS",
+                oda_usd = "DT.ODA.ALLD.CD",
+                oda_gov = "DT.ODA.ODAT.XP.ZS",
+                military_usd = "MS.MIL.XPND.CD",
+                military_gov = "MS.MIL.XPND.ZS",
+                arms_imports = "MS.MIL.MPRT.KD",
+                arms_exports = "MS.MIL.XPRT.KD"), extra = TRUE)
+```
+
+```{r}
+write_csv(df_peace, "data/peace.csv")
+```
+
+```{r}
+df_peace <- read_csv("data/peace.csv")
+```
+
+```{r}
+df_peace_long <- df_peace |> 
+  pivot_longer(7:15, names_to = "name", values_to = "value")
+```
+
+```{r}
+df_peace_long |> 
+  group_by(year, name) |> drop_na(value) |>
+  summarize(num = n()) |> arrange(desc(year))
+```
+
+```{r}
+df_peace_long |> 
+  group_by(year, name) |> drop_na(value) |>
+  summarize(num = n()) |> 
+  ggplot(aes(year, num, col = name)) + geom_line() +
+  labs(title = "各指標の年毎のデータ数", y = "データ数", x = "年")
+```
+
+World Development Indicators: [[Link](https://datacatalog.worldbank.org/search/dataset/0037712/World-Development-Indicators)]
+
+```{r}
+df_peace_long |> 
+  filter(name %in% c("military_gov", "oda_gni", "oda_gov")) |>
+  filter(iso2c %in% c("1W", "ZF")) |> drop_na(value) |>
+  ggplot(aes(year, value, col = name, linetype = iso2c)) + geom_line()
+```

@@ -161,6 +161,6 @@ World Development Indicators: [[Link](https://datacatalog.worldbank.org/search/d
 ```{r}
 df_education_long |> 
   filter(name %in% c("primary", "secondary", "tertiary")) |>
-  filter(iso2c %in% c("1W", "ZF", "T6")) |> drop_na(value) |>
-  ggplot(aes(year, value, col = name, linetype = country)) + geom_line()
+  filter(iso2c %in% c("1W", "ZF")) |> drop_na(value) |>
+  ggplot(aes(year, value, col = name, linetype = iso2c)) + geom_line()
 ```

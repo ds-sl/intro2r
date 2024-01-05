@@ -18,24 +18,81 @@ output:
 
 Urban and rural development
 
-Access to electricity, urban (% of urban population)：EG.ELC.ACCS.UR.ZS [Link]
+Access to electricity, urban (% of urban population)：EG.ELC.ACCS.UR.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.ACCS.UR.ZS)]
 
-Access to electricity, rural (% of rural population)：EG.ELC.ACCS.RU.ZS [Link]
+Access to electricity, rural (% of rural population)：EG.ELC.ACCS.RU.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.ACCS.RU.ZS)]
 
-People using at least basic drinking water services, urban (% of urban population)：
+People using at least basic drinking water services, urban (% of urban population)：SH.H2O.BASW.UR.ZS [[Link](https://data.worldbank.org/indicator/SH.H2O.BASW.ZS)]
 
-SH.H2O.BASW.UR.ZS [Link]
+People using at least basic sanitation services, rural (% of rural population)：SH.STA.BASS.RU.ZS [[Link](https://data.worldbank.org/indicator/SH.STA.BASS.RU.ZS)]
 
-People using at least basic sanitation services, rural (% of rural population)：
+People using at least basic sanitation services, urban (% of urban population)：SH.STA.BASS.UR.ZS [[Link](https://data.worldbank.org/indicator/SH.STA.BASS.UR.ZS)]
 
-SH.STA.BASS.RU.ZS [Link]
-
-People using at least basic sanitation services, urban (% of urban population)：
-
-SH.STA.BASS.UR.ZS [Link]
-
-People using at least basic drinking water services, rural (% of rural population)：
-
-SH.H2O.BASW.RU.ZS [Link]
+People using at least basic drinking water services, rural (% of rural population)：SH.H2O.BASW.RU.ZS [[Link](https://data.worldbank.org/indicator/SH.H2O.BASW.RU.ZS)]
 
 ## 内容
+
+-   Access to electricity, urban (% of urban population)：EG.ELC.ACCS.UR.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.ACCS.UR.ZS)]
+
+-   Access to electricity, rural (% of rural population)：EG.ELC.ACCS.RU.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.ACCS.RU.ZS)]
+
+-   People using at least basic drinking water services, urban (% of urban population)：SH.H2O.BASW.UR.ZS [[Link](https://data.worldbank.org/indicator/SH.H2O.BASW.ZS)]
+
+-   People using at least basic drinking water services, rural (% of rural population)：SH.H2O.BASW.RU.ZS [[Link](https://data.worldbank.org/indicator/SH.H2O.BASW.RU.ZS)]
+
+-   People using at least basic sanitation services, urban (% of urban population)：SH.STA.BASS.UR.ZS [[Link](https://data.worldbank.org/indicator/SH.STA.BASS.UR.ZS)]
+
+-   People using at least basic sanitation services, rural (% of rural population)：SH.STA.BASS.RU.ZS [[Link](https://data.worldbank.org/indicator/SH.STA.BASS.RU.ZS)]
+
+```{r}
+df_service <- WDI(
+  indicator = c(electricity_ur = "EG.ELC.ACCS.UR.ZS",
+                electricity_ru = "EG.ELC.ACCS.RU.ZS",
+                water_ur = "SH.H2O.BASW.UR.ZS",
+                water_ru = "SH.H2O.BASW.RU.ZS",
+                sanitation_ur = "SH.STA.BASS.UR.ZS",
+                sanitation_ru = "SH.STA.BASS.RU.ZS"
+                ), extra = TRUE)
+```
+
+```{r}
+write_csv(df_service, "data/service.csv")
+```
+
+```{r}
+df_service <- read_csv("data/service.csv")
+```
+
+```{r}
+df_service_long <- df_service |> 
+  pivot_longer(7:12, names_to = "name", values_to = "value")
+```
+
+```{r}
+df_service_long |> 
+  group_by(year, name) |> drop_na(value) |>
+  summarize(num = n()) |> arrange(desc(year))
+```
+
+```{r}
+df_service_long |> 
+  group_by(year, name) |> drop_na(value) |>
+  summarize(num = n()) |> 
+  ggplot(aes(year, num, col = name)) + geom_line() +
+  labs(title = "各指標の年毎のデータ数", y = "データ数", x = "年")
+```
+
+World Development Indicators: [[Link](https://datacatalog.worldbank.org/search/dataset/0037712/World-Development-Indicators)]
+
+```{r}
+df_service_long |> 
+  filter(name %in% c("electricity_ur", "electricity_ru")) |>
+  filter(iso2c %in% c("1W", "ZF", "T6")) |> drop_na(value) |>
+  ggplot(aes(year, value, col = name, linetype = iso2c)) + geom_line()
+```
+
+```{r}
+df_service_long |> 
+  filter(iso2c %in% c("1W", "ZF", "T6")) |> drop_na(value) |>
+  ggplot(aes(year, value, col = name, linetype = iso2c)) + geom_line()
+```
