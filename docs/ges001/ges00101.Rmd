@@ -3,10 +3,10 @@ title: "GES 001 演習2"
 author: "H. Suzuki"
 date: "2023年12月19日`"
 output:
-  html_notebook: default
   ioslides_presentation:
     widescreen: yes
     df_print: paged
+  html_notebook: default
 ---
 
 ## 準備
@@ -53,7 +53,7 @@ output:
 
 -   Chapter 4 Global wealth inequality: the rise of multimillionaires [[Link](https://wir2022.wid.world/chapter-4/)]
 
-## 演習 12月19日（木）人口と少子高齢化
+## 演習 12月19日（火）人口と少子高齢化
 
 ### 世界開発指標（World Development Indicators）[[Link](https://datatopics.worldbank.org/world-development-indicators/)]
 

@@ -19,9 +19,13 @@ Only Part II. [[Slides](https://ds-sl.github.io/intro2r/da4r/qall401-01.html#1)]
 
 -   Installation of R and RStudio
 
+### Files
+
+-   Purchasing power parities (PPPs) [[Link](https://ds-sl.github.io/intro2r/da4r/gdp_ppp.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/gdp_ppp.Rmd)]
+
 ## Week 2 (2023/12/20)
 
-Exploratory Data Analysis I [Slides], [R Notebook], [Video1], [Video2]
+Exploratory Data Analysis I [[Slides](https://ds-sl.github.io/intro2r/da4r/qall401-02.html#1)], [[R Notebook](https://ds-sl.github.io/intro2r/da4r/qall401-02.nb.html)], [[Video1](https://www.youtube.com/watch?v=p34Jf5WTrF4)], [[Video2](https://www.youtube.com/watch?v=EGS6ZiFccf8)]
 
 ### Part I
 
@@ -77,7 +81,7 @@ Exploratory Data Analysis I [Slides], [R Notebook], [Video1], [Video2]
 
         -   df_iris\$Species \|\> unique()
 
-    -   Classes and Types
+    -   Classes and Types - *not included*
 
         -   class(df_iris)
 
@@ -121,7 +125,7 @@ Exploratory Data Analysis I [Slides], [R Notebook], [Video1], [Video2]
 
 -   R Notebook: life-expectancy
 
--   df_lifeexp \<- WDI(indicator = c(pop = " SP.POP.TOTL", fertility = "SP.DYN.TFRT.IN", lifeexp = "SP.DYN.LE00.IN"))
+-   `df_lifeexp <- WDI(indicator = c(pop = " SP.POP.TOTL", fertility = "SP.DYN.TFRT.IN", lifeexp = "SP.DYN.LE00.IN"))`
 
 -   `dplyr`, a package in tidyverse
 
@@ -138,6 +142,10 @@ Exploratory Data Analysis I [Slides], [R Notebook], [Video1], [Video2]
     -   Scatter Plot: ``` geom_point(aes(``col=var3, size=var4, shape=var5``)) ```
 
     -   Line Graph: ``` geom_line(``aes(col=var3, linetype=var4))``) ```
+
+### Files
+
+-   Life Expectancy [[Link](https://ds-sl.github.io/intro2r/da4r/life_expectancy.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/life_expectancy.Rmd)]
 
 ### Assignment 1
 
@@ -165,7 +173,19 @@ RStudio IDE Cheat Sheet. PDF is available on the top right. [[Site Link](https:/
 
 ## Week 3 (2024/01/10)
 
-Exploratoryfromore than one indicator, extra = TRUE
+Exploratory Data Analysis II [Slides], [R Notebook], [Video1], [Video2]
+
+-   Hypothesis testing!? Hypothesis creating.
+
+WDI
+
+-   The World Bank Data Catalog [[Link](https://datacatalog.worldbank.org/home)]
+
+    -   World Development Indicators [[Link](https://datacatalog.worldbank.org/search/dataset/0037712/World-Development-Indicators)] \> [[Excel File](https://databank.worldbank.org/data/download/WDI_EXCEL.zip)]
+
+### Part I
+
+Exploration of data using one or two related WDI indicators with extra = TRUE
 
 -   dplyr
 
@@ -189,19 +209,33 @@ Exploratoryfromore than one indicator, extra = TRUE
 
     -   smooth plot
 
+### Part II - Practicum
+
+-   Going through EDA using WDI
+
+-   Your chosen indicator(s)
+
+-   WDI template [[Link](https://ds-sl.github.io/intro2r/intro2wdi/wdi_temp.nb.html)]
+
+### Recommended Readings and Activities
+
+1.  Posit Recipes（New edition of Posit Primers）: interactive exercises [[Link](https://posit.cloud/learn/recipes)]
+
 ### Assignment 2
 
 ## Week 4 (2024/01/17)
 
-Exploratory Data Analysis III
+Exploratory Data Analysis III [Slides], [R Notebook], [Video1], [Video2]
 
--   readr, readxl
+### Part I
+
+-   Data with related variables in WDI
 
 -   tidyr
 
     -   pivot_longer
 
-    -   pivot_wider
+        -   pivot_wider
 
 -   ggplot2
 
@@ -211,25 +245,46 @@ Exploratory Data Analysis III
 
     -   theme
 
--   tidyr
+### Part II - Practicum
 
 ### Assignment 3
 
 ## Week 5 (2024/01/24)
 
-Exploratory Data Analysis IV
+Exploratory Data Analysis IV [Slides], [R Notebook], [Video1], [Video2]
+
+### Part I
+
+-   readr, readxl
+
+    -   CSV and Excel files
 
 -   dplyr
 
     -   two tables verbs
 
+-   models with broom
+
+-   maps
+
+-   summary and review
+
+### Part II - Practicum
+
 ### Assignment 4
 
 ## Week 6 (2024/01/31)
 
-Exploratory Data Analysis V
+Exploratory Data Analysis V [Slides], [R Notebook], [Video1], [Video2]
 
+### Part I
+
+-   EDA Workflow
 -   Examples of EDA
+-   Reproducible Research and Communication
+    -   PDF, Word, PowerPoint, Other Slides, etc
+
+### Part II - Practicum
 
 ### Assignment 5
 

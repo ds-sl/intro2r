@@ -1,0 +1,514 @@
+---
+title: "GES 001 演習3"
+author: "H. Suzuki"
+date: "2024年1月9日`"
+output:
+  html_notebook: default
+  ioslides_presentation:
+    widescreen: yes
+    df_print: paged
+---
+
+## 準備
+
+-   自分のPCまたは教室のPC
+
+    1.  ログイン
+
+    2.  ウェッブ・ブラウザー（Google Chrome など）を起動
+
+        -   Moodle の GES001 経済と経済学のサイトから、このスライドのページを表示（リンク「Rでデータサイエンス」の第2週）
+
+        -   （別のタブまたは ウィンドウで）PositCloud にログイン（アカウントのない人はサイン・アップ）[[Posit.cloud](https://posit.cloud/)]・[[共有プロジェクト](https://posit.cloud/content/5539763)]
+
+    3.  RStudio を起動
+
+        -   自分のPCにR と RStudio をインストールしていないひとは不要。
+
+        -   インストールについては、解説とビデオ参照。[[解説リンク](https://posit.co/download/rstudio-desktop/)]・[[ビデオ](https://www.youtube.com/watch?v=Q8TpC-e0Mfg)]
+
+## 第3週
+
+12/21(TH)　不平等を無くすために何をするべきか1
+
+　　　　　  不平等を無くすために何をするべきか2
+
+講義では、所得の世界的格差の現状を踏まえて、高所得者に対する資産課税、金融取引税の可能性について議論します。
+
+01/09(TU)　Rでデータサイエンス3：GNI係数と所得分布　 [[Main](https://ds-sl.github.io/intro2r/ges001/index.html)]
+
+## 講義 12月21日（木）不平等を無くすために何をするべきか
+
+### World Inequality Report 2022 [[Link](https://wir2022.wid.world)]
+
+-   Chapter 5 Half the sky? The Female Labor Income Share in a Global Perspective [[Link](https://wir2022.wid.world/chapter-5/)]
+
+-   Chapter 7 The road to redistributing wealth [[Link](https://wir2022.wid.world/chapter-7/)]
+
+-   Chapter 8 Taxing Multinationals or Taxing Wealthy Individuals? [[Link](https://wir2022.wid.world/chapter-8/)]
+
+-   Chapter 9 Global vs Unilateral Perspectives on Tax Justice [[Link](https://wir2022.wid.world/chapter-9/)]
+
+-   Chapter 10 Emancipation, redistribution and sustainability [[Link](https://wir2022.wid.world/chapter-10/)]
+
+## 演習 1月9日（火）GNI係数と所得分布
+
+### 世界開発指標（World Development Indicators）[[Link](https://datatopics.worldbank.org/world-development-indicators/)]
+
+#### **貧困の不平等（Poverty and Inequality）**
+
+**所得または消費の分配（Distribution of income or consumption）**
+
+GINI 指数 (世界銀行推計)：SI.POV.GINI [[Link](https://data.worldbank.org/indicator/SI.POV.GINI)]
+
+下位 10% が占める所得シェア：SI.DST.FRST.10 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.FRST.10)]
+
+下位 20% が占める所得シェア：SI.DST.FRST.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.FRST.20)]
+
+2番目の 20% が占める収入シェア：SI.DST.02ND.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.02ND.20)]
+
+3番目の 20% が占める収入シェア ：SI.DST.03RD.20 [[Link](https://data.worldbank.org/indicator/SI.DST.03RD.20)]
+
+4番目の 20% が占める収入シェア：SI.DST.04TH.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.04TH.20)]
+
+上位 20% が占める収入シェア：SI.DST.05TH.20 [[Link](https://data.worldbank.org/indicator/SI.DST.05TH.20)]
+
+上位 10% が占める収入シェア：SI.DST.10TH.10 [[Link](https://data.worldbank.org/indicator/SI.DST.10TH.10)]
+
+## GINI って何！？
+
+**ジニ係数**（ジニけいすう、[英](https://ja.wikipedia.org/wiki/%E8%8B%B1%E8%AA%9E "英語"): Gini coefficient）とは主に社会における所得の不平等さを測る指標である。0から1で表され、各人の所得が均一で格差が全くない状態を0、たった一人が全ての所得を独占している状態を1とする。ローレンツ曲線をもとに、1912年にイタリアの統計学者、コッラド・ジニによって考案された。それ以外にも、富の偏在性やエネルギー消費における不平等さなどに応用される。（Wikipedia）
+
+![](images/clipboard-719886855.png)
+
+ジニ係数のグラフ ジニ係数は、*A*の面積を*A*と*B*の各面積の合計で割ったものに等しい。すなわち、ジニ係数 =*A*/（*A*+*B*）となる。また、*A*+*B*=0.5のため、2×*A*にも等しい（縦軸は0と1の間の値をとるため）
+
+### GINI Calculator
+
+x に、数の列を入れるとその分配に関する、GINI を計算します。
+
+```{r}
+# install.packages("DescTools")
+library(tidyverse)
+library(DescTools)
+x <- c(0,0,1)
+GINI <- function(x){Lc(x)[c(1,2)] |> as.tibble() |> mutate(A = p, .after = 1) |> 
+  pivot_longer(-1, names_to = "name", values_to = "value") |>
+  ggplot(aes(p, value, fill = name)) + geom_area(position = "identity") +
+  annotate("text", x = 0.25, y = 0.75, label = paste("GINI = A/(A+L) = ",round(Gini(x, unbiased = FALSE), digits = 2))) + scale_y_continuous(labels = scales::percent_format(accuracy = 1))+ scale_x_continuous(labels = scales::percent_format(accuracy = 1)) + labs(title = "GINI Index", x = "People", y = "Wealth", fill = "")}
+GINI(x)
+```
+
+### 
+
+## 前回（12月19日）の復習
+
+-   パッケージ（Package）の利用：
+
+    -   インストール（installation）：Tools \> Install Packages
+
+    -   ロード（load）`library(tidyverse); library(WDI); library(showtext)`
+
+-   データの取得：`WDI(indicator = c(pop = "SP.POP.TOTL"))`
+
+-   特定の行の取得：`filter(), drop_na(), distinct()`
+
+-   折れ線グラフ
+
+    -   `ggplot(aes(x = year, y = pop) + geom_line()`
+
+    -   `ggplot(aes(x = year, y = pop, col = country) + geom_line()`
+
+## 今回の演習の内容
+
+-   パッケージ（Package）インストール（コンピュータに入れておく）
+
+-   パッケージのロード（すぐ使えるようにする）：tidyverse, WDI, showtext
+
+-   データの取得：WDI()
+
+-   特定の条件にあった行を選択：filter()
+
+-   新しい列を他の列から計算して加える：mutate()
+
+-   順番に、変形、視覚化などをするためのパイプ：`|>` （または、`%>%`）
+
+-   折れ線グラフ：ggplot(...) + geom_point()
+
+-   棒グラフ：ggplot(...) + geom_col()
+
+### ファイルリンク
+
+-   PositCloud 共有リンク：<https://posit.cloud/content/5539763>
+
+    -   GINI?
+
+毎回 tidyverse と WDI を使いますから、R Notebook の最初には、次のコードチャンクを作成し、実行（Run）します。
+
+```{r}
+library(tidyverse)
+library(WDI)
+library(showtext)
+```
+
+### 指標について
+
+-   GINI index (World Bank estimate)；SI.POV.GINI [[Link](https://data.worldbank.org/indicator/SI.POV.GINI)]
+
+    -   Gini index measures the extent to which the distribution of income (or, in some cases, consumption expenditure) among individuals or households within an economy deviates from a perfectly equal distribution. A Lorenz curve plots the cumulative percentages of total income received against the cumulative number of recipients, starting with the poorest individual or household. The Gini index measures the area between the Lorenz curve and a hypothetical line of absolute equality, expressed as a percentage of the maximum area under the line. Thus a Gini index of 0 represents perfect equality, while an index of 100 implies perfect inequality.
+
+    -   ジニ指数は、経済内の個人または世帯間の所得（または場合によっては消費支出）の分布が、完全に平等な分布からどの程度逸脱しているかを測定する。ローレンツ曲線は、最も貧しい個人または世帯から始まり、受給者の累積数に対する総所得の累積割合をプロットしたものである。ジニ指数は、ローレンツ曲線と絶対的平等の仮想線との間の面積を測定するもので、線の下の最大面積の百分率で表される。したがって、ジニ指数0は完全な平等を表し、指数100は完全な不平等を意味する。
+
+-   Income share held by lowest 10%：SI.DST.FRST.10 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.FRST.10)]
+
+    -   Percentage share of income or consumption is the share that accrues to subgroups of population indicated by deciles or quintiles.
+
+    -   所得または消費の割合は、デシルまたは五分位数で示される人口のサブグループに発生する割合です。
+
+-   Income share held by lowest 20%：SI.DST.FRST.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.FRST.20)]
+
+    -   Percentage share of income or consumption is the share that accrues to subgroups of population indicated by deciles or quintiles. Percentage shares by quintile may not sum to 100 because of rounding.
+
+    -   所得または消費の割合は、デシルまたは五分位数で示される人口のサブグループに発生する割合です。五分位数によるシェアの割合は、四捨五入のため100にならない場合があります。(Apple)
+
+-   Income share held by second 20%：SI.DST.02ND.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.02ND.20)]
+
+    -   Percentage share of income or consumption is the share that accrues to subgroups of population indicated by deciles or quintiles. Percentage shares by quintile may not sum to 100 because of rounding.
+
+    -   所得または消費に占める割合は、10分位または5分位で示される人口のサブグループに帰属する割合である。四捨五入の関係上、五分位階級別の割合の合計が100にならない場合がある。（DeepL）
+
+-   Income share held by third 20%：SI.DST.03RD.20 [[Link](https://data.worldbank.org/indicator/SI.DST.03RD.20)]
+
+    -   Percentage share of income or consumption is the share that accrues to subgroups of population indicated by deciles or quintiles. Percentage shares by quintile may not sum to 100 because of rounding.
+
+    -   所得または消費に占める割合は、10分位または5分位で示される人口のサブグループに帰属する割合である。四捨五入の関係上、五分位階級別の割合の合計が100にならない場合がある。（DeepL）
+
+-   Income share held by fourth 20%：SI.DST.04TH.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.04TH.20)]
+
+    -   Percentage share of income or consumption is the share that accrues to subgroups of population indicated by deciles or quintiles. Percentage shares by quintile may not sum to 100 because of rounding.
+
+    -   所得または消費の割合は、十分位数または五分位数で示される人口のサブグループに生じる割合です。四捨五入のため、五分位別の割合の合計が 100 にならない場合があります。(Google)
+
+-   Income share held by highest 20%：SI.DST.05TH.20 [[Link](https://data.worldbank.org/indicator/SI.DST.05TH.20)]
+
+    -   Percentage share of income or consumption is the share that accrues to subgroups of population indicated by deciles or quintiles. Percentage shares by quintile may not sum to 100 because of rounding.
+
+    -   所得または消費の割合は、十分位数または五分位数で示される人口のサブグループに生じる割合です。四捨五入のため、五分位別の割合の合計が 100 にならない場合があります。
+
+-   Income share held by highest 10%：SI.DST.10TH.10 [[Link](https://data.worldbank.org/indicator/SI.DST.10TH.10)]
+
+    -   Percentage share of income or consumption is the share that accrues to subgroups of population indicated by deciles or quintiles.
+
+    -   所得または消費の割合は、十分位数または五分位数で示される人口のサブグループに生じる割合です。
+
+## 内容
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+```{r eval = FALSE}
+df_gini <- WDI(indicator = c(gini = "SI.POV.GINI",
+                            `0-10` = "SI.DST.FRST.10",
+                            `0-20` = "SI.DST.FRST.20",
+                            `20-40` = "SI.DST.02ND.20",
+                            `40-60` = "SI.DST.03RD.20",
+                            `60-80` = "SI.DST.04TH.20",
+                            `80-100` = "SI.DST.05TH.20",
+                            `90-100` = "SI.DST.10TH.10"))
+```
+
+```{r}
+df_gini
+```
+
+```{r eval = FALSE}
+write_csv(df_gini, "data/gini.csv")
+```
+
+```{r}
+df_gini <- read_csv("data/gini.csv")
+```
+
+```{r}
+df_gini_long <- df_gini |> 
+  pivot_longer(-(1:5), names_to = "levels", values_to = "value")
+df_gini_long
+```
+
+```{r}
+df_gini |> filter(country == "Japan") |> drop_na(gini)
+```
+
+どのくらい GINI のデータがあるか確かめる
+
+```{r}
+df_gini |> group_by(year) |> drop_na(gini) |> 
+  summarize(n = n()) |>
+  ggplot(aes(year, n)) + geom_col()
+```
+
+実際のデータの個数も計算してみる。
+
+```{r}
+df_gini_long |> 
+  group_by(year, levels) |> drop_na(value) |>
+  summarize(num = n()) |> distinct(year, num) |> arrange(desc(year))
+```
+
+GINIだけでなく、他の値についても調べる。
+
+```{r}
+df_gini_long |> 
+  group_by(year, levels) |> drop_na(value) |>
+  summarize(num = n()) |> distinct(year, num) |> 
+  ggplot(aes(year, num)) + geom_col()
+```
+
+```{r}
+df_gini_long |> filter(year %in% c(1990,2000,2010,2020)) |>
+  group_by(year, levels) |> drop_na(value) |>
+  summarize(num = n()) |> distinct(year, levels, num) |> 
+  ggplot(aes(year, num, fill = levels)) + geom_col(position = "dodge")
+```
+
+2022年は、7カ国分しかデータがないがその国名を表示する。
+
+```{r}
+df_gini_long |> filter(year == 2022) |> drop_na(gini) |>
+  distinct(country, gini)
+```
+
+```{r}
+COUNTRY_GINI <- "Bangladesh"
+YEAR_GINI <- 2022
+df_gini_long |> 
+  filter(country == COUNTRY_GINI, year == YEAR_GINI) |>
+  ggplot(aes(levels, value)) + geom_col()
+```
+
+```{r}
+COUNTRY_GINI <- "Bhutan"
+YEAR_GINI <- 2022
+df_gini_long |> 
+  filter(country == COUNTRY_GINI, year == YEAR_GINI) |>
+  ggplot(aes(levels, value)) + geom_col()
+```
+
+```{r}
+COUNTRY_GINI <- "Costa Rica"
+YEAR_GINI <- 2022
+df_gini_long |> 
+  filter(country == COUNTRY_GINI, year == YEAR_GINI) |>
+  ggplot(aes(levels, value)) + geom_col()
+```
+
+## `REGION`
+
+地域名に対応する iso2c コードの取得
+
+```{r}
+REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
+"S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
+"V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL", 
+"XM", "XN", "XO", "XP", "XQ", "XT", "XU", "XY", "Z4", "Z7", "ZF", 
+"ZG", "ZH", "ZI", "ZJ", "ZQ", "ZT")
+```
+
+## 地域名の確認
+
+```{r}
+df_gini |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
+```
+
+## 国名確認
+
+```{r}
+df_gini |> filter(!(iso2c %in% REGION)) |> 
+  distinct(country, iso2c) |> arrange(country)
+```
+
+![](images/clipboard-436554368.png)
+
+Derivation of the Lorenz curve and Gini coefficient for global income in 2011 [[リンク](https://upload.wikimedia.org/wikipedia/commons/e/e7/Lorenz_curve_global_income_2011.svg)]
+
+```{r}
+df_gini_rev <- df_gini |> 
+  mutate(`0-10` = `0-10`, `10-20` = `0-20`-`0-10`,`20-30` = `20-40`/2, `30-40` = `20-40`/2, `40-50` = `40-60`/2, `50-60` = `40-60`/2, `60-70` = `60-80`/2, `70-80`=`60-80`/2, `80-90` = `80-100`-`90-100`, `90-100` = `90-100`) |> 
+  select(-c(`0-20`, `20-40`,`40-60`,`60-80`, `80-100`)) |> 
+  select(1:6, 8:15, 7) 
+df_gini_rev %>% drop_na() |> filter(country == "Bangladesh") 
+```
+
+```{r}
+df_gini_rev_long <- df_gini_rev |> pivot_longer(6:15, names_to = "levels", values_to = "value")
+```
+
+```{r}
+COUNTRY_GINI <- "Costa Rica"
+YEAR_GINI <- 2022
+df_gini_rev_long |> 
+  filter(country == COUNTRY_GINI, year == YEAR_GINI) |>
+  ggplot(aes(levels, value)) + geom_col()
+```
+
+```{r}
+df_gini_calc <- df_gini |> 
+  mutate(`0` = 0, `10` = `0-10`, `20` = `0-20`,`30` = `0-20`+`20-40`/2, `40` = `0-20` + `20-40`, `50` = `0-20` + `20-40` + `40-60`/2, `60` = `0-20` + `20-40` + `40-60`, `70` = `0-20` + `20-40` + `40-60` + `60-80`/2,  `80` = `0-20` + `20-40` + `40-60` + `60-80`, `90` = `0-20` + `20-40` + `40-60` + `60-80` + `80-100`-`90-100`, `100` = 100) 
+df_gini_calc %>% drop_na() |> filter(country == "Bangladesh")
+```
+
+```{r}
+df_gini_calc_long <- df_gini_calc |>  pivot_longer(`0`:`100`, names_to = "classes", values_to = "cumulative_share") |> mutate(classes = as.numeric(classes))
+df_gini_calc_long %>% drop_na() |> filter(country == "Bangladesh")
+```
+
+確認
+
+```{r}
+df_gini_calc_long |> filter(country == "Bangladesh") |> 
+  filter(year == 2022) |> ggplot() + geom_line(aes(classes, cumulative_share)) + geom_segment(aes(x = 0, y = 0, xend = 100, yend = 100), color = 'red') + 
+  scale_x_continuous(breaks = seq(0,100,by=20)) + 
+  scale_y_continuous(breaks = seq(0,100,by=20)) #+
+  #annotate("text", x = 10, y = 80, label = gini)
+```
+
+Shade region between two lines with ggplot: [[リンク](https://stackoverflow.com/questions/28586635/shade-region-between-two-lines-with-ggplot)]
+
+Need to check
+
+```{r}
+df_gini_calc |> group_by(country, year) |> 
+  drop_na(gini) |>
+  summarize(gini, gini_trapezoid = 100-(2*`10` + 3*`20` + 3*`30` + 3*`40` + 3*`50` + 3*`60` + 3*`70` + 3*`80` + 2*`90` + `100`)/10) |> 
+  distinct(country, year, gini, gini_trapezoid)
+```
+
+```{r}
+library(DescTools)
+```
+
+Area Under the Curve: [[リンク](https://search.r-project.org/CRAN/refmans/DescTools/html/AUC.html)]
+
+<https://rdrr.io/cran/DescTools/f/>
+
+```{r}
+df_gini_calc_long |> group_by(country, year) |> 
+  drop_na(gini) |>
+  summarize(gini, gini_spline = round(100-AUC(classes, cumulative_share, method = "spline")/50, digits = 1), gini_trapezoid = round(100-AUC(classes, cumulative_share)/50, digits = 1)) |> 
+  distinct(country, year, gini, gini_spline, gini_trapezoid)
+```
+
+AUC: Calculating Area under a Curve [[リンク](https://www.smin95.com/dataviz/calculating-area-under-a-curve#calculating-area-under-a-curve)]
+
+<https://www.statsdirect.com/help/default.htm#nonparametric_methods/gini.htm>
+
+定義にもどって要確認
+
+```{r}
+df_gini_long |> filter(year == 2022) |> drop_na(gini)
+```
+
+他の見せ方に修正
+
+和をとったものを計算しないといけない。以下はあとで利用
+
+```{r}
+COUNTRIES_GINI <- c("Bhutan", "Bangladesh","Indonesia","Costa Rica")
+YEAR_GINI <- 2022
+df_gini_long |> 
+  filter(country %in% COUNTRIES_GINI, year == YEAR_GINI) |>
+  ggplot(aes(levels, value, fill = factor(country, levels = COUNTRIES_GINI))) + geom_col(position = "dodge") + labs(fill = "")
+```
+
+```{r}
+YEAR_GINI <- 2000
+df_gini |> 
+  filter(year == YEAR_GINI) |> drop_na(gini) |>
+  ggplot(aes(gini, `90-100`)) + geom_point() + geom_smooth(method = "lm")
+```
+
+```{r}
+YEAR_GINI <- 2000
+df_gini |> 
+  filter(year == YEAR_GINI) |> drop_na(gini) |>
+  ggplot(aes(gini, `80-100`)) + geom_point() + geom_smooth(method = "lm")
+```
+
+```{r}
+YEAR_GINI <- 2000
+df_gini |> filter(year == YEAR_GINI) |> drop_na(gini) |>
+  ggplot(aes(gini)) + geom_histogram(binwidth = 5)
+```
+
+## To Do
+
+-   extra = TRUE で分析を始める方がよい。
+
+-   Distribution を大切にする回にしてもよい。
+
+-   weight を使えば、DescTools::Gini で、Lorentz Curve を作り出し、それから計算できるかもしれないので、試してみる。
+
+-   いくつかの、Lorentz 曲線と、その下を透明度をつけて、重ね合わすことをトライ。
+
+-   0-10, 90-100 についての扱いをどうするかを考える。
+
+```{r}
+df_gini_rev |> filter(iso2c == "ID", year == 2022)
+```
+
+```{r}
+df_gini_rev  |> mutate('10-20' = `0-20`-`0-10`, .before = `0-20`) |> mutate('80-90' = `80-100`-`90-100`, .before = `80-100`) |> select(-c(`0-20`, `80-100`)) |>
+  filter(iso2c == "ID", year == 2022)
+```
+
+```{r}
+df_gini_rev  |> mutate('10-20' = `0-20`-`0-10`, .before = `0-20`) |> mutate('80-90' = `80-100`-`90-100`, .before = `80-100`) |> select(-c(`0-20`, `80-100`)) |>
+  pivot_longer(-(1:5), names_to = "range", values_to = "value") |> 
+  filter(iso2c == "ID", year == 2022) |> pull() |> 
+  append(0,0) |> Gini(weights = c(1,1,1,2,2,2,1,1))
+```
+
+37.9
+
+```{r}
+df_gini_rev  |> mutate('10-20' = `0-20`-`0-10`, .before = `0-20`) |> mutate('80-90' = `80-100`-`90-100`, .before = `80-100`) |> select(-c(`0-20`, `80-100`)) |>
+  pivot_longer(-(1:5), names_to = "range", values_to = "value") |> 
+  filter(iso2c == "ID", year == 2022) |> pull() -> id
+Gini(c(0.5,1.5,3,5,7,8.5,9.5), id, conf.level=0.95, unbiased=FALSE)
+```
+
+## 復習
+
+-   パッケージ（Package）の利用：
+
+    -   インストール（installation）：Tools \> Install Packages
+
+    -   ロード（load）`library(tidyverse); library(WDI); library(showtext)`
+
+-   データの取得：`WDI(indicator = c(pop = "SP.POP.TOTL"))`
+
+-   特定の行の取得：`filter(), drop_na(), distinct()`
+
+-   折れ線グラフ
+
+    -   `ggplot(aes(x = year, y = pop) + geom_line()`
+
+    -   `ggplot(aes(x = year, y = pop, col = country) + geom_line()`
+
+## 課題
+
+提出はしなくて良いですが、ぜひ実際に手を動かして実行してください。
+
+## 参考文献
+
+1.  「みんなのデータサイエンス - Data Science for All」[[はじめてのデータサイエンス](https://icu-hsuzuki.github.io/ds4aj/first-example.html#first-example)]
+
+    -   導入として、GDP（国内総生産）のデータを使って説明しています。
+
+2.  Posit Recipes（旧 Posit Primers）: The Basics 対話型の演習サイトの最初 [[Link](https://posit.cloud/learn/recipes)]
+
+3.  Posit Cheat Sheet. 早見表です。印刷して使うために、PDF も提供しています。[[Site Link](https://rstudio.github.io/cheatsheets/)]
+
+4.  DataCamp Cheat Sheet: Tidyverse for Biginners. データサイエンスの教育をしている会社の早見表の一つです。基本が簡単にまとまっています。[[Link](https://images.datacamp.com/image/upload/v1676302697/Marketing/Blog/Tidyverse_Cheat_Sheet.pdf)]

@@ -1,0 +1,235 @@
+---
+title: "Data Analysis for Researchers 2023, Week 4"
+author: "Hiroshi Suzuki"
+date: "2024/01/17"
+output:
+  html_notebook: default
+  ioslides_presentation:
+    widescreen: yes
+  html_document:
+    df_print: paged
+---
+
+# Part I: EDA with WDI
+
+## Exploratory Data Analysis
+
+-   Statistics vs Data Science
+
+-   Hypothesis Testing vs Hypothesis Creating
+
+-   Problem Solving vs Understanding Issues (to Attack Problems)
+
+## A short introduction to EDA workflow
+
+1.  Start RStudio
+
+2.  Create or open a project
+
+    -   File \> Open Project or File \> Recent Projects (or File \> New Project)
+
+3.  R Notebook, R Markdown, Cuarto (or R Script, Console)
+
+    -   Reproducibility, Literate Programming and for Communication
+
+    -   R Notebook: HTML file with R Markdown source file
+
+### Exercise
+
+-   Purchasing power parities (PPPs) [[Link](https://ds-sl.github.io/intro2r/da4r/gdp_ppp.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/gdp_ppp.Rmd)]
+
+-   Life Expectancy [[Link](https://ds-sl.github.io/intro2r/da4r/life_expectancy.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/life_expectancy.Rmd)]
+
+## Review
+
+### Data Importing
+
+```{r include=FALSE}
+library(tidyverse)
+library(WDI)
+```
+
+```{r eval=FALSE}
+df_lifeexp <- WDI(indicator = c(pop = "SP.POP.TOTL", 
+                  fertility = "SP.DYN.TFRT.IN", 
+                  lifeexp = "SP.DYN.LE00.IN"), 
+                  extra = TRUE)
+```
+
+Default values are filled automatically. See Help WDI
+
+```{r eval=FALSE}
+df_lifeexp <- WDI(country = "all", 
+                  indicator = c(pop = "SP.POP.TOTL", 
+                  fertility = "SP.DYN.TFRT.IN", 
+                  lifeexp = "SP.DYN.LE00.IN"), 
+                  start = 1960, end = NULL, 
+                  extra = TRUE, caches = NULL, latest = NULL, 
+                  language = "en")
+```
+
+------------------------------------------------------------------------
+
+### Data Transforming
+
+-   `dplyr`, a package in tidyverse
+
+    -   `select()` : select columns `select(c(1,2,4,5,7,8))`
+
+    -   `filter()` : select rows meeting a condition
+
+        -   `filter(country == "World")`
+
+        -   `filter(iso2c %in% c("JP", "IN", "CN"))`
+
+        -   `filter(region != "Aggregates")`
+
+    -   `distinct()` : select rows with distinct values of a variable `distinct(country)`
+
+    -   `drop_na()` : drop rows with NA values, e.g. `drop_na(pop)`
+
+------------------------------------------------------------------------
+
+### Data Visualizing
+
+-   ggplot2
+
+    -   `ggplot(aes(x=var1, y=var2))`
+
+    -   Scatter Plot: `geom_point(aes(col=var3, size=var4, shape=var5))`
+
+    -   Line Graph: `geom_line(aes(col=var3, linetype=var4)))`
+
+    -   Title, Subtitle, Legend and Axis labels
+
+        -   `labs(title = "", subtitle ="", x  = "", y = "", col = "")`
+
+------------------------------------------------------------------------
+
+### Examples [[Link](https://ds-sl.github.io/intro2r/da4r/life_expectancy.nb.html)]
+
+#### Line graph
+
+```{r eval=FALSE}
+df_life |> filter(country == "World") |> 
+  drop_na(life_expectancy) |>
+  ggplot(aes(year, life_expectancy)) + geom_line() +
+  labs(title = "Life expectancy of the World")
+```
+
+#### Scatter Plot
+
+```{r eval=FALSE}
+df_life |> filter(year == 2021) |>
+  filter(region != "Aggregates") |> 
+  drop_na(fertility_rate, life_expectancy) |>
+  ggplot(aes(fertility_rate, life_expectancy, col = region)) + 
+  geom_point()
+```
+
+------------------------------------------------------------------------
+
+## World Development Indicators
+
+### Data themes [[Link](https://datatopics.worldbank.org/world-development-indicators/)]
+
+-   Data Catalog: World Development Indicators [[Link](https://datacatalog.worldbank.org/search/dataset/0037712/World-Development-Indicators)]
+
+-   The World by Income and Region [[Link](https://datatopics.worldbank.org/world-development-indicators/the-world-by-income-and-region.html)]
+
+-   World Bank Country and Lending Groups [[Link](https://datahelpdesk.worldbank.org/knowledgebase/articles/906519-world-bank-country-and-lending-groups)]
+
+-   People [[Link](https://datatopics.worldbank.org/world-development-indicators/themes/people.html)]
+
+    -   Government expenditure on education, total (% of GDP): SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)]
+
+    -   School enrollment, primary (% gross): SE.PRM.ENRR [[Link](https://data.worldbank.org/indicator/SE.PRM.ENRR)]
+
+    -   School enrollment, secondary (% gross): SE.SEC.ENRR [[Link](https://data.worldbank.org/indicator/SE.SEC.ENRR)]
+
+    -   School enrollment, tertiary (% gross): SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)]
+
+------------------------------------------------------------------------
+
+### WDIcache
+
+```{r}
+wdi_cache <- WDIcache()
+```
+
+```{r}
+glimpse(wdi_cache)
+```
+
+```{r}
+wdi_series <- wdi_cache$series
+wdi_country <- wdi_cache$country
+wdi_series
+wdi_country
+```
+
+# Part II: Practicum
+
+## Life-expectancy
+
+-   R Notebook [[Link](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/life_expectancy.Rmd) to the source], [[R Notebook](https://ds-sl.github.io/intro2r/da4r/life_expectancy.nb.html)]
+
+-   World Development Indicators: life-expectancy
+
+    -   Population, total: SP.POP.TOTL [[Link](https://data.worldbank.org/indicator/SP.POP.TOTL)]
+
+    -   Fertility rate, total (births per woman): SP.DYN.TFRT.IN [[Link](https://data.worldbank.org/indicator/SP.DYN.TFRT.IN)]
+
+    -   Life expectancy at birth, total: SP.DYN.LE00.IN [[Link](https://data.worldbank.org/indicator/SP.DYN.LE00.IN)]
+
+------------------------------------------------------------------------
+
+## Week Three Assignment
+
+**Self-introduction Plus**
+
+-   Create an R Notebook of a Data Analysis containing the following and submit the rendered HTML file (eg. `a2_123456.nb.html`)
+
+    1.  create an R Notebook using the R Notebook Template in Moodle, save as `a2_123456.Rmd`,
+
+    2.  write your name and ID and the contents,
+
+    3.  run each code block,
+
+    4.  preview to create `a2_123456.nb.html`,
+
+    5.  submit `a2_123456.nb.html` to Moodle.
+
+1.  Pick data from the built-in datasets besides `cars`. (`library(help = "datasets")` or go to the site [The R Datasets Package](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html))
+
+    -   Information of the data: Name, Description, Usage, Format, Source, References (Hint: ?cars)
+
+    -   Use `head()`, `str()`, …, and create at least one chart using `ggplot2` - Code Chunk.
+
+        -   Don’t forget to add `library(tidyverse)` in the first code chunk.
+
+    -   An observation of the chart - in your own words.
+
+2.  Load `gapminder` by `library(gapminder)`.
+
+    -   Choose `pop` or `gdpPercap`, or both, one country in the data, a group of countries in the data.
+
+    -   Create charts using ggplot2 with geom_line and the variables and countries chosen in 1. (See examples of the charts for `lifeExp`.)
+
+    -   Study the data as you like.
+
+    -   Observations and difficulties encountered.
+
+**Due:** 2023-01-09 23:59:00. Submit your R Notebook file in Moodle (The Second Assignment). Due on Monday!
+
+***Due Sunday 14, January 2024, 11:59 PM***
+
+## Recommended Readings and Activities
+
+1.  World Development Indicators: Data themes [[Link](https://datatopics.worldbank.org/world-development-indicators/)]
+
+    -   Find data you want to study. Record the name, WDI code, and possibly the URL.
+
+2.  Posit Recipes（New edition of Posit Primers）: interactive exercises [[Link](https://posit.cloud/learn/recipes)]
+
+3.  RStudio IDE Cheat Sheet. PDF is available on the top right. [[Site Link](https://rstudio.github.io/cheatsheets/html/rstudio-ide.html)]

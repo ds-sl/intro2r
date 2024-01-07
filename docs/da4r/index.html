@@ -11,7 +11,7 @@
 
 <meta name="author" content="Hiroshi Suzuki" />
 
-<meta name="date" content="2023-12-18" />
+<meta name="date" content="2024-01-07" />
 
 <title>Data Analysis for Researchers</title>
 
@@ -2752,7 +2752,7 @@ border-radius: 0px;
 
 <h1 class="title toc-ignore">Data Analysis for Researchers</h1>
 <h4 class="author">Hiroshi Suzuki</h4>
-<h4 class="date">2023-12-18</h4>
+<h4 class="date">2024-01-07</h4>
 
 </div>
 
@@ -2767,11 +2767,19 @@ Notebook</a>], [<a href="https://youtu.be/mpnoKZgpBYY">Video</a>]</p>
 <li><p>PositCloud</p></li>
 <li><p>Installation of R and RStudio</p></li>
 </ul>
+<div id="files" class="section level3">
+<h3>Files</h3>
+<ul>
+<li>Purchasing power parities (PPPs) [<a href="https://ds-sl.github.io/intro2r/da4r/gdp_ppp.nb.html">Link</a>],
+[<a href="https://github.com/ds-sl/intro2r/blob/main/docs/da4r/gdp_ppp.Rmd">Rmd</a>]</li>
+</ul>
+</div>
 </div>
 <div id="week-2-20231220" class="section level2">
 <h2>Week 2 (2023/12/20)</h2>
-<p>Exploratory Data Analysis I [Slides], [R Notebook], [Video1],
-[Video2]</p>
+<p>Exploratory Data Analysis I [<a href="https://ds-sl.github.io/intro2r/da4r/qall401-02.html#1">Slides</a>],
+[<a href="https://ds-sl.github.io/intro2r/da4r/qall401-02.nb.html">R
+Notebook</a>], [<a href="https://www.youtube.com/watch?v=p34Jf5WTrF4">Video1</a>], [<a href="https://www.youtube.com/watch?v=EGS6ZiFccf8">Video2</a>]</p>
 <div id="part-i" class="section level3">
 <h3>Part I</h3>
 <ul>
@@ -2813,7 +2821,7 @@ _)</p></li>
 <li><p>df_iris[[5]] |&gt; unique()</p></li>
 <li><p>df_iris$Species |&gt; unique()</p></li>
 </ul></li>
-<li><p>Classes and Types</p>
+<li><p>Classes and Types - <em>not included</em></p>
 <ul>
 <li><p>class(df_iris)</p></li>
 <li><p>class(df_iris[5])</p></li>
@@ -2853,8 +2861,7 @@ possibly the URL.</p></li>
 <h3>Part II</h3>
 <ul>
 <li><p>R Notebook: life-expectancy</p></li>
-<li><p>df_lifeexp &lt;- WDI(indicator = c(pop = ” SP.POP.TOTL”,
-fertility = “SP.DYN.TFRT.IN”, lifeexp = “SP.DYN.LE00.IN”))</p></li>
+<li><p><code>df_lifeexp &lt;- WDI(indicator = c(pop = &quot; SP.POP.TOTL&quot;, fertility = &quot;SP.DYN.TFRT.IN&quot;, lifeexp = &quot;SP.DYN.LE00.IN&quot;))</code></p></li>
 <li><p><code>dplyr</code>, a package in tidyverse</p>
 <ul>
 <li><p><code>filter()</code></p></li>
@@ -2869,6 +2876,13 @@ fertility = “SP.DYN.TFRT.IN”, lifeexp = “SP.DYN.LE00.IN”))</p></li>
 <li><p>Line Graph:
 <code>geom_line(``aes(col=var3, linetype=var4))``)</code></p></li>
 </ul></li>
+</ul>
+</div>
+<div id="files-1" class="section level3">
+<h3>Files</h3>
+<ul>
+<li>Life Expectancy [<a href="https://ds-sl.github.io/intro2r/da4r/life_expectancy.nb.html">Link</a>],
+[<a href="https://github.com/ds-sl/intro2r/blob/main/docs/da4r/life_expectancy.Rmd">Rmd</a>]</li>
 </ul>
 </div>
 <div id="assignment-1" class="section level3">
@@ -2903,7 +2917,24 @@ Link</a>]</p>
 </div>
 <div id="week-3-20240110" class="section level2">
 <h2>Week 3 (2024/01/10)</h2>
-<p>Exploratoryfromore than one indicator, extra = TRUE</p>
+<p>Exploratory Data Analysis II [Slides], [R Notebook], [Video1],
+[Video2]</p>
+<ul>
+<li>Hypothesis testing!? Hypothesis creating.</li>
+</ul>
+<p>WDI</p>
+<ul>
+<li><p>The World Bank Data Catalog [<a href="https://datacatalog.worldbank.org/home">Link</a>]</p>
+<ul>
+<li>World Development Indicators [<a href="https://datacatalog.worldbank.org/search/dataset/0037712/World-Development-Indicators">Link</a>]
+&gt; [<a href="https://databank.worldbank.org/data/download/WDI_EXCEL.zip">Excel
+File</a>]</li>
+</ul></li>
+</ul>
+<div id="part-i-1" class="section level3">
+<h3>Part I</h3>
+<p>Exploration of data using one or two related WDI indicators with
+extra = TRUE</p>
 <ul>
 <li><p>dplyr</p>
 <ul>
@@ -2921,19 +2952,40 @@ Link</a>]</p>
 <li><p>smooth plot</p></li>
 </ul></li>
 </ul>
+</div>
+<div id="part-ii---practicum" class="section level3">
+<h3>Part II - Practicum</h3>
+<ul>
+<li><p>Going through EDA using WDI</p></li>
+<li><p>Your chosen indicator(s)</p></li>
+<li><p>WDI template [<a href="https://ds-sl.github.io/intro2r/intro2wdi/wdi_temp.nb.html">Link</a>]</p></li>
+</ul>
+</div>
+<div id="recommended-readings-and-activities-1" class="section level3">
+<h3>Recommended Readings and Activities</h3>
+<ol style="list-style-type: decimal">
+<li>Posit Recipes（New edition of Posit Primers）: interactive exercises
+[<a href="https://posit.cloud/learn/recipes">Link</a>]</li>
+</ol>
+</div>
 <div id="assignment-2" class="section level3">
 <h3>Assignment 2</h3>
 </div>
 </div>
 <div id="week-4-20240117" class="section level2">
 <h2>Week 4 (2024/01/17)</h2>
-<p>Exploratory Data Analysis III</p>
+<p>Exploratory Data Analysis III [Slides], [R Notebook], [Video1],
+[Video2]</p>
+<div id="part-i-2" class="section level3">
+<h3>Part I</h3>
 <ul>
-<li><p>readr, readxl</p></li>
+<li><p>Data with related variables in WDI</p></li>
 <li><p>tidyr</p>
 <ul>
-<li><p>pivot_longer</p></li>
-<li><p>pivot_wider</p></li>
+<li><p>pivot_longer</p>
+<ul>
+<li>pivot_wider</li>
+</ul></li>
 </ul></li>
 <li><p>ggplot2</p>
 <ul>
@@ -2941,31 +2993,60 @@ Link</a>]</p>
 <li><p>readers</p></li>
 <li><p>theme</p></li>
 </ul></li>
-<li><p>tidyr</p></li>
 </ul>
+</div>
+<div id="part-ii---practicum-1" class="section level3">
+<h3>Part II - Practicum</h3>
+</div>
 <div id="assignment-3" class="section level3">
 <h3>Assignment 3</h3>
 </div>
 </div>
 <div id="week-5-20240124" class="section level2">
 <h2>Week 5 (2024/01/24)</h2>
-<p>Exploratory Data Analysis IV</p>
+<p>Exploratory Data Analysis IV [Slides], [R Notebook], [Video1],
+[Video2]</p>
+<div id="part-i-3" class="section level3">
+<h3>Part I</h3>
 <ul>
+<li><p>readr, readxl</p>
+<ul>
+<li>CSV and Excel files</li>
+</ul></li>
 <li><p>dplyr</p>
 <ul>
 <li>two tables verbs</li>
 </ul></li>
+<li><p>models with broom</p></li>
+<li><p>maps</p></li>
+<li><p>summary and review</p></li>
 </ul>
+</div>
+<div id="part-ii---practicum-2" class="section level3">
+<h3>Part II - Practicum</h3>
+</div>
 <div id="assignment-4" class="section level3">
 <h3>Assignment 4</h3>
 </div>
 </div>
 <div id="week-6-20240131" class="section level2">
 <h2>Week 6 (2024/01/31)</h2>
-<p>Exploratory Data Analysis V</p>
+<p>Exploratory Data Analysis V [Slides], [R Notebook], [Video1],
+[Video2]</p>
+<div id="part-i-4" class="section level3">
+<h3>Part I</h3>
 <ul>
+<li>EDA Workflow</li>
 <li>Examples of EDA</li>
+<li>Reproducible Research and Communication
+<ul>
+<li>PDF, Word, PowerPoint, Other Slides, etc</li>
+</ul></li>
 </ul>
+</div>
+<div id="part-ii---practicum-3" class="section level3">
+<h3>Part II - Practicum</h3>
+</div>
 <div id="assignment-5" class="section level3">
 <h3>Assignment 5</h3>
 </div>

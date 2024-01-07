@@ -347,7 +347,7 @@ Moodle 内の、課題・質問提出ボックスに、提出してください�
 
 4.  Y. Xie et al. *R Markdown Cookbook,* RMarkdown の詳細が書かれています。デジタルでの翻訳版 R Markdown クックブックも、上の、Bookdown Site に公開されています。[[Link](https://bookdown.org/yihui/rmarkdown/)] [[日本語版 Link](https://gedevan-aleksizde.github.io/rmarkdown-cookbook/)]
 
-5.  Posit Primers. 対話型の演習サイトです。最初の4つ（The Basics, Work with Data, Visualize Data, Tidy Your Data）の一部と、R Reproducibly を、このコースで扱います。 [[Link](https://posit.cloud/learn/primers)]
+5.  Posit Recipes（旧 Posit Primers）: The Basics 対話型の演習サイトの最初 [[Link](https://posit.cloud/learn/recipes)]
 
 6.  Cheat Sheet. 早見表です。印刷して使うために、PDF も提供しています。[[Site Link](https://rstudio.github.io/cheatsheets/)]
 
