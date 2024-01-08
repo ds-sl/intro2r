@@ -155,6 +155,8 @@ R と R Studio のインストールについて [[リンク](https://icu-hsuzuk
 
 -   ジニ指数と所得分布 [[リンク](https://ds-sl.github.io/intro2r/ges001/gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/gini.Rmd)]
 
+    -   参考1/参考2付 [[リンク](https://ds-sl.github.io/intro2r/ges001/gini_long.nb.html)]
+
 ### 第4週
 
 01/11(TH)　南部アフリカ諸国の貧困と不平等の現状1

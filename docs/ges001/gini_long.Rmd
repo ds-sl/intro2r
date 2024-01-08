@@ -392,43 +392,43 @@ df_gini |>
 
 4.  DataCamp Cheat Sheet: Tidyverse for Biginners. データサイエンスの教育をしている会社の早見表の一つです。基本が簡単にまとまっています。[[Link](https://images.datacamp.com/image/upload/v1676302697/Marketing/Blog/Tidyverse_Cheat_Sheet.pdf)]
 
-<!-- ## 参考１ -->
+## 参考１
 
-<!-- 階級を 10% 刻みに統一し、Long 形式に変換。 -->
+階級を 10% 刻みに統一し、Long 形式に変換。
 
-<!-- ```{r} -->
-<!-- df_gini_rev <- df_gini |>  -->
-<!--   mutate(`0-10` = `0-10`, `10-20` = `0-20`-`0-10`,`20-30` = `20-40`/2, `30-40` = `20-40`/2, `40-50` = `40-60`/2, `50-60` = `40-60`/2, `60-70` = `60-80`/2, `70-80`=`60-80`/2, `80-90` = `80-100`-`90-100`, `90-100` = `90-100`) |>  -->
-<!--   select(-c(`0-20`, `20-40`,`40-60`,`60-80`, `80-100`)) |>  -->
-<!--   select(1:6, 8:15, 7)  -->
-<!-- df_gini_rev %>% drop_na() -->
-<!-- ``` -->
+```{r}
+df_gini_rev <- df_gini |> 
+  mutate(`0-10` = `0-10`, `10-20` = `0-20`-`0-10`,`20-30` = `20-40`/2, `30-40` = `20-40`/2, `40-50` = `40-60`/2, `50-60` = `40-60`/2, `60-70` = `60-80`/2, `70-80`=`60-80`/2, `80-90` = `80-100`-`90-100`, `90-100` = `90-100`) |> 
+  select(-c(`0-20`, `20-40`,`40-60`,`60-80`, `80-100`)) |> 
+  select(1:6, 8:15, 7) 
+df_gini_rev %>% drop_na()
+```
 
-<!-- ```{r} -->
-<!-- df_gini_rev_long <- df_gini_rev |> pivot_longer(6:15, names_to = "levels", values_to = "value") -->
-<!-- df_gini_rev_long -->
-<!-- ``` -->
+```{r}
+df_gini_rev_long <- df_gini_rev |> pivot_longer(6:15, names_to = "levels", values_to = "value")
+df_gini_rev_long
+```
 
-<!-- ```{r fig.height=9, fig.width=8} -->
-<!-- df_gini_rev_long |> filter(year == 2022) |> drop_na(gini) |> -->
-<!--   ggplot(aes(levels, value)) + geom_col() +  -->
-<!--   facet_wrap(~country, ncol = 2) -->
-<!-- ``` -->
+```{r fig.height=9, fig.width=8}
+df_gini_rev_long |> filter(year == 2022) |> drop_na(gini) |>
+  ggplot(aes(levels, value)) + geom_col() + 
+  facet_wrap(~country, ncol = 2)
+```
 
-<!-- ## 参考２ -->
+## 参考２
 
-<!-- 曲線の下の面積を計算する　AUC を利用して、ジニ係数を計算。 -->
+曲線の下の面積を計算する　AUC を利用して、ジニ係数を計算。
 
-<!-- Area Under the Curve: [[リンク](https://search.r-project.org/CRAN/refmans/DescTools/html/AUC.html)] -->
+Area Under the Curve: [[リンク](https://search.r-project.org/CRAN/refmans/DescTools/html/AUC.html)]
 
-<!-- <https://rdrr.io/cran/DescTools/f/> -->
+<https://rdrr.io/cran/DescTools/f/>
 
-<!-- ```{r} -->
-<!-- df_gini_calc_long |> group_by(country, year) |>  -->
-<!--   drop_na(gini) |> -->
-<!--   reframe(gini, gini_spline = round(100-AUC(classes, cumulative_share, method = "spline")/50, digits = 1), gini_trapezoid = round(100-AUC(classes, cumulative_share)/50, digits = 1)) |>  -->
-<!--   distinct(country, year, gini, gini_spline, gini_trapezoid) -->
-<!-- ``` -->
+```{r}
+df_gini_calc_long |> group_by(country, year) |> 
+  drop_na(gini) |>
+  reframe(gini, gini_spline = round(100-AUC(classes, cumulative_share, method = "spline")/50, digits = 1), gini_trapezoid = round(100-AUC(classes, cumulative_share)/50, digits = 1)) |> 
+  distinct(country, year, gini, gini_spline, gini_trapezoid)
+```
 
 ### 練習2の答え
 
