@@ -55,7 +55,7 @@ output:
 
 ### 世界開発指標（World Development Indicators）[[Link](https://datatopics.worldbank.org/world-development-indicators/)]
 
-#### **貧困の不平等（Poverty and Inequality）**
+#### **貧困と不平等（Poverty and Inequality）**
 
 **所得または消費の分配（Distribution of income or consumption）**
 
@@ -123,19 +123,19 @@ GINI(x)
 
 -   パッケージ（Package）インストール（コンピュータに入れておく）
 
--   パッケージのロード（すぐ使えるようにする）：tidyverse, WDI, showtext
+-   パッケージのロード（すぐ使えるようにする）：`tidyverse`, `WDI`, `DescTools`
 
--   データの取得：WDI()
+-   データの取得：`WDI()`
 
--   特定の条件にあった行を選択：filter()
-
--   新しい列を他の列から計算して加える：mutate()
+-   特定の条件にあった行を選択：`filter(), drop_na(), distinct()`
 
 -   順番に、変形、視覚化などをするためのパイプ：`|>` （または、`%>%`）
 
--   折れ線グラフ：ggplot(...) + geom_point()
+-   ヒストグラム（度数分布）：`ggplot(...) + geom_histogram()`
 
--   棒グラフ：ggplot(...) + geom_col()
+-   棒グラフ：`ggplot(...) + geom_col()`
+
+-   散布図：`ggplot(...) + geom_point()`
 
 ### ファイルリンク
 

@@ -148,18 +148,6 @@ write_csv(df_gini_index, "data/gini_index.csv")
 df_gini_index <- read_csv("data/gini_index.csv")
 ```
 
-### 地域リスト
-
-人口動態で使った地域のリストをコピーしておきます。
-
-```{r}
-REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
-"S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
-"V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL", 
-"XM", "XN", "XO", "XP", "XQ", "XT", "XU", "XY", "Z4", "Z7", "ZF", 
-"ZG", "ZH", "ZI", "ZJ", "ZQ", "ZT")
-```
-
 ### データの確認
 
 `head(df_gini_index)` または、`df_gini_index` でも確認可能です。
@@ -182,6 +170,10 @@ df_gini_index_rev
 df_gini_index_rev |> filter(country == "Japan") |> drop_na(gini)
 ```
 
+**練習　日本（Japan）を、世界（World）にしてみるとどうなりますか。**
+
+-   
+
 どのくらい GINI のデータがあるか確かめる
 
 ```{r}
@@ -195,14 +187,14 @@ df_gini_index_rev |> filter(year == 2013) |> drop_na(gini) |>
   ggplot(aes(gini)) + geom_histogram()
 ```
 
-練習 bins の値を変えてみてみましょう。
+**練習 `bins` の値を変えてみてみましょう。**
 
 ```{r}
 df_gini_index_rev |> filter(year == 2013) |> drop_na(gini) |> 
   ggplot(aes(gini)) + geom_histogram(bins = 10)
 ```
 
-練習 binwidth の値を変えてみてみましょう。
+**練習 `binwidth` の値を変えてみてみましょう。**
 
 ```{r}
 df_gini_index_rev |> filter(year == 2013) |> drop_na(gini) |> 
@@ -213,18 +205,36 @@ df_gini_index_rev |> filter(year == 2013) |> drop_na(gini) |>
 
 ```{r}
 df_gini_index_rev |> filter(year == 2013) |> drop_na(gini) |> 
-  ggplot(aes(gini, fill = region)) + geom_histogram(bins = 10, col = "black")
+  ggplot(aes(gini, fill = region)) + geom_histogram(bins = 10, col = "black", linewidth = 0.2)
 ```
+
+**練習　どんなことがわかりますか。`bins` や、`binwidth` を変えても良いですよ。**
+
+-   
 
 ```{r}
 df_gini_index_rev |> filter(year == 2013) |> drop_na(gini) |> 
-  ggplot(aes(gini, fill = income)) + geom_histogram(bins = 10, col = "black")
+  ggplot(aes(gini, fill = income)) + geom_histogram(bins = 10, col = "black", linewidth = 0.2)
 ```
+
+```{r}
+INCOME <- c("Low income", "Lower middle income", "Upper middle income", 
+"High income")
+df_gini_index_rev |> filter(year == 2013) |> drop_na(gini) |> 
+  ggplot(aes(gini, fill = factor(income, levels = INCOME))) + geom_histogram(bins = 10, col = "black", linewidth = 0.2) + 
+  labs(fill = "Income level")
+```
+
+**練習　どんなことがわかりますか。`bins` や、`binwidth` を変えても良いですよ。**
+
+-   
+
+### 参考：それぞれの地域ごとの所得レベルによる国の数
 
 ```{r}
 df_gini_index_rev |> filter(!(iso2c %in% REGION)) |> 
   distinct(iso2c, region, income) |> 
-  group_by(region) |> summarize(number_of_countries = n())
+  group_by(region, income) |> summarize(number_of_countries = n())
 ```
 
 ## 復習
