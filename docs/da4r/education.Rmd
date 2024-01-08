@@ -117,46 +117,73 @@ library(tidyverse)
 library(WDI)
 ```
 
-# Examples
+## Data
 
-## CO~2~ Emissions Per Capita vs GDP Per Capita
+*List of data and its description*
 
-We study the relation between the CO~2~ emission per capita and the GDP per capita using the following two World Development Indicators.
+1.  Government expenditure on education, total (% of GDP): SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)]
+2.  School enrollment, primary (% gross): SE.PRM.ENRR [[Link](https://data.worldbank.org/indicator/SE.PRM.ENRR)]
+3.  School enrollment, secondary (% gross): SE.SEC.ENRR [[Link](https://data.worldbank.org/indicator/SE.SEC.ENRR)]
+4.  School enrollment, tertiary (% gross): SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)]
 
-1.  CO2 emissions (metric tons per capita): EN.ATM.CO2E.PC
-
--   Description: CO2 emissions (metric tons per capita) Carbon dioxide emissions are those stemming from the burning of fossil fuels and the manufacture of cement. They include carbon dioxide produced during consumption of solid, liquid, and gas fuels and gas flaring.
-
-2.  GDP per capita, PPP (constant 2017 international \$): NY.GDP.PCAP.PP.KD
-
--   Description: GDP per capita, PPP (constant 2017 international \$) GDP per capita based on purchasing power parity (PPP). PPP GDP is gross domestic product converted to international dollars using purchasing power parity rates. An international dollar has the same purchasing power over GDP as the U.S. dollar has in the United States. GDP at purchaser's prices is the sum of gross value added by all resident producers in the country plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in constant 2017 international dollars.
+```{r}
+WDIsearch(string = "SE.XPD.TOTL.GD.ZS", field = "indicator", short = FALSE)
+```
 
 ### Importing Data
 
 ```{r cache = TRUE, eval = FALSE}
-df_co2gdp <- WDI(indicator = c(co2pcap = "EN.ATM.CO2E.PC", 
-                               gdppcap = "NY.GDP.PCAP.PP.KD"),
-                 extra = TRUE)
+df_education <- WDI(
+  indicator = c(expenditure = "SE.XPD.TOTL.GD.ZS",
+                primary = "SE.PRM.ENRR",
+                secondary = "SE.SEC.ENRR",
+                tertiary = "SE.TER.ENRR"),
+  extra = TRUE)
 ```
 
 ```{r eval = FALSE}
-write_csv(df_co2gdp, "data/co2gdp.csv")
+write_csv(df_education, "data/education.csv")
 ```
 
 ```{r}
-df_co2gdp <- read_csv("data/co2gdp.csv")
+df_education <- read_csv("data/education.csv")
+```
+
+### View Data
+
+`head(df_education)` or `df_education` in R Notebook
+
+```{r}
+df_education
+```
+
+Structure of Data: `str(df_education)` or `glimpse(df_education)`
+
+```{r}
+glimpse(df_education)
+```
+
+### Select Columns
+
+```{r}
+df_ed <- df_education |> select(country, iso2c, year, primary, secondary, tertiary, region, income, lending)
+df_ed
+```
+
+#### Check Data
+
+```{r}
 ```
 
 ### Visualization by Line Graphs
 
-#### CO~2~ per capita
+#### Government expenditure on education, total (% of GDP)
 
 ```{r}
 COUNTRY <- "World"
-df_co2gdp |> filter(country == COUNTRY) |> drop_na(co2pcap) |>
-  ggplot(aes(year, co2pcap)) + geom_line() +
-  labs(title = expression(paste(CO[2], " per capita of the World")),
-       y = expression(paste(CO[2], " per capita in tons")))
+df_education |> filter(country == COUNTRY) |> drop_na(expenditure) |>
+  ggplot(aes(year, expenditure)) + geom_line() +
+  labs(title = "Government expenditure on education, total (% of GDP)")
 ```
 
 ```{r}
