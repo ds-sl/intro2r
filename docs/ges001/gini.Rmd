@@ -1,5 +1,5 @@
 ---
-title: "GNI係数と所得分布"
+title: "ジニ指数と所得分布"
 author: "H. Suzuki"
 date: "2024年1月9日"
 output:

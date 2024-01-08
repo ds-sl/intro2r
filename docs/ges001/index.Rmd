@@ -59,7 +59,7 @@ R と R Studio のインストールについて [[リンク](https://icu-hsuzuk
 
 講義では、第2週、第3週とWorld Inequality report 2022を使って、所得と富の不平等について議論します。
 
-12/19(TU)　Rでデータサイエンス2：人口の少子高齢化 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00101.html)]・[[RNotebook](https://ds-sl.github.io/intro2r/ges001/ges00101.nb.html)]・[[Video](https://youtu.be/AFNVhNdWZ_Y)]
+12/19(TU)　Rでデータサイエンス2：人口の少子高齢化 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00101.html)]・[[RNotebook](https://ds-sl.github.io/intro2r/ges001/ges00101.nb.html)]・[[ビデオ](https://youtu.be/AFNVhNdWZ_Y)]
 
 演習ファイル：[[demography1.Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/demography1.Rmd)]・[[demography2.Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/demography2.Rmd)]
 
@@ -81,7 +81,7 @@ R と R Studio のインストールについて [[リンク](https://icu-hsuzuk
 
 <!-- Age dependency ratio, old (% of working-age population)：SP.POP.DPND.OL -->
 
-#### 演習で学んだ内容
+#### 演習の内容
 
 基本的には、PositCloud（<https://posit.cloud/>）を使って実習
 
@@ -127,7 +127,7 @@ R と R Studio のインストールについて [[リンク](https://icu-hsuzuk
 
 講義では、所得の世界的格差の現状を踏まえて、高所得者に対する資産課税、金融取引税の可能性について議論します。
 
-01/09(TU)　Rでデータサイエンス3：GNI係数と所得分布　 [授業資料]
+01/09(TU)　Rでデータサイエンス3：GNI係数と所得分布　 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00110.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00110.nb.html)]・[ビデオ]
 
 **Poverty and Inequality―Distribution of income or consumption（データが少ない難点）**
 
@@ -146,6 +146,14 @@ R と R Studio のインストールについて [[リンク](https://icu-hsuzuk
 <!-- Income share held by highest 20%：SI.DST.05TH.20 -->
 
 <!-- Income share held by highest 10%：SI.DST.10TH.10 -->
+
+#### 演習の内容
+
+基本的には、PositCloud（<https://posit.cloud/>）を使って実習
+
+-   ジニって何！？ [[リンク](https://ds-sl.github.io/intro2r/ges001/what_is_gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/what_is_gini.Rmd)]
+
+-   ジニ指数と所得分布 [[リンク](https://ds-sl.github.io/intro2r/ges001/gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/gini.Rmd)]
 
 ### 第4週
 
