@@ -55,14 +55,16 @@ x <- c(0,1)
 GINI(x)
 ```
 
-練習：$y$ に色々な列を入れて、ジニ指数が幾つになるか計算してみてください。半角の数字で、カンマで区切ったものを、`c()` の中に入れます。
+**練習1.** $y$ **に色々な列を入れて、ジニ指数を計算してください。**
+
+半角の数字で、カンマで区切ったものを、`c()` の中に入れます。
 
 ```{r}
 y <- c(1,2,3,4,5,6,7,8,9,10)
 GINI(y)
 ```
 
-### 問い
+### 考えてみよう
 
 -   ５人の人を雇って働いてもらいました。全体で5万円を支払います。どのように分けるのが公平ですか。
 
@@ -137,7 +139,8 @@ library(WDI)
 何度も読み込まなくて良いように、保存もしておきます。今回は、extra=TRUE として、地域（region）や、所得レベル（income）も含めてあります。
 
 ```{r eval = FALSE}
-df_gini_index <- WDI(indicator = c(gini = "SI.POV.GINI"), extra = TRUE)
+df_gini_index <- WDI(indicator = c(gini = "SI.POV.GINI"), 
+                     extra = TRUE)
 ```
 
 ```{r eval = FALSE}
@@ -156,7 +159,9 @@ df_gini_index <- read_csv("data/gini_index.csv")
 df_gini_index
 ```
 
-必要な変数のみとします。
+### 必要な変数のみ選択
+
+列の選択は、`select` を使います。
 
 ```{r}
 df_gini_index_rev <- df_gini_index |> 
@@ -164,51 +169,58 @@ df_gini_index_rev <- df_gini_index |>
 df_gini_index_rev
 ```
 
-日本のジニ指数をみてみます。gini の値が、NA だと意味がないので、その部分は、drop_na(gini) で削除しておきます。
+### 日本のジニ指数
+
+gini の値が、NA だと意味がないので、その部分は、drop_na(gini) で削除しておきます。
 
 ```{r}
 df_gini_index_rev |> filter(country == "Japan") |> drop_na(gini)
 ```
 
-**練習　日本（Japan）を、世界（World）にしてみるとどうなりますか。**
+**練習2.　日本（Japan）を、世界（World）にしてみるとどうなりますか。**
 
 -   
 
-どのくらい GINI のデータがあるか確かめる
+### **各年のジニ指数のデータの数**
+
+`ggplot(aes(year)) + geom_bar()`
 
 ```{r}
-df_gini_index_rev |> group_by(year) |> drop_na(gini) |> 
-  summarize(n = n()) |>
-  ggplot(aes(year, n)) + geom_col()
+df_gini_index_rev |> drop_na(gini) |> 
+  ggplot(aes(year)) + geom_bar()
 ```
+
+### **2013年のジニ指数（gini）の（度数）分布**
+
+**ヒストグラムで表示**
 
 ```{r}
 df_gini_index_rev |> filter(year == 2013) |> drop_na(gini) |> 
   ggplot(aes(gini)) + geom_histogram()
 ```
 
-**練習 `bins` の値を変えてみてみましょう。**
+**練習3. `bins` の値を変えてみてみましょう。**
 
 ```{r}
 df_gini_index_rev |> filter(year == 2013) |> drop_na(gini) |> 
   ggplot(aes(gini)) + geom_histogram(bins = 10)
 ```
 
-**練習 `binwidth` の値を変えてみてみましょう。**
+**練習4. `binwidth` の値を変えてみてみましょう。**
 
 ```{r}
 df_gini_index_rev |> filter(year == 2013) |> drop_na(gini) |> 
   ggplot(aes(gini)) + geom_histogram(binwidth = 5)
 ```
 
-地域ごとのデータを表示してみます。
+### 地域ごとのデータ数
 
 ```{r}
 df_gini_index_rev |> filter(year == 2013) |> drop_na(gini) |> 
   ggplot(aes(gini, fill = region)) + geom_histogram(bins = 10, col = "black", linewidth = 0.2)
 ```
 
-**練習　どんなことがわかりますか。`bins` や、`binwidth` を変えても良いですよ。**
+**練習5.　どんなことがわかりますか。`bins` や、`binwidth` を変えても良いですよ。**
 
 -   
 
@@ -216,6 +228,8 @@ df_gini_index_rev |> filter(year == 2013) |> drop_na(gini) |>
 df_gini_index_rev |> filter(year == 2013) |> drop_na(gini) |> 
   ggplot(aes(gini, fill = income)) + geom_histogram(bins = 10, col = "black", linewidth = 0.2)
 ```
+
+### 所得階層ごとのデータ数
 
 ```{r}
 INCOME <- c("Low income", "Lower middle income", "Upper middle income", 
@@ -225,7 +239,7 @@ df_gini_index_rev |> filter(year == 2013) |> drop_na(gini) |>
   labs(fill = "Income level")
 ```
 
-**練習　どんなことがわかりますか。`bins` や、`binwidth` を変えても良いですよ。**
+**練習6.　どんなことがわかりますか。`bins` や、`binwidth` を変えても良いですよ。**
 
 -   
 
@@ -237,25 +251,9 @@ df_gini_index_rev |> filter(!(iso2c %in% REGION)) |>
   group_by(region, income) |> summarize(number_of_countries = n())
 ```
 
-## 復習
-
--   パッケージ（Package）の利用：
-
-    -   インストール（installation）：Tools \> Install Packages
-
-    -   ロード（load）`library(tidyverse); library(WDI); library(showtext)`
-
--   データの取得：`WDI(indicator = c(pop = "SP.POP.TOTL"))`
-
--   特定の行の取得：`filter(), drop_na(), distinct()`
-
--   折れ線グラフ
-
-    -   `ggplot(aes(x = year, y = pop) + geom_line()`
-
-    -   `ggplot(aes(x = year, y = pop, col = country) + geom_line()`
-
 ## 課題
+
+**練習1 から練習6.**
 
 提出はしなくて良いですが、ぜひ実際に手を動かして実行してください。
 
