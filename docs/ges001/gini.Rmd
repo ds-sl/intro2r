@@ -181,7 +181,7 @@ df_gini_long
 
 階級（levels）を変数として扱うために、このように変形しました。
 
-![](images/clipboard-3722352739.png)
+![](https://icu-hsuzuki.github.io/da4r/data/tidy-1.png)
 
 ### どのくらい GINI のデータがあるか確かめる
 
