@@ -1,7 +1,7 @@
 ---
 title: "GES 001 演習3"
 author: "H. Suzuki"
-date: "2024年1月9日`"
+date: "2024年1月9日"
 output:
   html_notebook: default
   ioslides_presentation:

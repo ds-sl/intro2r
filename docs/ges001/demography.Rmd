@@ -412,7 +412,6 @@ df_pop_long |> filter(name %in% c("birth_rate", "death_rate")) |>
   geom_line() + labs(title = "国々の、出生率、死亡率（1000人当たり）")
 ```
 
-
 ## 扶養家族の労働人口に対する割合
 
 若年労働人口率　Age dependency ratio, young (% of working-age population)：SP.POP.DPND.YG [[Link](https://data.worldbank.org/indicator/SP.POP.DPND.YG)]
@@ -478,6 +477,7 @@ df_pop_long |> filter(name %in% c("young", "old")) |>
   ggplot(aes(year, value, col = country, linetype = name)) + 
   geom_line()　+ labs(title = "国々の高齢者・若年者扶養率")
 ```
+
 ------------------------------------------------------------------------
 
 ```{r fig.height=7, fig.width=7}
