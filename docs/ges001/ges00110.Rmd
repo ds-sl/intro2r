@@ -4,8 +4,10 @@ author: "H. Suzuki"
 date: "2024年1月9日"
 output:
   html_notebook: default
+  html_document:
+    df_print: paged
   ioslides_presentation:
-    widescreen: yes
+    widescreen: true
     df_print: paged
 ---
 
@@ -71,6 +73,40 @@ GINI 指数 (世界銀行推計)：SI.POV.GINI [[Link](https://data.worldbank.or
 
 上位 10% が占める収入シェア：SI.DST.10TH.10 [[Link](https://data.worldbank.org/indicator/SI.DST.10TH.10)]
 
+## 経済学とはなんだろう（私見）
+
+-   お金（貨幣）に関係する活動から世界を理解する学問!？
+
+-   貨幣の三つの機能：価値尺度機能（a unit of account）・交換機能（medium of exchange）・価値貯蔵機能（a store of value）
+
+    -   ICUOCW 岩井克人先生「資本主義と社会」 [[リンク](https://ocw.info.icu.ac.jp/ge/ges002_2013a)]・[[ICUOCW](https://ocw.info.icu.ac.jp/index)]
+
+-   社会の問題を数値化して分析が可能
+
+-   数値化しにくい（現在では適切に）数値化できない課題もたくさんある。見えやすい部分を絶対化して、見えにくい部分を無視するおそれが常にある。（Gapminder: Dollar Street）
+
+    -   このことを意識して、謙虚に、つねに学び、探究し続けることがたいせつ
+
+    -   「あらゆる貪欲に気をつけ、用心しなさい。」（聖書：ルカによる福音書12章15節）
+
+## ファイルリンク
+
+-   PositCloud 共有リンク：<https://posit.cloud/content/5539763>
+
+    -   ジニって何！？（what_is_gini.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/what_is_gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/what_is_gini.Rmd)]
+
+    -   ジニ指数と所得分布（gini.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/gini.Rmd)]
+
+        -   参考1/参考2付（gini_long.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/gini_long.nb.html)]
+
+-   R Notebook のソースファイル（Rmd）を取得する三つの方法
+
+    1.  PositCloud 共有リンクの ges001 のディレクトリ（フォルダから探す）ファイルを開き、全体を選択してコピーし、自分の RStudio または、PositCloud のファイルで、RMarkdown ファイルを新規作成しペースト
+
+    2.  Rmd のリンクをクリックし Raw の横の Copy a raw file からコピー、新規 RMarkdown ファイルを作成しペースト
+
+    3.  リンクを開き、右上の Code から、Rmd ファイルをダウンロードとし、それを、自分の RStudio または、PositCloud のプロジェクトに移動（Upload）
+
 ## 前回（12月19日）の復習
 
 -   パッケージ（Package）の利用：
@@ -88,14 +124,6 @@ GINI 指数 (世界銀行推計)：SI.POV.GINI [[Link](https://data.worldbank.or
     -   `ggplot(aes(x = year, y = pop) + geom_line()`
 
     -   `ggplot(aes(x = year, y = pop, col = country) + geom_line()`
-
-## ファイルリンク
-
--   PositCloud 共有リンク：<https://posit.cloud/content/5539763>
-
-    -   ジニって何！？ [[リンク](https://ds-sl.github.io/intro2r/ges001/what_is_gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/what_is_gini.Rmd)]
-
-    -   ジニ指数と所得分布 [[リンク](https://ds-sl.github.io/intro2r/ges001/gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/gini.Rmd)]
 
 ## まとめ
 
