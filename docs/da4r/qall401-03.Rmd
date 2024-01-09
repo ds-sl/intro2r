@@ -28,7 +28,7 @@ output:
 
     -   File \> Open Project or File \> Recent Projects (or File \> New Project)
 
-3.  R Notebook, R Markdown, Cuarto (or R Script, Console)
+3.  R Notebook, R Markdown, Quarto (or R Script, Console)
 
     -   Reproducibility, Literate Programming and for Communication
 
