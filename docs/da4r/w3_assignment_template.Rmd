@@ -24,7 +24,7 @@ Choose two WDI codes and analyse the data.
 
         -   Many of the following: a bar graph (or a column graph), a histogram, a boxplot, a line graph, a scatter plot
 
-        -   add observations or questions for visualizations
+        -   Observations or questions for visualizations
 
     4.  run each code block, preview to create `w3_g123456.nb.html`,
 

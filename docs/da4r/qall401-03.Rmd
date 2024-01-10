@@ -33,7 +33,7 @@ output:
 
     -   R Notebook: HTML file with R Markdown source file
 
-### Exercise
+### Examples
 
 -   Purchasing power parities (PPPs) [[Link](https://ds-sl.github.io/intro2r/da4r/gdp_ppp.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/gdp_ppp.Rmd)]
 
@@ -89,7 +89,7 @@ See URL, News and Reference Manual in the page.
 
 ### Data Importing
 
-```{r setup, echo=FALSE}
+```{r setup, echo=FALSE, message=FALSE}
 library(tidyverse)
 library(WDI)
 ```
@@ -318,7 +318,7 @@ Choose two WDI codes and analyse the data.
 
     -   A bar graph or a column graph, a histogram, a line graph, a scatter plot
 
-    -   add observations or questions for visualizations
+    -   Observations or questions for visualizations
 
 -   run each code block, preview to create `w3_g123456.nb.html`,
 
