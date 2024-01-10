@@ -137,15 +137,15 @@ library(WDI)
 
 *If you do not have `wdicache.rds` in your data folder, run the following two code chunks.*
 
-```{r wdicache, eval=FALSE}
+```{r eval=FALSE}
 wdicache <- WDIcache()
 ```
 
-```{r writewdicache, eval=FALSE, echo=FALSE}
+```{r eval=FALSE, echo=FALSE}
 write_rds(wdicache, "data/wdicache.rds")
 ```
 
-```{r readwdicache, echo=FALSE}
+```{r echo=FALSE}
 wdicache <- read_rds("data/wdicache.rds")
 ```
 
@@ -678,15 +678,15 @@ dir.create("data")
 
 *If you do not have `wdicache.rds` in your data folder, run the following two code chunks.*
 
-```{r wdicache, eval=FALSE}
+```{r eval=FALSE}
 wdicache <- WDIcache()
 ```
 
-```{r writewdicache, eval=FALSE, echo=FALSE}
+```{r eval=FALSE, echo=FALSE}
 write_rds(wdicache, "data/wdicache.rds")
 ```
 
-```{r readwdicache, echo=FALSE}
+```{r echo=FALSE}
 wdicache <- read_rds("data/wdicache.rds")
 ```
 
