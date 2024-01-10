@@ -275,8 +275,6 @@ List of 6
 df_iris <- datasets::iris
 ```
 
-------------------------------------------------------------------------
-
 ```{r}
 df_iris |> group_by(Species) |>
   summarize(mean_sl = mean(Sepal.Length), mean_sw = mean(Sepal.Width))
@@ -292,9 +290,9 @@ df_iris |> mutate(Sepal.Ratio = Sepal.Length/Sepal.Width)
 
 # Part II: Practicum
 
-Co2 per capita
+Co2 per capita [Link], [Rmd]
 
-WDI template
+Week Three Assignment Template [Link], [Rmd]
 
 ## Week Three Assignment
 
@@ -306,19 +304,21 @@ Choose two WDI codes and analyse the data.
 
     2.  edit author with name, ID, and title
 
-    3.  contents should include the following:
+------------------------------------------------------------------------
 
-        -   A short abstract
+-   Contents should include the following:
 
-        -   Description of data including data name, data code (or id), description
+    -   A short abstract
 
-        -   A bar graph or a column graph, a histogram, a line graph, a scatter plot
+    -   Description of data including data name, data code (or id), description
 
-        -   add observations or questions for visualizations
+    -   A bar graph or a column graph, a histogram, a line graph, a scatter plot
 
-    4.  run each code block, preview to create `w3_g123456.nb.html`,
+    -   add observations or questions for visualizations
 
-    5.  submit `w3_123456.nb.html` to Moodle.
+-   run each code block, preview to create `w3_g123456.nb.html`,
+
+-   submit `w3_123456.nb.html` to Moodle.
 
 Submit your R Notebook file (w3_g123456.nb.html) in Moodle (Week Three Assignment).
 
