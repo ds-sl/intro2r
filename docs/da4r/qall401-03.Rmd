@@ -290,9 +290,13 @@ df_iris |> mutate(Sepal.Ratio = Sepal.Length/Sepal.Width)
 
 # Part II: Practicum
 
-Co2 per capita [Link], [Rmd]
+## File Links
 
-Week Three Assignment Template [Link], [Rmd]
+QALL401-03 [[Slides](https://ds-sl.github.io/intro2r/da4r/qall401-03.html#1)], [[Link](https://ds-sl.github.io/intro2r/da4r/qall401-03.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/qall401-03.Rmd)]
+
+Co2 per capita [[Link](https://ds-sl.github.io/intro2r/da4r/co2pcap.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/co2pcap.Rmd)]
+
+Week Three Assignment Template [[Link](https://ds-sl.github.io/intro2r/da4r/w3_assignment_template.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/w3_assignment_template.Rmd)]
 
 ## Week Three Assignment
 

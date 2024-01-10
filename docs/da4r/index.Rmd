@@ -173,7 +173,7 @@ RStudio IDE Cheat Sheet. PDF is available on the top right. [[Site Link](https:/
 
 ## Week 3 (2024/01/10)
 
-Exploratory Data Analysis II [Slides], [R Notebook], [Video1], [Video2]
+Exploratory Data Analysis II [[Slides](https://ds-sl.github.io/intro2r/da4r/qall401-03.html#1)], [[R Notebook](https://ds-sl.github.io/intro2r/da4r/qall401-03.nb.html)], [Video1], [Video2]
 
 -   Hypothesis testing!? Hypothesis creating.
 
@@ -212,6 +212,8 @@ Exploration of data using one or two related WDI indicators with extra = TRUE
 ### Part II - Practicum
 
 -   Going through EDA using WDI
+
+    -   [[Link](https://ds-sl.github.io/intro2r/da4r/co2pcap.nb.html)]
 
 -   Your chosen indicator(s)
 
