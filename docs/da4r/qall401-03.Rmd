@@ -3,11 +3,10 @@ title: "Data Analysis for Researchers 2023, Week 3"
 author: "Hiroshi Suzuki"
 date: "2024/01/10"
 output:
-  html_notebook: default
   ioslides_presentation:
     widescreen: yes
-  html_document:
     df_print: paged
+  html_notebook: default
 ---
 
 # Part I: EDA with WDI
@@ -40,7 +39,7 @@ output:
 
 -   Life Expectancy [[Link](https://ds-sl.github.io/intro2r/da4r/life_expectancy.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/life_expectancy.Rmd)]
 
-## Review
+## Review - Week 2
 
 ### World Development Indicators
 
@@ -60,6 +59,16 @@ output:
 
             -   Life expectancy at birth, total: SP.DYN.LE00.IN [[Link](https://data.worldbank.org/indicator/SP.DYN.LE00.IN)]
 
+## Preview
+
+-   Week 3, Jan. 10: EDA2, WDI, data transformation, data visualization
+
+-   Week 4, Jan. 17: EDA3, WDI, tidy data (long and wide data), choropleth maps
+
+-   Week 5, Jan. 24: EDA4, UN, OECD, readr, readxl, two table verves
+
+-   Week 6, Jan. 31: EDA5, Round-up, communication, pdf, Word, PowerPoint
+
 ------------------------------------------------------------------------
 
 ### WDI Package
@@ -70,13 +79,22 @@ CRAN Package Site: WDI [[https://CRAN.R-project.org/package=WDI](https://cran.r-
 
 The WDI function provides convenient access to over 40 databases hosted by the World Bank, including the World Development Indicators (WDI), International Debt Statistics, Doing Business, Human Capital Index, and Sub-national poverty indicators. For fast searching, the WDI package ships with a local list of available data series. This local list can be updated to the latest version using the WDIcache function.
 
-Search: CRAN package=WDI
+Search: CRAN package=WDI.
+
+See URL, News and Reference Manual in the page.
+
+*For other packages use a similar syntax 'CRAN package='Package Name'*
 
 ------------------------------------------------------------------------
 
 ### Data Importing
 
-```{r eval=FALSE}
+```{r setup, echo=FALSE}
+library(tidyverse)
+library(WDI)
+```
+
+```{r df_lifeexp, eval=FALSE}
 df_lifeexp <- WDI(indicator = c(pop = "SP.POP.TOTL", 
                   fertility = "SP.DYN.TFRT.IN", 
                   lifeexp = "SP.DYN.LE00.IN"), 
@@ -85,13 +103,13 @@ df_lifeexp <- WDI(indicator = c(pop = "SP.POP.TOTL",
 
 Default values are filled automatically. See Help WDI
 
-```{r eval=FALSE}
+```{r dflifeexp, eval=FALSE}
 df_lifeexp <- WDI(country = "all", 
                   indicator = c(pop = "SP.POP.TOTL", 
                   fertility = "SP.DYN.TFRT.IN", 
                   lifeexp = "SP.DYN.LE00.IN"), 
                   start = 1960, end = NULL, 
-                  extra = TRUE, caches = NULL, latest = NULL, 
+                  extra = TRUE, cache = NULL, latest = NULL, 
                   language = "en")
 ```
 
@@ -121,7 +139,7 @@ df_lifeexp <- WDI(country = "all",
 
 -   ggplot2
 
-    -   `ggplot(aes(x=var1, y=var2))`
+    -   `ggplot(aes(x=var1, y=var2)) +`
 
     -   Scatter Plot: `geom_point(aes(col=var3, size=var4, shape=var5))`
 
@@ -137,16 +155,23 @@ df_lifeexp <- WDI(country = "all",
 
 #### Line graph
 
-```{r eval=FALSE}
+```{r dflife, echo=FALSE, message=FALSE}
+df_wdi_life <- read_csv("data/wdi_life.csv")
+df_life <- df_wdi_life |> select(c("country", "iso2c", "year", "life_expectancy", "fertility_rate", "population", "region", "income"))
+```
+
+```{r lineplot}
 df_life |> filter(country == "World") |> 
   drop_na(life_expectancy) |>
   ggplot(aes(year, life_expectancy)) + geom_line() +
   labs(title = "Life expectancy of the World")
 ```
 
+------------------------------------------------------------------------
+
 #### Scatter Plot
 
-```{r eval=FALSE}
+```{r scatterplot}
 df_life |> filter(year == 2021) |>
   filter(region != "Aggregates") |> 
   drop_na(fertility_rate, life_expectancy) |>
@@ -170,136 +195,141 @@ df_life |> filter(year == 2021) |>
 
     -   WDI(), WDIcache(), WDIsearch()
 
-```{r}
+------------------------------------------------------------------------
+
+### WDIcache() [[Link in da4r](https://icu-hsuzuki.github.io/da4r/wdidata.html?q=WDIcache#wdicache)]
+
+See Help.
+
+```{r wdicache, eval=FALSE}
 wdicache <- WDIcache()
+```
+
+```{r writewdicache, eval=FALSE, echo=FALSE}
+write_rds(wdicache, "data/wdicache.rds")
+```
+
+```{r readwdicache, echo=FALSE}
+wdicache <- read_rds("data/wdicache.rds")
 ```
 
 ```{r}
 str(wdicache)
 ```
 
+------------------------------------------------------------------------
+
 ```{r}
 str(wdicache, max.level=1)
 ```
+
+------------------------------------------------------------------------
 
 ```{r}
 wdicache$series
 ```
 
+------------------------------------------------------------------------
+
 ```{r}
 wdicache$country
 ```
 
-```{r}
+------------------------------------------------------------------------
+
+### Write and/or Read Lists
+
+```{r eval=FALSE}
 write_rds(wdicache, "data/wdicache.rds")
 ```
 
-```{r}
+```{r eval=FALSE}
 wdicache <- read_rds("data/wdicache.rds")
 ```
 
-<https://icu-hsuzuki.github.io/da4r/a3resp.html?q=WDIsearch#wdisearch>
+------------------------------------------------------------------------
+
+### WDIsearch() [[Link in da4r](https://icu-hsuzuki.github.io/da4r/a3resp.html?q=WDIsearch#wdisearch)]
 
 ```{r}
 WDIsearch(string = "education", field = "name", short = TRUE, cache = wdicache)
 ```
 
-```{r}
-wdibulk <- WDIbulk(timeout=600)
+`wdibulk <- WDIbulk(timeout=600)`
+
+```         
+List of 6
+ $ Data          : tibble [24,902,388 × 6] (S3: tbl_df/tbl/data.frame)
+ $ Country       :'data.frame': 265 obs. of  31 variables:
+ $ Series        :'data.frame': 1486 obs. of  21 variables:
+ $ Country-Series:'data.frame': 8241 obs. of  4 variables:
+ $ Series-Time   :'data.frame': 148 obs. of  4 variables:
+ $ FootNote      :'data.frame': 741689 obs. of  5 variables:
 ```
 
-```{r}
-glimpse(wdibulk)
-```
+------------------------------------------------------------------------
 
-```{r}
-colnames(wdibulk$Data)
-```
-
-```{r}
-wdibulk$Data |> filter(Indicator.Code == "NY.GDP.PCAP.KD", Country.Name == "Japan") |> drop_na(value)
-```
-
-```{r}
-wdibulk$Country
-```
-
-```{r}
-str(wdibulk, max.level = 1)
-```
-
-```{r eval=FALSE}
-# over 10GB
-write_rds(wdibulk, "data/wdibulk.rds")
-```
-
-### group_by, summarize
+### group_by, summarize [[Link in da4r](https://dplyr.tidyverse.org/reference/group_by.html)]
 
 ```{r}
 df_iris <- datasets::iris
 ```
+
+------------------------------------------------------------------------
 
 ```{r}
 df_iris |> group_by(Species) |>
   summarize(mean_sl = mean(Sepal.Length), mean_sw = mean(Sepal.Width))
 ```
 
-### mutate
+------------------------------------------------------------------------
+
+### mutate [[Link in da4r](https://icu-hsuzuki.github.io/da4r/dplyr.html?q=mutate#mutate)]
 
 ```{r}
 df_iris |> mutate(Sepal.Ratio = Sepal.Length/Sepal.Width)
 ```
 
-------------------------------------------------------------------------
-
 # Part II: Practicum
+
+Co2 per capita
+
+WDI template
 
 ## Week Three Assignment
 
-**Self-introduction Plus**
+Choose two WDI codes and analyse the data.
 
--   Create an R Notebook of a Data Analysis containing the following and submit the rendered HTML file (eg. `a2_123456.nb.html`)
+-   Create an R Notebook of a Data Analysis containing the following and submit the rendered file (eg. `w3_g123456.nb.html`)
 
-    1.  create an R Notebook using the R Notebook Template in Moodle, save as `a2_123456.Rmd`,
+    1.  create an R Notebook using the R Notebook Template in Moodle, save as `w3_g123456.Rmd`,
 
-    2.  write your name and ID and the contents,
+    2.  edit author with name, ID, and title
 
-    3.  run each code block,
+    3.  contents should include the following:
 
-    4.  preview to create `a2_123456.nb.html`,
+        -   A short abstract
 
-    5.  submit `a2_123456.nb.html` to Moodle.
+        -   Description of data including data name, data code (or id), description
 
-1.  Pick data from the built-in datasets besides `cars`. (`library(help = "datasets")` or go to the site [The R Datasets Package](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html))
+        -   A bar graph or a column graph, a histogram, a line graph, a scatter plot
 
-    -   Information of the data: Name, Description, Usage, Format, Source, References (Hint: ?cars)
+        -   add observations or questions for visualizations
 
-    -   Use `head()`, `str()`, …, and create at least one chart using `ggplot2` - Code Chunk.
+    4.  run each code block, preview to create `w3_g123456.nb.html`,
 
-        -   Don’t forget to add `library(tidyverse)` in the first code chunk.
+    5.  submit `w3_123456.nb.html` to Moodle.
 
-    -   An observation of the chart - in your own words.
+Submit your R Notebook file (w3_g123456.nb.html) in Moodle (Week Three Assignment).
 
-2.  Load `gapminder` by `library(gapminder)`.
-
-    -   Choose `pop` or `gdpPercap`, or both, one country in the data, a group of countries in the data.
-
-    -   Create charts using ggplot2 with geom_line and the variables and countries chosen in 1. (See examples of the charts for `lifeExp`.)
-
-    -   Study the data as you like.
-
-    -   Observations and difficulties encountered.
-
-**Due:** 2023-01-09 23:59:00. Submit your R Notebook file in Moodle (The Second Assignment). Due on Monday!
-
-***Due Sunday 21, January 2024, 11:59 PM***
+***Due Sunday 14, January 2024, 11:59 PM***
 
 ## Recommended Readings and Activities
 
 1.  World Development Indicators: Data themes [[Link](https://datatopics.worldbank.org/world-development-indicators/)]
 
-    -   Find data you want to study. Record the name, WDI code, and possibly the URL.
+2.  How does the World Bank classify countries? [[Link](https://datahelpdesk.worldbank.org/knowledgebase/articles/378834-how-does-the-world-bank-classify-countries)]
 
-2.  Posit Recipes（New edition of Posit Primers）: interactive exercises [[Link](https://posit.cloud/learn/recipes)]
+3.  Posit Recipes（New edition of Posit Primers）: interactive exercises [[Link](https://posit.cloud/learn/recipes)]
 
-3.  RStudio IDE Cheat Sheet. PDF is available on the top right. [[Site Link](https://rstudio.github.io/cheatsheets/html/rstudio-ide.html)]
+4.  RStudio IDE Cheat Sheet. PDF is available on the top right. [[Site Link](https://rstudio.github.io/cheatsheets/html/rstudio-ide.html)]
