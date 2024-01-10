@@ -208,6 +208,12 @@ df_co2gdp |> filter(country %in% c("Czechia", "Viet Nam")) |>
 str(df_co2gdp)
 ```
 
+#### Select columns
+
+```{r}
+df_co2gdppcap <- df_co2gdp |> select(country, iso2c, year, co2pcap, gdppcap, region, income)
+```
+
 *Check the distinct region names under the column region or income.*
 
 ```{r}
@@ -581,7 +587,7 @@ df_co2gdppcap |> filter(year %in% c(1990, 2000, 2010, 2020)) |> filter(region !=
 
 Observations:
 
--   
+-   Not much can be seen.
 
 ```{r}
 df_co2gdppcap |> filter(year == 2020) |> filter(region != "Aggregates") |> 
