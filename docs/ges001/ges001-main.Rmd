@@ -80,9 +80,7 @@ Moodle：[Link](https://2023.moodle.icu.ac.jp/course/view.php?id=1440)
 
 -   国際機関などのレポートの図表ではなく、データそのものを見てほしい
 
-12/12(TU)　Rでデータサイエンス１：導入 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-1.nb.html)]・[[授業](https://ds-sl.github.io/intro2r/ges001/ges00100.nb.html)]
-
-変更期間です。次週から参加する学生がいることを想定する必要があります。RとRStudioのインストールやRを使うことのメリット、Rの簡単な使い方など。GDPを例にする。（ECO101の鈴木先生にRコード）。
+12/12(TU)　Rでデータサイエンス１：導入 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-1.nb.html)]・ [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00100.html)]・[[RNotebook](https://ds-sl.github.io/intro2r/ges001/ges00100.nb.html)]・[[Video](https://youtu.be/pT3690JKjp0)]変更期間です。次週から参加する学生がいることを想定する必要があります。RとRStudioのインストールやRを使うことのメリット、Rの簡単な使い方など。GDPを例にする。（ECO101の鈴木先生にRコード）。
 
 #### イントロダクション：資本主義とSDGs
 
@@ -244,7 +242,7 @@ World Inequality Report 2022 [[Link](https://wir2022.wid.world)]・[[みんな�
 
 -   Glossary Country appendix [[Link](https://wir2022.wid.world/country-appendix-glossary/)]
 
-12/19(TU)　Rでデータサイエンス2：人口の少子高齢化　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-2.nb.html)]・[授業]
+12/19(TU)　Rでデータサイエンス2：人口の少子高齢化　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-2.nb.html)]・ [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00101.html)]・[[RNotebook](https://ds-sl.github.io/intro2r/ges001/ges00101.nb.html)]・[[ビデオ](https://youtu.be/AFNVhNdWZ_Y)]
 
 **People- Population dynamics**
 
@@ -366,7 +364,15 @@ World Inequality Report 2022 [[Link](https://wir2022.wid.world)]
 
 -   Glossary Country appendix [[Link](https://wir2022.wid.world/country-appendix-glossary/)]
 
-01/09(TU)　Rでデータサイエンス3：GNI係数と所得分布　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-3.nb.html)]・[授業]
+01/09(TU)　Rでデータサイエンス3：GNI係数と所得分布　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-3.nb.html)]・ [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00110.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00110.nb.html)]・[[ビデオ](https://youtu.be/RwD-SJlSHkQ)]
+
+-   PositCloud 共有リンク：<https://posit.cloud/content/5539763>
+
+    -   ジニって何！？（what_is_gini.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/what_is_gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/what_is_gini.Rmd)]
+
+    -   ジニ指数と所得分布（gini.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/gini.Rmd)]
+
+        -   参考1/参考2付（gini_long.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/gini_long.nb.html)]
 
 **Poverty and Inequality―Distribution of income or consumption（データが少ない難点）**
 
