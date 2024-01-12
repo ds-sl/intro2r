@@ -1,0 +1,184 @@
+---
+title: "GES 001 演習3"
+author: "H. Suzuki"
+date: "2024年1月9日"
+output:
+  html_notebook: default
+  html_document:
+    df_print: paged
+  ioslides_presentation:
+    widescreen: true
+    df_print: paged
+---
+
+## 準備
+
+-   自分のPCまたは教室のPC
+
+    1.  ログイン
+
+    2.  ウェッブ・ブラウザー（Google Chrome など）を起動
+
+        -   Moodle の GES001 経済と経済学のサイトから、このスライドのページを表示（リンク「Rでデータサイエンス」の第2週）
+
+        -   （別のタブまたは ウィンドウで）PositCloud にログイン（アカウントのない人はサイン・アップ）[[Posit.cloud](https://posit.cloud/)]・[[共有プロジェクト](https://posit.cloud/content/5539763)]
+
+    3.  RStudio を起動
+
+        -   自分のPCにR と RStudio をインストールしていないひとは不要。
+
+        -   インストールについては、解説とビデオ参照。[[解説リンク](https://posit.co/download/rstudio-desktop/)]・[[ビデオ](https://www.youtube.com/watch?v=Q8TpC-e0Mfg)]
+
+## 第3週
+
+12/21(TH)　不平等を無くすために何をするべきか1
+
+　　　　　  不平等を無くすために何をするべきか2
+
+講義では、所得の世界的格差の現状を踏まえて、高所得者に対する資産課税、金融取引税の可能性について議論します。
+
+01/09(TU)　Rでデータサイエンス3：GNI係数と所得分布　 [[Main](https://ds-sl.github.io/intro2r/ges001/index.html)]
+
+## 講義 12月21日（木）不平等を無くすために何をするべきか
+
+### World Inequality Report 2022 [[Link](https://wir2022.wid.world)]
+
+-   Chapter 5 Half the sky? The Female Labor Income Share in a Global Perspective [[Link](https://wir2022.wid.world/chapter-5/)]
+
+-   Chapter 7 The road to redistributing wealth [[Link](https://wir2022.wid.world/chapter-7/)]
+
+-   Chapter 8 Taxing Multinationals or Taxing Wealthy Individuals? [[Link](https://wir2022.wid.world/chapter-8/)]
+
+-   Chapter 9 Global vs Unilateral Perspectives on Tax Justice [[Link](https://wir2022.wid.world/chapter-9/)]
+
+-   Chapter 10 Emancipation, redistribution and sustainability [[Link](https://wir2022.wid.world/chapter-10/)]
+
+## 演習 1月9日（火）GNI係数と所得分布
+
+世界開発指標（WDI）[[Link](https://datatopics.worldbank.org/world-development-indicators/)] \> **貧困と不平等（Poverty and Inequality）\> 所得または消費の分配（Distribution of income or consumption）**
+
+GINI 指数 (世界銀行推計)：SI.POV.GINI [[Link](https://data.worldbank.org/indicator/SI.POV.GINI)]
+
+下位 10% が占める所得シェア：SI.DST.FRST.10 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.FRST.10)]
+
+下位 20% が占める所得シェア：SI.DST.FRST.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.FRST.20)]
+
+2番目の 20% が占める収入シェア：SI.DST.02ND.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.02ND.20)]
+
+3番目の 20% が占める収入シェア ：SI.DST.03RD.20 [[Link](https://data.worldbank.org/indicator/SI.DST.03RD.20)]
+
+4番目の 20% が占める収入シェア：SI.DST.04TH.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.04TH.20)]
+
+上位 20% が占める収入シェア：SI.DST.05TH.20 [[Link](https://data.worldbank.org/indicator/SI.DST.05TH.20)]
+
+上位 10% が占める収入シェア：SI.DST.10TH.10 [[Link](https://data.worldbank.org/indicator/SI.DST.10TH.10)]
+
+## 経済学とはなんだろう（私見）
+
+-   お金（貨幣）に関係する活動から世界を理解する学問!？
+
+-   貨幣の三つの機能：価値尺度機能（a unit of account）・交換機能（medium of exchange）・価値貯蔵機能（a store of value）
+
+    -   ICUOCW 岩井克人先生「資本主義と社会」 [[リンク](https://ocw.info.icu.ac.jp/ge/ges002_2013a)]・[[ICUOCW](https://ocw.info.icu.ac.jp/index)]
+
+-   社会の問題を数値化して分析が可能
+
+-   数値化しにくい（現在では適切に）数値化できない課題もたくさんある。見えやすい部分を絶対化して、見えにくい部分を無視するおそれが常にある。（Gapminder: Dollar Street）
+
+    -   このことを意識して、謙虚に、つねに学び、探究し続けることがたいせつ
+
+    -   「あらゆる貪欲に気をつけ、用心しなさい。」（聖書：ルカによる福音書12章15節）
+
+## ファイルリンク
+
+-   PositCloud 共有リンク：<https://posit.cloud/content/5539763>
+
+    -   ジニって何！？（what_is_gini.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/what_is_gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/what_is_gini.Rmd)]
+
+    -   ジニ指数と所得分布（gini.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/gini.Rmd)]
+
+        -   参考1/参考2付（gini_long.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/gini_long.nb.html)]
+
+-   R Notebook のソースファイル（Rmd）を取得する三つの方法
+
+    1.  PositCloud 共有リンクの ges001 のディレクトリ（フォルダから探す）ファイルを開き、全体を選択してコピーし、自分の RStudio または、PositCloud のファイルで、RMarkdown ファイルを新規作成しペースト
+
+    2.  Rmd のリンクをクリックし Raw の横の Copy a raw file からコピー、新規 RMarkdown ファイルを作成しペースト
+
+    3.  リンクを開き、右上の Code から、Rmd ファイルをダウンロードとし、それを、自分の RStudio または、PositCloud のプロジェクトに移動（Upload）
+
+## 前回（12月19日）の復習
+
+-   パッケージ（Package）の利用：
+
+    -   インストール（installation）：Tools \> Install Packages
+
+    -   ロード（load）`library(tidyverse); library(WDI); library(showtext)`
+
+-   データの取得：`WDI(indicator = c(pop = "SP.POP.TOTL"))`
+
+-   特定の行の取得：`filter(), drop_na(), distinct()`
+
+-   折れ線グラフ
+
+    -   `ggplot(aes(x = year, y = pop) + geom_line()`
+
+    -   `ggplot(aes(x = year, y = pop, col = country) + geom_line()`
+
+## まとめ
+
+-   パッケージ（Package）の利用：
+
+    -   インストール（installation）：Tools \> Install Packages
+
+    -   ロード（load）`library(tidyverse); library(WDI); library(DescTools)`
+
+-   データの取得：`` WDI(indicator = c(gini = "SI.POV.GINI",`0-10` = "SI.DST.FRST.10",...,`90-100` = "SI.DST.10TH.10")) ``
+
+-   特定の行の取得：`filter(), drop_na(), distinct()`
+
+-   特定の列の取得：`select()`
+
+-   変形 Long Table, Wide Table：`pivot_longer()`
+
+-   列の追加：`mutate()`
+
+------------------------------------------------------------------------
+
+### まとめ（可視化）
+
+-   棒グラフ
+
+    -   `ggplot(aes(year)) + geom_bar()`
+
+    -   `ggplot(aes(levels, value)) + geom_col()`
+
+    -   `ggplot(aes(x = levels, y = value, fill = country)) + geom_col(position = "dodge")`
+
+    -   `ggplot(aes(x = gini, fill = region)) + geom_histogram()`
+
+-   散布図（+回帰直線）
+
+    -   `ggplot(aes(gini, 90-100)) + geom_point()`
+
+    -   `ggplot(aes(gini, 80-100)) + geom_point() + geom_smooth(formula = 'y ~ x', method = "lm")`
+
+## 課題
+
+ジニって何！？　練習1〜練習6
+
+ジニ指数と所得分布　練習1〜練習3
+
+提出はしなくて良いですが、ぜひ実際に手を動かして実行してください。
+
+## 参考文献
+
+1.  「みんなのデータサイエンス - Data Science for All」[[はじめてのデータサイエンス](https://icu-hsuzuki.github.io/ds4aj/first-example.html#first-example)]
+
+    -   導入として、GDP（国内総生産）のデータを使って説明しています。
+
+2.  Posit Recipes（旧 Posit Primers）: The Basics 対話型の演習サイトの最初 [[Link](https://posit.cloud/learn/recipes)]
+
+3.  Posit Cheat Sheet. 早見表です。印刷して使うために、PDF も提供しています。[[Site Link](https://rstudio.github.io/cheatsheets/)]
+
+4.  DataCamp Cheat Sheet: Tidyverse for Biginners. データサイエンスの教育をしている会社の早見表の一つです。基本が簡単にまとまっています。[[Link](https://images.datacamp.com/image/upload/v1676302697/Marketing/Blog/Tidyverse_Cheat_Sheet.pdf)]

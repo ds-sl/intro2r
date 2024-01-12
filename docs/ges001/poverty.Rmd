@@ -119,7 +119,7 @@ df_pcap |> filter(country == COUNTRY) |> drop_na(gdppcap) |>
 
 図 4. 2022年の、Low Income Country について、GDP per Capita の少ないから順に並べてみましょう。
 
-```{r eval = FALSE}
+```{r}
 df_pcap |> filter(year == 2022, region != "Aggregates") |> 
   filter(income == "Low income") |>
   drop_na(gdppcap) |> arrange(gdppcap)

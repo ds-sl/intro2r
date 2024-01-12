@@ -402,6 +402,42 @@ Income share held by highest 10%：SI.DST.10TH.10 [[Link](https://data.worldbank
 
 World BankのINEQUALITY IN SOUTHERN AFRICA:AN ASSESSMENT OF THE SOUTHERN AFRICAN CUSTOMS UNION (<https://wir2022.wid.world/>)をテキストにしています。教育、失業、COVID-19の貧困に与える影響などを取り上げます。
 
+#### コメント・レビュー
+
+-   Trickle-down economics (トリクルダウン理論) [[リンク](https://en.wikipedia.org/wiki/Trickle-down_economics)]
+
+-   中国の男女格差と今後の課題
+
+-   人口問題の将来への影響
+
+-   対外純資産：Net foreign assets (current LCU) FM.AST.NFRG.CN
+
+    -   Net foreign assets are the sum of foreign assets held by monetary authorities and deposit money banks, less their foreign liabilities. Data are in current local currency.
+
+-   External debt stocks (% of GNI) DT.DOD.DECT.GN.ZS
+
+#### 南部アフリカ諸国の状況
+
+-   INEQUALITY IN SOUTHERN AFRICA:AN ASSESSMENT OF THE SOUTHERN AFRICANCUSTOMS UNION [[Report](https://documents1.worldbank.org/curated/en/099125303072236903/pdf/P1649270c02a1f06b0a3ae02e57eadd7a82.pdf)] [[Link](https://openknowledge.worldbank.org/entities/publication/9f8e4073-25f9-562c-8e3b-541c99dd42cb)]
+
+    -   Executive summary
+
+    -   Chapter 1　Inequality in the Southern African Customs Union
+
+    -   Chapter 2　The role of inherited circumstances
+
+    -   Chapter 3　The role of the primary income distribution
+
+    -   Chapter 4　The role of the secondary income distribution
+
+    -   Chapter 5　The role of the tertiary income distribution and fiscal policy
+
+    -   Chapter 6　The role of shocks
+
+    -   Chapter 7　Addressing inequality in SACU: A policy discussion
+
+    -   南アフリカ、レソト、エスワティニ、ナミビア、ボツワナ
+
 01/16(TU)　Rでデータサイエンス4:貧困（データが少ない難点） [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-4.nb.html)]・[授業]
 
 **Poverty rates at national poverty lines**
@@ -431,6 +467,10 @@ Poverty headcount ratio at \$6.85 a day (2017 PPP) (% of population)：SI.POV.UM
 Poverty headcount ratio at \$6.85 a day is the percentage of the population living on less than \$6.85 a day at 2017 international prices.
 
 1日6.85ドルの貧困人口比率は、2017年の国際価格で1日6.85ドル未満で生活している人口の割合です。
+
+世銀の貧困データの計算についてやや詳しい解説
+
+<https://www.worldbank.org/ja/news/feature/2014/01/08/open-data-poverty>
 
 ### 第5週
 
