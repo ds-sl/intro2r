@@ -1,7 +1,7 @@
 ---
-title: "GES 001 演習3"
+title: "GES 001 演習4"
 author: "H. Suzuki"
-date: "2024年1月9日"
+date: "2024年1月16日"
 output:
   html_notebook: default
   html_document:
@@ -29,65 +29,205 @@ output:
 
         -   インストールについては、解説とビデオ参照。[[解説リンク](https://posit.co/download/rstudio-desktop/)]・[[ビデオ](https://www.youtube.com/watch?v=Q8TpC-e0Mfg)]
 
-## 第3週
+## 第4週
 
-12/21(TH)　不平等を無くすために何をするべきか1
+01/11(TH)　南部アフリカ諸国の貧困と不平等の現状1
 
-　　　　　  不平等を無くすために何をするべきか2
+　　　　　　南部アフリカ諸国の貧困と不平等の現状2
 
-講義では、所得の世界的格差の現状を踏まえて、高所得者に対する資産課税、金融取引税の可能性について議論します。
+第4週、第5週の講義では、貧困の問題が特に深刻な南部アフリカ諸国の問題を議論します。
 
-01/09(TU)　Rでデータサイエンス3：GNI係数と所得分布　 [[Main](https://ds-sl.github.io/intro2r/ges001/index.html)]
+World BankのINEQUALITY IN SOUTHERN AFRICA:AN ASSESSMENT OF THE SOUTHERN AFRICAN CUSTOMS UNION (<https://wir2022.wid.world/>)をテキストにしています。教育、失業、COVID-19の貧困に与える影響などを取り上げます。
 
-## 講義 12月21日（木）不平等を無くすために何をするべきか
+01/16(TU)　Rでデータサイエンス4:貧困 [授業資料]　 [[Main](https://ds-sl.github.io/intro2r/ges001/index.html)]
 
-### World Inequality Report 2022 [[Link](https://wir2022.wid.world)]
+## 講義 1月11日（木）南部アフリカ諸国の状況
 
--   Chapter 5 Half the sky? The Female Labor Income Share in a Global Perspective [[Link](https://wir2022.wid.world/chapter-5/)]
+-   INEQUALITY IN SOUTHERN AFRICA:AN ASSESSMENT OF THE SOUTHERN AFRICANCUSTOMS UNION [[Report](https://documents1.worldbank.org/curated/en/099125303072236903/pdf/P1649270c02a1f06b0a3ae02e57eadd7a82.pdf)] [[Link](https://openknowledge.worldbank.org/entities/publication/9f8e4073-25f9-562c-8e3b-541c99dd42cb)]
 
--   Chapter 7 The road to redistributing wealth [[Link](https://wir2022.wid.world/chapter-7/)]
+    -   Executive summary
 
--   Chapter 8 Taxing Multinationals or Taxing Wealthy Individuals? [[Link](https://wir2022.wid.world/chapter-8/)]
+    -   Chapter 1　Inequality in the Southern African Customs Union
 
--   Chapter 9 Global vs Unilateral Perspectives on Tax Justice [[Link](https://wir2022.wid.world/chapter-9/)]
+    -   Chapter 2　The role of inherited circumstances
 
--   Chapter 10 Emancipation, redistribution and sustainability [[Link](https://wir2022.wid.world/chapter-10/)]
+    -   Chapter 3　The role of the primary income distribution
 
-## 演習 1月9日（火）GNI係数と所得分布
+    -   Chapter 4　The role of the secondary income distribution
 
-世界開発指標（WDI）[[Link](https://datatopics.worldbank.org/world-development-indicators/)] \> **貧困と不平等（Poverty and Inequality）\> 所得または消費の分配（Distribution of income or consumption）**
+    -   Chapter 5　The role of the tertiary income distribution and fiscal policy
 
-GINI 指数 (世界銀行推計)：SI.POV.GINI [[Link](https://data.worldbank.org/indicator/SI.POV.GINI)]
+    -   Chapter 6　The role of shocks
 
-下位 10% が占める所得シェア：SI.DST.FRST.10 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.FRST.10)]
+    -   Chapter 7　Addressing inequality in SACU: A policy discussion
 
-下位 20% が占める所得シェア：SI.DST.FRST.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.FRST.20)]
+-   南アフリカ（South Africa）、レソト（Lethoto）、エスワティニ（Eswatini）、ナミビア（Namivia）、ボツワナ（Botswana）
 
-2番目の 20% が占める収入シェア：SI.DST.02ND.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.02ND.20)]
+## 演習 1月16日（火）
 
-3番目の 20% が占める収入シェア ：SI.DST.03RD.20 [[Link](https://data.worldbank.org/indicator/SI.DST.03RD.20)]
+## 01/16(TU)　Rでデータサイエンス4:貧困（データが少ない難点） [[Main](https://ds-sl.github.io/intro2r/ges001/ges001-main.nb.html)]・[授業]
 
-4番目の 20% が占める収入シェア：SI.DST.04TH.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.04TH.20)]
+**Poverty rates at national poverty lines**
 
-上位 20% が占める収入シェア：SI.DST.05TH.20 [[Link](https://data.worldbank.org/indicator/SI.DST.05TH.20)]
+Poverty headcount ratio at national poverty lines (% of population)：SI.POV.NAHC [[Link](https://data.worldbank.org/indicator/SI.POV.NAHC)]
 
-上位 10% が占める収入シェア：SI.DST.10TH.10 [[Link](https://data.worldbank.org/indicator/SI.DST.10TH.10)]
+National poverty headcount ratio is the percentage of the population living below the national poverty line(s). National estimates are based on population-weighted subgroup estimates from household surveys. For economies for which the data are from EU-SILC, the reported year is the income reference year, which is the year before the survey year.
 
-## 経済学とはなんだろう（私見）
+全国貧困人口比率は、全国貧困線以下で生活している人口の割合です。国の推定値は、世帯調査からの人口加重サブグループ推定値に基づいています。データが EU-SILC からのものである経済の場合、報告される年は所得基準年、つまり調査年の前年です。
 
--   お金（貨幣）に関係する活動から世界を理解する学問!？
+**Poverty and Inequality―Poverty rates at international poverty lines**
 
--   貨幣の三つの機能：価値尺度機能（a unit of account）・交換機能（medium of exchange）・価値貯蔵機能（a store of value）
+Poverty headcount ratio at \$2.15 a day (2017 PPP) (% of population)：SI.POV.DDAY [[Link](https://data.worldbank.org/indicator/SI.POV.DDAY)]
 
-    -   ICUOCW 岩井克人先生「資本主義と社会」 [[リンク](https://ocw.info.icu.ac.jp/ge/ges002_2013a)]・[[ICUOCW](https://ocw.info.icu.ac.jp/index)]
+Poverty headcount ratio at \$2.15 a day is the percentage of the population living on less than \$2.15 a day at 2017 purchasing power adjusted prices. As a result of revisions in PPP exchange rates, poverty rates for individual countries cannot be compared with poverty rates reported in earlier editions.
 
--   社会の問題を数値化して分析が可能
+1日2.15ドルの貧困人口比率は、2017年の購買力調整後価格で1日2.15ドル未満で生活している人口の割合です。PPP 為替レートの改定により、各国の貧困率を以前の版で報告された貧困率と比較することができなくなりました。
 
--   数値化しにくい（現在では適切に）数値化できない課題もたくさんある。見えやすい部分を絶対化して、見えにくい部分を無視するおそれが常にある。（Gapminder: Dollar Street）
+Poverty headcount ratio at \$3.65 a day (2017 PPP) (% of population)：SI.POV.LMIC [[Link](https://data.worldbank.org/indicator/SI.POV.LMIC)]
 
-    -   このことを意識して、謙虚に、つねに学び、探究し続けることがたいせつ
+Poverty headcount ratio at \$3.65 a day is the percentage of the population living on less than \$3.65 a day at 2017 international prices.
 
-    -   「あらゆる貪欲に気をつけ、用心しなさい。」（聖書：ルカによる福音書12章15節）
+1 日 3.65 ドルの貧困人口比率は、2017 年の国際価格で 1 日 3.65 ドル未満で生活している人口の割合です。
+
+Poverty headcount ratio at \$6.85 a day (2017 PPP) (% of population)：SI.POV.UMIC [[Link](https://data.worldbank.org/indicator/SI.POV.UMIC)]
+
+Poverty headcount ratio at \$6.85 a day is the percentage of the population living on less than \$6.85 a day at 2017 international prices.
+
+1日6.85ドルの貧困人口比率は、2017年の国際価格で1日6.85ドル未満で生活している人口の割合です。
+
+## 内容
+
+### 準備
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+### データの読み込み（importing）
+
+追加情報（地域・所得レベル）を読み込みたいので、extra=TRUE としてあります。
+
+```{r}
+df_poverty_rate <- WDI(
+  indicator = c(ratio = "SI.POV.NAHC",
+                under_2.15 = "SI.POV.DDAY",
+                under_3.65 = "SI.POV.LMIC",
+                under_6.85 = "SI.POV.UMIC"),
+  extra = TRUE)
+```
+
+### データを見てみよう (viewing)
+
+```{r}
+df_poverty_rate
+```
+
+```{r}
+str(df_poverty_rate)
+```
+
+利用しない変数もあるので select を使って変数を減らすことも可能ですが、今回は、そのまま使うことにしましょう。減らしたい時は、次のようにします。下の例では、見やすいように、`ratio` が NA のものは、削除してあります。
+
+```{r}
+df_poverty_rate_selected <- df_poverty_rate |> drop_na(ratio) |>
+  select(country, iso2c, year, ratio, under_2.15, under_3.65, under_6.85, region, income)
+df_poverty_rate_selected
+```
+
+### 変形
+
+四つの指標を同時にいくつか選択し比較したいので、一つの列（変数）にならべた、縦長データ（long data）も作成しておきます。ここでは、`ratio` から `under_6.85` を、`level` という名前の列にならべ、値を `value` という列に並べるようにしてあります。
+
+確認するときは、value が NA のものは除き、country と、iso2c と、level と value の部分だけ取り出して確認しています。
+
+```{r}
+df_poverty_rate_long <- df_poverty_rate |> 
+  pivot_longer(ratio:under_6.85, names_to = "level", values_to = "value")
+df_poverty_rate_long |> drop_na(value) |> select(country, iso2c, level, value)
+```
+
+### 年毎のデータの数の確認（number of data in each year）
+
+```{r}
+df_poverty_rate_long |> drop_na(value) |> 
+  group_by(year, level) |> summarize(n = n()) |> arrange(desc(year))
+```
+
+```{r}
+df_poverty_rate_long |> filter(year %in% c(1960, 1970, 1980, 1990, 2000, 2010, 2020)) |> drop_na(value) |> group_by(year, level) |> summarize(n = n()) |>
+  ggplot(aes(as.character(year), n, fill = level)) + geom_col(position = "dodge", col = "black", linewidht = 0.1) + labs(x = "year", y = "number of data")
+```
+
+```{r}
+df_poverty_rate_long |> 
+  filter(country %in% c("World", "Sub-Saharan Africa")) |> drop_na() |>
+  ggplot(aes(year, value, col = level, linetype = country)) + geom_line()
+```
+
+```{r}
+df_poverty_rate_long |> filter(year %in% c(2000, 2010, 2020)) |> drop_na(value) |> 
+  filter(region == "Aggregates") |> filter(level %in% c("ratio", "under_2.15")) |> group_by(country, year, level) |> summarize(n = n())
+```
+
+```{r}
+df_poverty_rate_long |>  drop_na(value) |> 
+  filter(region == "Sub-Saharan Africa") |> group_by(country, level) |> 
+  summarize(n = n())
+```
+
+```{r}
+df_poverty_rate_long |> 
+  filter(country %in% c("South Africa", "Lesotho", "Botswana", "Namibia", "Eswatini")) |> drop_na(value) |>
+  ggplot(aes(year, value, col = country, linetype = level)) + geom_line()
+```
+
+```{r}
+df_poverty_rate |> 
+  filter(country %in% c("South Africa", "Lesotho", "Botswana", "Namibia", "Eswatini")) |>
+  drop_na(under_2.15) |> group_by(country) |> filter(year == max(year)) |> 
+  select(country, iso2c, year, ratio:under_6.85)
+```
+
+```{r}
+df_poverty_rate_long |> 
+  filter(country %in% c("South Africa", "Lesotho", "Botswana", "Namibia", "Eswatini")) |>
+  drop_na(value) |> group_by(country) |> filter(year == max(year)) |>
+  ggplot(aes(country, value, fill = level)) + geom_col(position = "dodge", col = "black", linewidth = 0.1)
+```
+
+```{r}
+df_poverty_rate_long |> filter(country == "China") |>
+  drop_na(value) |>
+  ggplot(aes(year, value, col = level)) + geom_line()
+```
+
+```{r}
+df_poverty_rate_long |> 
+  filter(country == "Indonesia") |> drop_na() |>
+  ggplot(aes(year, value, col = level)) + geom_line()
+```
+
+```{r}
+df_poverty_rate_long |> filter(year == 2022) |> 
+  drop_na(value) |>
+  ggplot(aes(value, level, fill = region)) + 
+  geom_boxplot()
+```
+
+```{r}
+df_poverty_rate_long |> filter(year == 2022) |> 
+  drop_na(value) |>
+  ggplot(aes(value, level, fill = income)) + 
+  geom_boxplot() + labs(fill = "")
+```
+
+```{r}
+df_poverty_rate_long |> filter(region == "Sub-Saharan Africa", year == 2020) |> 
+  drop_na(value) |>
+  ggplot(aes(value, level)) + 
+  geom_boxplot()
+```
 
 ## ファイルリンク
 
@@ -107,7 +247,7 @@ GINI 指数 (世界銀行推計)：SI.POV.GINI [[Link](https://data.worldbank.or
 
     3.  リンクを開き、右上の Code から、Rmd ファイルをダウンロードとし、それを、自分の RStudio または、PositCloud のプロジェクトに移動（Upload）
 
-## 前回（12月19日）の復習
+## 前回（1月9日）の復習
 
 -   パッケージ（Package）の利用：
 

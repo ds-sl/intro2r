@@ -47,11 +47,16 @@ Poverty headcount ratio at \$6.85 a day is the percentage of the population livi
 1日6.85ドルの貧困人口比率は、2017年の国際価格で1日6.85ドル未満で生活している人口の割合です。
 
 ## 内容
+### 準備
 
 ```{r}
 library(tidyverse)
 library(WDI)
 ```
+
+### データの読み込み（importing）
+
+追加情報（地域・所得レベル）を読み込みたいので、extra=TRUE としてあります。
 
 ```{r}
 df_poverty_rate <- WDI(
@@ -62,9 +67,46 @@ df_poverty_rate <- WDI(
   extra = TRUE)
 ```
 
+### データを見てみよう (viewing)
+
+```{r}
+df_poverty_rate
+```
+
+```{r}
+str(df_poverty_rate)
+```
+
+利用しない変数もあるので select を使って変数を減らすことも可能ですが、今回は、そのまま使うことにしましょう。減らしたい時は、次のようにします。下の例では、見やすいように、`ratio` が NA のものは、削除してあります。
+
+```{r}
+df_poverty_rate_selected <- df_poverty_rate |> drop_na(ratio) |>
+  select(country, iso2c, year, ratio, under_2.15, under_3.65, under_6.85, region, income)
+df_poverty_rate_selected
+```
+
+### 変形
+
+四つの指標を同時にいくつか選択し比較したいので、一つの列（変数）にならべた、縦長データ（long data）も作成しておきます。ここでは、`ratio` から `under_6.85` を、`level` という名前の列にならべ、値を `value` という列に並べるようにしてあります。
+
+確認するときは、value が NA のものは除き、country と、iso2c と、level と value の部分だけ取り出して確認しています。
+
 ```{r}
 df_poverty_rate_long <- df_poverty_rate |> 
   pivot_longer(ratio:under_6.85, names_to = "level", values_to = "value")
+df_poverty_rate_long |> drop_na(value) |> select(country, iso2c, level, value)
+```
+
+### 年毎のデータの数の確認（number of data in each year）
+
+```{r}
+df_poverty_rate_long |> drop_na(value) |> 
+  group_by(year, level) |> summarize(n = n()) |> arrange(desc(year))
+```
+
+```{r}
+df_poverty_rate_long |> filter(year %in% c(1960, 1970, 1980, 1990, 2000, 2010, 2020)) |> drop_na(value) |> group_by(year, level) |> summarize(n = n()) |>
+  ggplot(aes(as.character(year), n, fill = level)) + geom_col(position = "dodge", col = "black", linewidht = 0.1) + labs(x = "year", y = "number of data")
 ```
 
 ```{r}
@@ -74,9 +116,40 @@ df_poverty_rate_long |>
 ```
 
 ```{r}
-df_poverty_rate |> filter(country == "China") |>
-  drop_na(ratio) |>
-  ggplot(aes(year, ratio)) + geom_line()
+df_poverty_rate_long |> filter(year %in% c(2000, 2010, 2020)) |> drop_na(value) |> 
+  filter(region == "Aggregates") |> filter(level %in% c("ratio", "under_2.15")) |> group_by(country, year, level) |> summarize(n = n())
+```
+
+```{r}
+df_poverty_rate_long |>  drop_na(value) |> 
+  filter(region == "Sub-Saharan Africa") |> group_by(country, level) |> 
+  summarize(n = n())
+```
+
+```{r}
+df_poverty_rate_long |> 
+  filter(country %in% c("South Africa", "Lesotho", "Botswana", "Namibia", "Eswatini")) |> drop_na(value) |>
+  ggplot(aes(year, value, col = country, linetype = level)) + geom_line()
+```
+
+```{r}
+df_poverty_rate |> 
+  filter(country %in% c("South Africa", "Lesotho", "Botswana", "Namibia", "Eswatini")) |>
+  drop_na(under_2.15) |> group_by(country) |> filter(year == max(year)) |> 
+  select(country, iso2c, year, ratio:under_6.85)
+```
+
+```{r}
+df_poverty_rate_long |> 
+  filter(country %in% c("South Africa", "Lesotho", "Botswana", "Namibia", "Eswatini")) |>
+  drop_na(value) |> group_by(country) |> filter(year == max(year)) |>
+  ggplot(aes(country, value, fill = level)) + geom_col(position = "dodge", col = "black", linewidth = 0.1)
+```
+
+```{r}
+df_poverty_rate_long |> filter(country == "China") |>
+  drop_na(value) |>
+  ggplot(aes(year, value, col = level)) + geom_line()
 ```
 
 ```{r}
@@ -105,3 +178,4 @@ df_poverty_rate_long |> filter(region == "Sub-Saharan Africa", year == 2020) |>
   ggplot(aes(value, level)) + 
   geom_boxplot()
 ```
+
