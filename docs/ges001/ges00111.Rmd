@@ -3,12 +3,12 @@ title: "GES 001 演習4"
 author: "H. Suzuki"
 date: "2024年1月16日"
 output:
+  html_notebook: default
+  html_document:
+    df_print: paged
   ioslides_presentation:
     widescreen: true
     df_print: paged
-  html_document:
-    df_print: paged
-  html_notebook: default
 ---
 
 ## 準備
