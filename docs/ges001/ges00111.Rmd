@@ -260,7 +260,7 @@ df_poverty_rate_long |>
   filter(country %in% c("South Africa", "Lesotho", "Botswana", "Namibia", "Eswatini")) |>
   drop_na(value) |> group_by(country) |> filter(year == max(year)) |>
   ggplot(aes(country, value, fill = level)) + geom_col(position = "dodge", col = "black", linewidth = 0.1) + 
-  labs(title = "Povert Level Ratio of Five Countries", subtitle = "Botswana in 2015, Eswatini in 2016 ,Lesoto in 2017, Namibia in 2015 \nand South Africa in 2014")
+  labs(title = "Poverty Level Ratio of Five Countries", subtitle = "Botswana in 2015, Eswatini in 2016 ,Lesoto in 2017, Namibia in 2015 \nand South Africa in 2014")
 ```
 
 #### いくつかの国の貧困度ごとの人口比
@@ -284,7 +284,7 @@ df_poverty_rate_long |>
   filter(country %in% POV_COUNTRIES_YOUR_CHOICE) |>
   drop_na(value) |> group_by(country) |> filter(year == max(year)) |>
   ggplot(aes(country, value, fill = level)) + geom_col(position = "dodge", col = "black", linewidth = 0.1) + 
-  labs(title = "Povert Level Ratio of Countries", subtitle = "Using the most recent data")
+  labs(title = "Poverty Level Ratio of Countries", subtitle = "Using the most recent data")
 ```
 
 #### 折れ線グラフによる比較
