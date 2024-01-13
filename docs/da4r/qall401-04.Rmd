@@ -12,13 +12,13 @@ output:
 
 # Part I: EDA with WDI
 
-## Exploratory Data Analysis
+## Preview
 
--   Statistics vs Data Science
+-   Week 4, Jan. 17: EDA3, WDI, tidy data (long and wide data), choropleth maps
 
--   Hypothesis Testing vs Hypothesis Creating
+-   Week 5, Jan. 24: EDA4, UN, OECD, readr, readxl, two table verves
 
--   Problem Solving vs Understanding Issues (to Attack Problems)
+-   Week 6, Jan. 31: EDA5, Round-up, communication, pdf, Word, PowerPoint
 
 ## A short introduction to EDA workflow
 
@@ -34,38 +34,100 @@ output:
 
     -   R Notebook: HTML file with R Markdown source file
 
-### Exercise
+### Examples
 
 -   Purchasing power parities (PPPs) [[Link](https://ds-sl.github.io/intro2r/da4r/gdp_ppp.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/gdp_ppp.Rmd)]
 
 -   Life Expectancy [[Link](https://ds-sl.github.io/intro2r/da4r/life_expectancy.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/life_expectancy.Rmd)]
 
-## Review
+-   EDA using WDI: CO~2~ Emissions Per Capita vs GDP Per Capita [[Link](https://ds-sl.github.io/intro2r/da4r/co2pcap.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/co2pcap.Rmd)]
 
-### Data Importing
+## Review: EDA Workflow
 
-```{r include=FALSE}
+Start RStudio and open your project.
+
+### Setup
+
+```{r}
 library(tidyverse)
 library(WDI)
 ```
 
+### WDIcache() [[Link in da4r](https://icu-hsuzuki.github.io/da4r/wdidata.html?q=WDIcache#wdicache)]
+
 ```{r eval=FALSE}
-df_lifeexp <- WDI(indicator = c(pop = "SP.POP.TOTL", 
-                  fertility = "SP.DYN.TFRT.IN", 
-                  lifeexp = "SP.DYN.LE00.IN"), 
-                  extra = TRUE)
+wdicache <- WDIcache()
 ```
 
-Default values are filled automatically. See Help WDI
+```{r eval=TRUE, echo=FALSE}
+wdicache <- read_rds("data/wdicache.rds")
+```
 
-```{r eval=FALSE}
-df_lifeexp <- WDI(country = "all", 
-                  indicator = c(pop = "SP.POP.TOTL", 
-                  fertility = "SP.DYN.TFRT.IN", 
-                  lifeexp = "SP.DYN.LE00.IN"), 
-                  start = 1960, end = NULL, 
-                  extra = TRUE, caches = NULL, latest = NULL, 
-                  language = "en")
+```{r}
+str(wdicache, max.level = 1)
+```
+
+-   wdicache\$series - WDI and other database
+
+-   wdicache\$country - data about countries, list of countries, regions, income, lending, etc.
+
+```         
+df_yourdata <- WDI(
+  indicator = c(short_name_1 = chosen_indicator_1,
+                short_name_2 = chosen_indicator_2),
+  extra = TRUE, cache = wdicache)
+```
+
+### WDIsearch() [[Link in da4r](https://icu-hsuzuki.github.io/da4r/a3resp.html?q=WDIsearch#wdisearch)]
+
+```{r}
+WDIsearch(string = "(% of land area)", field = "name", short = FALSE, cache = wdicache)
+```
+
+```{r}
+WDIsearch(string = "(hectares)", field = "name", short = FALSE, cache = wdicache)
+```
+
+```{r}
+WDIsearch(string = "XPD", field = "indicator", short = FALSE, cache = wdicache)
+```
+
+```{r}
+WDIsearch(string = "(% of GDP)", field = "name", short = FALSE, cache = wdicache)
+```
+
+```{r}
+WDIsearch(string = "(% of population)", field = "name", short = FALSE, cache = wdicache)
+```
+
+```         
+WDIsearch(string = "education", field = "name", short = TRUE, cache = wdicache)
+```
+
+------------------------------------------------------------------------
+
+### Data Importing
+
+```         
+df_yourdata <- WDI(
+  indicator = c(short_name_1 = chosen_indicator_1,
+                short_name_2 = chosen_indicator_2),
+  extra = TRUE, cache = wdicache)
+```
+
+```         
+df_lifeexp <- WDI(
+  indicator = c(pop = "SP.POP.TOTL", 
+                fertility = "SP.DYN.TFRT.IN", 
+                lifeexp = "SP.DYN.LE00.IN"), 
+  extra = TRUE, cache = wdicache)
+```
+
+```         
+df_lifeexp <- WDI(
+  indicator = c(pop = "SP.POP.TOTL", 
+                fertility = "SP.DYN.TFRT.IN", 
+                lifeexp = "SP.DYN.LE00.IN"))
 ```
 
 ------------------------------------------------------------------------
@@ -87,6 +149,10 @@ df_lifeexp <- WDI(country = "all",
     -   `distinct()` : select rows with distinct values of a variable `distinct(country)`
 
     -   `drop_na()` : drop rows with NA values, e.g. `drop_na(pop)`
+
+    -   `group_by` and `summarize`
+
+    -   `mutate`
 
 ------------------------------------------------------------------------
 
@@ -110,7 +176,7 @@ df_lifeexp <- WDI(country = "all",
 
 #### Line graph
 
-```{r eval=FALSE}
+```         
 df_life |> filter(country == "World") |> 
   drop_na(life_expectancy) |>
   ggplot(aes(year, life_expectancy)) + geom_line() +
@@ -119,7 +185,7 @@ df_life |> filter(country == "World") |>
 
 #### Scatter Plot
 
-```{r eval=FALSE}
+```         
 df_life |> filter(year == 2021) |>
   filter(region != "Aggregates") |> 
   drop_na(fertility_rate, life_expectancy) |>
@@ -149,24 +215,15 @@ df_life |> filter(year == 2021) |>
 
     -   School enrollment, tertiary (% gross): SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)]
 
+-   
+
 ------------------------------------------------------------------------
 
-### WDIcache
+### Long Data vs Wide Data [[r4ds tidyr](https://icu-hsuzuki.github.io/da4r/tidy.html?q=pivot_longer#tidy)]
 
-```{r}
-wdi_cache <- WDIcache()
-```
+------------------------------------------------------------------------
 
-```{r}
-glimpse(wdi_cache)
-```
-
-```{r}
-wdi_series <- wdi_cache$series
-wdi_country <- wdi_cache$country
-wdi_series
-wdi_country
-```
+### Choropleth Maps [[r4ds worldmap](https://icu-hsuzuki.github.io/da4r/worldmap.html#worldmap)]
 
 # Part II: Practicum
 
