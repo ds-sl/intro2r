@@ -318,73 +318,6 @@ df_poverty_rate_long |>
   labs(title = "Povert Level Ratio of Five Countries", subtitle = "Botswana in 2015, Eswatini in 2016 ,Lesoto in 2017, Namibia in 2015 \nand South Africa in 2014")
 ```
 
-### 他の国での同様の分析
-
-#### いくつかの国の貧困度ごとの人口比
-
-それぞれの国の、最も新しいデータを用いるものとします。
-
-**練習 次の `POV_COUNTRIES_YOUR_CHOICE` の部分を変更して、いくつかの国の貧困者の割合の表とグラフを作成してください。**
-
-`POV_COUNTRIES_YOUR_CHOICE <- c("Myanmar", "Kenya", "China", "India", "Indonesia")`
-
-```{r}
-POV_COUNTRIES_YOUR_CHOICE <- c("Myanmar", "Kenya", "China", "India", "Indonesia")
-df_poverty_rate_selected |> 
-  filter(country %in% POV_COUNTRIES_YOUR_CHOICE) |>
-  drop_na(ratio) |> group_by(country) |> filter(year == max(year)) |> 
-  select(country, year, ratio:under_6.85)
-```
-
-### 各国の各貧困レベルを表した棒グラフ
-
-```{r}
-df_poverty_rate_long |> 
-  filter(country %in% POV_COUNTRIES_YOUR_CHOICE) |>
-  drop_na(value) |> group_by(country) |> filter(year == max(year)) |>
-  ggplot(aes(country, value, fill = level)) + geom_col(position = "dodge", col = "black", linewidth = 0.1) + 
-  labs(title = "Poverty Level Ratio of Countries", subtitle = "Using the most recent data")
-```
-
-### 折れ線グラフによる比較
-
-#### 一つの国のみについて、すべての貧困率を比較
-
-線を通常より太くしています。初期値は、GeomLine\$default_aes でわかります。
-
-```{r}
-df_poverty_rate_long |> filter(country == "India") |>
-  drop_na(value) |>
-  ggplot(aes(year, value, col = level)) + geom_line(linewidth = 1) +
-  labs(title = "Poverty Ratio of India")
-```
-
-#### 二つの国についての貧困率を比較
-
-```{r}
-df_poverty_rate_long |> filter(country %in% c("China", "India")) |>
-  drop_na(value) |>
-  ggplot(aes(year, value, col = country, linetype = level)) + geom_line(linewidth = 1) +
-  labs(title = "Poverty Ratio of China and India")
-```
-
-### **指標 under_2.15 の分析**
-
-#### 折線グラフ
-
-```{r}
-df_poverty_rate_selected |> filter(country %in% POV_COUNTRIES_YOUR_CHOICE) |> drop_na(under_2.15) |>
-  ggplot(aes(year, under_2.15, col = country)) + geom_line()
-```
-
-### Histogram
-
-```{r}
-df_poverty_rate_selected |> drop_na(under_2.15) |> filter(region != "Aggregates") |>
-  filter(under_2.15 > 25) |>
-  ggplot(aes(under_2.15, fill = region)) + geom_histogram(bins = 15, col = "black", linewidth = 0.1)
-```
-
 ## 作業手順とまとめ
 
 -   パッケージ（Package）の利用：
@@ -395,7 +328,7 @@ df_poverty_rate_selected |> drop_na(under_2.15) |> filter(region != "Aggregates"
 
 -   データの取得：`WDI(indicator = c(pop = "SP.POP.TOTL"))`
 
-    -   `WDI(indicator =``c(ratio = "SI.POV.NAHC", under_2.15 = "SI.POV.DDAY", under_3.65 = "SI.POV.LMIC", under_6.85 = "SI.POV.UMIC"), extra = TRUE)`
+    -   ``` WDI(indicator =``c(ratio = "SI.POV.NAHC", under_2.15 = "SI.POV.DDAY", under_3.65 = "SI.POV.LMIC", under_6.85 = "SI.POV.UMIC"), extra = TRUE) ```
 
     -   data に書き出し、そこから読み込むと良い。
 

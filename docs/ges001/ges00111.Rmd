@@ -404,6 +404,8 @@ df_poverty_rate |> drop_na(under_2.15) |> filter(region != "Aggregates") |>
 -   PositCloud 共有リンク：<https://posit.cloud/content/5539763>
 
     -   貧困率 - Poverty Rate（poverty_rate.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/poverty_rate.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/poverty_rate.Rmd)]
+        -   より詳細なもの：poverty_rate_long.Rmd [[リンク](https://ds-sl.github.io/intro2r/ges001/poverty_rate_long.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/poverty_rate_long.Rmd)]
+            -   PositCloud では、メモリーオーバー
 
 -   R Notebook のソースファイル（Rmd）を取得する三つの方法
 
