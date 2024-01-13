@@ -199,6 +199,26 @@ df_poverty_rate_long <- df_poverty_rate |>
 df_poverty_rate_long |> drop_na(value) |> select(country, iso2c, level, value)
 ```
 
+### 変形：各階級の値を縦に並べ、縦長形式の表にします。Long format
+
+`pivot_longer(cols, names_to = "", values_to = "")` についてはいずれ説明します。ここでは、レベルに分けられたものを levels という名の列にレベルを、value という名の列に、その値を並べたものとします。
+
+```{r}
+df_gini_extra_long <- df_gini_extra |> 
+  pivot_longer(`0-10`:`90-100`, names_to = "levels", values_to = "value")
+df_gini_extra_long
+```
+
+### 整えられた（tidy）データ
+
+-   各列はひとつの変数
+
+-   各行はひとつの観測値
+
+階級（levels）を変数として扱うために、このように変形しました。
+
+![](https://icu-hsuzuki.github.io/da4r/data/tidy-1.png)
+
 ### 年毎のデータの数の確認（number of data in each year）
 
 ```{r}
