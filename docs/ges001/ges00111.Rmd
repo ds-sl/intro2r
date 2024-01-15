@@ -3,31 +3,29 @@ title: "GES 001 演習4"
 author: "H. Suzuki"
 date: "2024年1月16日"
 output:
-  html_notebook: default
-  html_document:
-    df_print: paged
   ioslides_presentation:
     widescreen: true
     df_print: paged
+  html_document:
+    df_print: paged
+  html_notebook: default
 ---
 
 ## 準備
 
--   自分のPCまたは教室のPC
+1.  （自分のPCまたは教室のPCに）ログイン
 
-    1.  ログイン
+2.  ウェッブ・ブラウザー（Google Chrome など）を起動
 
-    2.  ウェッブ・ブラウザー（Google Chrome など）を起動
+    -   Moodle の GES001 経済と経済学のサイトから、このスライドのページを表示（リンク「Rでデータサイエンス」[**https://ds-sl.github.io/intro2r/ges001/**](https://ds-sl.github.io/intro2r/ges001/)）
 
-        -   Moodle の GES001 経済と経済学のサイトから、このスライドのページを表示（リンク「Rでデータサイエンス」の第2週）
+3.  （別のタブまたは ウィンドウで）PositCloud にログイン[[Posit.cloud](https://posit.cloud/)]
 
-        -   （別のタブまたは ウィンドウで）PositCloud にログイン（アカウントのない人はサイン・アップ）[[Posit.cloud](https://posit.cloud/)]・[[共有プロジェクト](https://posit.cloud/content/5539763)]
+    -   アカウントのない人はサイン・アップ [[共有プロジェクト](https://posit.cloud/content/5539763)] から、Save a Permanent Copy）
 
-    3.  RStudio を起動
+    -   RStudio を自分のコンピュータにインストールしている人は起動
 
-        -   自分のPCにR と RStudio をインストールしていないひとは不要。
-
-        -   インストールについては、解説とビデオ参照。[[解説リンク](https://posit.co/download/rstudio-desktop/)]・[[ビデオ](https://www.youtube.com/watch?v=Q8TpC-e0Mfg)]
+4.  リンクの右上の Raw ボタンの右の Copy a raw file からコピーして演習用 R Markdown ファイルを作成（あとで再度解説します）[[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/poverty_rate.Rmd)]
 
 ## 第4週
 
@@ -37,9 +35,9 @@ output:
 
 第4週、第5週の講義では、貧困の問題が特に深刻な南部アフリカ諸国の問題を議論します。
 
-World BankのINEQUALITY IN SOUTHERN AFRICA:AN ASSESSMENT OF THE SOUTHERN AFRICAN CUSTOMS UNION (<https://wir2022.wid.world/>)をテキストにしています。教育、失業、COVID-19の貧困に与える影響などを取り上げます。
+World BankのINEQUALITY IN SOUTHERN AFRICA:AN ASSESSMENT OF THE SOUTHERN AFRICAN CUSTOMS UNION をテキストにしています。教育、失業、COVID-19の貧困に与える影響などを取り上げます。
 
-01/16(TU)　Rでデータサイエンス4:貧困 [授業資料]　 [[Main](https://ds-sl.github.io/intro2r/ges001/index.html)]
+01/16(TU)　Rでデータサイエンス4:貧困 [[演習資料](https://ds-sl.github.io/intro2r/ges001/poverty_rate.nb.html)]・[[Main](https://ds-sl.github.io/intro2r/ges001/index.html)]
 
 ## 講義 1月11日（木）南部アフリカ諸国の状況
 
@@ -61,71 +59,76 @@ World BankのINEQUALITY IN SOUTHERN AFRICA:AN ASSESSMENT OF THE SOUTHERN AFRICAN
 
     -   Chapter 7　Addressing inequality in SACU: A policy discussion
 
--   南アフリカ（South Africa）、レソト（Lethoto）、エスワティニ（Eswatini）、ナミビア（Namivia）、ボツワナ（Botswana）
+------------------------------------------------------------------------
+
+### 南部アフリカ５カ国の状況の分析
+
+-   南アフリカ（South Africa）、レソト（Lethoto）、エスワティニ（Eswatini, 旧 Swaziland）、ナミビア（Namivia）、ボツワナ（Botswana）
 
     -   受講感想にかえて：ジニ指数と所得分布 - 続編 [[R Notebook](https://ds-sl.github.io/intro2r/ges001/gini_updated.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/gini_updated.Rmd)]
+        -   国のリストを変えてみよう：スリナム（Suriname）, ベリーズ（Belize）, ブラジル（Brazil）, コロンビア（Colombia）
 
-## 演習 1月16日（火）
+-   本日は、別の指標から、これらの国についての貧困度の分析をします。
 
-## 01/16(TU)　Rでデータサイエンス4:貧困（データが少ない難点） [[Main](https://ds-sl.github.io/intro2r/ges001/ges001-main.nb.html)]・[授業]
+# 演習 1月16日（火）
+
+## 01/16(TU)　Rでデータサイエンス4:貧困 [[Main](https://ds-sl.github.io/intro2r/ges001/ges001-main.nb.html)]
 
 **Poverty rates at national poverty lines**
 
 Poverty headcount ratio at national poverty lines (% of population)：SI.POV.NAHC [[Link](https://data.worldbank.org/indicator/SI.POV.NAHC)]
 
-National poverty headcount ratio is the percentage of the population living below the national poverty line(s). National estimates are based on population-weighted subgroup estimates from household surveys. For economies for which the data are from EU-SILC, the reported year is the income reference year, which is the year before the survey year.
+全国貧困人口比率は、全国貧困線以下で生活している人口の割合です。国の推定値は、世帯調査からの人口加重サブグループ推定値に基づいています。データが EU-SILC からのものである経済の場合、報告される年は所得基準年、つまり調査年の前年。
 
-全国貧困人口比率は、全国貧困線以下で生活している人口の割合です。国の推定値は、世帯調査からの人口加重サブグループ推定値に基づいています。データが EU-SILC からのものである経済の場合、報告される年は所得基準年、つまり調査年の前年です。
+------------------------------------------------------------------------
 
 **Poverty and Inequality―Poverty rates at international poverty lines**
 
 Poverty headcount ratio at \$2.15 a day (2017 PPP) (% of population)：SI.POV.DDAY [[Link](https://data.worldbank.org/indicator/SI.POV.DDAY)]
 
-Poverty headcount ratio at \$2.15 a day is the percentage of the population living on less than \$2.15 a day at 2017 purchasing power adjusted prices. As a result of revisions in PPP exchange rates, poverty rates for individual countries cannot be compared with poverty rates reported in earlier editions.
-
-1日2.15ドルの貧困人口比率は、2017年の購買力調整後価格で1日2.15ドル未満で生活している人口の割合です。PPP 為替レートの改定により、各国の貧困率を以前の版で報告された貧困率と比較することができなくなりました。
+1日2.15ドルの貧困人口比率は、2017年の購買力調整後価格で1日2.15ドル未満で生活している人口の割合です。PPP 為替レートの改定により、各国の貧困率を以前の版で報告された貧困率と比較することができなくなった
 
 Poverty headcount ratio at \$3.65 a day (2017 PPP) (% of population)：SI.POV.LMIC [[Link](https://data.worldbank.org/indicator/SI.POV.LMIC)]
 
-Poverty headcount ratio at \$3.65 a day is the percentage of the population living on less than \$3.65 a day at 2017 international prices.
-
-1 日 3.65 ドルの貧困人口比率は、2017 年の国際価格で 1 日 3.65 ドル未満で生活している人口の割合です。
+1 日 3.65 ドルの貧困人口比率は、2017 年の国際価格で 1 日 3.65 ドル未満で生活している人口の割合
 
 Poverty headcount ratio at \$6.85 a day (2017 PPP) (% of population)：SI.POV.UMIC [[Link](https://data.worldbank.org/indicator/SI.POV.UMIC)]
 
-Poverty headcount ratio at \$6.85 a day is the percentage of the population living on less than \$6.85 a day at 2017 international prices.
-
-1日6.85ドルの貧困人口比率は、2017年の国際価格で1日6.85ドル未満で生活している人口の割合です。
+1日6.85ドルの貧困人口比率は、2017年の国際価格で1日6.85ドル未満で生活している人口の割合
 
 ## 復習
 
 貧困は、どのような尺度で測るのだろうか。
 
-1.  一人当たりの購買力平価（Purchasing Power Parities）による国内総生産（Gross Domestic Product）
+### 一人当たりの購買力平価（Purchasing Power Parities）による国内総生産（Gross Domestic Product）
 
-    -   GDP per capita, PPP (constant 2017 international \$): NY.GDP.PCAP.PP.KD [[Link](https://data.worldbank.org/indicator/NY.GDP.PCAP.PP.KD)]
+-   GDP per capita, PPP (constant 2017 international \$): NY.GDP.PCAP.PP.KD [[Link](https://data.worldbank.org/indicator/NY.GDP.PCAP.PP.KD)]
 
-    -   12/13 極度に貧しい！？ [[R Notebook](https://ds-sl.github.io/intro2r/ges001/poverty.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/poverty.Rmd)]
+-   12/13 極度に貧しい！？ [[R Notebook](https://ds-sl.github.io/intro2r/ges001/poverty.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/poverty.Rmd)]
 
-    -   国ごとの所得の平均のようなものはわかるが、極度の貧困の人がどの程度いるのかはわからない。
+-   国ごとの所得の平均のようなものはわかるが、極度の貧困の人がどの程度いるのかはわからない。
 
-2.  人口動態（demography）
+------------------------------------------------------------------------
 
-    -   人口のデータ（総人口、出生率、死亡率、若年者扶養率、高齢者扶養率）
+### 人口動態（demography）
 
-    -   12/20 人口動態（demography）[[R Notebook](https://ds-sl.github.io/intro2r/ges001/demography.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/demography.Rmd)]
+-   人口のデータ（総人口、出生率、死亡率、若年者扶養率、高齢者扶養率）
 
-    -   人口データは基本的で、国の値から個人の値を求めたり、他の国と比較しやすい割合から実際の数を求めるなどに必須
+-   12/20 人口動態（demography）[[R Notebook](https://ds-sl.github.io/intro2r/ges001/demography.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/demography.Rmd)]
 
-3.  ジニ指数および所得分布
+-   人口データは基本的で、国の値から個人の値を求めたり、他の国と比較しやすい割合から実際の数を求めるなどに必須
 
-    -   ジニ指数（Gini）, 所得の下位10%, 20%, 20%-40%, 40%-60%, 60%-80%, 80%以上, 90%以上
+------------------------------------------------------------------------
 
-    -   1/9 ジニって何！？ [[R Notebook](https://ds-sl.github.io/intro2r/ges001/what_is_gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/what_is_gini.Rmd)]
+### ジニ指数および所得分布
 
-    -   1/9 ジニ指数と所得分布 [[R Notebook](https://ds-sl.github.io/intro2r/ges001/gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/gini.Rmd)]　（参考1/参考2付 [[R Notebook](https://ds-sl.github.io/intro2r/ges001/gini_long.nb.html)]）
+-   ジニ指数（Gini）, 所得の下位10%, 20%, 20%-40%, 40%-60%, 60%-80%, 80%以上, 90%以上
 
-    -   国の中での所得分布を見、かつ所得分配の公平さを一つの指標（ジニ指数）で表すことにより、比較も可能になったが、極度に貧困なひとがどのぐらいいるのかはわからない。
+-   1/9 ジニって何！？ [[R Notebook](https://ds-sl.github.io/intro2r/ges001/what_is_gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/what_is_gini.Rmd)]
+
+-   1/9 ジニ指数と所得分布 [[R Notebook](https://ds-sl.github.io/intro2r/ges001/gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/gini.Rmd)]　（参考1/参考2付 [[R Notebook](https://ds-sl.github.io/intro2r/ges001/gini_long.nb.html)]）
+
+-   国の中での所得分布を見、かつ所得分配の公平さを一つの指標（ジニ指数）で表すことにより、比較も可能になったが、極度に貧困なひとがどのぐらいいるのかはわからない。
 
 ## 貧困者率
 
@@ -143,12 +146,16 @@ Poverty headcount ratio at \$6.85 a day is the percentage of the population livi
 
     -   Poverty headcount ratio at \$6.85 a day (2017 PPP) (% of population)：SI.POV.UMIC [[Link](https://data.worldbank.org/indicator/SI.POV.UMIC)]
 
+------------------------------------------------------------------------
+
 ### 準備
 
 ```{r}
 library(tidyverse)
 library(WDI)
 ```
+
+------------------------------------------------------------------------
 
 ### データの読み込み（importing）
 
@@ -165,6 +172,8 @@ df_poverty_rate <- WDI(
   extra = TRUE)
 ```
 
+------------------------------------------------------------------------
+
 #### 保存と読み込み
 
 ２回目からは、`data` から読み込めるようにしておきます。
@@ -178,6 +187,8 @@ write_csv(df_poverty_rate, "data/poverty_rate.csv")
 ```{r}
 df_poverty_rate <- read_csv("data/poverty_rate.csv")
 ```
+
+------------------------------------------------------------------------
 
 ### データを見てみよう (viewing)
 
@@ -216,6 +227,14 @@ df_poverty_rate_selected
 ここでは、`ratio` から `under_6.85` を、`level` という名前の列にならべ、値を `value` という列に並べるようにしてあります。
 
 確認するときは、value が NA のものは除き、country と、iso2c と、level と value の部分だけ取り出して確認しています。
+
+```{r eval=FALSE}
+df_poverty_rate_long <- df_poverty_rate_selected |> 
+  pivot_longer(ratio:under_6.85, names_to = "level", values_to = "value")
+df_poverty_rate_long |> drop_na(value) |> select(country, level, value, region)
+```
+
+------------------------------------------------------------------------
 
 ```{r}
 df_poverty_rate_long <- df_poverty_rate_selected |> 
@@ -281,6 +300,8 @@ SOUTH_AFRICA_FIVE <- c("South Africa", "Namibia", "Eswatini", "Botswana", "Lesot
 ### ５カ国のデータを確認
 
 `df_poverty_rate_selected` と、`df_poverty_rate_long` について、アフリカ南部５カ国のデータを確認
+
+------------------------------------------------------------------------
 
 ```{r}
 df_poverty_rate_selected |> filter(country %in% SOUTH_AFRICA_FIVE)
@@ -371,6 +392,8 @@ df_poverty_rate |>
   select(country, iso2c, year, ratio:under_6.85)
 ```
 
+------------------------------------------------------------------------
+
 ```{r}
 df_poverty_rate_long |> 
   filter(country %in% POV_COUNTRIES_YOUR_CHOICE) |>
@@ -378,6 +401,8 @@ df_poverty_rate_long |>
   ggplot(aes(country, value, fill = level)) + geom_col(position = "dodge", col = "black", linewidth = 0.1) + 
   labs(title = "Poverty Level Ratio of Countries", subtitle = "Using the most recent data")
 ```
+
+------------------------------------------------------------------------
 
 #### 折れ線グラフによる比較
 
@@ -409,9 +434,9 @@ df_poverty_rate |> drop_na(under_2.15) |> filter(region != "Aggregates") |>
 
 -   R Notebook のソースファイル（Rmd）を取得する三つの方法
 
-    1.  PositCloud 共有リンクの ges001 のディレクトリ（フォルダから探す）ファイルを開き、全体を選択してコピーし、自分の RStudio または、PositCloud のファイルで、RMarkdown ファイルを新規作成しペースト
+    1.  **Rmd のリンクをクリックし Raw の横の Copy a raw file からコピー、新規 RMarkdown ファイルを PositCloud または RStudio のプロジェクト内に作成しペースト**
 
-    2.  Rmd のリンクをクリックし Raw の横の Copy a raw file からコピー、新規 RMarkdown ファイルを作成しペースト
+    2.  PositCloud 共有リンクの ges001 のディレクトリ（フォルダから探す）ファイルを開き、全体を選択してコピーし、自分の RStudio または、PositCloud のファイルで、RMarkdown ファイルを新規作成しペースト
 
     3.  リンクを開き、右上の Code から、Rmd ファイルをダウンロードとし、それを、自分の RStudio または、PositCloud のプロジェクトに移動（Upload）
 
@@ -462,6 +487,12 @@ df_poverty_rate |> drop_na(under_2.15) |> filter(region != "Aggregates") |>
 -   ヒストグラム（度数分布）
 
     -   `ggplot(aes(under_2.15, fill = region)) + geom_histogram(bins = 15)`
+
+-   箱ひげ図（Boxplot）
+
+    -   `ggplot(aes(under_2.15, region, fill = region)) + geom_boxplot()`
+
+------------------------------------------------------------------------
 
 -   棒グラフ
 
@@ -524,6 +555,8 @@ df_poverty_rate_long |> filter(country == "Brazil") |> drop_na(value) |>
 **気づいたこと**
 
 -   
+
+------------------------------------------------------------------------
 
 #### 南アメリカ４カ国の貧困度ごとの人口比の棒グラフ
 

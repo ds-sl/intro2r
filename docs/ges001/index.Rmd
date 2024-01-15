@@ -35,7 +35,9 @@ output:
 
 このページにリンクします。
 
-R と R Studio のインストールについて [[リンク](https://icu-hsuzuki.github.io/ds4aj/ronrstudio.html#r-と-r-studio-のインストール)]・[[ビデオ](https://youtu.be/Q8TpC-e0Mfg)]
+基本的には、[PositCloud](https://posit.cloud/)（機能限定 だが Free の Cloud 上の RStudio）でできる範囲のことをする予定で、[共有プロジェクト](https://posit.cloud/content/5539763)にも演習ファイルをアップロードする予定です。
+
+自分のコンピュータにインストールする場合：R と R Studio のインストールについて [[リンク](https://icu-hsuzuki.github.io/ds4aj/ronrstudio.html#r-と-r-studio-のインストール)]・[[ビデオ](https://youtu.be/Q8TpC-e0Mfg)]
 
 ## **スケジュール**
 
@@ -71,15 +73,15 @@ R と R Studio のインストールについて [[リンク](https://icu-hsuzuk
 
 **People- Population dynamics**
 
-<!-- Population, total：SP.POP.TOTL -->
+Population, total：SP.POP.TOTL
 
-<!-- Birth rate, crude (per 1,000 people)：SP.DYN.CBRT.IN -->
+Birth rate, crude (per 1,000 people)：SP.DYN.CBRT.IN
 
-<!-- Death rate, crude (per 1,000 people)：SP.DYN.CDRT.IN -->
+Death rate, crude (per 1,000 people)：SP.DYN.CDRT.IN
 
-<!-- Age dependency ratio, young (% of working-age population)：SP.POP.DPND.YG -->
+Age dependency ratio, young (% of working-age population)：SP.POP.DPND.YG
 
-<!-- Age dependency ratio, old (% of working-age population)：SP.POP.DPND.OL -->
+Age dependency ratio, old (% of working-age population)：SP.POP.DPND.OL
 
 #### 演習の内容
 
@@ -129,23 +131,23 @@ R と R Studio のインストールについて [[リンク](https://icu-hsuzuk
 
 01/09(TU)　Rでデータサイエンス3：GNI係数と所得分布　 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00110.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00110.nb.html)]・[[ビデオ](https://youtu.be/RwD-SJlSHkQ)]
 
-**Poverty and Inequality―Distribution of income or consumption（データが少ない難点）**
+世界開発指標（WDI）[[Link](https://datatopics.worldbank.org/world-development-indicators/)] \> **貧困と不平等（Poverty and Inequality）\> 所得または消費の分配（Distribution of income or consumption）**
 
-<!-- GINI index (World Bank estimate)；SI.POV.GINI -->
+GINI 指数 (世界銀行推計)：SI.POV.GINI [[Link](https://data.worldbank.org/indicator/SI.POV.GINI)]
 
-<!-- Income share held by lowest 10%：SI.DST.FRST.10 -->
+下位 10% が占める所得シェア：SI.DST.FRST.10 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.FRST.10)]
 
-<!-- Income share held by lowest 20%：SI.DST.FRST.20 -->
+下位 20% が占める所得シェア：SI.DST.FRST.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.FRST.20)]
 
-<!-- Income share held by second 20%：SI.DST.02ND.20 -->
+2番目の 20% が占める収入シェア：SI.DST.02ND.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.02ND.20)]
 
-<!-- Income share held by third 20%：SI.DST.03RD.20 -->
+3番目の 20% が占める収入シェア ：SI.DST.03RD.20 [[Link](https://data.worldbank.org/indicator/SI.DST.03RD.20)]
 
-<!-- Income share held by fourth 20%：SI.DST.04TH.20 -->
+4番目の 20% が占める収入シェア：SI.DST.04TH.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.04TH.20)]
 
-<!-- Income share held by highest 20%：SI.DST.05TH.20 -->
+上位 20% が占める収入シェア：SI.DST.05TH.20 [[Link](https://data.worldbank.org/indicator/SI.DST.05TH.20)]
 
-<!-- Income share held by highest 10%：SI.DST.10TH.10 -->
+上位 10% が占める収入シェア：SI.DST.10TH.10 [[Link](https://data.worldbank.org/indicator/SI.DST.10TH.10)]
 
 #### 演習の内容
 
@@ -165,21 +167,47 @@ R と R Studio のインストールについて [[リンク](https://icu-hsuzuk
 
 第4週、第5週の講義では、貧困の問題が特に深刻な南部アフリカ諸国の問題を議論します。
 
-World BankのINEQUALITY IN SOUTHERN AFRICA:AN ASSESSMENT OF THE SOUTHERN AFRICAN CUSTOMS UNION (<https://wir2022.wid.world/>)をテキストにしています。教育、失業、COVID-19の貧困に与える影響などを取り上げます。
+World BankのINEQUALITY IN SOUTHERN AFRICA:AN ASSESSMENT OF THE SOUTHERN AFRICAN CUSTOMS UNION をテキストにしています。教育、失業、COVID-19の貧困に与える影響などを取り上げます。
 
-01/16(TU)　Rでデータサイエンス4:貧困（データが少ない難点） [授業資料]
+01/16(TU)　Rでデータサイエンス4:貧困 [[授業資料](https://ds-sl.github.io/intro2r/ges001/ges00111.nb.html)]
+
+**Poverty and Inequality―Distribution of income or consumption**
 
 **Poverty rates at national poverty lines**
 
-<!-- Poverty headcount ratio at national poverty lines (% of population)：SI.POV.NAHC -->
+Poverty headcount ratio at national poverty lines (% of population)：SI.POV.NAHC [[Link](https://data.worldbank.org/indicator/SI.POV.NAHC)]
+
+National poverty headcount ratio is the percentage of the population living below the national poverty line(s). National estimates are based on population-weighted subgroup estimates from household surveys. For economies for which the data are from EU-SILC, the reported year is the income reference year, which is the year before the survey year.
+
+全国貧困人口比率は、全国貧困線以下で生活している人口の割合です。国の推定値は、世帯調査からの人口加重サブグループ推定値に基づいています。データが EU-SILC からのものである経済の場合、報告される年は所得基準年、つまり調査年の前年。
 
 **Poverty and Inequality―Poverty rates at international poverty lines**
 
-<!-- Poverty headcount ratio at \$2.15 a day (2017 PPP) (% of population)：SI.POV.DDAY -->
+Poverty headcount ratio at \$2.15 a day (2017 PPP) (% of population)：SI.POV.DDAY [[Link](https://data.worldbank.org/indicator/SI.POV.DDAY)]
 
-<!-- Poverty headcount ratio at \$3.65 a day (2017 PPP) (% of population)：SI.POV.LMIC -->
+Poverty headcount ratio at \$2.15 a day is the percentage of the population living on less than \$2.15 a day at 2017 purchasing power adjusted prices. As a result of revisions in PPP exchange rates, poverty rates for individual countries cannot be compared with poverty rates reported in earlier editions.
 
-<!-- Poverty headcount ratio at \$6.85 a day (2017 PPP) (% of population)：SI.POV.UMIC -->
+1日2.15ドルの貧困人口比率は、2017年の購買力調整後価格で1日2.15ドル未満で生活している人口の割合です。PPP 為替レートの改定により、各国の貧困率を以前の版で報告された貧困率と比較することができなくなった。
+
+Poverty headcount ratio at \$3.65 a day (2017 PPP) (% of population)：SI.POV.LMIC [[Link](https://data.worldbank.org/indicator/SI.POV.LMIC)]
+
+Poverty headcount ratio at \$3.65 a day is the percentage of the population living on less than \$3.65 a day at 2017 international prices.
+
+1 日 3.65 ドルの貧困人口比率は、2017 年の国際価格で 1 日 3.65 ドル未満で生活している人口の割合
+
+Poverty headcount ratio at \$6.85 a day (2017 PPP) (% of population)：SI.POV.UMIC [[Link](https://data.worldbank.org/indicator/SI.POV.UMIC)]
+
+Poverty headcount ratio at \$6.85 a day is the percentage of the population living on less than \$6.85 a day at 2017 international prices.
+
+1日6.85ドルの貧困人口比率は、2017年の国際価格で1日6.85ドル未満で生活している人口の割合
+
+#### 演習の内容
+
+基本的には、PositCloud（<https://posit.cloud/>）を使って実習
+
+-   貧困率 - Poverty Rate（poverty_rate.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/poverty_rate.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/poverty_rate.Rmd)]
+    -   より詳細なもの：poverty_rate_long.Rmd [[リンク](https://ds-sl.github.io/intro2r/ges001/poverty_rate_long.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/poverty_rate_long.Rmd)]
+        -   PositCloud では、メモリーオーバー
 
 ### 第5週
 
