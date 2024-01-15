@@ -12,7 +12,7 @@
 <meta name="author" content="Hiroshi Suzuki" />
 
 
-<title>Data Analysis for Researchers 2023, Week 3</title>
+<title>Data Analysis for Researchers 2023, Week 5</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1748,413 +1748,65 @@ display: none;
 
 
 <h1 class="title toc-ignore">Data Analysis for Researchers 2023, Week
-3</h1>
+5</h1>
 <h4 class="author">Hiroshi Suzuki</h4>
-<h4 class="date">2024/01/10</h4>
+<h4 class="date">2024/01/24</h4>
 
 </div>
 
 
 <!-- rnb-text-begin -->
-<div id="part-i-eda-with-wdi" class="section level1">
-<h1>Part I: EDA with WDI</h1>
-<div id="exploratory-data-analysis" class="section level2">
-<h2>Exploratory Data Analysis</h2>
-<ul>
-<li><p>Statistics vs Data Science</p></li>
-<li><p>Hypothesis Testing vs Hypothesis Creating</p></li>
-<li><p>Problem Solving vs Understanding Issues (to Attack
-Problems)</p></li>
-</ul>
-</div>
-<div id="a-short-introduction-to-eda-workflow" class="section level2">
-<h2>A short introduction to EDA workflow</h2>
-<ol style="list-style-type: decimal">
-<li><p>Start RStudio</p></li>
-<li><p>Create or open a project</p>
-<ul>
-<li>File &gt; Open Project or File &gt; Recent Projects (or File &gt;
-New Project)</li>
-</ul></li>
-<li><p>R Notebook, R Markdown, Quarto (or R Script, Console)</p>
-<ul>
-<li><p>Reproducibility, Literate Programming and for
-Communication</p></li>
-<li><p>R Notebook: HTML file with R Markdown source file</p></li>
-</ul></li>
-</ol>
-<div id="examples" class="section level3">
-<h3>Examples</h3>
-<ul>
-<li><p>Purchasing power parities (PPPs) [<a href="https://ds-sl.github.io/intro2r/da4r/gdp_ppp.nb.html">Link</a>],
-[<a href="https://github.com/ds-sl/intro2r/blob/main/docs/da4r/gdp_ppp.Rmd">Rmd</a>]</p></li>
-<li><p>Life Expectancy [<a href="https://ds-sl.github.io/intro2r/da4r/life_expectancy.nb.html">Link</a>],
-[<a href="https://github.com/ds-sl/intro2r/blob/main/docs/da4r/life_expectancy.Rmd">Rmd</a>]</p></li>
-</ul>
-</div>
-</div>
-<div id="review---week-2" class="section level2">
-<h2>Review - Week 2</h2>
-<div id="world-development-indicators" class="section level3">
-<h3>World Development Indicators</h3>
-<ul>
-<li><p>Data themes [<a href="https://datatopics.worldbank.org/world-development-indicators/">Link</a>]</p></li>
-<li><p>People [<a href="https://datatopics.worldbank.org/world-development-indicators/themes/people.html">Link</a>]</p>
-<ul>
-<li><p>Life-expectancy</p>
-<ul>
-<li><p>R Notebook [<a href="https://github.com/ds-sl/intro2r/blob/main/docs/da4r/life_expectancy.Rmd">Link
-to the source</a>], [<a href="https://ds-sl.github.io/intro2r/da4r/life_expectancy.nb.html">R
-Notebook</a>]</p></li>
-<li><p>World Development Indicators: life-expectancy</p>
-<ul>
-<li><p>Population, total: SP.POP.TOTL [<a href="https://data.worldbank.org/indicator/SP.POP.TOTL">Link</a>]</p></li>
-<li><p>Fertility rate, total (births per woman): SP.DYN.TFRT.IN [<a href="https://data.worldbank.org/indicator/SP.DYN.TFRT.IN">Link</a>]</p></li>
-<li><p>Life expectancy at birth, total: SP.DYN.LE00.IN [<a href="https://data.worldbank.org/indicator/SP.DYN.LE00.IN">Link</a>]</p></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul>
-</div>
-</div>
+<div id="part-i-eda-with-public-data" class="section level1">
+<h1>Part I: EDA with Public Data</h1>
 <div id="preview" class="section level2">
 <h2>Preview</h2>
 <ul>
-<li><p>Week 3, Jan. 10: EDA2, WDI, data transformation, data
-visualization</p></li>
-<li><p>Week 4, Jan. 17: EDA3, WDI, tidy data (long and wide data),
-choropleth maps</p></li>
-<li><p>Week 5, Jan. 24: EDA4, UN, OECD, readr, readxl, two table
-verves</p></li>
+<li><p>Week 5, Jan. 24: EDA4, UN, OECD, readr, readxl, two table verves,
+modeling</p></li>
 <li><p>Week 6, Jan. 31: EDA5, Round-up, communication, pdf, Word,
 PowerPoint</p></li>
 </ul>
-<hr />
-<div id="wdi-package" class="section level3">
-<h3>WDI Package</h3>
-<p>CRAN Package Site: WDI [<a href="https://cran.r-project.org/package=WDI">https://CRAN.R-project.org/package=WDI</a>]</p>
-<p><strong>WDI: World Development Indicators and Other World Bank
-Data</strong></p>
-<p>The WDI function provides convenient access to over 40 databases
-hosted by the World Bank, including the World Development Indicators
-(WDI), International Debt Statistics, Doing Business, Human Capital
-Index, and Sub-national poverty indicators. For fast searching, the WDI
-package ships with a local list of available data series. This local
-list can be updated to the latest version using the WDIcache
-function.</p>
-<p>Search: CRAN package=WDI.</p>
-<p>See URL, News and Reference Manual in the page.</p>
-<p><em>For other packages use a similar syntax ‘CRAN package=’Package
-Name’</em></p>
-<hr />
 </div>
-<div id="data-importing" class="section level3">
-<h3>Data Importing</h3>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjpbImRmX2xpZmVleHAgPC0gV0RJKGluZGljYXRvciA9IGMocG9wID0gXCJTUC5QT1AuVE9UTFwiLCAiLCIgICAgICAgICAgICAgICAgICBmZXJ0aWxpdHkgPSBcIlNQLkRZTi5URlJULklOXCIsICIsIiAgICAgICAgICAgICAgICAgIGxpZmVleHAgPSBcIlNQLkRZTi5MRTAwLklOXCIpLCAiLCIgICAgICAgICAgICAgICAgICBleHRyYSA9IFRSVUUpIl19 -->
-<pre class="r"><code>df_lifeexp &lt;- WDI(indicator = c(pop = &quot;SP.POP.TOTL&quot;, 
-                  fertility = &quot;SP.DYN.TFRT.IN&quot;, 
-                  lifeexp = &quot;SP.DYN.LE00.IN&quot;), 
-                  extra = TRUE)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Default values are filled automatically. See Help WDI</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjpbImRmX2xpZmVleHAgPC0gV0RJKGNvdW50cnkgPSBcImFsbFwiLCAiLCIgICAgICAgICAgICAgICAgICBpbmRpY2F0b3IgPSBjKHBvcCA9IFwiU1AuUE9QLlRPVExcIiwgIiwiICAgICAgICAgICAgICAgICAgZmVydGlsaXR5ID0gXCJTUC5EWU4uVEZSVC5JTlwiLCAiLCIgICAgICAgICAgICAgICAgICBsaWZlZXhwID0gXCJTUC5EWU4uTEUwMC5JTlwiKSwgIiwiICAgICAgICAgICAgICAgICAgc3RhcnQgPSAxOTYwLCBlbmQgPSBOVUxMLCAiLCIgICAgICAgICAgICAgICAgICBleHRyYSA9IFRSVUUsIGNhY2hlID0gTlVMTCwgbGF0ZXN0ID0gTlVMTCwgIiwiICAgICAgICAgICAgICAgICAgbGFuZ3VhZ2UgPSBcImVuXCIpIl19 -->
-<pre class="r"><code>df_lifeexp &lt;- WDI(country = &quot;all&quot;, 
-                  indicator = c(pop = &quot;SP.POP.TOTL&quot;, 
-                  fertility = &quot;SP.DYN.TFRT.IN&quot;, 
-                  lifeexp = &quot;SP.DYN.LE00.IN&quot;), 
-                  start = 1960, end = NULL, 
-                  extra = TRUE, cache = NULL, latest = NULL, 
-                  language = &quot;en&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<hr />
-</div>
-<div id="data-transforming" class="section level3">
-<h3>Data Transforming</h3>
+<div id="importing-data" class="section level2">
+<h2>Importing Data</h2>
+<div id="file-types" class="section level3">
+<h3>File Types</h3>
 <ul>
-<li><p><code>dplyr</code>, a package in tidyverse</p>
-<ul>
-<li><p><code>select()</code> : select columns
-<code>select(c(1,2,4,5,7,8))</code></p></li>
-<li><p><code>filter()</code> : select rows meeting a condition</p>
-<ul>
-<li><p><code>filter(country == &quot;World&quot;)</code></p></li>
-<li><p><code>filter(iso2c %in% c(&quot;JP&quot;, &quot;IN&quot;, &quot;CN&quot;))</code></p></li>
-<li><p><code>filter(region != &quot;Aggregates&quot;)</code></p></li>
-</ul></li>
-<li><p><code>distinct()</code> : select rows with distinct values of a
-variable <code>distinct(country)</code></p></li>
-<li><p><code>drop_na()</code> : drop rows with NA values,
-e.g. <code>drop_na(pop)</code></p></li>
-</ul></li>
+<li><p>CSV</p></li>
+<li><p>Excel</p></li>
+<li><p>Other</p></li>
 </ul>
-<hr />
 </div>
-<div id="data-visualizing" class="section level3">
-<h3>Data Visualizing</h3>
+</div>
+<div id="transforming-data" class="section level2">
+<h2>Transforming Data</h2>
+<div id="combining-two-tables" class="section level3">
+<h3>Combining Two Tables</h3>
 <ul>
-<li><p>ggplot2</p>
-<ul>
-<li><p><code>ggplot(aes(x=var1, y=var2)) +</code></p></li>
-<li><p>Scatter Plot:
-<code>geom_point(aes(col=var3, size=var4, shape=var5))</code></p></li>
-<li><p>Line Graph:
-<code>geom_line(aes(col=var3, linetype=var4)))</code></p></li>
-<li><p>Title, Subtitle, Legend and Axis labels</p>
-<ul>
-<li><code>labs(title = &quot;&quot;, subtitle =&quot;&quot;, x  = &quot;&quot;, y = &quot;&quot;, col = &quot;&quot;)</code></li>
-</ul></li>
-</ul></li>
+<li>left_join, etc</li>
 </ul>
-<hr />
-</div>
-<div id="examples-link" class="section level3">
-<h3>Examples [<a href="https://ds-sl.github.io/intro2r/da4r/life_expectancy.nb.html">Link</a>]</h3>
-<div id="line-graph" class="section level4">
-<h4>Line graph</h4>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfbGlmZSB8PiBmaWx0ZXIoY291bnRyeSA9PSBcIldvcmxkXCIpIHw+IFxuICBkcm9wX25hKGxpZmVfZXhwZWN0YW5jeSkgfD5cbiAgZ2dwbG90KGFlcyh5ZWFyLCBsaWZlX2V4cGVjdGFuY3kpKSArIGdlb21fbGluZSgpICtcbiAgbGFicyh0aXRsZSA9IFwiTGlmZSBleHBlY3RhbmN5IG9mIHRoZSBXb3JsZFwiKVxuYGBgIn0= -->
-<pre class="r"><code>df_life |&gt; filter(country == &quot;World&quot;) |&gt; 
-  drop_na(life_expectancy) |&gt;
-  ggplot(aes(year, life_expectancy)) + geom_line() +
-  labs(title = &quot;Life expectancy of the World&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<hr />
-</div>
-<div id="scatter-plot" class="section level4">
-<h4>Scatter Plot</h4>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfbGlmZSB8PiBmaWx0ZXIoeWVhciA9PSAyMDIxKSB8PlxuICBmaWx0ZXIocmVnaW9uICE9IFwiQWdncmVnYXRlc1wiKSB8PiBcbiAgZHJvcF9uYShmZXJ0aWxpdHlfcmF0ZSwgbGlmZV9leHBlY3RhbmN5KSB8PlxuICBnZ3Bsb3QoYWVzKGZlcnRpbGl0eV9yYXRlLCBsaWZlX2V4cGVjdGFuY3ksIGNvbCA9IHJlZ2lvbikpICsgXG4gIGdlb21fcG9pbnQoKVxuYGBgIn0= -->
-<pre class="r"><code>df_life |&gt; filter(year == 2021) |&gt;
-  filter(region != &quot;Aggregates&quot;) |&gt; 
-  drop_na(fertility_rate, life_expectancy) |&gt;
-  ggplot(aes(fertility_rate, life_expectancy, col = region)) + 
-  geom_point()</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<hr />
 </div>
 </div>
-<div id="world-development-indicators-1" class="section level3">
-<h3>World Development Indicators</h3>
+<div id="modeling" class="section level2">
+<h2>Modeling</h2>
 <ul>
-<li><p>Data themes [<a href="https://datatopics.worldbank.org/world-development-indicators/">Link</a>]</p></li>
-<li><p>Data Catalog: World Development Indicators [<a href="https://datacatalog.worldbank.org/search/dataset/0037712/World-Development-Indicators">Link</a>]</p></li>
-<li><p>The World by Income and Region [<a href="https://datatopics.worldbank.org/world-development-indicators/the-world-by-income-and-region.html">Link</a>]</p></li>
-<li><p>World Bank Country and Lending Groups [<a href="https://datahelpdesk.worldbank.org/knowledgebase/articles/906519-world-bank-country-and-lending-groups">Link</a>]</p></li>
-<li><p>WDI Package</p>
-<ul>
-<li>WDI(), WDIcache(), WDIsearch()</li>
-</ul></li>
+<li><p>searching models: few numbers</p></li>
+<li><p>linear regression</p></li>
 </ul>
-<hr />
-</div>
-<div id="wdicache-link-in-da4r" class="section level3">
-<h3>WDIcache() [<a href="https://icu-hsuzuki.github.io/da4r/wdidata.html?q=WDIcache#wdicache">Link
-in da4r</a>]</h3>
-<p>See Help.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoid2RpY2FjaGUgPC0gV0RJY2FjaGUoKSJ9 -->
-<pre class="r"><code>wdicache &lt;- WDIcache()</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RyKHdkaWNhY2hlKVxuYGBgIn0= -->
-<pre class="r"><code>str(wdicache)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<hr />
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RyKHdkaWNhY2hlLCBtYXgubGV2ZWw9MSlcbmBgYCJ9 -->
-<pre class="r"><code>str(wdicache, max.level=1)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTGlzdCBvZiAyXG4gJCBzZXJpZXMgOidkYXRhLmZyYW1lJzpcdDI0NDYwIG9icy4gb2YgIDUgdmFyaWFibGVzOlxuICQgY291bnRyeTonZGF0YS5mcmFtZSc6XHQyOTcgb2JzLiBvZiAgOSB2YXJpYWJsZXM6XG4ifQ== -->
-<pre><code>List of 2
- $ series :&#39;data.frame&#39;:    24460 obs. of  5 variables:
- $ country:&#39;data.frame&#39;:    297 obs. of  9 variables:</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<hr />
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud2RpY2FjaGUkc2VyaWVzXG5gYGAifQ== -->
-<pre class="r"><code>wdicache$series</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<hr />
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud2RpY2FjaGUkY291bnRyeVxuYGBgIn0= -->
-<pre class="r"><code>wdicache$country</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<hr />
-</div>
-<div id="write-andor-read-lists" class="section level3">
-<h3>Write and/or Read Lists</h3>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoid3JpdGVfcmRzKHdkaWNhY2hlLCBcImRhdGEvd2RpY2FjaGUucmRzXCIpIn0= -->
-<pre class="r"><code>write_rds(wdicache, &quot;data/wdicache.rds&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoid2RpY2FjaGUgPC0gcmVhZF9yZHMoXCJkYXRhL3dkaWNhY2hlLnJkc1wiKSJ9 -->
-<pre class="r"><code>wdicache &lt;- read_rds(&quot;data/wdicache.rds&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<hr />
-</div>
-<div id="wdisearch-link-in-da4r" class="section level3">
-<h3>WDIsearch() [<a href="https://icu-hsuzuki.github.io/da4r/a3resp.html?q=WDIsearch#wdisearch">Link
-in da4r</a>]</h3>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuV0RJc2VhcmNoKHN0cmluZyA9IFwiZWR1Y2F0aW9uXCIsIGZpZWxkID0gXCJuYW1lXCIsIHNob3J0ID0gVFJVRSwgY2FjaGUgPSB3ZGljYWNoZSlcbmBgYCJ9 -->
-<pre class="r"><code>WDIsearch(string = &quot;education&quot;, field = &quot;name&quot;, short = TRUE, cache = wdicache)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p><code>wdibulk &lt;- WDIbulk(timeout=600)</code></p>
-<pre><code>List of 6
- $ Data          : tibble [24,902,388 × 6] (S3: tbl_df/tbl/data.frame)
- $ Country       :&#39;data.frame&#39;: 265 obs. of  31 variables:
- $ Series        :&#39;data.frame&#39;: 1486 obs. of  21 variables:
- $ Country-Series:&#39;data.frame&#39;: 8241 obs. of  4 variables:
- $ Series-Time   :&#39;data.frame&#39;: 148 obs. of  4 variables:
- $ FootNote      :&#39;data.frame&#39;: 741689 obs. of  5 variables:</code></pre>
-<hr />
-</div>
-<div id="group_by-summarize-link-in-da4r" class="section level3">
-<h3>group_by, summarize [<a href="https://dplyr.tidyverse.org/reference/group_by.html">Link in
-da4r</a>]</h3>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfaXJpcyA8LSBkYXRhc2V0czo6aXJpc1xuYGBgIn0= -->
-<pre class="r"><code>df_iris &lt;- datasets::iris</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfaXJpcyB8PiBncm91cF9ieShTcGVjaWVzKSB8PlxuICBzdW1tYXJpemUobWVhbl9zbCA9IG1lYW4oU2VwYWwuTGVuZ3RoKSwgbWVhbl9zdyA9IG1lYW4oU2VwYWwuV2lkdGgpKVxuYGBgIn0= -->
-<pre class="r"><code>df_iris |&gt; group_by(Species) |&gt;
-  summarize(mean_sl = mean(Sepal.Length), mean_sw = mean(Sepal.Width))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<hr />
-</div>
-<div id="mutate-link-in-da4r" class="section level3">
-<h3>mutate [<a href="https://icu-hsuzuki.github.io/da4r/dplyr.html?q=mutate#mutate">Link
-in da4r</a>]</h3>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfaXJpcyB8PiBtdXRhdGUoU2VwYWwuUmF0aW8gPSBTZXBhbC5MZW5ndGgvU2VwYWwuV2lkdGgpXG5gYGAifQ== -->
-<pre class="r"><code>df_iris |&gt; mutate(Sepal.Ratio = Sepal.Length/Sepal.Width)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-</div>
-</div>
-<div id="part-ii-practicum" class="section level1">
-<h1>Part II: Practicum</h1>
-<div id="file-links" class="section level2">
-<h2>File Links</h2>
-<p>QALL401-03 [<a href="https://ds-sl.github.io/intro2r/da4r/qall401-03.html#1">Slides</a>],
-[<a href="https://ds-sl.github.io/intro2r/da4r/qall401-03.nb.html">Link</a>],
-[<a href="https://github.com/ds-sl/intro2r/blob/main/docs/da4r/qall401-03.Rmd">Rmd</a>]</p>
-<p>Co2 per capita [<a href="https://ds-sl.github.io/intro2r/da4r/co2pcap.nb.html">Link</a>],
-[<a href="https://github.com/ds-sl/intro2r/blob/main/docs/da4r/co2pcap.Rmd">Rmd</a>]</p>
-<p>Week Three Assignment Template [<a href="https://ds-sl.github.io/intro2r/da4r/w3_assignment_template.nb.html">Link</a>],
-[<a href="https://github.com/ds-sl/intro2r/blob/main/docs/da4r/w3_assignment_template.Rmd">Rmd</a>]</p>
-</div>
-<div id="week-three-assignment" class="section level2">
-<h2>Week Three Assignment</h2>
-<p>Choose two WDI codes and analyse the data.</p>
+<div id="examples" class="section level3">
+<h3>Examples</h3>
 <ul>
-<li><p>Create an R Notebook of a Data Analysis containing the following
-and submit the rendered file (eg. <code>w3_g123456.nb.html</code>)</p>
-<ol style="list-style-type: decimal">
-<li><p>create an R Notebook using the R Notebook Template in Moodle,
-save as <code>w3_g123456.Rmd</code>,</p></li>
-<li><p>edit author with name, ID, and title</p></li>
-</ol></li>
+<li>gini, s80/s20</li>
 </ul>
-<hr />
-<ul>
-<li><p>Contents should include the following:</p>
-<ul>
-<li><p>A short abstract</p></li>
-<li><p>Description of data including data name, data code (or id),
-description</p></li>
-<li><p>A bar graph or a column graph, a histogram, a line graph, a
-scatter plot</p></li>
-<li><p>Observations or questions for visualizations</p></li>
-</ul></li>
-<li><p>run each code block, preview to
-create <code>w3_g123456.nb.html</code>,</p></li>
-<li><p>submit <code>w3_123456.nb.html</code> to Moodle.</p></li>
-</ul>
-<p>Submit your R Notebook file (w3_g123456.nb.html) in Moodle (Week
-Three Assignment).</p>
-<p><strong><em>Due Sunday 14, January 2024, 11:59 PM</em></strong></p>
 </div>
-<div id="recommended-readings-and-activities" class="section level2">
-<h2>Recommended Readings and Activities</h2>
-<ol style="list-style-type: decimal">
-<li><p>World Development Indicators: Data themes [<a href="https://datatopics.worldbank.org/world-development-indicators/">Link</a>]</p></li>
-<li><p>How does the World Bank classify countries? [<a href="https://datahelpdesk.worldbank.org/knowledgebase/articles/378834-how-does-the-world-bank-classify-countries">Link</a>]</p></li>
-<li><p>Posit Recipes（New edition of Posit Primers）: interactive
-exercises [<a href="https://posit.cloud/learn/recipes">Link</a>]</p></li>
-<li><p>RStudio IDE Cheat Sheet. PDF is available on the top right. [<a href="https://rstudio.github.io/cheatsheets/html/rstudio-ide.html">Site
-Link</a>]</p></li>
-</ol>
+</div>
+<div id="section" class="section level2">
+<h2></h2>
 <!-- rnb-text-end -->
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiRGF0YSBBbmFseXNpcyBmb3IgUmVzZWFyY2hlcnMgMjAyMywgV2VlayAzIgphdXRob3I6ICJIaXJvc2hpIFN1enVraSIKZGF0ZTogIjIwMjQvMDEvMTAiCm91dHB1dDoKICBpb3NsaWRlc19wcmVzZW50YXRpb246CiAgICB3aWRlc2NyZWVuOiB5ZXMKICAgIGRmX3ByaW50OiBwYWdlZAogIGh0bWxfbm90ZWJvb2s6IGRlZmF1bHQKICBodG1sX2RvY3VtZW50OgogICAgZGZfcHJpbnQ6IHBhZ2VkCi0tLQoKIyBQYXJ0IEk6IEVEQSB3aXRoIFdESQoKIyMgRXhwbG9yYXRvcnkgRGF0YSBBbmFseXNpcwoKLSAgIFN0YXRpc3RpY3MgdnMgRGF0YSBTY2llbmNlCgotICAgSHlwb3RoZXNpcyBUZXN0aW5nIHZzIEh5cG90aGVzaXMgQ3JlYXRpbmcKCi0gICBQcm9ibGVtIFNvbHZpbmcgdnMgVW5kZXJzdGFuZGluZyBJc3N1ZXMgKHRvIEF0dGFjayBQcm9ibGVtcykKCiMjIEEgc2hvcnQgaW50cm9kdWN0aW9uIHRvIEVEQSB3b3JrZmxvdwoKMS4gIFN0YXJ0IFJTdHVkaW8KCjIuICBDcmVhdGUgb3Igb3BlbiBhIHByb2plY3QKCiAgICAtICAgRmlsZSBcPiBPcGVuIFByb2plY3Qgb3IgRmlsZSBcPiBSZWNlbnQgUHJvamVjdHMgKG9yIEZpbGUgXD4gTmV3IFByb2plY3QpCgozLiAgUiBOb3RlYm9vaywgUiBNYXJrZG93biwgUXVhcnRvIChvciBSIFNjcmlwdCwgQ29uc29sZSkKCiAgICAtICAgUmVwcm9kdWNpYmlsaXR5LCBMaXRlcmF0ZSBQcm9ncmFtbWluZyBhbmQgZm9yIENvbW11bmljYXRpb24KCiAgICAtICAgUiBOb3RlYm9vazogSFRNTCBmaWxlIHdpdGggUiBNYXJrZG93biBzb3VyY2UgZmlsZQoKIyMjIEV4YW1wbGVzCgotICAgUHVyY2hhc2luZyBwb3dlciBwYXJpdGllcyAoUFBQcykgW1tMaW5rXShodHRwczovL2RzLXNsLmdpdGh1Yi5pby9pbnRybzJyL2RhNHIvZ2RwX3BwcC5uYi5odG1sKV0sIFtbUm1kXShodHRwczovL2dpdGh1Yi5jb20vZHMtc2wvaW50cm8yci9ibG9iL21haW4vZG9jcy9kYTRyL2dkcF9wcHAuUm1kKV0KCi0gICBMaWZlIEV4cGVjdGFuY3kgW1tMaW5rXShodHRwczovL2RzLXNsLmdpdGh1Yi5pby9pbnRybzJyL2RhNHIvbGlmZV9leHBlY3RhbmN5Lm5iLmh0bWwpXSwgW1tSbWRdKGh0dHBzOi8vZ2l0aHViLmNvbS9kcy1zbC9pbnRybzJyL2Jsb2IvbWFpbi9kb2NzL2RhNHIvbGlmZV9leHBlY3RhbmN5LlJtZCldCgojIyBSZXZpZXcgLSBXZWVrIDIKCiMjIyBXb3JsZCBEZXZlbG9wbWVudCBJbmRpY2F0b3JzCgotICAgRGF0YSB0aGVtZXMgW1tMaW5rXShodHRwczovL2RhdGF0b3BpY3Mud29ybGRiYW5rLm9yZy93b3JsZC1kZXZlbG9wbWVudC1pbmRpY2F0b3JzLyldCgotICAgUGVvcGxlIFtbTGlua10oaHR0cHM6Ly9kYXRhdG9waWNzLndvcmxkYmFuay5vcmcvd29ybGQtZGV2ZWxvcG1lbnQtaW5kaWNhdG9ycy90aGVtZXMvcGVvcGxlLmh0bWwpXQoKICAgIC0gICBMaWZlLWV4cGVjdGFuY3kKCiAgICAgICAgLSAgIFIgTm90ZWJvb2sgW1tMaW5rIHRvIHRoZSBzb3VyY2VdKGh0dHBzOi8vZ2l0aHViLmNvbS9kcy1zbC9pbnRybzJyL2Jsb2IvbWFpbi9kb2NzL2RhNHIvbGlmZV9leHBlY3RhbmN5LlJtZCldLCBbW1IgTm90ZWJvb2tdKGh0dHBzOi8vZHMtc2wuZ2l0aHViLmlvL2ludHJvMnIvZGE0ci9saWZlX2V4cGVjdGFuY3kubmIuaHRtbCldCgogICAgICAgIC0gICBXb3JsZCBEZXZlbG9wbWVudCBJbmRpY2F0b3JzOiBsaWZlLWV4cGVjdGFuY3kKCiAgICAgICAgICAgIC0gICBQb3B1bGF0aW9uLCB0b3RhbDogU1AuUE9QLlRPVEwgW1tMaW5rXShodHRwczovL2RhdGEud29ybGRiYW5rLm9yZy9pbmRpY2F0b3IvU1AuUE9QLlRPVEwpXQoKICAgICAgICAgICAgLSAgIEZlcnRpbGl0eSByYXRlLCB0b3RhbCAoYmlydGhzIHBlciB3b21hbik6IFNQLkRZTi5URlJULklOIFtbTGlua10oaHR0cHM6Ly9kYXRhLndvcmxkYmFuay5vcmcvaW5kaWNhdG9yL1NQLkRZTi5URlJULklOKV0KCiAgICAgICAgICAgIC0gICBMaWZlIGV4cGVjdGFuY3kgYXQgYmlydGgsIHRvdGFsOiBTUC5EWU4uTEUwMC5JTiBbW0xpbmtdKGh0dHBzOi8vZGF0YS53b3JsZGJhbmsub3JnL2luZGljYXRvci9TUC5EWU4uTEUwMC5JTildCgojIyBQcmV2aWV3CgotICAgV2VlayAzLCBKYW4uIDEwOiBFREEyLCBXREksIGRhdGEgdHJhbnNmb3JtYXRpb24sIGRhdGEgdmlzdWFsaXphdGlvbgoKLSAgIFdlZWsgNCwgSmFuLiAxNzogRURBMywgV0RJLCB0aWR5IGRhdGEgKGxvbmcgYW5kIHdpZGUgZGF0YSksIGNob3JvcGxldGggbWFwcwoKLSAgIFdlZWsgNSwgSmFuLiAyNDogRURBNCwgVU4sIE9FQ0QsIHJlYWRyLCByZWFkeGwsIHR3byB0YWJsZSB2ZXJ2ZXMKCi0gICBXZWVrIDYsIEphbi4gMzE6IEVEQTUsIFJvdW5kLXVwLCBjb21tdW5pY2F0aW9uLCBwZGYsIFdvcmQsIFBvd2VyUG9pbnQKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQoKIyMjIFdESSBQYWNrYWdlCgpDUkFOIFBhY2thZ2UgU2l0ZTogV0RJIFtbaHR0cHM6Ly9DUkFOLlItcHJvamVjdC5vcmcvcGFja2FnZT1XREldKGh0dHBzOi8vY3Jhbi5yLXByb2plY3Qub3JnL3BhY2thZ2U9V0RJKV0KCioqV0RJOiBXb3JsZCBEZXZlbG9wbWVudCBJbmRpY2F0b3JzIGFuZCBPdGhlciBXb3JsZCBCYW5rIERhdGEqKgoKVGhlIFdESSBmdW5jdGlvbiBwcm92aWRlcyBjb252ZW5pZW50IGFjY2VzcyB0byBvdmVyIDQwIGRhdGFiYXNlcyBob3N0ZWQgYnkgdGhlIFdvcmxkIEJhbmssIGluY2x1ZGluZyB0aGUgV29ybGQgRGV2ZWxvcG1lbnQgSW5kaWNhdG9ycyAoV0RJKSwgSW50ZXJuYXRpb25hbCBEZWJ0IFN0YXRpc3RpY3MsIERvaW5nIEJ1c2luZXNzLCBIdW1hbiBDYXBpdGFsIEluZGV4LCBhbmQgU3ViLW5hdGlvbmFsIHBvdmVydHkgaW5kaWNhdG9ycy4gRm9yIGZhc3Qgc2VhcmNoaW5nLCB0aGUgV0RJIHBhY2thZ2Ugc2hpcHMgd2l0aCBhIGxvY2FsIGxpc3Qgb2YgYXZhaWxhYmxlIGRhdGEgc2VyaWVzLiBUaGlzIGxvY2FsIGxpc3QgY2FuIGJlIHVwZGF0ZWQgdG8gdGhlIGxhdGVzdCB2ZXJzaW9uIHVzaW5nIHRoZSBXREljYWNoZSBmdW5jdGlvbi4KClNlYXJjaDogQ1JBTiBwYWNrYWdlPVdESS4KClNlZSBVUkwsIE5ld3MgYW5kIFJlZmVyZW5jZSBNYW51YWwgaW4gdGhlIHBhZ2UuCgoqRm9yIG90aGVyIHBhY2thZ2VzIHVzZSBhIHNpbWlsYXIgc3ludGF4ICdDUkFOIHBhY2thZ2U9J1BhY2thZ2UgTmFtZScqCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KCiMjIyBEYXRhIEltcG9ydGluZwoKYGBge3Igc2V0dXAsIGVjaG89RkFMU0UsIG1lc3NhZ2U9RkFMU0V9CmxpYnJhcnkodGlkeXZlcnNlKQpsaWJyYXJ5KFdESSkKYGBgCgpgYGB7ciBkZl9saWZlZXhwLCBldmFsPUZBTFNFfQpkZl9saWZlZXhwIDwtIFdESShpbmRpY2F0b3IgPSBjKHBvcCA9ICJTUC5QT1AuVE9UTCIsIAogICAgICAgICAgICAgICAgICBmZXJ0aWxpdHkgPSAiU1AuRFlOLlRGUlQuSU4iLCAKICAgICAgICAgICAgICAgICAgbGlmZWV4cCA9ICJTUC5EWU4uTEUwMC5JTiIpLCAKICAgICAgICAgICAgICAgICAgZXh0cmEgPSBUUlVFKQpgYGAKCkRlZmF1bHQgdmFsdWVzIGFyZSBmaWxsZWQgYXV0b21hdGljYWxseS4gU2VlIEhlbHAgV0RJCgpgYGB7ciBkZmxpZmVleHAsIGV2YWw9RkFMU0V9CmRmX2xpZmVleHAgPC0gV0RJKGNvdW50cnkgPSAiYWxsIiwgCiAgICAgICAgICAgICAgICAgIGluZGljYXRvciA9IGMocG9wID0gIlNQLlBPUC5UT1RMIiwgCiAgICAgICAgICAgICAgICAgIGZlcnRpbGl0eSA9ICJTUC5EWU4uVEZSVC5JTiIsIAogICAgICAgICAgICAgICAgICBsaWZlZXhwID0gIlNQLkRZTi5MRTAwLklOIiksIAogICAgICAgICAgICAgICAgICBzdGFydCA9IDE5NjAsIGVuZCA9IE5VTEwsIAogICAgICAgICAgICAgICAgICBleHRyYSA9IFRSVUUsIGNhY2hlID0gTlVMTCwgbGF0ZXN0ID0gTlVMTCwgCiAgICAgICAgICAgICAgICAgIGxhbmd1YWdlID0gImVuIikKYGBgCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KCiMjIyBEYXRhIFRyYW5zZm9ybWluZwoKLSAgIGBkcGx5cmAsIGEgcGFja2FnZSBpbiB0aWR5dmVyc2UKCiAgICAtICAgYHNlbGVjdCgpYCA6IHNlbGVjdCBjb2x1bW5zIGBzZWxlY3QoYygxLDIsNCw1LDcsOCkpYAoKICAgIC0gICBgZmlsdGVyKClgIDogc2VsZWN0IHJvd3MgbWVldGluZyBhIGNvbmRpdGlvbgoKICAgICAgICAtICAgYGZpbHRlcihjb3VudHJ5ID09ICJXb3JsZCIpYAoKICAgICAgICAtICAgYGZpbHRlcihpc28yYyAlaW4lIGMoIkpQIiwgIklOIiwgIkNOIikpYAoKICAgICAgICAtICAgYGZpbHRlcihyZWdpb24gIT0gIkFnZ3JlZ2F0ZXMiKWAKCiAgICAtICAgYGRpc3RpbmN0KClgIDogc2VsZWN0IHJvd3Mgd2l0aCBkaXN0aW5jdCB2YWx1ZXMgb2YgYSB2YXJpYWJsZSBgZGlzdGluY3QoY291bnRyeSlgCgogICAgLSAgIGBkcm9wX25hKClgIDogZHJvcCByb3dzIHdpdGggTkEgdmFsdWVzLCBlLmcuIGBkcm9wX25hKHBvcClgCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KCiMjIyBEYXRhIFZpc3VhbGl6aW5nCgotICAgZ2dwbG90MgoKICAgIC0gICBgZ2dwbG90KGFlcyh4PXZhcjEsIHk9dmFyMikpICtgCgogICAgLSAgIFNjYXR0ZXIgUGxvdDogYGdlb21fcG9pbnQoYWVzKGNvbD12YXIzLCBzaXplPXZhcjQsIHNoYXBlPXZhcjUpKWAKCiAgICAtICAgTGluZSBHcmFwaDogYGdlb21fbGluZShhZXMoY29sPXZhcjMsIGxpbmV0eXBlPXZhcjQpKSlgCgogICAgLSAgIFRpdGxlLCBTdWJ0aXRsZSwgTGVnZW5kIGFuZCBBeGlzIGxhYmVscwoKICAgICAgICAtICAgYGxhYnModGl0bGUgPSAiIiwgc3VidGl0bGUgPSIiLCB4ICA9ICIiLCB5ID0gIiIsIGNvbCA9ICIiKWAKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQoKIyMjIEV4YW1wbGVzIFtbTGlua10oaHR0cHM6Ly9kcy1zbC5naXRodWIuaW8vaW50cm8yci9kYTRyL2xpZmVfZXhwZWN0YW5jeS5uYi5odG1sKV0KCiMjIyMgTGluZSBncmFwaAoKYGBge3IgZGZsaWZlLCBlY2hvPUZBTFNFLCBtZXNzYWdlPUZBTFNFfQpkZl93ZGlfbGlmZSA8LSByZWFkX2NzdigiZGF0YS93ZGlfbGlmZS5jc3YiKQpkZl9saWZlIDwtIGRmX3dkaV9saWZlIHw+IHNlbGVjdChjKCJjb3VudHJ5IiwgImlzbzJjIiwgInllYXIiLCAibGlmZV9leHBlY3RhbmN5IiwgImZlcnRpbGl0eV9yYXRlIiwgInBvcHVsYXRpb24iLCAicmVnaW9uIiwgImluY29tZSIpKQpgYGAKCmBgYHtyIGxpbmVwbG90fQpkZl9saWZlIHw+IGZpbHRlcihjb3VudHJ5ID09ICJXb3JsZCIpIHw+IAogIGRyb3BfbmEobGlmZV9leHBlY3RhbmN5KSB8PgogIGdncGxvdChhZXMoeWVhciwgbGlmZV9leHBlY3RhbmN5KSkgKyBnZW9tX2xpbmUoKSArCiAgbGFicyh0aXRsZSA9ICJMaWZlIGV4cGVjdGFuY3kgb2YgdGhlIFdvcmxkIikKYGBgCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KCiMjIyMgU2NhdHRlciBQbG90CgpgYGB7ciBzY2F0dGVycGxvdH0KZGZfbGlmZSB8PiBmaWx0ZXIoeWVhciA9PSAyMDIxKSB8PgogIGZpbHRlcihyZWdpb24gIT0gIkFnZ3JlZ2F0ZXMiKSB8PiAKICBkcm9wX25hKGZlcnRpbGl0eV9yYXRlLCBsaWZlX2V4cGVjdGFuY3kpIHw+CiAgZ2dwbG90KGFlcyhmZXJ0aWxpdHlfcmF0ZSwgbGlmZV9leHBlY3RhbmN5LCBjb2wgPSByZWdpb24pKSArIAogIGdlb21fcG9pbnQoKQpgYGAKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQoKIyMjIFdvcmxkIERldmVsb3BtZW50IEluZGljYXRvcnMKCi0gICBEYXRhIHRoZW1lcyBbW0xpbmtdKGh0dHBzOi8vZGF0YXRvcGljcy53b3JsZGJhbmsub3JnL3dvcmxkLWRldmVsb3BtZW50LWluZGljYXRvcnMvKV0KCi0gICBEYXRhIENhdGFsb2c6IFdvcmxkIERldmVsb3BtZW50IEluZGljYXRvcnMgW1tMaW5rXShodHRwczovL2RhdGFjYXRhbG9nLndvcmxkYmFuay5vcmcvc2VhcmNoL2RhdGFzZXQvMDAzNzcxMi9Xb3JsZC1EZXZlbG9wbWVudC1JbmRpY2F0b3JzKV0KCi0gICBUaGUgV29ybGQgYnkgSW5jb21lIGFuZCBSZWdpb24gW1tMaW5rXShodHRwczovL2RhdGF0b3BpY3Mud29ybGRiYW5rLm9yZy93b3JsZC1kZXZlbG9wbWVudC1pbmRpY2F0b3JzL3RoZS13b3JsZC1ieS1pbmNvbWUtYW5kLXJlZ2lvbi5odG1sKV0KCi0gICBXb3JsZCBCYW5rIENvdW50cnkgYW5kIExlbmRpbmcgR3JvdXBzIFtbTGlua10oaHR0cHM6Ly9kYXRhaGVscGRlc2sud29ybGRiYW5rLm9yZy9rbm93bGVkZ2ViYXNlL2FydGljbGVzLzkwNjUxOS13b3JsZC1iYW5rLWNvdW50cnktYW5kLWxlbmRpbmctZ3JvdXBzKV0KCi0gICBXREkgUGFja2FnZQoKICAgIC0gICBXREkoKSwgV0RJY2FjaGUoKSwgV0RJc2VhcmNoKCkKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQoKIyMjIFdESWNhY2hlKCkgW1tMaW5rIGluIGRhNHJdKGh0dHBzOi8vaWN1LWhzdXp1a2kuZ2l0aHViLmlvL2RhNHIvd2RpZGF0YS5odG1sP3E9V0RJY2FjaGUjd2RpY2FjaGUpXQoKU2VlIEhlbHAuCgpgYGB7ciB3ZGljYWNoZSwgZXZhbD1GQUxTRX0Kd2RpY2FjaGUgPC0gV0RJY2FjaGUoKQpgYGAKCmBgYHtyIHdyaXRld2RpY2FjaGUsIGV2YWw9RkFMU0UsIGVjaG89RkFMU0V9CndyaXRlX3Jkcyh3ZGljYWNoZSwgImRhdGEvd2RpY2FjaGUucmRzIikKYGBgCgpgYGB7ciByZWFkd2RpY2FjaGUsIGVjaG89RkFMU0V9CndkaWNhY2hlIDwtIHJlYWRfcmRzKCJkYXRhL3dkaWNhY2hlLnJkcyIpCmBgYAoKYGBge3J9CnN0cih3ZGljYWNoZSkKYGBgCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KCmBgYHtyfQpzdHIod2RpY2FjaGUsIG1heC5sZXZlbD0xKQpgYGAKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQoKYGBge3J9CndkaWNhY2hlJHNlcmllcwpgYGAKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQoKYGBge3J9CndkaWNhY2hlJGNvdW50cnkKYGBgCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KCiMjIyBXcml0ZSBhbmQvb3IgUmVhZCBMaXN0cwoKYGBge3IgZXZhbD1GQUxTRX0Kd3JpdGVfcmRzKHdkaWNhY2hlLCAiZGF0YS93ZGljYWNoZS5yZHMiKQpgYGAKCmBgYHtyIGV2YWw9RkFMU0V9CndkaWNhY2hlIDwtIHJlYWRfcmRzKCJkYXRhL3dkaWNhY2hlLnJkcyIpCmBgYAoKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCgojIyMgV0RJc2VhcmNoKCkgW1tMaW5rIGluIGRhNHJdKGh0dHBzOi8vaWN1LWhzdXp1a2kuZ2l0aHViLmlvL2RhNHIvYTNyZXNwLmh0bWw/cT1XRElzZWFyY2gjd2Rpc2VhcmNoKV0KCmBgYHtyfQpXRElzZWFyY2goc3RyaW5nID0gImVkdWNhdGlvbiIsIGZpZWxkID0gIm5hbWUiLCBzaG9ydCA9IFRSVUUsIGNhY2hlID0gd2RpY2FjaGUpCmBgYAoKYHdkaWJ1bGsgPC0gV0RJYnVsayh0aW1lb3V0PTYwMClgCgpgYGAgICAgICAgICAKTGlzdCBvZiA2CiAkIERhdGEgICAgICAgICAgOiB0aWJibGUgWzI0LDkwMiwzODggw5cgNl0gKFMzOiB0YmxfZGYvdGJsL2RhdGEuZnJhbWUpCiAkIENvdW50cnkgICAgICAgOidkYXRhLmZyYW1lJzogMjY1IG9icy4gb2YgIDMxIHZhcmlhYmxlczoKICQgU2VyaWVzICAgICAgICA6J2RhdGEuZnJhbWUnOiAxNDg2IG9icy4gb2YgIDIxIHZhcmlhYmxlczoKICQgQ291bnRyeS1TZXJpZXM6J2RhdGEuZnJhbWUnOiA4MjQxIG9icy4gb2YgIDQgdmFyaWFibGVzOgogJCBTZXJpZXMtVGltZSAgIDonZGF0YS5mcmFtZSc6IDE0OCBvYnMuIG9mICA0IHZhcmlhYmxlczoKICQgRm9vdE5vdGUgICAgICA6J2RhdGEuZnJhbWUnOiA3NDE2ODkgb2JzLiBvZiAgNSB2YXJpYWJsZXM6CmBgYAoKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCgojIyMgZ3JvdXBfYnksIHN1bW1hcml6ZSBbW0xpbmsgaW4gZGE0cl0oaHR0cHM6Ly9kcGx5ci50aWR5dmVyc2Uub3JnL3JlZmVyZW5jZS9ncm91cF9ieS5odG1sKV0KCmBgYHtyfQpkZl9pcmlzIDwtIGRhdGFzZXRzOjppcmlzCmBgYAoKYGBge3J9CmRmX2lyaXMgfD4gZ3JvdXBfYnkoU3BlY2llcykgfD4KICBzdW1tYXJpemUobWVhbl9zbCA9IG1lYW4oU2VwYWwuTGVuZ3RoKSwgbWVhbl9zdyA9IG1lYW4oU2VwYWwuV2lkdGgpKQpgYGAKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQoKIyMjIG11dGF0ZSBbW0xpbmsgaW4gZGE0cl0oaHR0cHM6Ly9pY3UtaHN1enVraS5naXRodWIuaW8vZGE0ci9kcGx5ci5odG1sP3E9bXV0YXRlI211dGF0ZSldCgpgYGB7cn0KZGZfaXJpcyB8PiBtdXRhdGUoU2VwYWwuUmF0aW8gPSBTZXBhbC5MZW5ndGgvU2VwYWwuV2lkdGgpCmBgYAoKIyBQYXJ0IElJOiBQcmFjdGljdW0KCiMjIEZpbGUgTGlua3MKClFBTEw0MDEtMDMgW1tTbGlkZXNdKGh0dHBzOi8vZHMtc2wuZ2l0aHViLmlvL2ludHJvMnIvZGE0ci9xYWxsNDAxLTAzLmh0bWwjMSldLCBbW0xpbmtdKGh0dHBzOi8vZHMtc2wuZ2l0aHViLmlvL2ludHJvMnIvZGE0ci9xYWxsNDAxLTAzLm5iLmh0bWwpXSwgW1tSbWRdKGh0dHBzOi8vZ2l0aHViLmNvbS9kcy1zbC9pbnRybzJyL2Jsb2IvbWFpbi9kb2NzL2RhNHIvcWFsbDQwMS0wMy5SbWQpXQoKQ28yIHBlciBjYXBpdGEgW1tMaW5rXShodHRwczovL2RzLXNsLmdpdGh1Yi5pby9pbnRybzJyL2RhNHIvY28ycGNhcC5uYi5odG1sKV0sIFtbUm1kXShodHRwczovL2dpdGh1Yi5jb20vZHMtc2wvaW50cm8yci9ibG9iL21haW4vZG9jcy9kYTRyL2NvMnBjYXAuUm1kKV0KCldlZWsgVGhyZWUgQXNzaWdubWVudCBUZW1wbGF0ZSBbW0xpbmtdKGh0dHBzOi8vZHMtc2wuZ2l0aHViLmlvL2ludHJvMnIvZGE0ci93M19hc3NpZ25tZW50X3RlbXBsYXRlLm5iLmh0bWwpXSwgW1tSbWRdKGh0dHBzOi8vZ2l0aHViLmNvbS9kcy1zbC9pbnRybzJyL2Jsb2IvbWFpbi9kb2NzL2RhNHIvdzNfYXNzaWdubWVudF90ZW1wbGF0ZS5SbWQpXQoKIyMgV2VlayBUaHJlZSBBc3NpZ25tZW50CgpDaG9vc2UgdHdvIFdESSBjb2RlcyBhbmQgYW5hbHlzZSB0aGUgZGF0YS4KCi0gICBDcmVhdGUgYW4gUiBOb3RlYm9vayBvZiBhIERhdGEgQW5hbHlzaXMgY29udGFpbmluZyB0aGUgZm9sbG93aW5nIGFuZCBzdWJtaXQgdGhlIHJlbmRlcmVkIGZpbGUgKGVnLsKgYHczX2cxMjM0NTYubmIuaHRtbGApCgogICAgMS4gIGNyZWF0ZSBhbiBSIE5vdGVib29rIHVzaW5nIHRoZSBSIE5vdGVib29rIFRlbXBsYXRlIGluIE1vb2RsZSwgc2F2ZSBhc8KgYHczX2cxMjM0NTYuUm1kYCwKCiAgICAyLiAgZWRpdCBhdXRob3Igd2l0aCBuYW1lLCBJRCwgYW5kIHRpdGxlCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KCi0gICBDb250ZW50cyBzaG91bGQgaW5jbHVkZSB0aGUgZm9sbG93aW5nOgoKICAgIC0gICBBIHNob3J0IGFic3RyYWN0CgogICAgLSAgIERlc2NyaXB0aW9uIG9mIGRhdGEgaW5jbHVkaW5nIGRhdGEgbmFtZSwgZGF0YSBjb2RlIChvciBpZCksIGRlc2NyaXB0aW9uCgogICAgLSAgIEEgYmFyIGdyYXBoIG9yIGEgY29sdW1uIGdyYXBoLCBhIGhpc3RvZ3JhbSwgYSBsaW5lIGdyYXBoLCBhIHNjYXR0ZXIgcGxvdAoKICAgIC0gICBPYnNlcnZhdGlvbnMgb3IgcXVlc3Rpb25zIGZvciB2aXN1YWxpemF0aW9ucwoKLSAgIHJ1biBlYWNoIGNvZGUgYmxvY2ssIHByZXZpZXcgdG8gY3JlYXRlwqBgdzNfZzEyMzQ1Ni5uYi5odG1sYCwKCi0gICBzdWJtaXTCoGB3M18xMjM0NTYubmIuaHRtbGDCoHRvIE1vb2RsZS4KClN1Ym1pdCB5b3VyIFIgTm90ZWJvb2sgZmlsZSAodzNfZzEyMzQ1Ni5uYi5odG1sKSBpbiBNb29kbGUgKFdlZWsgVGhyZWUgQXNzaWdubWVudCkuCgoqKipEdWUgU3VuZGF5IDE0LCBKYW51YXJ5IDIwMjQsIDExOjU5IFBNKioqCgojIyBSZWNvbW1lbmRlZCBSZWFkaW5ncyBhbmQgQWN0aXZpdGllcwoKMS4gIFdvcmxkIERldmVsb3BtZW50IEluZGljYXRvcnM6IERhdGEgdGhlbWVzIFtbTGlua10oaHR0cHM6Ly9kYXRhdG9waWNzLndvcmxkYmFuay5vcmcvd29ybGQtZGV2ZWxvcG1lbnQtaW5kaWNhdG9ycy8pXQoKMi4gIEhvdyBkb2VzIHRoZSBXb3JsZCBCYW5rIGNsYXNzaWZ5IGNvdW50cmllcz8gW1tMaW5rXShodHRwczovL2RhdGFoZWxwZGVzay53b3JsZGJhbmsub3JnL2tub3dsZWRnZWJhc2UvYXJ0aWNsZXMvMzc4ODM0LWhvdy1kb2VzLXRoZS13b3JsZC1iYW5rLWNsYXNzaWZ5LWNvdW50cmllcyldCgozLiAgUG9zaXQgUmVjaXBlc++8iE5ldyBlZGl0aW9uIG9mIFBvc2l0IFByaW1lcnPvvIk6IGludGVyYWN0aXZlIGV4ZXJjaXNlcyBbW0xpbmtdKGh0dHBzOi8vcG9zaXQuY2xvdWQvbGVhcm4vcmVjaXBlcyldCgo0LiAgUlN0dWRpbyBJREUgQ2hlYXQgU2hlZXQuIFBERiBpcyBhdmFpbGFibGUgb24gdGhlIHRvcCByaWdodC4gW1tTaXRlIExpbmtdKGh0dHBzOi8vcnN0dWRpby5naXRodWIuaW8vY2hlYXRzaGVldHMvaHRtbC9yc3R1ZGlvLWlkZS5odG1sKV0K</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiRGF0YSBBbmFseXNpcyBmb3IgUmVzZWFyY2hlcnMgMjAyMywgV2VlayA1IgphdXRob3I6ICJIaXJvc2hpIFN1enVraSIKZGF0ZTogIjIwMjQvMDEvMjQiCm91dHB1dDoKICBodG1sX25vdGVib29rOiBkZWZhdWx0CiAgaW9zbGlkZXNfcHJlc2VudGF0aW9uOgogICAgd2lkZXNjcmVlbjogeWVzCiAgaHRtbF9kb2N1bWVudDoKICAgIGRmX3ByaW50OiBwYWdlZAotLS0KCiMgUGFydCBJOiBFREEgd2l0aCBQdWJsaWMgRGF0YQoKIyMgUHJldmlldwoKLSAgIFdlZWsgNSwgSmFuLiAyNDogRURBNCwgVU4sIE9FQ0QsIHJlYWRyLCByZWFkeGwsIHR3byB0YWJsZSB2ZXJ2ZXMsIG1vZGVsaW5nCgotICAgV2VlayA2LCBKYW4uIDMxOiBFREE1LCBSb3VuZC11cCwgY29tbXVuaWNhdGlvbiwgcGRmLCBXb3JkLCBQb3dlclBvaW50CgojIyBJbXBvcnRpbmcgRGF0YQoKIyMjIEZpbGUgVHlwZXMKCi0gICBDU1YKCi0gICBFeGNlbAoKLSAgIE90aGVyCgojIyBUcmFuc2Zvcm1pbmcgRGF0YQoKIyMjIENvbWJpbmluZyBUd28gVGFibGVzCgotICAgbGVmdF9qb2luLCBldGMKCiMjIE1vZGVsaW5nCgotICAgc2VhcmNoaW5nIG1vZGVsczogZmV3IG51bWJlcnMKCi0gICBsaW5lYXIgcmVncmVzc2lvbgoKIyMjIEV4YW1wbGVzCgotICAgZ2luaSwgczgwL3MyMAoKIyMgCg==</div>
 
 
 
@@ -2201,7 +1853,7 @@ $(document).ready(function () {
 <!-- code folding -->
 <script>
 $(document).ready(function () {
-  window.initializeSourceEmbed("qall401-03.Rmd");
+  window.initializeSourceEmbed("qall401-05.Rmd");
   window.initializeCodeFolding("show" === "show");
 });
 </script>

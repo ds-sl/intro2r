@@ -173,7 +173,7 @@ RStudio IDE Cheat Sheet. PDF is available on the top right. [[Site Link](https:/
 
 ## Week 3 (2024/01/10)
 
-Exploratory Data Analysis II [[Slides](https://ds-sl.github.io/intro2r/da4r/qall401-03.html#1)], [[R Notebook](https://ds-sl.github.io/intro2r/da4r/qall401-03.nb.html)], [Video1], [Video2]
+Exploratory Data Analysis II [[Slides](https://ds-sl.github.io/intro2r/da4r/qall401-03.html#1)], [[R Notebook](https://ds-sl.github.io/intro2r/da4r/qall401-03.nb.html)], [[Video1](https://youtu.be/SfnYiNBpLVc)], [[Video2](https://youtu.be/sRSkp8HvP6M)]
 
 -   Hypothesis testing!? Hypothesis creating.
 
@@ -227,7 +227,7 @@ Exploration of data using one or two related WDI indicators with extra = TRUE
 
 ## Week 4 (2024/01/17)
 
-Exploratory Data Analysis III [Slides], [R Notebook], [Video1], [Video2]
+Exploratory Data Analysis III [Slides], [[R Notebook](https://ds-sl.github.io/intro2r/da4r/qall401-04.nb.html)], [Video1], [Video2]
 
 ### Part I
 
@@ -253,7 +253,7 @@ Exploratory Data Analysis III [Slides], [R Notebook], [Video1], [Video2]
 
 ## Week 5 (2024/01/24)
 
-Exploratory Data Analysis IV [Slides], [R Notebook], [Video1], [Video2]
+Exploratory Data Analysis IV [Slides], [[R Notebook](https://ds-sl.github.io/intro2r/da4r/qall401-05.nb.html)], [Video1], [Video2]
 
 ### Part I
 
@@ -277,7 +277,7 @@ Exploratory Data Analysis IV [Slides], [R Notebook], [Video1], [Video2]
 
 ## Week 6 (2024/01/31)
 
-Exploratory Data Analysis V [Slides], [R Notebook], [Video1], [Video2]
+Exploratory Data Analysis V [Slides], [[R Notebook](https://ds-sl.github.io/intro2r/da4r/qall401-06.nb.html)], [Video1], [Video2]
 
 ### Part I
 
@@ -290,7 +290,7 @@ Exploratory Data Analysis V [Slides], [R Notebook], [Video1], [Video2]
 
 ### Assignment 5
 
-## Weekof 7 (2024/02/07)
+## Week 7 (2024/02/07)
 
 Professor Taisei Kaizoji
 

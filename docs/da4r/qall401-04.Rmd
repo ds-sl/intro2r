@@ -16,7 +16,7 @@ output:
 
 -   Week 4, Jan. 17: EDA3, WDI, tidy data (long and wide data), choropleth maps
 
--   Week 5, Jan. 24: EDA4, UN, OECD, readr, readxl, two table verves
+-   Week 5, Jan. 24: EDA4, UN, OECD, readr, readxl, two table verves, modeling
 
 -   Week 6, Jan. 31: EDA5, Round-up, communication, pdf, Word, PowerPoint
 
@@ -215,11 +215,13 @@ df_life |> filter(year == 2021) |>
 
     -   School enrollment, tertiary (% gross): SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)]
 
--   
-
 ------------------------------------------------------------------------
 
 ### Long Data vs Wide Data [[r4ds tidyr](https://icu-hsuzuki.github.io/da4r/tidy.html?q=pivot_longer#tidy)]
+
+```         
+df |> pivot_longer(cols = c(columns to collect), names_to = "name", values_to = "value")
+```
 
 ------------------------------------------------------------------------
 

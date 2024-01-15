@@ -1,0 +1,21 @@
+---
+title: "Data Analysis for Researchers 2023, Week 6"
+author: "Hiroshi Suzuki"
+date: "2024/01/31"
+output:
+  html_notebook: default
+  ioslides_presentation:
+    widescreen: yes
+  html_document:
+    df_print: paged
+---
+
+# Part I: EDA Round-up
+
+## Contents
+
+-   Week 6, Jan. 31: EDA5, Round-up, communication, pdf, Word, PowerPoint
+
+## EDA Review
+
+## Communication

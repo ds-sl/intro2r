@@ -11,8 +11,9 @@
 
 <meta name="author" content="Hiroshi Suzuki" />
 
+<meta name="date" content="2024-01-15" />
 
-<title>Data Analysis for Researchers 2023, Week 3</title>
+<title>Responses to Week Three Assignment</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1747,232 +1748,86 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Data Analysis for Researchers 2023, Week
-3</h1>
+<h1 class="title toc-ignore">Responses to Week Three Assignment</h1>
 <h4 class="author">Hiroshi Suzuki</h4>
-<h4 class="date">2024/01/10</h4>
+<h4 class="date">2024-01-15</h4>
 
 </div>
 
 
 <!-- rnb-text-begin -->
-<div id="part-i-eda-with-wdi" class="section level1">
-<h1>Part I: EDA with WDI</h1>
-<div id="exploratory-data-analysis" class="section level2">
-<h2>Exploratory Data Analysis</h2>
+<div id="week-three-assignment" class="section level2">
+<h2>Week Three Assignment</h2>
+<p>Choose two WDI codes and analyse the data.</p>
 <ul>
-<li><p>Statistics vs Data Science</p></li>
-<li><p>Hypothesis Testing vs Hypothesis Creating</p></li>
-<li><p>Problem Solving vs Understanding Issues (to Attack
-Problems)</p></li>
-</ul>
-</div>
-<div id="a-short-introduction-to-eda-workflow" class="section level2">
-<h2>A short introduction to EDA workflow</h2>
+<li><p>Create an R Notebook of a Data Analysis containing the following
+and submit the rendered file (eg. <code>w3_g123456.nb.html</code>)</p>
 <ol style="list-style-type: decimal">
-<li><p>Start RStudio</p></li>
-<li><p>Create or open a project</p>
+<li><p>create an R Notebook using the R Notebook Template in Moodle,
+save as <code>w3_g123456.Rmd</code>,</p></li>
+<li><p>edit author with name, ID, and title</p></li>
+<li><p>contents should include the following:</p>
 <ul>
-<li>File &gt; Open Project or File &gt; Recent Projects (or File &gt;
-New Project)</li>
+<li><p>A short abstract</p></li>
+<li><p>Explanation of data including data name, data code (or id), and
+description</p></li>
+<li><p>Many of the following: a bar graph (or a column graph), a
+histogram, a boxplot, a line graph, a scatter plot</p></li>
+<li><p>Observations or questions for visualizations</p></li>
 </ul></li>
-<li><p>R Notebook, R Markdown, Quarto (or R Script, Console)</p>
-<ul>
-<li><p>Reproducibility, Literate Programming and for
-Communication</p></li>
-<li><p>R Notebook: HTML file with R Markdown source file</p></li>
-</ul></li>
+<li><p>run each code block, preview to
+create <code>w3_g123456.nb.html</code>,</p></li>
+<li><p>submit <code>w3_123456.nb.html</code> to Moodle.</p></li>
+</ol></li>
+</ul>
+<p>Submit your R Notebook file (w3_g123456.nb.html) in Moodle (Week
+Three Assignment).</p>
+<p><strong><em>Due: Sunday 14, January 2024, 11:59 PM</em></strong></p>
+</div>
+<div id="your-project" class="section level1">
+<h1>Your Project</h1>
+<div id="title-of-your-project" class="section level2">
+<h2>Title of your project</h2>
+<p><em>The title can be in the title in YAML.</em></p>
+<div id="short-abstract" class="section level3">
+<h3>Short Abstract</h3>
+<p>We study …..</p>
+</div>
+<div id="about-data" class="section level3">
+<h3>About Data</h3>
+<ol style="list-style-type: decimal">
+<li>Name of the indicator 1: Indicator Code 1</li>
 </ol>
-<div id="examples" class="section level3">
-<h3>Examples</h3>
 <ul>
-<li><p>Purchasing power parities (PPPs) [<a href="https://ds-sl.github.io/intro2r/da4r/gdp_ppp.nb.html">Link</a>],
-[<a href="https://github.com/ds-sl/intro2r/blob/main/docs/da4r/gdp_ppp.Rmd">Rmd</a>]</p></li>
-<li><p>Life Expectancy [<a href="https://ds-sl.github.io/intro2r/da4r/life_expectancy.nb.html">Link</a>],
-[<a href="https://github.com/ds-sl/intro2r/blob/main/docs/da4r/life_expectancy.Rmd">Rmd</a>]</p></li>
+<li>Description:</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Name of the indicator 2: Indicator Code 2</li>
+</ol>
+<ul>
+<li>Description:</li>
 </ul>
 </div>
-</div>
-<div id="review---week-2" class="section level2">
-<h2>Review - Week 2</h2>
-<div id="world-development-indicators" class="section level3">
-<h3>World Development Indicators</h3>
-<ul>
-<li><p>Data themes [<a href="https://datatopics.worldbank.org/world-development-indicators/">Link</a>]</p></li>
-<li><p>People [<a href="https://datatopics.worldbank.org/world-development-indicators/themes/people.html">Link</a>]</p>
-<ul>
-<li><p>Life-expectancy</p>
-<ul>
-<li><p>R Notebook [<a href="https://github.com/ds-sl/intro2r/blob/main/docs/da4r/life_expectancy.Rmd">Link
-to the source</a>], [<a href="https://ds-sl.github.io/intro2r/da4r/life_expectancy.nb.html">R
-Notebook</a>]</p></li>
-<li><p>World Development Indicators: life-expectancy</p>
-<ul>
-<li><p>Population, total: SP.POP.TOTL [<a href="https://data.worldbank.org/indicator/SP.POP.TOTL">Link</a>]</p></li>
-<li><p>Fertility rate, total (births per woman): SP.DYN.TFRT.IN [<a href="https://data.worldbank.org/indicator/SP.DYN.TFRT.IN">Link</a>]</p></li>
-<li><p>Life expectancy at birth, total: SP.DYN.LE00.IN [<a href="https://data.worldbank.org/indicator/SP.DYN.LE00.IN">Link</a>]</p></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul>
-</div>
-</div>
-<div id="preview" class="section level2">
-<h2>Preview</h2>
-<ul>
-<li><p>Week 3, Jan. 10: EDA2, WDI, data transformation, data
-visualization</p></li>
-<li><p>Week 4, Jan. 17: EDA3, WDI, tidy data (long and wide data),
-choropleth maps</p></li>
-<li><p>Week 5, Jan. 24: EDA4, UN, OECD, readr, readxl, two table
-verves</p></li>
-<li><p>Week 6, Jan. 31: EDA5, Round-up, communication, pdf, Word,
-PowerPoint</p></li>
-</ul>
-<hr />
-<div id="wdi-package" class="section level3">
-<h3>WDI Package</h3>
-<p>CRAN Package Site: WDI [<a href="https://cran.r-project.org/package=WDI">https://CRAN.R-project.org/package=WDI</a>]</p>
-<p><strong>WDI: World Development Indicators and Other World Bank
-Data</strong></p>
-<p>The WDI function provides convenient access to over 40 databases
-hosted by the World Bank, including the World Development Indicators
-(WDI), International Debt Statistics, Doing Business, Human Capital
-Index, and Sub-national poverty indicators. For fast searching, the WDI
-package ships with a local list of available data series. This local
-list can be updated to the latest version using the WDIcache
-function.</p>
-<p>Search: CRAN package=WDI.</p>
-<p>See URL, News and Reference Manual in the page.</p>
-<p><em>For other packages use a similar syntax ‘CRAN package=’Package
-Name’</em></p>
-<hr />
-</div>
-<div id="data-importing" class="section level3">
-<h3>Data Importing</h3>
+<div id="set-up" class="section level3">
+<h3>Set up</h3>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjpbImRmX2xpZmVleHAgPC0gV0RJKGluZGljYXRvciA9IGMocG9wID0gXCJTUC5QT1AuVE9UTFwiLCAiLCIgICAgICAgICAgICAgICAgICBmZXJ0aWxpdHkgPSBcIlNQLkRZTi5URlJULklOXCIsICIsIiAgICAgICAgICAgICAgICAgIGxpZmVleHAgPSBcIlNQLkRZTi5MRTAwLklOXCIpLCAiLCIgICAgICAgICAgICAgICAgICBleHRyYSA9IFRSVUUpIl19 -->
-<pre class="r"><code>df_lifeexp &lt;- WDI(indicator = c(pop = &quot;SP.POP.TOTL&quot;, 
-                  fertility = &quot;SP.DYN.TFRT.IN&quot;, 
-                  lifeexp = &quot;SP.DYN.LE00.IN&quot;), 
-                  extra = TRUE)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KFdESSlcbmBgYCJ9 -->
+<pre class="r"><code>library(tidyverse)
+library(WDI)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Default values are filled automatically. See Help WDI</p>
+<p><em>Create data folder if you do not have it under Files.</em></p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjpbImRmX2xpZmVleHAgPC0gV0RJKGNvdW50cnkgPSBcImFsbFwiLCAiLCIgICAgICAgICAgICAgICAgICBpbmRpY2F0b3IgPSBjKHBvcCA9IFwiU1AuUE9QLlRPVExcIiwgIiwiICAgICAgICAgICAgICAgICAgZmVydGlsaXR5ID0gXCJTUC5EWU4uVEZSVC5JTlwiLCAiLCIgICAgICAgICAgICAgICAgICBsaWZlZXhwID0gXCJTUC5EWU4uTEUwMC5JTlwiKSwgIiwiICAgICAgICAgICAgICAgICAgc3RhcnQgPSAxOTYwLCBlbmQgPSBOVUxMLCAiLCIgICAgICAgICAgICAgICAgICBleHRyYSA9IFRSVUUsIGNhY2hlID0gTlVMTCwgbGF0ZXN0ID0gTlVMTCwgIiwiICAgICAgICAgICAgICAgICAgbGFuZ3VhZ2UgPSBcImVuXCIpIl19 -->
-<pre class="r"><code>df_lifeexp &lt;- WDI(country = &quot;all&quot;, 
-                  indicator = c(pop = &quot;SP.POP.TOTL&quot;, 
-                  fertility = &quot;SP.DYN.TFRT.IN&quot;, 
-                  lifeexp = &quot;SP.DYN.LE00.IN&quot;), 
-                  start = 1960, end = NULL, 
-                  extra = TRUE, cache = NULL, latest = NULL, 
-                  language = &quot;en&quot;)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiZGlyLmNyZWF0ZShcImRhdGFcIikifQ== -->
+<pre class="r"><code>dir.create(&quot;data&quot;)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<hr />
-</div>
-<div id="data-transforming" class="section level3">
-<h3>Data Transforming</h3>
-<ul>
-<li><p><code>dplyr</code>, a package in tidyverse</p>
-<ul>
-<li><p><code>select()</code> : select columns
-<code>select(c(1,2,4,5,7,8))</code></p></li>
-<li><p><code>filter()</code> : select rows meeting a condition</p>
-<ul>
-<li><p><code>filter(country == &quot;World&quot;)</code></p></li>
-<li><p><code>filter(iso2c %in% c(&quot;JP&quot;, &quot;IN&quot;, &quot;CN&quot;))</code></p></li>
-<li><p><code>filter(region != &quot;Aggregates&quot;)</code></p></li>
-</ul></li>
-<li><p><code>distinct()</code> : select rows with distinct values of a
-variable <code>distinct(country)</code></p></li>
-<li><p><code>drop_na()</code> : drop rows with NA values,
-e.g. <code>drop_na(pop)</code></p></li>
-</ul></li>
-</ul>
-<hr />
-</div>
-<div id="data-visualizing" class="section level3">
-<h3>Data Visualizing</h3>
-<ul>
-<li><p>ggplot2</p>
-<ul>
-<li><p><code>ggplot(aes(x=var1, y=var2)) +</code></p></li>
-<li><p>Scatter Plot:
-<code>geom_point(aes(col=var3, size=var4, shape=var5))</code></p></li>
-<li><p>Line Graph:
-<code>geom_line(aes(col=var3, linetype=var4)))</code></p></li>
-<li><p>Title, Subtitle, Legend and Axis labels</p>
-<ul>
-<li><code>labs(title = &quot;&quot;, subtitle =&quot;&quot;, x  = &quot;&quot;, y = &quot;&quot;, col = &quot;&quot;)</code></li>
-</ul></li>
-</ul></li>
-</ul>
-<hr />
-</div>
-<div id="examples-link" class="section level3">
-<h3>Examples [<a href="https://ds-sl.github.io/intro2r/da4r/life_expectancy.nb.html">Link</a>]</h3>
-<div id="line-graph" class="section level4">
-<h4>Line graph</h4>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfbGlmZSB8PiBmaWx0ZXIoY291bnRyeSA9PSBcIldvcmxkXCIpIHw+IFxuICBkcm9wX25hKGxpZmVfZXhwZWN0YW5jeSkgfD5cbiAgZ2dwbG90KGFlcyh5ZWFyLCBsaWZlX2V4cGVjdGFuY3kpKSArIGdlb21fbGluZSgpICtcbiAgbGFicyh0aXRsZSA9IFwiTGlmZSBleHBlY3RhbmN5IG9mIHRoZSBXb3JsZFwiKVxuYGBgIn0= -->
-<pre class="r"><code>df_life |&gt; filter(country == &quot;World&quot;) |&gt; 
-  drop_na(life_expectancy) |&gt;
-  ggplot(aes(year, life_expectancy)) + geom_line() +
-  labs(title = &quot;Life expectancy of the World&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<hr />
-</div>
-<div id="scatter-plot" class="section level4">
-<h4>Scatter Plot</h4>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfbGlmZSB8PiBmaWx0ZXIoeWVhciA9PSAyMDIxKSB8PlxuICBmaWx0ZXIocmVnaW9uICE9IFwiQWdncmVnYXRlc1wiKSB8PiBcbiAgZHJvcF9uYShmZXJ0aWxpdHlfcmF0ZSwgbGlmZV9leHBlY3RhbmN5KSB8PlxuICBnZ3Bsb3QoYWVzKGZlcnRpbGl0eV9yYXRlLCBsaWZlX2V4cGVjdGFuY3ksIGNvbCA9IHJlZ2lvbikpICsgXG4gIGdlb21fcG9pbnQoKVxuYGBgIn0= -->
-<pre class="r"><code>df_life |&gt; filter(year == 2021) |&gt;
-  filter(region != &quot;Aggregates&quot;) |&gt; 
-  drop_na(fertility_rate, life_expectancy) |&gt;
-  ggplot(aes(fertility_rate, life_expectancy, col = region)) + 
-  geom_point()</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<hr />
-</div>
-</div>
-<div id="world-development-indicators-1" class="section level3">
-<h3>World Development Indicators</h3>
-<ul>
-<li><p>Data themes [<a href="https://datatopics.worldbank.org/world-development-indicators/">Link</a>]</p></li>
-<li><p>Data Catalog: World Development Indicators [<a href="https://datacatalog.worldbank.org/search/dataset/0037712/World-Development-Indicators">Link</a>]</p></li>
-<li><p>The World by Income and Region [<a href="https://datatopics.worldbank.org/world-development-indicators/the-world-by-income-and-region.html">Link</a>]</p></li>
-<li><p>World Bank Country and Lending Groups [<a href="https://datahelpdesk.worldbank.org/knowledgebase/articles/906519-world-bank-country-and-lending-groups">Link</a>]</p></li>
-<li><p>WDI Package</p>
-<ul>
-<li>WDI(), WDIcache(), WDIsearch()</li>
-</ul></li>
-</ul>
-<hr />
-</div>
-<div id="wdicache-link-in-da4r" class="section level3">
-<h3>WDIcache() [<a href="https://icu-hsuzuki.github.io/da4r/wdidata.html?q=WDIcache#wdicache">Link
-in da4r</a>]</h3>
-<p>See Help.</p>
+<p><em>If you do not have <code>wdicache.rds</code> in your data folder,
+run the following two code chunks.</em></p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoid2RpY2FjaGUgPC0gV0RJY2FjaGUoKSJ9 -->
@@ -1988,173 +1843,413 @@ in da4r</a>]</h3>
 <!-- rnb-chunk-begin -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RyKHdkaWNhY2hlKVxuYGBgIn0= -->
-<pre class="r"><code>str(wdicache)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<hr />
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RyKHdkaWNhY2hlLCBtYXgubGV2ZWw9MSlcbmBgYCJ9 -->
-<pre class="r"><code>str(wdicache, max.level=1)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTGlzdCBvZiAyXG4gJCBzZXJpZXMgOidkYXRhLmZyYW1lJzpcdDI0NDYwIG9icy4gb2YgIDUgdmFyaWFibGVzOlxuICQgY291bnRyeTonZGF0YS5mcmFtZSc6XHQyOTcgb2JzLiBvZiAgOSB2YXJpYWJsZXM6XG4ifQ== -->
-<pre><code>List of 2
- $ series :&#39;data.frame&#39;:    24460 obs. of  5 variables:
- $ country:&#39;data.frame&#39;:    297 obs. of  9 variables:</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<hr />
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud2RpY2FjaGUkc2VyaWVzXG5gYGAifQ== -->
-<pre class="r"><code>wdicache$series</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<hr />
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud2RpY2FjaGUkY291bnRyeVxuYGBgIn0= -->
-<pre class="r"><code>wdicache$country</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<hr />
 </div>
-<div id="write-andor-read-lists" class="section level3">
-<h3>Write and/or Read Lists</h3>
+<div id="importing-data" class="section level3">
+<h3>Importing Data</h3>
+<span style="color: red;">Edit the following code chunk!</span>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoid3JpdGVfcmRzKHdkaWNhY2hlLCBcImRhdGEvd2RpY2FjaGUucmRzXCIpIn0= -->
-<pre class="r"><code>write_rds(wdicache, &quot;data/wdicache.rds&quot;)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2hvc2VuX2luZGljYXRvcl8xIDwtIFwiU0UuU0VDLkVOUlJcIiAjZXhhbXBsZVxuc2hvcnRfbmFtZV8xIDwtICdzZWMnXG5jaG9zZW5faW5kaWNhdG9yXzIgPC0gXCJOWS5HRFAuUENBUC5QUC5LRFwiICNleGFtcGxlXG5zaG9ydF9uYW1lXzIgPC0gJ2dkcHBjYXAnXG5gYGAifQ== -->
+<pre class="r"><code>chosen_indicator_1 &lt;- &quot;SE.SEC.ENRR&quot; #example
+short_name_1 &lt;- &#39;sec&#39;
+chosen_indicator_2 &lt;- &quot;NY.GDP.PCAP.PP.KD&quot; #example
+short_name_2 &lt;- &#39;gdppcap&#39;</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Run the following in the beginning.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfeW91cmRhdGEgPC0gV0RJKFxuICBpbmRpY2F0b3IgPSBjKHNob3J0X25hbWVfMSA9IGNob3Nlbl9pbmRpY2F0b3JfMSxcbiAgICAgICAgICAgICAgICBzaG9ydF9uYW1lXzIgPSBjaG9zZW5faW5kaWNhdG9yXzIpLFxuICBleHRyYSA9IFRSVUUsIGNhY2hlID0gd2RpY2FjaGUpXG5gYGAifQ== -->
+<pre class="r"><code>df_yourdata &lt;- WDI(
+  indicator = c(short_name_1 = chosen_indicator_1,
+                short_name_2 = chosen_indicator_2),
+  extra = TRUE, cache = wdicache)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoid2RpY2FjaGUgPC0gcmVhZF9yZHMoXCJkYXRhL3dkaWNhY2hlLnJkc1wiKSJ9 -->
-<pre class="r"><code>wdicache &lt;- read_rds(&quot;data/wdicache.rds&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<hr />
-</div>
-<div id="wdisearch-link-in-da4r" class="section level3">
-<h3>WDIsearch() [<a href="https://icu-hsuzuki.github.io/da4r/a3resp.html?q=WDIsearch#wdisearch">Link
-in da4r</a>]</h3>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuV0RJc2VhcmNoKHN0cmluZyA9IFwiZWR1Y2F0aW9uXCIsIGZpZWxkID0gXCJuYW1lXCIsIHNob3J0ID0gVFJVRSwgY2FjaGUgPSB3ZGljYWNoZSlcbmBgYCJ9 -->
-<pre class="r"><code>WDIsearch(string = &quot;education&quot;, field = &quot;name&quot;, short = TRUE, cache = wdicache)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p><code>wdibulk &lt;- WDIbulk(timeout=600)</code></p>
-<pre><code>List of 6
- $ Data          : tibble [24,902,388 × 6] (S3: tbl_df/tbl/data.frame)
- $ Country       :&#39;data.frame&#39;: 265 obs. of  31 variables:
- $ Series        :&#39;data.frame&#39;: 1486 obs. of  21 variables:
- $ Country-Series:&#39;data.frame&#39;: 8241 obs. of  4 variables:
- $ Series-Time   :&#39;data.frame&#39;: 148 obs. of  4 variables:
- $ FootNote      :&#39;data.frame&#39;: 741689 obs. of  5 variables:</code></pre>
-<hr />
-</div>
-<div id="group_by-summarize-link-in-da4r" class="section level3">
-<h3>group_by, summarize [<a href="https://dplyr.tidyverse.org/reference/group_by.html">Link in
-da4r</a>]</h3>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfaXJpcyA8LSBkYXRhc2V0czo6aXJpc1xuYGBgIn0= -->
-<pre class="r"><code>df_iris &lt;- datasets::iris</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud3JpdGVfY3N2KGRmX3lvdXJkYXRhLCBcImRhdGEveW91cmRhdGEuY3N2XCIpXG5gYGAifQ== -->
+<pre class="r"><code>write_csv(df_yourdata, &quot;data/yourdata.csv&quot;)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfaXJpcyB8PiBncm91cF9ieShTcGVjaWVzKSB8PlxuICBzdW1tYXJpemUobWVhbl9zbCA9IG1lYW4oU2VwYWwuTGVuZ3RoKSwgbWVhbl9zdyA9IG1lYW4oU2VwYWwuV2lkdGgpKVxuYGBgIn0= -->
-<pre class="r"><code>df_iris |&gt; group_by(Species) |&gt;
-  summarize(mean_sl = mean(Sepal.Length), mean_sw = mean(Sepal.Width))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfeW91cmRhdGEgPC0gcmVhZF9jc3YoXCJkYXRhL3lvdXJkYXRhLmNzdlwiKVxuYGBgIn0= -->
+<pre class="r"><code>df_yourdata &lt;- read_csv(&quot;data/yourdata.csv&quot;)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<hr />
-</div>
-<div id="mutate-link-in-da4r" class="section level3">
-<h3>mutate [<a href="https://icu-hsuzuki.github.io/da4r/dplyr.html?q=mutate#mutate">Link
-in da4r</a>]</h3>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfaXJpcyB8PiBtdXRhdGUoU2VwYWwuUmF0aW8gPSBTZXBhbC5MZW5ndGgvU2VwYWwuV2lkdGgpXG5gYGAifQ== -->
-<pre class="r"><code>df_iris |&gt; mutate(Sepal.Ratio = Sepal.Length/Sepal.Width)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfeW91cmRhdGFcbmBgYCJ9 -->
+<pre class="r"><code>df_yourdata</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RyKGRmX3lvdXJkYXRhKVxuYGBgIn0= -->
+<pre class="r"><code>str(df_yourdata)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
-</div>
-</div>
-<div id="part-ii-practicum" class="section level1">
-<h1>Part II: Practicum</h1>
-<div id="file-links" class="section level2">
-<h2>File Links</h2>
-<p>QALL401-03 [<a href="https://ds-sl.github.io/intro2r/da4r/qall401-03.html#1">Slides</a>],
-[<a href="https://ds-sl.github.io/intro2r/da4r/qall401-03.nb.html">Link</a>],
-[<a href="https://github.com/ds-sl/intro2r/blob/main/docs/da4r/qall401-03.Rmd">Rmd</a>]</p>
-<p>Co2 per capita [<a href="https://ds-sl.github.io/intro2r/da4r/co2pcap.nb.html">Link</a>],
-[<a href="https://github.com/ds-sl/intro2r/blob/main/docs/da4r/co2pcap.Rmd">Rmd</a>]</p>
-<p>Week Three Assignment Template [<a href="https://ds-sl.github.io/intro2r/da4r/w3_assignment_template.nb.html">Link</a>],
-[<a href="https://github.com/ds-sl/intro2r/blob/main/docs/da4r/w3_assignment_template.Rmd">Rmd</a>]</p>
-</div>
-<div id="week-three-assignment" class="section level2">
-<h2>Week Three Assignment</h2>
-<p>Choose two WDI codes and analyse the data.</p>
+<div id="visualization-by-line-graphs" class="section level3">
+<h3>Visualization by Line Graphs</h3>
+<div id="name-of-the-indicator-1" class="section level4">
+<h4>Name of the Indicator 1</h4>
+<span style="color: red;">Edit the title and the label of y-axis.</span>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuQ09VTlRSWSA8LSBcIldvcmxkXCJcbmRmX3lvdXJkYXRhIHw+IGZpbHRlcihjb3VudHJ5ID09IENPVU5UUlkpIHw+IGRyb3BfbmEoc2hvcnRfbmFtZV8xKSB8PlxuICBnZ3Bsb3QoYWVzKHllYXIsIHNob3J0X25hbWVfMSkpICsgZ2VvbV9saW5lKCkgK1xuICBsYWJzKHRpdGxlID0gXCJcIixcbiAgICAgICB5ID0gXCJcIilcbmBgYCJ9 -->
+<pre class="r"><code>COUNTRY &lt;- &quot;World&quot;
+df_yourdata |&gt; filter(country == COUNTRY) |&gt; drop_na(short_name_1) |&gt;
+  ggplot(aes(year, short_name_1)) + geom_line() +
+  labs(title = &quot;&quot;,
+       y = &quot;&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Observations and Questions:</strong></p>
 <ul>
-<li><p>Create an R Notebook of a Data Analysis containing the following
-and submit the rendered file (eg. <code>w3_g123456.nb.html</code>)</p>
-<ol style="list-style-type: decimal">
-<li><p>create an R Notebook using the R Notebook Template in Moodle,
-save as <code>w3_g123456.Rmd</code>,</p></li>
-<li><p>edit author with name, ID, and title</p></li>
-</ol></li>
+<li></li>
 </ul>
-<hr />
-<ul>
-<li><p>Contents should include the following:</p>
-<ul>
-<li><p>A short abstract</p></li>
-<li><p>Description of data including data name, data code (or id),
-description</p></li>
-<li><p>A bar graph or a column graph, a histogram, a line graph, a
-scatter plot</p></li>
-<li><p>Observations or questions for visualizations</p></li>
-</ul></li>
-<li><p>run each code block, preview to
-create <code>w3_g123456.nb.html</code>,</p></li>
-<li><p>submit <code>w3_123456.nb.html</code> to Moodle.</p></li>
-</ul>
-<p>Submit your R Notebook file (w3_g123456.nb.html) in Moodle (Week
-Three Assignment).</p>
-<p><strong><em>Due Sunday 14, January 2024, 11:59 PM</em></strong></p>
-</div>
-<div id="recommended-readings-and-activities" class="section level2">
-<h2>Recommended Readings and Activities</h2>
-<ol style="list-style-type: decimal">
-<li><p>World Development Indicators: Data themes [<a href="https://datatopics.worldbank.org/world-development-indicators/">Link</a>]</p></li>
-<li><p>How does the World Bank classify countries? [<a href="https://datahelpdesk.worldbank.org/knowledgebase/articles/378834-how-does-the-world-bank-classify-countries">Link</a>]</p></li>
-<li><p>Posit Recipes（New edition of Posit Primers）: interactive
-exercises [<a href="https://posit.cloud/learn/recipes">Link</a>]</p></li>
-<li><p>RStudio IDE Cheat Sheet. PDF is available on the top right. [<a href="https://rstudio.github.io/cheatsheets/html/rstudio-ide.html">Site
-Link</a>]</p></li>
-</ol>
+<span style="color: red;">Edit ISO2C, title, subtitle, and the label of y-axis.</span>
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuSVNPMkMgPC0gYyhcIkpQXCIsIFwiQ05cIiwgXCJJRFwiLCBcIkdCXCIsIFwiVVNcIiwgXCJERVwiLCBcIkZSXCIpXG5kZl95b3VyZGF0YSB8PiBmaWx0ZXIoaXNvMmMgJWluJSBJU08yQykgfD4gXG4gIGRyb3BfbmEoc2hvcnRfbmFtZV8xKSB8PlxuICBnZ3Bsb3QoYWVzKHllYXIsIHNob3J0X25hbWVfMSwgY29sID0gaXNvMmMpKSArIFxuICBnZW9tX2xpbmUoKSArXG4gIGxhYnModGl0bGUgPSBcIlwiLFxuICAgICAgIHN1YnRpdGxlID0gXCJDaGluYSwgR2VybWFueSwgRnJhbmNlLCBVbml0ZWQgS2luZ2RvbSwgSW5kaWEsIEphcGFuLCBVbml0ZWQgU3RhdGVzXCIsIFxuICAgICAgIHkgPSBcIlwiKVxuYGBgIn0= -->
+<pre class="r"><code>ISO2C &lt;- c(&quot;JP&quot;, &quot;CN&quot;, &quot;ID&quot;, &quot;GB&quot;, &quot;US&quot;, &quot;DE&quot;, &quot;FR&quot;)
+df_yourdata |&gt; filter(iso2c %in% ISO2C) |&gt; 
+  drop_na(short_name_1) |&gt;
+  ggplot(aes(year, short_name_1, col = iso2c)) + 
+  geom_line() +
+  labs(title = &quot;&quot;,
+       subtitle = &quot;China, Germany, France, United Kingdom, India, Japan, United States&quot;, 
+       y = &quot;&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Observations and Questions:</strong></p>
+<ul>
+<li></li>
+</ul>
+</div>
+<div id="name-of-the-indicator-2" class="section level4">
+<h4>Name of the Indicator 2</h4>
+<span style="color: red;">Edit COUNTRY and the title.</span>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuQ09VTlRSWSA8LSBcIldvcmxkXCJcbmRmX3lvdXJkYXRhIHw+IGZpbHRlcihjb3VudHJ5ID09IENPVU5UUlkpIHw+IGRyb3BfbmEoc2hvcnRfbmFtZV8yKSB8PlxuICBnZ3Bsb3QoYWVzKHllYXIsIHNob3J0X25hbWVfMikpICsgZ2VvbV9saW5lKCkgK1xuICBsYWJzKHRpdGxlID0gXCJcIilcbmBgYCJ9 -->
+<pre class="r"><code>COUNTRY &lt;- &quot;World&quot;
+df_yourdata |&gt; filter(country == COUNTRY) |&gt; drop_na(short_name_2) |&gt;
+  ggplot(aes(year, short_name_2)) + geom_line() +
+  labs(title = &quot;&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Observations and Questions:</strong></p>
+<ul>
+<li></li>
+</ul>
+<span style="color: red;">Edit ISO2C, title, subtitle, and the label of y-axis, and add caption if preferable.</span>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuSVNPMkMgPC0gYyhcIkpQXCIsIFwiQ05cIiwgXCJJRFwiLCBcIkdCXCIsIFwiVVNcIiwgXCJERVwiLCBcIkZSXCIpXG5kZl95b3VyZGF0YSB8PiBmaWx0ZXIoaXNvMmMgJWluJSBJU08yQykgfD4gZHJvcF9uYShzaG9ydF9uYW1lXzIpIHw+XG4gIGdncGxvdChhZXMoeWVhciwgc2hvcnRfbmFtZV8yLCBjb2wgPSBpc28yYykpICsgXG4gIGdlb21fbGluZSgpICtcbiAgbGFicyh0aXRsZSA9IFwiXCIsXG4gICAgICAgc3VidGl0bGUgPSBcIkNoaW5hLCBHZXJtYW55LCBGcmFuY2UsIFVuaXRlZCBLaW5nZG9tLCBJbmRpYSwgSmFwYW4sIFVuaXRlZCBTdGF0ZXNcIiwgXG4gICAgICAgeSA9IFwiXCIsXG4gICAgICAgY2FwdGlvbiA9IFwiXCIpXG5gYGAifQ== -->
+<pre class="r"><code>ISO2C &lt;- c(&quot;JP&quot;, &quot;CN&quot;, &quot;ID&quot;, &quot;GB&quot;, &quot;US&quot;, &quot;DE&quot;, &quot;FR&quot;)
+df_yourdata |&gt; filter(iso2c %in% ISO2C) |&gt; drop_na(short_name_2) |&gt;
+  ggplot(aes(year, short_name_2, col = iso2c)) + 
+  geom_line() +
+  labs(title = &quot;&quot;,
+       subtitle = &quot;China, Germany, France, United Kingdom, India, Japan, United States&quot;, 
+       y = &quot;&quot;,
+       caption = &quot;&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Observations and Questions:</strong></p>
+<ul>
+<li></li>
+</ul>
+</div>
+<div id="ranking-of-the-indicator-1" class="section level4">
+<h4>Ranking of the indicator 1</h4>
+<span style="color: red;">Edit year if necessary.</span>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfeW91cmRhdGEgfD4gZmlsdGVyKHllYXIgPT0gMjAyMCkgfD4gXG4gIGZpbHRlcihyZWdpb24gIT0gXCJBZ2dyZWdhdGVzXCIpIHw+XG4gIGRyb3BfbmEoc2hvcnRfbmFtZV8xKSB8PiBhcnJhbmdlKGRlc2Moc2hvcnRfbmFtZV8xKSlcbmBgYCJ9 -->
+<pre class="r"><code>df_yourdata |&gt; filter(year == 2020) |&gt; 
+  filter(region != &quot;Aggregates&quot;) |&gt;
+  drop_na(short_name_1) |&gt; arrange(desc(short_name_1))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfeW91cmRhdGEgfD4gZmlsdGVyKHllYXIgPT0gMjAyMCkgfD4gXG4gIGZpbHRlcihyZWdpb24gIT0gXCJBZ2dyZWdhdGVzXCIpIHw+XG4gIGRyb3BfbmEoc2hvcnRfbmFtZV8xKSB8PiBhcnJhbmdlKHNob3J0X25hbWVfMSlcbmBgYCJ9 -->
+<pre class="r"><code>df_yourdata |&gt; filter(year == 2020) |&gt; 
+  filter(region != &quot;Aggregates&quot;) |&gt;
+  drop_na(short_name_1) |&gt; arrange(short_name_1)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Observations and Questions:</strong></p>
+<ul>
+<li></li>
+</ul>
+</div>
+<div id="ranking-of-the-indicator-2" class="section level4">
+<h4>Ranking of the Indicator 2</h4>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfeW91cmRhdGEgfD4gZmlsdGVyKHllYXIgPT0gMjAyMCkgfD4gXG4gIGZpbHRlcihyZWdpb24gIT0gXCJBZ2dyZWdhdGVzXCIpIHw+XG4gIGRyb3BfbmEoc2hvcnRfbmFtZV8yKSB8PiBhcnJhbmdlKGRlc2Moc2hvcnRfbmFtZV8yKSlcbmBgYCJ9 -->
+<pre class="r"><code>df_yourdata |&gt; filter(year == 2020) |&gt; 
+  filter(region != &quot;Aggregates&quot;) |&gt;
+  drop_na(short_name_2) |&gt; arrange(desc(short_name_2))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Observations and Questions:</strong></p>
+<ul>
+<li></li>
+</ul>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfeW91cmRhdGEgfD4gZmlsdGVyKHllYXIgPT0gMjAyMCkgfD4gXG4gIGZpbHRlcihyZWdpb24gIT0gXCJBZ2dyZWdhdGVzXCIpIHw+XG4gIGRyb3BfbmEoc2hvcnRfbmFtZV8yKSB8PiBhcnJhbmdlKHNob3J0X25hbWVfMilcbmBgYCJ9 -->
+<pre class="r"><code>df_yourdata |&gt; filter(year == 2020) |&gt; 
+  filter(region != &quot;Aggregates&quot;) |&gt;
+  drop_na(short_name_2) |&gt; arrange(short_name_2)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Observations and Questions:</strong></p>
+<ul>
+<li></li>
+</ul>
+</div>
+</div>
+<div id="histograms-and-boxplots-for-variation" class="section level3">
+<h3>Histograms and Boxplots for Variation</h3>
+<div id="name-of-the-indicator-1-1" class="section level4">
+<h4>Name of the Indicator 1</h4>
+<span style="color: red;">Edit the title and year.</span>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuSU5DT01FIDwtYyhcIkxvdyBpbmNvbWVcIiwgXCJMb3dlciBtaWRkbGUgaW5jb21lXCIsIFwiVXBwZXIgbWlkZGxlIGluY29tZVwiLCBcblwiSGlnaCBpbmNvbWVcIilcbmBgYCJ9 -->
+<pre class="r"><code>INCOME &lt;-c(&quot;Low income&quot;, &quot;Lower middle income&quot;, &quot;Upper middle income&quot;, 
+&quot;High income&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfeW91cmRhdGEgfD4gZmlsdGVyKHllYXIgPT0gMjAyMCkgfD4gXG4gIGZpbHRlcihyZWdpb24gIT0gXCJBZ2dyZWdhdGVzXCIpIHw+IFxuICBkcm9wX25hKHNob3J0X25hbWVfMSkgfD4gZmlsdGVyKGluY29tZSAhPSBcIk5vdCBjbGFzc2lmaWVkXCIpIHw+XG4gIGdncGxvdChhZXMoc2hvcnRfbmFtZV8xLCBmaWxsID0gZmFjdG9yKGluY29tZSwgbGV2ZWxzID0gSU5DT01FKSkpICsgZ2VvbV9oaXN0b2dyYW0oYmlucyA9IDE1LCBjb2wgPSBcImJsYWNrXCIsIGxpbmV3aWR0aCA9IDAuMSkgKyBcbiAgc2NhbGVfeF9sb2cxMCgpICtcbiAgbGFicyh0aXRsZSA9IFwiXCIsIGZpbGwgPSBcIlwiKVxuYGBgIn0= -->
+<pre class="r"><code>df_yourdata |&gt; filter(year == 2020) |&gt; 
+  filter(region != &quot;Aggregates&quot;) |&gt; 
+  drop_na(short_name_1) |&gt; filter(income != &quot;Not classified&quot;) |&gt;
+  ggplot(aes(short_name_1, fill = factor(income, levels = INCOME))) + geom_histogram(bins = 15, col = &quot;black&quot;, linewidth = 0.1) + 
+  scale_x_log10() +
+  labs(title = &quot;&quot;, fill = &quot;&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Observations and Questions:</strong></p>
+<ul>
+<li></li>
+</ul>
+<span style="color: red;">Edit the title and the years.</span>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfeW91cmRhdGEgfD4gZmlsdGVyKHllYXIgJWluJSBjKDE5OTAsIDIwMDAsIDIwMTAsIDIwMjApKSB8PiBmaWx0ZXIocmVnaW9uICE9IFwiQWdncmVnYXRlc1wiKSB8PiBcbiAgZHJvcF9uYShzaG9ydF9uYW1lXzEpIHw+IGZpbHRlcihzaG9ydF9uYW1lXzEgPiAwKSB8PiBmaWx0ZXIoaW5jb21lICE9IFwiTm90IGNsYXNzaWZpZWRcIikgfD4gXG4gIGdncGxvdChhZXMoc2hvcnRfbmFtZV8xLCBmaWxsID0gZmFjdG9yKHllYXIpKSkgKyBcbiAgZ2VvbV9oaXN0b2dyYW0oYmlucyA9IDE1LCBjb2wgPSBcImJsYWNrXCIsIGxpbmV3aWR0aCA9IDAuMSkgKyBcbiAgc2NhbGVfeF9sb2cxMCgpICsgZmFjZXRfd3JhcCh+eWVhcikgK1xuICBsYWJzKHRpdGxlID0gXCJcIiwgZmlsbCA9IFwiXCIpXG5gYGAifQ== -->
+<pre class="r"><code>df_yourdata |&gt; filter(year %in% c(1990, 2000, 2010, 2020)) |&gt; filter(region != &quot;Aggregates&quot;) |&gt; 
+  drop_na(short_name_1) |&gt; filter(short_name_1 &gt; 0) |&gt; filter(income != &quot;Not classified&quot;) |&gt; 
+  ggplot(aes(short_name_1, fill = factor(year))) + 
+  geom_histogram(bins = 15, col = &quot;black&quot;, linewidth = 0.1) + 
+  scale_x_log10() + facet_wrap(~year) +
+  labs(title = &quot;&quot;, fill = &quot;&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Observations and Questions:</strong></p>
+<ul>
+<li></li>
+</ul>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfeW91cmRhdGEgfD4gZmlsdGVyKHllYXIgJWluJSBjKDE5OTAsIDIwMDAsIDIwMTAsIDIwMjApKSB8PiBmaWx0ZXIocmVnaW9uICE9IFwiQWdncmVnYXRlc1wiKSB8PiBcbiAgZHJvcF9uYShzaG9ydF9uYW1lXzEpIHw+IGZpbHRlcihzaG9ydF9uYW1lXzEgPiAwKSB8PiBmaWx0ZXIoaW5jb21lICE9IFwiTm90IGNsYXNzaWZpZWRcIikgfD4gXG4gIGdncGxvdChhZXMoc2hvcnRfbmFtZV8xLCBmYWN0b3IoeWVhciksIGZpbGwgPSBmYWN0b3IoeWVhcikpKSArIFxuICBnZW9tX2JveHBsb3QoKSArIHNjYWxlX3hfbG9nMTAoKSArIGxhYnMoeSA9IFwiXCIpICsgdGhlbWUobGVnZW5kLnBvc2l0aW9uID0gXCJub25lXCIpXG5gYGAifQ== -->
+<pre class="r"><code>df_yourdata |&gt; filter(year %in% c(1990, 2000, 2010, 2020)) |&gt; filter(region != &quot;Aggregates&quot;) |&gt; 
+  drop_na(short_name_1) |&gt; filter(short_name_1 &gt; 0) |&gt; filter(income != &quot;Not classified&quot;) |&gt; 
+  ggplot(aes(short_name_1, factor(year), fill = factor(year))) + 
+  geom_boxplot() + scale_x_log10() + labs(y = &quot;&quot;) + theme(legend.position = &quot;none&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Observations and Questions:</strong></p>
+<ul>
+<li></li>
+</ul>
+<span style="color: red;">Edit the title, and the year if necessary.</span>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfeW91cmRhdGEgfD4gZmlsdGVyKHllYXIgPT0gMjAyMCkgfD4gZmlsdGVyKHJlZ2lvbiAhPSBcIkFnZ3JlZ2F0ZXNcIikgfD4gXG4gIGRyb3BfbmEoc2hvcnRfbmFtZV8xKSB8PiBmaWx0ZXIoc2hvcnRfbmFtZV8xID4gMCkgfD4gZmlsdGVyKGluY29tZSAhPSBcIk5vdCBjbGFzc2lmaWVkXCIpIHw+IFxuICBnZ3Bsb3QoYWVzKHNob3J0X25hbWVfMSwgZmFjdG9yKGluY29tZSwgbGV2ZWxzID0gSU5DT01FKSwgZmlsbCA9IGluY29tZSkpICsgXG4gIGdlb21fYm94cGxvdCgpICsgc2NhbGVfeF9sb2cxMCgpICsgXG4gIGxhYnModGl0bGUgPSBcIlwiLCB5ID0gXCJcIiwgZmlsbCA9IFwiXCIpICtcbiAgdGhlbWUobGVnZW5kLnBvc2l0aW9uID0gXCJub25lXCIpXG5gYGAifQ== -->
+<pre class="r"><code>df_yourdata |&gt; filter(year == 2020) |&gt; filter(region != &quot;Aggregates&quot;) |&gt; 
+  drop_na(short_name_1) |&gt; filter(short_name_1 &gt; 0) |&gt; filter(income != &quot;Not classified&quot;) |&gt; 
+  ggplot(aes(short_name_1, factor(income, levels = INCOME), fill = income)) + 
+  geom_boxplot() + scale_x_log10() + 
+  labs(title = &quot;&quot;, y = &quot;&quot;, fill = &quot;&quot;) +
+  theme(legend.position = &quot;none&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Observations and Questions:</strong></p>
+<ul>
+<li></li>
+</ul>
+<span style="color: red;">Edit the title and year if necessary.</span>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfeW91cmRhdGEgfD4gZmlsdGVyKHllYXIgPT0gMjAyMCkgfD4gZmlsdGVyKHJlZ2lvbiAhPSBcIkFnZ3JlZ2F0ZXNcIikgfD4gXG4gIGRyb3BfbmEoc2hvcnRfbmFtZV8xKSB8PiBmaWx0ZXIoc2hvcnRfbmFtZV8xID4gMCkgfD4gXG4gIGdncGxvdChhZXMoc2hvcnRfbmFtZV8xLCByZWdpb24sIGZpbGwgPSByZWdpb24pKSArIFxuICBnZW9tX2JveHBsb3QoKSArIHNjYWxlX3hfbG9nMTAoKSArIFxuICBsYWJzKHRpdGxlID0gXCJcIiwgeSA9IFwiXCIsIGZpbGwgPSBcIlwiKSArXG4gIHRoZW1lKGxlZ2VuZC5wb3NpdGlvbiA9IFwibm9uZVwiKVxuYGBgIn0= -->
+<pre class="r"><code>df_yourdata |&gt; filter(year == 2020) |&gt; filter(region != &quot;Aggregates&quot;) |&gt; 
+  drop_na(short_name_1) |&gt; filter(short_name_1 &gt; 0) |&gt; 
+  ggplot(aes(short_name_1, region, fill = region)) + 
+  geom_boxplot() + scale_x_log10() + 
+  labs(title = &quot;&quot;, y = &quot;&quot;, fill = &quot;&quot;) +
+  theme(legend.position = &quot;none&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Observations and Questions:</strong></p>
+<ul>
+<li></li>
+</ul>
+</div>
+<div id="gdp-per-capita" class="section level4">
+<h4>GDP per capita</h4>
+<span style="color: red;">Edit the title, and year if necessary.</span>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfeW91cmRhdGEgfD4gZmlsdGVyKHllYXIgPT0gMjAyMCkgfD4gZmlsdGVyKHJlZ2lvbiAhPSBcIkFnZ3JlZ2F0ZXNcIikgfD4gXG4gIGRyb3BfbmEoc2hvcnRfbmFtZV8yKSB8PiBmaWx0ZXIoaW5jb21lICE9IFwiTm90IGNsYXNzaWZpZWRcIikgfD5cbiAgZ2dwbG90KGFlcyhzaG9ydF9uYW1lXzIsIGZpbGwgPSBmYWN0b3IoaW5jb21lLCBsZXZlbHMgPSBJTkNPTUUpKSkgKyBnZW9tX2hpc3RvZ3JhbShiaW5zID0gMTUsIGNvbCA9IFwiYmxhY2tcIiwgbGluZXdpZHRoID0gMC4xKSArIFxuICBzY2FsZV94X2xvZzEwKCkgK1xuICBsYWJzKHRpdGxlID0gXCJcIiwgZmlsbCA9IFwiXCIpXG5gYGAifQ== -->
+<pre class="r"><code>df_yourdata |&gt; filter(year == 2020) |&gt; filter(region != &quot;Aggregates&quot;) |&gt; 
+  drop_na(short_name_2) |&gt; filter(income != &quot;Not classified&quot;) |&gt;
+  ggplot(aes(short_name_2, fill = factor(income, levels = INCOME))) + geom_histogram(bins = 15, col = &quot;black&quot;, linewidth = 0.1) + 
+  scale_x_log10() +
+  labs(title = &quot;&quot;, fill = &quot;&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<span style="color: red;">Edit the title and the year if necessary.</span>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfeW91cmRhdGEgfD4gZmlsdGVyKHllYXIgJWluJSBjKDE5OTAsIDIwMDAsIDIwMTAsIDIwMjApKSB8PiBmaWx0ZXIocmVnaW9uICE9IFwiQWdncmVnYXRlc1wiKSB8PiBcbiAgZHJvcF9uYShzaG9ydF9uYW1lXzIpIHw+IGZpbHRlcihzaG9ydF9uYW1lXzIgPiAwKSB8PiBmaWx0ZXIoaW5jb21lICE9IFwiTm90IGNsYXNzaWZpZWRcIikgfD4gXG4gIGdncGxvdChhZXMoc2hvcnRfbmFtZV8yLCBmaWxsID0gZmFjdG9yKHllYXIpKSkgKyBcbiAgZ2VvbV9oaXN0b2dyYW0oYmlucyA9IDE1LCBjb2wgPSBcImJsYWNrXCIsIGxpbmV3aWR0aCA9IDAuMSkgKyBcbiAgc2NhbGVfeF9sb2cxMCgpICsgZmFjZXRfd3JhcCh+eWVhcikgK1xuICBsYWJzKHRpdGxlID0gXCJcIiwgZmlsbCA9IFwiXCIpICtcbiAgdGhlbWUobGVnZW5kLnBvc2l0aW9uID0gXCJub25lXCIpXG5gYGAifQ== -->
+<pre class="r"><code>df_yourdata |&gt; filter(year %in% c(1990, 2000, 2010, 2020)) |&gt; filter(region != &quot;Aggregates&quot;) |&gt; 
+  drop_na(short_name_2) |&gt; filter(short_name_2 &gt; 0) |&gt; filter(income != &quot;Not classified&quot;) |&gt; 
+  ggplot(aes(short_name_2, fill = factor(year))) + 
+  geom_histogram(bins = 15, col = &quot;black&quot;, linewidth = 0.1) + 
+  scale_x_log10() + facet_wrap(~year) +
+  labs(title = &quot;&quot;, fill = &quot;&quot;) +
+  theme(legend.position = &quot;none&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Observations and Questions:</strong></p>
+<ul>
+<li></li>
+</ul>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfeW91cmRhdGEgfD4gZmlsdGVyKHllYXIgJWluJSBjKDE5OTAsIDIwMDAsIDIwMTAsIDIwMjApKSB8PiBmaWx0ZXIocmVnaW9uICE9IFwiQWdncmVnYXRlc1wiKSB8PiBcbiAgZHJvcF9uYShzaG9ydF9uYW1lXzIpIHw+IGZpbHRlcihzaG9ydF9uYW1lXzIgPiAwKSB8PiBmaWx0ZXIoaW5jb21lICE9IFwiTm90IGNsYXNzaWZpZWRcIikgfD4gXG4gIGdncGxvdChhZXMoc2hvcnRfbmFtZV8yLCBmYWN0b3IoeWVhciksIGZpbGwgPSBmYWN0b3IoeWVhcikpKSArIFxuICBnZW9tX2JveHBsb3QoKSArIHNjYWxlX3hfbG9nMTAoKSArIGxhYnMoeSA9IFwiXCIpICsgdGhlbWUobGVnZW5kLnBvc2l0aW9uID0gXCJub25lXCIpXG5gYGAifQ== -->
+<pre class="r"><code>df_yourdata |&gt; filter(year %in% c(1990, 2000, 2010, 2020)) |&gt; filter(region != &quot;Aggregates&quot;) |&gt; 
+  drop_na(short_name_2) |&gt; filter(short_name_2 &gt; 0) |&gt; filter(income != &quot;Not classified&quot;) |&gt; 
+  ggplot(aes(short_name_2, factor(year), fill = factor(year))) + 
+  geom_boxplot() + scale_x_log10() + labs(y = &quot;&quot;) + theme(legend.position = &quot;none&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Observations and Questions:</strong></p>
+<ul>
+<li></li>
+</ul>
+<span style="color: red;">Edit the title, and the year if necessary.</span>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfeW91cmRhdGEgfD4gZmlsdGVyKHllYXIgPT0gMjAyMCkgfD4gZmlsdGVyKHJlZ2lvbiAhPSBcIkFnZ3JlZ2F0ZXNcIikgfD4gXG4gIGRyb3BfbmEoc2hvcnRfbmFtZV8yKSB8PiBmaWx0ZXIoc2hvcnRfbmFtZV8yID4gMCkgfD4gZmlsdGVyKGluY29tZSAhPSBcIk5vdCBjbGFzc2lmaWVkXCIpIHw+IFxuICBnZ3Bsb3QoYWVzKHNob3J0X25hbWVfMiwgZmFjdG9yKGluY29tZSwgbGV2ZWxzID0gSU5DT01FKSwgZmlsbCA9IGluY29tZSkpICsgXG4gIGdlb21fYm94cGxvdCgpICsgc2NhbGVfeF9sb2cxMCgpICsgXG4gIGxhYnModGl0bGUgPSBcIlwiLCB5ID0gXCJcIiwgZmlsbCA9IFwiXCIpICtcbiAgdGhlbWUobGVnZW5kLnBvc2l0aW9uID0gXCJub25lXCIpXG5gYGAifQ== -->
+<pre class="r"><code>df_yourdata |&gt; filter(year == 2020) |&gt; filter(region != &quot;Aggregates&quot;) |&gt; 
+  drop_na(short_name_2) |&gt; filter(short_name_2 &gt; 0) |&gt; filter(income != &quot;Not classified&quot;) |&gt; 
+  ggplot(aes(short_name_2, factor(income, levels = INCOME), fill = income)) + 
+  geom_boxplot() + scale_x_log10() + 
+  labs(title = &quot;&quot;, y = &quot;&quot;, fill = &quot;&quot;) +
+  theme(legend.position = &quot;none&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Observations and Questions:</strong></p>
+<ul>
+<li></li>
+</ul>
+<span style="color: red;">Edit the title and the year if necessary.</span>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfeW91cmRhdGEgfD4gZmlsdGVyKHllYXIgPT0gMjAyMCkgfD4gZmlsdGVyKHJlZ2lvbiAhPSBcIkFnZ3JlZ2F0ZXNcIikgfD4gXG4gIGRyb3BfbmEoc2hvcnRfbmFtZV8yKSB8PiBmaWx0ZXIoc2hvcnRfbmFtZV8yID4gMCkgfD4gXG4gIGdncGxvdChhZXMoc2hvcnRfbmFtZV8yLCByZWdpb24sIGZpbGwgPSByZWdpb24pKSArIFxuICBnZW9tX2JveHBsb3QoKSArIHNjYWxlX3hfbG9nMTAoKSArIFxuICBsYWJzKHRpdGxlID0gXCJcIiwgeSA9IFwiXCIsIGZpbGwgPSBcIlwiKSArXG4gIHRoZW1lKGxlZ2VuZC5wb3NpdGlvbiA9IFwibm9uZVwiKVxuYGBgIn0= -->
+<pre class="r"><code>df_yourdata |&gt; filter(year == 2020) |&gt; filter(region != &quot;Aggregates&quot;) |&gt; 
+  drop_na(short_name_2) |&gt; filter(short_name_2 &gt; 0) |&gt; 
+  ggplot(aes(short_name_2, region, fill = region)) + 
+  geom_boxplot() + scale_x_log10() + 
+  labs(title = &quot;&quot;, y = &quot;&quot;, fill = &quot;&quot;) +
+  theme(legend.position = &quot;none&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+</div>
+<div id="scatterplot-for-covariation" class="section level3">
+<h3>Scatterplot for Covariation</h3>
+<div id="scatterplot-with-a-regression-line" class="section level4">
+<h4>Scatterplot with a regression line</h4>
+<span style="color: red;">Edit the title, the labels of x- and y- axes.</span>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfeW91cmRhdGEgfD4gZmlsdGVyKHllYXIgPT0gMjAyMCkgfD4gXG4gIGRyb3BfbmEoc2hvcnRfbmFtZV8yLCBzaG9ydF9uYW1lXzEpIHw+XG4gIGdncGxvdChhZXMoc2hvcnRfbmFtZV8yLCBzaG9ydF9uYW1lXzEpKSArIGdlb21fcG9pbnQoYWVzKGNvbCA9IHJlZ2lvbikpICtcbiAgZ2VvbV9zbW9vdGgobWV0aG9kID0gXCJsbVwiLCBmb3JtdWxhID0gJ3l+eCcsIHNlID0gRkFMU0UpICtcbiAgc2NhbGVfeF9sb2cxMCgpICsgc2NhbGVfeV9sb2cxMCgpICtcbiAgbGFicyh0aXRsZSA9IFwiXCIsXG4gICAgICAgeCA9IFwiXCIsXG4gICAgICAgeSA9IFwiXCIpXG5gYGAifQ== -->
+<pre class="r"><code>df_yourdata |&gt; filter(year == 2020) |&gt; 
+  drop_na(short_name_2, short_name_1) |&gt;
+  ggplot(aes(short_name_2, short_name_1)) + geom_point(aes(col = region)) +
+  geom_smooth(method = &quot;lm&quot;, formula = &#39;y~x&#39;, se = FALSE) +
+  scale_x_log10() + scale_y_log10() +
+  labs(title = &quot;&quot;,
+       x = &quot;&quot;,
+       y = &quot;&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Observations and Questions:</strong></p>
+<ul>
+<li></li>
+</ul>
+</div>
+<div id="summary-of-a-linear-model" class="section level4">
+<h4>Summary of a linear model</h4>
+<span style="color: red;">Edit year if necessary.</span>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfeW91cmRhdGEgfD4gZmlsdGVyKHllYXIgPT0gMjAyMCkgfD4gZHJvcF9uYShzaG9ydF9uYW1lXzIsIHNob3J0X25hbWVfMSkgfD5cbiAgbG0obG9nMTAoc2hvcnRfbmFtZV8xKX5sb2cxMChzaG9ydF9uYW1lXzIpLCBkYXRhID0gXykgfD4gc3VtbWFyeSgpXG5gYGAifQ== -->
+<pre class="r"><code>df_yourdata |&gt; filter(year == 2020) |&gt; drop_na(short_name_2, short_name_1) |&gt;
+  lm(log10(short_name_1)~log10(short_name_2), data = _) |&gt; summary()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Observations and Questions:</strong></p>
+<ul>
+<li></li>
+<li></li>
+</ul>
+<!-- rnb-text-end -->
+</div>
+</div>
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiRGF0YSBBbmFseXNpcyBmb3IgUmVzZWFyY2hlcnMgMjAyMywgV2VlayAzIgphdXRob3I6ICJIaXJvc2hpIFN1enVraSIKZGF0ZTogIjIwMjQvMDEvMTAiCm91dHB1dDoKICBpb3NsaWRlc19wcmVzZW50YXRpb246CiAgICB3aWRlc2NyZWVuOiB5ZXMKICAgIGRmX3ByaW50OiBwYWdlZAogIGh0bWxfbm90ZWJvb2s6IGRlZmF1bHQKICBodG1sX2RvY3VtZW50OgogICAgZGZfcHJpbnQ6IHBhZ2VkCi0tLQoKIyBQYXJ0IEk6IEVEQSB3aXRoIFdESQoKIyMgRXhwbG9yYXRvcnkgRGF0YSBBbmFseXNpcwoKLSAgIFN0YXRpc3RpY3MgdnMgRGF0YSBTY2llbmNlCgotICAgSHlwb3RoZXNpcyBUZXN0aW5nIHZzIEh5cG90aGVzaXMgQ3JlYXRpbmcKCi0gICBQcm9ibGVtIFNvbHZpbmcgdnMgVW5kZXJzdGFuZGluZyBJc3N1ZXMgKHRvIEF0dGFjayBQcm9ibGVtcykKCiMjIEEgc2hvcnQgaW50cm9kdWN0aW9uIHRvIEVEQSB3b3JrZmxvdwoKMS4gIFN0YXJ0IFJTdHVkaW8KCjIuICBDcmVhdGUgb3Igb3BlbiBhIHByb2plY3QKCiAgICAtICAgRmlsZSBcPiBPcGVuIFByb2plY3Qgb3IgRmlsZSBcPiBSZWNlbnQgUHJvamVjdHMgKG9yIEZpbGUgXD4gTmV3IFByb2plY3QpCgozLiAgUiBOb3RlYm9vaywgUiBNYXJrZG93biwgUXVhcnRvIChvciBSIFNjcmlwdCwgQ29uc29sZSkKCiAgICAtICAgUmVwcm9kdWNpYmlsaXR5LCBMaXRlcmF0ZSBQcm9ncmFtbWluZyBhbmQgZm9yIENvbW11bmljYXRpb24KCiAgICAtICAgUiBOb3RlYm9vazogSFRNTCBmaWxlIHdpdGggUiBNYXJrZG93biBzb3VyY2UgZmlsZQoKIyMjIEV4YW1wbGVzCgotICAgUHVyY2hhc2luZyBwb3dlciBwYXJpdGllcyAoUFBQcykgW1tMaW5rXShodHRwczovL2RzLXNsLmdpdGh1Yi5pby9pbnRybzJyL2RhNHIvZ2RwX3BwcC5uYi5odG1sKV0sIFtbUm1kXShodHRwczovL2dpdGh1Yi5jb20vZHMtc2wvaW50cm8yci9ibG9iL21haW4vZG9jcy9kYTRyL2dkcF9wcHAuUm1kKV0KCi0gICBMaWZlIEV4cGVjdGFuY3kgW1tMaW5rXShodHRwczovL2RzLXNsLmdpdGh1Yi5pby9pbnRybzJyL2RhNHIvbGlmZV9leHBlY3RhbmN5Lm5iLmh0bWwpXSwgW1tSbWRdKGh0dHBzOi8vZ2l0aHViLmNvbS9kcy1zbC9pbnRybzJyL2Jsb2IvbWFpbi9kb2NzL2RhNHIvbGlmZV9leHBlY3RhbmN5LlJtZCldCgojIyBSZXZpZXcgLSBXZWVrIDIKCiMjIyBXb3JsZCBEZXZlbG9wbWVudCBJbmRpY2F0b3JzCgotICAgRGF0YSB0aGVtZXMgW1tMaW5rXShodHRwczovL2RhdGF0b3BpY3Mud29ybGRiYW5rLm9yZy93b3JsZC1kZXZlbG9wbWVudC1pbmRpY2F0b3JzLyldCgotICAgUGVvcGxlIFtbTGlua10oaHR0cHM6Ly9kYXRhdG9waWNzLndvcmxkYmFuay5vcmcvd29ybGQtZGV2ZWxvcG1lbnQtaW5kaWNhdG9ycy90aGVtZXMvcGVvcGxlLmh0bWwpXQoKICAgIC0gICBMaWZlLWV4cGVjdGFuY3kKCiAgICAgICAgLSAgIFIgTm90ZWJvb2sgW1tMaW5rIHRvIHRoZSBzb3VyY2VdKGh0dHBzOi8vZ2l0aHViLmNvbS9kcy1zbC9pbnRybzJyL2Jsb2IvbWFpbi9kb2NzL2RhNHIvbGlmZV9leHBlY3RhbmN5LlJtZCldLCBbW1IgTm90ZWJvb2tdKGh0dHBzOi8vZHMtc2wuZ2l0aHViLmlvL2ludHJvMnIvZGE0ci9saWZlX2V4cGVjdGFuY3kubmIuaHRtbCldCgogICAgICAgIC0gICBXb3JsZCBEZXZlbG9wbWVudCBJbmRpY2F0b3JzOiBsaWZlLWV4cGVjdGFuY3kKCiAgICAgICAgICAgIC0gICBQb3B1bGF0aW9uLCB0b3RhbDogU1AuUE9QLlRPVEwgW1tMaW5rXShodHRwczovL2RhdGEud29ybGRiYW5rLm9yZy9pbmRpY2F0b3IvU1AuUE9QLlRPVEwpXQoKICAgICAgICAgICAgLSAgIEZlcnRpbGl0eSByYXRlLCB0b3RhbCAoYmlydGhzIHBlciB3b21hbik6IFNQLkRZTi5URlJULklOIFtbTGlua10oaHR0cHM6Ly9kYXRhLndvcmxkYmFuay5vcmcvaW5kaWNhdG9yL1NQLkRZTi5URlJULklOKV0KCiAgICAgICAgICAgIC0gICBMaWZlIGV4cGVjdGFuY3kgYXQgYmlydGgsIHRvdGFsOiBTUC5EWU4uTEUwMC5JTiBbW0xpbmtdKGh0dHBzOi8vZGF0YS53b3JsZGJhbmsub3JnL2luZGljYXRvci9TUC5EWU4uTEUwMC5JTildCgojIyBQcmV2aWV3CgotICAgV2VlayAzLCBKYW4uIDEwOiBFREEyLCBXREksIGRhdGEgdHJhbnNmb3JtYXRpb24sIGRhdGEgdmlzdWFsaXphdGlvbgoKLSAgIFdlZWsgNCwgSmFuLiAxNzogRURBMywgV0RJLCB0aWR5IGRhdGEgKGxvbmcgYW5kIHdpZGUgZGF0YSksIGNob3JvcGxldGggbWFwcwoKLSAgIFdlZWsgNSwgSmFuLiAyNDogRURBNCwgVU4sIE9FQ0QsIHJlYWRyLCByZWFkeGwsIHR3byB0YWJsZSB2ZXJ2ZXMKCi0gICBXZWVrIDYsIEphbi4gMzE6IEVEQTUsIFJvdW5kLXVwLCBjb21tdW5pY2F0aW9uLCBwZGYsIFdvcmQsIFBvd2VyUG9pbnQKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQoKIyMjIFdESSBQYWNrYWdlCgpDUkFOIFBhY2thZ2UgU2l0ZTogV0RJIFtbaHR0cHM6Ly9DUkFOLlItcHJvamVjdC5vcmcvcGFja2FnZT1XREldKGh0dHBzOi8vY3Jhbi5yLXByb2plY3Qub3JnL3BhY2thZ2U9V0RJKV0KCioqV0RJOiBXb3JsZCBEZXZlbG9wbWVudCBJbmRpY2F0b3JzIGFuZCBPdGhlciBXb3JsZCBCYW5rIERhdGEqKgoKVGhlIFdESSBmdW5jdGlvbiBwcm92aWRlcyBjb252ZW5pZW50IGFjY2VzcyB0byBvdmVyIDQwIGRhdGFiYXNlcyBob3N0ZWQgYnkgdGhlIFdvcmxkIEJhbmssIGluY2x1ZGluZyB0aGUgV29ybGQgRGV2ZWxvcG1lbnQgSW5kaWNhdG9ycyAoV0RJKSwgSW50ZXJuYXRpb25hbCBEZWJ0IFN0YXRpc3RpY3MsIERvaW5nIEJ1c2luZXNzLCBIdW1hbiBDYXBpdGFsIEluZGV4LCBhbmQgU3ViLW5hdGlvbmFsIHBvdmVydHkgaW5kaWNhdG9ycy4gRm9yIGZhc3Qgc2VhcmNoaW5nLCB0aGUgV0RJIHBhY2thZ2Ugc2hpcHMgd2l0aCBhIGxvY2FsIGxpc3Qgb2YgYXZhaWxhYmxlIGRhdGEgc2VyaWVzLiBUaGlzIGxvY2FsIGxpc3QgY2FuIGJlIHVwZGF0ZWQgdG8gdGhlIGxhdGVzdCB2ZXJzaW9uIHVzaW5nIHRoZSBXREljYWNoZSBmdW5jdGlvbi4KClNlYXJjaDogQ1JBTiBwYWNrYWdlPVdESS4KClNlZSBVUkwsIE5ld3MgYW5kIFJlZmVyZW5jZSBNYW51YWwgaW4gdGhlIHBhZ2UuCgoqRm9yIG90aGVyIHBhY2thZ2VzIHVzZSBhIHNpbWlsYXIgc3ludGF4ICdDUkFOIHBhY2thZ2U9J1BhY2thZ2UgTmFtZScqCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KCiMjIyBEYXRhIEltcG9ydGluZwoKYGBge3Igc2V0dXAsIGVjaG89RkFMU0UsIG1lc3NhZ2U9RkFMU0V9CmxpYnJhcnkodGlkeXZlcnNlKQpsaWJyYXJ5KFdESSkKYGBgCgpgYGB7ciBkZl9saWZlZXhwLCBldmFsPUZBTFNFfQpkZl9saWZlZXhwIDwtIFdESShpbmRpY2F0b3IgPSBjKHBvcCA9ICJTUC5QT1AuVE9UTCIsIAogICAgICAgICAgICAgICAgICBmZXJ0aWxpdHkgPSAiU1AuRFlOLlRGUlQuSU4iLCAKICAgICAgICAgICAgICAgICAgbGlmZWV4cCA9ICJTUC5EWU4uTEUwMC5JTiIpLCAKICAgICAgICAgICAgICAgICAgZXh0cmEgPSBUUlVFKQpgYGAKCkRlZmF1bHQgdmFsdWVzIGFyZSBmaWxsZWQgYXV0b21hdGljYWxseS4gU2VlIEhlbHAgV0RJCgpgYGB7ciBkZmxpZmVleHAsIGV2YWw9RkFMU0V9CmRmX2xpZmVleHAgPC0gV0RJKGNvdW50cnkgPSAiYWxsIiwgCiAgICAgICAgICAgICAgICAgIGluZGljYXRvciA9IGMocG9wID0gIlNQLlBPUC5UT1RMIiwgCiAgICAgICAgICAgICAgICAgIGZlcnRpbGl0eSA9ICJTUC5EWU4uVEZSVC5JTiIsIAogICAgICAgICAgICAgICAgICBsaWZlZXhwID0gIlNQLkRZTi5MRTAwLklOIiksIAogICAgICAgICAgICAgICAgICBzdGFydCA9IDE5NjAsIGVuZCA9IE5VTEwsIAogICAgICAgICAgICAgICAgICBleHRyYSA9IFRSVUUsIGNhY2hlID0gTlVMTCwgbGF0ZXN0ID0gTlVMTCwgCiAgICAgICAgICAgICAgICAgIGxhbmd1YWdlID0gImVuIikKYGBgCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KCiMjIyBEYXRhIFRyYW5zZm9ybWluZwoKLSAgIGBkcGx5cmAsIGEgcGFja2FnZSBpbiB0aWR5dmVyc2UKCiAgICAtICAgYHNlbGVjdCgpYCA6IHNlbGVjdCBjb2x1bW5zIGBzZWxlY3QoYygxLDIsNCw1LDcsOCkpYAoKICAgIC0gICBgZmlsdGVyKClgIDogc2VsZWN0IHJvd3MgbWVldGluZyBhIGNvbmRpdGlvbgoKICAgICAgICAtICAgYGZpbHRlcihjb3VudHJ5ID09ICJXb3JsZCIpYAoKICAgICAgICAtICAgYGZpbHRlcihpc28yYyAlaW4lIGMoIkpQIiwgIklOIiwgIkNOIikpYAoKICAgICAgICAtICAgYGZpbHRlcihyZWdpb24gIT0gIkFnZ3JlZ2F0ZXMiKWAKCiAgICAtICAgYGRpc3RpbmN0KClgIDogc2VsZWN0IHJvd3Mgd2l0aCBkaXN0aW5jdCB2YWx1ZXMgb2YgYSB2YXJpYWJsZSBgZGlzdGluY3QoY291bnRyeSlgCgogICAgLSAgIGBkcm9wX25hKClgIDogZHJvcCByb3dzIHdpdGggTkEgdmFsdWVzLCBlLmcuIGBkcm9wX25hKHBvcClgCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KCiMjIyBEYXRhIFZpc3VhbGl6aW5nCgotICAgZ2dwbG90MgoKICAgIC0gICBgZ2dwbG90KGFlcyh4PXZhcjEsIHk9dmFyMikpICtgCgogICAgLSAgIFNjYXR0ZXIgUGxvdDogYGdlb21fcG9pbnQoYWVzKGNvbD12YXIzLCBzaXplPXZhcjQsIHNoYXBlPXZhcjUpKWAKCiAgICAtICAgTGluZSBHcmFwaDogYGdlb21fbGluZShhZXMoY29sPXZhcjMsIGxpbmV0eXBlPXZhcjQpKSlgCgogICAgLSAgIFRpdGxlLCBTdWJ0aXRsZSwgTGVnZW5kIGFuZCBBeGlzIGxhYmVscwoKICAgICAgICAtICAgYGxhYnModGl0bGUgPSAiIiwgc3VidGl0bGUgPSIiLCB4ICA9ICIiLCB5ID0gIiIsIGNvbCA9ICIiKWAKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQoKIyMjIEV4YW1wbGVzIFtbTGlua10oaHR0cHM6Ly9kcy1zbC5naXRodWIuaW8vaW50cm8yci9kYTRyL2xpZmVfZXhwZWN0YW5jeS5uYi5odG1sKV0KCiMjIyMgTGluZSBncmFwaAoKYGBge3IgZGZsaWZlLCBlY2hvPUZBTFNFLCBtZXNzYWdlPUZBTFNFfQpkZl93ZGlfbGlmZSA8LSByZWFkX2NzdigiZGF0YS93ZGlfbGlmZS5jc3YiKQpkZl9saWZlIDwtIGRmX3dkaV9saWZlIHw+IHNlbGVjdChjKCJjb3VudHJ5IiwgImlzbzJjIiwgInllYXIiLCAibGlmZV9leHBlY3RhbmN5IiwgImZlcnRpbGl0eV9yYXRlIiwgInBvcHVsYXRpb24iLCAicmVnaW9uIiwgImluY29tZSIpKQpgYGAKCmBgYHtyIGxpbmVwbG90fQpkZl9saWZlIHw+IGZpbHRlcihjb3VudHJ5ID09ICJXb3JsZCIpIHw+IAogIGRyb3BfbmEobGlmZV9leHBlY3RhbmN5KSB8PgogIGdncGxvdChhZXMoeWVhciwgbGlmZV9leHBlY3RhbmN5KSkgKyBnZW9tX2xpbmUoKSArCiAgbGFicyh0aXRsZSA9ICJMaWZlIGV4cGVjdGFuY3kgb2YgdGhlIFdvcmxkIikKYGBgCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KCiMjIyMgU2NhdHRlciBQbG90CgpgYGB7ciBzY2F0dGVycGxvdH0KZGZfbGlmZSB8PiBmaWx0ZXIoeWVhciA9PSAyMDIxKSB8PgogIGZpbHRlcihyZWdpb24gIT0gIkFnZ3JlZ2F0ZXMiKSB8PiAKICBkcm9wX25hKGZlcnRpbGl0eV9yYXRlLCBsaWZlX2V4cGVjdGFuY3kpIHw+CiAgZ2dwbG90KGFlcyhmZXJ0aWxpdHlfcmF0ZSwgbGlmZV9leHBlY3RhbmN5LCBjb2wgPSByZWdpb24pKSArIAogIGdlb21fcG9pbnQoKQpgYGAKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQoKIyMjIFdvcmxkIERldmVsb3BtZW50IEluZGljYXRvcnMKCi0gICBEYXRhIHRoZW1lcyBbW0xpbmtdKGh0dHBzOi8vZGF0YXRvcGljcy53b3JsZGJhbmsub3JnL3dvcmxkLWRldmVsb3BtZW50LWluZGljYXRvcnMvKV0KCi0gICBEYXRhIENhdGFsb2c6IFdvcmxkIERldmVsb3BtZW50IEluZGljYXRvcnMgW1tMaW5rXShodHRwczovL2RhdGFjYXRhbG9nLndvcmxkYmFuay5vcmcvc2VhcmNoL2RhdGFzZXQvMDAzNzcxMi9Xb3JsZC1EZXZlbG9wbWVudC1JbmRpY2F0b3JzKV0KCi0gICBUaGUgV29ybGQgYnkgSW5jb21lIGFuZCBSZWdpb24gW1tMaW5rXShodHRwczovL2RhdGF0b3BpY3Mud29ybGRiYW5rLm9yZy93b3JsZC1kZXZlbG9wbWVudC1pbmRpY2F0b3JzL3RoZS13b3JsZC1ieS1pbmNvbWUtYW5kLXJlZ2lvbi5odG1sKV0KCi0gICBXb3JsZCBCYW5rIENvdW50cnkgYW5kIExlbmRpbmcgR3JvdXBzIFtbTGlua10oaHR0cHM6Ly9kYXRhaGVscGRlc2sud29ybGRiYW5rLm9yZy9rbm93bGVkZ2ViYXNlL2FydGljbGVzLzkwNjUxOS13b3JsZC1iYW5rLWNvdW50cnktYW5kLWxlbmRpbmctZ3JvdXBzKV0KCi0gICBXREkgUGFja2FnZQoKICAgIC0gICBXREkoKSwgV0RJY2FjaGUoKSwgV0RJc2VhcmNoKCkKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQoKIyMjIFdESWNhY2hlKCkgW1tMaW5rIGluIGRhNHJdKGh0dHBzOi8vaWN1LWhzdXp1a2kuZ2l0aHViLmlvL2RhNHIvd2RpZGF0YS5odG1sP3E9V0RJY2FjaGUjd2RpY2FjaGUpXQoKU2VlIEhlbHAuCgpgYGB7ciB3ZGljYWNoZSwgZXZhbD1GQUxTRX0Kd2RpY2FjaGUgPC0gV0RJY2FjaGUoKQpgYGAKCmBgYHtyIHdyaXRld2RpY2FjaGUsIGV2YWw9RkFMU0UsIGVjaG89RkFMU0V9CndyaXRlX3Jkcyh3ZGljYWNoZSwgImRhdGEvd2RpY2FjaGUucmRzIikKYGBgCgpgYGB7ciByZWFkd2RpY2FjaGUsIGVjaG89RkFMU0V9CndkaWNhY2hlIDwtIHJlYWRfcmRzKCJkYXRhL3dkaWNhY2hlLnJkcyIpCmBgYAoKYGBge3J9CnN0cih3ZGljYWNoZSkKYGBgCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KCmBgYHtyfQpzdHIod2RpY2FjaGUsIG1heC5sZXZlbD0xKQpgYGAKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQoKYGBge3J9CndkaWNhY2hlJHNlcmllcwpgYGAKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQoKYGBge3J9CndkaWNhY2hlJGNvdW50cnkKYGBgCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KCiMjIyBXcml0ZSBhbmQvb3IgUmVhZCBMaXN0cwoKYGBge3IgZXZhbD1GQUxTRX0Kd3JpdGVfcmRzKHdkaWNhY2hlLCAiZGF0YS93ZGljYWNoZS5yZHMiKQpgYGAKCmBgYHtyIGV2YWw9RkFMU0V9CndkaWNhY2hlIDwtIHJlYWRfcmRzKCJkYXRhL3dkaWNhY2hlLnJkcyIpCmBgYAoKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCgojIyMgV0RJc2VhcmNoKCkgW1tMaW5rIGluIGRhNHJdKGh0dHBzOi8vaWN1LWhzdXp1a2kuZ2l0aHViLmlvL2RhNHIvYTNyZXNwLmh0bWw/cT1XRElzZWFyY2gjd2Rpc2VhcmNoKV0KCmBgYHtyfQpXRElzZWFyY2goc3RyaW5nID0gImVkdWNhdGlvbiIsIGZpZWxkID0gIm5hbWUiLCBzaG9ydCA9IFRSVUUsIGNhY2hlID0gd2RpY2FjaGUpCmBgYAoKYHdkaWJ1bGsgPC0gV0RJYnVsayh0aW1lb3V0PTYwMClgCgpgYGAgICAgICAgICAKTGlzdCBvZiA2CiAkIERhdGEgICAgICAgICAgOiB0aWJibGUgWzI0LDkwMiwzODggw5cgNl0gKFMzOiB0YmxfZGYvdGJsL2RhdGEuZnJhbWUpCiAkIENvdW50cnkgICAgICAgOidkYXRhLmZyYW1lJzogMjY1IG9icy4gb2YgIDMxIHZhcmlhYmxlczoKICQgU2VyaWVzICAgICAgICA6J2RhdGEuZnJhbWUnOiAxNDg2IG9icy4gb2YgIDIxIHZhcmlhYmxlczoKICQgQ291bnRyeS1TZXJpZXM6J2RhdGEuZnJhbWUnOiA4MjQxIG9icy4gb2YgIDQgdmFyaWFibGVzOgogJCBTZXJpZXMtVGltZSAgIDonZGF0YS5mcmFtZSc6IDE0OCBvYnMuIG9mICA0IHZhcmlhYmxlczoKICQgRm9vdE5vdGUgICAgICA6J2RhdGEuZnJhbWUnOiA3NDE2ODkgb2JzLiBvZiAgNSB2YXJpYWJsZXM6CmBgYAoKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCgojIyMgZ3JvdXBfYnksIHN1bW1hcml6ZSBbW0xpbmsgaW4gZGE0cl0oaHR0cHM6Ly9kcGx5ci50aWR5dmVyc2Uub3JnL3JlZmVyZW5jZS9ncm91cF9ieS5odG1sKV0KCmBgYHtyfQpkZl9pcmlzIDwtIGRhdGFzZXRzOjppcmlzCmBgYAoKYGBge3J9CmRmX2lyaXMgfD4gZ3JvdXBfYnkoU3BlY2llcykgfD4KICBzdW1tYXJpemUobWVhbl9zbCA9IG1lYW4oU2VwYWwuTGVuZ3RoKSwgbWVhbl9zdyA9IG1lYW4oU2VwYWwuV2lkdGgpKQpgYGAKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQoKIyMjIG11dGF0ZSBbW0xpbmsgaW4gZGE0cl0oaHR0cHM6Ly9pY3UtaHN1enVraS5naXRodWIuaW8vZGE0ci9kcGx5ci5odG1sP3E9bXV0YXRlI211dGF0ZSldCgpgYGB7cn0KZGZfaXJpcyB8PiBtdXRhdGUoU2VwYWwuUmF0aW8gPSBTZXBhbC5MZW5ndGgvU2VwYWwuV2lkdGgpCmBgYAoKIyBQYXJ0IElJOiBQcmFjdGljdW0KCiMjIEZpbGUgTGlua3MKClFBTEw0MDEtMDMgW1tTbGlkZXNdKGh0dHBzOi8vZHMtc2wuZ2l0aHViLmlvL2ludHJvMnIvZGE0ci9xYWxsNDAxLTAzLmh0bWwjMSldLCBbW0xpbmtdKGh0dHBzOi8vZHMtc2wuZ2l0aHViLmlvL2ludHJvMnIvZGE0ci9xYWxsNDAxLTAzLm5iLmh0bWwpXSwgW1tSbWRdKGh0dHBzOi8vZ2l0aHViLmNvbS9kcy1zbC9pbnRybzJyL2Jsb2IvbWFpbi9kb2NzL2RhNHIvcWFsbDQwMS0wMy5SbWQpXQoKQ28yIHBlciBjYXBpdGEgW1tMaW5rXShodHRwczovL2RzLXNsLmdpdGh1Yi5pby9pbnRybzJyL2RhNHIvY28ycGNhcC5uYi5odG1sKV0sIFtbUm1kXShodHRwczovL2dpdGh1Yi5jb20vZHMtc2wvaW50cm8yci9ibG9iL21haW4vZG9jcy9kYTRyL2NvMnBjYXAuUm1kKV0KCldlZWsgVGhyZWUgQXNzaWdubWVudCBUZW1wbGF0ZSBbW0xpbmtdKGh0dHBzOi8vZHMtc2wuZ2l0aHViLmlvL2ludHJvMnIvZGE0ci93M19hc3NpZ25tZW50X3RlbXBsYXRlLm5iLmh0bWwpXSwgW1tSbWRdKGh0dHBzOi8vZ2l0aHViLmNvbS9kcy1zbC9pbnRybzJyL2Jsb2IvbWFpbi9kb2NzL2RhNHIvdzNfYXNzaWdubWVudF90ZW1wbGF0ZS5SbWQpXQoKIyMgV2VlayBUaHJlZSBBc3NpZ25tZW50CgpDaG9vc2UgdHdvIFdESSBjb2RlcyBhbmQgYW5hbHlzZSB0aGUgZGF0YS4KCi0gICBDcmVhdGUgYW4gUiBOb3RlYm9vayBvZiBhIERhdGEgQW5hbHlzaXMgY29udGFpbmluZyB0aGUgZm9sbG93aW5nIGFuZCBzdWJtaXQgdGhlIHJlbmRlcmVkIGZpbGUgKGVnLsKgYHczX2cxMjM0NTYubmIuaHRtbGApCgogICAgMS4gIGNyZWF0ZSBhbiBSIE5vdGVib29rIHVzaW5nIHRoZSBSIE5vdGVib29rIFRlbXBsYXRlIGluIE1vb2RsZSwgc2F2ZSBhc8KgYHczX2cxMjM0NTYuUm1kYCwKCiAgICAyLiAgZWRpdCBhdXRob3Igd2l0aCBuYW1lLCBJRCwgYW5kIHRpdGxlCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KCi0gICBDb250ZW50cyBzaG91bGQgaW5jbHVkZSB0aGUgZm9sbG93aW5nOgoKICAgIC0gICBBIHNob3J0IGFic3RyYWN0CgogICAgLSAgIERlc2NyaXB0aW9uIG9mIGRhdGEgaW5jbHVkaW5nIGRhdGEgbmFtZSwgZGF0YSBjb2RlIChvciBpZCksIGRlc2NyaXB0aW9uCgogICAgLSAgIEEgYmFyIGdyYXBoIG9yIGEgY29sdW1uIGdyYXBoLCBhIGhpc3RvZ3JhbSwgYSBsaW5lIGdyYXBoLCBhIHNjYXR0ZXIgcGxvdAoKICAgIC0gICBPYnNlcnZhdGlvbnMgb3IgcXVlc3Rpb25zIGZvciB2aXN1YWxpemF0aW9ucwoKLSAgIHJ1biBlYWNoIGNvZGUgYmxvY2ssIHByZXZpZXcgdG8gY3JlYXRlwqBgdzNfZzEyMzQ1Ni5uYi5odG1sYCwKCi0gICBzdWJtaXTCoGB3M18xMjM0NTYubmIuaHRtbGDCoHRvIE1vb2RsZS4KClN1Ym1pdCB5b3VyIFIgTm90ZWJvb2sgZmlsZSAodzNfZzEyMzQ1Ni5uYi5odG1sKSBpbiBNb29kbGUgKFdlZWsgVGhyZWUgQXNzaWdubWVudCkuCgoqKipEdWUgU3VuZGF5IDE0LCBKYW51YXJ5IDIwMjQsIDExOjU5IFBNKioqCgojIyBSZWNvbW1lbmRlZCBSZWFkaW5ncyBhbmQgQWN0aXZpdGllcwoKMS4gIFdvcmxkIERldmVsb3BtZW50IEluZGljYXRvcnM6IERhdGEgdGhlbWVzIFtbTGlua10oaHR0cHM6Ly9kYXRhdG9waWNzLndvcmxkYmFuay5vcmcvd29ybGQtZGV2ZWxvcG1lbnQtaW5kaWNhdG9ycy8pXQoKMi4gIEhvdyBkb2VzIHRoZSBXb3JsZCBCYW5rIGNsYXNzaWZ5IGNvdW50cmllcz8gW1tMaW5rXShodHRwczovL2RhdGFoZWxwZGVzay53b3JsZGJhbmsub3JnL2tub3dsZWRnZWJhc2UvYXJ0aWNsZXMvMzc4ODM0LWhvdy1kb2VzLXRoZS13b3JsZC1iYW5rLWNsYXNzaWZ5LWNvdW50cmllcyldCgozLiAgUG9zaXQgUmVjaXBlc++8iE5ldyBlZGl0aW9uIG9mIFBvc2l0IFByaW1lcnPvvIk6IGludGVyYWN0aXZlIGV4ZXJjaXNlcyBbW0xpbmtdKGh0dHBzOi8vcG9zaXQuY2xvdWQvbGVhcm4vcmVjaXBlcyldCgo0LiAgUlN0dWRpbyBJREUgQ2hlYXQgU2hlZXQuIFBERiBpcyBhdmFpbGFibGUgb24gdGhlIHRvcCByaWdodC4gW1tTaXRlIExpbmtdKGh0dHBzOi8vcnN0dWRpby5naXRodWIuaW8vY2hlYXRzaGVldHMvaHRtbC9yc3R1ZGlvLWlkZS5odG1sKV0K</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUmVzcG9uc2VzIHRvIFdlZWsgVGhyZWUgQXNzaWdubWVudCIKYXV0aG9yOiAiSGlyb3NoaSBTdXp1a2kiCmRhdGU6ICJgciBTeXMuRGF0ZSgpYCIKb3V0cHV0OgogIGh0bWxfbm90ZWJvb2s6IGRlZmF1bHQKLS0tCgojIyBXZWVrIFRocmVlIEFzc2lnbm1lbnQKCkNob29zZSB0d28gV0RJIGNvZGVzIGFuZCBhbmFseXNlIHRoZSBkYXRhLgoKLSAgIENyZWF0ZSBhbiBSIE5vdGVib29rIG9mIGEgRGF0YSBBbmFseXNpcyBjb250YWluaW5nIHRoZSBmb2xsb3dpbmcgYW5kIHN1Ym1pdCB0aGUgcmVuZGVyZWQgZmlsZSAoZWcuwqBgdzNfZzEyMzQ1Ni5uYi5odG1sYCkKCiAgICAxLiAgY3JlYXRlIGFuIFIgTm90ZWJvb2sgdXNpbmcgdGhlIFIgTm90ZWJvb2sgVGVtcGxhdGUgaW4gTW9vZGxlLCBzYXZlIGFzwqBgdzNfZzEyMzQ1Ni5SbWRgLAoKICAgIDIuICBlZGl0IGF1dGhvciB3aXRoIG5hbWUsIElELCBhbmQgdGl0bGUKCiAgICAzLiAgY29udGVudHMgc2hvdWxkIGluY2x1ZGUgdGhlIGZvbGxvd2luZzoKCiAgICAgICAgLSAgIEEgc2hvcnQgYWJzdHJhY3QKCiAgICAgICAgLSAgIEV4cGxhbmF0aW9uIG9mIGRhdGEgaW5jbHVkaW5nIGRhdGEgbmFtZSwgZGF0YSBjb2RlIChvciBpZCksIGFuZCBkZXNjcmlwdGlvbgoKICAgICAgICAtICAgTWFueSBvZiB0aGUgZm9sbG93aW5nOiBhIGJhciBncmFwaCAob3IgYSBjb2x1bW4gZ3JhcGgpLCBhIGhpc3RvZ3JhbSwgYSBib3hwbG90LCBhIGxpbmUgZ3JhcGgsIGEgc2NhdHRlciBwbG90CgogICAgICAgIC0gICBPYnNlcnZhdGlvbnMgb3IgcXVlc3Rpb25zIGZvciB2aXN1YWxpemF0aW9ucwoKICAgIDQuICBydW4gZWFjaCBjb2RlIGJsb2NrLCBwcmV2aWV3IHRvIGNyZWF0ZcKgYHczX2cxMjM0NTYubmIuaHRtbGAsCgogICAgNS4gIHN1Ym1pdMKgYHczXzEyMzQ1Ni5uYi5odG1sYMKgdG8gTW9vZGxlLgoKU3VibWl0IHlvdXIgUiBOb3RlYm9vayBmaWxlICh3M19nMTIzNDU2Lm5iLmh0bWwpIGluIE1vb2RsZSAoV2VlayBUaHJlZSBBc3NpZ25tZW50KS4KCioqKkR1ZTogU3VuZGF5IDE0LCBKYW51YXJ5IDIwMjQsIDExOjU5IFBNKioqCgojIFlvdXIgUHJvamVjdAoKIyMgVGl0bGUgb2YgeW91ciBwcm9qZWN0CgoqVGhlIHRpdGxlIGNhbiBiZSBpbiB0aGUgdGl0bGUgaW4gWUFNTC4qCgojIyMgU2hvcnQgQWJzdHJhY3QKCldlIHN0dWR5IC4uLi4uCgojIyMgQWJvdXQgRGF0YQoKMS4gIE5hbWUgb2YgdGhlIGluZGljYXRvciAxOiBJbmRpY2F0b3IgQ29kZSAxCgotICAgRGVzY3JpcHRpb246CgoyLiAgTmFtZSBvZiB0aGUgaW5kaWNhdG9yIDI6IEluZGljYXRvciBDb2RlIDIKCi0gICBEZXNjcmlwdGlvbjoKCiMjIyBTZXQgdXAKCmBgYHtyfQpsaWJyYXJ5KHRpZHl2ZXJzZSkKbGlicmFyeShXREkpCmBgYAoKKkNyZWF0ZSBkYXRhIGZvbGRlciBpZiB5b3UgZG8gbm90IGhhdmUgaXQgdW5kZXIgRmlsZXMuKgoKYGBge3IgZXZhbD1GQUxTRX0KZGlyLmNyZWF0ZSgiZGF0YSIpCmBgYAoKKklmIHlvdSBkbyBub3QgaGF2ZSBgd2RpY2FjaGUucmRzYCBpbiB5b3VyIGRhdGEgZm9sZGVyLCBydW4gdGhlIGZvbGxvd2luZyB0d28gY29kZSBjaHVua3MuKgoKYGBge3Igd2RpY2FjaGUsIGV2YWw9RkFMU0V9CndkaWNhY2hlIDwtIFdESWNhY2hlKCkKYGBgCgpgYGB7ciB3cml0ZXdkaWNhY2hlLCBldmFsPUZBTFNFLCBlY2hvPUZBTFNFfQp3cml0ZV9yZHMod2RpY2FjaGUsICJkYXRhL3dkaWNhY2hlLnJkcyIpCmBgYAoKYGBge3IgcmVhZHdkaWNhY2hlLCBlY2hvPUZBTFNFfQp3ZGljYWNoZSA8LSByZWFkX3JkcygiZGF0YS93ZGljYWNoZS5yZHMiKQpgYGAKCiMjIyBJbXBvcnRpbmcgRGF0YQoKYGBgez1odG1sfQo8c3BhbiBzdHlsZSA9ICJjb2xvcjogcmVkOyI+RWRpdCB0aGUgZm9sbG93aW5nIGNvZGUgY2h1bmshPC9zcGFuPgpgYGAKYGBge3J9CmNob3Nlbl9pbmRpY2F0b3JfMSA8LSAiU0UuU0VDLkVOUlIiICNleGFtcGxlCnNob3J0X25hbWVfMSA8LSAnc2VjJwpjaG9zZW5faW5kaWNhdG9yXzIgPC0gIk5ZLkdEUC5QQ0FQLlBQLktEIiAjZXhhbXBsZQpzaG9ydF9uYW1lXzIgPC0gJ2dkcHBjYXAnCmBgYAoKUnVuIHRoZSBmb2xsb3dpbmcgaW4gdGhlIGJlZ2lubmluZy4KCmBgYHtyfQpkZl95b3VyZGF0YSA8LSBXREkoCiAgaW5kaWNhdG9yID0gYyhzaG9ydF9uYW1lXzEgPSBjaG9zZW5faW5kaWNhdG9yXzEsCiAgICAgICAgICAgICAgICBzaG9ydF9uYW1lXzIgPSBjaG9zZW5faW5kaWNhdG9yXzIpLAogIGV4dHJhID0gVFJVRSwgY2FjaGUgPSB3ZGljYWNoZSkKYGBgCgpgYGB7cn0Kd3JpdGVfY3N2KGRmX3lvdXJkYXRhLCAiZGF0YS95b3VyZGF0YS5jc3YiKQpgYGAKCmBgYHtyfQpkZl95b3VyZGF0YSA8LSByZWFkX2NzdigiZGF0YS95b3VyZGF0YS5jc3YiKQpgYGAKCmBgYHtyfQpkZl95b3VyZGF0YQpgYGAKCmBgYHtyfQpzdHIoZGZfeW91cmRhdGEpCmBgYAoKIyMjIFZpc3VhbGl6YXRpb24gYnkgTGluZSBHcmFwaHMKCiMjIyMgTmFtZSBvZiB0aGUgSW5kaWNhdG9yIDEKCmBgYHs9aHRtbH0KPHNwYW4gc3R5bGUgPSAiY29sb3I6IHJlZDsiPkVkaXQgdGhlIHRpdGxlIGFuZCB0aGUgbGFiZWwgb2YgeS1heGlzLjwvc3Bhbj4KYGBgCmBgYHtyfQpDT1VOVFJZIDwtICJXb3JsZCIKZGZfeW91cmRhdGEgfD4gZmlsdGVyKGNvdW50cnkgPT0gQ09VTlRSWSkgfD4gZHJvcF9uYShzaG9ydF9uYW1lXzEpIHw+CiAgZ2dwbG90KGFlcyh5ZWFyLCBzaG9ydF9uYW1lXzEpKSArIGdlb21fbGluZSgpICsKICBsYWJzKHRpdGxlID0gIiIsCiAgICAgICB5ID0gIiIpCmBgYAoKKipPYnNlcnZhdGlvbnMgYW5kIFF1ZXN0aW9uczoqKgoKLSAgIAoKYGBgez1odG1sfQo8c3BhbiBzdHlsZSA9ICJjb2xvcjogcmVkOyI+RWRpdCBJU08yQywgdGl0bGUsIHN1YnRpdGxlLCBhbmQgdGhlIGxhYmVsIG9mIHktYXhpcy48L3NwYW4+CmBgYApgYGB7cn0KSVNPMkMgPC0gYygiSlAiLCAiQ04iLCAiSUQiLCAiR0IiLCAiVVMiLCAiREUiLCAiRlIiKQpkZl95b3VyZGF0YSB8PiBmaWx0ZXIoaXNvMmMgJWluJSBJU08yQykgfD4gCiAgZHJvcF9uYShzaG9ydF9uYW1lXzEpIHw+CiAgZ2dwbG90KGFlcyh5ZWFyLCBzaG9ydF9uYW1lXzEsIGNvbCA9IGlzbzJjKSkgKyAKICBnZW9tX2xpbmUoKSArCiAgbGFicyh0aXRsZSA9ICIiLAogICAgICAgc3VidGl0bGUgPSAiQ2hpbmEsIEdlcm1hbnksIEZyYW5jZSwgVW5pdGVkIEtpbmdkb20sIEluZGlhLCBKYXBhbiwgVW5pdGVkIFN0YXRlcyIsIAogICAgICAgeSA9ICIiKQpgYGAKCioqT2JzZXJ2YXRpb25zIGFuZCBRdWVzdGlvbnM6KioKCi0gICAKCiMjIyMgTmFtZSBvZiB0aGUgSW5kaWNhdG9yIDIKCmBgYHs9aHRtbH0KPHNwYW4gc3R5bGUgPSAiY29sb3I6IHJlZDsiPkVkaXQgQ09VTlRSWSBhbmQgdGhlIHRpdGxlLjwvc3Bhbj4KYGBgCmBgYHtyfQpDT1VOVFJZIDwtICJXb3JsZCIKZGZfeW91cmRhdGEgfD4gZmlsdGVyKGNvdW50cnkgPT0gQ09VTlRSWSkgfD4gZHJvcF9uYShzaG9ydF9uYW1lXzIpIHw+CiAgZ2dwbG90KGFlcyh5ZWFyLCBzaG9ydF9uYW1lXzIpKSArIGdlb21fbGluZSgpICsKICBsYWJzKHRpdGxlID0gIiIpCmBgYAoKKipPYnNlcnZhdGlvbnMgYW5kIFF1ZXN0aW9uczoqKgoKLSAgIAoKYGBgez1odG1sfQo8c3BhbiBzdHlsZSA9ICJjb2xvcjogcmVkOyI+RWRpdCBJU08yQywgdGl0bGUsIHN1YnRpdGxlLCBhbmQgdGhlIGxhYmVsIG9mIHktYXhpcywgYW5kIGFkZCBjYXB0aW9uIGlmIHByZWZlcmFibGUuPC9zcGFuPgpgYGAKYGBge3J9CklTTzJDIDwtIGMoIkpQIiwgIkNOIiwgIklEIiwgIkdCIiwgIlVTIiwgIkRFIiwgIkZSIikKZGZfeW91cmRhdGEgfD4gZmlsdGVyKGlzbzJjICVpbiUgSVNPMkMpIHw+IGRyb3BfbmEoc2hvcnRfbmFtZV8yKSB8PgogIGdncGxvdChhZXMoeWVhciwgc2hvcnRfbmFtZV8yLCBjb2wgPSBpc28yYykpICsgCiAgZ2VvbV9saW5lKCkgKwogIGxhYnModGl0bGUgPSAiIiwKICAgICAgIHN1YnRpdGxlID0gIkNoaW5hLCBHZXJtYW55LCBGcmFuY2UsIFVuaXRlZCBLaW5nZG9tLCBJbmRpYSwgSmFwYW4sIFVuaXRlZCBTdGF0ZXMiLCAKICAgICAgIHkgPSAiIiwKICAgICAgIGNhcHRpb24gPSAiIikKYGBgCgoqKk9ic2VydmF0aW9ucyBhbmQgUXVlc3Rpb25zOioqCgotICAgCgojIyMjIFJhbmtpbmcgb2YgdGhlIGluZGljYXRvciAxCgpgYGB7PWh0bWx9CjxzcGFuIHN0eWxlID0gImNvbG9yOiByZWQ7Ij5FZGl0IHllYXIgaWYgbmVjZXNzYXJ5Ljwvc3Bhbj4KYGBgCmBgYHtyfQpkZl95b3VyZGF0YSB8PiBmaWx0ZXIoeWVhciA9PSAyMDIwKSB8PiAKICBmaWx0ZXIocmVnaW9uICE9ICJBZ2dyZWdhdGVzIikgfD4KICBkcm9wX25hKHNob3J0X25hbWVfMSkgfD4gYXJyYW5nZShkZXNjKHNob3J0X25hbWVfMSkpCmBgYAoKYGBge3J9CmRmX3lvdXJkYXRhIHw+IGZpbHRlcih5ZWFyID09IDIwMjApIHw+IAogIGZpbHRlcihyZWdpb24gIT0gIkFnZ3JlZ2F0ZXMiKSB8PgogIGRyb3BfbmEoc2hvcnRfbmFtZV8xKSB8PiBhcnJhbmdlKHNob3J0X25hbWVfMSkKYGBgCgoqKk9ic2VydmF0aW9ucyBhbmQgUXVlc3Rpb25zOioqCgotICAgCgojIyMjIFJhbmtpbmcgb2YgdGhlIEluZGljYXRvciAyCgpgYGB7cn0KZGZfeW91cmRhdGEgfD4gZmlsdGVyKHllYXIgPT0gMjAyMCkgfD4gCiAgZmlsdGVyKHJlZ2lvbiAhPSAiQWdncmVnYXRlcyIpIHw+CiAgZHJvcF9uYShzaG9ydF9uYW1lXzIpIHw+IGFycmFuZ2UoZGVzYyhzaG9ydF9uYW1lXzIpKQpgYGAKCioqT2JzZXJ2YXRpb25zIGFuZCBRdWVzdGlvbnM6KioKCi0gICAKCmBgYHtyfQpkZl95b3VyZGF0YSB8PiBmaWx0ZXIoeWVhciA9PSAyMDIwKSB8PiAKICBmaWx0ZXIocmVnaW9uICE9ICJBZ2dyZWdhdGVzIikgfD4KICBkcm9wX25hKHNob3J0X25hbWVfMikgfD4gYXJyYW5nZShzaG9ydF9uYW1lXzIpCmBgYAoKKipPYnNlcnZhdGlvbnMgYW5kIFF1ZXN0aW9uczoqKgoKLSAgIAoKIyMjIEhpc3RvZ3JhbXMgYW5kIEJveHBsb3RzIGZvciBWYXJpYXRpb24KCiMjIyMgTmFtZSBvZiB0aGUgSW5kaWNhdG9yIDEKCmBgYHs9aHRtbH0KPHNwYW4gc3R5bGUgPSAiY29sb3I6IHJlZDsiPkVkaXQgdGhlIHRpdGxlIGFuZCB5ZWFyLjwvc3Bhbj4KYGBgCmBgYHtyfQpJTkNPTUUgPC1jKCJMb3cgaW5jb21lIiwgIkxvd2VyIG1pZGRsZSBpbmNvbWUiLCAiVXBwZXIgbWlkZGxlIGluY29tZSIsIAoiSGlnaCBpbmNvbWUiKQpgYGAKCmBgYHtyfQpkZl95b3VyZGF0YSB8PiBmaWx0ZXIoeWVhciA9PSAyMDIwKSB8PiAKICBmaWx0ZXIocmVnaW9uICE9ICJBZ2dyZWdhdGVzIikgfD4gCiAgZHJvcF9uYShzaG9ydF9uYW1lXzEpIHw+IGZpbHRlcihpbmNvbWUgIT0gIk5vdCBjbGFzc2lmaWVkIikgfD4KICBnZ3Bsb3QoYWVzKHNob3J0X25hbWVfMSwgZmlsbCA9IGZhY3RvcihpbmNvbWUsIGxldmVscyA9IElOQ09NRSkpKSArIGdlb21faGlzdG9ncmFtKGJpbnMgPSAxNSwgY29sID0gImJsYWNrIiwgbGluZXdpZHRoID0gMC4xKSArIAogIHNjYWxlX3hfbG9nMTAoKSArCiAgbGFicyh0aXRsZSA9ICIiLCBmaWxsID0gIiIpCmBgYAoKKipPYnNlcnZhdGlvbnMgYW5kIFF1ZXN0aW9uczoqKgoKLSAgIAoKYGBgez1odG1sfQo8c3BhbiBzdHlsZSA9ICJjb2xvcjogcmVkOyI+RWRpdCB0aGUgdGl0bGUgYW5kIHRoZSB5ZWFycy48L3NwYW4+CmBgYApgYGB7cn0KZGZfeW91cmRhdGEgfD4gZmlsdGVyKHllYXIgJWluJSBjKDE5OTAsIDIwMDAsIDIwMTAsIDIwMjApKSB8PiBmaWx0ZXIocmVnaW9uICE9ICJBZ2dyZWdhdGVzIikgfD4gCiAgZHJvcF9uYShzaG9ydF9uYW1lXzEpIHw+IGZpbHRlcihzaG9ydF9uYW1lXzEgPiAwKSB8PiBmaWx0ZXIoaW5jb21lICE9ICJOb3QgY2xhc3NpZmllZCIpIHw+IAogIGdncGxvdChhZXMoc2hvcnRfbmFtZV8xLCBmaWxsID0gZmFjdG9yKHllYXIpKSkgKyAKICBnZW9tX2hpc3RvZ3JhbShiaW5zID0gMTUsIGNvbCA9ICJibGFjayIsIGxpbmV3aWR0aCA9IDAuMSkgKyAKICBzY2FsZV94X2xvZzEwKCkgKyBmYWNldF93cmFwKH55ZWFyKSArCiAgbGFicyh0aXRsZSA9ICIiLCBmaWxsID0gIiIpCmBgYAoKKipPYnNlcnZhdGlvbnMgYW5kIFF1ZXN0aW9uczoqKgoKLSAgIAoKYGBge3J9CmRmX3lvdXJkYXRhIHw+IGZpbHRlcih5ZWFyICVpbiUgYygxOTkwLCAyMDAwLCAyMDEwLCAyMDIwKSkgfD4gZmlsdGVyKHJlZ2lvbiAhPSAiQWdncmVnYXRlcyIpIHw+IAogIGRyb3BfbmEoc2hvcnRfbmFtZV8xKSB8PiBmaWx0ZXIoc2hvcnRfbmFtZV8xID4gMCkgfD4gZmlsdGVyKGluY29tZSAhPSAiTm90IGNsYXNzaWZpZWQiKSB8PiAKICBnZ3Bsb3QoYWVzKHNob3J0X25hbWVfMSwgZmFjdG9yKHllYXIpLCBmaWxsID0gZmFjdG9yKHllYXIpKSkgKyAKICBnZW9tX2JveHBsb3QoKSArIHNjYWxlX3hfbG9nMTAoKSArIGxhYnMoeSA9ICIiKSArIHRoZW1lKGxlZ2VuZC5wb3NpdGlvbiA9ICJub25lIikKYGBgCgoqKk9ic2VydmF0aW9ucyBhbmQgUXVlc3Rpb25zOioqCgotICAgCgpgYGB7PWh0bWx9CjxzcGFuIHN0eWxlID0gImNvbG9yOiByZWQ7Ij5FZGl0IHRoZSB0aXRsZSwgYW5kIHRoZSB5ZWFyIGlmIG5lY2Vzc2FyeS48L3NwYW4+CmBgYApgYGB7cn0KZGZfeW91cmRhdGEgfD4gZmlsdGVyKHllYXIgPT0gMjAyMCkgfD4gZmlsdGVyKHJlZ2lvbiAhPSAiQWdncmVnYXRlcyIpIHw+IAogIGRyb3BfbmEoc2hvcnRfbmFtZV8xKSB8PiBmaWx0ZXIoc2hvcnRfbmFtZV8xID4gMCkgfD4gZmlsdGVyKGluY29tZSAhPSAiTm90IGNsYXNzaWZpZWQiKSB8PiAKICBnZ3Bsb3QoYWVzKHNob3J0X25hbWVfMSwgZmFjdG9yKGluY29tZSwgbGV2ZWxzID0gSU5DT01FKSwgZmlsbCA9IGluY29tZSkpICsgCiAgZ2VvbV9ib3hwbG90KCkgKyBzY2FsZV94X2xvZzEwKCkgKyAKICBsYWJzKHRpdGxlID0gIiIsIHkgPSAiIiwgZmlsbCA9ICIiKSArCiAgdGhlbWUobGVnZW5kLnBvc2l0aW9uID0gIm5vbmUiKQpgYGAKCioqT2JzZXJ2YXRpb25zIGFuZCBRdWVzdGlvbnM6KioKCi0gICAKCmBgYHs9aHRtbH0KPHNwYW4gc3R5bGUgPSAiY29sb3I6IHJlZDsiPkVkaXQgdGhlIHRpdGxlIGFuZCB5ZWFyIGlmIG5lY2Vzc2FyeS48L3NwYW4+CmBgYApgYGB7cn0KZGZfeW91cmRhdGEgfD4gZmlsdGVyKHllYXIgPT0gMjAyMCkgfD4gZmlsdGVyKHJlZ2lvbiAhPSAiQWdncmVnYXRlcyIpIHw+IAogIGRyb3BfbmEoc2hvcnRfbmFtZV8xKSB8PiBmaWx0ZXIoc2hvcnRfbmFtZV8xID4gMCkgfD4gCiAgZ2dwbG90KGFlcyhzaG9ydF9uYW1lXzEsIHJlZ2lvbiwgZmlsbCA9IHJlZ2lvbikpICsgCiAgZ2VvbV9ib3hwbG90KCkgKyBzY2FsZV94X2xvZzEwKCkgKyAKICBsYWJzKHRpdGxlID0gIiIsIHkgPSAiIiwgZmlsbCA9ICIiKSArCiAgdGhlbWUobGVnZW5kLnBvc2l0aW9uID0gIm5vbmUiKQpgYGAKCioqT2JzZXJ2YXRpb25zIGFuZCBRdWVzdGlvbnM6KioKCi0gICAKCiMjIyMgR0RQIHBlciBjYXBpdGEKCmBgYHs9aHRtbH0KPHNwYW4gc3R5bGUgPSAiY29sb3I6IHJlZDsiPkVkaXQgdGhlIHRpdGxlLCBhbmQgeWVhciBpZiBuZWNlc3NhcnkuPC9zcGFuPgpgYGAKYGBge3J9CmRmX3lvdXJkYXRhIHw+IGZpbHRlcih5ZWFyID09IDIwMjApIHw+IGZpbHRlcihyZWdpb24gIT0gIkFnZ3JlZ2F0ZXMiKSB8PiAKICBkcm9wX25hKHNob3J0X25hbWVfMikgfD4gZmlsdGVyKGluY29tZSAhPSAiTm90IGNsYXNzaWZpZWQiKSB8PgogIGdncGxvdChhZXMoc2hvcnRfbmFtZV8yLCBmaWxsID0gZmFjdG9yKGluY29tZSwgbGV2ZWxzID0gSU5DT01FKSkpICsgZ2VvbV9oaXN0b2dyYW0oYmlucyA9IDE1LCBjb2wgPSAiYmxhY2siLCBsaW5ld2lkdGggPSAwLjEpICsgCiAgc2NhbGVfeF9sb2cxMCgpICsKICBsYWJzKHRpdGxlID0gIiIsIGZpbGwgPSAiIikKYGBgCgpgYGB7PWh0bWx9CjxzcGFuIHN0eWxlID0gImNvbG9yOiByZWQ7Ij5FZGl0IHRoZSB0aXRsZSBhbmQgdGhlIHllYXIgaWYgbmVjZXNzYXJ5Ljwvc3Bhbj4KYGBgCmBgYHtyfQpkZl95b3VyZGF0YSB8PiBmaWx0ZXIoeWVhciAlaW4lIGMoMTk5MCwgMjAwMCwgMjAxMCwgMjAyMCkpIHw+IGZpbHRlcihyZWdpb24gIT0gIkFnZ3JlZ2F0ZXMiKSB8PiAKICBkcm9wX25hKHNob3J0X25hbWVfMikgfD4gZmlsdGVyKHNob3J0X25hbWVfMiA+IDApIHw+IGZpbHRlcihpbmNvbWUgIT0gIk5vdCBjbGFzc2lmaWVkIikgfD4gCiAgZ2dwbG90KGFlcyhzaG9ydF9uYW1lXzIsIGZpbGwgPSBmYWN0b3IoeWVhcikpKSArIAogIGdlb21faGlzdG9ncmFtKGJpbnMgPSAxNSwgY29sID0gImJsYWNrIiwgbGluZXdpZHRoID0gMC4xKSArIAogIHNjYWxlX3hfbG9nMTAoKSArIGZhY2V0X3dyYXAofnllYXIpICsKICBsYWJzKHRpdGxlID0gIiIsIGZpbGwgPSAiIikgKwogIHRoZW1lKGxlZ2VuZC5wb3NpdGlvbiA9ICJub25lIikKYGBgCgoqKk9ic2VydmF0aW9ucyBhbmQgUXVlc3Rpb25zOioqCgotICAgCgpgYGB7cn0KZGZfeW91cmRhdGEgfD4gZmlsdGVyKHllYXIgJWluJSBjKDE5OTAsIDIwMDAsIDIwMTAsIDIwMjApKSB8PiBmaWx0ZXIocmVnaW9uICE9ICJBZ2dyZWdhdGVzIikgfD4gCiAgZHJvcF9uYShzaG9ydF9uYW1lXzIpIHw+IGZpbHRlcihzaG9ydF9uYW1lXzIgPiAwKSB8PiBmaWx0ZXIoaW5jb21lICE9ICJOb3QgY2xhc3NpZmllZCIpIHw+IAogIGdncGxvdChhZXMoc2hvcnRfbmFtZV8yLCBmYWN0b3IoeWVhciksIGZpbGwgPSBmYWN0b3IoeWVhcikpKSArIAogIGdlb21fYm94cGxvdCgpICsgc2NhbGVfeF9sb2cxMCgpICsgbGFicyh5ID0gIiIpICsgdGhlbWUobGVnZW5kLnBvc2l0aW9uID0gIm5vbmUiKQpgYGAKCioqT2JzZXJ2YXRpb25zIGFuZCBRdWVzdGlvbnM6KioKCi0gICAKCmBgYHs9aHRtbH0KPHNwYW4gc3R5bGUgPSAiY29sb3I6IHJlZDsiPkVkaXQgdGhlIHRpdGxlLCBhbmQgdGhlIHllYXIgaWYgbmVjZXNzYXJ5Ljwvc3Bhbj4KYGBgCmBgYHtyfQpkZl95b3VyZGF0YSB8PiBmaWx0ZXIoeWVhciA9PSAyMDIwKSB8PiBmaWx0ZXIocmVnaW9uICE9ICJBZ2dyZWdhdGVzIikgfD4gCiAgZHJvcF9uYShzaG9ydF9uYW1lXzIpIHw+IGZpbHRlcihzaG9ydF9uYW1lXzIgPiAwKSB8PiBmaWx0ZXIoaW5jb21lICE9ICJOb3QgY2xhc3NpZmllZCIpIHw+IAogIGdncGxvdChhZXMoc2hvcnRfbmFtZV8yLCBmYWN0b3IoaW5jb21lLCBsZXZlbHMgPSBJTkNPTUUpLCBmaWxsID0gaW5jb21lKSkgKyAKICBnZW9tX2JveHBsb3QoKSArIHNjYWxlX3hfbG9nMTAoKSArIAogIGxhYnModGl0bGUgPSAiIiwgeSA9ICIiLCBmaWxsID0gIiIpICsKICB0aGVtZShsZWdlbmQucG9zaXRpb24gPSAibm9uZSIpCmBgYAoKKipPYnNlcnZhdGlvbnMgYW5kIFF1ZXN0aW9uczoqKgoKLSAgIAoKYGBgez1odG1sfQo8c3BhbiBzdHlsZSA9ICJjb2xvcjogcmVkOyI+RWRpdCB0aGUgdGl0bGUgYW5kIHRoZSB5ZWFyIGlmIG5lY2Vzc2FyeS48L3NwYW4+CmBgYApgYGB7cn0KZGZfeW91cmRhdGEgfD4gZmlsdGVyKHllYXIgPT0gMjAyMCkgfD4gZmlsdGVyKHJlZ2lvbiAhPSAiQWdncmVnYXRlcyIpIHw+IAogIGRyb3BfbmEoc2hvcnRfbmFtZV8yKSB8PiBmaWx0ZXIoc2hvcnRfbmFtZV8yID4gMCkgfD4gCiAgZ2dwbG90KGFlcyhzaG9ydF9uYW1lXzIsIHJlZ2lvbiwgZmlsbCA9IHJlZ2lvbikpICsgCiAgZ2VvbV9ib3hwbG90KCkgKyBzY2FsZV94X2xvZzEwKCkgKyAKICBsYWJzKHRpdGxlID0gIiIsIHkgPSAiIiwgZmlsbCA9ICIiKSArCiAgdGhlbWUobGVnZW5kLnBvc2l0aW9uID0gIm5vbmUiKQpgYGAKCiMjIyBTY2F0dGVycGxvdCBmb3IgQ292YXJpYXRpb24KCiMjIyMgU2NhdHRlcnBsb3Qgd2l0aCBhIHJlZ3Jlc3Npb24gbGluZQoKYGBgez1odG1sfQo8c3BhbiBzdHlsZSA9ICJjb2xvcjogcmVkOyI+RWRpdCB0aGUgdGl0bGUsIHRoZSBsYWJlbHMgb2YgeC0gYW5kIHktIGF4ZXMuPC9zcGFuPgpgYGAKYGBge3J9CmRmX3lvdXJkYXRhIHw+IGZpbHRlcih5ZWFyID09IDIwMjApIHw+IAogIGRyb3BfbmEoc2hvcnRfbmFtZV8yLCBzaG9ydF9uYW1lXzEpIHw+CiAgZ2dwbG90KGFlcyhzaG9ydF9uYW1lXzIsIHNob3J0X25hbWVfMSkpICsgZ2VvbV9wb2ludChhZXMoY29sID0gcmVnaW9uKSkgKwogIGdlb21fc21vb3RoKG1ldGhvZCA9ICJsbSIsIGZvcm11bGEgPSAneX54Jywgc2UgPSBGQUxTRSkgKwogIHNjYWxlX3hfbG9nMTAoKSArIHNjYWxlX3lfbG9nMTAoKSArCiAgbGFicyh0aXRsZSA9ICIiLAogICAgICAgeCA9ICIiLAogICAgICAgeSA9ICIiKQpgYGAKCioqT2JzZXJ2YXRpb25zIGFuZCBRdWVzdGlvbnM6KioKCi0gICAKCiMjIyMgU3VtbWFyeSBvZiBhIGxpbmVhciBtb2RlbAoKYGBgez1odG1sfQo8c3BhbiBzdHlsZSA9ICJjb2xvcjogcmVkOyI+RWRpdCB5ZWFyIGlmIG5lY2Vzc2FyeS48L3NwYW4+CmBgYApgYGB7cn0KZGZfeW91cmRhdGEgfD4gZmlsdGVyKHllYXIgPT0gMjAyMCkgfD4gZHJvcF9uYShzaG9ydF9uYW1lXzIsIHNob3J0X25hbWVfMSkgfD4KICBsbShsb2cxMChzaG9ydF9uYW1lXzEpfmxvZzEwKHNob3J0X25hbWVfMiksIGRhdGEgPSBfKSB8PiBzdW1tYXJ5KCkKYGBgCgoqKk9ic2VydmF0aW9ucyBhbmQgUXVlc3Rpb25zOioqCgotICAgCgotICAgCg==</div>
 
 
 
@@ -2201,7 +2296,7 @@ $(document).ready(function () {
 <!-- code folding -->
 <script>
 $(document).ready(function () {
-  window.initializeSourceEmbed("qall401-03.Rmd");
+  window.initializeSourceEmbed("w3a_response.Rmd");
   window.initializeCodeFolding("show" === "show");
 });
 </script>

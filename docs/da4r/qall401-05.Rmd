@@ -1,0 +1,47 @@
+---
+title: "Data Analysis for Researchers 2023, Week 5"
+author: "Hiroshi Suzuki"
+date: "2024/01/24"
+output:
+  html_notebook: default
+  ioslides_presentation:
+    widescreen: yes
+  html_document:
+    df_print: paged
+---
+
+# Part I: EDA with Public Data
+
+## Preview
+
+-   Week 5, Jan. 24: EDA4, UN, OECD, readr, readxl, two table verves, modeling
+
+-   Week 6, Jan. 31: EDA5, Round-up, communication, pdf, Word, PowerPoint
+
+## Importing Data
+
+### File Types
+
+-   CSV
+
+-   Excel
+
+-   Other
+
+## Transforming Data
+
+### Combining Two Tables
+
+-   left_join, etc
+
+## Modeling
+
+-   searching models: few numbers
+
+-   linear regression
+
+### Examples
+
+-   gini, s80/s20
+
+## 
