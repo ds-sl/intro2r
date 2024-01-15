@@ -46,6 +46,50 @@ We study .....
 
 ### About Data
 
+1.  Agricultural Land: AG.LND.AGRI.ZS, Forest Area: AG.LND.FRST.ZS
+
+2.  Population Growth Rate (SE.POP.GROW), GDP per capita (current US\$) (NY.GDP.PCAP.CD)
+
+3.  Life expectancy at birth, female (years): SP.DYN.LE00.FE.IN, GDP per capita, PPP (current international \$): NY.GDP.PCAP.PP.KD
+
+4.  Unemployment Rate (% of total work force) : SL.UEM.TOTL.ZS, Access to electricity : EG.ELC.ACCS.ZS
+
+5.  Individuals using the Internet (% of population): IT.NET.USER.ZS, Literacy rate, youth total (% of people ages 15-24): SE.ADT.1524.LT.ZS
+
+6.  GDP growth (annual %): NY.GDP.MKTP.KD.ZG, Military expenditure (% of GDP): MS.MIL.XPND.GD.ZS
+
+7.  Individuals using the Internet (% of population): IT.NET.USER.ZS, Secure Internet servers (per 1 million people): IT.NET.SECR.P6
+
+8.  Population growth (annual %): SP.POP.GROW, GDP per capita, PPP (constant 2017 international \$): NY.GDP.PCAP.PP.KD
+
+9.  GDP Growth Rate Indicator: NY.GDP.MKTP.KD.ZG, Gross Domestic Product Indicator: NY.GDP.MKTP.CD
+
+10. Capture fisheries production (metric tons): ER.FSH.CAPT.MT, Aquaculture production (metric tons): ER.FSH.AQUA.MT
+
+11. Fertility rate, total (births per woman): SP.DYN.TFRT.IN, GDP per capita, PPP (constant 2017 international \$): NY.GDP.PCAP.PP.KD
+
+12. Forest area (% of land area): AG.LND.FRST.ZS, Population growth (annual %): SP.POP.GROW
+
+13. Literacy rate, adult female (% of females 15 and above): SE.ADT.LITR.FE.ZS, Fertility rate, total (births per woman): SP.DYN.TFRT.IN
+
+14. Stocks traded, turnover ratio of domestic shares (%) : CM.MKT.TRNR, GDP per capita, PPP (constant 2017 international \$): NY.GDP.PCAP.PP.KD
+
+15. GDP (US\$): NY.GDP.MKTP.CD, Adolescent fertility rate (births per 1,000 women ages 15-19): SP.ADO.TFRT
+
+16. School enrollment, primary and secondary (gross), gender parity index (GPI): SE.ENR.PRSC.FM.ZS, Maternal mortality ratio (modeled estimate, per 100,000 live births): SH.STA.MMRT
+
+17. GDP: NY.GDP.MKTP.CD, Air Transport, Passengers Carried in the World: IS.AIR.PSGR
+
+18. GNI per capita, Atlas method (current US\$): NY.GNP.PCAP.CD, Foreign direct investment, net inflows (BoP, current US\$): BX.KLT.DINV.CD.WD
+
+19. Co2 emission: EN.ATM.CO2E.PC, GDP: NY.GDP.MKTP.CD
+
+20. Agricultural land (sq. km)：AG.LND.AGRI.K2, Forest area (sq. km)：AG.LND.FRST.K2
+
+21. Urban population ratio: SP.URB.TOTL.IN.ZS, Total fertility rate: SP.DYN.TFRT.IN
+
+22. Labor force participation rate, total (% of total population ages 15+) (modeled ILO estimate): SL.TLF.CACT.ZS, Mortality rate, under-5 (per 1,000 live births): SH.DYN.MORT
+
 1.  Name of the indicator 1: Indicator Code 1
 
 -   Description:
