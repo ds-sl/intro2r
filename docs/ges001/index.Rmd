@@ -169,7 +169,7 @@ GINI 指数 (世界銀行推計)：SI.POV.GINI [[Link](https://data.worldbank.or
 
 World BankのINEQUALITY IN SOUTHERN AFRICA:AN ASSESSMENT OF THE SOUTHERN AFRICAN CUSTOMS UNION をテキストにしています。教育、失業、COVID-19の貧困に与える影響などを取り上げます。
 
-01/16(TU)　Rでデータサイエンス4:貧困 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00111.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00111.nb.html)]
+01/16(TU)　Rでデータサイエンス4:貧困 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00111.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00111.nb.html)]・[[ビデオ](https://youtu.be/IrzaqZDeCUg)]
 
 **Poverty and Inequality―Distribution of income or consumption**
 
@@ -208,6 +208,11 @@ Poverty headcount ratio at \$6.85 a day is the percentage of the population livi
 -   貧困率 - Poverty Rate（poverty_rate.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/poverty_rate.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/poverty_rate.Rmd)]
     -   より詳細なもの：poverty_rate_long.Rmd [[リンク](https://ds-sl.github.io/intro2r/ges001/poverty_rate_long.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/poverty_rate_long.Rmd)]
         -   PositCloud では、メモリーオーバー
+-   エラー対応
+    -   入力したときには、スペルなどを確認してください。引用符が入っていなかったり、== のところが、= だったり、いろいろな可能性があります。Error message を読むこともたいせつです。Error message を、ChatGPT や、Google Search に入れると、解決方法を教えてくれることもあります。
+    -   File not found の、エラーがでたときには、上から順に、Run （Code Chunk の右上の三角印を押して実行）してみてください。または、エラーが出たところに、カーソルを置き、上の、Run ボタンの右の三角から、Run All Chunks Above を選択すると、そこまでのすべての　Code Chunk を実行してくれます。
+    -   上の方法でうまくいかないときは、data フォルダに、データ（poverty_rate.csv）が入っているかを確認、なければ、data フォルダがあることを確認して、最初のデータ読み込みのところを実行してみてください。
+    -   実行できていても、結果が見えないこともあります。そのときは、Code Chunk の下にある、山二つの記号を押してみてください。これは、結果を表示、非表示にします。それが原因で隠れている場合があります。
 
 ### 第5週
 
