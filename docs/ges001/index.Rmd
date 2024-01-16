@@ -225,39 +225,39 @@ Poverty headcount ratio at \$6.85 a day is the percentage of the population livi
 
 **People-Education**
 
-<!-- Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS -->
+Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS
 
-<!-- School enrollment, primary (% gross)：SE.PRM.ENRR -->
+School enrollment, primary (% gross)：SE.PRM.ENRR
 
-<!-- School enrollment, secondary (% gross)：SE.SEC.ENRR -->
+School enrollment, secondary (% gross)：SE.SEC.ENRR
 
-<!-- School enrollment, tertiary (% gross)：SE.TER.ENRR -->
+School enrollment, tertiary (% gross)：SE.TER.ENRR
 
 **Health**
 
-<!-- Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT -->
+Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT
 
-<!-- Incidence of HIV (% of uninfected population ages 15-49)：SH.HIV.INCD.ZS -->
+Incidence of HIV (% of uninfected population ages 15-49)：SH.HIV.INCD.ZS
 
 **Gender**
 
-<!-- School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS -->
+School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS
 
-<!-- Ratio of female to male labor force participation rate (%) (modeled ILO estimate)： -->
+Ratio of female to male labor force participation rate (%) (modeled ILO estimate)：
 
-<!-- SL.TLF.CACT.FM.ZS -->
+SL.TLF.CACT.FM.ZS
 
 **Labor**
 
-<!-- Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS -->
+Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS
 
-<!-- Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS -->
+Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS
 
-<!-- Global Link - Aid dependency -->
+Global Link - Aid dependency
 
-<!-- Net official development assistance and official aid received (current US\$) -->
+Net official development assistance and official aid received (current US\$)
 
-<!-- DT.ODA.ALLD.CD -->
+DT.ODA.ALLD.CD
 
 ### 第6週
 
