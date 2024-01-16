@@ -18,7 +18,7 @@ output:
 
 ## 演習 1月16日（火）
 
-## 01/16(TU)　Rでデータサイエンス4:貧困（データが少ない難点） [[Main](https://ds-sl.github.io/intro2r/ges001/ges001-main.nb.html)]・[授業]
+## 01/16(TU)　Rでデータサイエンス4:貧困 [[Main](https://ds-sl.github.io/intro2r/ges001/ges001-main.nb.html)]
 
 ### データについて
 
