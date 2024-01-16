@@ -169,7 +169,7 @@ GINI 指数 (世界銀行推計)：SI.POV.GINI [[Link](https://data.worldbank.or
 
 World BankのINEQUALITY IN SOUTHERN AFRICA:AN ASSESSMENT OF THE SOUTHERN AFRICAN CUSTOMS UNION をテキストにしています。教育、失業、COVID-19の貧困に与える影響などを取り上げます。
 
-01/16(TU)　Rでデータサイエンス4:貧困 [[授業資料](https://ds-sl.github.io/intro2r/ges001/ges00111.nb.html)]
+01/16(TU)　Rでデータサイエンス4:貧困 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00111.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00111.nb.html)]
 
 **Poverty and Inequality―Distribution of income or consumption**
 
