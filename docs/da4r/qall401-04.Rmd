@@ -12,6 +12,26 @@ output:
 
 # Part I: EDA with WDI
 
+## Week Three Review
+
+-   WDI package
+
+    -   WDI() for importing, WDIcache for updating meta data, WDIsearch for searching and getting data information
+
+-   Transforming data
+
+    -   select, filter, drop_na, distinct, group_by, summarize
+
+-   Visualizing data
+
+    -   line graph, scatterplot, histogram, boxplot, bar and column plot
+
+### Week Three Assignment - Responses
+
+-   Week Three Assignment Template [[Link](https://ds-sl.github.io/intro2r/da4r/w3_assignment_template.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/w3_assignment_template.Rmd)]
+
+-   Responses to Week Three Assignment [[Link](https://ds-sl.github.io/intro2r/da4r/w3a_response.nb.html)]
+
 ## Preview
 
 -   Week 4, Jan. 17: EDA3, WDI, tidy data (long and wide data), choropleth maps
@@ -34,7 +54,7 @@ output:
 
     -   R Notebook: HTML file with R Markdown source file
 
-### Examples
+## Examples
 
 -   Purchasing power parities (PPPs) [[Link](https://ds-sl.github.io/intro2r/da4r/gdp_ppp.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/gdp_ppp.Rmd)]
 
@@ -42,7 +62,9 @@ output:
 
 -   EDA using WDI: CO~2~ Emissions Per Capita vs GDP Per Capita [[Link](https://ds-sl.github.io/intro2r/da4r/co2pcap.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/co2pcap.Rmd)]
 
-## Review: EDA Workflow
+-   WDI Education [[Link](https://ds-sl.github.io/intro2r/da4r/education.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/education.Rmd)]
+
+## EDA Workflow with WDI
 
 Start RStudio and open your project.
 
@@ -156,6 +178,25 @@ df_lifeexp <- WDI(
 
 ------------------------------------------------------------------------
 
+#### `arrange`, `mutate`, `group_by` and `summarize`
+
+```         
+df_ed |> group_by(year) |> 
+  summarize(expenditure = sum(!is.na(expenditure)), 
+                                     primary = sum(!is.na(primary)),
+                                     secondary = sum(!is.na(secondary)),
+                                     tertiary = sum(!is.na(tertiary))) |>
+  arrange(desc(year))
+```
+
+#### Long Data vs Wide Data [[r4ds tidyr](https://icu-hsuzuki.github.io/da4r/tidy.html?q=pivot_longer#tidy)]
+
+```         
+df |> pivot_longer(cols = c(columns to collect), names_to = "name", values_to = "value")
+```
+
+------------------------------------------------------------------------
+
 ### Data Visualizing
 
 -   ggplot2
@@ -172,28 +213,50 @@ df_lifeexp <- WDI(
 
 ------------------------------------------------------------------------
 
-### Examples [[Link](https://ds-sl.github.io/intro2r/da4r/life_expectancy.nb.html)]
+#### Choropleth Maps [[r4ds worldmap](https://icu-hsuzuki.github.io/da4r/worldmap.html#worldmap)]
 
-#### Line graph
+Natural Earth Data: [https://www.naturalearthdata.com](https://www.naturalearthdata.com/)
 
-```         
-df_life |> filter(country == "World") |> 
-  drop_na(life_expectancy) |>
-  ggplot(aes(year, life_expectancy)) + geom_line() +
-  labs(title = "Life expectancy of the World")
+Manual: <https://cran.r-project.org/web/packages/rnaturalearth/rnaturalearth.pdf>
+
+```{r}
+library(rnaturalearth)
+library(rnaturalearthdata)
 ```
 
-#### Scatter Plot
+<!-- ### Examples [[Link](https://ds-sl.github.io/intro2r/da4r/life_expectancy.nb.html)] -->
 
-```         
-df_life |> filter(year == 2021) |>
-  filter(region != "Aggregates") |> 
-  drop_na(fertility_rate, life_expectancy) |>
-  ggplot(aes(fertility_rate, life_expectancy, col = region)) + 
-  geom_point()
-```
+<!-- #### Line graph -->
 
-------------------------------------------------------------------------
+<!-- ```          -->
+
+<!-- df_life |> filter(country == "World") |>  -->
+
+<!--   drop_na(life_expectancy) |> -->
+
+<!--   ggplot(aes(year, life_expectancy)) + geom_line() + -->
+
+<!--   labs(title = "Life expectancy of the World") -->
+
+<!-- ``` -->
+
+<!-- #### Scatter Plot -->
+
+<!-- ```          -->
+
+<!-- df_life |> filter(year == 2021) |> -->
+
+<!--   filter(region != "Aggregates") |>  -->
+
+<!--   drop_na(fertility_rate, life_expectancy) |> -->
+
+<!--   ggplot(aes(fertility_rate, life_expectancy, col = region)) +  -->
+
+<!--   geom_point() -->
+
+<!-- ``` -->
+
+<!-- ------------------------------------------------------------------------ -->
 
 ## World Development Indicators
 
@@ -215,18 +278,6 @@ df_life |> filter(year == 2021) |>
 
     -   School enrollment, tertiary (% gross): SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)]
 
-------------------------------------------------------------------------
-
-### Long Data vs Wide Data [[r4ds tidyr](https://icu-hsuzuki.github.io/da4r/tidy.html?q=pivot_longer#tidy)]
-
-```         
-df |> pivot_longer(cols = c(columns to collect), names_to = "name", values_to = "value")
-```
-
-------------------------------------------------------------------------
-
-### Choropleth Maps [[r4ds worldmap](https://icu-hsuzuki.github.io/da4r/worldmap.html#worldmap)]
-
 # Part II: Practicum
 
 ## Life-expectancy
@@ -243,45 +294,41 @@ df |> pivot_longer(cols = c(columns to collect), names_to = "name", values_to = 
 
 ------------------------------------------------------------------------
 
-## Week Three Assignment
+## Week Four Assignment
 
-**Self-introduction Plus**
+Choose at least two *similar* WDI codes with the *same scale*, and analyze the data.
 
--   Create an R Notebook of a Data Analysis containing the following and submit the rendered HTML file (eg. `a2_123456.nb.html`)
+-   Create an R Notebook of a Data Analysis containing the following and submit the rendered file (eg. `w4_g123456.nb.html`)
 
-    1.  create an R Notebook using the R Notebook Template in Moodle, save as `a2_123456.Rmd`,
+    1.  create an R Notebook using the R Notebook Template in Moodle, save as `w4_g123456.Rmd`,
 
-    2.  write your name and ID and the contents,
+    2.  edit author with name, ID, and title
 
-    3.  run each code block,
+------------------------------------------------------------------------
 
-    4.  preview to create `a2_123456.nb.html`,
+-   Contents should include the following:
 
-    5.  submit `a2_123456.nb.html` to Moodle.
+    -   A short abstract
 
-1.  Pick data from the built-in datasets besides `cars`. (`library(help = "datasets")` or go to the site [The R Datasets Package](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html))
+    -   Description of data including data name, data code (or id), description
 
-    -   Information of the data: Name, Description, Usage, Format, Source, References (Hint: ?cars)
+    -   Import at least two indicators and use `pivot_longer` to create a long table.
 
-    -   Use `head()`, `str()`, …, and create at least one chart using `ggplot2` - Code Chunk.
+    -   Create a line graph using the long table with color aethetic to dipict at least two indicators in a chart.
 
-        -   Don’t forget to add `library(tidyverse)` in the first code chunk.
+    -   Create several charts: a bar graph or a column graph, a histogram, a line graph, a scatter plot
 
-    -   An observation of the chart - in your own words.
+    -   Observations or questions for visualizations
 
-2.  Load `gapminder` by `library(gapminder)`.
+-   Include a choropleth map, if possible. (a challenge, not required)
 
-    -   Choose `pop` or `gdpPercap`, or both, one country in the data, a group of countries in the data.
+-   run each code block, preview to create `w4_g123456.nb.html`,
 
-    -   Create charts using ggplot2 with geom_line and the variables and countries chosen in 1. (See examples of the charts for `lifeExp`.)
+-   submit `w4_123456.nb.html` to Moodle.
 
-    -   Study the data as you like.
+Submit your R Notebook file (w4_g123456.nb.html) in Moodle (Week Four Assignment).
 
-    -   Observations and difficulties encountered.
-
-**Due:** 2023-01-09 23:59:00. Submit your R Notebook file in Moodle (The Second Assignment). Due on Monday!
-
-***Due Sunday 14, January 2024, 11:59 PM***
+***Due Sunday 21, January 2024, 11:59 PM***
 
 ## Recommended Readings and Activities
 
