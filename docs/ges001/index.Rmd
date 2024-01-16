@@ -208,6 +208,7 @@ Poverty headcount ratio at \$6.85 a day is the percentage of the population livi
 -   貧困率 - Poverty Rate（poverty_rate.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/poverty_rate.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/poverty_rate.Rmd)]
     -   より詳細なもの：poverty_rate_long.Rmd [[リンク](https://ds-sl.github.io/intro2r/ges001/poverty_rate_long.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/poverty_rate_long.Rmd)]
         -   PositCloud では、メモリーオーバー
+    -   授業中に、練習の解答を書き込んだファイル [[リンク](https://ds-sl.github.io/intro2r/ges001/poverty_rate_positcloud.nb.html)]
 -   エラー対応
     -   入力したときには、スペルなどを確認してください。引用符が入っていなかったり、== のところが、= だったり、いろいろな可能性があります。Error message を読むこともたいせつです。Error message を、ChatGPT や、Google Search に入れると、解決方法を教えてくれることもあります。
     -   File not found の、エラーがでたときには、上から順に、Run （Code Chunk の右上の三角印を押して実行）してみてください。または、エラーが出たところに、カーソルを置き、上の、Run ボタンの右の三角から、Run All Chunks Above を選択すると、そこまでのすべての　Code Chunk を実行してくれます。
