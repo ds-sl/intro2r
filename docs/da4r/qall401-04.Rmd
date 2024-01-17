@@ -236,7 +236,7 @@ df |> pivot_longer(cols = c(columns to gather), names_to = "name", values_to = "
 
 -   Line Graph: `geom_line(aes(col=var3, linetype=var4)))`
 
--   Histogram: `geom_histogram(bins = 20)`, `geom_histogram(bins = 20)`
+-   Histogram: `geom_histogram(bins = 20)`, `geom_histogram(binwidth = 5)`
 
     -   What is a histogram? [[video](https://vimeo.com/221607341)]
 
