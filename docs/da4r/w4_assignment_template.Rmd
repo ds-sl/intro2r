@@ -1,0 +1,434 @@
+---
+title: "Week Three Assignment - EDA with WDI"
+author: "ID Last, First"
+date: "`r Sys.Date()`"
+output:
+  html_notebook: default
+---
+
+## Week Four Assignment
+
+Choose at least two *similar* WDI codes with the *same scale*, and analyze the data.
+
+-   Create an R Notebook of a data analysis containing the following and submit the rendered file (e.g., `w4_g123456.nb.html`) in Moodle.
+
+    1.  Create an R Notebook using the R Notebook Template in Moodle and save it as `w4_g123456.Rmd`.
+
+    2.  Edit author with name, ID, and title.
+
+------------------------------------------------------------------------
+
+-   Contents should include the following:
+
+    -   A short abstract
+
+    -   Information of data including data name, data code (or id), description
+
+    -   Data including at least two indicators and a long table created using `pivot_longer`
+
+    -   A line graph using the long table with a color aesthetic to depict at least two indicators in a chart.
+
+    -   Several charts: a bar graph or a column graph, a histogram, a line graph, a scatter plot
+
+    -   Observations or questions for visualizations
+
+-   Include a choropleth map, if possible. (a challenge, not required)
+
+-   Run each code block and preview to create `w4_g123456.nb.html`.
+
+    -   Or, Run All under Run and Preview to check in your web browser!
+
+    -   You can also view your file (e.g. `w4_g123456.nb.html`) by opening it from your web browser.
+
+Submit your R Notebook file (w4_g123456.nb.html) in Moodle (Week Four Assignment).
+
+***Due Sunday 21, January 2024, 11:59 PM***
+
+# Your Project
+
+## Title of your project
+
+*The title can be in the title in YAML.*
+
+### Short Abstract
+
+We study .....
+
+### About Data
+
+1.  Name of the indicator 1: Indicator Code 1
+
+-   Description:
+
+2.  Name of the indicator 2: Indicator Code 2
+
+-   Description:
+
+### Set up
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+*Create data folder if you do not have it under Files.*
+
+```{r eval=FALSE}
+dir.create("data")
+```
+
+*If you do not have `wdicache.rds` in your data folder, run the following two code chunks.*
+
+```{r wdicache, eval=FALSE}
+wdicache <- WDIcache()
+```
+
+```{r writewdicache, eval=FALSE, echo=FALSE}
+write_rds(wdicache, "data/wdicache.rds")
+```
+
+```{r readwdicache, echo=FALSE}
+wdicache <- read_rds("data/wdicache.rds")
+```
+
+### Importing Data
+
+```{=html}
+<span style = "color: red;">Edit the following code chunk!</span>
+```
+```{r}
+chosen_indicator_1 <- "SE.SEC.ENRR" #example
+short_name_1 <- 'sec'
+chosen_indicator_2 <- "NY.GDP.PCAP.PP.KD" #example
+short_name_2 <- 'gdppcap'
+```
+
+Run the following in the beginning.
+
+```{r}
+df_yourdata <- WDI(
+  indicator = c(short_name_1 = chosen_indicator_1,
+                short_name_2 = chosen_indicator_2),
+  extra = TRUE, cache = wdicache)
+```
+
+```{r}
+write_csv(df_yourdata, "data/yourdata.csv")
+```
+
+```{r}
+df_yourdata <- read_csv("data/yourdata.csv")
+```
+
+```{r}
+df_yourdata
+```
+
+```{r}
+str(df_yourdata)
+```
+
+### Visualization by Line Graphs
+
+#### Name of the Indicator 1
+
+```{=html}
+<span style = "color: red;">Edit the title and the label of y-axis.</span>
+```
+```{r}
+COUNTRY <- "World"
+df_yourdata |> filter(country == COUNTRY) |> drop_na(short_name_1) |>
+  ggplot(aes(year, short_name_1)) + geom_line() +
+  labs(title = "",
+       y = "")
+```
+
+**Observations and Questions:**
+
+-   
+
+```{=html}
+<span style = "color: red;">Edit ISO2C, title, subtitle, and the label of y-axis.</span>
+```
+```{r}
+ISO2C <- c("JP", "CN", "ID", "GB", "US", "DE", "FR")
+df_yourdata |> filter(iso2c %in% ISO2C) |> 
+  drop_na(short_name_1) |>
+  ggplot(aes(year, short_name_1, col = iso2c)) + 
+  geom_line() +
+  labs(title = "",
+       subtitle = "China, Germany, France, United Kingdom, India, Japan, United States", 
+       y = "")
+```
+
+**Observations and Questions:**
+
+-   
+
+#### Name of the Indicator 2
+
+```{=html}
+<span style = "color: red;">Edit COUNTRY and the title.</span>
+```
+```{r}
+COUNTRY <- "World"
+df_yourdata |> filter(country == COUNTRY) |> drop_na(short_name_2) |>
+  ggplot(aes(year, short_name_2)) + geom_line() +
+  labs(title = "")
+```
+
+**Observations and Questions:**
+
+-   
+
+```{=html}
+<span style = "color: red;">Edit ISO2C, title, subtitle, and the label of y-axis, and add caption if preferable.</span>
+```
+```{r}
+ISO2C <- c("JP", "CN", "ID", "GB", "US", "DE", "FR")
+df_yourdata |> filter(iso2c %in% ISO2C) |> drop_na(short_name_2) |>
+  ggplot(aes(year, short_name_2, col = iso2c)) + 
+  geom_line() +
+  labs(title = "",
+       subtitle = "China, Germany, France, United Kingdom, India, Japan, United States", 
+       y = "",
+       caption = "")
+```
+
+**Observations and Questions:**
+
+-   
+
+#### Ranking of the indicator 1
+
+```{=html}
+<span style = "color: red;">Edit year if necessary.</span>
+```
+```{r}
+df_yourdata |> filter(year == 2020) |> 
+  filter(region != "Aggregates") |>
+  drop_na(short_name_1) |> arrange(desc(short_name_1))
+```
+
+```{r}
+df_yourdata |> filter(year == 2020) |> 
+  filter(region != "Aggregates") |>
+  drop_na(short_name_1) |> arrange(short_name_1)
+```
+
+**Observations and Questions:**
+
+-   
+
+#### Ranking of the Indicator 2
+
+```{r}
+df_yourdata |> filter(year == 2020) |> 
+  filter(region != "Aggregates") |>
+  drop_na(short_name_2) |> arrange(desc(short_name_2))
+```
+
+**Observations and Questions:**
+
+-   
+
+```{r}
+df_yourdata |> filter(year == 2020) |> 
+  filter(region != "Aggregates") |>
+  drop_na(short_name_2) |> arrange(short_name_2)
+```
+
+**Observations and Questions:**
+
+-   
+
+### Histograms and Boxplots for Variation
+
+#### Name of the Indicator 1
+
+```{=html}
+<span style = "color: red;">Edit the title and year.</span>
+```
+```{r}
+INCOME <-c("Low income", "Lower middle income", "Upper middle income", 
+"High income")
+```
+
+```{r}
+df_yourdata |> filter(year == 2020) |> 
+  filter(region != "Aggregates") |> 
+  drop_na(short_name_1) |> filter(income != "Not classified") |>
+  ggplot(aes(short_name_1, fill = factor(income, levels = INCOME))) + geom_histogram(bins = 15, col = "black", linewidth = 0.1) + 
+  scale_x_log10() +
+  labs(title = "", fill = "")
+```
+
+**Observations and Questions:**
+
+-   
+
+```{=html}
+<span style = "color: red;">Edit the title and the years.</span>
+```
+```{r}
+df_yourdata |> filter(year %in% c(1990, 2000, 2010, 2020)) |> filter(region != "Aggregates") |> 
+  drop_na(short_name_1) |> filter(short_name_1 > 0) |> filter(income != "Not classified") |> 
+  ggplot(aes(short_name_1, fill = factor(year))) + 
+  geom_histogram(bins = 15, col = "black", linewidth = 0.1) + 
+  scale_x_log10() + facet_wrap(~year) +
+  labs(title = "", fill = "")
+```
+
+**Observations and Questions:**
+
+-   
+
+```{r}
+df_yourdata |> filter(year %in% c(1990, 2000, 2010, 2020)) |> filter(region != "Aggregates") |> 
+  drop_na(short_name_1) |> filter(short_name_1 > 0) |> filter(income != "Not classified") |> 
+  ggplot(aes(short_name_1, factor(year), fill = factor(year))) + 
+  geom_boxplot() + scale_x_log10() + labs(y = "") + theme(legend.position = "none")
+```
+
+**Observations and Questions:**
+
+-   
+
+```{=html}
+<span style = "color: red;">Edit the title, and the year if necessary.</span>
+```
+```{r}
+df_yourdata |> filter(year == 2020) |> filter(region != "Aggregates") |> 
+  drop_na(short_name_1) |> filter(short_name_1 > 0) |> filter(income != "Not classified") |> 
+  ggplot(aes(short_name_1, factor(income, levels = INCOME), fill = income)) + 
+  geom_boxplot() + scale_x_log10() + 
+  labs(title = "", y = "", fill = "") +
+  theme(legend.position = "none")
+```
+
+**Observations and Questions:**
+
+-   
+
+```{=html}
+<span style = "color: red;">Edit the title and year if necessary.</span>
+```
+```{r}
+df_yourdata |> filter(year == 2020) |> filter(region != "Aggregates") |> 
+  drop_na(short_name_1) |> filter(short_name_1 > 0) |> 
+  ggplot(aes(short_name_1, region, fill = region)) + 
+  geom_boxplot() + scale_x_log10() + 
+  labs(title = "", y = "", fill = "") +
+  theme(legend.position = "none")
+```
+
+**Observations and Questions:**
+
+-   
+
+#### GDP per capita
+
+```{=html}
+<span style = "color: red;">Edit the title, and year if necessary.</span>
+```
+```{r}
+df_yourdata |> filter(year == 2020) |> filter(region != "Aggregates") |> 
+  drop_na(short_name_2) |> filter(income != "Not classified") |>
+  ggplot(aes(short_name_2, fill = factor(income, levels = INCOME))) + geom_histogram(bins = 15, col = "black", linewidth = 0.1) + 
+  scale_x_log10() +
+  labs(title = "", fill = "")
+```
+
+```{=html}
+<span style = "color: red;">Edit the title and the year if necessary.</span>
+```
+```{r}
+df_yourdata |> filter(year %in% c(1990, 2000, 2010, 2020)) |> filter(region != "Aggregates") |> 
+  drop_na(short_name_2) |> filter(short_name_2 > 0) |> filter(income != "Not classified") |> 
+  ggplot(aes(short_name_2, fill = factor(year))) + 
+  geom_histogram(bins = 15, col = "black", linewidth = 0.1) + 
+  scale_x_log10() + facet_wrap(~year) +
+  labs(title = "", fill = "") +
+  theme(legend.position = "none")
+```
+
+**Observations and Questions:**
+
+-   
+
+```{r}
+df_yourdata |> filter(year %in% c(1990, 2000, 2010, 2020)) |> filter(region != "Aggregates") |> 
+  drop_na(short_name_2) |> filter(short_name_2 > 0) |> filter(income != "Not classified") |> 
+  ggplot(aes(short_name_2, factor(year), fill = factor(year))) + 
+  geom_boxplot() + scale_x_log10() + labs(y = "") + theme(legend.position = "none")
+```
+
+**Observations and Questions:**
+
+-   
+
+```{=html}
+<span style = "color: red;">Edit the title, and the year if necessary.</span>
+```
+```{r}
+df_yourdata |> filter(year == 2020) |> filter(region != "Aggregates") |> 
+  drop_na(short_name_2) |> filter(short_name_2 > 0) |> filter(income != "Not classified") |> 
+  ggplot(aes(short_name_2, factor(income, levels = INCOME), fill = income)) + 
+  geom_boxplot() + scale_x_log10() + 
+  labs(title = "", y = "", fill = "") +
+  theme(legend.position = "none")
+```
+
+**Observations and Questions:**
+
+-   
+
+```{=html}
+<span style = "color: red;">Edit the title and the year if necessary.</span>
+```
+```{r}
+df_yourdata |> filter(year == 2020) |> filter(region != "Aggregates") |> 
+  drop_na(short_name_2) |> filter(short_name_2 > 0) |> 
+  ggplot(aes(short_name_2, region, fill = region)) + 
+  geom_boxplot() + scale_x_log10() + 
+  labs(title = "", y = "", fill = "") +
+  theme(legend.position = "none")
+```
+
+### Scatterplot for Covariation
+
+#### Scatterplot with a regression line
+
+```{=html}
+<span style = "color: red;">Edit the title, the labels of x- and y- axes.</span>
+```
+```{r}
+df_yourdata |> filter(year == 2020) |> 
+  drop_na(short_name_2, short_name_1) |>
+  ggplot(aes(short_name_2, short_name_1)) + geom_point(aes(col = region)) +
+  geom_smooth(method = "lm", formula = 'y~x', se = FALSE) +
+  scale_x_log10() + scale_y_log10() +
+  labs(title = "",
+       x = "",
+       y = "")
+```
+
+**Observations and Questions:**
+
+-   
+
+#### Summary of a linear model
+
+```{=html}
+<span style = "color: red;">Edit year if necessary.</span>
+```
+```{r}
+df_yourdata |> filter(year == 2020) |> drop_na(short_name_2, short_name_1) |>
+  lm(log10(short_name_1)~log10(short_name_2), data = _) |> summary()
+```
+
+**Observations and Questions:**
+
+-   
+
+-   

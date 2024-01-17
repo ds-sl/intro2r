@@ -6,6 +6,7 @@ output:
   html_notebook: default
   ioslides_presentation:
     widescreen: yes
+    df_print: paged
   html_document:
     df_print: paged
 ---
@@ -62,7 +63,7 @@ output:
 
 -   EDA using WDI: CO~2~ Emissions Per Capita vs GDP Per Capita [[Link](https://ds-sl.github.io/intro2r/da4r/co2pcap.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/co2pcap.Rmd)]
 
--   WDI Education [[Link](https://ds-sl.github.io/intro2r/da4r/education.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/education.Rmd)]
+-   Education [[Link](https://ds-sl.github.io/intro2r/da4r/education.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/education.Rmd)]
 
 ## EDA Workflow with WDI
 
@@ -74,6 +75,8 @@ Start RStudio and open your project.
 library(tidyverse)
 library(WDI)
 ```
+
+------------------------------------------------------------------------
 
 ### WDIcache() [[Link in da4r](https://icu-hsuzuki.github.io/da4r/wdidata.html?q=WDIcache#wdicache)]
 
@@ -93,6 +96,12 @@ str(wdicache, max.level = 1)
 
 -   wdicache\$country - data about countries, list of countries, regions, income, lending, etc.
 
+------------------------------------------------------------------------
+
+### WDI(..., extra=TRUE, cache=wdicache)
+
+Download data with extra *updated* information
+
 ```         
 df_yourdata <- WDI(
   indicator = c(short_name_1 = chosen_indicator_1,
@@ -100,30 +109,52 @@ df_yourdata <- WDI(
   extra = TRUE, cache = wdicache)
 ```
 
+------------------------------------------------------------------------
+
 ### WDIsearch() [[Link in da4r](https://icu-hsuzuki.github.io/da4r/a3resp.html?q=WDIsearch#wdisearch)]
+
+```         
+WDIsearch(string = "education", field = "name")
+```
+
+`short=FALSE`: description and source information `cache=wdicache`: updated information
+
+```         
+WDIsearch(string = "school enrollment", field = "name", short = FALSE, cache = wdicache)
+```
+
+```         
+WDIsearch(string = "SE.XPD.TOTL.GD.ZS", field = "indicator", short = FALSE, cache = wdicache)
+```
+
+------------------------------------------------------------------------
 
 ```{r}
 WDIsearch(string = "(% of land area)", field = "name", short = FALSE, cache = wdicache)
 ```
 
+------------------------------------------------------------------------
+
 ```{r}
 WDIsearch(string = "(hectares)", field = "name", short = FALSE, cache = wdicache)
 ```
 
-```{r}
-WDIsearch(string = "XPD", field = "indicator", short = FALSE, cache = wdicache)
-```
+------------------------------------------------------------------------
 
 ```{r}
 WDIsearch(string = "(% of GDP)", field = "name", short = FALSE, cache = wdicache)
 ```
 
+------------------------------------------------------------------------
+
 ```{r}
 WDIsearch(string = "(% of population)", field = "name", short = FALSE, cache = wdicache)
 ```
 
-```         
-WDIsearch(string = "education", field = "name", short = TRUE, cache = wdicache)
+------------------------------------------------------------------------
+
+```{r}
+WDIsearch(string = "XPD", field = "indicator", short = FALSE, cache = wdicache)
 ```
 
 ------------------------------------------------------------------------
@@ -154,27 +185,23 @@ df_lifeexp <- WDI(
 
 ------------------------------------------------------------------------
 
-### Data Transforming
+### Data Transforming by `dplyr` and `tidyr`  in `tidyverse`
 
--   `dplyr`, a package in tidyverse
+-   `select()` : select columns `select(c(1,2,4,5,7,8))`
 
-    -   `select()` : select columns `select(c(1,2,4,5,7,8))`
+-   `filter()` : select rows meeting a condition
 
-    -   `filter()` : select rows meeting a condition
+    -   `filter(country == "World")`
 
-        -   `filter(country == "World")`
+    -   `filter(iso2c %in% c("JP", "IN", "CN"))`
 
-        -   `filter(iso2c %in% c("JP", "IN", "CN"))`
+    -   `filter(region != "Aggregates")`
 
-        -   `filter(region != "Aggregates")`
+-   `distinct()` : select rows with distinct values of a variable `distinct(country)`
 
-    -   `distinct()` : select rows with distinct values of a variable `distinct(country)`
+-   `drop_na()` : drop rows with NA values, e.g. `drop_na(pop)`
 
-    -   `drop_na()` : drop rows with NA values, e.g. `drop_na(pop)`
-
-    -   `group_by` and `summarize`
-
-    -   `mutate`
+-   `arrange` , `mutate` , `group_by` and `summarize`
 
 ------------------------------------------------------------------------
 
@@ -197,31 +224,36 @@ df |> pivot_longer(cols = c(columns to collect), names_to = "name", values_to = 
 
 ------------------------------------------------------------------------
 
-### Data Visualizing
+### Data Visualizing by `ggplot` in `tidyverse`
 
--   ggplot2
+-   `ggplot(aes(x=var1, y=var2)) + geom_***()`
 
-    -   `ggplot(aes(x=var1, y=var2))`
+-   Scatter Plot: `geom_point(aes(col=var3, size=var4, shape=var5))`
 
-    -   Scatter Plot: `geom_point(aes(col=var3, size=var4, shape=var5))`
+-   Line Graph: `geom_line(aes(col=var3, linetype=var4)))`
 
-    -   Line Graph: `geom_line(aes(col=var3, linetype=var4)))`
+-   Histogram: `geom_histogram(bins = 20)`, `geom_histogram(bins = 20)`
 
-    -   Title, Subtitle, Legend and Axis labels
+    -   What is a histogram? [[video](https://vimeo.com/221607341)]
 
-        -   `labs(title = "", subtitle ="", x  = "", y = "", col = "")`
+-   Boxplot: `geom_boxplot(aes(x = var4, y = var1, fill = var3))`
+
+    -   What is a boxplot? [[video](https://vimeo.com/222358034)]
+
+-   Title, Subtitle, Legend and Axis labels
+
+    -   `labs(title = "", subtitle ="", x  = "", y = "", col = "")`
 
 ------------------------------------------------------------------------
 
 #### Choropleth Maps [[r4ds worldmap](https://icu-hsuzuki.github.io/da4r/worldmap.html#worldmap)]
 
-Natural Earth Data: [https://www.naturalearthdata.com](https://www.naturalearthdata.com/)
+rnaturalearth: [[CRAN](https://cran.r-project.org/web/packages/rnaturalearth/index.html)], [[Manual](https://cran.r-project.org/web/packages/rnaturalearth/rnaturalearth.pdf)], [[URL](https://www.naturalearthdata.com)], rnaturalearthdata: [[CRAN](https://cran.r-project.org/web/packages/rnaturalearthdata/index.html)], [[Manual](https://cran.r-project.org/web/packages/rnaturalearthdata/rnaturalearthdata.pdf)]
 
-Manual: <https://cran.r-project.org/web/packages/rnaturalearth/rnaturalearth.pdf>
-
-```{r}
-library(rnaturalearth)
-library(rnaturalearthdata)
+```{r message=FALSE}
+library(rnaturalearth); library(rnaturalearthdata)
+ne_countries(scale = "medium", returnclass = "sf") %>% 
+  ggplot() + geom_sf(aes(fill = region_wb)) + labs(title = "Regions of World Bank")
 ```
 
 <!-- ### Examples [[Link](https://ds-sl.github.io/intro2r/da4r/life_expectancy.nb.html)] -->
@@ -258,9 +290,11 @@ library(rnaturalearthdata)
 
 <!-- ------------------------------------------------------------------------ -->
 
-## World Development Indicators
+# Part II: Practicum
 
-### Data themes [[Link](https://datatopics.worldbank.org/world-development-indicators/)]
+## Education
+
+### World Development Indicators: Data themes [[Link](https://datatopics.worldbank.org/world-development-indicators/)]
 
 -   Data Catalog: World Development Indicators [[Link](https://datacatalog.worldbank.org/search/dataset/0037712/World-Development-Indicators)]
 
@@ -278,31 +312,23 @@ library(rnaturalearthdata)
 
     -   School enrollment, tertiary (% gross): SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)]
 
-# Part II: Practicum
-
-## Life-expectancy
-
--   R Notebook [[Link](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/life_expectancy.Rmd) to the source], [[R Notebook](https://ds-sl.github.io/intro2r/da4r/life_expectancy.nb.html)]
-
--   World Development Indicators: life-expectancy
-
-    -   Population, total: SP.POP.TOTL [[Link](https://data.worldbank.org/indicator/SP.POP.TOTL)]
-
-    -   Fertility rate, total (births per woman): SP.DYN.TFRT.IN [[Link](https://data.worldbank.org/indicator/SP.DYN.TFRT.IN)]
-
-    -   Life expectancy at birth, total: SP.DYN.LE00.IN [[Link](https://data.worldbank.org/indicator/SP.DYN.LE00.IN)]
-
 ------------------------------------------------------------------------
+
+### File Links
+
+-   Education [[Link](https://ds-sl.github.io/intro2r/da4r/education.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/education.Rmd)]
+
+-   Week Four Assignment Template [[Link](https://ds-sl.github.io/intro2r/da4r/w4_assignment_template.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/w4_assignment_template.Rmd)]
 
 ## Week Four Assignment
 
 Choose at least two *similar* WDI codes with the *same scale*, and analyze the data.
 
--   Create an R Notebook of a Data Analysis containing the following and submit the rendered file (eg. `w4_g123456.nb.html`)
+-   Create an R Notebook of a data analysis containing the following and submit the rendered file (e.g., `w4_g123456.nb.html`) in Moodle.
 
-    1.  create an R Notebook using the R Notebook Template in Moodle, save as `w4_g123456.Rmd`,
+    1.  Create an R Notebook using the R Notebook Template in Moodle and save it as `w4_g123456.Rmd`.
 
-    2.  edit author with name, ID, and title
+    2.  Edit author with name, ID, and title.
 
 ------------------------------------------------------------------------
 
@@ -310,21 +336,25 @@ Choose at least two *similar* WDI codes with the *same scale*, and analyze the d
 
     -   A short abstract
 
-    -   Description of data including data name, data code (or id), description
+    -   Information of data including data name, data code (or id), description
 
-    -   Import at least two indicators and use `pivot_longer` to create a long table.
+    -   Data including at least two indicators and a long table created using `pivot_longer`
 
-    -   Create a line graph using the long table with color aethetic to dipict at least two indicators in a chart.
+    -   A line graph using the long table with a color aesthetic to depict at least two indicators in a chart.
 
-    -   Create several charts: a bar graph or a column graph, a histogram, a line graph, a scatter plot
+    -   Several charts: a bar graph or a column graph, a histogram, a line graph, a scatter plot
 
     -   Observations or questions for visualizations
 
 -   Include a choropleth map, if possible. (a challenge, not required)
 
--   run each code block, preview to create `w4_g123456.nb.html`,
+------------------------------------------------------------------------
 
--   submit `w4_123456.nb.html` to Moodle.
+-   Run each code block and preview to create `w4_g123456.nb.html`.
+
+    -   Or, Run All under Run and Preview to check in your web browser!
+
+    -   You can also view your file (e.g. `w4_g123456.nb.html`) by opening it from your web browser.
 
 Submit your R Notebook file (w4_g123456.nb.html) in Moodle (Week Four Assignment).
 
