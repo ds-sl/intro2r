@@ -227,7 +227,7 @@ Exploration of data using one or two related WDI indicators with extra = TRUE
 
 ## Week 4 (2024/01/17)
 
-Exploratory Data Analysis III [[Slides](https://ds-sl.github.io/intro2r/da4r/qall401-04.html)], [[R Notebook](https://ds-sl.github.io/intro2r/da4r/qall401-04.nb.html)], [Video1], [Video2]
+Exploratory Data Analysis III [[Slides](https://ds-sl.github.io/intro2r/da4r/qall401-04.html)], [[R Notebook](https://ds-sl.github.io/intro2r/da4r/qall401-04.nb.html)], [[Video1](https://youtu.be/8J6DBKSriGs)], [Video2]
 
 ### Part I
 
