@@ -372,4 +372,8 @@ Submit your R Notebook file (w4_g123456.nb.html) in Moodle (Week Four Assignment
 
 2.  Posit Recipes（New edition of Posit Primers）: interactive exercises [[Link](https://posit.cloud/learn/recipes)]
 
-3.  RStudio IDE Cheat Sheet. PDF is available on the top right. [[Site Link](https://rstudio.github.io/cheatsheets/html/rstudio-ide.html)]
+3.  Data visualization with ggplot2. PDF is available on the top right. [[Site Link](https://rstudio.github.io/cheatsheets/html/data-visualization.html)]
+
+4.  Data transformation with dplyr. PDF is available on the top right. [[Site Link](https://rstudio.github.io/cheatsheets/html/data-transformation.html)]
+
+5.  Data tidying with tidyr. PDF is available on the top right. [[Site Link](https://rstudio.github.io/cheatsheets/html/tidyr.html)]
