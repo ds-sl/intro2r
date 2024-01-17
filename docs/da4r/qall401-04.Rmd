@@ -3,10 +3,10 @@ title: "Data Analysis for Researchers 2023, Week 4"
 author: "Hiroshi Suzuki"
 date: "2024/01/17"
 output:
-  html_notebook: default
   ioslides_presentation:
     widescreen: yes
     df_print: paged
+  html_notebook: default
   html_document:
     df_print: paged
 ---
@@ -219,7 +219,11 @@ df_ed |> group_by(year) |>
 #### Long Data vs Wide Data [[r4ds tidyr](https://icu-hsuzuki.github.io/da4r/tidy.html?q=pivot_longer#tidy)]
 
 ```         
-df |> pivot_longer(cols = c(columns to collect), names_to = "name", values_to = "value")
+df |> pivot_longer(cols = c(columns to gather))
+```
+
+```         
+df |> pivot_longer(cols = c(columns to gather), names_to = "name", values_to = "value")
 ```
 
 ------------------------------------------------------------------------
@@ -252,7 +256,7 @@ rnaturalearth: [[CRAN](https://cran.r-project.org/web/packages/rnaturalearth/ind
 
 ```{r message=FALSE}
 library(rnaturalearth); library(rnaturalearthdata)
-ne_countries(scale = "medium", returnclass = "sf") %>% 
+ne_countries() %>% 
   ggplot() + geom_sf(aes(fill = region_wb)) + labs(title = "Regions of World Bank")
 ```
 
