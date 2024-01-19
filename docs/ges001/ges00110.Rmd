@@ -1,151 +1,498 @@
 ---
-title: "GES 001 演習3"
+title: "GES 001 演習4"
 author: "H. Suzuki"
-date: "2024年1月9日"
+date: "2024年1月16日"
 output:
-  html_notebook: default
-  html_document:
-    df_print: paged
   ioslides_presentation:
     widescreen: true
     df_print: paged
+  html_document:
+    df_print: paged
+  html_notebook: default
 ---
 
 ## 準備
 
--   自分のPCまたは教室のPC
+1.  （自分のPCまたは教室のPCに）ログイン
 
-    1.  ログイン
+2.  ウェッブ・ブラウザー（Google Chrome など）を起動
 
-    2.  ウェッブ・ブラウザー（Google Chrome など）を起動
+    -   Moodle の GES001 経済と経済学のサイトから、このスライドのページを表示（リンク「Rでデータサイエンス」[**https://ds-sl.github.io/intro2r/ges001/**](https://ds-sl.github.io/intro2r/ges001/)）
 
-        -   Moodle の GES001 経済と経済学のサイトから、このスライドのページを表示（リンク「Rでデータサイエンス」の第2週）
+3.  （別のタブまたは ウィンドウで）PositCloud にログイン[[Posit.cloud](https://posit.cloud/)]
 
-        -   （別のタブまたは ウィンドウで）PositCloud にログイン（アカウントのない人はサイン・アップ）[[Posit.cloud](https://posit.cloud/)]・[[共有プロジェクト](https://posit.cloud/content/5539763)]
+    -   アカウントのない人はサイン・アップ [[共有プロジェクト](https://posit.cloud/content/5539763)] から、Save a Permanent Copy）
 
-    3.  RStudio を起動
+    -   RStudio を自分のコンピュータにインストールしている人は起動
 
-        -   自分のPCにR と RStudio をインストールしていないひとは不要。
+4.  リンクの右上の Raw ボタンの右の Copy a raw file からコピーして演習用 R Markdown ファイルを作成（あとで再度解説します）[[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/poverty_rate.Rmd)]
 
-        -   インストールについては、解説とビデオ参照。[[解説リンク](https://posit.co/download/rstudio-desktop/)]・[[ビデオ](https://www.youtube.com/watch?v=Q8TpC-e0Mfg)]
+## 第4週
 
-## 第3週
+01/11(TH)　南部アフリカ諸国の貧困と不平等の現状1
 
-12/21(TH)　不平等を無くすために何をするべきか1
+　　　　　　南部アフリカ諸国の貧困と不平等の現状2
 
-　　　　　  不平等を無くすために何をするべきか2
+第4週、第5週の講義では、貧困の問題が特に深刻な南部アフリカ諸国の問題を議論します。
 
-講義では、所得の世界的格差の現状を踏まえて、高所得者に対する資産課税、金融取引税の可能性について議論します。
+World BankのINEQUALITY IN SOUTHERN AFRICA:AN ASSESSMENT OF THE SOUTHERN AFRICAN CUSTOMS UNION をテキストにしています。教育、失業、COVID-19の貧困に与える影響などを取り上げます。
 
-01/09(TU)　Rでデータサイエンス3：GNI係数と所得分布　 [[Main](https://ds-sl.github.io/intro2r/ges001/index.html)]
+01/16(TU)　Rでデータサイエンス4:貧困 [[演習資料](https://ds-sl.github.io/intro2r/ges001/poverty_rate.nb.html)]・[[Main](https://ds-sl.github.io/intro2r/ges001/index.html)]
 
-## 講義 12月21日（木）不平等を無くすために何をするべきか
+## 講義 1月11日（木）南部アフリカ諸国の状況
 
-### World Inequality Report 2022 [[Link](https://wir2022.wid.world)]
+-   INEQUALITY IN SOUTHERN AFRICA:AN ASSESSMENT OF THE SOUTHERN AFRICANCUSTOMS UNION [[Report](https://documents1.worldbank.org/curated/en/099125303072236903/pdf/P1649270c02a1f06b0a3ae02e57eadd7a82.pdf)] [[Link](https://openknowledge.worldbank.org/entities/publication/9f8e4073-25f9-562c-8e3b-541c99dd42cb)]
 
--   Chapter 5 Half the sky? The Female Labor Income Share in a Global Perspective [[Link](https://wir2022.wid.world/chapter-5/)]
+    -   Executive summary
 
--   Chapter 7 The road to redistributing wealth [[Link](https://wir2022.wid.world/chapter-7/)]
+    -   Chapter 1　Inequality in the Southern African Customs Union
 
--   Chapter 8 Taxing Multinationals or Taxing Wealthy Individuals? [[Link](https://wir2022.wid.world/chapter-8/)]
+    -   Chapter 2　The role of inherited circumstances
 
--   Chapter 9 Global vs Unilateral Perspectives on Tax Justice [[Link](https://wir2022.wid.world/chapter-9/)]
+    -   Chapter 3　The role of the primary income distribution
 
--   Chapter 10 Emancipation, redistribution and sustainability [[Link](https://wir2022.wid.world/chapter-10/)]
+    -   Chapter 4　The role of the secondary income distribution
 
-## 演習 1月9日（火）GNI係数と所得分布
+    -   Chapter 5　The role of the tertiary income distribution and fiscal policy
 
-世界開発指標（WDI）[[Link](https://datatopics.worldbank.org/world-development-indicators/)] \> **貧困と不平等（Poverty and Inequality）\> 所得または消費の分配（Distribution of income or consumption）**
+    -   Chapter 6　The role of shocks
 
-GINI 指数 (世界銀行推計)：SI.POV.GINI [[Link](https://data.worldbank.org/indicator/SI.POV.GINI)]
+    -   Chapter 7　Addressing inequality in SACU: A policy discussion
 
-下位 10% が占める所得シェア：SI.DST.FRST.10 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.FRST.10)]
+------------------------------------------------------------------------
 
-下位 20% が占める所得シェア：SI.DST.FRST.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.FRST.20)]
+### 南部アフリカ５カ国の状況の分析
 
-2番目の 20% が占める収入シェア：SI.DST.02ND.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.02ND.20)]
+-   南アフリカ（South Africa）、レソト（Lethoto）、エスワティニ（Eswatini, 旧 Swaziland）、ナミビア（Namivia）、ボツワナ（Botswana）
 
-3番目の 20% が占める収入シェア ：SI.DST.03RD.20 [[Link](https://data.worldbank.org/indicator/SI.DST.03RD.20)]
+    -   受講感想にかえて：ジニ指数と所得分布 - 続編 [[R Notebook](https://ds-sl.github.io/intro2r/ges001/gini_updated.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/gini_updated.Rmd)]
+        -   国のリストを変えてみよう：スリナム（Suriname）, ベリーズ（Belize）, ブラジル（Brazil）, コロンビア（Colombia）
 
-4番目の 20% が占める収入シェア：SI.DST.04TH.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.04TH.20)]
+-   本日は、別の指標から、これらの国についての貧困度の分析をします。
 
-上位 20% が占める収入シェア：SI.DST.05TH.20 [[Link](https://data.worldbank.org/indicator/SI.DST.05TH.20)]
+# 演習 1月16日（火）
 
-上位 10% が占める収入シェア：SI.DST.10TH.10 [[Link](https://data.worldbank.org/indicator/SI.DST.10TH.10)]
+## 01/16(TU)　Rでデータサイエンス4:貧困 [[Main](https://ds-sl.github.io/intro2r/ges001/ges001-main.nb.html)]
 
-## 経済学とはなんだろう（私見）
+**Poverty rates at national poverty lines**
 
--   お金（貨幣）に関係する活動から世界を理解する学問!？
+Poverty headcount ratio at national poverty lines (% of population)：SI.POV.NAHC [[Link](https://data.worldbank.org/indicator/SI.POV.NAHC)]
 
--   貨幣の三つの機能：価値尺度機能（a unit of account）・交換機能（medium of exchange）・価値貯蔵機能（a store of value）
+全国貧困人口比率は、全国貧困線以下で生活している人口の割合です。国の推定値は、世帯調査からの人口加重サブグループ推定値に基づいています。データが EU-SILC からのものである経済の場合、報告される年は所得基準年、つまり調査年の前年。
 
-    -   ICUOCW 岩井克人先生「資本主義と社会」 [[リンク](https://ocw.info.icu.ac.jp/ge/ges002_2013a)]・[[ICUOCW](https://ocw.info.icu.ac.jp/index)]
+------------------------------------------------------------------------
 
--   社会の問題を数値化して分析が可能
+**Poverty and Inequality―Poverty rates at international poverty lines**
 
--   数値化しにくい（現在では適切に）数値化できない課題もたくさんある。見えやすい部分を絶対化して、見えにくい部分を無視するおそれが常にある。（Gapminder: Dollar Street）
+Poverty headcount ratio at \$2.15 a day (2017 PPP) (% of population)：SI.POV.DDAY [[Link](https://data.worldbank.org/indicator/SI.POV.DDAY)]
 
-    -   このことを意識して、謙虚に、つねに学び、探究し続けることがたいせつ
+1日2.15ドルの貧困人口比率は、2017年の購買力調整後価格で1日2.15ドル未満で生活している人口の割合です。PPP 為替レートの改定により、各国の貧困率を以前の版で報告された貧困率と比較することができなくなった
 
-    -   「あらゆる貪欲に気をつけ、用心しなさい。」（聖書：ルカによる福音書12章15節）
+Poverty headcount ratio at \$3.65 a day (2017 PPP) (% of population)：SI.POV.LMIC [[Link](https://data.worldbank.org/indicator/SI.POV.LMIC)]
+
+1 日 3.65 ドルの貧困人口比率は、2017 年の国際価格で 1 日 3.65 ドル未満で生活している人口の割合
+
+Poverty headcount ratio at \$6.85 a day (2017 PPP) (% of population)：SI.POV.UMIC [[Link](https://data.worldbank.org/indicator/SI.POV.UMIC)]
+
+1日6.85ドルの貧困人口比率は、2017年の国際価格で1日6.85ドル未満で生活している人口の割合
+
+## 復習
+
+貧困は、どのような尺度で測るのだろうか。
+
+### 一人当たりの購買力平価（Purchasing Power Parities）による国内総生産（Gross Domestic Product）
+
+-   GDP per capita, PPP (constant 2017 international \$): NY.GDP.PCAP.PP.KD [[Link](https://data.worldbank.org/indicator/NY.GDP.PCAP.PP.KD)]
+
+-   12/13 極度に貧しい！？ [[R Notebook](https://ds-sl.github.io/intro2r/ges001/poverty.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/poverty.Rmd)]
+
+-   国ごとの所得の平均のようなものはわかるが、極度の貧困の人がどの程度いるのかはわからない。
+
+------------------------------------------------------------------------
+
+### 人口動態（demography）
+
+-   人口のデータ（総人口、出生率、死亡率、若年者扶養率、高齢者扶養率）
+
+-   12/20 人口動態（demography）[[R Notebook](https://ds-sl.github.io/intro2r/ges001/demography.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/demography.Rmd)]
+
+-   人口データは基本的で、国の値から個人の値を求めたり、他の国と比較しやすい割合から実際の数を求めるなどに必須
+
+------------------------------------------------------------------------
+
+### ジニ指数および所得分布
+
+-   ジニ指数（Gini）, 所得の下位10%, 20%, 20%-40%, 40%-60%, 60%-80%, 80%以上, 90%以上
+
+-   1/9 ジニって何！？ [[R Notebook](https://ds-sl.github.io/intro2r/ges001/what_is_gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/what_is_gini.Rmd)]
+
+-   1/9 ジニ指数と所得分布 [[R Notebook](https://ds-sl.github.io/intro2r/ges001/gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/gini.Rmd)]　（参考1/参考2付 [[R Notebook](https://ds-sl.github.io/intro2r/ges001/gini_long.nb.html)]）
+
+-   国の中での所得分布を見、かつ所得分配の公平さを一つの指標（ジニ指数）で表すことにより、比較も可能になったが、極度に貧困なひとがどのぐらいいるのかはわからない。
+
+## 貧困者率
+
+-   生活するための基本的ニーズを賄うために必要とそれぞれの国が考える基準を満たしていない人口の割合
+
+    -   Poverty headcount ratio at national poverty lines (% of population)：SI.POV.NAHC [[Link](https://data.worldbank.org/indicator/SI.POV.NAHC)]
+
+    -   日本は？ [[Wikipedia](https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E3%81%AE%E8%B2%A7%E5%9B%B0)]
+
+-   \$2.15/日 (\$65.4/月, 785/年), \$3.65（\$111.0/月, \$1,332/年）, \$6.85（\$208.4/月, \$2,500/年）
+
+    -   Poverty headcount ratio at \$2.15 a day (2017 PPP) (% of population)：SI.POV.DDAY [[Link](https://data.worldbank.org/indicator/SI.POV.DDAY)]
+
+    -   Poverty headcount ratio at \$3.65 a day (2017 PPP) (% of population)：SI.POV.LMIC [[Link](https://data.worldbank.org/indicator/SI.POV.LMIC)]
+
+    -   Poverty headcount ratio at \$6.85 a day (2017 PPP) (% of population)：SI.POV.UMIC [[Link](https://data.worldbank.org/indicator/SI.POV.UMIC)]
+
+------------------------------------------------------------------------
+
+### 準備
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+------------------------------------------------------------------------
+
+### データの読み込み（importing）
+
+追加情報（地域・所得レベル）を読み込みたいので、extra=TRUE としてあります。
+
+***最初の１回目は、かならず実行してください。***
+
+```{r eval=FALSE}
+df_poverty_rate <- WDI(
+  indicator = c(ratio = "SI.POV.NAHC",
+                under_2.15 = "SI.POV.DDAY",
+                under_3.65 = "SI.POV.LMIC",
+                under_6.85 = "SI.POV.UMIC"),
+  extra = TRUE)
+```
+
+------------------------------------------------------------------------
+
+#### 保存と読み込み
+
+２回目からは、`data` から読み込めるようにしておきます。
+
+***最初の１回目は、かならず実行してください。***
+
+```{r eval=FALSE}
+write_csv(df_poverty_rate, "data/poverty_rate.csv")
+```
+
+```{r}
+df_poverty_rate <- read_csv("data/poverty_rate.csv")
+```
+
+------------------------------------------------------------------------
+
+### データを見てみよう (viewing)
+
+`df_poverty_rate` または、`head(df_poverty_rate)` と、`str(df_poverty_rate)`
+
+```{r}
+df_poverty_rate
+```
+
+------------------------------------------------------------------------
+
+```{r}
+str(df_poverty_rate)
+```
+
+------------------------------------------------------------------------
+
+### 変数の選択（selecting）
+
+利用しない変数もあるので select を使って変数を減らします。見やすいように、`under_2.15` が NA のものは、削除してあります。
+
+```{r}
+df_poverty_rate_selected <- df_poverty_rate |> drop_na(under_2.15) |>
+  select(country, year, ratio, under_2.15, under_3.65, under_6.85, region)
+df_poverty_rate_selected 
+```
+
+------------------------------------------------------------------------
+
+### 変形（Wide to Long Data）
+
+四つの指標を同時にいくつか選択し比較したいので、一つの列（変数）にならべた、縦長データ（long data）も作成しておきます。
+
+`pivot_longer(ratio:under_6.85, names_to = "level", values_to = "value")`
+
+ここでは、`ratio` から `under_6.85` を、`level` という名前の列にならべ、値を `value` という列に並べるようにしてあります。
+
+確認するときは、value が NA のものは除き、country と、iso2c と、level と value の部分だけ取り出して確認しています。
+
+```{r eval=FALSE}
+df_poverty_rate_long <- df_poverty_rate_selected |> 
+  pivot_longer(ratio:under_6.85, names_to = "level", values_to = "value")
+df_poverty_rate_long |> drop_na(value) |> select(country, level, value, region)
+```
+
+------------------------------------------------------------------------
+
+```{r}
+df_poverty_rate_long <- df_poverty_rate_selected |> 
+  pivot_longer(ratio:under_6.85, names_to = "level", values_to = "value")
+df_poverty_rate_long |> drop_na(value) |> select(country, level, value, region)
+```
+
+------------------------------------------------------------------------
+
+### 年毎のデータの数の確認（number of data in each year）
+
+```{r}
+df_poverty_rate_long |> drop_na(value) |> 
+  group_by(year, level) |> summarize(n = n()) |> arrange(desc(year))
+```
+
+------------------------------------------------------------------------
+
+それぞれの国での貧困率のデータ（ratio）が 多い場合も、絶対的な貧困率が多い場合もあるようだが、指標ごとに集計してみる。
+
+```{r}
+df_poverty_rate_long |> filter(year %in% c(1960, 1970, 1980, 1990, 2000, 2010, 2020)) |> drop_na(value) |> group_by(year, level) |> summarize(n = n()) |>
+  ggplot(aes(as.character(year), n, fill = level)) + geom_col(position = "dodge", col = "black", linewidht = 0.1) + labs(x = "year", y = "number of data")
+```
+
+------------------------------------------------------------------------
+
+```{r}
+df_poverty_rate_long |> 
+  filter(country %in% c("World", "Sub-Saharan Africa")) |> drop_na() |>
+  ggplot(aes(year, value, col = level, linetype = country)) + geom_line()
+```
+
+Sub-Saharan Africa のデータはないようです。たしかに、ratio は、国ごとに決めるものですから、地域の場合には、ratio の値はないのでしょう。
+
+------------------------------------------------------------------------
+
+```{r}
+df_poverty_rate_long |> filter(year %in% c(2000, 2010, 2020)) |> drop_na(value) |> 
+  filter(region == "Aggregates") |> filter(level %in% c("ratio", "under_2.15")) |> group_by(country, year, level) |> summarize(n = n())
+```
+
+------------------------------------------------------------------------
+
+#### Sub-Saharan Africa の国のデータについて
+
+```{r}
+df_poverty_rate_long |> drop_na(value) |> 
+  filter(region == "Sub-Saharan Africa") |> group_by(country, level) |> 
+  summarize(n = n())
+```
+
+## アフリカ南部５カ国の分析
+
+### 国のリストの設定
+
+SOUTH_AFRICA_FIVE に、South Africa, Namibia, Eswatini, Botswana, Lesotho を設定
+
+```{r}
+SOUTH_AFRICA_FIVE <- c("South Africa", "Namibia", "Eswatini", "Botswana", "Lesotho")
+```
+
+### ５カ国のデータを確認
+
+`df_poverty_rate_selected` と、`df_poverty_rate_long` について、アフリカ南部５カ国のデータを確認
+
+------------------------------------------------------------------------
+
+```{r}
+df_poverty_rate_selected |> filter(country %in% SOUTH_AFRICA_FIVE)
+```
+
+------------------------------------------------------------------------
+
+```{r}
+df_poverty_rate_long |> filter(country %in% SOUTH_AFRICA_FIVE)
+```
+
+------------------------------------------------------------------------
+
+### 各貧困率を折れ線グラフで描いてみる
+
+#### 南アフリカについて
+
+```{r}
+df_poverty_rate_long |> 
+  filter(country == "South Africa") |> drop_na(value) |>
+  ggplot(aes(year, value, col = level)) + geom_line()
+```
+
+**考察：**2000年から2008年ごろまで減少しているが、その後、上昇傾向が見られる。
+
+------------------------------------------------------------------------
+
+#### ５カ国同時に
+
+```{r}
+df_poverty_rate_long |> 
+  filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(value) |>
+  ggplot(aes(year, value, col = country, linetype = level)) + geom_line()
+```
+
+**考察：**複雑でわかりやすいとはいえない
+
+------------------------------------------------------------------------
+
+```{r}
+df_poverty_rate_long |> 
+  filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(value) |> filter(level != "ratio") |>
+  ggplot(aes(year, value, col = country, linetype = level)) + geom_line()
+```
+
+**考察：**国ごとに決めた貧困率をのぞいてみた。多少改善した。しかし、あとは好み。
+
+------------------------------------------------------------------------
+
+### ５カ国の最新のデータ
+
+```{r}
+df_poverty_rate_selected |> 
+  filter(country %in% SOUTH_AFRICA_FIVE) |>
+  drop_na(under_2.15) |> group_by(country) |> filter(year == max(year)) |> 
+  select(country, year, ratio:under_6.85)
+```
+
+**考察：**毎年データがあるわけではないので、それぞの国ごとに最新のものを見ることとする
+
+------------------------------------------------------------------------
+
+#### 南アフリカ５カ国の貧困度ごとの人口比
+
+```{r}
+df_poverty_rate_long |> 
+  filter(country %in% SOUTH_AFRICA_FIVE) |>
+  drop_na(value) |> group_by(country) |> filter(year == max(year)) |>
+  ggplot(aes(country, value, fill = level)) + geom_col(position = "dodge", col = "black", linewidth = 0.1) + 
+  labs(title = "Povert Level Ratio of Five Countries", subtitle = "Botswana in 2015, Eswatini in 2016 ,Lesoto in 2017, Namibia in 2015 \nand South Africa in 2014")
+```
+
+------------------------------------------------------------------------
+
+#### いくつかの国の貧困度ごとの人口比
+
+それぞれの国の、最も新しいデータを用いるものとします。
+
+**練習 次の `POV_COUNTRIES_YOUR_CHOICE` の部分を変更して、いくつかの国の貧困者の割合の表とグラフを作成してください。**
+
+`POV_COUNTRIES_YOUR_CHOICE <- c("Myanmar", "Kenya", "China", "India", "Indonesia")`
+
+```{r}
+POV_COUNTRIES_YOUR_CHOICE <- c("Myanmar", "Kenya", "China", "India", "Indonesia")
+df_poverty_rate |> 
+  filter(country %in% POV_COUNTRIES_YOUR_CHOICE) |>
+  drop_na(ratio) |> group_by(country) |> filter(year == max(year)) |> 
+  select(country, iso2c, year, ratio:under_6.85)
+```
+
+------------------------------------------------------------------------
+
+```{r}
+df_poverty_rate_long |> 
+  filter(country %in% POV_COUNTRIES_YOUR_CHOICE) |>
+  drop_na(value) |> group_by(country) |> filter(year == max(year)) |>
+  ggplot(aes(country, value, fill = level)) + geom_col(position = "dodge", col = "black", linewidth = 0.1) + 
+  labs(title = "Poverty Level Ratio of Countries", subtitle = "Using the most recent data")
+```
+
+------------------------------------------------------------------------
+
+#### 折れ線グラフによる比較
+
+線を通常より太くしています。初期値は、GeomLine\$default_aes でわかります。
+
+```{r}
+df_poverty_rate_long |> filter(country %in% c("China", "India")) |>
+  drop_na(value) |>
+  ggplot(aes(year, value, col = country, linetype = level)) + geom_line(linewidth = 1)
+```
+
+------------------------------------------------------------------------
+
+### ヒストグラム（Histogram）
+
+```{r}
+df_poverty_rate |> drop_na(under_2.15) |> filter(region != "Aggregates") |>
+  filter(under_2.15 > 25) |>
+  ggplot(aes(under_2.15, fill = region)) + geom_histogram(bins = 10, col = "black", linewidth = 0.1)
+```
 
 ## ファイルリンク
 
 -   PositCloud 共有リンク：<https://posit.cloud/content/5539763>
 
-    -   ジニって何！？（what_is_gini.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/what_is_gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/what_is_gini.Rmd)]
-
-    -   ジニ指数と所得分布（gini.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/gini.Rmd)]
-
-        -   参考1/参考2付（gini_long.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/gini_long.nb.html)]
+    -   貧困率 - Poverty Rate（poverty_rate.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/poverty_rate.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/poverty_rate.Rmd)]
+        -   より詳細なもの：poverty_rate_long.Rmd [[リンク](https://ds-sl.github.io/intro2r/ges001/poverty_rate_long.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/poverty_rate_long.Rmd)]
+            -   PositCloud では、メモリーオーバー
 
 -   R Notebook のソースファイル（Rmd）を取得する三つの方法
 
-    1.  PositCloud 共有リンクの ges001 のディレクトリ（フォルダから探す）ファイルを開き、全体を選択してコピーし、自分の RStudio または、PositCloud のファイルで、RMarkdown ファイルを新規作成しペースト
+    1.  **Rmd のリンクをクリックし Raw の横の Copy a raw file からコピー、新規 RMarkdown ファイルを PositCloud または RStudio のプロジェクト内に作成しペースト**
 
-    2.  Rmd のリンクをクリックし Raw の横の Copy a raw file からコピー、新規 RMarkdown ファイルを作成しペースト
+    2.  PositCloud 共有リンクの ges001 のディレクトリ（フォルダから探す）ファイルを開き、全体を選択してコピーし、自分の RStudio または、PositCloud のファイルで、RMarkdown ファイルを新規作成しペースト
 
     3.  リンクを開き、右上の Code から、Rmd ファイルをダウンロードとし、それを、自分の RStudio または、PositCloud のプロジェクトに移動（Upload）
 
-## 前回（12月19日）の復習
+## 作業手順とまとめ
 
 -   パッケージ（Package）の利用：
 
     -   インストール（installation）：Tools \> Install Packages
 
-    -   ロード（load）`library(tidyverse); library(WDI); library(showtext)`
+    -   ロード（load）`library(tidyverse); library(WDI); library(showtext); library(DescTools)`
 
 -   データの取得：`WDI(indicator = c(pop = "SP.POP.TOTL"))`
 
--   特定の行の取得：`filter(), drop_na(), distinct()`
+    -   `WDI(indicator = c(ratio = "SI.POV.NAHC", under_2.15 = "SI.POV.DDAY", under_3.65 = "SI.POV.LMIC", under_6.85 = "SI.POV.UMIC"), extra = TRUE)`
 
--   折れ線グラフ
+    -   data に書き出し、そこから読み込むと良い。
 
-    -   `ggplot(aes(x = year, y = pop) + geom_line()`
+        -   `write_csv(df_poverty_rate, "data/poverty_rate.csv")`
 
-    -   `ggplot(aes(x = year, y = pop, col = country) + geom_line()`
+        -   `read_csv("data/poverty_rate.csv")`
 
-## まとめ
-
--   パッケージ（Package）の利用：
-
-    -   インストール（installation）：Tools \> Install Packages
-
-    -   ロード（load）`library(tidyverse); library(WDI); library(DescTools)`
-
--   データの取得：`` WDI(indicator = c(gini = "SI.POV.GINI",`0-10` = "SI.DST.FRST.10",...,`90-100` = "SI.DST.10TH.10")) ``
-
--   特定の行の取得：`filter(), drop_na(), distinct()`
-
--   特定の列の取得：`select()`
-
--   変形 Long Table, Wide Table：`pivot_longer()`
-
--   列の追加：`mutate()`
+-   データを見る：`df_poverty_rate` , `head(df_poverty_rate)`, `str(df_poverty_rate)`
 
 ------------------------------------------------------------------------
 
-### まとめ（可視化）
+### データの変形
+
+-   変数の選択：`select(country, year, ratio, under_2.15, under_3.65, under_6.85, region)`
+
+-   データの変形（Long data）：`pivot_longer(ratio:under_6.85, names_to = "level", values_to = "value")`
+
+-   特定の行の取得：`filter(), drop_na(), distinct()`
+
+-   行の順番の並び替え：`arrange(desc(year))`
+
+-   グループ分け：`group_by()` , `group_by(year, level) |> summarize(n = n())`
+
+------------------------------------------------------------------------
+
+### 可視化
+
+-   折れ線グラフ
+
+    -   `ggplot(aes(x = year, y = under_2.15) + geom_line()`
+
+    -   `ggplot(aes(x = year, y = under_2.15, col = country) + geom_line()`
+
+-   ヒストグラム（度数分布）
+
+    -   `ggplot(aes(under_2.15, fill = region)) + geom_histogram(bins = 15)`
+
+-   箱ひげ図（Boxplot）
+
+    -   `ggplot(aes(under_2.15, region, fill = region)) + geom_boxplot()`
+
+------------------------------------------------------------------------
 
 -   棒グラフ
 
@@ -163,11 +510,69 @@ GINI 指数 (世界銀行推計)：SI.POV.GINI [[Link](https://data.worldbank.or
 
     -   `ggplot(aes(gini, 80-100)) + geom_point() + geom_smooth(formula = 'y ~ x', method = "lm")`
 
+***常に、考察、気づいたことを、記録してください。***
+
 ## 課題
 
-ジニって何！？　練習1〜練習6
+データは、上で使った二つのデータを使います。
 
-ジニ指数と所得分布　練習1〜練習3
+-   `df_poverty_rate_selected` : wide データと言われるものです。貧困率（`under_2.15`）のデータを含まないものは削除してあります。
+
+-   `df_poverty_rate_long` ：long データと言われるものです。
+
+### 練習：データの確認
+
+1.  `df_poverty_rate_selected` と、`df_poverty_rate_long` を見てみましょう。どうしますか。
+
+**Hint：**そのままデータ、head(データ)、Environment から、データを選択
+
+2.  南アメリカで、ジニ指数が大きいのは、以下の４つの国です。Suriname, Belize, Brazil, Colombia。それを、CHOSEN_GINI_COUNTRIES に代入してください。
+
+**Hint：「**SOUTH_AFRICA_FIVE に、South Africa, Namibia, Eswatini, Botswana, Lesotho を設定」を参照
+
+3.  `df_poverty_rate_selected`の南アメリカ４カ国の最新のデータだけを表示してみましょう。
+
+**Hint：**SOUTH_AFRICA_FIVE の場合どのようにしたか考えてみましょう。
+
+**気づいたこと**
+
+-   
+
+------------------------------------------------------------------------
+
+### 南アメリカ４カ国についての分析
+
+4.  ４カ国、それぞれの、貧困率の年次変化を折れ線グラフにより表示
+
+下は、ブラジルについてのものですが、他の３カ国で、データがあるものについては、同様のグラフを描いてください。
+
+```{r}
+df_poverty_rate_long |> filter(country == "Brazil") |> drop_na(value) |>
+  ggplot(aes(year, value, col = level)) + geom_line() +
+  labs(title = "Poverty Ratio of Brasil")
+```
+
+**気づいたこと**
+
+-   
+
+------------------------------------------------------------------------
+
+#### 南アメリカ４カ国の貧困度ごとの人口比の棒グラフ
+
+5.  貧困度ごとの人口比の棒グラフを描いてみましょう。
+
+Hint: 南アフリカ５カ国の貧困度ごとの人口比の棒グラフ
+
+**気づいたこと**
+
+-   
+
+------------------------------------------------------------------------
+
+### 練習：貧困度ごとの人口比
+
+課題にある 1 から 5.
 
 提出はしなくて良いですが、ぜひ実際に手を動かして実行してください。
 

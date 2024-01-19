@@ -364,7 +364,7 @@ World Inequality Report 2022 [[Link](https://wir2022.wid.world)]
 
 -   Glossary Country appendix [[Link](https://wir2022.wid.world/country-appendix-glossary/)]
 
-01/09(TU)　Rでデータサイエンス3：GNI係数と所得分布　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-3.nb.html)]・ [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00110.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00110.nb.html)]・[[ビデオ](https://youtu.be/RwD-SJlSHkQ)]
+01/09(TU)　Rでデータサイエンス3：GNI係数と所得分布　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-3.nb.html)]・ [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00102.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00102.nb.html)]・[[ビデオ](https://youtu.be/RwD-SJlSHkQ)]
 
 -   PositCloud 共有リンク：<https://posit.cloud/content/5539763>
 

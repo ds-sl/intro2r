@@ -129,7 +129,7 @@ Age dependency ratio, old (% of working-age population)：SP.POP.DPND.OL
 
 講義では、所得の世界的格差の現状を踏まえて、高所得者に対する資産課税、金融取引税の可能性について議論します。
 
-01/09(TU)　Rでデータサイエンス3：GNI係数と所得分布　 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00110.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00110.nb.html)]・[[ビデオ](https://youtu.be/RwD-SJlSHkQ)]
+01/09(TU)　Rでデータサイエンス3：GNI係数と所得分布　 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00102.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00102.nb.html)]・[[ビデオ](https://youtu.be/RwD-SJlSHkQ)]
 
 世界開発指標（WDI）[[Link](https://datatopics.worldbank.org/world-development-indicators/)] \> **貧困と不平等（Poverty and Inequality）\> 所得または消費の分配（Distribution of income or consumption）**
 
@@ -169,7 +169,7 @@ GINI 指数 (世界銀行推計)：SI.POV.GINI [[Link](https://data.worldbank.or
 
 World BankのINEQUALITY IN SOUTHERN AFRICA:AN ASSESSMENT OF THE SOUTHERN AFRICAN CUSTOMS UNION をテキストにしています。教育、失業、COVID-19の貧困に与える影響などを取り上げます。
 
-01/16(TU)　Rでデータサイエンス4:貧困 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00111.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00111.nb.html)]・[[ビデオ](https://youtu.be/IrzaqZDeCUg)]
+01/16(TU)　Rでデータサイエンス4:貧困 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00110.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00110.nb.html)]・[[ビデオ](https://youtu.be/IrzaqZDeCUg)]
 
 **Poverty and Inequality―Distribution of income or consumption**
 

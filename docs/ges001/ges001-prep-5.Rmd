@@ -92,6 +92,28 @@ Net official development assistance (ODA) consists of disbursements of loans mad
 
 政府開発援助（ODA）の純額は、開発援助委員会（DAC）メンバーの公的機関、多国間機関、DAC非加盟国による、譲許的条件（元本返済を除く）で行われた融資の実行と助成金で構成されます。 DAC の ODA 受領者リストに含まれる国および地域の経済発展と福祉を促進する。これには、少なくとも 25 パーセント（割引率 10 パーセントで計算）の補助金要素を持つローンが含まれます。純公的援助とは、公的ドナーからDACの受取人リストのパートIIにある国および地域への援助の流れ（返済額を差し引いた額）を指します：中央および東ヨーロッパのより先進国、旧ソ連諸国、および一部の先進途上国国と地域。公的援助は、ODA と同様の条件で提供されます。DAC リストのパート II は 2005 年に廃止されました。パート II 諸国への公的援助およびその他の資源の流れに関するデータの収集は 2004 年のデータで終了しました。データは現在の米ドルで表示されます。
 
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+```{r eval = FALSE}
+wdicache <- WDIcache()
+write_rds(wdicache, "data/wdicache.rds")
+```
+
+```{r}
+wdicache <- read_rds("data/wdicache.rds")
+```
+
+```{r}
+wdi_country <- wdicache$country
+```
+
+```{r}
+wdi_country |> filter(region == "Aggregates") |> pull(iso2c) |> dput()
+```
+
 ## 内容
 
 -   Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)]
@@ -113,6 +135,11 @@ Net official development assistance (ODA) consists of disbursements of loans mad
 -   Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.ZS)]
 
 -   Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
 
 ```{r}
 df_education <- WDI(
@@ -138,6 +165,10 @@ df_education <- read_csv("data/education.csv")
 ```
 
 ```{r}
+df_education |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
+```
+
+```{r}
 df_education_long <- df_education |> 
   pivot_longer(7:16, names_to = "name", values_to = "value")
 ```
@@ -158,9 +189,43 @@ df_education_long |>
 
 World Development Indicators: [[Link](https://datacatalog.worldbank.org/search/dataset/0037712/World-Development-Indicators)]
 
+### World (1W), Sub-Saharan Africa　(excluding high income) (ZF), and Sub-Saharan Africa (ZG)
+
 ```{r}
 df_education_long |> 
   filter(name %in% c("primary", "secondary", "tertiary")) |>
-  filter(iso2c %in% c("1W", "ZF")) |> drop_na(value) |>
+  filter(iso2c %in% c("1W", "ZF", "ZG")) |> drop_na(value) |>
   ggplot(aes(year, value, col = name, linetype = iso2c)) + geom_line()
+```
+
+```{r}
+df_education |> filter(year == 2020) |> 
+  select(education, primary, secondary, tertiary) |> 
+  drop_na() |> cor()
+```
+
+```{r}
+df_education |> filter(country == "Japan") |> arrange(desc(year))
+```
+
+```{r}
+df_education |> filter(region != "Aggregates") |>
+  filter(year == 2020) |>
+  drop_na(education) |> 
+  ggplot(aes(education, fill = region)) + geom_histogram(col = "black", linewidth = 0.1, binwidth = 1) +
+  geom_vline(xintercept = 3.416981) + theme(legend.position = "top")
+```
+
+```{r}
+df_education |> 
+  filter(country %in% c("World", "Japan", "South Africa")) |>
+  drop_na(education) |>
+  ggplot(aes(year, education, col = country)) + geom_line() 
+```
+
+```{r}
+df_education |> 
+  filter(country %in% c("World", "Japan", "Korea, Rep.", "China")) |>
+  drop_na(education) |>
+  ggplot(aes(year, education, col = country)) + geom_line() 
 ```
