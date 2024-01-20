@@ -8,7 +8,7 @@ output:
 
 ## 課題
 
-以下の指標の中から、一つを選択して、データを WDI で取得し、以下の分析をする。
+以下の指標の中から、一つを選択して、データの概要（description）を記録し、データを WDI で取得し、以下の分析をする。
 
 1.  各年毎のデータの数の棒グラフ
 2.  日本のデータの年の降順での表示
@@ -53,7 +53,17 @@ output:
 
 ## データ
 
-Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)]
+### データ情報
+
+-   Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)]
+
+-   データ名：国の教育関連支出（GDP比 %）
+
+-   データコード：SE.XPD.TOTL.GD.ZS
+
+-   変数名：`ed_exp`
+
+-   概要：教育に対する政府の一般支出（経常、資本、移転）は GDP の割合で表されます。これには、国際資金源から政府への送金によって資金提供された支出が含まれます。一般政府とは通常、地方自治体、地域政府、中央政府を指します。
 
 ### データの取得
 
@@ -236,9 +246,19 @@ df_ed_exp |> filter(year == 2020) |> drop_na(ed_exp) |>
 
 # 2. 初等学校就学率
 
-### データ
+## データ
 
 -   School enrollment, primary (% gross)：SE.PRM.ENRR [[Link](https://data.worldbank.org/indicator/SE.PRM.ENRR)]
+
+### データ情報
+
+-   データ名：
+
+-   データコード：
+
+-   変数名：
+
+-   概要：
 
 ### データの取得
 
@@ -415,9 +435,19 @@ df_primary |> filter(year == 2020) |> drop_na(primary) |>
 
 # 3. 中等学校就学率
 
-### データ
+## データ
 
 -   School enrollment, secondary (% gross)：SE.SEC.ENRR [[Link](https://data.worldbank.org/indicator/SE.SEC.ENRR)]
+
+### データ情報
+
+-   データ名：
+
+-   データコード：
+
+-   変数名：
+
+-   概要：
 
 ### データの取得
 
@@ -598,9 +628,19 @@ df_secondary |> filter(year == 2020) |> drop_na(secondary) |>
 
 # 4. 中等学校後の就学率
 
-### データ
+## データ
 
 -   School enrollment, tertiary (% gross)：SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)]
+
+### データ情報
+
+-   データ名：
+
+-   データコード：
+
+-   変数名：
+
+-   概要：
 
 ### データの取得
 
@@ -786,6 +826,16 @@ df_tertiary |> filter(year == 2020) |> drop_na(tertiary) |>
 ## データ
 
 -   Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SH.DYN.MORT)]
+
+### データ情報
+
+-   データ名：
+
+-   データコード：
+
+-   変数名：
+
+-   概要：
 
 ### データの取得
 
@@ -973,6 +1023,16 @@ df_under5 |> filter(year == 2020) |> drop_na(under5) |>
 
 -   School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS [[Link](https://data.worldbank.org/indicator/SE.ENR.PRSC.FM.ZS)]
 
+### データ情報
+
+-   データ名：
+
+-   データコード：
+
+-   変数名：
+
+-   概要：
+
 ### データの取得
 
 #### 準備
@@ -1159,7 +1219,15 @@ df_school_gpi |> filter(year == 2019) |> drop_na(school_gpi) |>
 
 -   Ratio of female to male labor force participation rate (%) (modeled ILO estimate)：SL.TLF.CACT.FM.ZS [[Link](https://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS)]
 
-### データの取得
+### データ情報
+
+-   データ名：
+
+-   データコード：
+
+-   変数名：
+
+-   概要：データの取得
 
 #### 準備
 
@@ -1344,6 +1412,16 @@ df_job_gpi |> filter(year == 2020) |> drop_na(job_gpi) |>
 
 -   Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.FE.ZS)]
 
+### データ情報
+
+-   データ名：
+
+-   データコード：
+
+-   変数名：
+
+-   概要：
+
 ### データの取得
 
 #### 準備
@@ -1527,6 +1605,16 @@ df_female_unemploy |> filter(year == 2020) |> drop_na(female_unemploy) |>
 
 -   Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.ZS)]
 
+### データ情報
+
+-   データ名：
+
+-   データコード：SL.UEM.TOTL.MA.ZS
+
+-   変数名：male_unemploy
+
+-   概要：
+
 ### データの取得
 
 #### 準備
@@ -1539,25 +1627,25 @@ library(WDI)
 WDI パッケージを使って、直接データをダウンロードし、変数名を、`ed_exp` に指定。
 
 ```{r eval = FALSE}
-df_ed_exp <- WDI(indicator = c(ed_exp = "SE.XPD.TOTL.GD.ZS"))
+df_male_unemploy <- WDI(indicator = c(male_unemploy = "SL.UEM.TOTL.MA.ZS"))
 ```
 
 ```{r eval = FALSE}
-write_csv(df_ed_exp, "data/ed_exp.csv")
+write_csv(df_male_unemploy, "data/male_unemploy.csv")
 ```
 
 ```{r}
-df_ed_exp <- read_csv("data/ed_exp.csv")
+df_male_unemploy <- read_csv("data/male_unemploy.csv")
 ```
 
 ### データの確認
 
 ```{r}
-df_ed_exp
+df_male_unemploy
 ```
 
 ```{r}
-str(df_ed_exp)
+str(df_male_unemploy)
 ```
 
 ```{r}
@@ -1569,11 +1657,11 @@ REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1",
 ```
 
 ```{r}
-df_ed_exp |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
+df_male_unemploy |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
 ```
 
 ```{r}
-df_ed_exp |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c)
+df_male_unemploy |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c)
 ```
 
 ### 分析する国のリスト
@@ -1595,17 +1683,17 @@ CHOSEN_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
 ### 1. 各年毎のデータの数の棒グラフ
 
 ```{r}
-df_ed_exp |> drop_na(ed_exp) |> filter(!(iso2c %in% REGION)) |>
+df_male_unemploy |> drop_na(male_unemploy) |> filter(!(iso2c %in% REGION)) |>
   ggplot(aes(year)) + geom_bar()
 ```
 
 ## 視覚化
 
-### 2. 日本の教育費（% of GDP）
+### 2. 日本の男性失業率
 
 ```{r}
-df_ed_exp |> filter(country == "Japan") |> 
-  drop_na(ed_exp) |> arrange(desc(year))
+df_male_unemploy |> filter(country == "Japan") |> 
+  drop_na(male_unemploy) |> arrange(desc(year))
 ```
 
 ### 3. 経年変化
@@ -1613,13 +1701,13 @@ df_ed_exp |> filter(country == "Japan") |>
 #### a. 日本
 
 ```{r}
-df_ed_exp |> filter(country == "Japan") |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line()
+df_male_unemploy |> filter(country == "Japan") |> drop_na(male_unemploy) |>
+  ggplot(aes(year, male_unemploy)) + geom_line()
 ```
 
 **気づいたこと・疑問**
 
--   1970年代の急激な上昇、1990年ごろの急激な現象は、何が原因なのだろう。
+-   2002年ごろと、
 
 -   2014年ごろから減少、2018年ごろから増加、2020年から2021年は減少。
 
@@ -1711,6 +1799,16 @@ df_ed_exp |> filter(year == 2020) |> drop_na(ed_exp) |>
 ## データ
 
 -   Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
+
+### データ情報
+
+-   データ名：
+
+-   データコード：
+
+-   変数名：
+
+-   概要：
 
 ### データの取得
 
