@@ -6,46 +6,48 @@ output:
   html_notebook: default
 ---
 
-## 目標
+## 課題
 
 以下の指標の中から、一つを選択して、データを WDI で取得し、以下の分析をする。
 
-1. 各年毎のデータの数の棒グラフ
-2. 日本のデータの年の降順での表示
-3. 経年変化を表す折れ線グラフ
-    a. 日本
-    b. 南部アフリカ関税同盟の５カ国
-    c. 選択したいくつかの国
-4. データが十分ある最近の年の値のヒストグラム
-5. データが十分ある最近の年の値の10カ国の値の棒グラフ
-    a. 値が大きい方から
-    b. 値が小さい方から
+1.  各年毎のデータの数の棒グラフ
+2.  日本のデータの年の降順での表示
+3.  経年変化を表す折れ線グラフ
+    a.  日本
+    b.  南部アフリカ関税同盟の５カ国
+    c.  選択したいくつかの国
+4.  データが十分ある最近の年の値のヒストグラム
+5.  データが十分ある最近の年の値の10カ国の値の棒グラフ
+    a.  値が大きい方から
+    b.  値が小さい方から
 
 それぞれについて考察（気づいたこと、疑問など）を記す
 
+**2023.1.25. 23:59** までに Moodle の演習の課題ボックスに提出したものについては、なるべく、早く見て、フィードバックを書きます。それ以降に提出されたものも見ますが、フィードバックは遅くなると思ってください。
+
 ### データ
 
--   Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)]
+1.  Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)]
 
--   School enrollment, primary (% gross)：SE.PRM.ENRR [[Link](https://data.worldbank.org/indicator/SE.PRM.ENRR)]
+2.  School enrollment, primary (% gross)：SE.PRM.ENRR [[Link](https://data.worldbank.org/indicator/SE.PRM.ENRR)]
 
--   School enrollment, secondary (% gross)：SE.SEC.ENRR [[Link](https://data.worldbank.org/indicator/SE.SEC.ENRR)]
+3.  School enrollment, secondary (% gross)：SE.SEC.ENRR [[Link](https://data.worldbank.org/indicator/SE.SEC.ENRR)]
 
--   School enrollment, tertiary (% gross)：SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)]
+4.  School enrollment, tertiary (% gross)：SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)]
 
--   Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SH.DYN.MORT)]
+5.  Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SH.DYN.MORT)]
 
--   School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS [[Link](https://data.worldbank.org/indicator/SE.ENR.PRSC.FM.ZS)]
+6.  School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS [[Link](https://data.worldbank.org/indicator/SE.ENR.PRSC.FM.ZS)]
 
--   Ratio of female to male labor force participation rate (%) (modeled ILO estimate)：SL.TLF.CACT.FM.ZS [[Link](https://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS)]
+7.  Ratio of female to male labor force participation rate (%) (modeled ILO estimate)：SL.TLF.CACT.FM.ZS [[Link](https://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS)]
 
--   Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.FE.ZS)]
+8.  Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.FE.ZS)]
 
--   Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.ZS)]
+9.  Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.ZS)]
 
--   Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
+10. Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
 
-# 国の教育に関する支出
+# 1. 国の教育に関する支出
 
 > 概要：国内総生産（GDP）に対する、国の教育に関する支出（Government expenditure on education, total (% of GDP)）のデータの分析を行う
 
@@ -99,7 +101,7 @@ df_ed_exp |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
 ```
 
 ```{r}
-df_ed_exp |> filter(iso2c %in% REGIONS) |> distinct(country, iso2c)
+df_ed_exp |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c)
 ```
 
 ### 分析する国のリスト
@@ -113,7 +115,7 @@ SOUTH_AFRICA_FIVE <- c("South Africa", "Namibia", "Eswatini", "Botswana", "Lesot
 #### ラテンアメリカでジニ指数が大きい４カ国
 
 ```{r}
-CHOSEN_GINI_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
+CHOSEN_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
 ```
 
 ## 分析
@@ -171,14 +173,14 @@ df_ed_exp |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(ed_exp) |>
 #### c. ラテンアメリカ４カ国
 
 ```{r}
-df_ed_exp |> filter(country %in% CHOSEN_GINI_COUNTRIES) |> drop_na(ed_exp) |>
+df_ed_exp |> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(ed_exp) |>
   ggplot(aes(year, ed_exp)) + geom_line(aes(col = country))
 ```
 
 **参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
 
 ```{r}
-df_ed_exp |> filter(country %in% CHOSEN_GINI_COUNTRIES) |> drop_na(ed_exp) |>
+df_ed_exp |> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(ed_exp) |>
   ggplot(aes(year, ed_exp)) + geom_line(aes(col = country)) +
   geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
 ```
@@ -232,12 +234,11 @@ df_ed_exp |> filter(year == 2020) |> drop_na(ed_exp) |>
   coord_flip() + labs(title = "Lowest 10 Countries", x = "country", y = "Government expenditure on education, total (% of GDP)")
 ```
 
-# 初等学校就学率
+# 2. 初等学校就学率
 
 ### データ
 
 -   School enrollment, primary (% gross)：SE.PRM.ENRR [[Link](https://data.worldbank.org/indicator/SE.PRM.ENRR)]
-
 
 ### データの取得
 
@@ -272,7 +273,6 @@ df_primary
 str(df_primary)
 ```
 
-
 ```{r}
 REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
 "S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
@@ -285,7 +285,6 @@ REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1",
 df_primary |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
 ```
 
-
 ### 分析する国のリスト
 
 #### **南部アフリカ関税同盟** The Southern African Customs Union (SACU)
@@ -297,7 +296,7 @@ SOUTH_AFRICA_FIVE <- c("South Africa", "Namibia", "Eswatini", "Botswana", "Lesot
 #### ラテンアメリカでジニ指数が大きい４カ国
 
 ```{r}
-CHOSEN_GINI_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
+CHOSEN_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
 ```
 
 ## 分析
@@ -353,14 +352,14 @@ df_primary |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(primary) |>
 #### c. ラテンアメリカ４カ国
 
 ```{r}
-df_primary |> filter(country %in% CHOSEN_GINI_COUNTRIES) |> drop_na(primary) |>
+df_primary |> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(primary) |>
   ggplot(aes(year, primary)) + geom_line(aes(col = country))
 ```
 
 **参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
 
 ```{r}
-df_primary |> filter(country %in% CHOSEN_GINI_COUNTRIES) |> drop_na(primary) |>
+df_primary |> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(primary) |>
   ggplot(aes(year, primary)) + geom_line(aes(col = country)) +
   geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
 ```
@@ -414,32 +413,1119 @@ df_primary |> filter(year == 2020) |> drop_na(primary) |>
   coord_flip() + labs(title = "Lowest 10 Countries", x = "country", y = "初等学校就学率")
 ```
 
-# 中等学校就学率
+# 3. 中等学校就学率
 
 ### データ
 
--   School enrollment, primary (% gross)：SE.PRM.ENRR [[Link](https://data.worldbank.org/indicator/SE.PRM.ENRR)]
-
 -   School enrollment, secondary (% gross)：SE.SEC.ENRR [[Link](https://data.worldbank.org/indicator/SE.SEC.ENRR)]
+
+### データの取得
+
+#### 準備
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+WDI パッケージを使って、直接データをダウンロードし、変数名を、`ed_exp` に指定。
+
+```{r eval = FALSE}
+df_secondary <- WDI(indicator = c(secondary = "SE.SEC.ENRR"))
+```
+
+```{r eval = FALSE}
+write_csv(df_secondary, "data/secondary.csv")
+```
+
+```{r}
+df_secondary <- read_csv("data/secondary.csv")
+```
+
+### データの確認
+
+```{r}
+df_secondary
+```
+
+```{r}
+str(df_secondary)
+```
+
+```{r}
+REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
+"S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
+"V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL", 
+"XM", "XN", "XO", "XP", "XQ", "XT", "XU", "XY", "Z4", "Z7", "ZF", 
+"ZG", "ZH", "ZI", "ZJ", "ZQ", "ZT")
+```
+
+```{r}
+df_secondary |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
+```
+
+```{r}
+df_secondary |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c)
+```
+
+### 分析する国のリスト
+
+#### **南部アフリカ関税同盟** The Southern African Customs Union (SACU)
+
+```{r}
+SOUTH_AFRICA_FIVE <- c("South Africa", "Namibia", "Eswatini", "Botswana", "Lesotho")
+```
+
+#### ラテンアメリカでジニ指数が大きい４カ国
+
+```{r}
+CHOSEN_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
+```
+
+## 分析
+
+### 1. 各年毎のデータの数の棒グラフ
+
+```{r}
+df_secondary |> drop_na(secondary) |> filter(!(iso2c %in% REGION)) |>
+  ggplot(aes(year)) + geom_bar()
+```
+
+## 視覚化
+
+### 2. 日本の中等学校就学率
+
+```{r}
+df_secondary |> filter(country == "Japan") |> 
+  drop_na(secondary) |> arrange(desc(year))
+```
+
+### 3. 経年変化
+
+#### a. 日本
+
+```{r}
+df_secondary |> filter(country == "Japan") |> drop_na(secondary) |>
+  ggplot(aes(year, secondary)) + geom_line()
+```
+
+**気づいたこと・疑問**
+
+-   2000年ごろから減少、その後も変化がある。何が原因なのだろう。
+
+#### b. 南部アフリカ関税同盟
+
+```{r}
+df_secondary |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(secondary) |>
+  ggplot(aes(year, secondary)) + geom_line(aes(col = country))
+```
+
+**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
+
+```{r}
+df_secondary |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(secondary) |>
+  ggplot(aes(year, secondary)) + geom_line(aes(col = country)) +
+  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
+```
+
+**気づいたこと・疑問**
+
+-   平均で見ると、一定して上昇している。
+
+#### c. ラテンアメリカ４カ国
+
+```{r}
+df_secondary |> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(secondary) |>
+  ggplot(aes(year, secondary)) + geom_line(aes(col = country))
+```
+
+**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
+
+```{r}
+df_secondary |> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(secondary) |>
+  ggplot(aes(year, secondary)) + geom_line(aes(col = country)) +
+  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
+```
+
+### 分布
+
+データの数から、まずは、2020年について見てみる。
+
+```{r}
+df_secondary |> filter(year == 2020) |> filter(!(country %in% REGION))|>
+  drop_na(secondary) |>
+  ggplot(aes(secondary)) + geom_histogram(binwidth = 10)
+```
+
+**参考：**SACU の５カ国の値を縦線で書き込むには下のようにします。
+
+```{r}
+df_secondary |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) 
+```
+
+**参考：日本と**SACU の５カ国の値を縦線で書き込むには下のようにします。
+
+```{r}
+JP <- 102.84480
+SAF <- df_secondary |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) |> pull(secondary)
+df_secondary |> filter(year == 2020) |> filter(!(country %in% REGION))|>
+  drop_na(secondary) |>
+  ggplot() + geom_histogram(aes(secondary), binwidth = 10) +
+  geom_vline(xintercept = SAF, col = "red") + geom_vline(xintercept = JP, col = "blue") +labs(title = "2020年の中等学校就学率", subtitle = "日本：青、SACU：赤")
+```
+
+### データが十分ある最近の年の値の10カ国の値の棒グラフ
+
+#### a. 値が大きい方から
+
+```{r}
+df_secondary |> filter(year == 2020) |> drop_na(secondary) |> 
+  filter(!(iso2c %in% REGION))|>
+  arrange(desc(secondary)) |> head(10) |> 
+  ggplot(aes(fct_reorder(country, secondary), secondary)) + geom_col() + 
+  coord_flip() + labs(title = "Top 10 Countries", x = "country", y = "secondary school enrollment")
+```
+
+#### b. 値が小さい方から
+
+```{r}
+df_secondary |> filter(year == 2020) |> drop_na(secondary) |> 
+  filter(!(iso2c %in% REGION))|>
+  arrange(secondary) |> head(10) |> 
+  ggplot(aes(fct_rev(fct_reorder(country, secondary)), secondary)) + geom_col() + 
+  coord_flip() + labs(title = "Lowest 10 Countries", x = "country", y = "secondary schooll enrollment")
+```
+
+# 4. 中等学校後の就学率
+
+### データ
 
 -   School enrollment, tertiary (% gross)：SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)]
 
--   Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SH.DYN.MORT)]
+### データの取得
 
--   School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS [[Link](https://data.worldbank.org/indicator/SE.ENR.PRSC.FM.ZS)]
+#### 準備
 
--   Ratio of female to male labor force participation rate (%) (modeled ILO estimate)：SL.TLF.CACT.FM.ZS [[Link](https://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS)]
+```{r}
+library(tidyverse)
+library(WDI)
+```
 
--   Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.FE.ZS)]
+WDI パッケージを使って、直接データをダウンロードし、変数名を、`ed_exp` に指定。
 
--   Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.ZS)]
+```{r eval = FALSE}
+df_tertiary <- WDI(indicator = c(tertiary = "SE.TER.ENRR"))
+```
 
--   Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
+```{r eval = FALSE}
+write_csv(df_tertiary, "data/tertiary.csv")
+```
 
+```{r}
+df_tertiary <- read_csv("data/tertiary.csv")
+```
+
+### データの確認
+
+```{r}
+df_tertiary
+```
+
+```{r}
+str(df_tertiary)
+```
+
+```{r}
+REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
+"S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
+"V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL", 
+"XM", "XN", "XO", "XP", "XQ", "XT", "XU", "XY", "Z4", "Z7", "ZF", 
+"ZG", "ZH", "ZI", "ZJ", "ZQ", "ZT")
+```
+
+```{r}
+df_tertiary |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
+```
+
+```{r}
+df_tertiary |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c)
+```
+
+### 分析する国のリスト
+
+#### **南部アフリカ関税同盟** The Southern African Customs Union (SACU)
+
+```{r}
+SOUTH_AFRICA_FIVE <- c("South Africa", "Namibia", "Eswatini", "Botswana", "Lesotho")
+```
+
+#### ラテンアメリカでジニ指数が大きい４カ国
+
+```{r}
+CHOSEN_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
+```
+
+## 分析
+
+### 1. 各年毎のデータの数の棒グラフ
+
+```{r}
+df_tertiary |> drop_na(tertiary) |> filter(!(iso2c %in% REGION)) |>
+  ggplot(aes(year)) + geom_bar()
+```
+
+## 視覚化
+
+### 2. 日本の教育費（% of GDP）
+
+```{r}
+df_tertiary |> filter(country == "Japan") |> 
+  drop_na(tertiary) |> arrange(desc(year))
+```
+
+### 3. 経年変化
+
+#### a. 日本
+
+```{r}
+df_tertiary |> filter(country == "Japan") |> drop_na(tertiary) |>
+  ggplot(aes(year, tertiary)) + geom_line()
+```
+
+**気づいたこと・疑問**
+
+-   1970年代の急激な上昇、1990年ごろからまた増加は、何が原因なのだろう。
+
+-   どのように、中等学校後について定めているのだろう。
+
+#### b. 南部アフリカ関税同盟
+
+```{r}
+df_tertiary |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(tertiary) |>
+  ggplot(aes(year, tertiary)) + geom_line(aes(col = country))
+```
+
+**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
+
+```{r}
+df_tertiary |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(tertiary) |>
+  ggplot(aes(year, tertiary)) + geom_line(aes(col = country)) +
+  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
+```
+
+**気づいたこと・疑問**
+
+-   平均で見ると、上昇してきており、7% 程度という大きな割合になっている。
+
+#### c. ラテンアメリカ４カ国
+
+```{r}
+df_tertiary |> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(tertiary) |>
+  ggplot(aes(year, tertiary)) + geom_line(aes(col = country))
+```
+
+**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
+
+```{r}
+df_tertiary |> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(tertiary) |>
+  ggplot(aes(year, tertiary)) + geom_line(aes(col = country)) +
+  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
+```
+
+### 分布
+
+データの数から、まずは、2020年について見てみる。
+
+```{r}
+df_tertiary |> filter(year == 2020) |> filter(!(country %in% REGION))|>
+  drop_na(tertiary) |>
+  ggplot(aes(tertiary)) + geom_histogram(binwidth = 10)
+```
+
+**参考：**SACU の５カ国の値を縦線で書き込むには下のようにします。
+
+```{r}
+df_tertiary |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) 
+```
+
+**参考：日本と**SACU の５カ国の値を縦線で書き込むには下のようにします。
+
+```{r}
+JP <- 62.13584
+SAF <- df_tertiary |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) |> pull(tertiary)
+df_tertiary |> filter(year == 2020) |> filter(!(country %in% REGION))|>
+  drop_na(tertiary) |>
+  ggplot() + geom_histogram(aes(tertiary), binwidth = 10) +
+  geom_vline(xintercept = SAF, col = "red") + geom_vline(xintercept = JP, col = "blue") +labs(title = "2020年の中等学校後の就学率", subtitle = "日本：青、SACU：赤")
+```
+
+### データが十分ある最近の年の値の10カ国の値の棒グラフ
+
+#### a. 値が大きい方から
+
+```{r}
+df_tertiary |> filter(year == 2020) |> drop_na(tertiary) |> 
+  filter(!(iso2c %in% REGION))|>
+  arrange(desc(tertiary)) |> head(10) |> 
+  ggplot(aes(fct_reorder(country, tertiary), tertiary)) + geom_col() + 
+  coord_flip() + labs(title = "Top 10 Countries", x = "country", y = "tertiary school enrollment")
+```
+
+#### b. 値が小さい方から
+
+```{r}
+df_tertiary |> filter(year == 2020) |> drop_na(tertiary) |> 
+  filter(!(iso2c %in% REGION))|>
+  arrange(tertiary) |> head(10) |> 
+  ggplot(aes(fct_rev(fct_reorder(country, tertiary)), tertiary)) + geom_col() + 
+  coord_flip() + labs(title = "Lowest 10 Countries", x = "country", y = "tertiary school enrollment")
+```
+
+# 5. 五歳未満の死亡率
 
 ## データ
 
-Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)]
+-   Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SH.DYN.MORT)]
+
+### データの取得
+
+#### 準備
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+WDI パッケージを使って、直接データをダウンロードし、変数名を、`ed_exp` に指定。
+
+```{r eval = FALSE}
+df_under5 <- WDI(indicator = c(under5 = "SH.DYN.MORT"))
+```
+
+```{r eval = FALSE}
+write_csv(df_under5, "data/under5.csv")
+```
+
+```{r}
+df_under5 <- read_csv("data/under5.csv")
+```
+
+### データの確認
+
+```{r}
+df_under5
+```
+
+```{r}
+str(df_under5)
+```
+
+```{r}
+REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
+"S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
+"V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL", 
+"XM", "XN", "XO", "XP", "XQ", "XT", "XU", "XY", "Z4", "Z7", "ZF", 
+"ZG", "ZH", "ZI", "ZJ", "ZQ", "ZT")
+```
+
+```{r}
+df_under5 |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
+```
+
+```{r}
+df_under5 |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c)
+```
+
+### 分析する国のリスト
+
+#### **南部アフリカ関税同盟** The Southern African Customs Union (SACU)
+
+```{r}
+SOUTH_AFRICA_FIVE <- c("South Africa", "Namibia", "Eswatini", "Botswana", "Lesotho")
+```
+
+#### ラテンアメリカでジニ指数が大きい４カ国
+
+```{r}
+CHOSEN_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
+```
+
+## 分析
+
+### 1. 各年毎のデータの数の棒グラフ
+
+```{r}
+df_under5 |> drop_na(under5) |> filter(!(iso2c %in% REGION)) |>
+  ggplot(aes(year)) + geom_bar()
+```
+
+## 視覚化
+
+### 2. 五歳未満死亡率（1000人あたり）
+
+```{r}
+df_under5 |> filter(country == "Japan") |> 
+  drop_na(under5) |> arrange(desc(year))
+```
+
+### 3. 経年変化
+
+#### a. 日本
+
+```{r}
+df_under5 |> filter(country == "Japan") |> drop_na(under5) |>
+  ggplot(aes(year, under5)) + geom_line()
+```
+
+**気づいたこと・疑問**
+
+-   継続的に減少している。
+
+-   1960年ごろは40% ということは、1950年ごろは、50% ぐらいだったのだろうか。
+
+#### b. 南部アフリカ関税同盟
+
+```{r}
+df_under5 |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(under5) |>
+  ggplot(aes(year, under5)) + geom_line(aes(col = country))
+```
+
+**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
+
+```{r}
+df_under5 |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(under5) |>
+  ggplot(aes(year, under5)) + geom_line(aes(col = country)) +
+  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
+```
+
+**気づいたこと・疑問**
+
+-   2000年すぎに上昇しているが、それ以外は、減少している。
+-   紛争だろうか。
+
+#### c. ラテンアメリカ４カ国
+
+```{r}
+df_under5 |> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(under5) |>
+  ggplot(aes(year, under5)) + geom_line(aes(col = country))
+```
+
+**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
+
+```{r}
+df_under5 |> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(under5) |>
+  ggplot(aes(year, under5)) + geom_line(aes(col = country)) +
+  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
+```
+
+### 分布
+
+データの数から、まずは、2020年について見てみる。
+
+```{r}
+df_under5 |> filter(year == 2020) |> filter(!(country %in% REGION))|>
+  drop_na(under5) |>
+  ggplot(aes(under5)) + geom_histogram(binwidth = 10)
+```
+
+**参考：**SACU の５カ国の値を縦線で書き込むには下のようにします。
+
+```{r}
+df_under5 |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) 
+```
+
+**参考：日本と**SACU の５カ国の値を縦線で書き込むには下のようにします。
+
+```{r}
+JP <- 2.4
+SAF <- df_under5 |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) |> pull(under5)
+df_under5 |> filter(year == 2020) |> filter(!(country %in% REGION))|>
+  drop_na(under5) |>
+  ggplot() + geom_histogram(aes(under5), binwidth = 10) +
+  geom_vline(xintercept = SAF, col = "red") + geom_vline(xintercept = JP, col = "blue") +labs(title = "五歳未満の死亡率（1000人あたり）", subtitle = "日本：青、SACU：赤")
+```
+
+### データが十分ある最近の年の値の10カ国の値の棒グラフ
+
+#### a. 値が大きい方から
+
+```{r}
+df_under5 |> filter(year == 2020) |> drop_na(under5) |> 
+  filter(!(iso2c %in% REGION))|>
+  arrange(desc(under5)) |> head(10) |> 
+  ggplot(aes(fct_reorder(country, under5), under5)) + geom_col() + 
+  coord_flip() + labs(title = "五歳未満の死亡率（1000人あたり）", x = "country")
+```
+
+#### b. 値が小さい方から
+
+```{r}
+df_under5 |> filter(year == 2020) |> drop_na(under5) |> 
+  filter(!(iso2c %in% REGION))|>
+  arrange(under5) |> head(10) |> 
+  ggplot(aes(fct_rev(fct_reorder(country, under5)), under5)) + geom_col() + 
+  coord_flip() + labs(title = "Lowest 10 Countries", y = "under 5 mortality", x = "country")
+```
+
+# 6. 初等中等学校就学率（性差）
+
+## データ
+
+-   School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS [[Link](https://data.worldbank.org/indicator/SE.ENR.PRSC.FM.ZS)]
+
+### データの取得
+
+#### 準備
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+WDI パッケージを使って、直接データをダウンロードし、変数名を、`ed_exp` に指定。
+
+```{r eval = FALSE}
+df_school_gpi <- WDI(indicator = c(school_gpi = "SE.ENR.PRSC.FM.ZS"))
+```
+
+```{r eval = FALSE}
+write_csv(df_school_gpi, "data/school_gpi.csv")
+```
+
+```{r}
+df_school_gpi <- read_csv("data/school_gpi.csv")
+```
+
+### データの確認
+
+```{r}
+df_school_gpi
+```
+
+```{r}
+str(df_school_gpi)
+```
+
+```{r}
+REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
+"S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
+"V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL", 
+"XM", "XN", "XO", "XP", "XQ", "XT", "XU", "XY", "Z4", "Z7", "ZF", 
+"ZG", "ZH", "ZI", "ZJ", "ZQ", "ZT")
+```
+
+```{r}
+df_school_gpi |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
+```
+
+```{r}
+df_school_gpi |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c)
+```
+
+### 分析する国のリスト
+
+#### **南部アフリカ関税同盟** The Southern African Customs Union (SACU)
+
+```{r}
+SOUTH_AFRICA_FIVE <- c("South Africa", "Namibia", "Eswatini", "Botswana", "Lesotho")
+```
+
+#### ラテンアメリカでジニ指数が大きい４カ国
+
+```{r}
+CHOSEN_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
+```
+
+## 分析
+
+### 1. 各年毎のデータの数の棒グラフ
+
+```{r}
+df_school_gpi |> drop_na(school_gpi) |> filter(!(iso2c %in% REGION)) |>
+  ggplot(aes(year)) + geom_bar()
+```
+
+## 視覚化
+
+### 2. 日本の初等中等学校就学率における GPI
+
+```{r}
+df_school_gpi |> filter(country == "Japan") |> 
+  drop_na(school_gpi) |> arrange(desc(year))
+```
+
+### 3. 経年変化
+
+#### a. 日本
+
+```{r}
+df_school_gpi |> filter(country == "Japan") |> drop_na(school_gpi) |>
+  ggplot(aes(year, school_gpi)) + geom_line()
+```
+
+**気づいたこと・疑問**
+
+-   1995年ごろまでは揺らぎがある。そのあとは、下降。
+
+-   差が小さいので、あまり、気にするのは適切ではないかもしれない。
+
+#### b. 南部アフリカ関税同盟
+
+```{r}
+df_school_gpi |> filter(country %in% SOUTH_AFRICA_FIVE) |> 
+  drop_na(school_gpi) |>
+  ggplot(aes(year, school_gpi)) + geom_line(aes(col = country))
+```
+
+**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
+
+```{r}
+df_school_gpi |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(school_gpi) |>
+  ggplot(aes(year, school_gpi)) + geom_line(aes(col = country)) +
+  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
+```
+
+**気づいたこと・疑問**
+
+-   ゆるやかに減少。1.0 に近づいている。
+
+#### c. ラテンアメリカ４カ国
+
+```{r}
+df_school_gpi |> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(school_gpi) |>
+  ggplot(aes(year, school_gpi)) + geom_line(aes(col = country))
+```
+
+**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
+
+```{r}
+df_school_gpi |> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(school_gpi) |>
+  ggplot(aes(year, school_gpi)) + geom_line(aes(col = country)) +
+  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
+```
+
+### 分布
+
+データの数から、2020年のデータは少ないので、2019年について見てみる。
+
+```{r}
+df_school_gpi |> filter(year == 2019) |> filter(!(country %in% REGION))|>
+  drop_na(school_gpi) |>
+  ggplot(aes(school_gpi)) + geom_histogram(binwidth = 0.02)
+```
+
+**参考：**SACU の５カ国の値を縦線で書き込むには下のようにします。
+
+```{r}
+df_school_gpi |> filter(year == 2019) |> filter(country %in% SOUTH_AFRICA_FIVE) 
+```
+
+**参考：日本と**SACU の５カ国の値を縦線で書き込むには下のようにします。
+
+```{r}
+JP <- 1.00341 # no recent data after 2019
+SAF <- df_school_gpi |> filter(year == 2019) |> filter(country %in% SOUTH_AFRICA_FIVE) |> pull(school_gpi)
+df_school_gpi |> filter(year == 2019) |> filter(!(country %in% REGION))|>
+  drop_na(school_gpi) |>
+  ggplot() + geom_histogram(aes(school_gpi), binwidth = 0.02) +
+  geom_vline(xintercept = SAF, col = "red") + geom_vline(xintercept = JP, col = "blue") +labs(title = "2019年の初等中等学校就学率 GPI", subtitle = "日本：青、SACU：赤")
+```
+
+### データが十分ある最近の年の値の10カ国の値の棒グラフ
+
+#### a. 値が大きい方から
+
+```{r}
+df_school_gpi |> filter(year == 2019) |> drop_na(school_gpi) |> 
+  filter(!(iso2c %in% REGION))|>
+  arrange(desc(school_gpi)) |> head(10) |> 
+  ggplot(aes(fct_reorder(country, school_gpi), school_gpi)) + geom_col() + 
+  coord_flip() + labs(title = "Top 10 Countries", x = "country", y = "primary and secondary enrollment, GPI")
+```
+
+#### b. 値が小さい方から
+
+```{r}
+df_school_gpi |> filter(year == 2019) |> drop_na(school_gpi) |> 
+  filter(!(iso2c %in% REGION))|>
+  arrange(school_gpi) |> head(10) |> 
+  ggplot(aes(fct_rev(fct_reorder(country, school_gpi)), school_gpi)) + geom_col() + 
+  coord_flip() + labs(title = "Lowest 10 Countries", x = "country", y = "primary and secondary enrollment, GPI")
+```
+
+# 7. 女性就労率
+
+## データ
+
+-   Ratio of female to male labor force participation rate (%) (modeled ILO estimate)：SL.TLF.CACT.FM.ZS [[Link](https://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS)]
+
+### データの取得
+
+#### 準備
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+WDI パッケージを使って、直接データをダウンロードし、変数名を、`ed_exp` に指定。
+
+```{r eval = FALSE}
+df_job_gpi <- WDI(indicator = c(job_gpi = "SL.TLF.CACT.FM.ZS"))
+```
+
+```{r eval = FALSE}
+write_csv(df_job_gpi, "data/job_gpi.csv")
+```
+
+```{r}
+df_job_gpi <- read_csv("data/job_gpi.csv")
+```
+
+### データの確認
+
+```{r}
+df_job_gpi
+```
+
+```{r}
+str(df_job_gpi)
+```
+
+```{r}
+REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
+"S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
+"V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL", 
+"XM", "XN", "XO", "XP", "XQ", "XT", "XU", "XY", "Z4", "Z7", "ZF", 
+"ZG", "ZH", "ZI", "ZJ", "ZQ", "ZT")
+```
+
+```{r}
+df_job_gpi |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
+```
+
+```{r}
+df_job_gpi |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c)
+```
+
+### 分析する国のリスト
+
+#### **南部アフリカ関税同盟** The Southern African Customs Union (SACU)
+
+```{r}
+SOUTH_AFRICA_FIVE <- c("South Africa", "Namibia", "Eswatini", "Botswana", "Lesotho")
+```
+
+#### ラテンアメリカでジニ指数が大きい４カ国
+
+```{r}
+CHOSEN_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
+```
+
+## 分析
+
+### 1. 各年毎のデータの数の棒グラフ
+
+```{r}
+df_job_gpi |> drop_na(job_gpi) |> filter(!(iso2c %in% REGION)) |>
+  ggplot(aes(year)) + geom_bar()
+```
+
+## 視覚化
+
+### 2. 日本の女性就労率
+
+```{r}
+df_job_gpi |> filter(country == "Japan") |> 
+  drop_na(job_gpi) |> arrange(desc(year))
+```
+
+### 3. 経年変化
+
+#### a. 日本
+
+```{r}
+df_job_gpi |> filter(country == "Japan") |> drop_na(job_gpi) |>
+  ggplot(aes(year, job_gpi)) + geom_line()
+```
+
+**気づいたこと・疑問**
+
+-   2000年ごろからは上昇している。どんな政策変更があったのだろうか。
+
+-   このまま、上昇すると、2040年ごろには、90を超え、100に近づく。それで、問題は解決したと言えるのだろうか。
+
+#### b. 南部アフリカ関税同盟
+
+```{r}
+df_job_gpi |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(job_gpi) |>
+  ggplot(aes(year, job_gpi)) + geom_line(aes(col = country))
+```
+
+**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
+
+```{r}
+df_job_gpi |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(job_gpi) |>
+  ggplot(aes(year, job_gpi)) + geom_line(aes(col = country)) +
+  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
+```
+
+**気づいたこと・疑問**
+
+-   全体的には上昇している。
+
+#### c. ラテンアメリカ４カ国
+
+```{r}
+df_job_gpi |> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(job_gpi) |>
+  ggplot(aes(year, job_gpi)) + geom_line(aes(col = country))
+```
+
+**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
+
+```{r}
+df_job_gpi |> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(job_gpi) |>
+  ggplot(aes(year, job_gpi)) + geom_line(aes(col = country)) +
+  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
+```
+
+### 分布
+
+データの数から、まずは、2020年について見てみる。
+
+```{r}
+df_job_gpi |> filter(year == 2020) |> filter(!(country %in% REGION))|>
+  drop_na(job_gpi) |>
+  ggplot(aes(job_gpi)) + geom_histogram(binwidth = 10)
+```
+
+**参考：**SACU の５カ国の値を縦線で書き込むには下のようにします。
+
+```{r}
+df_job_gpi |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) 
+```
+
+**参考：日本と**SACU の５カ国の値を縦線で書き込むには下のようにします。
+
+```{r}
+JP <- 74.51027
+SAF <- df_job_gpi |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) |> pull(job_gpi)
+df_job_gpi |> filter(year == 2020) |> filter(!(country %in% REGION))|>
+  drop_na(job_gpi) |>
+  ggplot() + geom_histogram(aes(job_gpi), binwidth = 10) +
+  geom_vline(xintercept = SAF, col = "red") + geom_vline(xintercept = JP, col = "blue") +labs(title = "女性の就労率", subtitle = "日本：青、SACU：赤")
+```
+
+### データが十分ある最近の年の値の10カ国の値の棒グラフ
+
+#### a. 値が大きい方から
+
+```{r}
+df_job_gpi |> filter(year == 2020) |> drop_na(job_gpi) |> 
+  filter(!(iso2c %in% REGION))|>
+  arrange(desc(job_gpi)) |> head(10) |> 
+  ggplot(aes(fct_reorder(country, job_gpi), job_gpi)) + geom_col() + 
+  coord_flip() + labs(title = "Top 10 Countries", x = "country", y = "labor force participation rate of ")
+```
+
+#### b. 値が小さい方から
+
+```{r}
+df_job_gpi |> filter(year == 2020) |> drop_na(job_gpi) |> 
+  filter(!(iso2c %in% REGION))|>
+  arrange(job_gpi) |> head(10) |> 
+  ggplot(aes(fct_rev(fct_reorder(country, job_gpi)), job_gpi)) + geom_col() + 
+  coord_flip() + labs(title = "Lowest 10 Countries", x = "country", y = "labor force participation rate")
+```
+
+# 8. 女性失業率
+
+## データ
+
+-   Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.FE.ZS)]
+
+### データの取得
+
+#### 準備
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+WDI パッケージを使って、直接データをダウンロードし、変数名を、`ed_exp` に指定。
+
+```{r eval = FALSE}
+df_female_unemploy <- WDI(indicator = c(female_unemploy = "SL.UEM.TOTL.FE.ZS"))
+```
+
+```{r eval = FALSE}
+write_csv(df_female_unemploy, "data/female_unemploy.csv")
+```
+
+```{r}
+df_female_unemploy <- read_csv("data/female_unemploy.csv")
+```
+
+### データの確認
+
+```{r}
+df_female_unemploy
+```
+
+```{r}
+str(df_female_unemploy)
+```
+
+```{r}
+REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
+"S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
+"V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL", 
+"XM", "XN", "XO", "XP", "XQ", "XT", "XU", "XY", "Z4", "Z7", "ZF", 
+"ZG", "ZH", "ZI", "ZJ", "ZQ", "ZT")
+```
+
+```{r}
+df_female_unemploy |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
+```
+
+```{r}
+df_female_unemploy |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c)
+```
+
+### 分析する国のリスト
+
+#### **南部アフリカ関税同盟** The Southern African Customs Union (SACU)
+
+```{r}
+SOUTH_AFRICA_FIVE <- c("South Africa", "Namibia", "Eswatini", "Botswana", "Lesotho")
+```
+
+#### ラテンアメリカでジニ指数が大きい４カ国
+
+```{r}
+CHOSEN_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
+```
+
+## 分析
+
+### 1. 各年毎のデータの数の棒グラフ
+
+```{r}
+df_female_unemploy |> drop_na(female_unemploy) |> filter(!(iso2c %in% REGION)) |>
+  ggplot(aes(year)) + geom_bar()
+```
+
+## 視覚化
+
+### 2. 日本の女性失業率
+
+```{r}
+df_female_unemploy |> filter(country == "Japan") |> 
+  drop_na(female_unemploy) |> arrange(desc(year))
+```
+
+### 3. 経年変化
+
+#### a. 日本
+
+```{r}
+df_female_unemploy |> filter(country == "Japan") |> drop_na(female_unemploy) |>
+  ggplot(aes(year, female_unemploy)) + geom_line()
+```
+
+**気づいたこと・疑問**
+
+-   2000年ごろから、2010年ごろまで非常に高い水準になっている。何が原因なのだろう。
+
+#### b. 南部アフリカ関税同盟
+
+```{r}
+df_female_unemploy |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(female_unemploy) |>
+  ggplot(aes(year, female_unemploy)) + geom_line(aes(col = country))
+```
+
+**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
+
+```{r}
+df_female_unemploy |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(female_unemploy) |>
+  ggplot(aes(year, female_unemploy)) + geom_line(aes(col = country)) +
+  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
+```
+
+**気づいたこと・疑問**
+
+-   平均で見ると、23%程度。
+
+#### c. ラテンアメリカ４カ国
+
+```{r}
+df_female_unemploy |> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(female_unemploy) |>
+  ggplot(aes(year, female_unemploy)) + geom_line(aes(col = country))
+```
+
+**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
+
+```{r}
+df_female_unemploy |> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(female_unemploy) |>
+  ggplot(aes(year, female_unemploy)) + geom_line(aes(col = country)) +
+  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
+```
+
+### 分布
+
+データの数から、まずは、2020年について見てみる。
+
+```{r}
+df_female_unemploy |> filter(year == 2020) |> filter(!(country %in% REGION))|>
+  drop_na(female_unemploy) |>
+  ggplot(aes(female_unemploy)) + geom_histogram(binwidth = 2)
+```
+
+**参考：**SACU の５カ国の値を縦線で書き込むには下のようにします。
+
+```{r}
+df_female_unemploy |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) 
+```
+
+**参考：日本と**SACU の５カ国の値を縦線で書き込むには下のようにします。
+
+```{r}
+JP <- 2.520
+SAF <- df_female_unemploy |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) |> pull(female_unemploy)
+df_female_unemploy |> filter(year == 2020) |> filter(!(country %in% REGION))|>
+  drop_na(female_unemploy) |>
+  ggplot() + geom_histogram(aes(female_unemploy), binwidth = 2) +
+  geom_vline(xintercept = SAF, col = "red") + geom_vline(xintercept = JP, col = "blue") +labs(title = "2020年の女性の求職率", subtitle = "日本：青、SACU：赤")
+```
+
+### データが十分ある最近の年の値の10カ国の値の棒グラフ
+
+#### a. 値が大きい方から
+
+```{r}
+df_female_unemploy |> filter(year == 2020) |> drop_na(female_unemploy) |> 
+  filter(!(iso2c %in% REGION))|>
+  arrange(desc(female_unemploy)) |> head(10) |> 
+  ggplot(aes(fct_reorder(country, female_unemploy), female_unemploy)) + geom_col() + 
+  coord_flip() + labs(title = "Top 10 Countries", x = "country", y = "unemployment rate, female, 2020")
+```
+
+#### b. 値が小さい方から
+
+```{r}
+df_female_unemploy |> filter(year == 2020) |> drop_na(female_unemploy) |> 
+  filter(!(iso2c %in% REGION))|>
+  arrange(female_unemploy) |> head(10) |> 
+  ggplot(aes(fct_rev(fct_reorder(country, female_unemploy)), female_unemploy)) + geom_col() + 
+  coord_flip() + labs(title = "Lowest 10 Countries", x = "country", y = "unemployment rate, female, 2020")
+```
+
+# 男性失業率
+
+## データ
+
+-   Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.ZS)]
 
 ### データの取得
 
@@ -474,7 +1560,6 @@ df_ed_exp
 str(df_ed_exp)
 ```
 
-
 ```{r}
 REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
 "S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
@@ -488,7 +1573,7 @@ df_ed_exp |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
 ```
 
 ```{r}
-df_ed_exp |> filter(iso2c %in% REGIONS) |> distinct(country, iso2c)
+df_ed_exp |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c)
 ```
 
 ### 分析する国のリスト
@@ -502,7 +1587,7 @@ SOUTH_AFRICA_FIVE <- c("South Africa", "Namibia", "Eswatini", "Botswana", "Lesot
 #### ラテンアメリカでジニ指数が大きい４カ国
 
 ```{r}
-CHOSEN_GINI_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
+CHOSEN_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
 ```
 
 ## 分析
@@ -560,14 +1645,14 @@ df_ed_exp |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(ed_exp) |>
 #### c. ラテンアメリカ４カ国
 
 ```{r}
-df_ed_exp |> filter(country %in% CHOSEN_GINI_COUNTRIES) |> drop_na(ed_exp) |>
+df_ed_exp |> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(ed_exp) |>
   ggplot(aes(year, ed_exp)) + geom_line(aes(col = country))
 ```
 
 **参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
 
 ```{r}
-df_ed_exp |> filter(country %in% CHOSEN_GINI_COUNTRIES) |> drop_na(ed_exp) |>
+df_ed_exp |> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(ed_exp) |>
   ggplot(aes(year, ed_exp)) + geom_line(aes(col = country)) +
   geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
 ```
@@ -621,33 +1706,11 @@ df_ed_exp |> filter(year == 2020) |> drop_na(ed_exp) |>
   coord_flip() + labs(title = "Lowest 10 Countries", x = "country", y = "Government expenditure on education, total (% of GDP)")
 ```
 
-
-# 小学校就学率
-
-### データ
-
--   School enrollment, primary (% gross)：SE.PRM.ENRR [[Link](https://data.worldbank.org/indicator/SE.PRM.ENRR)]
-
--   School enrollment, secondary (% gross)：SE.SEC.ENRR [[Link](https://data.worldbank.org/indicator/SE.SEC.ENRR)]
-
--   School enrollment, tertiary (% gross)：SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)]
-
--   Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SH.DYN.MORT)]
-
--   School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS [[Link](https://data.worldbank.org/indicator/SE.ENR.PRSC.FM.ZS)]
-
--   Ratio of female to male labor force participation rate (%) (modeled ILO estimate)：SL.TLF.CACT.FM.ZS [[Link](https://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS)]
-
--   Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.FE.ZS)]
-
--   Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.ZS)]
-
--   Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
-
+# 10.  負債率
 
 ## データ
 
-Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)]
+-   Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
 
 ### データの取得
 
@@ -682,7 +1745,6 @@ df_ed_exp
 str(df_ed_exp)
 ```
 
-
 ```{r}
 REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
 "S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
@@ -696,7 +1758,7 @@ df_ed_exp |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
 ```
 
 ```{r}
-df_ed_exp |> filter(iso2c %in% REGIONS) |> distinct(country, iso2c)
+df_ed_exp |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c)
 ```
 
 ### 分析する国のリスト
@@ -710,7 +1772,7 @@ SOUTH_AFRICA_FIVE <- c("South Africa", "Namibia", "Eswatini", "Botswana", "Lesot
 #### ラテンアメリカでジニ指数が大きい４カ国
 
 ```{r}
-CHOSEN_GINI_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
+CHOSEN_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
 ```
 
 ## 分析
@@ -768,14 +1830,14 @@ df_ed_exp |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(ed_exp) |>
 #### c. ラテンアメリカ４カ国
 
 ```{r}
-df_ed_exp |> filter(country %in% CHOSEN_GINI_COUNTRIES) |> drop_na(ed_exp) |>
+df_ed_exp |> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(ed_exp) |>
   ggplot(aes(year, ed_exp)) + geom_line(aes(col = country))
 ```
 
 **参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
 
 ```{r}
-df_ed_exp |> filter(country %in% CHOSEN_GINI_COUNTRIES) |> drop_na(ed_exp) |>
+df_ed_exp |> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(ed_exp) |>
   ggplot(aes(year, ed_exp)) + geom_line(aes(col = country)) +
   geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
 ```
@@ -828,1668 +1890,3 @@ df_ed_exp |> filter(year == 2020) |> drop_na(ed_exp) |>
   ggplot(aes(fct_rev(fct_reorder(country, ed_exp)), ed_exp)) + geom_col() + 
   coord_flip() + labs(title = "Lowest 10 Countries", x = "country", y = "Government expenditure on education, total (% of GDP)")
 ```
-
-
-# 小学校就学率
-
-### データ
-
--   School enrollment, primary (% gross)：SE.PRM.ENRR [[Link](https://data.worldbank.org/indicator/SE.PRM.ENRR)]
-
--   School enrollment, secondary (% gross)：SE.SEC.ENRR [[Link](https://data.worldbank.org/indicator/SE.SEC.ENRR)]
-
--   School enrollment, tertiary (% gross)：SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)]
-
--   Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SH.DYN.MORT)]
-
--   School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS [[Link](https://data.worldbank.org/indicator/SE.ENR.PRSC.FM.ZS)]
-
--   Ratio of female to male labor force participation rate (%) (modeled ILO estimate)：SL.TLF.CACT.FM.ZS [[Link](https://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS)]
-
--   Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.FE.ZS)]
-
--   Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.ZS)]
-
--   Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
-
-
-## データ
-
-Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)]
-
-### データの取得
-
-#### 準備
-
-```{r}
-library(tidyverse)
-library(WDI)
-```
-
-WDI パッケージを使って、直接データをダウンロードし、変数名を、`ed_exp` に指定。
-
-```{r eval = FALSE}
-df_ed_exp <- WDI(indicator = c(ed_exp = "SE.XPD.TOTL.GD.ZS"))
-```
-
-```{r eval = FALSE}
-write_csv(df_ed_exp, "data/ed_exp.csv")
-```
-
-```{r}
-df_ed_exp <- read_csv("data/ed_exp.csv")
-```
-
-### データの確認
-
-```{r}
-df_ed_exp
-```
-
-```{r}
-str(df_ed_exp)
-```
-
-
-```{r}
-REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
-"S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
-"V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL", 
-"XM", "XN", "XO", "XP", "XQ", "XT", "XU", "XY", "Z4", "Z7", "ZF", 
-"ZG", "ZH", "ZI", "ZJ", "ZQ", "ZT")
-```
-
-```{r}
-df_ed_exp |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
-```
-
-```{r}
-df_ed_exp |> filter(iso2c %in% REGIONS) |> distinct(country, iso2c)
-```
-
-### 分析する国のリスト
-
-#### **南部アフリカ関税同盟** The Southern African Customs Union (SACU)
-
-```{r}
-SOUTH_AFRICA_FIVE <- c("South Africa", "Namibia", "Eswatini", "Botswana", "Lesotho")
-```
-
-#### ラテンアメリカでジニ指数が大きい４カ国
-
-```{r}
-CHOSEN_GINI_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
-```
-
-## 分析
-
-### 1. 各年毎のデータの数の棒グラフ
-
-```{r}
-df_ed_exp |> drop_na(ed_exp) |> filter(!(iso2c %in% REGION)) |>
-  ggplot(aes(year)) + geom_bar()
-```
-
-## 視覚化
-
-### 2. 日本の教育費（% of GDP）
-
-```{r}
-df_ed_exp |> filter(country == "Japan") |> 
-  drop_na(ed_exp) |> arrange(desc(year))
-```
-
-### 3. 経年変化
-
-#### a. 日本
-
-```{r}
-df_ed_exp |> filter(country == "Japan") |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line()
-```
-
-**気づいたこと・疑問**
-
--   1970年代の急激な上昇、1990年ごろの急激な現象は、何が原因なのだろう。
-
--   2014年ごろから減少、2018年ごろから増加、2020年から2021年は減少。
-
-#### b. 南部アフリカ関税同盟
-
-```{r}
-df_ed_exp |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country))
-```
-
-**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
-
-```{r}
-df_ed_exp |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country)) +
-  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
-```
-
-**気づいたこと・疑問**
-
--   平均で見ると、上昇してきており、7% 程度という大きな割合になっている。
-
-#### c. ラテンアメリカ４カ国
-
-```{r}
-df_ed_exp |> filter(country %in% CHOSEN_GINI_COUNTRIES) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country))
-```
-
-**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
-
-```{r}
-df_ed_exp |> filter(country %in% CHOSEN_GINI_COUNTRIES) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country)) +
-  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
-```
-
-### 分布
-
-データの数から、まずは、2020年について見てみる。
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> filter(!(country %in% REGION))|>
-  drop_na(ed_exp) |>
-  ggplot(aes(ed_exp)) + geom_histogram(binwidth = 1)
-```
-
-**参考：**SACU の５カ国の値を縦線で書き込むには下のようにします。
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) 
-```
-
-**参考：日本と**SACU の５カ国の値を縦線で書き込むには下のようにします。
-
-```{r}
-JP <- 3.416981
-SAF <- df_ed_exp |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) |> pull(ed_exp)
-df_ed_exp |> filter(year == 2020) |> filter(!(country %in% REGION))|>
-  drop_na(ed_exp) |>
-  ggplot() + geom_histogram(aes(ed_exp), binwidth = 1) +
-  geom_vline(xintercept = SAF, col = "red") + geom_vline(xintercept = JP, col = "blue") +labs(title = "2020年の教育費の対GDP百分率", subtitle = "日本：青、SACU：赤")
-```
-
-### データが十分ある最近の年の値の10カ国の値の棒グラフ
-
-#### a. 値が大きい方から
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> drop_na(ed_exp) |> 
-  filter(!(iso2c %in% REGION))|>
-  arrange(desc(ed_exp)) |> head(10) |> 
-  ggplot(aes(fct_reorder(country, ed_exp), ed_exp)) + geom_col() + 
-  coord_flip() + labs(title = "Top 10 Countries", x = "country", y = "Government expenditure on education, total (% of GDP)")
-```
-
-#### b. 値が小さい方から
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> drop_na(ed_exp) |> 
-  filter(!(iso2c %in% REGION))|>
-  arrange(ed_exp) |> head(10) |> 
-  ggplot(aes(fct_rev(fct_reorder(country, ed_exp)), ed_exp)) + geom_col() + 
-  coord_flip() + labs(title = "Lowest 10 Countries", x = "country", y = "Government expenditure on education, total (% of GDP)")
-```
-
-
-# 小学校就学率
-
-### データ
-
--   School enrollment, primary (% gross)：SE.PRM.ENRR [[Link](https://data.worldbank.org/indicator/SE.PRM.ENRR)]
-
--   School enrollment, secondary (% gross)：SE.SEC.ENRR [[Link](https://data.worldbank.org/indicator/SE.SEC.ENRR)]
-
--   School enrollment, tertiary (% gross)：SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)]
-
--   Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SH.DYN.MORT)]
-
--   School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS [[Link](https://data.worldbank.org/indicator/SE.ENR.PRSC.FM.ZS)]
-
--   Ratio of female to male labor force participation rate (%) (modeled ILO estimate)：SL.TLF.CACT.FM.ZS [[Link](https://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS)]
-
--   Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.FE.ZS)]
-
--   Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.ZS)]
-
--   Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
-
-
-## データ
-
-Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)]
-
-### データの取得
-
-#### 準備
-
-```{r}
-library(tidyverse)
-library(WDI)
-```
-
-WDI パッケージを使って、直接データをダウンロードし、変数名を、`ed_exp` に指定。
-
-```{r eval = FALSE}
-df_ed_exp <- WDI(indicator = c(ed_exp = "SE.XPD.TOTL.GD.ZS"))
-```
-
-```{r eval = FALSE}
-write_csv(df_ed_exp, "data/ed_exp.csv")
-```
-
-```{r}
-df_ed_exp <- read_csv("data/ed_exp.csv")
-```
-
-### データの確認
-
-```{r}
-df_ed_exp
-```
-
-```{r}
-str(df_ed_exp)
-```
-
-
-```{r}
-REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
-"S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
-"V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL", 
-"XM", "XN", "XO", "XP", "XQ", "XT", "XU", "XY", "Z4", "Z7", "ZF", 
-"ZG", "ZH", "ZI", "ZJ", "ZQ", "ZT")
-```
-
-```{r}
-df_ed_exp |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
-```
-
-```{r}
-df_ed_exp |> filter(iso2c %in% REGIONS) |> distinct(country, iso2c)
-```
-
-### 分析する国のリスト
-
-#### **南部アフリカ関税同盟** The Southern African Customs Union (SACU)
-
-```{r}
-SOUTH_AFRICA_FIVE <- c("South Africa", "Namibia", "Eswatini", "Botswana", "Lesotho")
-```
-
-#### ラテンアメリカでジニ指数が大きい４カ国
-
-```{r}
-CHOSEN_GINI_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
-```
-
-## 分析
-
-### 1. 各年毎のデータの数の棒グラフ
-
-```{r}
-df_ed_exp |> drop_na(ed_exp) |> filter(!(iso2c %in% REGION)) |>
-  ggplot(aes(year)) + geom_bar()
-```
-
-## 視覚化
-
-### 2. 日本の教育費（% of GDP）
-
-```{r}
-df_ed_exp |> filter(country == "Japan") |> 
-  drop_na(ed_exp) |> arrange(desc(year))
-```
-
-### 3. 経年変化
-
-#### a. 日本
-
-```{r}
-df_ed_exp |> filter(country == "Japan") |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line()
-```
-
-**気づいたこと・疑問**
-
--   1970年代の急激な上昇、1990年ごろの急激な現象は、何が原因なのだろう。
-
--   2014年ごろから減少、2018年ごろから増加、2020年から2021年は減少。
-
-#### b. 南部アフリカ関税同盟
-
-```{r}
-df_ed_exp |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country))
-```
-
-**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
-
-```{r}
-df_ed_exp |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country)) +
-  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
-```
-
-**気づいたこと・疑問**
-
--   平均で見ると、上昇してきており、7% 程度という大きな割合になっている。
-
-#### c. ラテンアメリカ４カ国
-
-```{r}
-df_ed_exp |> filter(country %in% CHOSEN_GINI_COUNTRIES) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country))
-```
-
-**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
-
-```{r}
-df_ed_exp |> filter(country %in% CHOSEN_GINI_COUNTRIES) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country)) +
-  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
-```
-
-### 分布
-
-データの数から、まずは、2020年について見てみる。
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> filter(!(country %in% REGION))|>
-  drop_na(ed_exp) |>
-  ggplot(aes(ed_exp)) + geom_histogram(binwidth = 1)
-```
-
-**参考：**SACU の５カ国の値を縦線で書き込むには下のようにします。
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) 
-```
-
-**参考：日本と**SACU の５カ国の値を縦線で書き込むには下のようにします。
-
-```{r}
-JP <- 3.416981
-SAF <- df_ed_exp |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) |> pull(ed_exp)
-df_ed_exp |> filter(year == 2020) |> filter(!(country %in% REGION))|>
-  drop_na(ed_exp) |>
-  ggplot() + geom_histogram(aes(ed_exp), binwidth = 1) +
-  geom_vline(xintercept = SAF, col = "red") + geom_vline(xintercept = JP, col = "blue") +labs(title = "2020年の教育費の対GDP百分率", subtitle = "日本：青、SACU：赤")
-```
-
-### データが十分ある最近の年の値の10カ国の値の棒グラフ
-
-#### a. 値が大きい方から
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> drop_na(ed_exp) |> 
-  filter(!(iso2c %in% REGION))|>
-  arrange(desc(ed_exp)) |> head(10) |> 
-  ggplot(aes(fct_reorder(country, ed_exp), ed_exp)) + geom_col() + 
-  coord_flip() + labs(title = "Top 10 Countries", x = "country", y = "Government expenditure on education, total (% of GDP)")
-```
-
-#### b. 値が小さい方から
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> drop_na(ed_exp) |> 
-  filter(!(iso2c %in% REGION))|>
-  arrange(ed_exp) |> head(10) |> 
-  ggplot(aes(fct_rev(fct_reorder(country, ed_exp)), ed_exp)) + geom_col() + 
-  coord_flip() + labs(title = "Lowest 10 Countries", x = "country", y = "Government expenditure on education, total (% of GDP)")
-```
-
-
-# 小学校就学率
-
-### データ
-
--   School enrollment, primary (% gross)：SE.PRM.ENRR [[Link](https://data.worldbank.org/indicator/SE.PRM.ENRR)]
-
--   School enrollment, secondary (% gross)：SE.SEC.ENRR [[Link](https://data.worldbank.org/indicator/SE.SEC.ENRR)]
-
--   School enrollment, tertiary (% gross)：SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)]
-
--   Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SH.DYN.MORT)]
-
--   School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS [[Link](https://data.worldbank.org/indicator/SE.ENR.PRSC.FM.ZS)]
-
--   Ratio of female to male labor force participation rate (%) (modeled ILO estimate)：SL.TLF.CACT.FM.ZS [[Link](https://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS)]
-
--   Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.FE.ZS)]
-
--   Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.ZS)]
-
--   Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
-
-
-## データ
-
-Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)]
-
-### データの取得
-
-#### 準備
-
-```{r}
-library(tidyverse)
-library(WDI)
-```
-
-WDI パッケージを使って、直接データをダウンロードし、変数名を、`ed_exp` に指定。
-
-```{r eval = FALSE}
-df_ed_exp <- WDI(indicator = c(ed_exp = "SE.XPD.TOTL.GD.ZS"))
-```
-
-```{r eval = FALSE}
-write_csv(df_ed_exp, "data/ed_exp.csv")
-```
-
-```{r}
-df_ed_exp <- read_csv("data/ed_exp.csv")
-```
-
-### データの確認
-
-```{r}
-df_ed_exp
-```
-
-```{r}
-str(df_ed_exp)
-```
-
-
-```{r}
-REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
-"S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
-"V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL", 
-"XM", "XN", "XO", "XP", "XQ", "XT", "XU", "XY", "Z4", "Z7", "ZF", 
-"ZG", "ZH", "ZI", "ZJ", "ZQ", "ZT")
-```
-
-```{r}
-df_ed_exp |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
-```
-
-```{r}
-df_ed_exp |> filter(iso2c %in% REGIONS) |> distinct(country, iso2c)
-```
-
-### 分析する国のリスト
-
-#### **南部アフリカ関税同盟** The Southern African Customs Union (SACU)
-
-```{r}
-SOUTH_AFRICA_FIVE <- c("South Africa", "Namibia", "Eswatini", "Botswana", "Lesotho")
-```
-
-#### ラテンアメリカでジニ指数が大きい４カ国
-
-```{r}
-CHOSEN_GINI_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
-```
-
-## 分析
-
-### 1. 各年毎のデータの数の棒グラフ
-
-```{r}
-df_ed_exp |> drop_na(ed_exp) |> filter(!(iso2c %in% REGION)) |>
-  ggplot(aes(year)) + geom_bar()
-```
-
-## 視覚化
-
-### 2. 日本の教育費（% of GDP）
-
-```{r}
-df_ed_exp |> filter(country == "Japan") |> 
-  drop_na(ed_exp) |> arrange(desc(year))
-```
-
-### 3. 経年変化
-
-#### a. 日本
-
-```{r}
-df_ed_exp |> filter(country == "Japan") |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line()
-```
-
-**気づいたこと・疑問**
-
--   1970年代の急激な上昇、1990年ごろの急激な現象は、何が原因なのだろう。
-
--   2014年ごろから減少、2018年ごろから増加、2020年から2021年は減少。
-
-#### b. 南部アフリカ関税同盟
-
-```{r}
-df_ed_exp |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country))
-```
-
-**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
-
-```{r}
-df_ed_exp |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country)) +
-  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
-```
-
-**気づいたこと・疑問**
-
--   平均で見ると、上昇してきており、7% 程度という大きな割合になっている。
-
-#### c. ラテンアメリカ４カ国
-
-```{r}
-df_ed_exp |> filter(country %in% CHOSEN_GINI_COUNTRIES) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country))
-```
-
-**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
-
-```{r}
-df_ed_exp |> filter(country %in% CHOSEN_GINI_COUNTRIES) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country)) +
-  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
-```
-
-### 分布
-
-データの数から、まずは、2020年について見てみる。
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> filter(!(country %in% REGION))|>
-  drop_na(ed_exp) |>
-  ggplot(aes(ed_exp)) + geom_histogram(binwidth = 1)
-```
-
-**参考：**SACU の５カ国の値を縦線で書き込むには下のようにします。
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) 
-```
-
-**参考：日本と**SACU の５カ国の値を縦線で書き込むには下のようにします。
-
-```{r}
-JP <- 3.416981
-SAF <- df_ed_exp |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) |> pull(ed_exp)
-df_ed_exp |> filter(year == 2020) |> filter(!(country %in% REGION))|>
-  drop_na(ed_exp) |>
-  ggplot() + geom_histogram(aes(ed_exp), binwidth = 1) +
-  geom_vline(xintercept = SAF, col = "red") + geom_vline(xintercept = JP, col = "blue") +labs(title = "2020年の教育費の対GDP百分率", subtitle = "日本：青、SACU：赤")
-```
-
-### データが十分ある最近の年の値の10カ国の値の棒グラフ
-
-#### a. 値が大きい方から
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> drop_na(ed_exp) |> 
-  filter(!(iso2c %in% REGION))|>
-  arrange(desc(ed_exp)) |> head(10) |> 
-  ggplot(aes(fct_reorder(country, ed_exp), ed_exp)) + geom_col() + 
-  coord_flip() + labs(title = "Top 10 Countries", x = "country", y = "Government expenditure on education, total (% of GDP)")
-```
-
-#### b. 値が小さい方から
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> drop_na(ed_exp) |> 
-  filter(!(iso2c %in% REGION))|>
-  arrange(ed_exp) |> head(10) |> 
-  ggplot(aes(fct_rev(fct_reorder(country, ed_exp)), ed_exp)) + geom_col() + 
-  coord_flip() + labs(title = "Lowest 10 Countries", x = "country", y = "Government expenditure on education, total (% of GDP)")
-```
-
-
-# 小学校就学率
-
-### データ
-
--   School enrollment, primary (% gross)：SE.PRM.ENRR [[Link](https://data.worldbank.org/indicator/SE.PRM.ENRR)]
-
--   School enrollment, secondary (% gross)：SE.SEC.ENRR [[Link](https://data.worldbank.org/indicator/SE.SEC.ENRR)]
-
--   School enrollment, tertiary (% gross)：SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)]
-
--   Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SH.DYN.MORT)]
-
--   School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS [[Link](https://data.worldbank.org/indicator/SE.ENR.PRSC.FM.ZS)]
-
--   Ratio of female to male labor force participation rate (%) (modeled ILO estimate)：SL.TLF.CACT.FM.ZS [[Link](https://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS)]
-
--   Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.FE.ZS)]
-
--   Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.ZS)]
-
--   Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
-
-
-## データ
-
-Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)]
-
-### データの取得
-
-#### 準備
-
-```{r}
-library(tidyverse)
-library(WDI)
-```
-
-WDI パッケージを使って、直接データをダウンロードし、変数名を、`ed_exp` に指定。
-
-```{r eval = FALSE}
-df_ed_exp <- WDI(indicator = c(ed_exp = "SE.XPD.TOTL.GD.ZS"))
-```
-
-```{r eval = FALSE}
-write_csv(df_ed_exp, "data/ed_exp.csv")
-```
-
-```{r}
-df_ed_exp <- read_csv("data/ed_exp.csv")
-```
-
-### データの確認
-
-```{r}
-df_ed_exp
-```
-
-```{r}
-str(df_ed_exp)
-```
-
-
-```{r}
-REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
-"S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
-"V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL", 
-"XM", "XN", "XO", "XP", "XQ", "XT", "XU", "XY", "Z4", "Z7", "ZF", 
-"ZG", "ZH", "ZI", "ZJ", "ZQ", "ZT")
-```
-
-```{r}
-df_ed_exp |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
-```
-
-```{r}
-df_ed_exp |> filter(iso2c %in% REGIONS) |> distinct(country, iso2c)
-```
-
-### 分析する国のリスト
-
-#### **南部アフリカ関税同盟** The Southern African Customs Union (SACU)
-
-```{r}
-SOUTH_AFRICA_FIVE <- c("South Africa", "Namibia", "Eswatini", "Botswana", "Lesotho")
-```
-
-#### ラテンアメリカでジニ指数が大きい４カ国
-
-```{r}
-CHOSEN_GINI_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
-```
-
-## 分析
-
-### 1. 各年毎のデータの数の棒グラフ
-
-```{r}
-df_ed_exp |> drop_na(ed_exp) |> filter(!(iso2c %in% REGION)) |>
-  ggplot(aes(year)) + geom_bar()
-```
-
-## 視覚化
-
-### 2. 日本の教育費（% of GDP）
-
-```{r}
-df_ed_exp |> filter(country == "Japan") |> 
-  drop_na(ed_exp) |> arrange(desc(year))
-```
-
-### 3. 経年変化
-
-#### a. 日本
-
-```{r}
-df_ed_exp |> filter(country == "Japan") |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line()
-```
-
-**気づいたこと・疑問**
-
--   1970年代の急激な上昇、1990年ごろの急激な現象は、何が原因なのだろう。
-
--   2014年ごろから減少、2018年ごろから増加、2020年から2021年は減少。
-
-#### b. 南部アフリカ関税同盟
-
-```{r}
-df_ed_exp |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country))
-```
-
-**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
-
-```{r}
-df_ed_exp |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country)) +
-  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
-```
-
-**気づいたこと・疑問**
-
--   平均で見ると、上昇してきており、7% 程度という大きな割合になっている。
-
-#### c. ラテンアメリカ４カ国
-
-```{r}
-df_ed_exp |> filter(country %in% CHOSEN_GINI_COUNTRIES) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country))
-```
-
-**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
-
-```{r}
-df_ed_exp |> filter(country %in% CHOSEN_GINI_COUNTRIES) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country)) +
-  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
-```
-
-### 分布
-
-データの数から、まずは、2020年について見てみる。
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> filter(!(country %in% REGION))|>
-  drop_na(ed_exp) |>
-  ggplot(aes(ed_exp)) + geom_histogram(binwidth = 1)
-```
-
-**参考：**SACU の５カ国の値を縦線で書き込むには下のようにします。
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) 
-```
-
-**参考：日本と**SACU の５カ国の値を縦線で書き込むには下のようにします。
-
-```{r}
-JP <- 3.416981
-SAF <- df_ed_exp |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) |> pull(ed_exp)
-df_ed_exp |> filter(year == 2020) |> filter(!(country %in% REGION))|>
-  drop_na(ed_exp) |>
-  ggplot() + geom_histogram(aes(ed_exp), binwidth = 1) +
-  geom_vline(xintercept = SAF, col = "red") + geom_vline(xintercept = JP, col = "blue") +labs(title = "2020年の教育費の対GDP百分率", subtitle = "日本：青、SACU：赤")
-```
-
-### データが十分ある最近の年の値の10カ国の値の棒グラフ
-
-#### a. 値が大きい方から
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> drop_na(ed_exp) |> 
-  filter(!(iso2c %in% REGION))|>
-  arrange(desc(ed_exp)) |> head(10) |> 
-  ggplot(aes(fct_reorder(country, ed_exp), ed_exp)) + geom_col() + 
-  coord_flip() + labs(title = "Top 10 Countries", x = "country", y = "Government expenditure on education, total (% of GDP)")
-```
-
-#### b. 値が小さい方から
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> drop_na(ed_exp) |> 
-  filter(!(iso2c %in% REGION))|>
-  arrange(ed_exp) |> head(10) |> 
-  ggplot(aes(fct_rev(fct_reorder(country, ed_exp)), ed_exp)) + geom_col() + 
-  coord_flip() + labs(title = "Lowest 10 Countries", x = "country", y = "Government expenditure on education, total (% of GDP)")
-```
-
-
-# 小学校就学率
-
-### データ
-
--   School enrollment, primary (% gross)：SE.PRM.ENRR [[Link](https://data.worldbank.org/indicator/SE.PRM.ENRR)]
-
--   School enrollment, secondary (% gross)：SE.SEC.ENRR [[Link](https://data.worldbank.org/indicator/SE.SEC.ENRR)]
-
--   School enrollment, tertiary (% gross)：SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)]
-
--   Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SH.DYN.MORT)]
-
--   School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS [[Link](https://data.worldbank.org/indicator/SE.ENR.PRSC.FM.ZS)]
-
--   Ratio of female to male labor force participation rate (%) (modeled ILO estimate)：SL.TLF.CACT.FM.ZS [[Link](https://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS)]
-
--   Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.FE.ZS)]
-
--   Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.ZS)]
-
--   Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
-
-
-## データ
-
-Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)]
-
-### データの取得
-
-#### 準備
-
-```{r}
-library(tidyverse)
-library(WDI)
-```
-
-WDI パッケージを使って、直接データをダウンロードし、変数名を、`ed_exp` に指定。
-
-```{r eval = FALSE}
-df_ed_exp <- WDI(indicator = c(ed_exp = "SE.XPD.TOTL.GD.ZS"))
-```
-
-```{r eval = FALSE}
-write_csv(df_ed_exp, "data/ed_exp.csv")
-```
-
-```{r}
-df_ed_exp <- read_csv("data/ed_exp.csv")
-```
-
-### データの確認
-
-```{r}
-df_ed_exp
-```
-
-```{r}
-str(df_ed_exp)
-```
-
-
-```{r}
-REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
-"S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
-"V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL", 
-"XM", "XN", "XO", "XP", "XQ", "XT", "XU", "XY", "Z4", "Z7", "ZF", 
-"ZG", "ZH", "ZI", "ZJ", "ZQ", "ZT")
-```
-
-```{r}
-df_ed_exp |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
-```
-
-```{r}
-df_ed_exp |> filter(iso2c %in% REGIONS) |> distinct(country, iso2c)
-```
-
-### 分析する国のリスト
-
-#### **南部アフリカ関税同盟** The Southern African Customs Union (SACU)
-
-```{r}
-SOUTH_AFRICA_FIVE <- c("South Africa", "Namibia", "Eswatini", "Botswana", "Lesotho")
-```
-
-#### ラテンアメリカでジニ指数が大きい４カ国
-
-```{r}
-CHOSEN_GINI_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
-```
-
-## 分析
-
-### 1. 各年毎のデータの数の棒グラフ
-
-```{r}
-df_ed_exp |> drop_na(ed_exp) |> filter(!(iso2c %in% REGION)) |>
-  ggplot(aes(year)) + geom_bar()
-```
-
-## 視覚化
-
-### 2. 日本の教育費（% of GDP）
-
-```{r}
-df_ed_exp |> filter(country == "Japan") |> 
-  drop_na(ed_exp) |> arrange(desc(year))
-```
-
-### 3. 経年変化
-
-#### a. 日本
-
-```{r}
-df_ed_exp |> filter(country == "Japan") |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line()
-```
-
-**気づいたこと・疑問**
-
--   1970年代の急激な上昇、1990年ごろの急激な現象は、何が原因なのだろう。
-
--   2014年ごろから減少、2018年ごろから増加、2020年から2021年は減少。
-
-#### b. 南部アフリカ関税同盟
-
-```{r}
-df_ed_exp |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country))
-```
-
-**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
-
-```{r}
-df_ed_exp |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country)) +
-  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
-```
-
-**気づいたこと・疑問**
-
--   平均で見ると、上昇してきており、7% 程度という大きな割合になっている。
-
-#### c. ラテンアメリカ４カ国
-
-```{r}
-df_ed_exp |> filter(country %in% CHOSEN_GINI_COUNTRIES) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country))
-```
-
-**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
-
-```{r}
-df_ed_exp |> filter(country %in% CHOSEN_GINI_COUNTRIES) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country)) +
-  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
-```
-
-### 分布
-
-データの数から、まずは、2020年について見てみる。
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> filter(!(country %in% REGION))|>
-  drop_na(ed_exp) |>
-  ggplot(aes(ed_exp)) + geom_histogram(binwidth = 1)
-```
-
-**参考：**SACU の５カ国の値を縦線で書き込むには下のようにします。
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) 
-```
-
-**参考：日本と**SACU の５カ国の値を縦線で書き込むには下のようにします。
-
-```{r}
-JP <- 3.416981
-SAF <- df_ed_exp |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) |> pull(ed_exp)
-df_ed_exp |> filter(year == 2020) |> filter(!(country %in% REGION))|>
-  drop_na(ed_exp) |>
-  ggplot() + geom_histogram(aes(ed_exp), binwidth = 1) +
-  geom_vline(xintercept = SAF, col = "red") + geom_vline(xintercept = JP, col = "blue") +labs(title = "2020年の教育費の対GDP百分率", subtitle = "日本：青、SACU：赤")
-```
-
-### データが十分ある最近の年の値の10カ国の値の棒グラフ
-
-#### a. 値が大きい方から
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> drop_na(ed_exp) |> 
-  filter(!(iso2c %in% REGION))|>
-  arrange(desc(ed_exp)) |> head(10) |> 
-  ggplot(aes(fct_reorder(country, ed_exp), ed_exp)) + geom_col() + 
-  coord_flip() + labs(title = "Top 10 Countries", x = "country", y = "Government expenditure on education, total (% of GDP)")
-```
-
-#### b. 値が小さい方から
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> drop_na(ed_exp) |> 
-  filter(!(iso2c %in% REGION))|>
-  arrange(ed_exp) |> head(10) |> 
-  ggplot(aes(fct_rev(fct_reorder(country, ed_exp)), ed_exp)) + geom_col() + 
-  coord_flip() + labs(title = "Lowest 10 Countries", x = "country", y = "Government expenditure on education, total (% of GDP)")
-```
-
-
-# 小学校就学率
-
-### データ
-
--   School enrollment, primary (% gross)：SE.PRM.ENRR [[Link](https://data.worldbank.org/indicator/SE.PRM.ENRR)]
-
--   School enrollment, secondary (% gross)：SE.SEC.ENRR [[Link](https://data.worldbank.org/indicator/SE.SEC.ENRR)]
-
--   School enrollment, tertiary (% gross)：SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)]
-
--   Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SH.DYN.MORT)]
-
--   School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS [[Link](https://data.worldbank.org/indicator/SE.ENR.PRSC.FM.ZS)]
-
--   Ratio of female to male labor force participation rate (%) (modeled ILO estimate)：SL.TLF.CACT.FM.ZS [[Link](https://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS)]
-
--   Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.FE.ZS)]
-
--   Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.ZS)]
-
--   Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
-
-
-## データ
-
-Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)]
-
-### データの取得
-
-#### 準備
-
-```{r}
-library(tidyverse)
-library(WDI)
-```
-
-WDI パッケージを使って、直接データをダウンロードし、変数名を、`ed_exp` に指定。
-
-```{r eval = FALSE}
-df_ed_exp <- WDI(indicator = c(ed_exp = "SE.XPD.TOTL.GD.ZS"))
-```
-
-```{r eval = FALSE}
-write_csv(df_ed_exp, "data/ed_exp.csv")
-```
-
-```{r}
-df_ed_exp <- read_csv("data/ed_exp.csv")
-```
-
-### データの確認
-
-```{r}
-df_ed_exp
-```
-
-```{r}
-str(df_ed_exp)
-```
-
-
-```{r}
-REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
-"S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
-"V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL", 
-"XM", "XN", "XO", "XP", "XQ", "XT", "XU", "XY", "Z4", "Z7", "ZF", 
-"ZG", "ZH", "ZI", "ZJ", "ZQ", "ZT")
-```
-
-```{r}
-df_ed_exp |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
-```
-
-```{r}
-df_ed_exp |> filter(iso2c %in% REGIONS) |> distinct(country, iso2c)
-```
-
-### 分析する国のリスト
-
-#### **南部アフリカ関税同盟** The Southern African Customs Union (SACU)
-
-```{r}
-SOUTH_AFRICA_FIVE <- c("South Africa", "Namibia", "Eswatini", "Botswana", "Lesotho")
-```
-
-#### ラテンアメリカでジニ指数が大きい４カ国
-
-```{r}
-CHOSEN_GINI_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
-```
-
-## 分析
-
-### 1. 各年毎のデータの数の棒グラフ
-
-```{r}
-df_ed_exp |> drop_na(ed_exp) |> filter(!(iso2c %in% REGION)) |>
-  ggplot(aes(year)) + geom_bar()
-```
-
-## 視覚化
-
-### 2. 日本の教育費（% of GDP）
-
-```{r}
-df_ed_exp |> filter(country == "Japan") |> 
-  drop_na(ed_exp) |> arrange(desc(year))
-```
-
-### 3. 経年変化
-
-#### a. 日本
-
-```{r}
-df_ed_exp |> filter(country == "Japan") |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line()
-```
-
-**気づいたこと・疑問**
-
--   1970年代の急激な上昇、1990年ごろの急激な現象は、何が原因なのだろう。
-
--   2014年ごろから減少、2018年ごろから増加、2020年から2021年は減少。
-
-#### b. 南部アフリカ関税同盟
-
-```{r}
-df_ed_exp |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country))
-```
-
-**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
-
-```{r}
-df_ed_exp |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country)) +
-  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
-```
-
-**気づいたこと・疑問**
-
--   平均で見ると、上昇してきており、7% 程度という大きな割合になっている。
-
-#### c. ラテンアメリカ４カ国
-
-```{r}
-df_ed_exp |> filter(country %in% CHOSEN_GINI_COUNTRIES) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country))
-```
-
-**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
-
-```{r}
-df_ed_exp |> filter(country %in% CHOSEN_GINI_COUNTRIES) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country)) +
-  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
-```
-
-### 分布
-
-データの数から、まずは、2020年について見てみる。
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> filter(!(country %in% REGION))|>
-  drop_na(ed_exp) |>
-  ggplot(aes(ed_exp)) + geom_histogram(binwidth = 1)
-```
-
-**参考：**SACU の５カ国の値を縦線で書き込むには下のようにします。
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) 
-```
-
-**参考：日本と**SACU の５カ国の値を縦線で書き込むには下のようにします。
-
-```{r}
-JP <- 3.416981
-SAF <- df_ed_exp |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) |> pull(ed_exp)
-df_ed_exp |> filter(year == 2020) |> filter(!(country %in% REGION))|>
-  drop_na(ed_exp) |>
-  ggplot() + geom_histogram(aes(ed_exp), binwidth = 1) +
-  geom_vline(xintercept = SAF, col = "red") + geom_vline(xintercept = JP, col = "blue") +labs(title = "2020年の教育費の対GDP百分率", subtitle = "日本：青、SACU：赤")
-```
-
-### データが十分ある最近の年の値の10カ国の値の棒グラフ
-
-#### a. 値が大きい方から
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> drop_na(ed_exp) |> 
-  filter(!(iso2c %in% REGION))|>
-  arrange(desc(ed_exp)) |> head(10) |> 
-  ggplot(aes(fct_reorder(country, ed_exp), ed_exp)) + geom_col() + 
-  coord_flip() + labs(title = "Top 10 Countries", x = "country", y = "Government expenditure on education, total (% of GDP)")
-```
-
-#### b. 値が小さい方から
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> drop_na(ed_exp) |> 
-  filter(!(iso2c %in% REGION))|>
-  arrange(ed_exp) |> head(10) |> 
-  ggplot(aes(fct_rev(fct_reorder(country, ed_exp)), ed_exp)) + geom_col() + 
-  coord_flip() + labs(title = "Lowest 10 Countries", x = "country", y = "Government expenditure on education, total (% of GDP)")
-```
-
-
-# 小学校就学率
-
-### データ
-
--   School enrollment, primary (% gross)：SE.PRM.ENRR [[Link](https://data.worldbank.org/indicator/SE.PRM.ENRR)]
-
--   School enrollment, secondary (% gross)：SE.SEC.ENRR [[Link](https://data.worldbank.org/indicator/SE.SEC.ENRR)]
-
--   School enrollment, tertiary (% gross)：SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)]
-
--   Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SH.DYN.MORT)]
-
--   School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS [[Link](https://data.worldbank.org/indicator/SE.ENR.PRSC.FM.ZS)]
-
--   Ratio of female to male labor force participation rate (%) (modeled ILO estimate)：SL.TLF.CACT.FM.ZS [[Link](https://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS)]
-
--   Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.FE.ZS)]
-
--   Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.ZS)]
-
--   Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
-
-
-## データ
-
-Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)]
-
-### データの取得
-
-#### 準備
-
-```{r}
-library(tidyverse)
-library(WDI)
-```
-
-WDI パッケージを使って、直接データをダウンロードし、変数名を、`ed_exp` に指定。
-
-```{r eval = FALSE}
-df_ed_exp <- WDI(indicator = c(ed_exp = "SE.XPD.TOTL.GD.ZS"))
-```
-
-```{r eval = FALSE}
-write_csv(df_ed_exp, "data/ed_exp.csv")
-```
-
-```{r}
-df_ed_exp <- read_csv("data/ed_exp.csv")
-```
-
-### データの確認
-
-```{r}
-df_ed_exp
-```
-
-```{r}
-str(df_ed_exp)
-```
-
-
-```{r}
-REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
-"S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
-"V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL", 
-"XM", "XN", "XO", "XP", "XQ", "XT", "XU", "XY", "Z4", "Z7", "ZF", 
-"ZG", "ZH", "ZI", "ZJ", "ZQ", "ZT")
-```
-
-```{r}
-df_ed_exp |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
-```
-
-```{r}
-df_ed_exp |> filter(iso2c %in% REGIONS) |> distinct(country, iso2c)
-```
-
-### 分析する国のリスト
-
-#### **南部アフリカ関税同盟** The Southern African Customs Union (SACU)
-
-```{r}
-SOUTH_AFRICA_FIVE <- c("South Africa", "Namibia", "Eswatini", "Botswana", "Lesotho")
-```
-
-#### ラテンアメリカでジニ指数が大きい４カ国
-
-```{r}
-CHOSEN_GINI_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
-```
-
-## 分析
-
-### 1. 各年毎のデータの数の棒グラフ
-
-```{r}
-df_ed_exp |> drop_na(ed_exp) |> filter(!(iso2c %in% REGION)) |>
-  ggplot(aes(year)) + geom_bar()
-```
-
-## 視覚化
-
-### 2. 日本の教育費（% of GDP）
-
-```{r}
-df_ed_exp |> filter(country == "Japan") |> 
-  drop_na(ed_exp) |> arrange(desc(year))
-```
-
-### 3. 経年変化
-
-#### a. 日本
-
-```{r}
-df_ed_exp |> filter(country == "Japan") |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line()
-```
-
-**気づいたこと・疑問**
-
--   1970年代の急激な上昇、1990年ごろの急激な現象は、何が原因なのだろう。
-
--   2014年ごろから減少、2018年ごろから増加、2020年から2021年は減少。
-
-#### b. 南部アフリカ関税同盟
-
-```{r}
-df_ed_exp |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country))
-```
-
-**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
-
-```{r}
-df_ed_exp |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country)) +
-  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
-```
-
-**気づいたこと・疑問**
-
--   平均で見ると、上昇してきており、7% 程度という大きな割合になっている。
-
-#### c. ラテンアメリカ４カ国
-
-```{r}
-df_ed_exp |> filter(country %in% CHOSEN_GINI_COUNTRIES) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country))
-```
-
-**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
-
-```{r}
-df_ed_exp |> filter(country %in% CHOSEN_GINI_COUNTRIES) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country)) +
-  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
-```
-
-### 分布
-
-データの数から、まずは、2020年について見てみる。
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> filter(!(country %in% REGION))|>
-  drop_na(ed_exp) |>
-  ggplot(aes(ed_exp)) + geom_histogram(binwidth = 1)
-```
-
-**参考：**SACU の５カ国の値を縦線で書き込むには下のようにします。
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) 
-```
-
-**参考：日本と**SACU の５カ国の値を縦線で書き込むには下のようにします。
-
-```{r}
-JP <- 3.416981
-SAF <- df_ed_exp |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) |> pull(ed_exp)
-df_ed_exp |> filter(year == 2020) |> filter(!(country %in% REGION))|>
-  drop_na(ed_exp) |>
-  ggplot() + geom_histogram(aes(ed_exp), binwidth = 1) +
-  geom_vline(xintercept = SAF, col = "red") + geom_vline(xintercept = JP, col = "blue") +labs(title = "2020年の教育費の対GDP百分率", subtitle = "日本：青、SACU：赤")
-```
-
-### データが十分ある最近の年の値の10カ国の値の棒グラフ
-
-#### a. 値が大きい方から
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> drop_na(ed_exp) |> 
-  filter(!(iso2c %in% REGION))|>
-  arrange(desc(ed_exp)) |> head(10) |> 
-  ggplot(aes(fct_reorder(country, ed_exp), ed_exp)) + geom_col() + 
-  coord_flip() + labs(title = "Top 10 Countries", x = "country", y = "Government expenditure on education, total (% of GDP)")
-```
-
-#### b. 値が小さい方から
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> drop_na(ed_exp) |> 
-  filter(!(iso2c %in% REGION))|>
-  arrange(ed_exp) |> head(10) |> 
-  ggplot(aes(fct_rev(fct_reorder(country, ed_exp)), ed_exp)) + geom_col() + 
-  coord_flip() + labs(title = "Lowest 10 Countries", x = "country", y = "Government expenditure on education, total (% of GDP)")
-```
-
-
-# 小学校就学率
-
-### データ
-
--   School enrollment, primary (% gross)：SE.PRM.ENRR [[Link](https://data.worldbank.org/indicator/SE.PRM.ENRR)]
-
--   School enrollment, secondary (% gross)：SE.SEC.ENRR [[Link](https://data.worldbank.org/indicator/SE.SEC.ENRR)]
-
--   School enrollment, tertiary (% gross)：SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)]
-
--   Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SH.DYN.MORT)]
-
--   School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS [[Link](https://data.worldbank.org/indicator/SE.ENR.PRSC.FM.ZS)]
-
--   Ratio of female to male labor force participation rate (%) (modeled ILO estimate)：SL.TLF.CACT.FM.ZS [[Link](https://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS)]
-
--   Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.FE.ZS)]
-
--   Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.ZS)]
-
--   Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
-
-
-## データ
-
-Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)]
-
-### データの取得
-
-#### 準備
-
-```{r}
-library(tidyverse)
-library(WDI)
-```
-
-WDI パッケージを使って、直接データをダウンロードし、変数名を、`ed_exp` に指定。
-
-```{r eval = FALSE}
-df_ed_exp <- WDI(indicator = c(ed_exp = "SE.XPD.TOTL.GD.ZS"))
-```
-
-```{r eval = FALSE}
-write_csv(df_ed_exp, "data/ed_exp.csv")
-```
-
-```{r}
-df_ed_exp <- read_csv("data/ed_exp.csv")
-```
-
-### データの確認
-
-```{r}
-df_ed_exp
-```
-
-```{r}
-str(df_ed_exp)
-```
-
-
-```{r}
-REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
-"S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
-"V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL", 
-"XM", "XN", "XO", "XP", "XQ", "XT", "XU", "XY", "Z4", "Z7", "ZF", 
-"ZG", "ZH", "ZI", "ZJ", "ZQ", "ZT")
-```
-
-```{r}
-df_ed_exp |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
-```
-
-```{r}
-df_ed_exp |> filter(iso2c %in% REGIONS) |> distinct(country, iso2c)
-```
-
-### 分析する国のリスト
-
-#### **南部アフリカ関税同盟** The Southern African Customs Union (SACU)
-
-```{r}
-SOUTH_AFRICA_FIVE <- c("South Africa", "Namibia", "Eswatini", "Botswana", "Lesotho")
-```
-
-#### ラテンアメリカでジニ指数が大きい４カ国
-
-```{r}
-CHOSEN_GINI_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
-```
-
-## 分析
-
-### 1. 各年毎のデータの数の棒グラフ
-
-```{r}
-df_ed_exp |> drop_na(ed_exp) |> filter(!(iso2c %in% REGION)) |>
-  ggplot(aes(year)) + geom_bar()
-```
-
-## 視覚化
-
-### 2. 日本の教育費（% of GDP）
-
-```{r}
-df_ed_exp |> filter(country == "Japan") |> 
-  drop_na(ed_exp) |> arrange(desc(year))
-```
-
-### 3. 経年変化
-
-#### a. 日本
-
-```{r}
-df_ed_exp |> filter(country == "Japan") |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line()
-```
-
-**気づいたこと・疑問**
-
--   1970年代の急激な上昇、1990年ごろの急激な現象は、何が原因なのだろう。
-
--   2014年ごろから減少、2018年ごろから増加、2020年から2021年は減少。
-
-#### b. 南部アフリカ関税同盟
-
-```{r}
-df_ed_exp |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country))
-```
-
-**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
-
-```{r}
-df_ed_exp |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country)) +
-  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
-```
-
-**気づいたこと・疑問**
-
--   平均で見ると、上昇してきており、7% 程度という大きな割合になっている。
-
-#### c. ラテンアメリカ４カ国
-
-```{r}
-df_ed_exp |> filter(country %in% CHOSEN_GINI_COUNTRIES) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country))
-```
-
-**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
-
-```{r}
-df_ed_exp |> filter(country %in% CHOSEN_GINI_COUNTRIES) |> drop_na(ed_exp) |>
-  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country)) +
-  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
-```
-
-### 分布
-
-データの数から、まずは、2020年について見てみる。
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> filter(!(country %in% REGION))|>
-  drop_na(ed_exp) |>
-  ggplot(aes(ed_exp)) + geom_histogram(binwidth = 1)
-```
-
-**参考：**SACU の５カ国の値を縦線で書き込むには下のようにします。
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) 
-```
-
-**参考：日本と**SACU の５カ国の値を縦線で書き込むには下のようにします。
-
-```{r}
-JP <- 3.416981
-SAF <- df_ed_exp |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) |> pull(ed_exp)
-df_ed_exp |> filter(year == 2020) |> filter(!(country %in% REGION))|>
-  drop_na(ed_exp) |>
-  ggplot() + geom_histogram(aes(ed_exp), binwidth = 1) +
-  geom_vline(xintercept = SAF, col = "red") + geom_vline(xintercept = JP, col = "blue") +labs(title = "2020年の教育費の対GDP百分率", subtitle = "日本：青、SACU：赤")
-```
-
-### データが十分ある最近の年の値の10カ国の値の棒グラフ
-
-#### a. 値が大きい方から
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> drop_na(ed_exp) |> 
-  filter(!(iso2c %in% REGION))|>
-  arrange(desc(ed_exp)) |> head(10) |> 
-  ggplot(aes(fct_reorder(country, ed_exp), ed_exp)) + geom_col() + 
-  coord_flip() + labs(title = "Top 10 Countries", x = "country", y = "Government expenditure on education, total (% of GDP)")
-```
-
-#### b. 値が小さい方から
-
-```{r}
-df_ed_exp |> filter(year == 2020) |> drop_na(ed_exp) |> 
-  filter(!(iso2c %in% REGION))|>
-  arrange(ed_exp) |> head(10) |> 
-  ggplot(aes(fct_rev(fct_reorder(country, ed_exp)), ed_exp)) + geom_col() + 
-  coord_flip() + labs(title = "Lowest 10 Countries", x = "country", y = "Government expenditure on education, total (% of GDP)")
-```
-
