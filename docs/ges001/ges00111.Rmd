@@ -3,12 +3,12 @@ title: "GES 001 演習5"
 author: "H. Suzuki"
 date: "2024年1月24日"
 output:
-  html_notebook: default
-  html_document:
-    df_print: paged
   ioslides_presentation:
     widescreen: true
     df_print: paged
+  html_document:
+    df_print: paged
+  html_notebook: default
 ---
 
 ## 準備
@@ -31,9 +31,17 @@ output:
 
 01/18(TH)　南部アフリカ諸国の貧困と不平等に対する対策
 
-　　　　　　COVID-19が貧困に与えた影響
+　　　　　　COVID-19が貧困に与えた影響 　　　　
 
-01/23(TU)　Rでデータサイエンス5　 [[Main](https://ds-sl.github.io/intro2r/ges001/ges001-main.nb.html)]・[授業]
+-   機会の不平等と成果の不平等が相互に関係し、長期にわたって持続している。
+
+-   人生の初期に出現する不平等を最小化するための政策が重要である。
+
+-   要因：教育、労働市場、失業率、男女間格差、土地所有権、などなど　　　
+
+------------------------------------------------------------------------
+
+01/23(TU)　Rでデータサイエンス5　 [[Main](https://ds-sl.github.io/intro2r/ges001/ges001-main.nb.html)]・[授業]　
 
 **People-Education**
 
@@ -43,11 +51,15 @@ General government expenditure on education (current, capital, and transfers) is
 
 教育に対する政府の一般支出（経常、資本、移転）は GDP の割合で表されます。これには、国際資金源から政府への送金によって資金提供された支出が含まれます。一般政府とは通常、地方自治体、地域政府、中央政府を指します。
 
+------------------------------------------------------------------------
+
 School enrollment, primary (% gross)：SE.PRM.ENRR [[Link](https://data.worldbank.org/indicator/SE.PRM.ENRR)]
 
 Gross enrollment ratio is the ratio of total enrollment, regardless of age, to the population of the age group that officially corresponds to the level of education shown. Primary education provides children with basic reading, writing, and mathematics skills along with an elementary understanding of such subjects as history, geography, natural science, social science, art, and music.
 
 総就学率は、年齢に関係なく、表示されている教育レベルに正式に対応する年齢層の人口に対する総就学者数の比率です。初等教育では、子供たちに基本的な読み書き、数学のスキルと、歴史、地理、自然科学、社会科学、芸術、音楽などの科目の初歩的な理解を提供します。
+
+------------------------------------------------------------------------
 
 School enrollment, secondary (% gross)：SE.SEC.ENRR [[Link](https://data.worldbank.org/indicator/SE.SEC.ENRR)]
 
@@ -55,11 +67,15 @@ Gross enrollment ratio is the ratio of total enrollment, regardless of age, to t
 
 総就学率は、年齢に関係なく、表示されている教育レベルに正式に対応する年齢層の人口に対する総就学者数の比率です。中等教育は、初等段階から始まった基礎教育の提供を完了し、より専門性の高い教師によるより教科や技能に特化した指導を行うことにより、生涯学習と人間形成の基礎を築くことを目的としています。
 
+------------------------------------------------------------------------
+
 School enrollment, tertiary (% gross)：SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)]
 
 Gross enrollment ratio is the ratio of total enrollment, regardless of age, to the population of the age group that officially corresponds to the level of education shown. Tertiary education, whether or not to an advanced research qualification, normally requires, as a minimum condition of admission, the successful completion of education at the secondary level.
 
 総就学率は、年齢に関係なく、表示されている教育レベルに正式に対応する年齢層の人口に対する総就学者数の比率です。高等教育では、高度な研究資格の有無にかかわらず、通常、入学の最低条件として中等教育レベルの教育を無事に修了することが求められます。
+
+------------------------------------------------------------------------
 
 **Health**
 
@@ -67,15 +83,15 @@ Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT [[Link](https://da
 
 Under-five mortality rate is the probability per 1,000 that a newborn baby will die before reaching age five, if subject to age-specific mortality rates of the specified year.
 
-```         
 5 歳未満死亡率は、指定された年の年齢別死亡率が適用される場合に、新生児が 5 歳に達する前に死亡する 1,000 人あたりの確率です。
-```
 
 Incidence of HIV (% of uninfected population ages 15-49)：SH.HIV.INCD.ZS [[Link](https://data.worldbank.org/indicator/SH.HIV.INCD.ZS?locations=SZ)]
 
 Number of new HIV infections among uninfected populations ages 15-49 expressed per 1,000 uninfected population in the year before the period.
 
 期間の前の年間の非感染人口 1,000 人当たりの 15 ～ 49 歳の非感染集団における新規 HIV 感染者数。
+
+------------------------------------------------------------------------
 
 **Gender**
 
@@ -91,6 +107,8 @@ Labor force participation rate is the proportion of the population ages 15 and o
 
 労働参加率とは、経済的に活動している 15 歳以上の人口の割合であり、指定された期間に商品やサービスの生産に労働力を供給するすべての人々を指します。女性労働力率と男性労働力率の比率は、女性労働力率を男性労働力率で割って100を乗じて算出します。
 
+------------------------------------------------------------------------
+
 **Labor**
 
 Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.FE.ZS)]
@@ -105,7 +123,9 @@ Unemployment refers to the share of the labor force that is without work but ava
 
 失業率とは、仕事はなくても職に就くことができ、求職している労働力の割合を指します。
 
-Global Link - Aid dependency
+------------------------------------------------------------------------
+
+#### Global Link - Aid dependency
 
 Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
 
@@ -113,7 +133,7 @@ Net official development assistance (ODA) consists of disbursements of loans mad
 
 政府開発援助（ODA）の純額は、開発援助委員会（DAC）メンバーの公的機関、多国間機関、DAC非加盟国による、譲許的条件（元本返済を除く）で行われた融資の実行と助成金で構成されます。 DAC の ODA 受領者リストに含まれる国および地域の経済発展と福祉を促進する。これには、少なくとも 25 パーセント（割引率 10 パーセントで計算）の補助金要素を持つローンが含まれます。純公的援助とは、公的ドナーからDACの受取人リストのパートIIにある国および地域への援助の流れ（返済額を差し引いた額）を指します：中央および東ヨーロッパのより先進国、旧ソ連諸国、および一部の先進途上国国と地域。公的援助は、ODA と同様の条件で提供されます。DAC リストのパート II は 2005 年に廃止されました。パート II 諸国への公的援助およびその他の資源の流れに関するデータの収集は 2004 年のデータで終了しました。データは現在の米ドルで表示されます。
 
-```{r}
+```{r echo = FALSE}
 library(tidyverse)
 library(WDI)
 ```
@@ -121,6 +141,8 @@ library(WDI)
 # 演習 1月24日（火）
 
 ## 内容
+
+-   *Poverty headcount ratio at \$6.85 a day (2017 PPP) (% of population)：SI.POV.UMIC [[Link](https://data.worldbank.org/indicator/SI.POV.UMIC)]*
 
 -   Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)]
 
@@ -130,7 +152,11 @@ library(WDI)
 
 -   School enrollment, tertiary (% gross)：SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)]
 
+------------------------------------------------------------------------
+
 -   Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SH.DYN.MORT)]
+
+-   Incidence of HIV (% of uninfected population ages 15-49)：SH.HIV.INCD.ZS [[Link](https://data.worldbank.org/indicator/SH.HIV.INCD.ZS?locations=SZ)]
 
 -   School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS [[Link](https://data.worldbank.org/indicator/SE.ENR.PRSC.FM.ZS)]
 
@@ -142,56 +168,57 @@ library(WDI)
 
 -   Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
 
+<!-- ## 復習 -->
 
-## 復習
+<!-- 貧困は、どのような尺度で測るのだろうか。 -->
 
-貧困は、どのような尺度で測るのだろうか。
+<!-- ### 一人当たりの購買力平価（Purchasing Power Parities）による国内総生産（Gross Domestic Product） -->
 
-### 一人当たりの購買力平価（Purchasing Power Parities）による国内総生産（Gross Domestic Product）
+<!-- -   GDP per capita, PPP (constant 2017 international \$): NY.GDP.PCAP.PP.KD [[Link](https://data.worldbank.org/indicator/NY.GDP.PCAP.PP.KD)] -->
 
--   GDP per capita, PPP (constant 2017 international \$): NY.GDP.PCAP.PP.KD [[Link](https://data.worldbank.org/indicator/NY.GDP.PCAP.PP.KD)]
+<!-- -   12/13 極度に貧しい！？ [[R Notebook](https://ds-sl.github.io/intro2r/ges001/poverty.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/poverty.Rmd)] -->
 
--   12/13 極度に貧しい！？ [[R Notebook](https://ds-sl.github.io/intro2r/ges001/poverty.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/poverty.Rmd)]
+<!-- -   国ごとの所得の平均のようなものはわかるが、極度の貧困の人がどの程度いるのかはわからない。 -->
 
--   国ごとの所得の平均のようなものはわかるが、極度の貧困の人がどの程度いるのかはわからない。
+<!-- ------------------------------------------------------------------------ -->
 
-------------------------------------------------------------------------
+<!-- ### 人口動態（demography） -->
 
-### 人口動態（demography）
+<!-- -   人口のデータ（総人口、出生率、死亡率、若年者扶養率、高齢者扶養率） -->
 
--   人口のデータ（総人口、出生率、死亡率、若年者扶養率、高齢者扶養率）
+<!-- -   12/20 人口動態（demography）[[R Notebook](https://ds-sl.github.io/intro2r/ges001/demography.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/demography.Rmd)] -->
 
--   12/20 人口動態（demography）[[R Notebook](https://ds-sl.github.io/intro2r/ges001/demography.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/demography.Rmd)]
+<!-- -   人口データは基本的で、国の値から個人の値を求めたり、他の国と比較しやすい割合から実際の数を求めるなどに必須 -->
 
--   人口データは基本的で、国の値から個人の値を求めたり、他の国と比較しやすい割合から実際の数を求めるなどに必須
+<!-- ------------------------------------------------------------------------ -->
 
-------------------------------------------------------------------------
+<!-- ### ジニ指数および所得分布 -->
 
-### ジニ指数および所得分布
+<!-- -   ジニ指数（Gini）, 所得の下位10%, 20%, 20%-40%, 40%-60%, 60%-80%, 80%以上, 90%以上 -->
 
--   ジニ指数（Gini）, 所得の下位10%, 20%, 20%-40%, 40%-60%, 60%-80%, 80%以上, 90%以上
+<!-- -   1/9 ジニって何！？ [[R Notebook](https://ds-sl.github.io/intro2r/ges001/what_is_gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/what_is_gini.Rmd)] -->
 
--   1/9 ジニって何！？ [[R Notebook](https://ds-sl.github.io/intro2r/ges001/what_is_gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/what_is_gini.Rmd)]
+<!-- -   1/9 ジニ指数と所得分布 [[R Notebook](https://ds-sl.github.io/intro2r/ges001/gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/gini.Rmd)]　（参考1/参考2付 [[R Notebook](https://ds-sl.github.io/intro2r/ges001/gini_long.nb.html)]） -->
 
--   1/9 ジニ指数と所得分布 [[R Notebook](https://ds-sl.github.io/intro2r/ges001/gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/gini.Rmd)]　（参考1/参考2付 [[R Notebook](https://ds-sl.github.io/intro2r/ges001/gini_long.nb.html)]）
+<!-- -   国の中での所得分布を見、かつ所得分配の公平さを一つの指標（ジニ指数）で表すことにより、比較も可能になったが、極度に貧困なひとがどのぐらいいるのかはわからない。 -->
 
--   国の中での所得分布を見、かつ所得分配の公平さを一つの指標（ジニ指数）で表すことにより、比較も可能になったが、極度に貧困なひとがどのぐらいいるのかはわからない。
+<!-- ## 貧困者率 -->
 
-## 貧困者率
+<!-- -   生活するための基本的ニーズを賄うために必要とそれぞれの国が考える基準を満たしていない人口の割合 -->
 
--   生活するための基本的ニーズを賄うために必要とそれぞれの国が考える基準を満たしていない人口の割合
+<!--     -   Poverty headcount ratio at national poverty lines (% of population)：SI.POV.NAHC [[Link](https://data.worldbank.org/indicator/SI.POV.NAHC)] -->
 
-    -   Poverty headcount ratio at national poverty lines (% of population)：SI.POV.NAHC [[Link](https://data.worldbank.org/indicator/SI.POV.NAHC)]
+<!--     -   日本は？ [[Wikipedia](https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E3%81%AE%E8%B2%A7%E5%9B%B0)] -->
 
-    -   日本は？ [[Wikipedia](https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E3%81%AE%E8%B2%A7%E5%9B%B0)]
+<!-- -   \$2.15/日 (\$65.4/月, 785/年), \$3.65（\$111.0/月, \$1,332/年）, \$6.85（\$208.4/月, \$2,500/年） -->
 
--   \$2.15/日 (\$65.4/月, 785/年), \$3.65（\$111.0/月, \$1,332/年）, \$6.85（\$208.4/月, \$2,500/年）
+<!--     -   Poverty headcount ratio at \$2.15 a day (2017 PPP) (% of population)：SI.POV.DDAY [[Link](https://data.worldbank.org/indicator/SI.POV.DDAY)] -->
 
-    -   Poverty headcount ratio at \$2.15 a day (2017 PPP) (% of population)：SI.POV.DDAY [[Link](https://data.worldbank.org/indicator/SI.POV.DDAY)]
+<!--     -   Poverty headcount ratio at \$3.65 a day (2017 PPP) (% of population)：SI.POV.LMIC [[Link](https://data.worldbank.org/indicator/SI.POV.LMIC)] -->
 
-    -   Poverty headcount ratio at \$3.65 a day (2017 PPP) (% of population)：SI.POV.LMIC [[Link](https://data.worldbank.org/indicator/SI.POV.LMIC)]
-
-    -   Poverty headcount ratio at \$6.85 a day (2017 PPP) (% of population)：SI.POV.UMIC [[Link](https://data.worldbank.org/indicator/SI.POV.UMIC)]
+```         
+<!-- -   Poverty headcount ratio at \$6.85 a day (2017 PPP) (% of population)：SI.POV.UMIC [[Link](https://data.worldbank.org/indicator/SI.POV.UMIC)] -->
+```
 
 ------------------------------------------------------------------------
 
@@ -206,25 +233,21 @@ library(WDI)
 
 ### データの読み込み（importing）
 
-
-```{r}
-library(tidyverse)
-library(WDI)
-```
-
-```{r}
-df_education <- WDI(
-  indicator = c(education = "SE.XPD.TOTL.GD.ZS",
+```{r eval = FALSE}
+df_poverty_inequality <- WDI(
+  indicator = c(gini = "SI.POV.GINI",
+                under_6.85 = "SI.POV.UMIC",
+                ed_exp = "SE.XPD.TOTL.GD.ZS",
                 primary = "SE.PRM.ENRR",
                 secondary = "SE.SEC.ENRR",
                 tertiary = "SE.TER.ENRR",
                 under5 = "SH.DYN.MORT",
-                hiv_uninfected = "SH.HIV.INCD.ZS",
-                edu_gender = "SE.ENR.PRSC.FM.ZS",
-                labor_gender = "SL.TLF.CACT.FM.ZS",
-                unemploy_f = "SL.UEM.TOTL.FE.ZS",
-                unemploy_m = "SL.UEM.TOTL.FE.ZS",
-                aid_dependancy = "DT.ODA.ALLD.CD"), extra = TRUE)
+                new_hiv = "SH.HIV.INCD.ZS",
+                school_gpi = "SE.ENR.PRSC.FM.ZS",
+                job_gpi = "SL.TLF.CACT.FM.ZS",
+                female_unemploy = "SL.UEM.TOTL.FE.ZS",
+                male_unemploy = "SL.UEM.TOTL.FE.ZS",
+                oda = "DT.ODA.ALLD.CD"), extra = TRUE)
 ```
 
 #### 保存と読み込み
@@ -233,198 +256,264 @@ df_education <- WDI(
 
 ***最初の１回目は、かならず実行してください。***
 
-```{r}
-write_csv(df_education, "data/education.csv")
+```{r eval = FALSE}
+write_csv(df_poverty_inequality, "data/poverty_inequality.csv")
 ```
 
 ```{r}
-df_education <- read_csv("data/education.csv")
+df_poverty_inequality <- read_csv("data/poverty_inequality.csv")
+```
+
+```{r}
+REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
+"S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
+"V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL", 
+"XM", "XN", "XO", "XP", "XQ", "XT", "XU", "XY", "Z4", "Z7", "ZF", 
+"ZG", "ZH", "ZI", "ZJ", "ZQ", "ZT")
 ```
 
 ### データを見てみよう (viewing)
 
 ```{r}
-df_education |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
+df_poverty_inequality |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
+```
+
+```{r}
+df_poverty_inequality |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c)
 ```
 
 ### 変数の選択（selecting）
 
+```{r}
+df_pov_ineq <- df_poverty_inequality |> select(country, iso2c, year, gini:oda, region, income, lending)
+```
+
 ### 変形（Wide to Long Data）
 
-四つの指標を同時にいくつか選択し比較したいので、一つの列（変数）にならべた、縦長データ（long data）も作成しておきます。
+いくつもの指標を同時にいくつか選択し比較したいので、一つの列（変数）にならべた、縦長データ（long data）も作成しておきます。
 
-`pivot_longer(ratio:under_6.85, names_to = "level", values_to = "value")`
+`pivot_longer(gini:oda)`
 
 ここでは、`ratio` から `under_6.85` を、`level` という名前の列にならべ、値を `value` という列に並べるようにしてあります。
 
 確認するときは、value が NA のものは除き、country と、iso2c と、level と value の部分だけ取り出して確認しています。
 
-
 ```{r}
-df_education_long <- df_education |> 
-  pivot_longer(7:16, names_to = "name", values_to = "value")
+df_pov_ineq_long <- df_pov_ineq |> pivot_longer(gini:oda)
 ```
 
 ### 年毎のデータの数の確認（number of data in each year）
 
 ```{r}
-df_education_long |> drop_na(value) |> 
+df_pov_ineq_long |> drop_na(value) |> 
   group_by(year, name) |> summarize(n = n()) |> arrange(desc(year))
 ```
 
-
 ```{r}
-df_education_long |> 
-  group_by(year, name) |> drop_na(value) |>
-  summarize(num = n()) |> arrange(desc(year))
+df_pov_ineq |> drop_na(gini:oda) |> select(gini:oda) |> cor() |> round(digits = 2) |> as.data.frame() 
 ```
 
 ```{r}
-df_education_long |> 
-  group_by(year, name) |> drop_na(value) |>
-  summarize(num = n()) |> 
-  ggplot(aes(year, num, col = name)) + geom_line() +
-  labs(title = "各指標の年毎のデータ数", y = "データ数", x = "年")
-```
-
-World Development Indicators: [[Link](https://datacatalog.worldbank.org/search/dataset/0037712/World-Development-Indicators)]
-
-### World (1W), Sub-Saharan Africa　(excluding high income) (ZF), and Sub-Saharan Africa (ZG)
-
-```{r}
-df_education_long |> 
-  filter(name %in% c("primary", "secondary", "tertiary")) |>
-  filter(iso2c %in% c("1W", "ZF", "ZG")) |> drop_na(value) |>
-  ggplot(aes(year, value, col = name, linetype = iso2c)) + geom_line()
+df_pov_ineq |> drop_na(gini, primary) |>
+  ggplot(aes(gini, primary)) + geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
 ```
 
 ```{r}
-df_education |> filter(year == 2020) |> 
-  select(education, primary, secondary, tertiary) |> 
-  drop_na() |> cor()
+df_pov_ineq |> drop_na(gini, tertiary) |>
+  ggplot(aes(gini, tertiary)) + geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
 ```
 
 ```{r}
-df_education |> filter(country == "Japan") |> arrange(desc(year))
+df_pov_ineq |> drop_na(under_6.85, tertiary) |>
+  ggplot(aes(under_6.85, tertiary)) + geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
 ```
 
 ```{r}
-df_education |> filter(region != "Aggregates") |>
-  filter(year == 2020) |>
-  drop_na(education) |> 
-  ggplot(aes(education, fill = region)) + geom_histogram(col = "black", linewidth = 0.1, binwidth = 1) +
-  geom_vline(xintercept = 3.416981) + theme(legend.position = "top")
+df_pov_ineq |> drop_na(under_6.85, under5) |>
+  ggplot(aes(under_6.85, under5)) + geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
 ```
 
-```{r}
-df_education |> 
-  filter(country %in% c("World", "Japan", "South Africa")) |>
-  drop_na(education) |>
-  ggplot(aes(year, education, col = country)) + geom_line() 
-```
+<!-- ```{r} -->
 
-```{r}
-df_education |> 
-  filter(country %in% c("World", "Japan", "Korea, Rep.", "China")) |>
-  drop_na(education) |>
-  ggplot(aes(year, education, col = country)) + geom_line() 
-```
+<!-- df_education_long |>  -->
 
+<!--   group_by(year, name) |> drop_na(value) |> -->
 
+<!--   summarize(num = n()) |>  -->
 
-## ファイルリンク
+<!--   ggplot(aes(year, num, col = name)) + geom_line() + -->
 
--   PositCloud 共有リンク：<https://posit.cloud/content/5539763>
+<!--   labs(title = "各指標の年毎のデータ数", y = "データ数", x = "年") -->
 
-    -   貧困率 - Poverty Rate（poverty_rate.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/poverty_rate.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/poverty_rate.Rmd)]
-        -   より詳細なもの：poverty_rate_long.Rmd [[リンク](https://ds-sl.github.io/intro2r/ges001/poverty_rate_long.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/poverty_rate_long.Rmd)]
-            -   PositCloud では、メモリーオーバー
+<!-- ``` -->
 
--   R Notebook のソースファイル（Rmd）を取得する三つの方法
+<!-- World Development Indicators: [[Link](https://datacatalog.worldbank.org/search/dataset/0037712/World-Development-Indicators)] -->
 
-    1.  **Rmd のリンクをクリックし Raw の横の Copy a raw file からコピー、新規 RMarkdown ファイルを PositCloud または RStudio のプロジェクト内に作成しペースト**
+<!-- ### World (1W), Sub-Saharan Africa　(excluding high income) (ZF), and Sub-Saharan Africa (ZG) -->
 
-    2.  PositCloud 共有リンクの ges001 のディレクトリ（フォルダから探す）ファイルを開き、全体を選択してコピーし、自分の RStudio または、PositCloud のファイルで、RMarkdown ファイルを新規作成しペースト
+<!-- ```{r} -->
 
-    3.  リンクを開き、右上の Code から、Rmd ファイルをダウンロードとし、それを、自分の RStudio または、PositCloud のプロジェクトに移動（Upload）
+<!-- df_education_long |>  -->
 
-## 作業手順とまとめ
+<!--   filter(name %in% c("primary", "secondary", "tertiary")) |> -->
 
--   パッケージ（Package）の利用：
+<!--   filter(iso2c %in% c("1W", "ZF", "ZG")) |> drop_na(value) |> -->
 
-    -   インストール（installation）：Tools \> Install Packages
+<!--   ggplot(aes(year, value, col = name, linetype = iso2c)) + geom_line() -->
 
-    -   ロード（load）`library(tidyverse); library(WDI); library(showtext); library(DescTools)`
+<!-- ``` -->
 
--   データの取得：`WDI(indicator = c(pop = "SP.POP.TOTL"))`
+<!-- ```{r} -->
 
-    -   `WDI(indicator = c(ratio = "SI.POV.NAHC", under_2.15 = "SI.POV.DDAY", under_3.65 = "SI.POV.LMIC", under_6.85 = "SI.POV.UMIC"), extra = TRUE)`
+<!-- df_education |> filter(year == 2020) |>  -->
 
-    -   data に書き出し、そこから読み込むと良い。
+<!--   select(education, primary, secondary, tertiary) |>  -->
 
-        -   `write_csv(df_poverty_rate, "data/poverty_rate.csv")`
+<!--   drop_na() |> cor() -->
 
-        -   `read_csv("data/poverty_rate.csv")`
+<!-- ``` -->
 
--   データを見る：`df_poverty_rate` , `head(df_poverty_rate)`, `str(df_poverty_rate)`
+<!-- ```{r} -->
 
-------------------------------------------------------------------------
+<!-- df_education |> filter(country == "Japan") |> arrange(desc(year)) -->
 
-### データの変形
+<!-- ``` -->
 
--   変数の選択：`select(country, year, ratio, under_2.15, under_3.65, under_6.85, region)`
+<!-- ```{r} -->
 
--   データの変形（Long data）：`pivot_longer(ratio:under_6.85, names_to = "level", values_to = "value")`
+<!-- df_education |> filter(region != "Aggregates") |> -->
 
--   特定の行の取得：`filter(), drop_na(), distinct()`
+<!--   filter(year == 2020) |> -->
 
--   行の順番の並び替え：`arrange(desc(year))`
+<!--   drop_na(education) |>  -->
 
--   グループ分け：`group_by()` , `group_by(year, level) |> summarize(n = n())`
+<!--   ggplot(aes(education, fill = region)) + geom_histogram(col = "black", linewidth = 0.1, binwidth = 1) + -->
 
-------------------------------------------------------------------------
+<!--   geom_vline(xintercept = 3.416981) + theme(legend.position = "top") -->
 
-### 可視化
+<!-- ``` -->
 
--   折れ線グラフ
+<!-- ```{r} -->
 
-    -   `ggplot(aes(x = year, y = under_2.15) + geom_line()`
+<!-- df_education |>  -->
 
-    -   `ggplot(aes(x = year, y = under_2.15, col = country) + geom_line()`
+<!--   filter(country %in% c("World", "Japan", "South Africa")) |> -->
 
--   ヒストグラム（度数分布）
+<!--   drop_na(education) |> -->
 
-    -   `ggplot(aes(under_2.15, fill = region)) + geom_histogram(bins = 15)`
+<!--   ggplot(aes(year, education, col = country)) + geom_line()  -->
 
--   箱ひげ図（Boxplot）
+<!-- ``` -->
 
-    -   `ggplot(aes(under_2.15, region, fill = region)) + geom_boxplot()`
+<!-- ```{r} -->
 
-------------------------------------------------------------------------
+<!-- df_education |>  -->
 
--   棒グラフ
+<!--   filter(country %in% c("World", "Japan", "Korea, Rep.", "China")) |> -->
 
-    -   `ggplot(aes(year)) + geom_bar()`
+<!--   drop_na(education) |> -->
 
-    -   `ggplot(aes(levels, value)) + geom_col()`
+<!--   ggplot(aes(year, education, col = country)) + geom_line()  -->
 
-    -   `ggplot(aes(x = levels, y = value, fill = country)) + geom_col(position = "dodge")`
+<!-- ``` -->
 
-    -   `ggplot(aes(x = gini, fill = region)) + geom_histogram()`
+<!-- ## ファイルリンク -->
 
--   散布図（+回帰直線）
+<!-- -   PositCloud 共有リンク：<https://posit.cloud/content/5539763> -->
 
-    -   `ggplot(aes(gini, 90-100)) + geom_point()`
+<!--     -   貧困率 - Poverty Rate（poverty_rate.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/poverty_rate.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/poverty_rate.Rmd)] -->
 
-    -   `ggplot(aes(gini, 80-100)) + geom_point() + geom_smooth(formula = 'y ~ x', method = "lm")`
+<!--         -   より詳細なもの：poverty_rate_long.Rmd [[リンク](https://ds-sl.github.io/intro2r/ges001/poverty_rate_long.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/poverty_rate_long.Rmd)] -->
 
-***常に、考察、気づいたことを、記録してください。***
+<!--             -   PositCloud では、メモリーオーバー -->
+
+<!-- -   R Notebook のソースファイル（Rmd）を取得する三つの方法 -->
+
+<!--     1.  **Rmd のリンクをクリックし Raw の横の Copy a raw file からコピー、新規 RMarkdown ファイルを PositCloud または RStudio のプロジェクト内に作成しペースト** -->
+
+<!--     2.  PositCloud 共有リンクの ges001 のディレクトリ（フォルダから探す）ファイルを開き、全体を選択してコピーし、自分の RStudio または、PositCloud のファイルで、RMarkdown ファイルを新規作成しペースト -->
+
+<!--     3.  リンクを開き、右上の Code から、Rmd ファイルをダウンロードとし、それを、自分の RStudio または、PositCloud のプロジェクトに移動（Upload） -->
+
+<!-- ## 作業手順とまとめ -->
+
+<!-- -   パッケージ（Package）の利用： -->
+
+<!--     -   インストール（installation）：Tools \> Install Packages -->
+
+<!--     -   ロード（load）`library(tidyverse); library(WDI); library(showtext); library(DescTools)` -->
+
+<!-- -   データの取得：`WDI(indicator = c(pop = "SP.POP.TOTL"))` -->
+
+<!--     -   `WDI(indicator = c(ratio = "SI.POV.NAHC", under_2.15 = "SI.POV.DDAY", under_3.65 = "SI.POV.LMIC", under_6.85 = "SI.POV.UMIC"), extra = TRUE)` -->
+
+<!--     -   data に書き出し、そこから読み込むと良い。 -->
+
+<!--         -   `write_csv(df_poverty_rate, "data/poverty_rate.csv")` -->
+
+<!--         -   `read_csv("data/poverty_rate.csv")` -->
+
+<!-- -   データを見る：`df_poverty_rate` , `head(df_poverty_rate)`, `str(df_poverty_rate)` -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ### データの変形 -->
+
+<!-- -   変数の選択：`select(country, year, ratio, under_2.15, under_3.65, under_6.85, region)` -->
+
+<!-- -   データの変形（Long data）：`pivot_longer(ratio:under_6.85, names_to = "level", values_to = "value")` -->
+
+<!-- -   特定の行の取得：`filter(), drop_na(), distinct()` -->
+
+<!-- -   行の順番の並び替え：`arrange(desc(year))` -->
+
+<!-- -   グループ分け：`group_by()` , `group_by(year, level) |> summarize(n = n())` -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ### 可視化 -->
+
+<!-- -   折れ線グラフ -->
+
+<!--     -   `ggplot(aes(x = year, y = under_2.15) + geom_line()` -->
+
+<!--     -   `ggplot(aes(x = year, y = under_2.15, col = country) + geom_line()` -->
+
+<!-- -   ヒストグラム（度数分布） -->
+
+<!--     -   `ggplot(aes(under_2.15, fill = region)) + geom_histogram(bins = 15)` -->
+
+<!-- -   箱ひげ図（Boxplot） -->
+
+<!--     -   `ggplot(aes(under_2.15, region, fill = region)) + geom_boxplot()` -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- -   棒グラフ -->
+
+<!--     -   `ggplot(aes(year)) + geom_bar()` -->
+
+<!--     -   `ggplot(aes(levels, value)) + geom_col()` -->
+
+<!--     -   `ggplot(aes(x = levels, y = value, fill = country)) + geom_col(position = "dodge")` -->
+
+<!--     -   `ggplot(aes(x = gini, fill = region)) + geom_histogram()` -->
+
+<!-- -   散布図（+回帰直線） -->
+
+<!--     -   `ggplot(aes(gini, 90-100)) + geom_point()` -->
+
+<!--     -   `ggplot(aes(gini, 80-100)) + geom_point() + geom_smooth(formula = 'y ~ x', method = "lm")` -->
+
+<!-- ***常に、考察、気づいたことを、記録してください。*** -->
 
 ## 課題
 
-## 目標
-
-以下の指標の中から、一つを選択して、データを WDI で取得し、以下の分析をする。
+以下の指標の中から、一つを選択して、データの概要（description）を記録し、データを WDI で取得し、以下の分析をする。
 
 1.  各年毎のデータの数の棒グラフ
 2.  日本のデータの年の降順での表示
@@ -439,27 +528,31 @@ df_education |>
 
 それぞれについて考察（気づいたこと、疑問など）を記す
 
+**2023.1.25. 23:59** までに Moodle の演習の課題ボックスに提出したものについては、なるべく、早く見て、フィードバックを書きます。それ以降に提出されたものも見ますが、フィードバックは遅くなると思ってください。
+
 ### データ
 
--   Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)]
+1.  Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)] 変数名：`ed_exp`
 
--   School enrollment, primary (% gross)：SE.PRM.ENRR [[Link](https://data.worldbank.org/indicator/SE.PRM.ENRR)]
+2.  School enrollment, primary (% gross)：SE.PRM.ENRR [[Link](https://data.worldbank.org/indicator/SE.PRM.ENRR)] 変数名：`primary`
 
--   School enrollment, secondary (% gross)：SE.SEC.ENRR [[Link](https://data.worldbank.org/indicator/SE.SEC.ENRR)]
+3.  School enrollment, secondary (% gross)：SE.SEC.ENRR [[Link](https://data.worldbank.org/indicator/SE.SEC.ENRR)] 変数名：`secondary`
 
--   School enrollment, tertiary (% gross)：SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)]
+4.  School enrollment, tertiary (% gross)：SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)] 変数名：`tertiary`
 
--   Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SH.DYN.MORT)]
+5.  Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SH.DYN.MORT)] 変数名：`under5`
 
--   School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS [[Link](https://data.worldbank.org/indicator/SE.ENR.PRSC.FM.ZS)]
+6.  Incidence of HIV (% of uninfected population ages 15-49)：SH.HIV.INCD.ZS [[Link](https://data.worldbank.org/indicator/SH.HIV.INCD.ZS?locations=SZ)] 変数名：`new_hiv`
 
--   Ratio of female to male labor force participation rate (%) (modeled ILO estimate)：SL.TLF.CACT.FM.ZS [[Link](https://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS)]
+7.  School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS [[Link](https://data.worldbank.org/indicator/SE.ENR.PRSC.FM.ZS)] 変数名：`school_gpi`
 
--   Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.FE.ZS)]
+8.  Ratio of female to male labor force participation rate (%) (modeled ILO estimate)：SL.TLF.CACT.FM.ZS [[Link](https://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS)] 変数名：`job_gpi`
 
--   Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.ZS)]
+9.  Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.FE.ZS)] 変数名：`female_unemploy`
 
--   Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
+10. Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.ZS)] 変数名：`male_unemploy`
+
+11. Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)] 変数名：`oda`
 
 # 国の教育に関する支出
 
@@ -468,6 +561,16 @@ df_education |>
 ## データ
 
 Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)]
+
+### データ情報
+
+-   データ名：
+
+-   データコード：
+
+-   変数名：
+
+-   概要：
 
 ### データの取得
 
@@ -515,7 +618,7 @@ df_ed_exp |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
 ```
 
 ```{r}
-df_ed_exp |> filter(iso2c %in% REGIONS) |> distinct(country, iso2c)
+df_ed_exp |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c)
 ```
 
 ### 分析する国のリスト
@@ -648,11 +751,14 @@ df_ed_exp |> filter(year == 2020) |> drop_na(ed_exp) |>
   coord_flip() + labs(title = "Lowest 10 Countries", x = "country", y = "Government expenditure on education, total (% of GDP)")
 ```
 
-### 練習：貧困度ごとの人口比
+### 演習の内容と課題
 
-課題にある 1 から 5.
+基本的には、PositCloud（<https://posit.cloud/>）を使って実習
 
-提出はしなくて良いですが、ぜひ実際に手を動かして実行してください。
+-   探索的データ分析（EDA） -
+    -   練習と一つ目の課題（w5eda.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/w5eda.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w5eda.Rmd)]
+    -   二つ目以降の課題：w5eda1.Rmd [[リンク](https://ds-sl.github.io/intro2r/ges001/w5eda1.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w5eda1.Rmd)]
+-   課題：**2023.1.25. 23:59** までに Moodle の演習の課題ボックスに提出したものについては、なるべく、早く見て、フィードバックを書きます。それ以降に提出されたものも見ますが、フィードバックは遅くなると思ってください。
 
 ## 参考文献
 

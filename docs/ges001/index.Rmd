@@ -219,9 +219,15 @@ Poverty headcount ratio at \$6.85 a day is the percentage of the population livi
 
 01/18(TH)　南部アフリカ諸国の貧困と不平等に対する対策
 
-　　　　　　COVID-19が貧困に与えた影響
+　　　　　　COVID-19が貧困に与えた影響 　
 
-01/23(TU)　Rでデータサイエンス5　 [授業資料]
+-   機会の不平等と成果の不平等が相互に関係し、長期にわたって持続している。
+
+-   人生の初期に出現する不平等を最小化するための政策が重要である。
+
+-   要因：教育、労働市場、失業率、男女間格差、土地所有権、などなど　　　　
+
+01/23(TU)　Rでデータサイエンス5　[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00111.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00111.nb.html)]・[ビデオ]
 
 **People-Education**
 
@@ -258,6 +264,15 @@ Global Link - Aid dependency
 Net official development assistance and official aid received (current US\$)
 
 DT.ODA.ALLD.CD
+
+#### 演習の内容と課題
+
+基本的には、PositCloud（<https://posit.cloud/>）を使って実習
+
+-   探索的データ分析（EDA） -
+    -   練習と一つ目の課題（w5eda.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/w5eda.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w5eda.Rmd)]
+    -   二つ目以降の課題：w5eda1.Rmd [[リンク](https://ds-sl.github.io/intro2r/ges001/w5eda1.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w5eda1.Rmd)]
+-   課題：**2023.1.25. 23:59** までに Moodle の演習の課題ボックスに提出したものについては、なるべく、早く見て、フィードバックを書きます。それ以降に提出されたものも見ますが、フィードバックは遅くなると思ってください。
 
 ### 第6週
 
