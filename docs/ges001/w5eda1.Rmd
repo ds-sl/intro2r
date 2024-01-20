@@ -1,0 +1,306 @@
+---
+title: "探索的データ分析 - EDA 1"
+author: "ID, Last, First"
+date: "2024年1月23日"
+output:
+  html_notebook: default
+---
+
+## 課題
+
+以下の指標の中から、一つを選択して、データの概要（description）を記録し、データを WDI で取得し、以下の分析をする。
+
+1.  各年毎のデータの数の棒グラフ
+2.  日本のデータの年の降順での表示
+3.  経年変化を表す折れ線グラフ
+    a.  日本
+    b.  南部アフリカ関税同盟の５カ国
+    c.  選択したいくつかの国
+4.  データが十分ある最近の年の値のヒストグラム
+5.  データが十分ある最近の年の値の10カ国の値の棒グラフ
+    a.  値が大きい方から
+    b.  値が小さい方から
+
+それぞれについて考察（気づいたこと、疑問など）を記す
+
+**2023.1.25. 23:59** までに Moodle の演習の課題ボックスに提出したものについては、なるべく、早く見て、フィードバックを書きます。それ以降に提出されたものも見ますが、フィードバックは遅くなると思ってください。
+
+### データ
+
+1.  School enrollment, primary (% gross)：SE.PRM.ENRR [[Link](https://data.worldbank.org/indicator/SE.PRM.ENRR)] 変数名：`primary`
+
+2.  School enrollment, secondary (% gross)：SE.SEC.ENRR [[Link](https://data.worldbank.org/indicator/SE.SEC.ENRR)] 変数名：`secondary`
+
+3.  School enrollment, tertiary (% gross)：SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)] 変数名：`tertiary`
+
+4.  Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SH.DYN.MORT)] 変数名：`under5`
+
+5.  Incidence of HIV (% of uninfected population ages 15-49)：SH.HIV.INCD.ZS [[Link](https://data.worldbank.org/indicator/SH.HIV.INCD.ZS?locations=SZ)] 変数名：`hiv`
+
+6.  School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS [[Link](https://data.worldbank.org/indicator/SE.ENR.PRSC.FM.ZS)] 変数名：`school_gpi`
+
+7.  Ratio of female to male labor force participation rate (%) (modeled ILO estimate)：SL.TLF.CACT.FM.ZS [[Link](https://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS)] 変数名：`job_gpi`
+
+8.  Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.FE.ZS)] 変数名：`female_unemploy`
+
+9.  Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.ZS)] 変数名：`male_unemploy`
+
+10. Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)] 変数名：`oda`
+
+# 表題
+
+> 概要：
+
+## データ
+
+-   
+
+-   Description
+
+### データ情報
+
+-   データ名：
+
+-   データコード：
+
+-   変数名：
+
+-   概要：
+
+### データの取得
+
+#### 準備
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+WDI パッケージを使って、直接データをダウンロード
+
+```{r eval = FALSE}
+
+```
+
+
+```{r eval = FALSE}
+
+```
+
+
+```{r}
+
+```
+
+### データの確認
+
+
+```{r}
+
+```
+
+
+```{r}
+
+```
+
+```{r}
+REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
+"S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
+"V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL", 
+"XM", "XN", "XO", "XP", "XQ", "XT", "XU", "XY", "Z4", "Z7", "ZF", 
+"ZG", "ZH", "ZI", "ZJ", "ZQ", "ZT")
+```
+
+
+```{r}
+
+```
+
+
+```{r}
+
+```
+
+### 分析する国のリスト
+
+#### **南部アフリカ関税同盟** The Southern African Customs Union (SACU)
+
+```{r}
+SOUTH_AFRICA_FIVE <- c("South Africa", "Namibia", "Eswatini", "Botswana", "Lesotho")
+```
+
+#### いくつかの国を選択
+
+```{r}
+
+```
+
+## 分析
+
+### 1. 各年毎のデータの数の棒グラフ
+
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-  
+
+## 視覚化
+
+### 2. 日本
+
+```{r}
+
+```
+
+
+**気づいたこと・疑問**
+
+-  
+
+### 3. 経年変化
+
+#### a. 日本
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+#### b. 南部アフリカ関税同盟
+
+
+```{r}
+
+```
+
+
+**気づいたこと・疑問**
+
+-  
+
+**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
+
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+#### c. 選択した国・地域
+
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-  
+
+**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
+
+```         
+df_under_6.85 |> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(under_6.85) |>
+  ggplot(aes(year, under_6.85)) + geom_line(aes(col = country)) +
+  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
+```
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-  
+
+### 分布
+
+データの数から、まずは、2020年について見てみる。
+
+
+```{r}
+
+```
+
+
+**気づいたこと・疑問**
+
+-  
+
+**参考：**SACU の５カ国の値を縦線で書き込むには下のようにします。
+
+```         
+df_under_6.85 |> filter(year == 2010) |> filter(country %in% SOUTH_AFRICA_FIVE) 
+```
+
+```{r}
+
+```
+
+**参考：日本と**SACU の５カ国の値を縦線で書き込むには下のようにします。
+
+```         
+JP <- 0.5
+SAF <- df_under_6.85 |> filter(year == 2010) |> filter(country %in% SOUTH_AFRICA_FIVE) |> pull(under_6.85)
+df_under_6.85 |> filter(year == 2010) |> filter(!(country %in% REGION))|>
+  drop_na(under_6.85) |>
+  ggplot() + geom_histogram(aes(under_6.85), binwidth = 1) +
+  geom_vline(xintercept = SAF, col = "red") + geom_vline(xintercept = JP, col = "blue") +labs(title = "貧困率（1日6.85ドル以下）", subtitle = "日本：青、SACU：赤")
+```
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-  
+
+### データが十分ある最近の年の値の10カ国の値の棒グラフ
+
+#### a. 値が大きい方から
+
+```         
+df_under_6.85 |> filter(year == 2019) |> drop_na(under_6.85) |> 
+  filter(!(iso2c %in% REGION))|>
+  arrange(desc(under_6.85)) |> head(10) |> 
+  ggplot(aes(fct_reorder(country, under_6.85), ed_exp)) + geom_col() + 
+  coord_flip() + labs(title = "Top 10 Countries", x = "country", y = "poverty rate (under $6.85 per day)")
+```
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-  
+
+#### b. 値が小さい方から
+
+```         
+df_under_6.85 |> filter(year == 2019) |> drop_na(under_6.85) |> 
+  filter(!(iso2c %in% REGION))|>
+  arrange(under_6.85) |> head(10) |> 
+  ggplot(aes(fct_rev(fct_reorder(country, under_6.85)), under_6.85)) + geom_col() + 
+  coord_flip() + labs(title = "Lowest 10 Countries", x = "country", y = "poverty rate (under $6.85 per day))
+```
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-  
