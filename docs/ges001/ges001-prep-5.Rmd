@@ -26,7 +26,27 @@ School enrollment, primary (% gross)：SE.PRM.ENRR [[Link](https://data.worldban
 
 Gross enrollment ratio is the ratio of total enrollment, regardless of age, to the population of the age group that officially corresponds to the level of education shown. Primary education provides children with basic reading, writing, and mathematics skills along with an elementary understanding of such subjects as history, geography, natural science, social science, art, and music.
 
+Development Relevance: Gross enrollment ratios indicate the capacity of each level of the education system, but a high ratio may reflect a substantial number of overage children enrolled in each grade because of repetition or late entry rather than a successful education system. The net enrollment rate excludes overage and underage students and more accurately captures the system's coverage and internal efficiency. Differences between the gross enrollment ratio and the net enrollment rate show the incidence of overage and underage enrollments.
+Limitations and Exceptions: Enrollment indicators are based on annual school surveys, but do not necessarily reflect actual attendance or dropout rates during the year. Also, the length of education differs across countries and can influence enrollment rates, although the International Standard Classification of Education (ISCED) tries to minimize the difference. For example, a shorter duration for primary education tends to increase the rate; a longer one to decrease it (in part because older children are more at risk of dropping out). Moreover, age at enrollment may be inaccurately estimated or misstated, especially in communities where registration of births is not strictly enforced.
+Long Definition: Gross enrollment ratio is the ratio of total enrollment, regardless of age, to the population of the age group that officially corresponds to the level of education shown. Primary education provides children with basic reading, writing, and mathematics skills along with an elementary understanding of such subjects as history, geography, natural science, social science, art, and music.
+
+Periodicity: Annual
+Statistical Concept and Methodology: Gross enrollment ratio for primary school is calculated by dividing the number of students enrolled in primary education regardless of age by the population of the age group which officially corresponds to primary education, and multiplying by 100. Data on education are collected by the UNESCO Institute for Statistics from official responses to its annual education survey. All the data are mapped to the International Standard Classification of Education (ISCED) to ensure the comparability of education programs at the international level. The current version was formally adopted by UNESCO Member States in 2011. Population data are drawn from the United Nations Population Division. Using a single source for population data standardizes definitions, estimations, and interpolation methods, ensuring a consistent methodology across countries and minimizing potential enumeration problems in national censuses. The reference years reflect the school year for which the data are presented. In some countries the school year spans two calendar years (for example, from September 2010 to June 2011); in these cases the reference year refers to the year in which the school year ended (2011 in the example).
+Topic: Education: Participation
+
 総就学率は、年齢に関係なく、表示されている教育レベルに正式に対応する年齢層の人口に対する総就学者数の比率です。初等教育では、子供たちに基本的な読み書き、数学のスキルと、歴史、地理、自然科学、社会科学、芸術、音楽などの科目の初歩的な理解を提供します。
+
+開発との関連性： 総就学率は、教育システムの各レベルの能力を示すものであるが、高い比率は、教育システムがうまく機能しているというよりも、反復学習や後期入学のために、各学年に相当数の過年齢児童が在籍していることを反映している可能性がある。正味就学率は、年齢超過と年齢未満の生徒を除いたもので、制度のカバー率と内部効率をより正確に把握するものである。総就学率と純就学率の差は、過年齢入学と未成年入学の発生率を示している。
+限界と例外： 在籍率の指標は毎年の学校調査に基づいているが、必ずしもその年の実際の出席率や退学率を反映しているわけではない。また、教育期間は国によって異なり、就学率に影響を与える可能性があるが、国際標準教育分類（ISCED）では、その違いを最小限に抑えようとしている。例えば、初等教育の期間が短いほど就学率は上昇し、長いほど低下する傾向がある（年長児の方が中途退学のリスクが高いことも一因）。さらに、特に出生登録が厳格に実施されていない地域では、就学時の年齢が不正確に推定されたり、誤って記載されたりすることもある。
+長い定義： 総就学率（Gross enrollment ratio）とは、年齢に関係なく、教育レベルに対応する年齢層の人口に対する総就学者数の割合である。初等教育は、子どもたちに基本的な読み書きを提供する、 
+
+周期性： 年次
+統計の概念と方法 初等教育の総就学率は、年齢に関係なく初等教育に就学している生徒数を、初等教育に正式に対応する年齢層の人口で割り、100を乗じて算出される。教育に関するデータは、ユネスコ統計研究所が年次教育調査への公式回答から収集している。すべてのデータは、国際レベルでの教育プログラムの比較可能性を確保するために、国際標準教育分類（ISCED）にマッピングされている。現在のバージョンは、2011年にユネスコ加盟国によって正式に採択された。人口データは、国連人口部から取得したものである。人口データの出典を1つにすることで、定義、推計、補間方法が標準化され、各国間で一貫した方法論が保証されるとともに、国勢調査における潜在的な集計上の問題を最小限に抑えることができる。基準年は、データが提示されている学年を反映している。国によっては、学年が2暦年（例えば2010年9月から2011年6月まで）にまたがる場合があり、その場合は学年が終了した年（例では2011年）を基準年としている。
+トピック 教育： 参加
+
+DeepL.com（無料版）で翻訳しました。
+
+
 
 School enrollment, secondary (% gross)：SE.SEC.ENRR [[Link](https://data.worldbank.org/indicator/SE.SEC.ENRR)]
 
@@ -141,7 +161,7 @@ library(tidyverse)
 library(WDI)
 ```
 
-```{r}
+```{r eval=FALSE}
 df_education <- WDI(
   indicator = c(education = "SE.XPD.TOTL.GD.ZS",
                 primary = "SE.PRM.ENRR",
@@ -156,7 +176,7 @@ df_education <- WDI(
                 aid_dependancy = "DT.ODA.ALLD.CD"), extra = TRUE)
 ```
 
-```{r}
+```{r eval=FALSE}
 write_csv(df_education, "data/education.csv")
 ```
 
@@ -228,4 +248,153 @@ df_education |>
   filter(country %in% c("World", "Japan", "Korea, Rep.", "China")) |>
   drop_na(education) |>
   ggplot(aes(year, education, col = country)) + geom_line() 
+```
+
+### 準備
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+------------------------------------------------------------------------
+
+### データの読み込み（importing）
+
+```{r eval = FALSE}
+df_poverty_inequality <- WDI(
+  indicator = c(gini = "SI.POV.GINI",
+                under_6.85 = "SI.POV.UMIC",
+                ed_exp = "SE.XPD.TOTL.GD.ZS",
+                primary = "SE.PRM.ENRR",
+                secondary = "SE.SEC.ENRR",
+                tertiary = "SE.TER.ENRR",
+                under5 = "SH.DYN.MORT",
+                new_hiv = "SH.HIV.INCD.ZS",
+                school_gpi = "SE.ENR.PRSC.FM.ZS",
+                job_gpi = "SL.TLF.CACT.FM.ZS",
+                female_unemploy = "SL.UEM.TOTL.FE.ZS",
+                male_unemploy = "SL.UEM.TOTL.FE.ZS",
+                oda = "DT.ODA.ALLD.CD"), extra = TRUE)
+```
+
+#### 保存と読み込み
+
+２回目からは、`data` から読み込めるようにしておきます。
+
+***最初の１回目は、かならず実行してください。***
+
+```{r eval = FALSE}
+write_csv(df_poverty_inequality, "data/poverty_inequality.csv")
+```
+
+```{r}
+df_poverty_inequality <- read_csv("data/poverty_inequality.csv")
+```
+
+```{r}
+REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
+"S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
+"V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL", 
+"XM", "XN", "XO", "XP", "XQ", "XT", "XU", "XY", "Z4", "Z7", "ZF", 
+"ZG", "ZH", "ZI", "ZJ", "ZQ", "ZT")
+```
+
+### データを見てみよう (viewing)
+
+```{r}
+df_poverty_inequality |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
+```
+
+```{r}
+df_poverty_inequality |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c)
+```
+
+### 変数の選択（selecting）
+
+```{r}
+df_pov_ineq <- df_poverty_inequality |> select(country, iso2c, year, gini:oda, region, income, lending)
+```
+
+### 変形（Wide to Long Data）
+
+いくつもの指標を同時にいくつか選択し比較したいので、一つの列（変数）にならべた、縦長データ（long data）も作成しておきます。
+
+`pivot_longer(gini:oda)`
+
+ここでは、`ratio` から `under_6.85` を、`level` という名前の列にならべ、値を `value` という列に並べるようにしてあります。
+
+確認するときは、value が NA のものは除き、country と、iso2c と、level と value の部分だけ取り出して確認しています。
+
+```{r}
+df_pov_ineq_long <- df_pov_ineq |> pivot_longer(gini:oda)
+```
+
+### 年毎のデータの数の確認（number of data in each year）
+
+```{r}
+df_pov_ineq_long |> drop_na(value) |> 
+  group_by(year, name) |> summarize(n = n()) |> arrange(desc(year))
+```
+
+------------------------------------------------------------------------
+
+### 変数同士の相関関係 - 相関係数
+
+```{r}
+df_pov_ineq |> drop_na(gini:oda) |> select(gini:oda)
+```
+
+------------------------------------------------------------------------
+
+```{r}
+cor(cars$speed,cars$dist)
+```
+
+```{r fig.height=3, fig.width=7}
+cars |> ggplot(aes(speed, dist)) + geom_point() + 
+  geom_smooth(formula = 'y~x',method = "lm", se=FALSE)
+```
+
+**相関係数：**直線の傾きが正なら正、負なら負、直線に近い程、1 または-1 に近い
+
+------------------------------------------------------------------------
+
+### 変数相互の相関係数を一度に求める
+
+```{r echo=TRUE, eval=FALSE}
+df_pov_ineq |> drop_na(gini:oda) |> select(gini:oda) |> cor() |> 
+  round(digits = 2) |> as.data.frame()
+```
+
+------------------------------------------------------------------------
+
+```{r echo=FALSE}
+df_pov_ineq |> drop_na(gini:oda) |> select(gini:oda) |> cor() |> 
+  round(digits = 2) |> as.data.frame()
+```
+
+
+```{r}
+df_pov_ineq |> drop_na(gini, primary) |>
+  ggplot(aes(gini, primary)) + geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+```{r}
+df_pov_ineq |> drop_na(gini, tertiary) |>
+  ggplot(aes(gini, tertiary)) + geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+```{r}
+df_pov_ineq |> drop_na(under_6.85, tertiary) |>
+  ggplot(aes(under_6.85, tertiary)) + geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+```{r}
+df_pov_ineq |> drop_na(under_6.85, under5) |>
+  ggplot(aes(under_6.85, under5)) + geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
 ```

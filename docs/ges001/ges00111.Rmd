@@ -309,8 +309,41 @@ df_pov_ineq_long |> drop_na(value) |>
   group_by(year, name) |> summarize(n = n()) |> arrange(desc(year))
 ```
 
+------------------------------------------------------------------------
+
+### 変数同士の相関関係 - 相関係数
+
 ```{r}
-df_pov_ineq |> drop_na(gini:oda) |> select(gini:oda) |> cor() |> round(digits = 2) |> as.data.frame() 
+df_pov_ineq |> drop_na(gini:oda) |> select(gini:oda)
+```
+
+------------------------------------------------------------------------
+
+```{r}
+cor(cars$speed,cars$dist)
+```
+
+```{r fig.height=3, fig.width=7}
+cars |> ggplot(aes(speed, dist)) + geom_point() + 
+  geom_smooth(formula = 'y~x',method = "lm", se=FALSE)
+```
+
+**相関係数：**直線の傾きが正なら正、負なら負、直線に近い程、1 または-1 に近い
+
+------------------------------------------------------------------------
+
+### 変数相互の相関係数を一度に求める
+
+```{r echo=TRUE, eval=FALSE}
+df_pov_ineq |> drop_na(gini:oda) |> select(gini:oda) |> cor() |> 
+  round(digits = 2) |> as.data.frame() |> knitr::kable(scroll_vert = TRUE)
+```
+
+------------------------------------------------------------------------
+
+```{r echo=FALSE}
+df_pov_ineq |> drop_na(gini:oda) |> select(gini:oda) |> cor() |> 
+  round(digits = 2) |> as.data.frame()
 ```
 
 ```{r}
