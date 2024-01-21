@@ -336,7 +336,7 @@ cars |> ggplot(aes(speed, dist)) + geom_point() +
 
 ```{r echo=TRUE, eval=FALSE}
 df_pov_ineq |> drop_na(gini:oda) |> select(gini:oda) |> cor() |> 
-  round(digits = 2) |> as.data.frame() |> knitr::kable(scroll_vert = TRUE)
+  round(digits = 2) |> as.data.frame()
 ```
 
 ------------------------------------------------------------------------

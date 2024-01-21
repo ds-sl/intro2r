@@ -4813,7 +4813,7 @@ library(WDI)</pre>
 <h3>変数相互の相関係数を一度に求める</h3>
 
 <pre class = 'prettyprint lang-r'>df_pov_ineq |&gt; drop_na(gini:oda) |&gt; select(gini:oda) |&gt; cor() |&gt; 
-  round(digits = 2) |&gt; as.data.frame() |&gt; knitr::kable(scroll_vert = TRUE)</pre>
+  round(digits = 2) |&gt; as.data.frame()</pre>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
