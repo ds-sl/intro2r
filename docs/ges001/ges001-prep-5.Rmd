@@ -342,7 +342,7 @@ df_pov_ineq_long |> drop_na(value) |>
 ### 変数同士の相関関係 - 相関係数
 
 ```{r}
-df_pov_ineq |> drop_na(gini:oda) |> select(gini:oda)
+df_pov_ineq |> drop_na(gini:oda) |> filter(income %in% c("Low income", "Lower middle income")) |> select(gini:oda)
 ```
 
 ------------------------------------------------------------------------
@@ -370,34 +370,35 @@ df_pov_ineq |> drop_na(gini:oda) |> select(gini:oda) |> cor() |>
 ------------------------------------------------------------------------
 
 ```{r echo=FALSE}
-df_pov_ineq |> drop_na(gini:oda) |> select(gini:oda) |> cor() |> 
+df_pov_ineq |> drop_na(gini:oda) |> filter(income %in% c("Low income", "Lower middle income")) |> select(gini:oda) |> cor() |> 
   round(digits = 2) |> as.data.frame()
 ```
 
 
 ```{r}
-df_pov_ineq |> drop_na(gini:oda) |>
+df_pov_ineq |> drop_na(gini:oda) |> filter(income %in% c("Low income", "Lower middle income"))|> 
   ggplot(aes(gini, primary)) + geom_point(aes(col = income)) + 
   geom_smooth(formula = 'y~x', method = "lm", se = FALSE) +
-  labs(title = "cor(gini,primary) = 0.34")
+  labs(title = "cor(gini,primary) = 0.16")
 ```
 
 ```{r}
-df_pov_ineq |> drop_na(gini:oda) |>
+df_pov_ineq |> drop_na(gini:oda) |> filter(income %in% c("Low income", "Lower middle income"))|>
   ggplot(aes(gini, tertiary)) + geom_point(aes(col = income)) + 
   geom_smooth(formula = 'y~x', method = "lm", se = FALSE) +
-  labs(title = "cor(gini,tertiary) = -0.29")
+  labs(title = "cor(gini,tertiary) = -0.51")
 ```
 
 ```{r}
-df_pov_ineq |> drop_na(gini:oda) |>
+df_pov_ineq |> drop_na(gini:oda) |> filter(income %in% c("Low income", "Lower middle income")) |>
   ggplot(aes(under_6.85, tertiary)) + geom_point(aes(col = income)) + 
   geom_smooth(formula = 'y~x', method = "lm", se = FALSE) +
-  labs(title = "cor(under_6.85,tertiary) = -0.77")
+  labs(title = "cor(under_6.85,tertiary) = -0.76")
 ```
 
 ```{r}
-df_pov_ineq |> drop_na(under_6.85, under5) |>
-  ggplot(aes(under_6.85, under5)) + geom_point() + 
-  geom_smooth(method = "lm", se = FALSE)
+df_pov_ineq |> drop_na(gini:oda) |> filter(income %in% c("Low income", "Lower middle income")) |>
+  ggplot(aes(under_6.85, under5)) + geom_point(aes(col = income)) + 
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE) +
+  labs(title = "cor(under_6.85,under5) = 0.64")
 ```
