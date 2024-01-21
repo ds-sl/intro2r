@@ -37,106 +37,107 @@ output:
 
 -   人生の初期に出現する不平等を最小化するための政策が重要である。
 
--   要因：教育、労働市場、失業率、男女間格差、土地所有権、などなど　　　
+-   要因：教育、労働市場、失業率、男女間格差、土地所有権、などなど　　
 
-------------------------------------------------------------------------
+01/23(TU)　Rでデータサイエンス5　 [[Main](https://ds-sl.github.io/intro2r/ges001/)]・[授業]　
 
-01/23(TU)　Rでデータサイエンス5　 [[Main](https://ds-sl.github.io/intro2r/ges001/ges001-main.nb.html)]・[授業]　
+<!-- **People-Education** -->
 
-**People-Education**
+<!-- Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)] -->
 
-Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)]
+<!-- General government expenditure on education (current, capital, and transfers) is expressed as a percentage of GDP. It includes expenditure funded by transfers from international sources to government. General government usually refers to local, regional and central governments. -->
 
-General government expenditure on education (current, capital, and transfers) is expressed as a percentage of GDP. It includes expenditure funded by transfers from international sources to government. General government usually refers to local, regional and central governments.
+<!-- 教育に対する政府の一般支出（経常、資本、移転）は GDP の割合で表されます。これには、国際資金源から政府への送金によって資金提供された支出が含まれます。一般政府とは通常、地方自治体、地域政府、中央政府を指します。 -->
 
-教育に対する政府の一般支出（経常、資本、移転）は GDP の割合で表されます。これには、国際資金源から政府への送金によって資金提供された支出が含まれます。一般政府とは通常、地方自治体、地域政府、中央政府を指します。
+<!-- ------------------------------------------------------------------------ -->
 
-------------------------------------------------------------------------
+<!-- School enrollment, primary (% gross)：SE.PRM.ENRR [[Link](https://data.worldbank.org/indicator/SE.PRM.ENRR)] -->
 
-School enrollment, primary (% gross)：SE.PRM.ENRR [[Link](https://data.worldbank.org/indicator/SE.PRM.ENRR)]
+<!-- Gross enrollment ratio is the ratio of total enrollment, regardless of age, to the population of the age group that officially corresponds to the level of education shown. Primary education provides children with basic reading, writing, and mathematics skills along with an elementary understanding of such subjects as history, geography, natural science, social science, art, and music. -->
 
-Gross enrollment ratio is the ratio of total enrollment, regardless of age, to the population of the age group that officially corresponds to the level of education shown. Primary education provides children with basic reading, writing, and mathematics skills along with an elementary understanding of such subjects as history, geography, natural science, social science, art, and music.
+<!-- 総就学率は、年齢に関係なく、表示されている教育レベルに正式に対応する年齢層の人口に対する総就学者数の比率です。初等教育では、子供たちに基本的な読み書き、数学のスキルと、歴史、地理、自然科学、社会科学、芸術、音楽などの科目の初歩的な理解を提供します。 -->
 
-総就学率は、年齢に関係なく、表示されている教育レベルに正式に対応する年齢層の人口に対する総就学者数の比率です。初等教育では、子供たちに基本的な読み書き、数学のスキルと、歴史、地理、自然科学、社会科学、芸術、音楽などの科目の初歩的な理解を提供します。
+<!-- ------------------------------------------------------------------------ -->
 
-------------------------------------------------------------------------
+<!-- School enrollment, secondary (% gross)：SE.SEC.ENRR [[Link](https://data.worldbank.org/indicator/SE.SEC.ENRR)] -->
 
-School enrollment, secondary (% gross)：SE.SEC.ENRR [[Link](https://data.worldbank.org/indicator/SE.SEC.ENRR)]
+<!-- Gross enrollment ratio is the ratio of total enrollment, regardless of age, to the population of the age group that officially corresponds to the level of education shown. Secondary education completes the provision of basic education that began at the primary level, and aims at laying the foundations for lifelong learning and human development, by offering more subject- or skill-oriented instruction using more specialized teachers. -->
 
-Gross enrollment ratio is the ratio of total enrollment, regardless of age, to the population of the age group that officially corresponds to the level of education shown. Secondary education completes the provision of basic education that began at the primary level, and aims at laying the foundations for lifelong learning and human development, by offering more subject- or skill-oriented instruction using more specialized teachers.
+<!-- 総就学率は、年齢に関係なく、表示されている教育レベルに正式に対応する年齢層の人口に対する総就学者数の比率です。中等教育は、初等段階から始まった基礎教育の提供を完了し、より専門性の高い教師によるより教科や技能に特化した指導を行うことにより、生涯学習と人間形成の基礎を築くことを目的としています。 -->
 
-総就学率は、年齢に関係なく、表示されている教育レベルに正式に対応する年齢層の人口に対する総就学者数の比率です。中等教育は、初等段階から始まった基礎教育の提供を完了し、より専門性の高い教師によるより教科や技能に特化した指導を行うことにより、生涯学習と人間形成の基礎を築くことを目的としています。
+<!-- ------------------------------------------------------------------------ -->
 
-------------------------------------------------------------------------
+<!-- School enrollment, tertiary (% gross)：SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)] -->
 
-School enrollment, tertiary (% gross)：SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)]
+<!-- Gross enrollment ratio is the ratio of total enrollment, regardless of age, to the population of the age group that officially corresponds to the level of education shown. Tertiary education, whether or not to an advanced research qualification, normally requires, as a minimum condition of admission, the successful completion of education at the secondary level. -->
 
-Gross enrollment ratio is the ratio of total enrollment, regardless of age, to the population of the age group that officially corresponds to the level of education shown. Tertiary education, whether or not to an advanced research qualification, normally requires, as a minimum condition of admission, the successful completion of education at the secondary level.
+<!-- 総就学率は、年齢に関係なく、表示されている教育レベルに正式に対応する年齢層の人口に対する総就学者数の比率です。高等教育では、高度な研究資格の有無にかかわらず、通常、入学の最低条件として中等教育レベルの教育を無事に修了することが求められます。 -->
 
-総就学率は、年齢に関係なく、表示されている教育レベルに正式に対応する年齢層の人口に対する総就学者数の比率です。高等教育では、高度な研究資格の有無にかかわらず、通常、入学の最低条件として中等教育レベルの教育を無事に修了することが求められます。
+<!-- ------------------------------------------------------------------------ -->
 
-------------------------------------------------------------------------
+<!-- **Health** -->
 
-**Health**
+<!-- Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SH.DYN.MORT)] -->
 
-Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SH.DYN.MORT)]
+<!-- Under-five mortality rate is the probability per 1,000 that a newborn baby will die before reaching age five, if subject to age-specific mortality rates of the specified year. -->
 
-Under-five mortality rate is the probability per 1,000 that a newborn baby will die before reaching age five, if subject to age-specific mortality rates of the specified year.
+<!-- 5 歳未満死亡率は、指定された年の年齢別死亡率が適用される場合に、新生児が 5 歳に達する前に死亡する 1,000 人あたりの確率です。 -->
 
-5 歳未満死亡率は、指定された年の年齢別死亡率が適用される場合に、新生児が 5 歳に達する前に死亡する 1,000 人あたりの確率です。
+<!-- Incidence of HIV (% of uninfected population ages 15-49)：SH.HIV.INCD.ZS [[Link](https://data.worldbank.org/indicator/SH.HIV.INCD.ZS?locations=SZ)] -->
 
-Incidence of HIV (% of uninfected population ages 15-49)：SH.HIV.INCD.ZS [[Link](https://data.worldbank.org/indicator/SH.HIV.INCD.ZS?locations=SZ)]
+<!-- Number of new HIV infections among uninfected populations ages 15-49 expressed per 1,000 uninfected population in the year before the period. -->
 
-Number of new HIV infections among uninfected populations ages 15-49 expressed per 1,000 uninfected population in the year before the period.
+<!-- 期間の前の年間の非感染人口 1,000 人当たりの 15 ～ 49 歳の非感染集団における新規 HIV 感染者数。 -->
 
-期間の前の年間の非感染人口 1,000 人当たりの 15 ～ 49 歳の非感染集団における新規 HIV 感染者数。
+<!-- ------------------------------------------------------------------------ -->
 
-------------------------------------------------------------------------
+<!-- **Gender** -->
 
-**Gender**
+<!-- School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS [[Link](https://data.worldbank.org/indicator/SE.ENR.PRSC.FM.ZS)] -->
 
-School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS [[Link](https://data.worldbank.org/indicator/SE.ENR.PRSC.FM.ZS)]
+<!-- Gender parity index for gross enrollment ratio in primary and secondary education is the ratio of girls to boys enrolled at primary and secondary levels in public and private schools. -->
 
-Gender parity index for gross enrollment ratio in primary and secondary education is the ratio of girls to boys enrolled at primary and secondary levels in public and private schools.
+<!-- 初等中等教育における総就学率の男女平等指数は、公立および私立学校の初等および中等教育レベルに在籍する女子と男子の比率です。 -->
 
-初等中等教育における総就学率の男女平等指数は、公立および私立学校の初等および中等教育レベルに在籍する女子と男子の比率です。
+<!-- Ratio of female to male labor force participation rate (%) (modeled ILO estimate)：SL.TLF.CACT.FM.ZS [[Link](https://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS)] -->
 
-Ratio of female to male labor force participation rate (%) (modeled ILO estimate)：SL.TLF.CACT.FM.ZS [[Link](https://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS)]
+<!-- Labor force participation rate is the proportion of the population ages 15 and older that is economically active: all people who supply labor for the production of goods and services during a specified period. Ratio of female to male labor force participation rate is calculated by dividing female labor force participation rate by male labor force participation rate and multiplying by 100. -->
 
-Labor force participation rate is the proportion of the population ages 15 and older that is economically active: all people who supply labor for the production of goods and services during a specified period. Ratio of female to male labor force participation rate is calculated by dividing female labor force participation rate by male labor force participation rate and multiplying by 100.
+<!-- 労働参加率とは、経済的に活動している 15 歳以上の人口の割合であり、指定された期間に商品やサービスの生産に労働力を供給するすべての人々を指します。女性労働力率と男性労働力率の比率は、女性労働力率を男性労働力率で割って100を乗じて算出します。 -->
 
-労働参加率とは、経済的に活動している 15 歳以上の人口の割合であり、指定された期間に商品やサービスの生産に労働力を供給するすべての人々を指します。女性労働力率と男性労働力率の比率は、女性労働力率を男性労働力率で割って100を乗じて算出します。
+<!-- ------------------------------------------------------------------------ -->
 
-------------------------------------------------------------------------
+<!-- **Labor** -->
 
-**Labor**
+<!-- Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.FE.ZS)] -->
 
-Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.FE.ZS)]
+<!-- Unemployment refers to the share of the labor force that is without work but available for and seeking employment. -->
 
-Unemployment refers to the share of the labor force that is without work but available for and seeking employment.
+<!-- 失業率とは、仕事はなくても職に就くことができ、求職している労働力の割合を指します。 -->
 
-失業率とは、仕事はなくても職に就くことができ、求職している労働力の割合を指します。
+<!-- Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.ZS)] -->
 
-Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.ZS)]
+<!-- Unemployment refers to the share of the labor force that is without work but available for and seeking employment. -->
 
-Unemployment refers to the share of the labor force that is without work but available for and seeking employment.
+<!-- 失業率とは、仕事はなくても職に就くことができ、求職している労働力の割合を指します。 -->
 
-失業率とは、仕事はなくても職に就くことができ、求職している労働力の割合を指します。
+<!-- ------------------------------------------------------------------------ -->
 
-------------------------------------------------------------------------
+<!-- #### Global Link - Aid dependency -->
 
-#### Global Link - Aid dependency
+<!-- Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)] -->
 
-Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
+<!-- Net official development assistance (ODA) consists of disbursements of loans made on concessional terms (net of repayments of principal) and grants by official agencies of the members of the Development Assistance Committee (DAC), by multilateral institutions, and by non-DAC countries to promote economic development and welfare in countries and territories in the DAC list of ODA recipients. It includes loans with a grant element of at least 25 percent (calculated at a rate of discount of 10 percent). Net official aid refers to aid flows (net of repayments) from official donors to countries and territories in part II of the DAC list of recipients: more advanced countries of Central and Eastern Europe, the countries of the former Soviet Union, and certain advanced developing countries and territories. Official aid is provided under terms and conditions similar to those for ODA. Part II of the DAC List was abolished in 2005. The collection of data on official aid and other resource flows to Part II countries ended with 2004 data. Data are in current U.S. dollars. -->
 
-Net official development assistance (ODA) consists of disbursements of loans made on concessional terms (net of repayments of principal) and grants by official agencies of the members of the Development Assistance Committee (DAC), by multilateral institutions, and by non-DAC countries to promote economic development and welfare in countries and territories in the DAC list of ODA recipients. It includes loans with a grant element of at least 25 percent (calculated at a rate of discount of 10 percent). Net official aid refers to aid flows (net of repayments) from official donors to countries and territories in part II of the DAC list of recipients: more advanced countries of Central and Eastern Europe, the countries of the former Soviet Union, and certain advanced developing countries and territories. Official aid is provided under terms and conditions similar to those for ODA. Part II of the DAC List was abolished in 2005. The collection of data on official aid and other resource flows to Part II countries ended with 2004 data. Data are in current U.S. dollars.
+<!-- 政府開発援助（ODA）の純額は、開発援助委員会（DAC）メンバーの公的機関、多国間機関、DAC非加盟国による、譲許的条件（元本返済を除く）で行われた融資の実行と助成金で構成されます。 DAC の ODA 受領者リストに含まれる国および地域の経済発展と福祉を促進する。これには、少なくとも 25 パーセント（割引率 10 パーセントで計算）の補助金要素を持つローンが含まれます。純公的援助とは、公的ドナーからDACの受取人リストのパートIIにある国および地域への援助の流れ（返済額を差し引いた額）を指します：中央および東ヨーロッパのより先進国、旧ソ連諸国、および一部の先進途上国国と地域。公的援助は、ODA と同様の条件で提供されます。DAC リストのパート II は 2005 年に廃止されました。パート II 諸国への公的援助およびその他の資源の流れに関するデータの収集は 2004 年のデータで終了しました。データは現在の米ドルで表示されます。 -->
 
-政府開発援助（ODA）の純額は、開発援助委員会（DAC）メンバーの公的機関、多国間機関、DAC非加盟国による、譲許的条件（元本返済を除く）で行われた融資の実行と助成金で構成されます。 DAC の ODA 受領者リストに含まれる国および地域の経済発展と福祉を促進する。これには、少なくとも 25 パーセント（割引率 10 パーセントで計算）の補助金要素を持つローンが含まれます。純公的援助とは、公的ドナーからDACの受取人リストのパートIIにある国および地域への援助の流れ（返済額を差し引いた額）を指します：中央および東ヨーロッパのより先進国、旧ソ連諸国、および一部の先進途上国国と地域。公的援助は、ODA と同様の条件で提供されます。DAC リストのパート II は 2005 年に廃止されました。パート II 諸国への公的援助およびその他の資源の流れに関するデータの収集は 2004 年のデータで終了しました。データは現在の米ドルで表示されます。
+<!-- ```{r echo = FALSE} -->
 
-```{r echo = FALSE}
-library(tidyverse)
-library(WDI)
-```
+<!-- library(tidyverse) -->
+
+<!-- library(WDI) -->
+
+<!-- ``` -->
 
 # 演習 1月24日（火）
 
@@ -216,10 +217,6 @@ library(WDI)
 
 <!--     -   Poverty headcount ratio at \$3.65 a day (2017 PPP) (% of population)：SI.POV.LMIC [[Link](https://data.worldbank.org/indicator/SI.POV.LMIC)] -->
 
-```         
-<!-- -   Poverty headcount ratio at \$6.85 a day (2017 PPP) (% of population)：SI.POV.UMIC [[Link](https://data.worldbank.org/indicator/SI.POV.UMIC)] -->
-```
-
 ------------------------------------------------------------------------
 
 ### 準備
@@ -250,6 +247,8 @@ df_poverty_inequality <- WDI(
                 oda = "DT.ODA.ALLD.CD"), extra = TRUE)
 ```
 
+------------------------------------------------------------------------
+
 #### 保存と読み込み
 
 ２回目からは、`data` から読み込めるようにしておきます。
@@ -264,54 +263,81 @@ write_csv(df_poverty_inequality, "data/poverty_inequality.csv")
 df_poverty_inequality <- read_csv("data/poverty_inequality.csv")
 ```
 
-```{r}
-REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
-"S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
-"V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL", 
-"XM", "XN", "XO", "XP", "XQ", "XT", "XU", "XY", "Z4", "Z7", "ZF", 
-"ZG", "ZH", "ZI", "ZJ", "ZQ", "ZT")
-```
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ```{r} -->
+
+<!-- REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1",  -->
+
+<!-- "S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2",  -->
+
+<!-- "V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL",  -->
+
+<!-- "XM", "XN", "XO", "XP", "XQ", "XT", "XU", "XY", "Z4", "Z7", "ZF",  -->
+
+<!-- "ZG", "ZH", "ZI", "ZJ", "ZQ", "ZT") -->
+
+<!-- ``` -->
+
+------------------------------------------------------------------------
 
 ### データを見てみよう (viewing)
 
 ```{r}
-df_poverty_inequality |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
+df_poverty_inequality 
 ```
 
-```{r}
-df_poverty_inequality |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c)
-```
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ```{r} -->
+
+<!-- df_poverty_inequality |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c) -->
+
+<!-- ``` -->
+
+------------------------------------------------------------------------
 
 ### 変数の選択（selecting）
 
 ```{r}
-df_pov_ineq <- df_poverty_inequality |> select(country, iso2c, year, gini:oda, region, income, lending)
+df_pov_ineq <- df_poverty_inequality |> 
+  select(country, iso2c, year, gini:oda, region, income, lending)
+df_pov_ineq
 ```
 
-### 変形（Wide to Long Data）
+<!-- ### 変形（Wide to Long Data） -->
 
-いくつもの指標を同時にいくつか選択し比較したいので、一つの列（変数）にならべた、縦長データ（long data）も作成しておきます。
+<!-- いくつもの指標を同時にいくつか選択し比較したいので、一つの列（変数）にならべた、縦長データ（long data）も作成しておきます。 -->
 
-`pivot_longer(gini:oda)`
+<!-- `pivot_longer(gini:oda)` -->
 
-ここでは、`ratio` から `under_6.85` を、`level` という名前の列にならべ、値を `value` という列に並べるようにしてあります。
+<!-- ここでは、`ratio` から `under_6.85` を、`level` という名前の列にならべ、値を `value` という列に並べるようにしてあります。 -->
 
-確認するときは、value が NA のものは除き、country と、iso2c と、level と value の部分だけ取り出して確認しています。
+<!-- 確認するときは、value が NA のものは除き、country と、iso2c と、level と value の部分だけ取り出して確認しています。 -->
 
-```{r}
-df_pov_ineq_long <- df_pov_ineq |> pivot_longer(gini:oda)
-```
+<!-- ```{r} -->
 
-### 年毎のデータの数の確認（number of data in each year）
+<!-- df_pov_ineq_long <- df_pov_ineq |> pivot_longer(gini:oda) -->
 
-```{r}
-df_pov_ineq_long |> drop_na(value) |> 
-  group_by(year, name) |> summarize(n = n()) |> arrange(desc(year))
-```
+<!-- ``` -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ### 年毎のデータの数の確認（number of data in each year） -->
+
+<!-- ```{r} -->
+
+<!-- df_pov_ineq_long |> drop_na(value) |>  -->
+
+<!--   group_by(year, name) |> summarize(n = n()) |> arrange(desc(year)) -->
+
+<!-- ``` -->
+
+<!-- ------------------------------------------------------------------------ -->
 
 ------------------------------------------------------------------------
 
-### 変数同士の相関関係 - 相関係数
+### 変数同士の相関関係: NA ではないところのみ選択
 
 ```{r}
 df_pov_ineq |> drop_na(gini:oda) |> select(gini:oda)
@@ -346,28 +372,40 @@ df_pov_ineq |> drop_na(gini:oda) |> select(gini:oda) |> cor() |>
   round(digits = 2) |> as.data.frame()
 ```
 
-```{r}
-df_pov_ineq |> drop_na(gini, primary) |>
-  ggplot(aes(gini, primary)) + geom_point() + 
-  geom_smooth(method = "lm", se = FALSE)
-```
+------------------------------------------------------------------------
 
 ```{r}
-df_pov_ineq |> drop_na(gini, tertiary) |>
-  ggplot(aes(gini, tertiary)) + geom_point() + 
-  geom_smooth(method = "lm", se = FALSE)
+df_pov_ineq |> drop_na(gini:oda) |>
+  ggplot(aes(gini, primary)) + geom_point(aes(col = income)) + 
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE) +
+  labs(title = "cor(gini,primary) = 0.34")
 ```
 
-```{r}
-df_pov_ineq |> drop_na(under_6.85, tertiary) |>
-  ggplot(aes(under_6.85, tertiary)) + geom_point() + 
-  geom_smooth(method = "lm", se = FALSE)
-```
+------------------------------------------------------------------------
 
 ```{r}
-df_pov_ineq |> drop_na(under_6.85, under5) |>
-  ggplot(aes(under_6.85, under5)) + geom_point() + 
-  geom_smooth(method = "lm", se = FALSE)
+df_pov_ineq |> drop_na(gini:oda) |>
+  ggplot(aes(gini, tertiary)) + geom_point(aes(col = income)) + 
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE) +
+  labs(title = "cor(gini,tertiary) = -0.29")
+```
+
+------------------------------------------------------------------------
+
+```{r}
+df_pov_ineq |> drop_na(gini:oda) |>
+  ggplot(aes(under_6.85, tertiary)) + geom_point(aes(col = income)) + 
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE) +
+  labs(title = "cor(under_6.85,tertiary) = -0.77")
+```
+
+------------------------------------------------------------------------
+
+```{r}
+df_pov_ineq |> drop_na(gini:oda) |>
+  ggplot(aes(under_6.85, under5)) + geom_point(aes(col = income)) + 
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE) +
+  labs(title = "cor(under_6.85,under5) = 0.71")
 ```
 
 <!-- ```{r} -->
@@ -563,6 +601,8 @@ df_pov_ineq |> drop_na(under_6.85, under5) |>
 
 **2023.1.25. 23:59** までに Moodle の演習の課題ボックスに提出したものについては、なるべく、早く見て、フィードバックを書きます。それ以降に提出されたものも見ますが、フィードバックは遅くなると思ってください。
 
+------------------------------------------------------------------------
+
 ### データ
 
 1.  Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)] 変数名：`ed_exp`
@@ -587,7 +627,9 @@ df_pov_ineq |> drop_na(under_6.85, under5) |>
 
 11. Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)] 変数名：`oda`
 
-# 国の教育に関する支出
+## 例：国の教育に関する支出
+
+*スライドで見ている方は、RNotebook ファイルで見てください* [[リンク](https://ds-sl.github.io/intro2r/ges001/ges00111.nb.html)]
 
 > 概要：国内総生産（GDP）に対する、国の教育に関する支出（Government expenditure on education, total (% of GDP)）のデータの分析を行う
 
@@ -604,6 +646,8 @@ Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link
 -   変数名：
 
 -   概要：
+
+------------------------------------------------------------------------
 
 ### データの取得
 
@@ -628,6 +672,8 @@ write_csv(df_ed_exp, "data/ed_exp.csv")
 df_ed_exp <- read_csv("data/ed_exp.csv")
 ```
 
+------------------------------------------------------------------------
+
 ### データの確認
 
 ```{r}
@@ -637,6 +683,12 @@ df_ed_exp
 ```{r}
 str(df_ed_exp)
 ```
+
+------------------------------------------------------------------------
+
+### 国と地域
+
+country には、国と地域両方が入っています。地域の iso2c は以下のものです。
 
 ```{r}
 REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
@@ -653,6 +705,8 @@ df_ed_exp |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
 ```{r}
 df_ed_exp |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c)
 ```
+
+------------------------------------------------------------------------
 
 ### 分析する国のリスト
 
@@ -735,6 +789,8 @@ df_ed_exp |> filter(country %in% CHOSEN_GINI_COUNTRIES) |> drop_na(ed_exp) |>
   geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
 ```
 
+------------------------------------------------------------------------
+
 ### 分布
 
 データの数から、まずは、2020年について見てみる。
@@ -762,6 +818,8 @@ df_ed_exp |> filter(year == 2020) |> filter(!(country %in% REGION))|>
   geom_vline(xintercept = SAF, col = "red") + geom_vline(xintercept = JP, col = "blue") +labs(title = "2020年の教育費の対GDP百分率", subtitle = "日本：青、SACU：赤")
 ```
 
+------------------------------------------------------------------------
+
 ### データが十分ある最近の年の値の10カ国の値の棒グラフ
 
 #### a. 値が大きい方から
@@ -783,6 +841,8 @@ df_ed_exp |> filter(year == 2020) |> drop_na(ed_exp) |>
   ggplot(aes(fct_rev(fct_reorder(country, ed_exp)), ed_exp)) + geom_col() + 
   coord_flip() + labs(title = "Lowest 10 Countries", x = "country", y = "Government expenditure on education, total (% of GDP)")
 ```
+
+------------------------------------------------------------------------
 
 ### 演習の内容と課題
 

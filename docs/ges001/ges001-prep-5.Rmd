@@ -376,21 +376,24 @@ df_pov_ineq |> drop_na(gini:oda) |> select(gini:oda) |> cor() |>
 
 
 ```{r}
-df_pov_ineq |> drop_na(gini, primary) |>
-  ggplot(aes(gini, primary)) + geom_point() + 
-  geom_smooth(method = "lm", se = FALSE)
+df_pov_ineq |> drop_na(gini:oda) |>
+  ggplot(aes(gini, primary)) + geom_point(aes(col = income)) + 
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE) +
+  labs(title = "cor(gini,primary) = 0.34")
 ```
 
 ```{r}
-df_pov_ineq |> drop_na(gini, tertiary) |>
-  ggplot(aes(gini, tertiary)) + geom_point() + 
-  geom_smooth(method = "lm", se = FALSE)
+df_pov_ineq |> drop_na(gini:oda) |>
+  ggplot(aes(gini, tertiary)) + geom_point(aes(col = income)) + 
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE) +
+  labs(title = "cor(gini,tertiary) = -0.29")
 ```
 
 ```{r}
-df_pov_ineq |> drop_na(under_6.85, tertiary) |>
-  ggplot(aes(under_6.85, tertiary)) + geom_point() + 
-  geom_smooth(method = "lm", se = FALSE)
+df_pov_ineq |> drop_na(gini:oda) |>
+  ggplot(aes(under_6.85, tertiary)) + geom_point(aes(col = income)) + 
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE) +
+  labs(title = "cor(under_6.85,tertiary) = -0.77")
 ```
 
 ```{r}
