@@ -1,0 +1,308 @@
+---
+title: "Responses to Week Four Assignment"
+author: "ID Last, First"
+date: "`r Sys.Date()`"
+output:
+  html_notebook: default
+---
+
+## Week Four Assignment
+
+Choose at least two *similar* WDI codes with the *same scale*, and analyze the data.
+
+-   Create an R Notebook of a data analysis containing the following and submit the rendered file (e.g., `w4_g123456.nb.html`) in Moodle.
+
+    1.  Create an R Notebook using the R Notebook Template in Moodle and save it as `w4_g123456.Rmd`.
+
+    2.  Edit author with name, ID, and title.
+
+<!-- -->
+
+-   Contents should include the following:
+
+    -   A short abstract
+
+    -   Information of data including data name, data code (or id), description
+
+    -   Data including at least two indicators and a long table created using `pivot_longer`
+
+    -   A line graph using the long table with a color aesthetic to depict at least two indicators in a chart.
+
+    -   Several charts: a bar graph or a column graph, a histogram, a line graph, a scatter plot
+
+    -   Observations or questions for visualizations
+
+-   Include a choropleth map, if possible. (a challenge, not required)
+
+-   Run each code block and preview to create `w4_g123456.nb.html`.
+
+    -   Or, Run All under Run and Preview to check in your web browser!
+
+    -   You can also view your file (e.g. `w4_g123456.nb.html`) by opening it from your web browser.
+
+Submit your R Notebook file (w4_g123456.nb.html) in Moodle (Week Four Assignment).
+
+***Due Sunday 21, January 2024, 11:59 PM***
+
+# Your Project
+
+## Title of your project
+
+*The title can be in the title in YAML.*
+
+### Short Abstract
+
+We study .....
+
+### About Data
+
+#### List of Indicators Chosen:
+
+1.  Government expenditure on education, total (% of GDP): SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)], Labor force participation rate for ages 15-24, male (%) (modeled ILO estimate):SL.TLF.ACTI.1524.MA.ZS [[Link](https://data.worldbank.org/indicator/SL.TLF.ACTI.1524.MA.ZS)]Labor force participation rate for ages 15-24, female (%) (modeled ILO estimate) :SL.TLF.ACTI.1524.FE.ZS [[Link](https://data.worldbank.org/indicator/SL.TLF.ACTI.1524.FE.ZS)]
+
+2.  Urban population (% of total population) :SP.URB.TOTL.IN.ZS, Population living in slums (% of urban population) : EN.POP.SLUM.UR.ZS
+
+3.  Literacy rate, adult female (% of females ages 15 and above): SE.ADT.LITR.FE.ZS, Literacy rate, adult male (% of males ages 15 and above): SE.ADT.LITR.MA.ZS, GDP per capita, PPP (constant 2017 international \$): NY.GDP.PCAP.PP.KD
+
+4.  Access to electricity, urban (% of urban population): [EG.ELC.ACCS.UR.ZS](https://data.worldbank.org/indicator/EG.ELC.ACCS.UR.ZS), Access to electricity, rural (% of rural population): [EG.ELC.ACCS.RU.ZS](https://data.worldbank.org/indicator/EG.ELC.ACCS.RU.ZS)
+
+5.  Depositors with commercial banks (per 1,000 adults) : FB.CBK.DPTR.P3, Borrowers from commercial banks (per 1,000 adults) : FB.CBK.BRWR.P3
+
+6.  Literacy Rate, youth female (15-24): SE.ADT.1524.LT.FE.ZS [[LINK](https://data.worldbank.org/indicator/SE.ADT.1524.LT.FE.ZS?view=chart)], Literacy Rate, adult female (above 15) : SE.ADT.LITR.FE.ZS [[LINK](https://data.worldbank.org/indicator/SE.ADT.LITR.FE.ZS?view=chart)], Government expenditure on education, total (% of GDP): SE.XPD.TOTL.GD.ZS [[LINK](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)]
+
+7.  Armed forces personnel (% of total labor force): MS.MIL.TOTL.TF.ZS, Military expenditure (% of GDP): MS.MIL.XPND.GD.ZS, Military expenditure (% of GNI): MS.MIL.XPND.GN.ZS
+
+8.  Public private partnerships investment in energy (current US\$): IE.PPN.ENGY.CD, Access to electricity (% of population): EG.ELC.ACCS.ZS, Access to electricity, rural (% of rural population): EG.ELC.ACCS.RU.ZS, Access to electricity, urban (% of urban population): EG.ELC.ACCS.UR.ZS
+
+9.  Research and development expenditure (% of GDP): [GB.XPD.RSDV.GD.ZS](https://data.worldbank.org/indicator/GB.XPD.RSDV.GD.ZS), Foreign direct investment, net inflows (% of GDP): [BX.KLT.DINV.WD.GD.ZS](https://data.worldbank.org/indicator/BX.KLT.DINV.WD.GD.ZS), Current account balance (% of GDP): [BN.CAB.XOKA.GD.ZS](https://data.worldbank.org/indicator/BN.CAB.XOKA.GD.ZS)
+
+10. CO2 emissions (metric tons per capita): EN.ATM.CO2E.PC [[Link](https://data.worldbank.org/indicator/EN.ATM.CO2E.PC)], Forest area (% of land area): AG.LND.FRST.ZS [[Link](https://data.worldbank.org/indicator/AG.LND.FRST.ZS)], Renewable energy consumption (% of total final energy consumption): EG.FEC.RNEW.ZS [[Link](https://data.worldbank.org/indicator/EG.FEC.RNEW.ZS)], Renewable electricity output (% of total electricity output): EG.ELC.RNEW.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.RNEW.ZS)] 
+
+11. Life expectancy at birth: SP.DYN.LE00.IN, Total population: SP.POP.TOTL
+
+12. Life expectancy at birth, male (years): SP.DYN.LE00.MA.IN, Life expectancy at birth, female (years): SP.DYN.LE00.FE.IN, GDP per capita, PPP (constant 2017 international \$): NY.GDP.PCAP.PP.KD
+
+13. CO2 Emissions (Metric Tons per Capita) - EN.ATM.CO2E.PC, CO2 Emissions from Liquid Fuel Consumption (% of Total) - EN.ATM.CO2E.LF.ZS
+
+14. Access to electricity (% of population): EG.ELC.ACCS.ZS, Individuals using the Internet (% of population): IT.NET.USER.ZS
+
+15. GDP (current \$): NY.GDP.MKTP.CD, Value addition in Agriculture : NV.AGR.EMPL.KD, Value addition in Industrial Sector : NV.IND.EMPL.KD, Value addition in Service Sector : NV.SRV.EMPL.KD
+
+16. Employment in services (% of total employment) (modeled ILO estimate): SL.SRV.EMPL.ZS, Employment in agriculture (% of total employment) (modeled ILO estimate): SL.AGR.EMPL.ZS, Employment in industry (% of total employment) (modeled ILO estimate): SL.IND.EMPL.ZS, Labor force participation rate, total (% of total population ages 15+) (modeled ILO estimate): SL.TLF.CACT.ZS
+
+17. Refugee population by country or territory of origin: SM.POP.REFG.OR, Refugee population by country or territory of asylum: SM.POP.REFG
+
+18. GDP growth (annual %): NY.GDP.MKTP.KD.ZG, Agriculture, forestry, and fishing, value added (annual % growth): NV.AGR.TOTL.KD.ZG, Industry (including construction), value added (annual % growth): NV.IND.TOTL.KD.ZG, Manufacturing, value added (annual % growth): NV.IND.MANF.KD.ZG, Services, value added (annual % growth): NV.SRV.TOTL.KD.ZG
+
+19. Primary completion rate, female (% of relevant age group): SE.PRM.CMPT.FE.ZS, Primary completion rate, male (% of relevant age group): SE.PRM.CMPT.MA.ZS
+
+20. Goods exports: BX.GSR.MRCH.CD, Goods Import: BM.GSR.MRCH.CD
+
+### Examples
+
+*Let me illustrate steps using the following indicators. Issues are not taken from the analysis of the one who chose these indicators.*
+
+1.  GDP (current \$): NY.GDP.MKTP.CD
+2.  Value addition in Agriculture : NV.AGR.EMPL.KD
+3.  Value addition in Industrial Sector : NV.IND.EMPL.KD
+4.  Value addition in Service Sector : NV.SRV.EMPL.KD
+
+*See the descriptions below. It is helpful to add links to the site.*
+
+### Set up
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+*Create data folder if you do not have it under Files.*
+
+```{r eval=FALSE}
+dir.create("data")
+```
+
+*If you do not have `wdicache.rds` in your data folder, run the following two code chunks.*
+
+```{r wdicache, eval=FALSE}
+wdicache <- WDIcache()
+```
+
+```{r writewdicache, eval=FALSE, echo=FALSE}
+write_rds(wdicache, "data/wdicache.rds")
+```
+
+```{r readwdicache, echo=FALSE}
+wdicache <- read_rds("data/wdicache.rds")
+```
+
+### Importing Data
+
+Edit short_name_1, chosen_indicator_1, short_name_2, chosen_indicator_2, etc. You can edit `df_yourdata` to a descriptive name. If you edit `df_yourdata` , please edit other parts as well.
+
+```{r eval=FALSE}
+df_yourdata <- WDI(
+  indicator = c(gdp = "NY.GDP.MKTP.CD",
+                agriculture = "NV.AGR.EMPL.KD",
+                industry = "NV.IND.EMPL.KD",
+                service = "NV.SRV.EMPL.KD"),
+  extra = TRUE, cache = wdicache)
+```
+
+```{r eval=FALSE}
+write_csv(df_yourdata, "data/yourdata.csv")
+```
+
+```{r}
+df_yourdata <- read_csv("data/yourdata.csv")
+```
+
+### Viewing data
+
+```{r}
+df_yourdata
+```
+
+```{r}
+df_yourdata |> str()
+```
+
+```{r}
+df_yourdata |> drop_na(gdp) |>
+  ggplot(aes(year)) + geom_bar()
+```
+
+### Creating a long table
+
+#### Example.
+
+```         
+df_sec_ter_gdp_long <- df_sec_ter_gdp |> 
+  pivot_longer(cols = c(secondary, tertiary)) 
+df_sec_ter_gdp_long
+```
+
+*The following works fine, but it is also good to change the order of the selected columns needed.*
+
+```{r}
+df_yourdata_long <- df_yourdata |> 
+  pivot_longer(cols = agriculture:service)
+df_yourdata_long
+```
+
+```{r}
+df_yourdata_long <- df_yourdata |> 
+  pivot_longer(cols = agriculture:service) |>
+  select(country, iso2c, year, gdp, name, value, region, income)
+```
+
+```{r}
+df_yourdata_long |> drop_na(value) |> 
+  ggplot(aes(year, fill = name)) + geom_bar()
+```
+
+### Visualizing data
+
+```{r}
+df_yourdata_long
+```
+
+**Observations and Questions:**
+
+-   *It is easier to see the main part of the data.*
+
+```{r}
+df_yourdata_long |> filter(country == "World") |> drop_na(value) |>
+  ggplot(aes(year, value, col = name)) + geom_line()
+```
+
+**Observations and Questions:**
+
+-   *You can create the line chart above easily using col = name, if you have a long table.*
+
+```{r}
+INCOME <- df_yourdata |> drop_na(income) |> 
+  filter(income != "Aggregates") |> filter(income != "Not classified") |> 
+  distinct(income) |> pull()
+INCOME
+```
+
+```{r}
+df_yourdata_long |> filter(country %in% INCOME) |> drop_na(value) |>
+  ggplot(aes(year, value, col = country, linetype = name)) + geom_line()
+```
+
+```{r}
+df_yourdata_long |> drop_na(value) |> filter(income %in% INCOME) |>
+  ggplot(aes(year, value, col = income, linetype = name)) + geom_line()
+```
+
+**Observations and Questions:**
+
+-   *Compare two charts above. The first one is fine, INCOME is taken from a list of countries. The second one is called a saw tooth graph. There are so many data in each category of income level and line graph cannot be generated using the code above.*
+
+-   *See the following. It is smoothing with loess method after taking avarage. What are the differences of the chart below and the first?*
+
+```{r}
+df_yourdata_long |> drop_na(value) |> filter(income %in% INCOME) |>
+  ggplot(aes(year, value, col = income, linetype = name)) + 
+  geom_smooth(formula = 'y ~ x', method = "loess", se=FALSE, linewidth = 0.5) +
+  labs(title = "Values of Each Sector in Each Income Level, Aggregated")
+```
+
+```{r}
+df_yourdata_long |> filter(year == 2018) |> filter(region != "Aggregates") |>
+  drop_na(value) |> 
+  ggplot(aes(gdp, value, col = name)) + geom_point() + 
+  scale_x_log10() + scale_y_log10() +
+  labs(title = "GDP vs Values of Each Sector in 2018")
+```
+
+**Observations and Questions:**
+
+-   *What happens if we are not using log10 scales.*
+
+### A choropleth map
+
+```{r}
+library(rnaturalearth)
+library(rnaturalearthdata)
+```
+
+```{r}
+ne_world <- ne_countries(scale = "medium", returnclass = "sf")
+```
+
+If possible, create a choropleth map. (a challenge, not required)
+
+```{r}
+df_yourdata |> filter(year == 2022) |> drop_na(gdp) |> pull(gdp) |> 
+  quantile(probs = c(0.25,0.5,0.75,1))
+```
+
+```{r}
+df_gdp_2022 <- df_yourdata |> filter(year == 2022) |> select(iso2c, gdp)
+ne_gdp_2022 <- ne_world |> left_join(df_gdp_2022, by = c("wb_a2" = "iso2c"))
+```
+
+```{r}
+ne_gdp_2022 |> mutate(level = cut(gdp, breaks = c(0, 1.403573e+10, 7.573231e+10, 8.912561e+11, 1.013257e+14), labels = c("bottom quartile","2nd quartile","3rd quartile","top quartile"))) |> ggplot() + geom_sf(aes(fill = level)) + labs(title = "GDP in 2022")
+```
+
+```{r}
+df_yourdata |> filter(year == 1960) |> drop_na(gdp) |> pull(gdp) |> 
+  quantile(probs = c(0.25,0.5,0.75,1))
+```
+
+```{r}
+df_gdp_1960 <- df_yourdata |> filter(year == 1960) |> select(iso2c, gdp)
+ne_gdp_1960 <- ne_world |> left_join(df_gdp_1960, by = c("wb_a2" = "iso2c"))
+```
+
+```{r}
+ne_gdp_2022 |> mutate(level = cut(gdp, breaks = c(0, 5.151683e+08, 2.661058e+09, 2.398013e+10, 1.381135e+12), labels = c("bottom quartile","2nd quartile","3rd quartile","top quartile"))) |> ggplot() + geom_sf(aes(fill = level)) + labs(title = "GDP in 1960")
+```
+
+**Observations and Questions:**
+
+-   *What can you see?*
