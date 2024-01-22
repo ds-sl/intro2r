@@ -25,7 +25,7 @@ output:
 
     -   RStudio を自分のコンピュータにインストールしている人は起動
 
-4.  リンクの右上の Raw ボタンの右の Copy a raw file からコピーして演習用 R Markdown ファイルを作成（あとで再度解説します）[[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/poverty_rate.Rmd)]
+4.  リンクの右上の Raw ボタンの右の Copy a raw file からコピーして演習用 R Markdown ファイルを作成（あとで再度解説します）[[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w5eda.Rmd)]
 
 ## 第5週
 
@@ -39,7 +39,7 @@ output:
 
 -   要因：教育、労働市場、失業率、男女間格差、土地所有権、などなど　　
 
-01/23(TU)　Rでデータサイエンス5　 [[Main](https://ds-sl.github.io/intro2r/ges001/)]・[授業]　
+01/23(TU)　Rでデータサイエンス5　 [[Main](https://ds-sl.github.io/intro2r/ges001/)]
 
 <!-- **People-Education** -->
 
@@ -143,7 +143,7 @@ output:
 
 ## 内容
 
--   *Poverty headcount ratio at \$6.85 a day (2017 PPP) (% of population)：SI.POV.UMIC [[Link](https://data.worldbank.org/indicator/SI.POV.UMIC)]*
+-   Poverty headcount ratio at \$6.85 a day (2017 PPP) (% of population)：SI.POV.UMIC [[Link](https://data.worldbank.org/indicator/SI.POV.UMIC)]
 
 -   Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)]
 
