@@ -98,6 +98,8 @@ We study .....
 
 20. Goods exports: BX.GSR.MRCH.CD, Goods Import: BM.GSR.MRCH.CD
 
+21. Agricultural Land: AG.LND.AGR.ZS, Forest area: AG.LND.FRST.ZS
+
 ### Examples
 
 *Let me illustrate steps using the following indicators. Issues are not taken from the analysis of the one who chose these indicators.*
@@ -159,13 +161,19 @@ df_yourdata <- read_csv("data/yourdata.csv")
 
 ### Viewing data
 
+*You can view your data from Environment in the top right pane.*
+
 ```{r}
 df_yourdata
 ```
 
+*Structure of your data: a list of columns, i.e., variables.*
+
 ```{r}
 df_yourdata |> str()
 ```
+
+*Check the number of available data (not NA).*
 
 ```{r}
 df_yourdata |> drop_na(gdp) |>
@@ -190,11 +198,15 @@ df_yourdata_long <- df_yourdata |>
 df_yourdata_long
 ```
 
+*Generate a long table.*
+
 ```{r}
 df_yourdata_long <- df_yourdata |> 
   pivot_longer(cols = agriculture:service) |>
   select(country, iso2c, year, gdp, name, value, region, income)
 ```
+
+*With a long table, you can display the following chart as well. Compare with a similar chart above.*
 
 ```{r}
 df_yourdata_long |> drop_na(value) |> 
@@ -306,3 +318,15 @@ ne_gdp_2022 |> mutate(level = cut(gdp, breaks = c(0, 5.151683e+08, 2.661058e+09,
 **Observations and Questions:**
 
 -   *What can you see?*
+
+***Before you turn in:***
+
+1.  *Run all from the top.*
+
+2.  *Preview*
+
+3.  *View R Notebook file in your web browser.*
+
+*Then post your R Notebook file, i.e., w4_g1234556x.nb.html.*
+
+*If you had a lot of errors and could not generate R Notebook file properly, post both R Notebook file and R Markdown file, i.e., w4_g123456x.Rmd.*

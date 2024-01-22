@@ -272,7 +272,7 @@ DT.ODA.ALLD.CD
 -   探索的データ分析（EDA） -
     -   練習と一つ目の課題（w5eda.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/w5eda.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w5eda.Rmd)]
     -   二つ目以降の課題：w5eda1.Rmd [[リンク](https://ds-sl.github.io/intro2r/ges001/w5eda1.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w5eda1.Rmd)]
--   課題：**2023.1.25. 23:59** までに Moodle の演習の課題ボックスに提出したものについては、なるべく、早く見て、フィードバックを書きます。それ以降に提出されたものも見ますが、フィードバックは遅くなると思ってください。
+-   課題：**2023.1.27. 23:59** までに Moodle の演習の課題ボックスに提出したものについては、なるべく、早く見て、フィードバックを書きます。それ以降に提出されたものも見ますが、フィードバックは遅くなると思ってください。
 
 ### 第6週
 
