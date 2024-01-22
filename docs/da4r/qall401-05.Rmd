@@ -18,15 +18,254 @@ output:
 
 -   Week 6, Jan. 31: EDA5, Round-up, communication, pdf, Word, PowerPoint
 
+### Directory and Folder
+
+*Q. Explain the difference between the directory and the folder of PC briefly.*
+
+*A. by Bard.*
+
+Here's a brief explanation of the differences between directories and folders on a PC:
+
+Directory (Technical Term):
+
+-   Fundamental file system structure: It's the way your computer organizes files and folders in a hierarchical structure.
+
+-   Can contain files, subdirectories, and even other directories.
+
+-   Abstract concept: It's not directly visible in graphical user interfaces (GUIs) like Windows Explorer.
+
+-   Referred to in command-line interfaces (CLIs) like the Terminal.
+
+Folder (Visual Metaphor):
+
+-   Graphical representation of a directory: It's the icon you see in your file explorer.
+
+-   User-friendly way to interact with directories: It allows you to create, move, rename, and delete them.
+
+-   May contain files and other folders (subfolders).
+
+-   Common term in GUIs: It's what most people interact with on a daily basis.
+
+Key Points:
+
+-   Directories are the underlying structure, while folders are visual representations.
+
+-   They're often used interchangeably in casual conversation.
+
+-   Technical discussions often use "directory" for accuracy.
+
+-   Both terms refer to a way to organize files on your computer.
+
+------------------------------------------------------------------------
+
+### Where are you in R? - Working Directory 
+
+-   The directory of a folder and a file under Files:
+
+    -   Shown under Files starting from a house icon.
+
+-   Working directory of your project:
+
+    -   Run `getwd()` in Console.
+
+-   Working directory of your RNotebook:
+
+    -   Run `getwd()` in a code chunk.
+
+    -   The directory your *`file_name.Rmd`* and *`file_name.nb.html`* is.
+
+-   Confirm `data` folder is in the working directory of your RNotebook.
+
+```{r}
+getwd()
+```
+
 ## Importing Data
+
+### Data Location
+
+-   Internet link: URL
+
+    -   link of the webpage, other information
+
+    -   `download.files(url, destifile = "data/name_of_data.XXX", mode = "wb")`
+
+        -   `mode = "wb"` for digital files
+
+        -   .XXX: extenstions; csv, tsv, xls, xlsx
+
+-   `data` folder: downloaded or created data
+
+    -   link of the webpage, other information
+
+#### Reproducibility
+
+Keep a record of the data so that you can communicate with others how to obtain the data.
 
 ### File Types
 
--   CSV
+-   Text file: CSV, etc
 
--   Excel
+-   Digital file: Excel, etc
 
--   Other
+-   Other: archived compressed file, json, etc.
+
+    -   unzip or expand first
+
+    -   may contain many files; data, metadata, readme, etc.
+
+### **Importing text data**
+
+-   `readr`: a part of `tidyverse`
+
+    -   [`read_csv()`](https://readr.tidyverse.org/reference/read_delim.html): comma-separated values (CSV)
+
+    -   [`read_tsv()`](https://readr.tidyverse.org/reference/read_delim.html): tab-separated values (TSV)
+
+    -   [`read_csv2()`](https://readr.tidyverse.org/reference/read_delim.html): semicolon-separated values with `,` as the decimal mark
+
+    -   [`read_delim()`](https://readr.tidyverse.org/reference/read_delim.html): delimited files (CSV and TSV are important special cases)
+
+    -   [`read_fwf()`](https://readr.tidyverse.org/reference/read_fwf.html): fixed-width files
+
+    -   [`read_table()`](https://readr.tidyverse.org/reference/read_table.html): whitespace-separated files
+
+    -   [`read_log()`](https://readr.tidyverse.org/reference/read_log.html): web log files
+
+    -   例：`df_name <- read_csv("data/datafile.csv")`
+
+-   Reference
+
+    -   [readr site](https://readr.tidyverse.org/) 
+
+    -   Data Importing CheatSheet
+
+### **Excel files (xls, xlsx)**
+
+-   readxl: a part of tidyverse but you need to load by [`library(readxl)`](https://readxl.tidyverse.org/) 
+
+    -   `df_name <- read_excel("./data/datafile.xlsx")`
+
+    -   `read_xls` and `read_xlsx` are available
+
+    -   `sheet = 2`, or `sheet = "name"`
+
+-   file import of RStudio
+
+-   Reference
+
+    -   [readxl](https://readxl.tidyverse.org/) 
+
+    -   Data Importing CheatSheet
+
+### **Download data file**
+
+-   text file (csv, etc.)
+
+    -   `download.file(url = "URL", destfile = "./data/file_name.csv")`
+
+    -   `df_name <- read_csv(URL)`
+
+        -   `write_csv(df_name, "./data/df_name.csv")`
+
+        -   `df_name <- read_csv("./data/df_name.csv")`
+
+-   digital file (Excel)：`download.file(url = "URL", destfile = "./data/file_name.xlsx", mode = "wb")`
+
+-   eg
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+url_summary <- "https://wir2022.wid.world/www-site/uploads/2022/03/WIR2022TablesFigures-Summary.xlsx"
+download.file(url = url_summary, destfile = "./data/WIR2022s.xlsx", mode = "wb")
+```
+
+```{r}
+url_un_migrants <- "https://data.un.org/_Docs/SYB/CSV/SYB66_327_202310_International%20Migrants%20and%20Refugees.csv"
+```
+
+```{r}
+df_un_migrants <- read_csv(url_un_migrants, skip = 1)
+df_un_migrants
+```
+
+```{r}
+str(df_un_migrants)
+```
+
+Download data
+
+```{r}
+download.file(url_un_migrants, destfile = "data/un_migrants.csv")
+```
+
+```{r}
+df_un_migrants |> summary()
+```
+
+```{r}
+df_un_migrants |> select(Year,Series) |> lapply(unique)
+```
+
+```{r}
+df_un_migrants |> distinct(`Region/Country/Area`, ...2)
+```
+
+```{r}
+library(countrycode)
+df_un_migrants %>% mutate(iso2c_un = countrycode(`Region/Country/Area`, "un", "iso2c"), .after = ...2)
+```
+
+```{r}
+df_un_migrants |> mutate(iso2c_un = countrycode(`Region/Country/Area`, "un", "iso2c"), .after = ...2) |> filter(is.na(iso2c_un)) |> distinct(...2)
+```
+
+```{r}
+wdicache <- read_rds("data/wdicache.rds")
+wdi_country_extra <- wdicache$country |> select(iso2c, region, income, lending)
+```
+
+```{r}
+df_un_migrants_ext <- df_un_migrants %>% 
+  mutate(iso2c_un = countrycode(`Region/Country/Area`, "un", "iso2c"), .after = ...2) |>
+  drop_na(iso2c_un) |> 
+  select(Country = ...2, ISO2C = iso2c_un, Year, Series, Value, Footnotes) |>
+  left_join(wdi_country_extra, by = c("ISO2C" = "iso2c"))
+df_un_migrants_ext
+```
+
+```{r}
+df_un_migrants_ext$Series |> unique()
+```
+
+```{r}
+df_un_migrants_ext_rev <- df_un_migrants_ext |> mutate(Ser = case_when(
+  Series == "International migrant stock: Both sexes (number)" ~ "migrant",
+  Series == "International migrant stock: Both sexes (% total population)" ~ "migrant_percent",
+  Series == "International migrant stock: Male (% total Population)" ~ "migrant_male",
+  Series == "International migrant stock: Female (% total Population)" ~ "migrant_female",
+  Series == "Total refugees and people in refugee-like situations (number)" ~ "refugee",
+  Series == "Asylum seekers, including pending cases (number)" ~ "asylum",
+  Series == "Other of concern to UNHCR (number)"  ~ "other",
+  Series == "Total population of concern to UNHCR (number)" ~ "concern",
+  TRUE ~ Series), .before = Series)
+df_un_migrants_ext_rev
+```
+
+### Reading From Clipboard
+
+```{r}
+temp <- read_delim(clipboard())
+temp
+```
+
+```{r eval = FALSE}
+library(readxl)
+df_migrants <- read_excel("data/un/Intentional homicide victims by sex, counts and ra.xls", sheet = 1)
+```
 
 ## Transforming Data
 
@@ -43,5 +282,33 @@ output:
 ### Examples
 
 -   gini, s80/s20
+
+## References
+
+-   Data Analysis for Researchers. [[Link](https://icu-hsuzuki.github.io/da4r/)]
+
+-   H. Wickham. *R for Data Science (2e)*. [[Link](https://r4ds.hadley.nz)]・[[O'REILLY](https://www.oreilly.com/library/view/r-for-data/9781492097396/)].
+
+    -   Data transformation [[Link](https://r4ds.hadley.nz/data-transform)]
+
+    -   Data tidying [[Link](https://r4ds.hadley.nz/data-tidy)]
+
+    -   Data import [[Link](https://r4ds.hadley.nz/data-import)]
+
+    -   Import [[Link](https://r4ds.hadley.nz/import)]
+
+-   Posit Recipes（New edition of Posit Primers）: interactive exercises [[Link](https://posit.cloud/learn/recipes)]
+
+-   Cheat Sheet. [[Site Link](https://rstudio.github.io/cheatsheets/)]
+
+    -   Data import with the tidyverse [[Link](https://rstudio.github.io/cheatsheets/html/data-import.html)]
+
+    -   Data transformation with dplyr [[Link](https://rstudio.github.io/cheatsheets/html/data-transformation.html)]
+
+-   dplyr: A Grammar of Data Manipulation [[Link](https://CRAN.R-project.org/package=dplyr)]
+
+    -   Two-table verbs [[Link](https://cran.r-project.org/web/packages/dplyr/vignettes/two-table.html)]
+
+-   swirl: `install.packages("swirl")` `libray(swirl)`, and `swirl()` after `rm(list=ls())`
 
 ## 
