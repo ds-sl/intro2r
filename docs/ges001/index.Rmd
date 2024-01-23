@@ -227,7 +227,7 @@ Poverty headcount ratio at \$6.85 a day is the percentage of the population livi
 
 -   要因：教育、労働市場、失業率、男女間格差、土地所有権、などなど　　　　
 
-01/23(TU)　Rでデータサイエンス5　[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00111.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00111.nb.html)]・[ビデオ]
+01/23(TU)　Rでデータサイエンス5　[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00111.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00111.nb.html)]・[[ビデオ](https://youtu.be/WHIz4Vec4ek)]
 
 **People-Education**
 
