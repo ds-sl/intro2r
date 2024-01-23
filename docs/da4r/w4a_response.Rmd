@@ -101,6 +101,8 @@ We study .....
 
 21. Agricultural Land: AG.LND.AGR.ZS, Forest area: AG.LND.FRST.ZS
 
+22. Agriculture, forestry, and fishing, value added (% of GDP): NV.AGR.TOTL.ZS, Industry (including construction), value added (% of GDP): NV.IND.TOTL.ZS
+
 ### Examples
 
 *Let me illustrate steps using the following indicators. Issues are not taken from the analysis of the one who chose these indicators.*
