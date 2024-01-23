@@ -16,8 +16,9 @@ Choose at least two *similar* WDI codes with the *same scale*, and analyze the d
 
     2.  Edit author with name, ID, and title.
 
+```{=html}
 <!-- -->
-
+```
 -   Contents should include the following:
 
     -   A short abstract
@@ -136,6 +137,21 @@ write_rds(wdicache, "data/wdicache.rds")
 
 ```{r readwdicache, echo=FALSE}
 wdicache <- read_rds("data/wdicache.rds")
+```
+
+### Information of Data
+
+#### *Regular Expression (intermediate level)*
+
+-   *"NY.GDP.MKTP.CD\$": ends with the string "NY.GDP.MKTP.CD"*
+
+-   *A \|\> rbind(B): row bind A with B, i.e., add B to the next row of A.*
+
+```{r}
+WDIsearch(string = "NY.GDP.MKTP.CD$", field = "indicator", short = FALSE, cache = wdicache) |> 
+  rbind(WDIsearch(string = "NV.AGR.EMPL.KD$", field = "indicator", short = FALSE, cache = wdicache)) |>
+  rbind(WDIsearch(string = "NV.IND.EMPL.KD$", field = "indicator", short = FALSE, cache = wdicache)) |>
+  rbind(WDIsearch(string = "NV.SRV.EMPL.KD$", field = "indicator", short = FALSE, cache = wdicache))
 ```
 
 ### Importing Data
@@ -284,6 +300,11 @@ library(rnaturalearthdata)
 ```{r}
 ne_world <- ne_countries(scale = "medium", returnclass = "sf")
 ```
+
+*A couple of students had an error when they changed "medium" to "large". I also had the same error when I checked using Windows OS. You can stay with "medium" but if you want to use "large", please follow the following steps.*
+
+1.  *Install `devtools` package, either by running `install.packages("devtools")` or intall it from Install Packages under Tools in the menu.*
+2.  *Then run the following in Console: `devtools::install_github("ropensci/rnaturalearthhires")`*
 
 If possible, create a choropleth map. (a challenge, not required)
 
