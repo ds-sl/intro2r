@@ -533,8 +533,8 @@ df_under_6.85 |> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(under_6.85) |>
 
 ```         
 df_under_6.85 |> filter(year == 2010) |> filter(!(country %in% REGION))|>
-  drop_na(ed_exp) |>
-  ggplot(aes(ed_exp)) + geom_histogram(binwidth = 10)
+  drop_na(under_6.85) |>
+  ggplot(aes(under_6.85)) + geom_histogram(binwidth = 10)
 ```
 
 ```{r}
