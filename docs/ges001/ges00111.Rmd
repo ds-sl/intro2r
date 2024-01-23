@@ -582,6 +582,19 @@ df_pov_ineq |> drop_na(gini:oda) |>
 
 <!-- ***常に、考察、気づいたことを、記録してください。*** -->
 
+## ファイルリンクと課題
+
+基本的には、PositCloud（<https://posit.cloud/>）を使って実習
+
+-   探索的データ分析（EDA） -
+    -   練習と一つ目の課題（w5eda.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/w5eda.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w5eda.Rmd)]
+    -   二つ目以降の課題：w5eda1.Rmd [[リンク](https://ds-sl.github.io/intro2r/ges001/w5eda1.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w5eda1.Rmd)]
+-   課題：**2023.1.27. 23:59** までに Moodle の演習の課題ボックスに提出したものについては、なるべく、早く見て、フィードバックを書きます。それ以降に提出されたものも見ますが、フィードバックは遅くなると思ってください。
+
+R Notebook のソースファイル（Rmd）を取得方法
+
+-   **Rmd のリンクをクリックし Raw の横の Copy a raw file からコピー、新規 RMarkdown ファイルを PositCloud または RStudio のプロジェクト内に作成しペースト**
+
 ## 課題
 
 以下の指標の中から、一つを選択して、データの概要（description）を記録し、データを WDI で取得し、以下の分析をする。
@@ -603,7 +616,7 @@ df_pov_ineq |> drop_na(gini:oda) |>
 
 ------------------------------------------------------------------------
 
-### データ
+### データ（全体で11：最初のリスト参照）
 
 1.  Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)] 変数名：`ed_exp`
 
