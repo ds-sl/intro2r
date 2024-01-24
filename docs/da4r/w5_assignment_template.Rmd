@@ -1,0 +1,62 @@
+---
+title: "Week Four Assignment - EDA with Public Data"
+author: "ID, Last, First"
+date: "`r Sys.Date()`"
+output:
+  html_notebook: default
+---
+
+## Week Five Assignment
+
+Choose a data from UN data or OECD data.
+
+-   Create an R Notebook of a data analysis containing the following and submit the rendered file (e.g., `w5_g123456.nb.html`) in Moodle.
+
+    1.  Create an R Notebook using the R Notebook Template in Moodle and save it as, for example, `w5_g123456.Rmd`.
+
+    2.  Edit author with name, ID, and title.
+
+-   Contents should include the following:
+
+    -   A short abstract
+
+    -   Information of data including data name, description and link to reach the data
+
+    -   Several charts: a bar graph or a column graph, a histogram, a line graph, a scatter plot
+
+    -   Observations or questions for visualizations
+
+-   Use left_join, if possible. (a challenge, not required)
+
+-   Run each code block and preview to create, for example, `w5_g123456.nb.html`.
+
+    -   Or, Run All under Run and Preview to check in your web browser!
+
+    -   You can also view your file (e.g. `w5_g123456.nb.html`) by opening it from your web browser.
+
+Submit your R Notebook file (w5_g123456.nb.html) in Moodle (Week Five Assignment).
+
+***Due Sunday 28, January 2024, 11:59 PM***
+
+## Short Abstract
+
+## Information of data
+
+## Setup
+
+Install a package `countrycode` first.
+
+```{r}
+library(tidyverse)
+library(WDI)
+library(readxl)
+library(countrycode)
+```
+
+## Importing Data
+
+## Viewing Data
+
+## Visualization and Analysis
+
+*Do not forget to add observations and questions.*

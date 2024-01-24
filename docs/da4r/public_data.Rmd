@@ -1,0 +1,302 @@
+---
+title: "Public Data"
+author: "ID, Last Name, First Name"
+date: "2024/01/24"
+output:
+  html_notebook: default
+---
+
+## Setup
+
+Install a package `countrycode` first.
+
+```{r}
+library(tidyverse)
+library(WDI)
+library(readxl)
+library(countrycode)
+```
+
+## World Inequality Database
+
+<https://wid.world>
+
+### World Inequality Report 2022
+
+-   World Inequality Report 2022: <https://wir2022.wid.world>
+
+-   Methodology [[Link](https://wir2022.wid.world/methodology/)]
+
+```{r}
+url_summary <- "https://wir2022.wid.world/www-site/uploads/2022/03/WIR2022TablesFigures-Summary.xlsx"
+download.file(url = url_summary, destfile = "data/WIR2022s.xlsx", mode = "wb")
+```
+
+```{r}
+library(readxl) # readxl is a part of tidyverse but not a core package
+```
+
+```{r}
+excel_sheets("data/WIR2022s.xlsx")
+```
+
+```{r}
+df_wir_f2 <- read_excel("data/WIR2022s.xlsx", 
+    sheet = "data-F2")
+df_wir_f2
+```
+
+Created a new Excel book with only one sheet, and save it as a CSV UTF-8.
+
+```{r}
+df_wir_f2_2 <- read_csv("data/wir-f2.csv")
+df_wir_f2_2
+```
+
+```{r}
+df_wir_f2_2 |> identical(df_wir_f2)
+```
+
+```{r eval=FALSE}
+df_wir_f2_3 <- read_delim(clipboard())
+df_wir_f2_3
+```
+
+```{r}
+df_wir_f2 |> pivot_longer(3:5) |> 
+  ggplot(aes(iso, value, fill = name)) + geom_col(position = "dodge") + coord_flip()
+```
+
+See: <https://ds-sl.github.io/data-analysis/wir2022.nb.html>
+
+### To share data with someone else.
+
+```{r}
+df_wir_dput <- dput(df_wir_f2)
+df_wir_dput
+```
+
+```{r}
+df_wir_f2_3 <- df_wir_dput
+df_wir_f2_3 |> identical(df_wir_f2)
+```
+
+## UNdata - a world of information
+
+<https://data.un.org/>
+
+Popular statistical tables
+
+Explorer - datamarts: <http://data.un.org/Explorer.aspx>
+
+-   Datasets, Sources, Topics
+
+### Popular statistical tables
+
+Copy the link of International Migrants and Refugees
+
+```{r}
+un_migrants_url <- "https://data.un.org/_Docs/SYB/CSV/SYB66_327_202310_International%20Migrants%20and%20Refugees.csv"
+download.file(un_migrants_url, destfile = "data/migrants.csv")
+```
+
+```{r}
+df_un_migrants <- read_csv("data/migrants.csv")
+df_un_migrants
+```
+
+```{r}
+df_un_migrants <- read_csv("data/migrants.csv", skip=1)
+df_un_migrants
+```
+
+### Explorer - datamarts
+
+Environment Statistics Database\>Water\>Internal flow [[Link](http://data.un.org/Data.aspx?d=ENV&f=variableID:5&c=2,3,4,5&s=countryName:asc,yr:desc&v=1)]
+
+```{r}
+df_un_water <- read_csv("data/UNdata_Export_20240124_010609671.csv")
+df_un_water
+```
+
+```{r}
+url_un_migrants <- "https://data.un.org/_Docs/SYB/CSV/SYB66_327_202310_International%20Migrants%20and%20Refugees.csv"
+```
+
+```{r}
+df_un_migrants <- read_csv(url_un_migrants, skip = 1)
+df_un_migrants
+```
+
+```{r}
+str(df_un_migrants)
+```
+
+<!-- ### Download data -->
+
+<!-- ```{r} -->
+
+<!-- download.file(url_un_migrants, destfile = "data/un_migrants.csv") -->
+
+<!-- ``` -->
+
+```{r}
+df_un_migrants |> summary()
+```
+
+```{r}
+df_un_migrants |> select(Year,Series) |> lapply(unique)
+```
+
+```{r eval = FALSE}
+df_un_migrants |> distinct(`Region/Country/Area`, ...2)
+```
+
+```{r}
+library(countrycode)
+df_un_migrants %>% mutate(iso2c_un = countrycode(`Region/Country/Area`, "un", "iso2c"), .after = ...2)
+```
+
+```{r}
+df_un_migrants |> mutate(iso2c_un = countrycode(`Region/Country/Area`, "un", "iso2c"), .after = ...2) |> filter(is.na(iso2c_un)) |> distinct(...2)
+```
+
+```{r}
+wdicache <- read_rds("data/wdicache.rds")
+wdi_country_extra <- wdicache$country |> select(iso2c, region, income, lending)
+```
+
+```{r eval=FALSE}
+df_un_migrants_ext <- df_un_migrants %>% 
+  mutate(iso2c_un = countrycode(`Region/Country/Area`, "un", "iso2c"), .after = ...2) |>
+  drop_na(iso2c_un) |> 
+  select(Country = ...2, ISO2C = iso2c_un, Year, Series, Value, Footnotes) |>
+  left_join(wdi_country_extra, by = c("ISO2C" = "iso2c"))
+df_un_migrants_ext
+```
+
+```{r echo=FALSE}
+df_un_migrants_ext <- df_un_migrants %>% 
+  mutate(iso2c_un = countrycode(`Region/Country/Area`, "un", "iso2c"), .after = ...2) |>
+  drop_na(iso2c_un) |> 
+  select(Country = ...2, ISO2C = iso2c_un, Year, Series, Value, Footnotes) |>
+  left_join(wdi_country_extra, by = c("ISO2C" = "iso2c"))
+df_un_migrants_ext
+```
+
+```{r}
+df_un_migrants_ext$Series |> unique()
+```
+
+```{r}
+df_un_migrants_ext_rev <- df_un_migrants_ext |> mutate(Ser = case_when(
+  Series == "International migrant stock: Both sexes (number)" ~ "migrant",
+  Series == "International migrant stock: Both sexes (% total population)" ~ "migrant_percent",
+  Series == "International migrant stock: Male (% total Population)" ~ "migrant_male",
+  Series == "International migrant stock: Female (% total Population)" ~ "migrant_female",
+  Series == "Total refugees and people in refugee-like situations (number)" ~ "refugee",
+  Series == "Asylum seekers, including pending cases (number)" ~ "asylum",
+  Series == "Other of concern to UNHCR (number)"  ~ "other",
+  Series == "Total population of concern to UNHCR (number)" ~ "concern",
+  TRUE ~ Series), .before = Series)
+```
+
+```{r}
+df_un_migrants_ext_rev
+```
+
+```{r eval=FALSE}
+dput(df_un_migrants_ext_rev)
+```
+
+## OECD data
+
+<https://data.oecd.org/>
+
+Database Access: <https://data-explorer.oecd.org/>
+
+### Expenditure on educational institutions per full-time equivalent student
+
+[[Link](https://data-explorer.oecd.org/vis?fs%5B0%5D=Topic%2C0%7CEducation%23EDU%23&pg=0&fc=Topic&bp=true&snb=34&vw=tb&df%5Bds%5D=dsDisseminateFinalDMZ&df%5Bid%5D=DSD_EAG_UOE_FIN%40DF_UOE_INDIC_FIN_PERSTUD&df%5Bag%5D=OECD.EDU.IMEP&df%5Bvs%5D=1.0&pd=2020%2C2020&dq=..ISCED11_1%2BISCED11_2%2BISCED11_3%2BISCED11_34%2BISCED11_35%2BISCED11_4%2BISCED11_5%2BISCED11_5T8%2BISCED11_6T8%2BISCED11_1T8._T.INST_EDU.DIR_EXP..&ly%5Brw%5D=REF_AREA&ly%5Bcl%5D=EDUCATION_LEV&to%5BTIME_PERIOD%5D=true)]
+
+Table in Excel, Filtered data in tableau text (CSV), Unfiltered data in tableau text (CSV) 136.4MB
+
+```{r}
+temp <- read_csv("../../../bigdata/OECD.EDU.IMEP,DSD_EAG_UOE_FIN@DF_UOE_INDIC_FIN_PERSTUD,1.0+all.csv")
+temp
+```
+
+```{r}
+library(readxl)
+df_oecd_ed <- read_excel("data/OECD.EDU.IMEP,DSD_EAG_UOE_FIN@DF_UOE_INDIC_FIN_PERSTUD,1.0,filtered,2024-01-24 10-22-31.xlsx")
+```
+
+```{r}
+df_oecd_ed
+```
+
+```{r}
+df_oecd_ed <- read_excel("data/OECD.EDU.IMEP,DSD_EAG_UOE_FIN@DF_UOE_INDIC_FIN_PERSTUD,1.0,filtered,2024-01-24 10-22-31.xlsx", skip = 6) |> drop_na(3)
+df_oecd_ed
+```
+
+## Modeling
+
+-   searching models: few numbers
+
+-   linear regression
+
+```{r}
+cars
+```
+
+```{r}
+cars |> ggplot(aes(dist, speed)) + geom_point() + 
+  geom_smooth(formula = 'y ~ x', method = "lm", se=FALSE)
+```
+
+```{r}
+cars |> lm(dist ~ speed, data = _) |> summary()
+```
+
+<!-- ### Examples -->
+
+<!-- -   gini, s80/s20 -->
+
+## References
+
+-   Data Analysis for Researchers. [[Link](https://icu-hsuzuki.github.io/da4r/)]
+
+-   H. Wickham. *R for Data Science (2e)*. [[Link](https://r4ds.hadley.nz)]・[[O'REILLY](https://www.oreilly.com/library/view/r-for-data/9781492097396/)].
+
+    -   Data transformation [[Link](https://r4ds.hadley.nz/data-transform)]
+
+    -   Data tidying [[Link](https://r4ds.hadley.nz/data-tidy)]
+
+    -   Data import [[Link](https://r4ds.hadley.nz/data-import)]
+
+    -   Import [[Link](https://r4ds.hadley.nz/import)]
+
+-   Posit Recipes（New edition of Posit Primers）: interactive exercises [[Link](https://posit.cloud/learn/recipes)]
+
+-   Cheat Sheet. [[Site Link](https://rstudio.github.io/cheatsheets/)]
+
+    -   Data import with the tidyverse [[Link](https://rstudio.github.io/cheatsheets/html/data-import.html)]
+
+    -   Data transformation with dplyr [[Link](https://rstudio.github.io/cheatsheets/html/data-transformation.html)]
+
+-   dplyr: A Grammar of Data Manipulation [[Link](https://CRAN.R-project.org/package=dplyr)]
+
+    -   Two-table verbs [[Link](https://cran.r-project.org/web/packages/dplyr/vignettes/two-table.html)]
+
+-   Model Summary
+
+    -   r-statistics.co by Selva Prabhakaran:
+
+        -   <http://r-statistics.co/Linear-Regression.html>
+
+    -   Meaning Behind Each Section of Summary()
+
+        -   <https://www.learnbymarketing.com/tutorials/explaining-the-lm-summary-in-r/>
+
+-   swirl: `install.packages("swirl")` `libray(swirl)`, and `swirl()` after `rm(list=ls())`

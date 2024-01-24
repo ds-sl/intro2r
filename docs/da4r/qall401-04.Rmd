@@ -37,7 +37,7 @@ output:
 
 -   Week 4, Jan. 17: EDA3, WDI, tidy data (long and wide data), choropleth maps
 
--   Week 5, Jan. 24: EDA4, UN, OECD, readr, readxl, two table verves, modeling
+-   Week 5, Jan. 24: EDA4, UN, OECD, readr, readxl, two table verbes, modeling
 
 -   Week 6, Jan. 31: EDA5, Round-up, communication, pdf, Word, PowerPoint
 

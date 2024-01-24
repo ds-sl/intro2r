@@ -1,0 +1,3817 @@
+<ROOT>
+    <data>
+        <record>
+            <field name="Country or Area">Albania</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">80</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Albania</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">80</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Albania</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">80</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Algeria</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Algeria</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Algeria</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Andorra</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">78</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Andorra</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">79</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Andorra</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">79</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Angola</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">93</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Angola</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">78</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Angola</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">86</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Antigua and Barbuda</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">91</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Antigua and Barbuda</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">84</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Antigua and Barbuda</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">88</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Australia</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Australia</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Australia</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Azerbaijan</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">85</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Azerbaijan</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">84</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Azerbaijan</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">85</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Bahamas</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Barbados</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Belarus</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">92</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Belgium</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Belgium</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Belgium</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Belize</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Benin</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">94</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Bhutan</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">88</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Bhutan</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">91</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Bhutan</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">90</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Bosnia and Herzegovina</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">86</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Bosnia and Herzegovina</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">88</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Bosnia and Herzegovina</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">87</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Botswana</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">87</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Botswana</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">88</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Botswana</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">87</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Bulgaria</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Bulgaria</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Bulgaria</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Burkina Faso</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">61</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Burkina Faso</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">56</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Burkina Faso</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">58</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Cambodia</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Cambodia</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Cambodia</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Cameroon</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">94</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Cape Verde</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Cape Verde</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">92</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Cape Verde</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">93</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">CEE/CIS</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">CEE/CIS</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">CEE/CIS</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">Central African Republic</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">81</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Central African Republic</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">61</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Central African Republic</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">71</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Chile</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">94</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Chile</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">94</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Chile</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">94</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">China</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">3</field>
+        </record>
+        <record>
+            <field name="Country or Area">China</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">3</field>
+        </record>
+        <record>
+            <field name="Country or Area">China</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">4</field>
+        </record>
+        <record>
+            <field name="Country or Area">Colombia</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">92</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Colombia</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">91</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Colombia</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">92</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Congo</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">92</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Congo</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">89</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Congo</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">91</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Cook Islands</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Cook Islands</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Cook Islands</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Côte d'Ivoire</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">67</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Côte d'Ivoire</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">56</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Côte d'Ivoire</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">61</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Croatia</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Croatia</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Croatia</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Cuba</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Cuba</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Cuba</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Cyprus</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Cyprus</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Cyprus</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Denmark</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Denmark</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Denmark</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Djibouti</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">47</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Djibouti</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">42</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Djibouti</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">45</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Dominica</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Dominican Republic</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Dominican Republic</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">90</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Dominican Republic</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">93</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">East Asia and Pacific</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">East Asia and Pacific</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">East Asia and Pacific</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">Eastern and Southern Africa</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">88</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">Eastern and Southern Africa</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">85</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">Eastern and Southern Africa</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">86</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">Ecuador</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Egypt</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">El Salvador</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">El Salvador</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">El Salvador</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Equatorial Guinea</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">57</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Equatorial Guinea</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">56</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Equatorial Guinea</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">56</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Eritrea</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">37</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Eritrea</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">33</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Eritrea</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">35</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Estonia</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Estonia</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Estonia</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Ethiopia</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">85</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Ethiopia</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">80</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Ethiopia</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">82</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Fiji</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Fiji</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Fiji</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Finland</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Finland</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Finland</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">France</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">France</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">France</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Gambia</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">68</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Gambia</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">70</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Gambia</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">69</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Georgia</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Germany</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Ghana</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">84</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Ghana</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">85</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Ghana</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">84</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Grenada</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Grenada</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Grenada</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Guatemala</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Guatemala</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Guatemala</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Guinea</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">83</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Guinea</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">70</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Guinea</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">77</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Guinea-Bissau</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">77</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Guinea-Bissau</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">73</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Guinea-Bissau</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">75</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Guyana</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">82</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Guyana</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">86</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Guyana</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">84</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Honduras</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Honduras</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Honduras</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Hungary</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Hungary</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Hungary</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Iceland</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Iceland</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Iceland</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">India</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">India</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">India</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Indonesia</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Ireland</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Ireland</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Ireland</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Israel</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Israel</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Israel</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Italy</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Italy</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Italy</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Jamaica</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">83</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Jamaica</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">81</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Jamaica</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">82</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Japan</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Jordan</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">91</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Jordan</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">91</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Jordan</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">91</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Kazakhstan</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Kenya</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">84</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Kenya</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">85</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Kenya</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">84</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Kuwait</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Kuwait</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Kuwait</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Kyrgyzstan</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Kyrgyzstan</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Kyrgyzstan</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Lao People's Democratic Republic</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Lao People's Democratic Republic</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Lao People's Democratic Republic</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Latin America and Caribbean</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">Latin America and Caribbean</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">Latin America and Caribbean</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">Latvia</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Latvia</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Latvia</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Least Developed Countries/Territories</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">82</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">Least Developed Countries/Territories</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">78</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">Least Developed Countries/Territories</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">80</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">Lebanon</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">94</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Lebanon</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">93</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Lebanon</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">93</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Lesotho</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">72</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Lesotho</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">75</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Lesotho</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">74</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Liechtenstein</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Liechtenstein</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Liechtenstein</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Lithuania</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Lithuania</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Lithuania</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Luxembourg</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Luxembourg</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Luxembourg</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Malawi</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Maldives</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Maldives</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Maldives</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Mali</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">71</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Mali</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">61</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Mali</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">66</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Malta</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">93</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Malta</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">94</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Malta</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">94</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Marshall Islands</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Mauritania</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">73</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Mauritania</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">76</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Mauritania</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">74</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Mauritius</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">92</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Mauritius</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">94</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Mauritius</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">93</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Mexico</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Mexico</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Mexico</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Middle East and North Africa</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">92</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">Middle East and North Africa</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">87</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">Middle East and North Africa</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">90</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">Mongolia</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Mongolia</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Mongolia</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Montenegro</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">83</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Morocco</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Morocco</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">93</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Morocco</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">94</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Mozambique</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Mozambique</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">89</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Mozambique</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">92</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Namibia</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">84</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Namibia</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">89</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Namibia</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">86</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Netherlands</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">New Zealand</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">New Zealand</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">New Zealand</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Nicaragua</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">93</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Nicaragua</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Nicaragua</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">94</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Niger</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">64</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Niger</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">52</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Niger</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">58</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Nigeria</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">60</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Nigeria</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">55</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Nigeria</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">58</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Norway</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Norway</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Norway</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Oman</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Oman</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Oman</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Pakistan</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">81</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Pakistan</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">67</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Pakistan</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">74</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Panama</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Panama</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Panama</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Paraguay</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">86</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Paraguay</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">86</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Paraguay</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">86</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Peru</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Peru</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Peru</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Philippines</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">88</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Philippines</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">90</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Philippines</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">89</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Poland</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Poland</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Poland</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Portugal</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Portugal</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Portugal</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Qatar</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Qatar</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Qatar</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Republic of Korea</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Republic of Korea</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Republic of Korea</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Republic of Moldova</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">90</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Republic of Moldova</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">90</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Republic of Moldova</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">90</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Romania</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">88</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Romania</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">87</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Romania</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">88</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Russian Federation</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Russian Federation</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Russian Federation</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Rwanda</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Saint Kitts and Nevis</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">86</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Saint Kitts and Nevis</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">86</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Saint Kitts and Nevis</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">86</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Saint Lucia</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">90</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Saint Lucia</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">89</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Saint Lucia</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">90</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Saint Vincent and the Grenadines</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Samoa</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">93</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Samoa</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Samoa</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">San Marino</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">91</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">San Marino</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">93</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">San Marino</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">92</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Sao Tome and Principe</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Saudi Arabia</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">90</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Saudi Arabia</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">89</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Saudi Arabia</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">90</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Senegal</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">76</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Senegal</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">80</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Senegal</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">78</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Serbia</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Serbia</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">94</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Serbia</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Slovenia</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Slovenia</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Slovenia</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">South Africa</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">90</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">South Africa</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">91</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">South Africa</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">90</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">South Asia</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">93</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">South Asia</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">91</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">South Asia</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">92</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">Spain</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Spain</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Spain</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Sri Lanka</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">94</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Sri Lanka</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">94</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Sri Lanka</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">94</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">State of Palestine</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">90</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">State of Palestine</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">88</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">State of Palestine</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">89</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Sub-Saharan Africa</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">78</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">Sub-Saharan Africa</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">74</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">Sub-Saharan Africa</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">76</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">Suriname</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">91</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Suriname</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">91</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Suriname</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">91</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Swaziland</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">86</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Swaziland</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">85</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Swaziland</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">86</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Sweden</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Sweden</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Sweden</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Switzerland</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Switzerland</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Switzerland</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Syrian Arab Republic</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Syrian Arab Republic</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Syrian Arab Republic</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Tajikistan</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Tajikistan</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Tajikistan</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Thailand</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">90</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Thailand</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">89</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Thailand</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">90</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">The former Yugoslav Republic of Macedonia</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">The former Yugoslav Republic of Macedonia</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">The former Yugoslav Republic of Macedonia</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Timor-Leste</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">86</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Timor-Leste</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">86</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Timor-Leste</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">86</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Togo</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">94</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Trinidad and Tobago</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Trinidad and Tobago</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Trinidad and Tobago</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Tunisia</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Turkey</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Turkey</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Turkey</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Uganda</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">90</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Uganda</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">92</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Uganda</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">91</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Ukraine</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">91</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Ukraine</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">91</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Ukraine</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">91</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">United Kingdom</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">United Kingdom</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">United Kingdom</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">United Republic of Tanzania</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">United Republic of Tanzania</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">United Republic of Tanzania</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">United States</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">United States</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">United States</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">96</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Uruguay</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Uruguay</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Uruguay</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">99</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Uzbekistan</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">93</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Uzbekistan</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">91</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Uzbekistan</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">92</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Venezuela (Bolivarian Republic of)</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Venezuela (Bolivarian Republic of)</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Venezuela (Bolivarian Republic of)</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">95</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Viet Nam</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">98</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Western and Central Africa</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">69</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">Western and Central Africa</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">64</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">Western and Central Africa</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">67</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">World</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">92</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">World</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">90</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">World</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">91</field>
+            <field name="Value Footnotes">2</field>
+        </record>
+        <record>
+            <field name="Country or Area">Yemen</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">86</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Yemen</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">70</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Yemen</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">78</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Zambia</field>
+            <field name="Subgroup">Male</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">91</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Zambia</field>
+            <field name="Subgroup">Female</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">94</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Zambia</field>
+            <field name="Subgroup">Total</field>
+            <field name="Year">2008-2011</field>
+            <field name="Source">UN_UNESCO Institute for Statistics (UIS)</field>
+            <field name="Unit">Percent</field>
+            <field name="Value">93</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+    </data>
+    <footnotes>
+        <footnote fnSeqID="1">Data refer to the most recent year available during the period specified in the column heading. </footnote>
+        <footnote fnSeqID="2">Data refer to the most recent year available during the period specified in the column heading. For a complete list of countries and territories in the regions, subregions and country categories, see page XX.</footnote>
+        <footnote fnSeqID="3">Data refer to the most recent year available during the period specified in the column heading. Data provided by Chinese Ministry of Education. The UIS dataset does not currently include net enrolment rates or primary school survival for China.</footnote>
+        <footnote fnSeqID="4">Data refer to the most recent year available during the period specified in the column heading. Data provided by Chinese Ministry of Education. The UIS dataset does not currently include net enrolment rates for China.</footnote>
+    </footnotes>
+</ROOT>
