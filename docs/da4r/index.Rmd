@@ -249,13 +249,58 @@ Exploratory Data Analysis III [[Slides](https://ds-sl.github.io/intro2r/da4r/qal
 
 ### Part II - Practicum
 
-### Assignment 3
+#### File Links
+
+-   Education [[Link](https://ds-sl.github.io/intro2r/da4r/education.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/education.Rmd)]
+
+-   Week Four Assignment Template [[Link](https://ds-sl.github.io/intro2r/da4r/w4_assignment_template.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/w4_assignment_template.Rmd)]
+
+#### Week Four Assignment
+
+Choose at least two *similar* WDI codes with the *same scale*, and analyze the data.
+
+-   Create an R Notebook of a data analysis containing the following and submit the rendered file (e.g., `w4_g123456.nb.html`) in Moodle.
+
+    1.  Create an R Notebook using the R Notebook Template in Moodle and save it as `w4_g123456.Rmd`.
+
+    2.  Edit author with name, ID, and title.
+
+```{=html}
+<!-- -->
+```
+-   Contents should include the following:
+
+    -   A short abstract
+
+    -   Information of data including data name, data code (or id), description
+
+    -   Data including at least two indicators and a long table created using `pivot_longer`
+
+    -   A line graph using the long table with a color aesthetic to depict at least two indicators in a chart.
+
+    -   Several charts: a bar graph or a column graph, a histogram, a line graph, a scatter plot
+
+    -   Observations or questions for visualizations
+
+-   Include a choropleth map, if possible. (a challenge, not required)
+
+-   Run each code block and preview to create `w4_g123456.nb.html`.
+
+    -   Or, Run All under Run and Preview to check in your web browser!
+
+    -   You can also view your file (e.g. `w4_g123456.nb.html`) by opening it from your web browser.
+
+Submit your R Notebook file (w4_g123456.nb.html) in Moodle (Week Four Assignment).
+
+***Due Sunday 21, January 2024, 11:59 PM***
 
 ## Week 5 (2024/01/24)
 
-Exploratory Data Analysis IV [Slides], [[R Notebook](https://ds-sl.github.io/intro2r/da4r/qall401-05.nb.html)], [Video1], [Video2]
+Exploratory Data Analysis IV [[Slides](https://ds-sl.github.io/intro2r/da4r/qall401-05.html)], [[R Notebook](https://ds-sl.github.io/intro2r/da4r/qall401-05.nb.html)], [Video1], [Video2]
 
 ### Part I
+
+-   R Environments
 
 -   readr, readxl
 
@@ -265,15 +310,49 @@ Exploratory Data Analysis IV [Slides], [[R Notebook](https://ds-sl.github.io/int
 
     -   two tables verbs
 
--   models with broom
-
--   maps
+-   model
 
 -   summary and review
 
 ### Part II - Practicum
 
-### Assignment 4
+#### File Links
+
+-   Public Data [[Link](https://ds-sl.github.io/intro2r/da4r/public_data.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/public_data.Rmd)]
+
+-   Week Five Assignment Template [[Link](https://ds-sl.github.io/intro2r/da4r/w5_assignment_template.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/w5_assignment_template.Rmd)]
+
+#### Week Five Assignment
+
+Choose a data from UN data or OECD data.
+
+-   Create an R Notebook of a data analysis containing the following and submit the rendered file (e.g., `w5_g123456.nb.html`) in Moodle.
+
+    1.  Create an R Notebook using the R Notebook Template in Moodle and save it as, for example, `w5_g123456.Rmd`.
+
+    2.  Edit author with name, ID, and title.
+
+-   Contents should include the following:
+
+    -   A short abstract
+
+    -   Information of data including data name, description and link to reach the data
+
+    -   Several charts: a bar graph or a column graph, a histogram, a line graph, a scatter plot
+
+    -   Observations or questions for visualizations
+
+-   Use left_join, if possible. (a challenge, not required)
+
+-   Run each code block and preview to create, for example, `w5_g123456.nb.html`.
+
+    -   Or, Run All under Run and Preview to check in your web browser!
+
+    -   You can also view your file (e.g. `w5_g123456.nb.html`) by opening it from your web browser.
+
+Submit your R Notebook file (w5_g123456.nb.html) in Moodle (Week Five Assignment).
+
+***Due Sunday 28, January 2024, 11:59 PM***
 
 ## Week 6 (2024/01/31)
 

@@ -286,7 +286,6 @@ Submit your R Notebook file (w5_g123456.nb.html) in Moodle (Week Five Assignment
 
 ***Due Sunday 28, January 2024, 11:59 PM***
 
-
 ## World Inequality Database
 
 <https://wid.world>
