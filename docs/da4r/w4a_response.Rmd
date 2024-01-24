@@ -208,7 +208,12 @@ df_sec_ter_gdp_long <- df_sec_ter_gdp |>
 df_sec_ter_gdp_long
 ```
 
-*The following works fine, but it is also good to change the order of the selected columns needed.*
+*Generate a long table. The following works fine, but it is also good to change the order of the selected columns needed. The following codes do the same. "name" and "value" are added as default.*
+
+```{r eval = FALSE}
+df_yourdata_long <- df_yourdata |> pivot_longer(cols = c(agriculture, industry, service), names_to = "name", values_to = "value")
+df_yourdata_long
+```
 
 ```{r}
 df_yourdata_long <- df_yourdata |> 
@@ -216,7 +221,7 @@ df_yourdata_long <- df_yourdata |>
 df_yourdata_long
 ```
 
-*Generate a long table.*
+*Select columns of a long table and change the order of the variables.*
 
 ```{r}
 df_yourdata_long <- df_yourdata |> 
