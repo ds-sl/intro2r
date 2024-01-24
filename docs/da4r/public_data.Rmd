@@ -27,6 +27,8 @@ library(countrycode)
 
 -   Methodology [[Link](https://wir2022.wid.world/methodology/)]
 
+*Since Excel files are binary file, you need to add mode = "wb", web binary.*
+
 ```{r}
 url_summary <- "https://wir2022.wid.world/www-site/uploads/2022/03/WIR2022TablesFigures-Summary.xlsx"
 download.file(url = url_summary, destfile = "data/WIR2022s.xlsx", mode = "wb")
@@ -114,14 +116,20 @@ df_un_migrants
 
 Environment Statistics Database\>Water\>Internal flow [[Link](http://data.un.org/Data.aspx?d=ENV&f=variableID:5&c=2,3,4,5&s=countryName:asc,yr:desc&v=1)]
 
+*Select columns to add Table ID and Country and Area Code of UN, and download 'Comma' a CSV.*
+
 ```{r}
 df_un_water <- read_csv("data/UNdata_Export_20240124_010609671.csv")
 df_un_water
 ```
 
+### UN Migrants Data
+
 ```{r}
 url_un_migrants <- "https://data.un.org/_Docs/SYB/CSV/SYB66_327_202310_International%20Migrants%20and%20Refugees.csv"
 ```
+
+_Since the url is given, a CSV file can be read directly using `read_csv`._
 
 ```{r}
 df_un_migrants <- read_csv(url_un_migrants, skip = 1)
@@ -236,8 +244,22 @@ df_oecd_ed
 ```
 
 ```{r}
-df_oecd_ed <- read_excel("data/OECD.EDU.IMEP,DSD_EAG_UOE_FIN@DF_UOE_INDIC_FIN_PERSTUD,1.0,filtered,2024-01-24 10-22-31.xlsx", skip = 6) |> drop_na(3)
+df_oecd_ed <- read_excel("data/OECD.EDU.IMEP,DSD_EAG_UOE_FIN@DF_UOE_INDIC_FIN_PERSTUD,1.0,filtered,2024-01-24 10-22-31.xlsx", skip = 6)
 df_oecd_ed
+```
+
+```{r}
+colnames(df_oecd_ed) 
+```
+
+```{r}
+df_oecd_ed_short <- df_oecd_ed |> select(1,3,4,5,6,9,10) |> drop_na(`Primary education`)
+df_oecd_ed_short
+```
+
+```{r}
+df_oecd_ed2 <- read_csv("data/OECD.EDU.IMEP,DSD_EAG_UOE_FIN@DF_UOE_INDIC_FIN_PERSTUD,1.0+..ISCED11_1+ISCED11_2+ISCED11_3+ISCED11_4+ISCED11_5+ISCED11_5T8+ISCED11_6T8+ISCED11_1T8._T.INST_EDU.DIR_EXP...csv")
+df_oecd_ed2
 ```
 
 ## Modeling
