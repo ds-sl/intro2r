@@ -221,7 +221,7 @@ Database Access: <https://data-explorer.oecd.org/>
 
 Table in Excel, Filtered data in tableau text (CSV), Unfiltered data in tableau text (CSV) 136.4MB
 
-```{r}
+```{r eval = FALSE}
 temp <- read_csv("../../../bigdata/OECD.EDU.IMEP,DSD_EAG_UOE_FIN@DF_UOE_INDIC_FIN_PERSTUD,1.0+all.csv")
 temp
 ```
