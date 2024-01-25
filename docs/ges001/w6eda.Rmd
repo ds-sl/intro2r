@@ -1,0 +1,772 @@
+---
+title: "第6週 探索的データ分析 - EDA, Part I"
+author: "ID, Last, First"
+date: "2024年1月30日"
+output:
+  html_notebook: default
+---
+
+## 演習
+
+以下の指標の中から、二つを選択して、データの概要（description）を記録し、データを WDI で取得し、以下の分析をする。
+
+1.  各年毎のデータの数の棒グラフ
+2.  国または地域を選択
+3.  それぞれの経年変化を表す折れ線グラフ
+    a.  日本
+    b.  選択した国または地域
+4.  二つのデータの散布図-必要に応じて log10 スケールを用いる
+    a.  すべての値の散布図
+    b.  NA ではない値の散布図、近似（回帰）直線を表示
+    c.  地域を除き国のみの散布図、近似（回帰）直線を表示
+    d.  最近の年を選択し、地域を除き国のもの散布図、近似（回帰）直線を表示
+
+それぞれについて考察（気づいたこと、疑問など）を記す
+
+<!-- **2023.2.3.23:59** までに Moodle の演習の課題ボックスに提出したものについては、なるべく、早く見て、フィードバックを書きます。それ以降に提出されたものも見ますが、フィードバックは遅くなると思ってください。 -->
+
+
+
+### データ情報
+
+-   CO2 emissions (metric tons per capita) ：EN.ATM.CO2E.PC [[Link](https://data.worldbank.org/indicator/EN.ATM.CO2E.PC)]
+
+-   Forest area (% of land area)：AG.LND.FRST.ZS [[Link](https://data.worldbank.org/indicator/AG.LND.FRST.ZS)]
+
+-   Renewable electricity output (% of total electricity output)：EG.ELC.RNEW.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.RNEW.ZS)]
+
+-   Electricity production from oil, gas and coal sources (% of total)：EG.ELC.FOSL.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.FOSL.ZS)]
+
+-   Electricity production from nuclear sources (% of total)：EG.ELC.NUCL.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.NUCL.ZS)]
+
+
+### 確認作業
+
+-   Preview で確認。
+
+-   Web Browser で、w5_c123456.nb.html など、R Notebook を見て確認。
+
+-   もし、問題があれば、Run ボタンの右の三角から、Run All を選択し、エラーがでないか確認。
+
+-   最初にもどる。
+
+
+
+### 途中でのエラー
+
+-   入力したときには、例を参照して、スペルなどを確認してください。全角になっていると問題がおきます。() がペアでマッチしているか、確認してください。
+-   引用符が入っていなかったり、== のところが、= だったり、いろいろな可能性があります。Error message を読むこともたいせつです。エラーがでた、Code Chunk と、Error message を、ChatGPT や、Google Bard, Google Search に入れると、解決方法を教えてくれることもあります。
+-   File not found の、エラーがでたときには、上から順に、Run （Code Chunk の右上の三角印を押して実行）してみてください。または、エラーが出たところに、カーソルを置き、上の、Run ボタンの右の三角から、Run All Chunks Above を選択すると、そこまでのすべての　Code Chunk を実行してくれます。
+-   上の方法でうまくいかないときは、data フォルダに、データ（\*\*\*.csv）が入っているかを確認、なければ、data フォルダがあることを確認して、最初のデータ読み込みのところを実行してみてください。
+-   実行できていても、結果が見えないこともあります。そのときは、Code Chunk の下にある、山二つの記号を押してみてください。これは、結果を表示、非表示にします。それが原因で隠れている場合があります。
+
+
+
+## データ
+
+### データ情報
+
+-   データ１：一人当たりの二酸化炭素排出量 (CO2 emissions (metric tons per capita))、"EN.ATM.CO2E.PC"、co2pcap [[Link](https://data.worldbank.org/indicator/EN.ATM.CO2E.PC)]
+
+-   概要：Carbon dioxide emissions are those stemming from the burning of fossil fuels and the manufacture of cement. They include carbon dioxide produced during consumption of solid, liquid, and gas fuels and gas flaring.
+
+-   データ２：森林面積（％）(Forest area (% of land area))、"AG.LND.FRST.ZS"、forest [[Link](https://data.worldbank.org/indicator/AG.LND.FRST.ZS)]
+
+-   概要：Forest area is land under natural or planted stands of trees of at least 5 meters in situ, whether productive or not, and excludes tree stands in agricultural production systems (for example, in fruit plantations and agroforestry systems) and trees in urban parks and gardens.
+
+
+
+### データの取得
+
+#### 準備
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+データのダウンロードと保存：コードと変数名を指定。
+
+```{r eval = FALSE}
+df_w6eda <- WDI(indicator = c(co2pcap = "EN.ATM.CO2E.PC",
+                              forest = "AG.LND.FRST.ZS"),
+                extra = TRUE)
+```
+
+*２回目からは、data から読み込めるようにしておく ファイル (Rmd) の保存場所に data フォルダがあることを確認*
+
+```{r eval = FALSE}
+write_csv(df_w6eda, "data/w6eda.csv")
+```
+
+```{r}
+df_w6eda <- read_csv("data/w6eda.csv")
+```
+
+
+
+### データの確認
+
+```{r}
+df_w6eda
+```
+
+```{r}
+str(df_w6eda)
+```
+
+
+
+#### 変数の選択（selecting）
+
+```{r}
+df_w6 <- df_w6eda |> 
+  select(country, iso2c, year, co2pcap, forest, region, income)
+df_w6
+```
+
+
+
+### 各年毎のデータの数の棒グラフ
+
+```{r}
+df_w6eda |> drop_na(co2pcap, forest) |>
+  ggplot(aes(year)) + geom_bar()
+```
+
+
+
+### 国と地域
+
+country には、国と地域両方が入っています。地域の iso2c は以下のものです。
+
+```{r}
+REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
+"S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
+"V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL", 
+"XM", "XN", "XO", "XP", "XQ", "XT", "XU", "XY", "Z4", "Z7", "ZF", 
+"ZG", "ZH", "ZI", "ZJ", "ZQ", "ZT")
+```
+
+
+
+#### 地域のリストを表示
+
+```{r}
+df_w6eda |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
+```
+
+
+
+#### 国名とその地域・所得レベルを表示
+
+```{r}
+df_w6eda |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c, region, income)
+```
+
+
+
+### 分析する国のリスト
+
+BRICS を選択することにます。
+
+```{r}
+BRICS <- c("Brazil", "Russian Federation", "India", "China", "South Africa")
+```
+
+
+
+### 経年変化
+
+### a. 日本
+
+```{r}
+df_w6 |> drop_na(co2pcap) |> filter(country == "Japan") |>
+  ggplot(aes(year, co2pcap)) + geom_line() + 
+  labs(title = "日本の一人当たりの二酸化炭素排出量")
+```
+
+
+
+```{r}
+df_w6 |> drop_na(forest) |> filter(country == "Japan") |>
+  ggplot(aes(year, forest)) + geom_line() + 
+  labs(title = "日本の森林面積（％）")
+```
+
+### b. 選択した国・地域
+
+```{r}
+df_w6 |> drop_na(co2pcap) |> filter(country %in% BRICS) |>
+  ggplot(aes(year, co2pcap, col = country)) + geom_line() + 
+  labs(title = "BRICS の一人当たりの二酸化炭素排出量")
+```
+
+
+
+```{r}
+df_w6 |> drop_na(forest) |> filter(country %in% BRICS) |>
+  ggplot(aes(year, forest, col = country)) + geom_line() + 
+  labs(title = "BRICSの森林面積（％）")
+```
+
+
+
+### 二つのデータの散布図
+
+必要に応じて log10 スケール
+
+#### a. すべての値の散布図
+
+```{r}
+df_w6 |> ggplot(aes(co2pcap, forest, col = region)) + geom_point()
+```
+
+
+
+#### b. NA ではない値の散布図、近似（回帰）直線を表示
+
+```{r}
+df_w6 |> drop_na(co2pcap, forest) |> 
+  ggplot(aes(co2pcap, forest)) + geom_point(aes(col = region)) +
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
+```
+
+
+
+#### c. 地域を除き国のみの散布図、近似（回帰）直線を表示
+
+```{r}
+df_w6 |> filter(!(iso2c %in% REGION)) |> drop_na(co2pcap, forest) |> 
+  ggplot(aes(co2pcap, forest)) + geom_point(aes(col = region)) +
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
+```
+
+
+
+#### d. 最近の年を選択し、地域を除き国のもの散布図、近似（回帰）直線を表示
+
+```{r}
+df_w6 |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2pcap, forest) |> 
+  ggplot(aes(co2pcap, forest)) + geom_point(aes(col = region)) +
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
+```
+
+**気づいたこと・疑問**
+
+-   森林面積が10％ よりも少ない国が多い
+
+-   弱い負の相関があるようだ
+
+-   授業で求めた相関係数は、-0.1832374。これは、四つの指標すべての値があり（NA ではなく）国地域も分けず、すべての年のデータでの相関をとったもの。傾向はある程度わかる。
+
+```{r}
+df_w6 |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2pcap, forest) |> 
+  select(co2pcap, forest) |> cor() 
+```
+
+
+*変数の情報を得ることができます。*
+
+```{r}
+str(df_under_6.85)
+```
+
+*データには country のところに、国だけでなく、地域も入っているので、地域のリストを、`iso2c` で `REGION` に入れておきます。以前にも一度使いました。*
+
+```{r}
+REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
+"S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
+"V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL", 
+"XM", "XN", "XO", "XP", "XQ", "XT", "XU", "XY", "Z4", "Z7", "ZF", 
+"ZG", "ZH", "ZI", "ZJ", "ZQ", "ZT")
+```
+
+*地域名にはどのようなものがあるか見ておきましょう。あとで、どこを調べるか考える時も、地域名や、国名がわかっていると、便利です。*
+
+```{r}
+df_under_6.85 |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
+```
+
+*国名も表示しておきます。*
+
+```{r}
+df_under_6.85 |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c)
+```
+
+### 分析する国のリスト
+
+#### **南部アフリカ関税同盟** The Southern African Customs Union (SACU)
+
+*これは、みなさんも使ってください。*
+
+```{r}
+SOUTH_AFRICA_FIVE <- c("South Africa", "Namibia", "Eswatini", "Botswana", "Lesotho")
+```
+
+*こちらは、自分で分析したい国のりすとを作ってください。*
+
+#### ラテンアメリカでジニ指数が大きい４カ国
+
+```{r}
+CHOSEN_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
+```
+
+## 分析
+
+### 1. 各年毎のデータの数の棒グラフ
+
+*まずは、NA の値を削除します。そのあとで、国の情報の数を数えたいので、`!(iso2c %in% REGION)` で、上でおいた、地域の iso2c を選択し、! は否定でしたから、地域ではないものを選択し、その数を棒グラフにしています。*
+
+```{r}
+df_under_6.85 |> drop_na(under_6.85) |> filter(!(iso2c %in% REGION)) |>
+  ggplot(aes(year)) + geom_bar()
+```
+
+## 視覚化
+
+### 2. 日本の貧困率（1日6.85ドル以下）
+
+*日本のデータを選択するには、`filter(country == "Japan")` とします。そのあとは、`under_6.85` の値が、NA のものを削除し、`year` の descending order 降順に並べ替えています。*
+
+```{r}
+df_under_6.85 |> filter(country == "Japan") |> 
+  drop_na(under_6.85) |> arrange(desc(year))
+```
+
+### 3. 経年変化
+
+#### a. 日本
+
+*まず、日本のデータを選択、次に、`under_6.85` が NA のものを削除し、x 軸に、year、y 軸に、`under_6.85` の値をとり、折れ線グラフで表示します。*
+
+```{r}
+df_under_6.85 |> filter(country == "Japan") |> drop_na(under_6.85) |>
+  ggplot(aes(year, under_6.85)) + geom_line()
+```
+
+*必ず、気づいたこと、疑問を書いてください。それが、EDA です。*
+
+**気づいたこと・疑問**
+
+-   あまりにもデータが少ないので、評価はできない。
+
+-   0.5% から 2.2% 程度、この基準で貧困者がいるということは、精度を高めながら、継続して、調査する必要があるように思われる。
+
+#### b. 南部アフリカ関税同盟
+
+*選択するときに、日本ではなく、SOUTH_AFRICA_FIVE に入っている、5カ国のどれかに一致するものを選ぶのが、`country %in% SOUTH_AFRICA_FIVE` です。国を色で区別しています。実は、`ggplot(aes(year, under_6.85, col = country)) + geom_line()` でも同じ結果になります。*
+
+```{r}
+df_under_6.85 |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(under_6.85) |>
+  ggplot(aes(year, under_6.85)) + geom_line(aes(col = country))
+```
+
+**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
+
+*色は、国別、それ以外に、geom_smooth で近似曲線を加えています。Help から、geom_smooth などを確認してください。*
+
+```{r}
+df_under_6.85 |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(under_6.85) |>
+  ggplot(aes(year, under_6.85)) + geom_line(aes(col = country)) +
+  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
+```
+
+**気づいたこと・疑問**
+
+-   貧困率を、6.85ドルでとると、非常に多くのひとたちが、貧困になっていることがわかる。
+
+#### c. ラテンアメリカ４カ国
+
+*選択して国についての分析です。*
+
+```{r}
+df_under_6.85|> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(under_6.85) |>
+  ggplot(aes(year, under_6.85)) + geom_line(aes(col = country))
+```
+
+**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
+
+```{r}
+df_under_6.85 |> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(under_6.85) |>
+  ggplot(aes(year, under_6.85)) + geom_line(aes(col = country)) +
+  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
+```
+
+### 分布
+
+日本も、2008, 2010, 2013 年にしかデータがなく、南部アフリカもこのデータは少ないので、データの数から、2010年について見てみる。
+
+*`binwidth` または、`bins` の数を変更して、適切なものに調整します。*
+
+```{r}
+df_under_6.85 |> filter(year == 2010) |> filter(!(country %in% REGION))|>
+  drop_na(under_6.85) |>
+  ggplot(aes(under_6.85)) + geom_histogram(binwidth = 10)
+```
+
+**参考：**SACU の５カ国の値を縦線で書き込むには下のようにします。
+
+*このデータの値はあまりないので、難しいですが、日本のデータと、南部アフリカの両方にデータがある年を選んでいます。*
+
+```{r}
+df_under_6.85 |> filter(year == 2010) |> filter(country %in% SOUTH_AFRICA_FIVE) 
+```
+
+**参考：日本と**SACU の５カ国の値を縦線で書き込むには下のようにします。
+
+*少し難しいですが、JP に 2010 年の日本の値を入れてあります。*
+
+```{r}
+JP <- 0.5
+SAF <- df_under_6.85 |> filter(year == 2010) |> filter(country %in% SOUTH_AFRICA_FIVE) |> pull(under_6.85)
+df_under_6.85 |> filter(year == 2010) |> filter(!(country %in% REGION))|>
+  drop_na(under_6.85) |>
+  ggplot() + geom_histogram(aes(under_6.85), binwidth = 10) +
+  geom_vline(xintercept = SAF, col = "red") + geom_vline(xintercept = JP, col = "blue") +labs(title = "貧困率（1日6.85ドル以下）", subtitle = "日本：青、SACU：赤")
+```
+
+### データが十分ある最近の年の値の10カ国の値の棒グラフ
+
+#### a. 値が大きい方から
+
+*`arrange(desc(under_6.85)) |> head(10)`　これで、降順にならべ、その上から 10 個を取り出しています。`fct_reorder(country, under_6.85)` は、アルファベット順ではなく、値の大きい順に表示するためのものです。*
+
+```{r}
+df_under_6.85 |> filter(year == 2019) |> drop_na(under_6.85) |> 
+  filter(!(iso2c %in% REGION))|>
+  arrange(desc(under_6.85)) |> head(10) |> 
+  ggplot(aes(fct_reorder(country, under_6.85), under_6.85)) + geom_col() + 
+  coord_flip() + labs(title = "Top 10 Countries", x = "country", y = "poverty rate (under $6.85 per day)")
+```
+
+#### b. 値が小さい方から
+
+*`fct_rev(fct_reorder(country, under_6.85)` の部分は、順序を上のものとは、逆にしています。*
+
+```{r}
+df_under_6.85 |> filter(year == 2019) |> drop_na(under_6.85) |> 
+  filter(!(iso2c %in% REGION))|>
+  arrange(under_6.85) |> head(10) |> 
+  ggplot(aes(fct_rev(fct_reorder(country, under_6.85)), under_6.85)) + geom_col() + 
+  coord_flip() + labs(title = "Lowest 10 Countries", x = "country", y = "poverty rate (under $6.85 per day)")
+```
+
+# 国の教育に関する支出
+
+> 概要：国内総生産（GDP）に対する、国の教育に関する支出（Government expenditure on education, total (% of GDP)）のデータの分析を行う
+
+## データ
+
+-   Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)]
+
+-   
+
+### データ情報
+
+-   データ名：
+
+-   データコード：
+
+-   変数名：`ed_exp`
+
+-   概要：
+
+### データの取得
+
+#### 準備
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+WDI パッケージを使って、直接データをダウンロードし、変数名を、`ed_exp` に指定。
+
+```         
+df_under_6.85 <- WDI(indicator = c(under_6.85 = "SI.POV.UMIC"))
+```
+
+```{r eval = FALSE}
+
+```
+
+```         
+write_csv(df_under_6.85, "data/under_6.85.csv")
+```
+
+```{r eval = FALSE}
+
+```
+
+```         
+df_under_6.85 <- read_csv("data/under_6.85.csv")
+```
+
+```{r}
+
+```
+
+### データの確認
+
+```         
+df_under_6.85
+```
+
+```{r}
+
+```
+
+```         
+str(df_under_6.85)
+```
+
+```{r}
+
+```
+
+```{r}
+REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
+"S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
+"V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL", 
+"XM", "XN", "XO", "XP", "XQ", "XT", "XU", "XY", "Z4", "Z7", "ZF", 
+"ZG", "ZH", "ZI", "ZJ", "ZQ", "ZT")
+```
+
+```         
+df_under_6.85 |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
+```
+
+```{r}
+
+```
+
+```         
+df_under_6.85 |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c)
+```
+
+```{r}
+
+```
+
+### 分析する国のリスト
+
+#### **南部アフリカ関税同盟** The Southern African Customs Union (SACU)
+
+```{r}
+SOUTH_AFRICA_FIVE <- c("South Africa", "Namibia", "Eswatini", "Botswana", "Lesotho")
+```
+
+#### いくつかの国を選択
+
+```         
+CHOSEN_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
+```
+
+```{r}
+
+```
+
+## 分析
+
+### 1. 各年毎のデータの数の棒グラフ
+
+```         
+df_under_6.85 |> drop_na(under_6.85) |> filter(!(iso2c %in% REGION)) |>
+  ggplot(aes(year)) + geom_bar()
+```
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-  
+
+## 視覚化
+
+### 2. 日本
+
+```         
+df_under_6.85 |> filter(country == "Japan") |> 
+  drop_na(under_6.85) |> arrange(desc(year))
+```
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-  
+
+### 3. 経年変化
+
+#### a. 日本
+
+```         
+df_under_6.85 |> filter(country == "Japan") |> drop_na(under_6.85) |>
+  ggplot(aes(year, under_6.85)) + geom_line()
+```
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+#### b. 南部アフリカ関税同盟
+
+```         
+df_under_6.85 |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(under_6.85) |>
+  ggplot(aes(year, under_6.85)) + geom_line(aes(col = country))
+```
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-  
+
+**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
+
+```         
+df_under_6.85 |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(under_6.85) |>
+  ggplot(aes(year, under_6.85)) + geom_line(aes(col = country)) +
+  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
+```
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+#### c. 選択した国・地域
+
+```         
+df_under_6.85 |> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(under_6.85) |>
+  ggplot(aes(year, under_6.85)) + geom_line(aes(col = country))
+```
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-  
+
+
+**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
+
+```         
+df_under_6.85 |> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(under_6.85) |>
+  ggplot(aes(year, under_6.85)) + geom_line(aes(col = country)) +
+  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
+```
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-  
+
+### 分布
+
+データの数から、まずは、2020年について見てみる。
+
+```         
+df_under_6.85 |> filter(year == 2010) |> filter(!(country %in% REGION))|>
+  drop_na(under_6.85) |>
+  ggplot(aes(under_6.85)) + geom_histogram(binwidth = 10)
+```
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-  
+
+**参考：**SACU の５カ国の値を縦線で書き込むには下のようにします。
+
+```         
+df_under_6.85 |> filter(year == 2010) |> filter(country %in% SOUTH_AFRICA_FIVE) 
+```
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-  
+
+
+**参考：日本と**SACU の５カ国の値を縦線で書き込むには下のようにします。
+
+```         
+JP <- 0.5
+SAF <- df_under_6.85 |> filter(year == 2010) |> filter(country %in% SOUTH_AFRICA_FIVE) |> pull(under_6.85)
+df_under_6.85 |> filter(year == 2010) |> filter(!(country %in% REGION))|>
+  drop_na(under_6.85) |>
+  ggplot() + geom_histogram(aes(under_6.85), binwidth = 1) +
+  geom_vline(xintercept = SAF, col = "red") + geom_vline(xintercept = JP, col = "blue") +labs(title = "貧困率（1日6.85ドル以下）", subtitle = "日本：青、SACU：赤")
+```
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-  
+
+### データが十分ある最近の年の値の10カ国の値の棒グラフ
+
+#### a. 値が大きい方から
+
+```         
+df_under_6.85 |> filter(year == 2019) |> drop_na(under_6.85) |> 
+  filter(!(iso2c %in% REGION))|>
+  arrange(desc(under_6.85)) |> head(10) |> 
+  ggplot(aes(fct_reorder(country, under_6.85), ed_exp)) + geom_col() + 
+  coord_flip() + labs(title = "Top 10 Countries", x = "country", y = "poverty rate (under $6.85 per day)")
+```
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-  
+
+#### b. 値が小さい方から
+
+```         
+df_under_6.85 |> filter(year == 2019) |> drop_na(under_6.85) |> 
+  filter(!(iso2c %in% REGION))|>
+  arrange(under_6.85) |> head(10) |> 
+  ggplot(aes(fct_rev(fct_reorder(country, under_6.85)), under_6.85)) + geom_col() + 
+  coord_flip() + labs(title = "Lowest 10 Countries", x = "country", y = "poverty rate (under $6.85 per day))
+```
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-   

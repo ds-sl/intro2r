@@ -48,7 +48,7 @@ IEA:　Energy Statistics Data Browser　データ元
 
 -   Electricity production from nuclear sources (% of total)：EG.ELC.NUCL.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.NUCL.ZS)]
 
-```{r}
+```{r eval=FALSE}
 df_environment <- WDI(
   indicator = c(co2pcap = "EN.ATM.CO2E.PC",
                 forest = "AG.LND.FRST.ZS",
@@ -58,7 +58,7 @@ df_environment <- WDI(
                 ), extra = TRUE)
 ```
 
-```{r}
+```{r eval=FALSE}
 write_csv(df_environment, "data/environment.csv")
 ```
 
