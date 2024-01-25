@@ -481,7 +481,7 @@ df_w6 |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2pcap
 
 -  Residuals: 直線よりどのぐらい大き値や小さい値があるか
 -  Coefficients: Estimate の　(Intercept) は直線の y-切片、forest は、傾き
--  Residual Standard Error: 直線からこの値の幅の間に、2/3 程度（68.2%）の点が入っている
+-  Residual Standard Error: 直線からこの値の幅の間に、おおよそ 2/3 程度（68.2%）の点が入っている
 -  Multiple R-squared: 直線がどの程度近似しているか、0 と 1 の間で、相関係数の二乗
 -  p-value: かなり小さいと（たとえば 0.01 未満）相関が正か負かがほぼ確実といえる
 
