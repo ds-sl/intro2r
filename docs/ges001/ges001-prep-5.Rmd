@@ -293,6 +293,30 @@ df_poverty_inequality <- read_csv("data/poverty_inequality.csv")
 ```
 
 ```{r}
+wdicache <- read_rds("data/wdicache.rds")
+wdicache$country |> filter(region == "Aggregates") |> arrange(iso2c) |> pull(iso2c) |> dput()
+```
+
+```{r}
+REGIONS <- c("1A", "1W", "4E", "6F", "6N", "6X", "7E", "8S", "A4", "A5", 
+"A9", "B1", "B2", "B3", "B4", "B6", "B7", "B8", "C4", "C5", "C6", 
+"C7", "C8", "C9", "D2", "D3", "D4", "D5", "D6", "D7", "EU", "F1", 
+"F6", "M1", "M2", "N6", "OE", "R6", "S1", "S2", "S3", "S4", "T2", 
+"T3", "T4", "T5", "T6", "T7", "V1", "V2", "V3", "V4", "XC", "XD", 
+"XE", "XF", "XG", "XH", "XI", "XJ", "XL", "XM", "XN", "XO", "XP", 
+"XQ", "XT", "XU", "XY", "Z4", "Z7", "ZB", "ZF", "ZG", "ZH", "ZI", 
+"ZJ", "ZQ", "ZT")
+```
+
+```{r}
+length(REGIONS)
+```
+
+```{r}
+wdicache$country |> filter(!(iso2c %in% REGIONS))
+```
+
+```{r}
 REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
 "S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
 "V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL", 

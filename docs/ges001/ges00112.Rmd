@@ -3,12 +3,12 @@ title: "GES 001 演習6"
 author: "H. Suzuki"
 date: "2024年1月31日"
 output:
+  html_notebook: default
+  html_document:
+    df_print: paged
   ioslides_presentation:
     widescreen: true
     df_print: paged
-  html_document:
-    df_print: paged
-  html_notebook: default
 ---
 
 ## 準備
@@ -165,11 +165,14 @@ df_environment
 country には、国と地域両方が入っています。地域の iso2c は以下のものです。
 
 ```{r}
-REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
-"S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
-"V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL", 
-"XM", "XN", "XO", "XP", "XQ", "XT", "XU", "XY", "Z4", "Z7", "ZF", 
-"ZG", "ZH", "ZI", "ZJ", "ZQ", "ZT")
+REGION <- c("1A", "1W", "4E", "6F", "6N", "6X", "7E", "8S", "A4", "A5", 
+"A9", "B1", "B2", "B3", "B4", "B6", "B7", "B8", "C4", "C5", "C6", 
+"C7", "C8", "C9", "D2", "D3", "D4", "D5", "D6", "D7", "EU", "F1", 
+"F6", "M1", "M2", "N6", "OE", "R6", "S1", "S2", "S3", "S4", "T2", 
+"T3", "T4", "T5", "T6", "T7", "V1", "V2", "V3", "V4", "XC", "XD", 
+"XE", "XF", "XG", "XH", "XI", "XJ", "XL", "XM", "XN", "XO", "XP", 
+"XQ", "XT", "XU", "XY", "Z4", "Z7", "ZB", "ZF", "ZG", "ZH", "ZI", 
+"ZJ", "ZQ", "ZT")
 ```
 
 地域のリストを表示
@@ -371,7 +374,7 @@ df_w6eda |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c, region, inc
 
 ### 分析する国のリスト
 
-BRICS を選択することにます。
+BRICS を選択します。
 
 ```{r}
 BRICS <- c("Brazil", "Russian Federation", "India", "China", "South Africa")
@@ -455,7 +458,7 @@ df_w6 |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2pcap
   geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
 ```
 
----
+------------------------------------------------------------------------
 
 **気づいたこと・疑問**
 
@@ -470,7 +473,7 @@ df_w6 |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2pcap
   select(co2pcap, forest) |> cor() 
 ```
 
----
+------------------------------------------------------------------------
 
 ### 参考
 
@@ -485,11 +488,23 @@ df_w6 |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2pcap
 -  Multiple R-squared: 直線がどの程度近似しているか、0 と 1 の間で、相関係数の二乗
 -  p-value: かなり小さいと（たとえば 0.01 未満）相関が正か負かがほぼ確実といえる
 
----
+------------------------------------------------------------------------
 
 ```{r eval = TRUE, echo = FALSE}
 df_w6 |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2pcap, forest) |> 
   select(co2pcap, forest) |> lm(co2pcap ~ forest, data = _) |> summary()
+```
+
+
+------------------------------------------------------------------------
+
+
+```{r message = FALSE, warning= FALSE}
+library(plotly)
+df_w6_chart_f <- df_w6 |> filter(!(iso2c %in% REGION), year == 2020) |> drop_na(co2pcap, forest) |> 
+  ggplot(aes(forest, co2pcap, text = country, colour = region)) + geom_point() +
+  labs(title = "Forest (%) vs CO2 per Capita (tons)") + theme(legend.position = "none")
+df_w6_chart_f |> ggplotly()
 ```
 
 
