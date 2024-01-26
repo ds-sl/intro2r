@@ -3,12 +3,12 @@ title: "GES 001 演習6"
 author: "H. Suzuki"
 date: "2024年1月31日"
 output:
-  html_notebook: default
-  html_document:
-    df_print: paged
   ioslides_presentation:
     widescreen: true
     df_print: paged
+  html_document:
+    df_print: paged
+  html_notebook: default
 ---
 
 ## 準備
@@ -134,7 +134,7 @@ df_environment <- WDI(
                 forest = "AG.LND.FRST.ZS",
                 renewable = "EG.ELC.RNEW.ZS",
                 fossil = "EG.ELC.FOSL.ZS",
-                nuclea = "EG.ELC.NUCL.ZS"
+                nuclear = "EG.ELC.NUCL.ZS"
                 ), extra = TRUE)
 ```
 
@@ -194,7 +194,7 @@ df_environment |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c,region
 ```{r}
 df_env <- df_environment |> 
   select(country, iso2c, year, co2pcap, forest, 
-         renewable, fossil, nuclea, region, income)
+         renewable, fossil, nuclear, region, income)
 df_env
 ```
 
@@ -204,8 +204,8 @@ df_env
 
 ```{r}
 df_env |> filter(!(iso2c %in% REGION)) |> # 地域以外（国のみ選択）
-  drop_na(co2pcap, forest, renewable, fossil, nuclea) |> 
-  select(co2pcap, forest, renewable, fossil, nuclea) |> cor()
+  drop_na(co2pcap, forest, renewable, fossil, nuclear) |> 
+  select(co2pcap, forest, renewable, fossil, nuclear) |> cor()
 ```
 
 値の正負：正の相関・負の相関、1に近いと強い正の相関、-1に近いと強い負の相関
@@ -420,12 +420,19 @@ df_w6 |> drop_na(forest) |> filter(country %in% BRICS) |>
 
 ### 二つのデータの散布図
 
-必要に応じて log10 スケール
+必要に応じて log10 スケール (`+ scale_y_log10`)
 
 #### a. すべての値の散布図
 
 ```{r}
 df_w6 |> ggplot(aes(forest, co2pcap, col = region)) + geom_point()
+```
+
+------------------------------------------------------------------------
+
+```{r}
+df_w6 |> filter(co2pcap >0) |> ggplot(aes(forest, co2pcap, col = region)) + 
+  geom_point() + scale_y_log10()
 ```
 
 ------------------------------------------------------------------------

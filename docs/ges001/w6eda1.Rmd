@@ -29,50 +29,30 @@ output:
 
 ### データ情報
 
--   CO2 emissions (metric tons per capita) ：EN.ATM.CO2E.PC [[Link](https://data.worldbank.org/indicator/EN.ATM.CO2E.PC)]
+-   CO2 emissions (metric tons per capita) ：EN.ATM.CO2E.PC [[Link](https://data.worldbank.org/indicator/EN.ATM.CO2E.PC)] (co2pcap)
 
--   Forest area (% of land area)：AG.LND.FRST.ZS [[Link](https://data.worldbank.org/indicator/AG.LND.FRST.ZS)]
+-   Forest area (% of land area)：AG.LND.FRST.ZS [[Link](https://data.worldbank.org/indicator/AG.LND.FRST.ZS)] (forest)
 
--   Renewable electricity output (% of total electricity output)：EG.ELC.RNEW.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.RNEW.ZS)]
+-   Renewable electricity output (% of total electricity output)：EG.ELC.RNEW.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.RNEW.ZS)] (renewable)
 
--   Electricity production from oil, gas and coal sources (% of total)：EG.ELC.FOSL.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.FOSL.ZS)]
+-   Electricity production from oil, gas and coal sources (% of total)：EG.ELC.FOSL.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.FOSL.ZS)] (fossil)
 
--   Electricity production from nuclear sources (% of total)：EG.ELC.NUCL.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.NUCL.ZS)]
-
-
-### 確認作業
-
--   Preview で確認。
-
--   Web Browser で、w5_c123456.nb.html など、R Notebook を見て確認。
-
--   もし、問題があれば、Run ボタンの右の三角から、Run All を選択し、エラーがでないか確認。
-
--   最初にもどる。
+-   Electricity production from nuclear sources (% of total)：EG.ELC.NUCL.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.NUCL.ZS)] (nuclear)
 
 
-
-### 途中でのエラー
-
--   入力したときには、例を参照して、スペルなどを確認してください。全角になっていると問題がおきます。() がペアでマッチしているか、確認してください。
--   引用符が入っていなかったり、== のところが、= だったり、いろいろな可能性があります。Error message を読むこともたいせつです。エラーがでた、Code Chunk と、Error message を、ChatGPT や、Google Bard, Google Search に入れると、解決方法を教えてくれることもあります。
--   File not found の、エラーがでたときには、上から順に、Run （Code Chunk の右上の三角印を押して実行）してみてください。または、エラーが出たところに、カーソルを置き、上の、Run ボタンの右の三角から、Run All Chunks Above を選択すると、そこまでのすべての　Code Chunk を実行してくれます。
--   上の方法でうまくいかないときは、data フォルダに、データ（\*\*\*.csv）が入っているかを確認、なければ、data フォルダがあることを確認して、最初のデータ読み込みのところを実行してみてください。
--   実行できていても、結果が見えないこともあります。そのときは、Code Chunk の下にある、山二つの記号を押してみてください。これは、結果を表示、非表示にします。それが原因で隠れている場合があります。
-
-
+# タイトル
 
 ## データ
 
 ### データ情報
 
--   データ１：一人当たりの二酸化炭素排出量 (CO2 emissions (metric tons per capita))、"EN.ATM.CO2E.PC"、co2pcap [[Link](https://data.worldbank.org/indicator/EN.ATM.CO2E.PC)]
+-   データ１：名前、コード、変数名、リンク
 
--   概要：Carbon dioxide emissions are those stemming from the burning of fossil fuels and the manufacture of cement. They include carbon dioxide produced during consumption of solid, liquid, and gas fuels and gas flaring.
+-   概要：
 
--   データ２：森林面積（％）(Forest area (% of land area))、"AG.LND.FRST.ZS"、forest [[Link](https://data.worldbank.org/indicator/AG.LND.FRST.ZS)]
+-   データ２：名前、コード、変数名、リンク
 
--   概要：Forest area is land under natural or planted stands of trees of at least 5 meters in situ, whether productive or not, and excludes tree stands in agricultural production systems (for example, in fruit plantations and agroforestry systems) and trees in urban parks and gardens.
+-   概要：
 
 
 
@@ -87,53 +67,79 @@ library(WDI)
 
 データのダウンロードと保存：コードと変数名を指定。
 
-```{r eval = FALSE}
-df_w6eda <- WDI(indicator = c(co2pcap = "EN.ATM.CO2E.PC",
+_データの名前は、変えたほうがよいので、例でも、df_w6eda_2 や、df_w6_2 に変えてあります。自分で決めたものを使うと、より練習になります。_
+
+```
+df_w6eda_2 <- WDI(indicator = c(co2pcap = "EN.ATM.CO2E.PC",
                               forest = "AG.LND.FRST.ZS"),
                 extra = TRUE)
 ```
 
+```{r eval = FALSE}
+
+
+```
+
 *２回目からは、data から読み込めるようにしておく ファイル (Rmd) の保存場所に data フォルダがあることを確認*
 
+```
+write_csv(df_w6eda_2, "data/w6eda_1.csv")
+```
+
 ```{r eval = FALSE}
-write_csv(df_w6eda, "data/w6eda.csv")
+
+```
+
+```
+df_w6eda_2 <- read_csv("data/w6eda_2.csv")
 ```
 
 ```{r}
-df_w6eda <- read_csv("data/w6eda.csv")
+
 ```
-
-
 
 ### データの確認
 
-```{r}
-df_w6eda
+```
+df_w6eda_2
 ```
 
 ```{r}
-str(df_w6eda)
+
 ```
 
+```
+str(df_w6eda_2)
+```
 
+```{r}
+
+```
 
 #### 変数の選択（selecting）
 
-```{r}
-df_w6 <- df_w6eda |> 
+```
+df_w6_2 <- df_w6eda_2 |> 
   select(country, iso2c, year, co2pcap, forest, region, income)
-df_w6
+df_w6_2
 ```
 
+```{r}
 
+
+```
 
 ### 各年毎のデータの数の棒グラフ
 
-```{r}
-df_w6eda |> drop_na(co2pcap, forest) |>
+```
+df_w6eda_2 |> drop_na(co2pcap, forest) |>
   ggplot(aes(year)) + geom_bar()
 ```
 
+```{r}
+
+
+```
 
 
 ### 国と地域
@@ -155,65 +161,91 @@ REGION <- c("1A", "1W", "4E", "6F", "6N", "6X", "7E", "8S", "A4", "A5",
 
 #### 地域のリストを表示
 
-```{r}
-df_w6eda |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
+```
+df_w6eda_2 |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
 ```
 
+```{r}
 
+```
 
 #### 国名とその地域・所得レベルを表示
 
-```{r}
-df_w6eda |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c, region, income)
+```
+df_w6eda_2 |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c, region, income)
 ```
 
+```{r}
 
+```
 
 ### 分析する国のリスト
 
-BRICS を選択することにます。
-
-```{r}
+```
 BRICS <- c("Brazil", "Russian Federation", "India", "China", "South Africa")
 ```
 
+```{r}
 
+```
 
 ### 経年変化
 
 ### a. 日本
 
-```{r}
-df_w6 |> drop_na(co2pcap) |> filter(country == "Japan") |>
+```
+df_w6_2 |> drop_na(co2pcap) |> filter(country == "Japan") |>
   ggplot(aes(year, co2pcap)) + geom_line() + 
   labs(title = "日本の一人当たりの二酸化炭素排出量")
 ```
 
-
-
 ```{r}
-df_w6 |> drop_na(forest) |> filter(country == "Japan") |>
+
+
+```
+
+**気づいたこと・疑問**
+
+```
+df_w6_2 |> drop_na(forest) |> filter(country == "Japan") |>
   ggplot(aes(year, forest)) + geom_line() + 
   labs(title = "日本の森林面積（％）")
 ```
 
+```{r}
+
+
+```
+
+**気づいたこと・疑問**
+
 ### b. 選択した国・地域
 
-```{r}
-df_w6 |> drop_na(co2pcap) |> filter(country %in% BRICS) |>
+```
+df_w6_2 |> drop_na(co2pcap) |> filter(country %in% BRICS) |>
   ggplot(aes(year, co2pcap, col = country)) + geom_line() + 
   labs(title = "BRICS の一人当たりの二酸化炭素排出量")
 ```
 
-
-
 ```{r}
-df_w6 |> drop_na(forest) |> filter(country %in% BRICS) |>
+
+
+```
+
+**気づいたこと・疑問**
+
+```
+df_w6_2 |> drop_na(forest) |> filter(country %in% BRICS) |>
   ggplot(aes(year, forest, col = country)) + geom_line() + 
   labs(title = "BRICSの森林面積（％）")
 ```
 
+```{r}
 
+
+```
+
+**気づいたこと・疑問**
 
 ### 二つのデータの散布図
 
@@ -221,50 +253,66 @@ df_w6 |> drop_na(forest) |> filter(country %in% BRICS) |>
 
 #### a. すべての値の散布図
 
-```{r}
-df_w6 |> ggplot(aes(forest, co2pcap, , col = region)) + geom_point()
+```
+df_w6_2 |> ggplot(aes(forest, co2pcap, col = region)) + geom_point()
 ```
 
+```{r}
 
+```
 
 #### b. NA ではない値の散布図、近似（回帰）直線を表示
 
-```{r}
-df_w6 |> drop_na(co2pcap, forest) |> 
+```
+df_w6_2 |> drop_na(co2pcap, forest) |> 
   ggplot(aes(forest, co2pcap)) + geom_point(aes(col = region)) +
   geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
 ```
 
+```{r}
 
+
+```
 
 #### c. 地域を除き国のみの散布図、近似（回帰）直線を表示
 
-```{r}
-df_w6 |> filter(!(iso2c %in% REGION)) |> drop_na(co2pcap, forest) |> 
+```
+df_w6_2 |> filter(!(iso2c %in% REGION)) |> drop_na(co2pcap, forest) |> 
   ggplot(aes(forest, co2pcap)) + geom_point(aes(col = region)) +
   geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
 ```
 
+```{r}
 
+
+```
 
 #### d. 最近の年を選択し、地域を除き国のもの散布図、近似（回帰）直線を表示
 
-```{r}
-df_w6 |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2pcap, forest) |> 
+```
+df_w6_2 |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2pcap, forest) |> 
   ggplot(aes(forest, co2pcap)) + geom_point(aes(col = region)) +
   geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
+```
+
+```{r}
+
+
 ```
 
 **気づいたこと・疑問**
 
--   森林面積が10％ よりも少ない国が多い
 
--   弱い負の相関があるようだ
 
--   授業で求めた相関係数は、-0.1832374。これは、四つの指標すべての値があり（NA ではなく）国地域も分けず、すべての年のデータでの相関をとったもの。傾向はある程度わかる。
-
-```{r}
-df_w6 |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2pcap, forest) |> 
-  select(forest, co2pcap) |> cor() 
+```
+df_w6_2 |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2pcap, forest) |> 
+  select(co2pcap, forest) |> cor() 
 ```
 
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問**

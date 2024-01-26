@@ -1,4 +1,4 @@
-country,iso2c,iso3c,year,status,lastupdated,co2pcap,forest,renewable,fossil,nuclea,region,capital,longitude,latitude,income,lending
+country,iso2c,iso3c,year,status,lastupdated,co2pcap,forest,renewable,fossil,nuclear,region,capital,longitude,latitude,income,lending
 Afghanistan,AF,AFG,2014,,2023-12-18,0.283692395910162,1.85278199408184,85.3235490326885,NA,NA,South Asia,Kabul,69.1761,34.5228,Low income,IDA
 Afghanistan,AF,AFG,1971,,2023-12-18,NA,NA,NA,NA,NA,South Asia,Kabul,69.1761,34.5228,Low income,IDA
 Afghanistan,AF,AFG,2006,,2023-12-18,0.0897569086344725,1.85278199408184,70.7557502738226,NA,NA,South Asia,Kabul,69.1761,34.5228,Low income,IDA
