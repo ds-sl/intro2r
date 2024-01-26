@@ -35,9 +35,7 @@ output:
 
 以下においては、世界銀行の、世界開発指標（World Development Indicators）の、五つの指標、すなわち、一人当たりのCO2排出量（単位：トン）、森林面積（陸地面積に占める割合）、および、総発電量に占める、再生可能エネルギー発電量、化石燃料（石油、ガス、石炭）による発電量、原子力による発電量から、二つずつ指標を選択し、それらの関係について考察する。
 
-## はじめに
-
-### データについて
+## データについて
 
 -   CO2 emissions (metric tons per capita) ：EN.ATM.CO2E.PC [[Link](https://data.worldbank.org/indicator/EN.ATM.CO2E.PC)] (co2pcap)
 
@@ -110,7 +108,7 @@ df_environment
 str(df_environment)
 ```
 
-#### データの数
+### データの数
 
 すべての指標の値があるもののデータ数を、年毎に表示する。
 
@@ -118,6 +116,8 @@ str(df_environment)
 df_env |> drop_na(co2pcap, forest, renewable, fossil, nuclear) |> 
   ggplot(aes(year)) + geom_bar()
 ```
+
+**気づいたこと・疑問**
 
 -   データは、1990年以降で、すべてのデータが存在するのは、2014年ごろとなる。のちに、それぞれの場合に、個別にみる。
 
@@ -130,9 +130,11 @@ df_env |> pivot_longer(cols = c(co2pcap, forest, renewable, fossil, nuclear)) |>
   drop_na(value) |> ggplot(aes(year, fill = name)) + geom_bar(col = "black", linewidth = 0.1)
 ```
 
+**気づいたこと・疑問**
+
 - すべてのデーが十分あるのは、2014年。ある程度あるのは、2015年、それ以降は、co2pcap と、forest のみ。
 
-#### 変数の選択（selecting）
+### 変数の選択（selecting）
 
 ```{r}
 df_env <- df_environment |> 
@@ -141,7 +143,7 @@ df_env <- df_environment |>
 df_env
 ```
 
-### 変数の相関関係
+## 変数の相関関係
 
 データを概観するため、授業の最初に見たように、国を選択し、変数の相関関係を見てみる。
 
@@ -159,10 +161,27 @@ df_env |> filter(!(iso2c %in% REGION), year == 2014) |> # 地域以外（国の�
   select(co2pcap, forest, renewable, fossil, nuclear) |> cor()
 ```
 
+原子力だけ考えると、値が 0 のところが多いので、0 を省いたほうが良いかもしれない。
+
+```{r}
+df_env |> filter(!(iso2c %in% REGION), year == 2014) |> filter(nuclear >0) |>
+  select(country, iso2c, nuclear) |> arrange(desc(nuclear))
+```
+
+```{r}
+df_env |> filter(!(iso2c %in% REGION), year == 2014) |> # 地域以外（国のみ選択）
+  drop_na(co2pcap, forest, renewable, fossil, nuclear) |> filter(nuclear >0) |>
+  select(co2pcap, forest, renewable, fossil, nuclear) |> cor()
+```
+
+**気づいたこと・疑問**
+
+-   一人当たりの二酸化炭素排出量（co2pcap）との関係でみると、再生可能エネルギーとの負の相関が最大で、次が、化石燃料との正の相関が強い。原子力は、非常に弱い正の相関、森林の面積は、弱い負の相関がある。ことがわかる。
+
+_あくまでも、相関であり、因果関係ではない。再生可能エネルギーを増やしたり、化石燃料による発電を減らしたり、森を増やせば、二酸化炭素排出量が減ると、ここから結論できるわけではない。あくまでも、化石燃料の発電が多い国のほうが、二酸化炭素排出量が多い傾向があるというようなことが見て取れることである。相関関係は因果関係にあらず。Correlation is not causation._
 
 
-
-### 国と地域
+## 国と地域
 
 country には、国と地域両方が入っています。地域の iso2c は以下のものです。
 
@@ -177,13 +196,13 @@ REGION <- c("1A", "1W", "4E", "6F", "6N", "6X", "7E", "8S", "A4", "A5",
 "ZJ", "ZQ", "ZT")
 ```
 
-#### 地域のリストを表示
+### 地域のリストを表示
 
 ```{r}
 df_env |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
 ```
 
-#### 国名とその地域・所得レベルを表示
+### 国名とその地域・所得レベルを表示
 
 ```{r}
 df_env |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c, region, income)
@@ -191,279 +210,312 @@ df_env |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c, region, incom
 
 ### 分析する国のリスト
 
-BRICS と呼ばれる、ブラジル、ロシア、インド、中国、南アフリカ４カ国についてデータをみる。
+_いくつかの国のグループについて、国名または、iso2c または iso3c のリストを作成しておくと、便利です。そのときに、上のリストは、役に立ちます。_
+
+BRICS と呼ばれる、ブラジル、ロシア、インド、中国、南アフリカ５カ国についてデータをみる。
 
 ```{r}
 BRICS <- c("Brazil", "Russian Federation", "India", "China", "South Africa")
 ```
 
-# 二酸化炭素排出量と森林面積
-
-## データ
-
-### データ情報
-
--   データ１：一人当たりの二酸化炭素排出量 (CO2 emissions (metric tons per capita))、"EN.ATM.CO2E.PC"、co2pcap [[Link](https://data.worldbank.org/indicator/EN.ATM.CO2E.PC)]
-
--   概要：二酸化炭素排出量は、化石燃料の燃焼とセメントの製造に由来するものである。固形燃料、液体燃料、ガス燃料の消費時に発生する二酸化炭素や、ガスのフレアリングも含まれる。Carbon dioxide emissions are those stemming from the burning of fossil fuels and the manufacture of cement. They include carbon dioxide produced during consumption of solid, liquid, and gas fuels and gas flaring.
-
--   データ２：森林面積（％）(Forest area (% of land area))、"AG.LND.FRST.ZS"、forest [[Link](https://data.worldbank.org/indicator/AG.LND.FRST.ZS)]
-
--   概要：森林面積とは、生産的か否かを問わず、原位置で5m以上の樹木の天然林または人工林の下にある土地であり、農業生産システム（例えば、果樹園やアグロフォレストリーシステム）における樹木の立木や、都市の公園や庭園の樹木を除く。Forest area is land under natural or planted stands of trees of at least 5 meters in situ, whether productive or not, and excludes tree stands in agricultural production systems (for example, in fruit plantations and agroforestry systems) and trees in urban parks and gardens.
-
-### 経年変化
-
-### a. 日本
+国名ではなく、iso2c で選択することも可能。
 
 ```{r}
-df_w6 |> drop_na(co2pcap) |> filter(country == "Japan") |>
-  ggplot(aes(year, co2pcap)) + geom_line() + 
-  labs(title = "日本の一人当たりの二酸化炭素排出量")
+brics <- c("BR","RU","IN","CN","ZA")
 ```
 
+## 経年変化を表す折線グラフ
+
+### 一人当たりの二酸化炭素排出量
+
+#### a. 日本
+
 ```{r}
-df_w6 |> drop_na(forest) |> filter(country == "Japan") |>
-  ggplot(aes(year, forest)) + geom_line() + 
-  labs(title = "日本の森林面積（％）")
+df_env |> filter(country == "Japan") |> drop_na(co2pcap) |>
+  ggplot(aes(year, co2pcap)) + geom_line()
 ```
 
-### b. 選択した国・地域
+**気づいたこと・疑問**
+
+#### b. 選択した国・地域
 
 ```{r}
-df_w6 |> drop_na(co2pcap) |> filter(country %in% BRICS) |>
-  ggplot(aes(year, co2pcap, col = country)) + geom_line() + 
-  labs(title = "BRICS の一人当たりの二酸化炭素排出量")
+df_env |> filter(country %in% BRICS) |> drop_na(co2pcap) |>
+  ggplot(aes(year, co2pcap, col = country)) + geom_line()
 ```
 
+iso2c の brics で選択する時は、
+
 ```{r}
-df_w6 |> drop_na(forest) |> filter(country %in% BRICS) |>
-  ggplot(aes(year, forest, col = country)) + geom_line() + 
-  labs(title = "BRICSの森林面積（％）")
+df_env |> filter(iso2c %in% brics) |> drop_na(co2pcap) |>
+  ggplot(aes(year, co2pcap, col = country)) + geom_line()
 ```
 
-### 二つのデータの散布図
-
-必要に応じて log10 スケール
-
-#### a. すべての値の散布図
+凡例も、ISO2C 表示にすることも可能です。
 
 ```{r}
-df_w6 |> ggplot(aes(forest, co2pcap, col = region)) + geom_point()
+df_env |> filter(iso2c %in% brics) |> drop_na(co2pcap) |>
+  ggplot(aes(year, co2pcap, col = iso2c)) + geom_line()
 ```
 
-#### b. NA ではない値の散布図、近似（回帰）直線を表示
+**気づいたこと・疑問**
+
+### 森林面積
+
+#### a. 日本
 
 ```{r}
-df_w6 |> drop_na(co2pcap, forest) |> 
+df_env |> filter(country == "Japan") |> drop_na(forest) |>
+  ggplot(aes(year, forest)) + geom_line()
+```
+
+**気づいたこと・疑問**
+
+#### b. 選択した国・地域
+
+```{r}
+df_env |> filter(country %in% BRICS) |> drop_na(forest) |>
+  ggplot(aes(year, forest, col = country)) + geom_line()
+```
+
+**気づいたこと・疑問**
+
+### 再生可能エネルギー
+
+#### a. 日本
+
+```{r}
+df_env |> filter(country == "Japan") |> drop_na(renewable) |>
+  ggplot(aes(year, renewable)) + geom_line()
+```
+
+**気づいたこと・疑問**
+
+#### b. 選択した国・地域
+
+```{r}
+df_env |> filter(country %in% BRICS) |> drop_na(renewable) |>
+  ggplot(aes(year, renewable, col = country)) + geom_line()
+```
+
+**気づいたこと・疑問**
+
+### 化石エネルギー
+
+#### a. 日本
+
+```{r}
+df_env |> filter(country == "Japan") |> drop_na(fossil) |>
+  ggplot(aes(year, fossil)) + geom_line()
+```
+
+**気づいたこと・疑問**
+
+#### b. 選択した国・地域
+
+```{r}
+df_env |> filter(country %in% BRICS) |> drop_na(fossil) |>
+  ggplot(aes(year, fossil, col = country)) + geom_line()
+```
+
+**気づいたこと・疑問**
+
+### 原子力
+
+#### a. 日本
+
+```{r}
+df_env |> filter(country == "Japan") |> drop_na(nuclear) |>
+  ggplot(aes(year, nuclear)) + geom_line()
+```
+
+**気づいたこと・疑問**
+
+#### b. 選択した国・地域
+
+```{r}
+df_env |> filter(country %in% BRICS) |> drop_na(nuclear) |>
+  ggplot(aes(year, nuclear, col = country)) + geom_line()
+```
+
+**気づいたこと・疑問**
+
+## 相関を表す散布図
+
+### 一人当たりの二酸化炭素排出量と、森林面積
+
+```{r}
+df_env |> filter(!(iso2c %in% REGION)) |> filter(year == 2014) |> drop_na(co2pcap, forest) |> 
   ggplot(aes(forest, co2pcap)) + geom_point(aes(col = region)) +
   geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
 ```
 
-#### c. 地域を除き国のみの散布図、近似（回帰）直線を表示
-
 ```{r}
-df_w6 |> filter(!(iso2c %in% REGION)) |> drop_na(co2pcap, forest) |> 
-  ggplot(aes(forest, co2pcap)) + geom_point(aes(col = region)) +
-  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
-```
-
-#### d. 最近の年を選択し、地域を除き国のもの散布図、近似（回帰）直線を表示
-
-```{r}
-df_w6 |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2pcap, forest) |> 
-  ggplot(aes(forest, co2pcap)) + geom_point(aes(col = region)) +
+df_env |> filter(!(iso2c %in% REGION)) |> filter(year == 2014) |> drop_na(co2pcap, forest) |> 
+  ggplot(aes(forest, co2pcap)) + geom_point(aes(col = income)) +
   geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
 ```
 
 **気づいたこと・疑問**
 
--   森林面積が10％ よりも少ない国が多い
-
--   弱い負の相関があるようだ
-
--   授業で求めた相関係数は、-0.1832374。これは、四つの指標すべての値があり（NA ではなく）国地域も分けず、すべての年のデータでの相関をとったもの。傾向はある程度わかる。
+### 一人当たりの二酸化炭素排出量と、再生可能エネルギー
 
 ```{r}
-df_w6 |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2pcap, forest) |> 
-  select(co2pcap, forest) |> cor() 
-```
-
-# 実習
-
-# 例：二酸化炭素排出量と[選択した指標]
-
-## データ
-
-### データ情報
-
--   データ１：一人当たりの二酸化炭素排出量 (CO2 emissions (metric tons per capita))、"EN.ATM.CO2E.PC"、co2pcap [[Link](https://data.worldbank.org/indicator/EN.ATM.CO2E.PC)]
-
--   概要：Carbon dioxide emissions are those stemming from the burning of fossil fuels and the manufacture of cement. They include carbon dioxide produced during consumption of solid, liquid, and gas fuels and gas flaring.
-
--   データ２：名前、コード、変数名、リンク
-
--   概要：
-
-### データの取得
-
-#### 準備
-
-```{r}
-library(tidyverse)
-library(WDI)
-```
-
-データのダウンロードと保存：コードと変数名を指定。
-
-```{r eval = FALSE}
-df_w6eda_1 <- WDI(indicator = c(co2pcap = "EN.ATM.CO2E.PC",
-                              forest = "AG.LND.FRST.ZS"),
-                extra = TRUE)
-```
-
-*２回目からは、data から読み込めるようにしておく ファイル (Rmd) の保存場所に data フォルダがあることを確認*
-
-```{r eval = FALSE}
-write_csv(df_w6eda_1, "data/w6eda_1.csv")
-```
-
-```{r}
-df_w6eda_1 <- read_csv("data/w6eda_1.csv")
-```
-
-### データの確認
-
-```{r}
-df_w6eda_1
-```
-
-```{r}
-str(df_w6eda_1)
-```
-
-#### 変数の選択（selecting）
-
-```{r}
-df_w6_1 <- df_w6eda_1 |> 
-  select(country, iso2c, year, co2pcap, forest, region, income)
-df_w6_1
-```
-
-### 各年毎のデータの数の棒グラフ
-
-```{r}
-df_w6eda_1 |> drop_na(co2pcap, forest) |>
-  ggplot(aes(year)) + geom_bar()
-```
-
-### 国と地域
-
-country には、国と地域両方が入っています。地域の iso2c は以下のものです。
-
-```{r}
-REGION <- c("1A", "1W", "4E", "6F", "6N", "6X", "7E", "8S", "A4", "A5", 
-"A9", "B1", "B2", "B3", "B4", "B6", "B7", "B8", "C4", "C5", "C6", 
-"C7", "C8", "C9", "D2", "D3", "D4", "D5", "D6", "D7", "EU", "F1", 
-"F6", "M1", "M2", "N6", "OE", "R6", "S1", "S2", "S3", "S4", "T2", 
-"T3", "T4", "T5", "T6", "T7", "V1", "V2", "V3", "V4", "XC", "XD", 
-"XE", "XF", "XG", "XH", "XI", "XJ", "XL", "XM", "XN", "XO", "XP", 
-"XQ", "XT", "XU", "XY", "Z4", "Z7", "ZB", "ZF", "ZG", "ZH", "ZI", 
-"ZJ", "ZQ", "ZT")
-```
-
-#### 地域のリストを表示
-
-```{r}
-df_w6eda_1 |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
-```
-
-#### 国名とその地域・所得レベルを表示
-
-```{r}
-df_w6eda_1 |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c, region, income)
-```
-
-### 分析する国のリスト
-
-BRICS を選択します。
-
-```{r}
-BRICS <- c("Brazil", "Russian Federation", "India", "China", "South Africa")
-```
-
-### 経年変化
-
-### a. 日本
-
-```{r}
-df_w6_1 |> drop_na(co2pcap) |> filter(country == "Japan") |>
-  ggplot(aes(year, co2pcap)) + geom_line() + 
-  labs(title = "日本の一人当たりの二酸化炭素排出量")
-```
-
-```{r}
-df_w6_1 |> drop_na(forest) |> filter(country == "Japan") |>
-  ggplot(aes(year, forest)) + geom_line() + 
-  labs(title = "日本の森林面積（％）")
-```
-
-### b. 選択した国・地域
-
-```{r}
-df_w6_1 |> drop_na(co2pcap) |> filter(country %in% BRICS) |>
-  ggplot(aes(year, co2pcap, col = country)) + geom_line() + 
-  labs(title = "BRICS の一人当たりの二酸化炭素排出量")
-```
-
-```{r}
-df_w6_1 |> drop_na(forest) |> filter(country %in% BRICS) |>
-  ggplot(aes(year, forest, col = country)) + geom_line() + 
-  labs(title = "BRICSの森林面積（％）")
-```
-
-### 二つのデータの散布図
-
-必要に応じて log10 スケール
-
-#### a. すべての値の散布図
-
-```{r}
-df_w6_1 |> ggplot(aes(forest, co2pcap, col = region)) + geom_point()
-```
-
-#### b. NA ではない値の散布図、近似（回帰）直線を表示
-
-```{r}
-df_w6_1 |> drop_na(co2pcap, forest) |> 
-  ggplot(aes(forest, co2pcap)) + geom_point(aes(col = region)) +
+df_env |> filter(!(iso2c %in% REGION)) |> filter(year == 2014) |> 
+  drop_na(co2pcap, renewable) |> 
+  ggplot(aes(renewable, co2pcap)) + geom_point(aes(col = region)) +
   geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
 ```
 
-#### c. 地域を除き国のみの散布図、近似（回帰）直線を表示
-
 ```{r}
-df_w6_1 |> filter(!(iso2c %in% REGION)) |> drop_na(co2pcap, forest) |> 
-  ggplot(aes(forest, co2pcap)) + geom_point(aes(col = region)) +
-  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
-```
-
-#### d. 最近の年を選択し、地域を除き国のもの散布図、近似（回帰）直線を表示
-
-```{r}
-df_w6_1 |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2pcap, forest) |> 
-  ggplot(aes(forest, co2pcap)) + geom_point(aes(col = region)) +
+df_env |> filter(!(iso2c %in% REGION)) |> filter(year == 2014) |> 
+  drop_na(co2pcap, renewable) |> 
+  ggplot(aes(renewable, co2pcap)) + geom_point(aes(col = income)) +
   geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
 ```
 
 **気づいたこと・疑問**
 
--   森林面積が10％ よりも少ない国が多い
-
--   弱い負の相関があるようだ
-
--   授業で求めた相関係数は、-0.1832374。これは、四つの指標すべての値があり（NA ではなく）国地域も分けず、すべての年のデータでの相関をとったもの。傾向はある程度わかる。
+### 一人当たりの二酸化炭素排出量と、化石エネルギー
 
 ```{r}
-df_w6_1 |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2pcap, forest) |> 
-  select(co2pcap, forest) |> cor() 
+df_env |> filter(!(iso2c %in% REGION)) |> filter(year == 2014) |> 
+  drop_na(co2pcap, fossil) |> 
+  ggplot(aes(fossil, co2pcap)) + geom_point(aes(col = region)) +
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
 ```
+
+```{r}
+df_env |> filter(!(iso2c %in% REGION)) |> filter(year == 2014) |> 
+  drop_na(co2pcap, fossil) |> 
+  ggplot(aes(fossil, co2pcap)) + geom_point(aes(col = income)) +
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
+```
+
+**気づいたこと・疑問**
+
+### 一人当たりの二酸化炭素排出量と、原子力
+
+```{r}
+df_env |> filter(!(iso2c %in% REGION)) |> filter(year == 2014) |> 
+  drop_na(co2pcap, nuclear) |> 
+  ggplot(aes(nuclear, co2pcap)) + geom_point(aes(col = region)) +
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
+```
+
+```{r}
+df_env |> filter(!(iso2c %in% REGION)) |> filter(year == 2014) |> 
+  drop_na(co2pcap, nuclear) |> filter(nuclear >0) |>
+  ggplot(aes(nuclear, co2pcap)) + geom_point(aes(col = income)) +
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
+```
+
+**気づいたこと・疑問**
+
+### 森林面積と、再生可能エネルギー
+
+```{r}
+df_env |> filter(!(iso2c %in% REGION)) |> filter(year == 2014) |> 
+  drop_na(forest, renewable) |> 
+  ggplot(aes(renewable, forest)) + geom_point(aes(col = region)) +
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
+```
+
+```{r}
+df_env |> filter(!(iso2c %in% REGION)) |> filter(year == 2014) |> 
+  drop_na(forest, renewable) |> 
+  ggplot(aes(renewable, forest)) + geom_point(aes(col = income)) +
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
+```
+
+**気づいたこと・疑問**
+
+### 森林面積と、化石エネルギー
+
+```{r}
+df_env |> filter(!(iso2c %in% REGION)) |> filter(year == 2014) |> 
+  drop_na(fossil, forest) |> 
+  ggplot(aes(fossil, forest)) + geom_point(aes(col = region)) +
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
+```
+
+```{r}
+df_env |> filter(!(iso2c %in% REGION)) |> filter(year == 2014) |> 
+  drop_na(fossil, forest) |> 
+  ggplot(aes(fossil, forest)) + geom_point(aes(col = income)) +
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
+```
+
+**気づいたこと・疑問**
+
+### 森林面積と、原子力
+
+```{r}
+df_env |> filter(!(iso2c %in% REGION)) |> filter(year == 2014) |> 
+  drop_na(nuclear, forest) |> 
+  ggplot(aes(forest, nuclear)) + geom_point(aes(col = region)) +
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
+```
+
+```{r}
+df_env |> filter(!(iso2c %in% REGION)) |> filter(year == 2014) |> 
+  drop_na(nuclear, forest) |> filter(nuclear >0) |>
+  ggplot(aes(forest, nuclear)) + geom_point(aes(col = income)) +
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
+```
+
+**気づいたこと・疑問**
+
+### 再生可能エネルギーと、化石エネルギー
+
+```{r}
+df_env |> filter(!(iso2c %in% REGION)) |> filter(year == 2014) |> 
+  drop_na(fossil, renewable) |> 
+  ggplot(aes(renewable, fossil)) + geom_point(aes(col = region)) +
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
+```
+
+```{r}
+df_env |> filter(!(iso2c %in% REGION)) |> filter(year == 2014) |> 
+  drop_na(fossil, renewable) |> 
+  ggplot(aes(renewable, fossil)) + geom_point(aes(col = income)) +
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
+```
+
+**気づいたこと・疑問**
+
+### 再生可能エネルギーと、原子力
+
+```{r}
+df_env |> filter(!(iso2c %in% REGION)) |> filter(year == 2014) |> 
+  drop_na(nuclear, renewable) |> 
+  ggplot(aes(renewable, nuclear)) + geom_point(aes(col = region)) +
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
+```
+
+```{r}
+df_env |> filter(!(iso2c %in% REGION)) |> filter(year == 2014) |> 
+  drop_na(nuclear, renewable) |> filter(nuclear >0) |>
+  ggplot(aes(renewable, nuclear)) + geom_point(aes(col = income)) +
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
+```
+
+**気づいたこと・疑問**
+
+### 化石エネルギーと、原子力
+
+```{r}
+df_env |> filter(!(iso2c %in% REGION)) |> filter(year == 2014) |> 
+  drop_na(fossil, nuclear) |> 
+  ggplot(aes(fossil, nuclear)) + geom_point(aes(col = region)) +
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
+```
+
+```{r}
+df_env |> filter(!(iso2c %in% REGION)) |> filter(year == 2014) |> 
+  drop_na(fossil, nuclear) |> filter(nuclear >0) |>
+  ggplot(aes(fossil, nuclear)) + geom_point(aes(col = income)) +
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
+```
+
+**気づいたこと・疑問**
