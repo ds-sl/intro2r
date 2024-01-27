@@ -286,23 +286,35 @@ DT.ODA.ALLD.CD
 
 をテキストに使っています。
 
-01/30(TU)　Rでデータサイエンス6：気候変動　 [授業資料]
+01/30(TU)　Rでデータサイエンス6：気候変動　 　[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00112.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00112.nb.html)]・[ビデオ]
 
 **Environment-Climate**　
 
-<!-- CO2 emissions (metric tons per capita) ：EN.ATM.CO2E.PC -->
+CO2 emissions (metric tons per capita) ：EN.ATM.CO2E.PC
 
-<!-- Forest area (% of land area)：AG.LND.FRST.ZS -->
+Forest area (% of land area)：AG.LND.FRST.ZS
 
-<!-- Renewable electricity output (% of total electricity output)：EG.ELC.RNEW.ZS -->
+Renewable electricity output (% of total electricity output)：EG.ELC.RNEW.ZS
 
-<!-- Electricity production from oil, gas and coal sources (% of total)：EG.ELC.FOSL.ZS -->
+Electricity production from oil, gas and coal sources (% of total)：EG.ELC.FOSL.ZS
 
-<!-- Electricity production from nuclear sources (% of total)：EG.ELC.NUCL.ZS -->
+Electricity production from nuclear sources (% of total)：EG.ELC.NUCL.ZS
 
-<!-- IEA:　Energy Statistics Data Browser　データ元 -->
+IEA:　Energy Statistics Data Browser　データ元
 
-<!-- <https://www.iea.org/data-and-statistics/data-tools/energy-statistics-data-browser?country=WORLD&fuel=Energy%20supply&indicator=ElecGenByFuel> -->
+<https://www.iea.org/data-and-statistics/data-tools/energy-statistics-data-browser?country=WORLD&fuel=Energy%20supply&indicator=ElecGenByFuel>
+
+#### 演習の内容
+
+<!-- 課題の解答例 [リンク](https://ds-sl.github.io/intro2r/ges001/w5eda0.nb.html) -->
+
+基本的には、PositCloud（<https://posit.cloud/>）を使って実習
+
+-   探索的データ分析（EDA） -
+    -   練習と一つ目の課題（w6eda.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/w6eda.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w6eda.Rmd)]
+    -   二つ目以降の課題：w6eda1.Rmd [[リンク](https://ds-sl.github.io/intro2r/ges001/w6eda1.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w6eda1.Rmd)]
+    
+<!-- -   課題：**2023.1.27. 23:59** までに Moodle の演習の課題ボックスに提出したものについては、なるべく、早く見て、フィードバックを書きます。それ以降に提出されたものも見ますが、フィードバックは遅くなると思ってください。 -->
 
 ### 第7週
 
