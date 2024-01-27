@@ -313,7 +313,7 @@ IEA:　Energy Statistics Data Browser　データ元
 -   探索的データ分析（EDA） -
     -   練習と一つ目の課題（w6eda.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/w6eda.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w6eda.Rmd)]
     -   二つ目以降の課題：w6eda1.Rmd [[リンク](https://ds-sl.github.io/intro2r/ges001/w6eda1.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w6eda1.Rmd)]
-    
+
 <!-- -   課題：**2023.1.27. 23:59** までに Moodle の演習の課題ボックスに提出したものについては、なるべく、早く見て、フィードバックを書きます。それ以降に提出されたものも見ますが、フィードバックは遅くなると思ってください。 -->
 
 ### 第7週
@@ -328,25 +328,25 @@ IEA:　Energy Statistics Data Browser　データ元
 
 **Urban and rural development**
 
-<!-- Access to electricity, urban (% of urban population)：EG.ELC.ACCS.UR.ZS -->
+Access to electricity, urban (% of urban population)：EG.ELC.ACCS.UR.ZS
 
-<!-- Access to electricity, rural (% of rural population)：EG.ELC.ACCS.RU.ZS -->
+Access to electricity, rural (% of rural population)：EG.ELC.ACCS.RU.ZS
 
-<!-- People using at least basic drinking water services, urban (% of urban population)： -->
+People using at least basic drinking water services, urban (% of urban population)：
 
-<!-- SH.H2O.BASW.UR.ZS -->
+SH.H2O.BASW.UR.ZS
 
-<!-- People using at least basic sanitation services, rural (% of rural population)： -->
+People using at least basic sanitation services, rural (% of rural population)：
 
-<!-- SH.STA.BASS.RU.ZS -->
+SH.STA.BASS.RU.ZS
 
-<!-- People using at least basic sanitation services, urban (% of urban population)： -->
+People using at least basic sanitation services, urban (% of urban population)：
 
-<!-- SH.STA.BASS.UR.ZS -->
+SH.STA.BASS.UR.ZS
 
-<!-- People using at least basic drinking water services, rural (% of rural population)： -->
+People using at least basic drinking water services, rural (% of rural population)：
 
-<!-- SH.H2O.BASW.RU.ZS -->
+SH.H2O.BASW.RU.ZS
 
 ### 第8週
 
