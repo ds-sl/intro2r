@@ -1,9 +1,11 @@
 ---
-title: "Public Data"
+title: "Public Data, Revisited"
 author: "ID, Last Name, First Name"
 date: "2024/01/24"
 output:
   html_notebook: default
+  html_document:
+    df_print: paged
 ---
 
 ## Setup
@@ -74,6 +76,11 @@ See: <https://ds-sl.github.io/data-analysis/wir2022.nb.html>
 ### To share data with someone else.
 
 ```{r}
+dput(df_wir_f2)
+```
+
+
+```{r}
 df_wir_dput <- dput(df_wir_f2)
 df_wir_dput
 ```
@@ -112,16 +119,6 @@ df_un_migrants <- read_csv("data/migrants.csv", skip=1)
 df_un_migrants
 ```
 
-### Explorer - datamarts
-
-Environment Statistics Database\>Water\>Internal flow [[Link](http://data.un.org/Data.aspx?d=ENV&f=variableID:5&c=2,3,4,5&s=countryName:asc,yr:desc&v=1)]
-
-*Select columns to add Table ID and Country and Area Code of UN, and download 'Comma' a CSV.*
-
-```{r}
-df_un_water <- read_csv("data/UNdata_Export_20240124_010609671.csv")
-df_un_water
-```
 
 ### UN Migrants Data
 
@@ -217,11 +214,87 @@ df_un_migrants_ext_rev
 dput(df_un_migrants_ext_rev)
 ```
 
+
+### Explorer - datamarts
+
+Environment Statistics Database\>Water\>Internal flow [[Link](http://data.un.org/Data.aspx?d=ENV&f=variableID:5&c=2,3,4,5&s=countryName:asc,yr:desc&v=1)]
+
+*Select columns to add Table ID and Country and Area Code of UN, and download 'Comma' a CSV.*
+
+```{r}
+df_un_water <- read_csv("data/UNdata_Export_20240124_010609671.csv")
+df_un_water
+```
+
+
 ## OECD data
 
-<https://data.oecd.org/>
+### OECD data top
 
-Database Access: <https://data-explorer.oecd.org/>
+OECD data <https://data.oecd.org/>
+  
+  - Browse by Topics (Choose from 12 topics) or Country (Choose from 37 countries)
+  - Topics: 
+    - Agriculture, 
+    - Development, 
+    - Economy, 
+    - Education, 
+    - Energy, 
+    - Environment, 
+    - Finance, 
+    - Government, 
+    - Health, 
+    - Innovation and Technology, 
+    - Jobs, 
+    - Society
+      - Demography
+      - Inequality
+      - Migration
+      - Population by Region
+      - Social protection
+  - Countries:
+    - Australia, Austria, Belgium, Brazil, Canada, Chili, People's Republic of China, Columbia, Costa Rica, Czechia, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, India, Indonesia, Ireland, Islael, Italy, Japan, Korea, Latvia, Lithuania, Luxembourg, Mexico, Netherlands, New Zealand, Norway, Poland, Portugal, Russian Federation, Slovak Republic, Slovenia, South Africa, Spain, Sweden, Swizerland, Türkiye, United Kingdom, United States 
+  
+
+#### Database Access: <https://data-explorer.oecd.org/>
+
+There is a newly developed Database Access linked above. However, it is still under development and difficult to handle data there.
+
+### Topic: Society - Migration
+
+- Permanent immigrant inflows
+  - Permanent immigrant inflows cover regulated movements of foreigners considered to be settling in the country from the perspective of the destination country. They cover regulated movements of foreigners as well as free movement migration. The data presented are the result of a standardisation process that allows for cross-country comparisons. This indicator is measured by numbers of permanent inflows.
+- Stocks of foreign-born population in OECD countries
+- Foreign-born population
+- Foreign population
+- Native-born employment
+- Foreign-born employment
+- Native-born unemployment
+- Foreign-born unemployment
+- Native-born participation rates
+- Foreign-born participation rates
+
+### Permanent immigrant inflows
+
+Permanent immigrant inflows Total, Number, 2022 [Link](https://data.oecd.org/migration/permanent-immigrant-inflows.htm)
+
+Definition of Permanent immigrant inflows
+
+  - Permanent immigrant inflows cover regulated movements of foreigners considered to be settling in the country from the perspective of the destination country. They cover regulated movements of foreigners as well as free movement migration. The data presented are the result of a standardisation process that allows for cross-country comparisons. This indicator is measured by numbers of permanent inflows.
+  - Citation: OECD (2024), Permanent immigrant inflows (indicator). doi: 10.1787/304546b6-en (Accessed on 27 January 2024)
+  
+```{=html}
+<iframe src="https://data.oecd.org/chart/7kgk" width="860" height="645" style="border: 0" mozallowfullscreen="true" webkitallowfullscreen="true" allowfullscreen="true"><a href="https://data.oecd.org/chart/7kgk" target="_blank">OECD Chart: Permanent immigrant inflows, Total, Number, Annual, 2022</a></iframe>
+```
+
+```{r, results='asis'}
+library(htmltools)
+
+iframe_code <- '<iframe src="https://data.oecd.org/chart/7kgk" width="860" height="645" style="border: 0" mozallowfullscreen="true" webkitallowfullscreen="true" allowfullscreen="true"><a href="https://data.oecd.org/chart/7kgk" target="_blank">OECD Chart: Permanent immigrant inflows, Total, Number, Annual, 2022</a></iframe>'
+
+HTML(iframe_code)
+```
+
 
 ### Expenditure on educational institutions per full-time equivalent student
 
@@ -262,28 +335,6 @@ df_oecd_ed2 <- read_csv("data/OECD.EDU.IMEP,DSD_EAG_UOE_FIN@DF_UOE_INDIC_FIN_PER
 df_oecd_ed2
 ```
 
-## Modeling
-
--   searching models: few numbers
-
--   linear regression
-
-```{r}
-cars
-```
-
-```{r}
-cars |> ggplot(aes(dist, speed)) + geom_point() + 
-  geom_smooth(formula = 'y ~ x', method = "lm", se=FALSE)
-```
-
-```{r}
-cars |> lm(dist ~ speed, data = _) |> summary()
-```
-
-<!-- ### Examples -->
-
-<!-- -   gini, s80/s20 -->
 
 ## References
 
