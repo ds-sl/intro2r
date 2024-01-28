@@ -1,0 +1,192 @@
+---
+title: "Foreigners, Migrants - OECD and UN data"
+author: "ID, Last Name, First Name"
+date: "2024/01/24"
+output:
+  powerpoint_presentation: default
+  html_notebook: default
+  ioslides_presentation: default
+  pdf_document: default
+  word_document: default
+---
+
+## R Markdown Options
+
+-   R Notebook: options
+-   isoslides_presentation: 
+  -   widescreen: yes
+  -   smaller: yes
+-   pdf_documents: tinytex
+-   word_document: 
+  -   reference_doc: ref-doc-style.docx
+-  powerpoint_presentation: 
+  -   reference_doc: ref-ppt-style.pptx
+
+
+## Abstract
+
+> In this note, we study immigrants using OECD data and migrants using UN data. We also combine these two sets of data to provide examples to use public data.
+
+<!-- ### Setup -->
+
+<!-- Install a package `countrycode` first. -->
+
+```{r include=FALSE}
+library(tidyverse)
+library(WDI)
+library(readxl)
+library(countrycode)
+```
+
+
+## OECD data
+
+### OECD data top
+
+OECD data <https://data.oecd.org/>
+  
+  - Browse by Topics (Choose from 12 topics) or Country (Choose from 37 countries)
+  - Topics: 
+    - Society
+      - Demography
+      - Inequality
+      - Migration
+      - Population by Region
+      - Social protection
+
+---
+
+### Topic: Society - Migration
+
+- Permanent immigrant inflows
+  - Permanent immigrant inflows cover regulated movements of foreigners considered to be settling in the country from the perspective of the destination country. They cover regulated movements of foreigners as well as free movement migration. The data presented are the result of a standardisation process that allows for cross-country comparisons. This indicator is measured by numbers of permanent inflows.
+- Stocks of foreign-born population in OECD countries
+- Foreign-born population
+- Foreign population
+- Native-born employment
+- Foreign-born employment
+- Native-born unemployment
+- Foreign-born unemployment
+- Native-born participation rates
+- Foreign-born participation rates
+
+---
+
+### Permanent immigrant inflows
+
+Permanent immigrant inflows Total, Number, 2022 [Link](https://data.oecd.org/migration/permanent-immigrant-inflows.htm)
+
+Definition of Permanent immigrant inflows
+
+  - Permanent immigrant inflows cover regulated movements of foreigners considered to be settling in the country from the perspective of the destination country. They cover regulated movements of foreigners as well as free movement migration. The data presented are the result of a standardisation process that allows for cross-country comparisons. This indicator is measured by numbers of permanent inflows.
+  - Citation: OECD (2024), Permanent immigrant inflows (indicator). doi: 10.1787/304546b6-en (Accessed on 27 January 2024)
+ 
+--- 
+
+### OECD: Permanent immigrant inflows
+
+#### Data Information
+
+-   Data Site: https://data.oecd.org/migration/permanent-immigrant-inflows.htm
+
+-   Definition of Permanent immigrant inflows: 
+Permanent immigrant inflows cover regulated movements of foreigners considered to be settling in the country from the perspective of the destination country. They cover regulated movements of foreigners as well as free movement migration. The data presented are the result of a standardisation process that allows for cross-country comparisons. This indicator is measured by numbers of permanent inflows.
+
+-   Citation: OECD (2024), Permanent immigrant inflows (indicator). doi: 10.1787/304546b6-en (Accessed on 28 January 2024)
+
+-   Categories: Total, Work, Free movements, Family, Family accompanying workers, Humanitarian, Other
+
+```{r echo=FALSE, message=FALSE, warning = FALSE}
+library(tidyverse)
+```
+
+---
+
+Read the downloaded full data of 'Permanent Immigrant Inflows'.
+
+```{r}
+df_inflows <- read_csv("data/DP_LIVE_28012024004117279.csv")
+```
+
+---
+
+```{r}
+df_inflows |> slice_head(n = 10)
+```
+
+---
+
+### Categorial Variables
+
+```{r}
+df_inflows |> select(-Value, -LOCATION, -TIME) |> lapply(unique)
+```
+
+<!-- --- -->
+
+<!-- Set the order of categories to display. -->
+
+```{r echo=FALSE}
+CAT <- c("TOT", "WORK", "FREEMOVS", "FAM", "FAMWORKR", "HUMNTRN", "OTH")
+```
+
+
+---
+
+Add country names using the `countrycode` package and delete INDICATOR, MEASURE, FREQUENCY, Flag Codes.
+
+```{r}
+df_in <- df_inflows |> 
+  mutate(country = countrycode(LOCATION, "iso3c", "country.name"), 
+         .before = LOCATION) |> 
+  select(country, iso3c = LOCATION, category = SUBJECT, 
+         year = TIME, value = Value)
+df_in |> head()
+```
+
+---
+
+```{r echo=FALSE}
+df_in |> filter(country == "Japan") |> 
+  ggplot(aes(year, value, col = factor(category, levels = CAT))) + geom_line() + 
+  labs(col = "Categories")
+```
+
+---
+
+```{r echo = FALSE}
+df_in |> filter(country == "Japan") |> filter(category != "TOT") |> 
+  ggplot(aes(year, value, fill = factor(category, levels = rev(CAT)))) + 
+  geom_area(col = "black", linewidth = 0.1) +
+  labs(title = "Permanent immigrant inflows of Japan", fill = "Categories")
+```
+
+---
+
+```{r echo=FALSE, fig.height=5, fig.width=7}
+df_in |> filter(category != "TOT") |> 
+  ggplot(aes(year, value, fill = factor(category, levels = rev(CAT)))) + geom_area(col = "black", linewidth = 0.1) +
+  facet_wrap(~country) + 
+  labs(title = "Permanent immigrant inflows of 28 Countries", fill = "") +
+  theme(legend.position = 'bottom')
+```
+
+---
+
+```{r echo=FALSE}
+df_in |> filter(country %in% c("Germany", "United States")) |> 
+  ggplot(aes(year, value, col = country, linetype = factor(category, levels = CAT))) + geom_line() +
+  labs(title = "Permanent immigrant inflows of Germany and United States", linetype = "Categories")
+```
+
+---
+
+```{r fig.height=5, fig.width=7, echo=FALSE, warning=FALSE}
+tot_lev <- df_in |> pivot_wider(names_from = category, values_from = value) |> 
+  pivot_longer(cols = CAT[CAT!="TOT"], names_to = "category", values_to = "value") |> filter(year == 2022) |> distinct(country, iso3c, TOT) |> arrange(desc(TOT)) |> pull(country)
+df_in |> pivot_wider(names_from = category, values_from = value) |> 
+  pivot_longer(cols = CAT[CAT!="TOT"], names_to = "category", values_to = "value") |> filter(year == 2022) |> ggplot(aes(factor(country, levels = rev(tot_lev)), value, fill = factor(category, levels = CAT))) + geom_col(col = "black", linewidth = 0.1) + coord_flip() +
+  labs(title = "Permanent immigrant inflows in 2022", fill = "", x = "") +
+  theme(legend.position = 'bottom')
+```
+

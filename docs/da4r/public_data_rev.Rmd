@@ -295,6 +295,317 @@ iframe_code <- '<iframe src="https://data.oecd.org/chart/7kgk" width="860" heigh
 HTML(iframe_code)
 ```
 
+### OECD: Permanent immigrant inflows
+
+#### Data Information
+
+-   Data Site: https://data.oecd.org/migration/permanent-immigrant-inflows.htm
+
+-   Definition of Permanent immigrant inflows: 
+Permanent immigrant inflows cover regulated movements of foreigners considered to be settling in the country from the perspective of the destination country. They cover regulated movements of foreigners as well as free movement migration. The data presented are the result of a standardisation process that allows for cross-country comparisons. This indicator is measured by numbers of permanent inflows.
+
+-   Citation: OECD (2024), Permanent immigrant inflows (indicator). doi: 10.1787/304546b6-en (Accessed on 28 January 2024)
+
+-   Categories: Total, Work, Free movements, Family, Family accompanying workers, Humanitarian, Other
+
+```{r}
+library(tidyverse)
+```
+Read the downloaded full data of 'Permanent Immigrant Inflows'.
+
+```{r}
+df_inflows <- read_csv("data/DP_LIVE_28012024004117279.csv")
+```
+```{r}
+df_inflows
+```
+
+```{r}
+df_inflows |> select(-Value) |> lapply(unique)
+```
+
+Set the order of categories to display.
+
+```{r}
+CAT <- c("TOT", "WORK", "FREEMOVS", "FAM", "FAMWORKR", "HUMNTRN", "OTH")
+```
+
+Add country names using the `countrycode` package and delete INDICATOR, MEASURE, FREQUENCY, Flag Codes.
+
+```{r}
+df_in <- df_inflows |> 
+  mutate(country = countrycode(LOCATION, "iso3c", "country.name"), .before = LOCATION) |> 
+  select(country, iso3c = LOCATION, category = SUBJECT, year = TIME, value = Value)
+df_in
+```
+
+```{r}
+df_in |> filter(country == "Japan") |> 
+  ggplot(aes(year, value, col = factor(category, levels = CAT))) + geom_line() + 
+  labs(col = "Categories")
+```
+
+
+```{r}
+df_in |> filter(country == "Japan") |> filter(category != "TOT") |> 
+  ggplot(aes(year, value, fill = factor(category, levels = rev(CAT)))) + 
+  geom_area(col = "black", linewidth = 0.1) +
+  labs(title = "Permanent immigrant inflows of Japan", fill = "Categories")
+```
+
+```{r fig.height=7, fig.width=7}
+df_in |> filter(category != "TOT") |> 
+  ggplot(aes(year, value, fill = factor(category, levels = rev(CAT)))) + geom_area(col = "black", linewidth = 0.1) +
+  facet_wrap(~country) + 
+  labs(title = "Permanent immigrant inflows of 28 Countries", fill = "") +
+  theme(legend.position = 'bottom')
+```
+
+```{r}
+df_in |> filter(country %in% c("Germany", "United States")) |> 
+  ggplot(aes(year, value, col = country, linetype = factor(category, levels = CAT))) + geom_line() +
+  labs(title = "Permanent immigrant inflows of Germany and United States", linetype = "Categories")
+```
+
+```{r fig.height=7, fig.width=7}
+tot_lev <- df_in |> pivot_wider(names_from = category, values_from = value) |> 
+  pivot_longer(cols = CAT[CAT!="TOT"], names_to = "category", values_to = "value") |> filter(year == 2022) |> distinct(country, iso3c, TOT) |> arrange(desc(TOT)) |> pull(country)
+df_in |> pivot_wider(names_from = category, values_from = value) |> 
+  pivot_longer(cols = CAT[CAT!="TOT"], names_to = "category", values_to = "value") |> filter(year == 2022) |> ggplot(aes(factor(country, levels = rev(tot_lev)), value, fill = factor(category, levels = CAT))) + geom_col(col = "black", linewidth = 0.1) + coord_flip() +
+  labs(title = "Permanent immigrant inflows in 2022", fill = "", x = "") +
+  theme(legend.position = 'bottom')
+```
+
+
+### OECD: Foreign population
+
+#### Data Information
+
+-   Data Site: https://data.oecd.org/migration/foreign-population.htm
+
+-   Definition of Foreign population: 
+The foreign population consists of people who still have the nationality of their home country. It may include people born in the host country. The difference across countries between the size of the foreign-born population and that of the foreign population depends on the rules governing the acquisition of citizenship in each country. This indicator is measured as a percentage of population.
+
+-   Citation: OECD (2024), Foreign population (indicator). doi: 10.1787/16a914e3-en (Accessed on 28 January 2024)
+
+-   Categories: Total, Percent of Population
+
+Read the downloaded full data of 'Foreign population'.
+
+```{r}
+df_foreign <- read_csv("data/DP_LIVE_28012024004200124.csv")
+```
+```{r}
+df_foreign
+```
+
+```{r}
+df_foreign |> select(-Value) |> lapply(unique)
+```
+
+Add country names using the `countrycode` package and delete INDICATOR, MEASURE, FREQUENCY, Flag Codes.
+
+```{r}
+df_fpop <- df_foreign |> 
+  mutate(country = countrycode(LOCATION, "iso3c", "country.name"), .before = LOCATION) |> 
+  select(country, iso3c = LOCATION, year = TIME, foreign = Value)
+df_fpop
+```
+
+```{r}
+df_fpop |> filter(country == "Japan") |> 
+  ggplot(aes(year, foreign)) + geom_line() + 
+  labs(title = "Foreign Population in Japan (Percent)")
+```
+
+
+```{r}
+df_fpop |> 
+  ggplot(aes(year, foreign)) + geom_line(aes(col = iso3c)) + 
+  geom_smooth(formula = 'y~x', method = "loess", se = FALSE) + 
+  labs(title = "Total Foreign Population (%)")
+```
+
+```{r}
+df_fpop |> filter(year == 2019) |> 
+  ggplot(aes(fct_reorder(country, foreign), foreign)) + geom_col() + 
+  coord_flip() + labs(title = "Foreign Population (%)", x = "", y = "")
+```
+
+
+
+### OECD: PopulationTotal, Million persons, 2022 or latest available
+
+#### Data Information
+
+-   Data Site: https://data.oecd.org/pop/population.htm
+
+-   Definition of Population: Population is defined as all nationals present in, or temporarily absent from a country, and aliens permanently settled in a country. This indicator shows the number of people that usually live in an area. Growth rates are the annual changes in population resulting from births, deaths and net migration during the year. Total population includes the following: national armed forces stationed abroad; merchant seamen at sea; diplomatic personnel located abroad; civilian aliens resident in the country; displaced persons resident in the country. However, it excludes the following: foreign armed forces stationed in the country; foreign diplomatic personnel located in the country; civilian aliens temporarily in the country. Population projections are a common demographic tool. They provide a basis for other statistical projections, helping governments in their decision making. This indicator is measured in terms of annual growth rate and in thousands of people.
+
+  - Citation: OECD (2024), Population (indicator). doi: 10.1787/d434f82b-en (Accessed on 28 January 2024)
+
+```{r}
+df_oecd_pop <- read_csv("data/DP_LIVE_28012024064002957.csv")
+df_oecd_pop
+```
+
+```{r}
+df_oecd_pop |> select(-Value) |> lapply(unique)
+```
+
+```{r}
+df_pop_short <- df_oecd_pop |> filter(SUBJECT == "TOT") |> select(iso3c = LOCATION, year = TIME, pop = Value)
+```
+
+
+### Combine Three Datasets of OECD
+
+Check the differences of countries in each datasets.
+
+```{r}
+setdiff(df_fpop$iso3c, df_in$iso3c); setdiff(df_in$iso3c,df_fpop$iso3c)
+setdiff(df_fpop$iso3c, df_pop_short$iso3c); setdiff(df_in$iso3c, df_pop_short$iso3c)
+```
+
+* "HUN" "SVK" "SVN" "GRC" "ISL" "TUR" "CHL" "LVA" "LTU" are in `df_fpop` but not in `df_in`.
+* "AUS" "NZL" "ISR" "RUS" are in `df_in` but not in `df_fpop`.
+* `df_pop_short` contains the data of countries in `df_in` and `df_fpop`.
+
+```{r}
+df_fpop2 <- df_fpop |> select(iso3c, year, foreign)
+df_oecd_fpop <- df_in |> full_join(df_fpop2, by = c("iso3c", "year")) |>
+  left_join(df_pop_short, by = c("iso3c", "year")) |>
+  mutate(foreign_pop = round(pop*10000*foreign), .after = value)
+df_oecd_fpop
+```
+
+```{r}
+df_oecd_fpop |> filter(category == "TOT") |> drop_na(value, foreign) |>
+  filter(value >0, foreign >0) |>
+  ggplot(aes(value, foreign_pop)) + geom_point(aes(col = iso3c)) + scale_x_log10() + scale_y_log10() + geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
+```
+
+## UNdata - a world of information
+
+<https://data.un.org/>
+
+Popular statistical tables
+
+Explorer - datamarts: <http://data.un.org/Explorer.aspx>
+
+-   Datasets, Sources, Topics
+
+### Popular statistical tables
+
+Copy the link of International Migrants and Refugees
+
+```{r}
+un_migrants_url <- "https://data.un.org/_Docs/SYB/CSV/SYB66_327_202310_International%20Migrants%20and%20Refugees.csv"
+download.file(un_migrants_url, destfile = "data/migrants.csv")
+```
+
+```{r}
+df_un_migrants <- read_csv("data/migrants.csv")
+df_un_migrants
+```
+
+```{r}
+df_un_migrants <- read_csv("data/migrants.csv", skip=1)
+df_un_migrants
+```
+
+```{r}
+str(df_un_migrants)
+```
+
+
+```{r}
+df_un_migrants |> summary()
+```
+
+```{r}
+df_un_migrants |> select(Year,Series) |> lapply(unique)
+```
+
+```{r eval = FALSE}
+df_un_migrants |> distinct(`Region/Country/Area`, ...2)
+```
+
+```{r}
+library(countrycode)
+df_un_migrants %>% mutate(iso3c = countrycode(`Region/Country/Area`, "un", "iso3c"), .after = ...2)
+```
+
+```{r}
+df_un_migrants |> mutate(iso3c = countrycode(`Region/Country/Area`, "un", "iso3c"), .after = ...2) |> filter(is.na(iso3c)) |> distinct(...2)
+```
+
+```{r}
+wdicache <- read_rds("data/wdicache.rds")
+wdi_country_extra <- wdicache$country |> select(iso3c, region, income, lending)
+```
+
+```{r eval=FALSE}
+df_un_migrants_ext <- df_un_migrants |>
+  mutate(iso3c = countrycode(`Region/Country/Area`, "un", "iso3c"), .after = ...2) |>
+  drop_na(iso3c) |> 
+  select(country = ...2, iso3c, year = Year, series = Series, value = Value, footnotes = Footnotes) |>
+  left_join(wdi_country_extra, by = "iso3c")
+df_un_migrants_ext
+```
+
+```{r echo=FALSE}
+df_un_migrants_ext <- df_un_migrants %>% 
+  mutate(iso3c = countrycode(`Region/Country/Area`, "un", "iso3c"), .after = ...2) |>
+  drop_na(iso3c) |> 
+  select(country = ...2, iso3c, year = Year, Series, migrants = Value, Footnotes) |>
+  left_join(wdi_country_extra, by = "iso3c")
+df_un_migrants_ext
+```
+
+```{r}
+df_un_migrants_ext$Series |> unique()
+```
+
+```{r}
+df_un_migrants_ext_rev <- df_un_migrants_ext |> mutate(ser = case_when(
+  Series == "International migrant stock: Both sexes (number)" ~ "migrant",
+  Series == "International migrant stock: Both sexes (% total population)" ~ "migrant_percent",
+  Series == "International migrant stock: Male (% total Population)" ~ "migrant_male",
+  Series == "International migrant stock: Female (% total Population)" ~ "migrant_female",
+  Series == "Total refugees and people in refugee-like situations (number)" ~ "refugee",
+  Series == "Asylum seekers, including pending cases (number)" ~ "asylum",
+  Series == "Other of concern to UNHCR (number)"  ~ "other",
+  Series == "Total population of concern to UNHCR (number)" ~ "concern",
+  TRUE ~ Series), .before = Series)
+```
+
+```{r}
+df_un_migrants_ext_rev
+```
+
+### Join OECD Data with UN Data
+
+```{r}
+df_oecd_un <- df_oecd_fpop |> left_join(df_un_migrants_ext_rev, by = c("country", "iso3c", "year")) |>
+  select(country, iso3c, category, year, value, foreign_pop, foreign, pop, ser, migrants)
+df_oecd_un
+```
+
+```{r}
+df_oecd_un |> filter(country == "Japan")
+```
+
+```{r}
+df_oecd_un_wide <- df_oecd_un |> drop_na(value, migrants) |> pivot_wider(names_from = category, values_from = value)  |>
+  pivot_wider(names_from = ser, values_from = migrants)
+df_oecd_un_wide
+```
+
+```{r}
+df_oecd_un_wide |>
+```
+
 
 ### Expenditure on educational institutions per full-time equivalent student
 
