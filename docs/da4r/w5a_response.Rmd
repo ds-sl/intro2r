@@ -1,0 +1,355 @@
+---
+title: "Responses to Week Five Assignment"
+author: "ID Last, First"
+date: "`r Sys.Date()`"
+output:
+  html_notebook: default
+---
+
+## Week Five Assignment
+
+Choose a data from UN data or OECD data.
+
+-   Create an R Notebook of a data analysis containing the following and submit the rendered file (e.g., `w5_g123456.nb.html`) in Moodle.
+
+    1.  Create an R Notebook using the R Notebook Template in Moodle and save it as, for example, `w5_g123456.Rmd`.
+
+    2.  Edit author with name, ID, and title.
+
+-   Contents should include the following:
+
+    -   A short abstract
+
+    -   Information of data including data name, description and link to reach the data
+
+    -   Several charts: a bar graph or a column graph, a histogram, a line graph, a scatter plot
+
+    -   Observations or questions for visualizations
+
+-   Use left_join, if possible. (a challenge, not required)
+
+-   Run each code block and preview to create, for example, `w5_g123456.nb.html`.
+
+    -   Or, Run All under Run and Preview to check in your web browser!
+
+    -   You can also view your file (e.g. `w5_g123456.nb.html`) by opening it from your web browser.
+
+Submit your R Notebook file (w5_g123456.nb.html) in Moodle (Week Five Assignment).
+
+***Due Sunday 28, January 2024, 11:59 PM***
+
+# Your Project
+
+## Title of your project
+
+*The title can be in the title in YAML.*
+
+### Short Abstract
+
+We study .....
+
+## Setup
+
+Install a package `countrycode` first.
+
+```{r}
+library(tidyverse)
+library(WDI)
+library(readxl)
+library(countrycode)
+```
+
+
+## Importing Data
+
+## Viewing Data
+
+## Visualization and Analysis
+
+*Do not forget to add observations and questions.*
+
+
+### About Data
+
+#### List of Data Chosen:
+
+1.  UN population: https://data.un.org/_Docs/SYB/CSV/SYB66_246_202310_Population%20Growth,%20Fertility%20and%20Mortality%20Indicators.csv
+2.  UN (FAO) palm oil: data attached UNdata_Export_20240128_153052531.csv
+3.  UN Human resources in R & D: [Link](https://data.un.org/_Docs/SYB/CSV/SYB66_285_202310_Research%20and%20Development%20Staff%20and%20researchers%20in%20full%20time%20equivalent.csv) URL https://data.un.org/_Docs/SYB/CSV/SYB66_285_202310_Research%20and%20Development%20Staff%20and%20researchers%20in%20full%20time%20equivalent.csv
+4.  UN Consumer Price Index, Employment: https://data.un.org/_Docs/SYB/CSV/SYB66_128_202310_Consumer%20Price%20Index.csv, https://data.un.org/_Docs/SYB/CSV/SYB66_200_202310_Employment.csv
+5.  OECD CIP country weight:  https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CEconomy%23ECO%23&fs[1]=Topic%2C1%7CEconomy%23ECO%23%7CPrices%23ECO_PRI%23&pg=0&fc=Topic&snb=16&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_CPI_COU_WEIGHTS%40DF_CPI_CTRY_WEIGHTS&df[ag]=OECD.SDD.TPS&df[vs]=1.0&pd=%2C&dq=.A..&ly[rw]=REF_AREA&ly[cl]=TIME_PERIOD&to[TIME_PERIOD]=false&lo=5&lom=LASTNPERIODS
+6.  UN Population in the capital city, urban and rural areas: https://data.un.org/_Docs/SYB/CSV/SYB61_253_Population%20Growth%20Rates%20in%20Urban%20areas%20and%20Capital%20cities.csv
+7.  OECD: Venture capital investments (market statistics), Gross domestic product (GDP)
+8.  OECD: https://data-explorer.oecd.org/vis?fs[0]=Topic%2C1%7CSociety%23SOC%23%7CWell-being%20and%20beyond%20GDP%23SOC_WEL%23&pg=0&fc=Topic&bp=true&snb=2&vw=tb&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_CWB%40DF_CWB&df[ag]=OECD.WISE.CWB&df[vs]=1.0&pd=2018%2C2018&dq=.A4_3%2BA4_2%2BA4_6.A4&ly[cl]=MEASURE&ly[rw]=REF_AREA&to[TIME_PERIOD]=false
+9.  UN (UNCHR): total number of forcibly displaced people [Link](https://data.un.org/Data.aspx?d=UNHCR&f=indID%3aType-Ref)
+10. Ease of doing business (EODB) score [Link]( https://data.un.org/Data.aspx?d=WDI&f=Indicator_Code%3aIC.BUS.DFRN.XQ), CPIA business regulatory environment rating [Link](https://data.un.org/Data.aspx?q=cpia&d=WDI&f=Indicator_Code%3aIQ.CPA.BREG.XQ)
+11. The world inequaluty report 2022 Executive Report F4: https://wir2022.wid.world/www-site/uploads/2022/03/WIR2022TablesFigures-Summary.xlsx
+12. WIR Executive Report: https://wir2022.wid.world/www-site/uploads/2022/03/WIR2022TablesFigures-Summary.xlsx
+13. OECD: Tertiary graduation rate of women (PhD graduation, women) [Link]( https://data.oecd.org/students/tertiary-graduation-rate.htm)
+14. Tax on personal income: OECD [Link](https://stats.oecd.org/sdmx-json/data/DP_LIVE/.TAXINCOME.TOT.PC_GDP.A/OECD?contentType=csv&detail=code&separator=comma&csv-lang=en&startPeriod=2000)
+15. OECD: “ICT Access and Usage by Individuals” [URL CSV](https://sdmx.oecd.org/public/rest/data/OECD.STI.STP,DSD_MSTI@DF_MSTI,1.1/.A.G.PT_B1GQ..?startPeriod=2014&dimensionAtObservation=AllDimensions&format=csvfilewithlabels), “Main Science and Technology Indicators” [URL Excel](https://datacatalogfiles.worldbank.org/ddh-published/0037712/DR0090755/CLASS.xlsx)
+16. OECD: fluctuations by analyzing the catch files:
+17. UN: gender gap in education:  https://data.un.org/_Docs/SYB/CSV/SYB66_319_202310_Ratio%20of%20girls%20to%20boys%20in%20education.csv
+18. UN: urbanization (Capital city population (thousands)
+Urban population (percent growth rate per annum)
+Rural population (percent growth rate per annum))
+19. UN: Anthracite - commerce and public services
+20: WID: World Inequality Database. The data sheet selected was data F4 [URL](https://wir2022.wid.world/www-site/uploads/2022/03/WIR2022TablesFigures-Summary.xlsx), UN Health Data
+21. OECD Child Well-Being: [Link](https://data-explorer.oecd.org/vis?fs[0]=Topic%2C1%7CSociety%23SOC%23%7CWell-being%20and%20beyond%20GDP%23SOC_WEL%23&pg=0&fc=Topic&bp=true&snb=2&vw=tb&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_CWB%40DF_CWB&df[ag]=OECD.WISE.CWB&df[vs]=1.0&pd=2018%2C2018&dq=.A4_3%2BA4_2%2BA4_6.A4&ly[cl]=MEASURE&ly[rw]=REF_AREA&to[TIME_PERIOD]=false)
+
+
+### Examples
+
+*Let me illustrate steps using the following indicators. Issues are not taken from the analysis of the one who chose these indicators.*
+
+1.  GDP (current \$): NY.GDP.MKTP.CD
+2.  Value addition in Agriculture : NV.AGR.EMPL.KD
+3.  Value addition in Industrial Sector : NV.IND.EMPL.KD
+4.  Value addition in Service Sector : NV.SRV.EMPL.KD
+
+*See the descriptions below. It is helpful to add links to the site.*
+
+### Set up
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+*Create data folder if you do not have it under Files.*
+
+```{r eval=FALSE}
+dir.create("data")
+```
+
+*If you do not have `wdicache.rds` in your data folder, run the following two code chunks.*
+
+```{r wdicache, eval=FALSE}
+wdicache <- WDIcache()
+```
+
+```{r writewdicache, eval=FALSE, echo=FALSE}
+write_rds(wdicache, "data/wdicache.rds")
+```
+
+```{r readwdicache, echo=FALSE}
+wdicache <- read_rds("data/wdicache.rds")
+```
+
+### Information of Data
+
+#### *Regular Expression (intermediate level)*
+
+-   *"NY.GDP.MKTP.CD\$": ends with the string "NY.GDP.MKTP.CD"*
+
+-   *A \|\> rbind(B): row bind A with B, i.e., add B to the next row of A.*
+
+```{r}
+WDIsearch(string = "NY.GDP.MKTP.CD$", field = "indicator", short = FALSE, cache = wdicache) |> 
+  rbind(WDIsearch(string = "NV.AGR.EMPL.KD$", field = "indicator", short = FALSE, cache = wdicache)) |>
+  rbind(WDIsearch(string = "NV.IND.EMPL.KD$", field = "indicator", short = FALSE, cache = wdicache)) |>
+  rbind(WDIsearch(string = "NV.SRV.EMPL.KD$", field = "indicator", short = FALSE, cache = wdicache))
+```
+
+### Importing Data
+
+Edit short_name_1, chosen_indicator_1, short_name_2, chosen_indicator_2, etc. You can edit `df_yourdata` to a descriptive name. If you edit `df_yourdata` , please edit other parts as well.
+
+```{r eval=FALSE}
+df_yourdata <- WDI(
+  indicator = c(gdp = "NY.GDP.MKTP.CD",
+                agriculture = "NV.AGR.EMPL.KD",
+                industry = "NV.IND.EMPL.KD",
+                service = "NV.SRV.EMPL.KD"),
+  extra = TRUE, cache = wdicache)
+```
+
+```{r eval=FALSE}
+write_csv(df_yourdata, "data/yourdata.csv")
+```
+
+```{r}
+df_yourdata <- read_csv("data/yourdata.csv")
+```
+
+### Viewing data
+
+*You can view your data from Environment in the top right pane.*
+
+```{r}
+df_yourdata
+```
+
+*Structure of your data: a list of columns, i.e., variables.*
+
+```{r}
+df_yourdata |> str()
+```
+
+*Check the number of available data (not NA).*
+
+```{r}
+df_yourdata |> drop_na(gdp) |>
+  ggplot(aes(year)) + geom_bar()
+```
+
+### Creating a long table
+
+#### Example.
+
+```         
+df_sec_ter_gdp_long <- df_sec_ter_gdp |> 
+  pivot_longer(cols = c(secondary, tertiary)) 
+df_sec_ter_gdp_long
+```
+
+*Generate a long table. The following works fine, but it is also good to change the order of the selected columns needed. The following codes do the same. "name" and "value" are added as default.*
+
+```{r eval = FALSE}
+df_yourdata_long <- df_yourdata |> pivot_longer(cols = c(agriculture, industry, service), names_to = "name", values_to = "value")
+df_yourdata_long
+```
+
+```{r}
+df_yourdata_long <- df_yourdata |> 
+  pivot_longer(cols = agriculture:service)
+df_yourdata_long
+```
+
+*Select columns of a long table and change the order of the variables.*
+
+```{r}
+df_yourdata_long <- df_yourdata |> 
+  pivot_longer(cols = agriculture:service) |>
+  select(country, iso2c, year, gdp, name, value, region, income)
+```
+
+*With a long table, you can display the following chart as well. Compare with a similar chart above.*
+
+```{r}
+df_yourdata_long |> drop_na(value) |> 
+  ggplot(aes(year, fill = name)) + geom_bar()
+```
+
+### Visualizing data
+
+```{r}
+df_yourdata_long
+```
+
+**Observations and Questions:**
+
+-   *It is easier to see the main part of the data.*
+
+```{r}
+df_yourdata_long |> filter(country == "World") |> drop_na(value) |>
+  ggplot(aes(year, value, col = name)) + geom_line()
+```
+
+**Observations and Questions:**
+
+-   *You can create the line chart above easily using col = name, if you have a long table.*
+
+```{r}
+INCOME <- df_yourdata |> drop_na(income) |> 
+  filter(income != "Aggregates") |> filter(income != "Not classified") |> 
+  distinct(income) |> pull()
+INCOME
+```
+
+```{r}
+df_yourdata_long |> filter(country %in% INCOME) |> drop_na(value) |>
+  ggplot(aes(year, value, col = country, linetype = name)) + geom_line()
+```
+
+```{r}
+df_yourdata_long |> drop_na(value) |> filter(income %in% INCOME) |>
+  ggplot(aes(year, value, col = income, linetype = name)) + geom_line()
+```
+
+**Observations and Questions:**
+
+-   *Compare two charts above. The first one is fine, INCOME is taken from a list of countries. The second one is called a saw tooth graph. There are so many data in each category of income level and line graph cannot be generated using the code above.*
+
+-   *See the following. It is smoothing with loess method after taking avarage. What are the differences of the chart below and the first?*
+
+```{r}
+df_yourdata_long |> drop_na(value) |> filter(income %in% INCOME) |>
+  ggplot(aes(year, value, col = income, linetype = name)) + 
+  geom_smooth(formula = 'y ~ x', method = "loess", se=FALSE, linewidth = 0.5) +
+  labs(title = "Values of Each Sector in Each Income Level, Aggregated")
+```
+
+```{r}
+df_yourdata_long |> filter(year == 2018) |> filter(region != "Aggregates") |>
+  drop_na(value) |> 
+  ggplot(aes(gdp, value, col = name)) + geom_point() + 
+  scale_x_log10() + scale_y_log10() +
+  labs(title = "GDP vs Values of Each Sector in 2018")
+```
+
+**Observations and Questions:**
+
+-   *What happens if we are not using log10 scales.*
+
+### A choropleth map
+
+```{r}
+library(rnaturalearth)
+library(rnaturalearthdata)
+```
+
+```{r}
+ne_world <- ne_countries(scale = "medium", returnclass = "sf")
+```
+
+*A couple of students had an error when they changed "medium" to "large". I also had the same error when I checked using Windows OS. You can stay with "medium" but if you want to use "large", please follow the following steps.*
+
+1.  *Install `devtools` package, either by running `install.packages("devtools")` or intall it from Install Packages under Tools in the menu.*
+2.  *Then run the following in Console: `devtools::install_github("ropensci/rnaturalearthhires")`*
+
+If possible, create a choropleth map. (a challenge, not required)
+
+```{r}
+df_yourdata |> filter(year == 2022) |> drop_na(gdp) |> pull(gdp) |> 
+  quantile(probs = c(0.25,0.5,0.75,1))
+```
+
+```{r}
+df_gdp_2022 <- df_yourdata |> filter(year == 2022) |> select(iso2c, gdp)
+ne_gdp_2022 <- ne_world |> left_join(df_gdp_2022, by = c("wb_a2" = "iso2c"))
+```
+
+```{r}
+ne_gdp_2022 |> mutate(level = cut(gdp, breaks = c(0, 1.403573e+10, 7.573231e+10, 8.912561e+11, 1.013257e+14), labels = c("bottom quartile","2nd quartile","3rd quartile","top quartile"))) |> ggplot() + geom_sf(aes(fill = level)) + labs(title = "GDP in 2022")
+```
+
+```{r}
+df_yourdata |> filter(year == 1960) |> drop_na(gdp) |> pull(gdp) |> 
+  quantile(probs = c(0.25,0.5,0.75,1))
+```
+
+```{r}
+df_gdp_1960 <- df_yourdata |> filter(year == 1960) |> select(iso2c, gdp)
+ne_gdp_1960 <- ne_world |> left_join(df_gdp_1960, by = c("wb_a2" = "iso2c"))
+```
+
+```{r}
+ne_gdp_2022 |> mutate(level = cut(gdp, breaks = c(0, 5.151683e+08, 2.661058e+09, 2.398013e+10, 1.381135e+12), labels = c("bottom quartile","2nd quartile","3rd quartile","top quartile"))) |> ggplot() + geom_sf(aes(fill = level)) + labs(title = "GDP in 1960")
+```
+
+**Observations and Questions:**
+
+-   *What can you see?*
+
+***Before you turn in:***
+
+1.  *Run all from the top.*
+
+2.  *Preview*
+
+3.  *View R Notebook file in your web browser.*
+
+*Then post your R Notebook file, i.e., w4_g1234556x.nb.html.*
+
+*If you had a lot of errors and could not generate R Notebook file properly, post both R Notebook file and R Markdown file, i.e., w4_g123456x.Rmd.*
