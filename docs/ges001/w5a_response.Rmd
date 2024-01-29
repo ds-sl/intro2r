@@ -1,0 +1,340 @@
+---
+title: "課題：探索的データ分析 - w5EDAについて"
+author: "H. Suzuki"
+date: "2024年1月30日"
+output:
+  html_notebook: 
+    toc: yes
+    toc_float: yes
+---
+
+## 課題
+
+以下の指標の中から、一つを選択して、データの概要（description）を記録し、データを WDI で取得し、以下の分析をする。
+
+1.  各年毎のデータの数の棒グラフ
+2.  日本のデータの年の降順での表示
+3.  経年変化を表す折れ線グラフ
+    a.  日本
+    b.  南部アフリカ関税同盟の５カ国
+    c.  選択したいくつかの国
+4.  データが十分ある最近の年の値のヒストグラム
+5.  データが十分ある最近の年の値の10カ国の値の棒グラフ
+    a.  値が大きい方から
+    b.  値が小さい方から
+
+それぞれについて考察（気づいたこと、疑問など）を記す
+
+**2023.1.27. 23:59** までに Moodle の演習の課題ボックスに提出したものについては、なるべく、早く見て、フィードバックを書きます。それ以降に提出されたものも見ますが、フィードバックは遅くなると思ってください。
+
+### データ
+
+1.  Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)]
+
+2.  School enrollment, primary (% gross)：SE.PRM.ENRR [[Link](https://data.worldbank.org/indicator/SE.PRM.ENRR)]
+
+3.  School enrollment, secondary (% gross)：SE.SEC.ENRR [[Link](https://data.worldbank.org/indicator/SE.SEC.ENRR)]
+
+4.  School enrollment, tertiary (% gross)：SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)]
+
+5.  Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SH.DYN.MORT)]
+
+6.  Incidence of HIV (% of uninfected population ages 15-49)：SH.HIV.INCD.ZS [[Link](https://data.worldbank.org/indicator/SH.HIV.INCD.ZS?locations=SZ)]
+
+7.  School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS [[Link](https://data.worldbank.org/indicator/SE.ENR.PRSC.FM.ZS)]
+
+8.  Ratio of female to male labor force participation rate (%) (modeled ILO estimate)：SL.TLF.CACT.FM.ZS [[Link](https://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS)]
+
+9.  Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.FE.ZS)]
+
+10. Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.ZS)]
+
+11. Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
+
+# 気づいたこと・注意点
+
+## ファイル
+
+### 最初にすべきこと
+
+名前と、ID は、ファイル名にもつけるように、指示がありますが、このファイルの一番上にも、ありますね。これが、Note の最初に来るのですから、できれば、表題も含めて、適切に変更することが必要です。
+
+### ファイルを作成するときの注意
+
+1.  Posit Cloud のときは、まず、Login し、intro2rj のプロジェクトに入り、 ファイルから、ges001 のフォルダーを選択して、移動します。この中に、data フォルダが作成されていることを確認し、このges001 に、新しく作成したファイルを保存します。新しく作成したファイルの入っているフォルダーの中に、data フォルダがあることが大切です。そこに、データを書き込みます。
+
+2.  RStudio の場合には、まずは、あたらしい　Project を作成します。File \> New Project から作成します。すでに、作成してある場合は、それを、Open Project や、Recent Project から開きます。その中に、新しいファイルを作成します。作成したフォルダーに、data フォルダがあることを確認してください。なければ、作成してください。新しく作成したファイルの入っているフォルダーの中に、data フォルダがあることが大切です。そこに、データを書き込みます。
+
+### 提出前の確認作業
+
+-   Preview で確認。
+
+-   Web Browser で、w5_c123456.nb.html など、R Notebook を見て確認。
+
+-   もし、問題があれば、Run ボタンの右の三角から、Run All を選択し、エラーがでないか確認。
+
+-   最初にもどる。
+
+### ファイルを提出するときの注意
+
+RStudio の場合には、自分の PC に作成したファイルがありますから、問題ないと思いますが、Posit Cloud で作成した場合には、提出したいファイルの左にあるチェックボックスをチェックします。Files の 右端にある、ギアマークの Export を押すと、ダウンロードできます。それを提出してください。末尾が、nb.html となっている R Notebook ファイルを提出していただくのがよいですが、よくわからないときは、nb.html ファイルと、Rmd （R Markdown）ファイルと両方提出してください、
+
+-   PositCloud で表示したアドレスを共有してもみることはできません。共有設定をすれば可能ですが、基本的には、上に書いたように、Export して、Moodle に提出してください。
+-   最後にファイルの名前を変更する場合もあると思いますが、nb.html や、Rmd は、拡張子といって、とても大切です。これを残さないと、どんなファイルが認識できません。a1_ID_氏名.nb.html というファイル名にして提出してください。二個目以降の分析は、a1_ID_氏名-1.nb.html などと添え字をつけていってください。
+
+## 探索的データ分析
+
+Exploratory Data Analysis 探索的に、データから、情報を得ながら、考え、自分の覚書（ノート）や、他者とコミュニケーションするための、記録を残すことが、主ですから、コピー・ペーストで終わりではありません。
+
+図に名前をつけたり、いくつかの国について調べてみたり、Histogram の幅を変えて見たりしてください。気づいたことや、疑問は、いくつ書いても構いません。特に、疑問に思ったことを書くことは、探索的データ分析の鍵です。
+
+最初から、少しずつ、見ていきましょう。以下では、国の教育に関する支出を例に説明していきます。
+
+## データ
+
+### データ情報
+
+-   データ名：国の教育関連支出（GDP比 %）*図の表題のためにも重要です。*
+
+-   データコード：SE.XPD.TOTL.GD.ZS　*データを読み込む時に、これに、"" をつけて読み込みます。*
+
+-   変数名：`ed_exp` 　*データを読み込む時に、コードは長いし、直感的にはわからないので、わかりやすい名前にしておきます。これが、変数名、列名となりますから、これを選択することが多くなります。つまり、これを、買い込むことが多くなる、大切なものです。*
+
+-   概要：教育に対する政府の一般支出（経常、資本、移転）は GDP の割合で表されます。これには、国際資金源から政府への送金によって資金提供された支出が含まれます。一般政府とは通常、地方自治体、地域政府、中央政府を指します。*データの意味がわからなければ、分析はできません。数字は、金額なのか、百分率（％）なのか、特別な単位なのか、国全体なのか、政府の予算なのか、一人当たりなのかなど。*
+
+### データの取得
+
+#### 準備
+
+*いつもするおまじないのようなものですね。パッケージ（R の機能を拡張するもの）をふたつ読み込みます。*
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+WDI パッケージを使って、直接データをダウンロードし、変数名を、`ed_exp` に指定。
+
+*この次のコードがすべての鍵のような部分です。WDI というパッケージで、データを読み込みます。それには、indicator として、変数名と、コードが必要です。c() の c は、combine の略で、情報をまとめています。この場合は、コードと、変数名を = で結びつけています。それを、df_ed_exp という名前のデータとします。わたしは、主たる変数名を、df (data frame の略）につけましたが、わかりやすい方法と使うのがよいでしょう。しかし、日本語や、space や、特殊文字は、使ってはいけません。\_ と . は問題ありません。*
+
+```{r eval = FALSE}
+df_ed_exp <- WDI(indicator = c(ed_exp = "SE.XPD.TOTL.GD.ZS"))
+```
+
+*データフォルダーに、ed_exp.csv と名前をつけて書き込みます。べつに、決まったルールはありませんが、csv （comma separated value）で書き込みますから、最後は、csv とつけます。これを、拡張子と言います。ここで、エラーが出たら、最初に、ファイルのところでいたように、現在編集している、Rmd ファイルを　Files で探し、同じ、フォルダーに、data フォルダがなければ、書き込めません。"data/ed_exp.csv" は、data フォルダの中に、ed_exp.csv というファイルとして書き込めということですから。*
+
+```{r eval = FALSE}
+write_csv(df_ed_exp, "data/ed_exp.csv")
+```
+
+*上のステップで、保存したものを、読み込みます。このステップで、違うファイルを読み込むと、あとは、すべて、読み込んだデータで計算されます。ここが、"data/under_6.85.csv" などとなっていたら、そのデータを読み込むことになります。注意してください。*
+
+```{r}
+df_ed_exp <- read_csv("data/ed_exp.csv")
+```
+
+### データの確認
+
+*ここで、どんな列名があるか、また、ed_exp がある列に入っているか確認してください。*
+
+```{r}
+df_ed_exp
+```
+
+*列名の確認ができます。*
+
+```{r}
+str(df_ed_exp)
+```
+
+*ちょっと数を増やしました。WDI のすべてのデータに対応できるように。*
+
+```{r}
+REGION <- c("1A", "1W", "4E", "6F", "6N", "6X", "7E", "8S", "A4", "A5", 
+"A9", "B1", "B2", "B3", "B4", "B6", "B7", "B8", "C4", "C5", "C6", 
+"C7", "C8", "C9", "D2", "D3", "D4", "D5", "D6", "D7", "EU", "F1", 
+"F6", "M1", "M2", "N6", "OE", "R6", "S1", "S2", "S3", "S4", "T2", 
+"T3", "T4", "T5", "T6", "T7", "V1", "V2", "V3", "V4", "XC", "XD", 
+"XE", "XF", "XG", "XH", "XI", "XJ", "XL", "XM", "XN", "XO", "XP", 
+"XQ", "XT", "XU", "XY", "Z4", "Z7", "ZB", "ZF", "ZG", "ZH", "ZI", 
+"ZJ", "ZQ", "ZT")
+```
+
+*地域名を選択するときに、使います。*
+
+```{r}
+df_ed_exp |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
+```
+
+*国名を選択する時に使います。*
+
+```{r}
+df_ed_exp |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c)
+```
+
+### 分析する国のリスト
+
+#### **南部アフリカ関税同盟** The Southern African Customs Union (SACU)
+
+```{r}
+SOUTH_AFRICA_FIVE <- c("South Africa", "Namibia", "Eswatini", "Botswana", "Lesotho")
+```
+
+*自分で国を選択してください。ただしい綴が大切ですから、上のリストを使って確認します。*
+
+#### ラテンアメリカでジニ指数が大きい４カ国
+
+```{r}
+CHOSEN_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
+```
+
+## 分析
+
+### 1. 各年毎のデータの数の棒グラフ
+
+*このグラフを見て、各年のデータがどれくらいあるか確認します。*
+
+```{r}
+df_ed_exp |> drop_na(ed_exp) |> filter(!(iso2c %in% REGION)) |>
+  ggplot(aes(year)) + geom_bar()
+```
+
+## 視覚化
+
+### 2. 日本の教育費（% of GDP）
+
+*実際の分析の前に、自分がある程度知っている国について見てみることで、知識を確認にもなりますし、データの意味も、確認できます。本当は、GDP の 3% がいくらぐらいかも知っていると良いですね。日本のGDP 知っていますか。これは、Google でも、教えてくれると思います。*
+
+```{r}
+df_ed_exp |> filter(country == "Japan") |> 
+  drop_na(ed_exp) |> arrange(desc(year))
+```
+
+### 3. 経年変化
+
+#### a. 日本
+
+*案外、知らないことが多いものです。*
+
+```{r}
+df_ed_exp |> filter(country == "Japan") |> drop_na(ed_exp) |>
+  ggplot(aes(year, ed_exp)) + geom_line()
+```
+
+**気づいたこと・疑問**
+
+-   1970年代の急激な上昇、1990年ごろの急激な現象は、何が原因なのだろう。
+
+-   2014年ごろから減少、2018年ごろから増加、2020年から2021年は減少。
+
+#### b. 南部アフリカ関税同盟
+
+```{r}
+df_ed_exp |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(ed_exp) |>
+  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country))
+```
+
+**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
+
+```{r}
+df_ed_exp |> filter(country %in% SOUTH_AFRICA_FIVE) |> drop_na(ed_exp) |>
+  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country)) +
+  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
+```
+
+**気づいたこと・疑問**
+
+-   平均で見ると、上昇してきており、7% 程度という大きな割合になっている。
+
+#### c. ラテンアメリカ４カ国
+
+```{r}
+df_ed_exp |> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(ed_exp) |>
+  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country))
+```
+
+**参考：平均的な値を曲線で表すことも可能です。loess を使うと滑らかな曲線で近似してくれます。**
+
+```{r}
+df_ed_exp |> filter(country %in% CHOSEN_COUNTRIES) |> drop_na(ed_exp) |>
+  ggplot(aes(year, ed_exp)) + geom_line(aes(col = country)) +
+  geom_smooth(formula = 'y~x', method = "loess", se = FALSE)
+```
+
+### 分布
+
+データの数から、まずは、2020年について見てみる。
+
+*例では、2010 になっていました。例の、under_6.85 の指標は NA が多く、特に、日本のも書き込もうとすると、2010 年にしないといけませんでした。日本の値があり、南部アフリカ関税同盟の国の値もあるところを選びたかったからです。そうでなければ、新しいデータといことで、このデータの場合には、2020 でなくても、2021 でも大丈夫そうですね。そのあたりを、決めるのが最初の方の棒グラフで、データの数を見たり、日本の値をみたあたりから、考えています。また、ここでは、binwidth = 1 としましたが、binwidth や、bins の値を変えると、ヒストグラムが変わるのでしたよね。適切な値にする必要があります。適切の基準はありませんが、binwidth は、x 軸のメモリを見て、幅を決めますが、bins は、幾つに分けるかの個数です。*
+
+```{r}
+df_ed_exp |> filter(year == 2020) |> filter(!(country %in% REGION))|>
+  drop_na(ed_exp) |>
+  ggplot(aes(ed_exp)) + geom_histogram(binwidth = 1)
+```
+
+**参考：**SACU の５カ国の値を縦線で書き込むには下のようにします。
+
+*このデータに関しては、５カ国とも値がありますね。それが、下のグラフの赤線五本になって現れています。*
+
+```{r}
+df_ed_exp |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) 
+```
+
+**参考：日本と**SACU の５カ国の値を縦線で書き込むには下のようにします。
+
+*JP の値は、この指標に関する、JP の値です。例では、0.5 ですが、実際には、この上の方に、ある、日本の部分の値から、2020 年は、3.416981 であることがわかりますから、それを下のように、代入します。ここには、ed_exp を入れるところがたくさんありますね。少し、複雑なグラフです。*
+
+```{r}
+JP <- 3.416981
+SAF <- df_ed_exp |> filter(year == 2020) |> filter(country %in% SOUTH_AFRICA_FIVE) |> pull(ed_exp)
+df_ed_exp |> filter(year == 2020) |> filter(!(country %in% REGION))|>
+  drop_na(ed_exp) |>
+  ggplot() + geom_histogram(aes(ed_exp), binwidth = 1) +
+  geom_vline(xintercept = SAF, col = "red") + geom_vline(xintercept = JP, col = "blue") +labs(title = "2020年の教育費の対GDP百分率", subtitle = "日本：青、SACU：赤")
+```
+
+### データが十分ある最近の年の値の10カ国の値の棒グラフ
+
+#### a. 値が大きい方から
+
+```{r}
+df_ed_exp |> filter(year == 2020) |> drop_na(ed_exp) |> 
+  filter(!(iso2c %in% REGION))|>
+  arrange(desc(ed_exp)) |> head(10) |> 
+  ggplot(aes(fct_reorder(country, ed_exp), ed_exp)) + geom_col() + 
+  coord_flip() + labs(title = "Top 10 Countries", x = "country", y = "Government expenditure on education, total (% of GDP)")
+```
+
+#### b. 値が小さい方から
+
+*次のように書いてありましたが、コピーのエラーで、最後、closed quatation mark がありませんでした。ただしくは、y = "poverty rate (under \$6.85 per day)") でないといけません。*
+
+```         
+df_under_6.85 |> filter(year == 2019) |> drop_na(under_6.85) |> 
+  filter(!(iso2c %in% REGION))|>
+  arrange(under_6.85) |> head(10) |> 
+  ggplot(aes(fct_rev(fct_reorder(country, under_6.85)), under_6.85)) + geom_col() + 
+  coord_flip() + labs(title = "Lowest 10 Countries", x = "country", y = "poverty rate (under $6.85 per day))
+```
+
+```{r}
+df_ed_exp |> filter(year == 2020) |> drop_na(ed_exp) |> 
+  filter(!(iso2c %in% REGION))|>
+  arrange(ed_exp) |> head(10) |> 
+  ggplot(aes(fct_rev(fct_reorder(country, ed_exp)), ed_exp)) + geom_col() + 
+  coord_flip() + labs(title = "Lowest 10 Countries", x = "country", y = "Government expenditure on education, total (% of GDP)")
+```
+
+
+## 途中でのエラー
+
+-   入力したときには、例を参照して、スペルなどを確認してください。全角になっていると問題がおきます。() や、" " がペアでマッチしているか、確認してください。
+-   引用符が入っていなかったり、== のところが、= だったり、いろいろな可能性があります。Error message を読むこともたいせつです。エラーがでた、Code Chunk と、Error message を、ChatGPT や、Google Bard, Google Search に入れると、解決方法を教えてくれることもあります。
+-   File not found の、エラーがでたときには、上から順に、Run （Code Chunk の右上の三角印を押して実行）してみてください。または、エラーが出たところに、カーソルを置き、上の、Run ボタンの右の三角から、Run All Chunks Above を選択すると、そこまでのすべての　Code Chunk を実行してくれます。
+-   上の方法でうまくいかないときは、data フォルダに、データ（\*\*\*.csv）が入っているかを確認、なければ、data フォルダがあることを確認して、最初のデータ読み込みのところを実行してみてください。
+-   実行できていても、結果が見えないこともあります。そのときは、Code Chunk の下にある、山二つの記号を押してみてください。これは、結果を表示、非表示にします。それが原因で隠れている場合があります。
+
+多くの場合は、変数名やデータ名が適切に変更されていないことが原因になっているようです。
+
+**必ず、それぞれの図などで、気づいたこと、疑問点を書いてください。**
