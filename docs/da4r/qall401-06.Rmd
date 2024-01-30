@@ -3,9 +3,9 @@ title: "Data Analysis for Researchers 2023, Week 6"
 author: "Hiroshi Suzuki"
 date: "2024/01/31"
 output:
-  html_notebook: default
   ioslides_presentation:
     widescreen: yes
+  html_notebook: default
   html_document:
     df_print: paged
 ---
@@ -16,6 +16,144 @@ output:
 
 -   Week 6, Jan. 31: EDA5, Round-up, communication, pdf, Word, PowerPoint
 
-## EDA Review
+### Review
 
-## Communication
+-   OECD and UN data: migrants [[Link](https://ds-sl.github.io/intro2r/da4r/migrants.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/migrants.Rmd)]
+
+-   Responses to Week Five Assignment: [[Link](https://ds-sl.github.io/intro2r/da4r/w5a_response.nb.html)]. [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/w5a_response.Rmd)]
+
+## Presentation of the final report (Feb. 26):
+
+-   Please prepare for a 7-minute talk (including discussion for 1 mins) in class on the topic of your final report. 
+
+-   Students will be required to use Rnotebook to analyze data and prepare the basis for slides. 
+
+-   Presentation slides should be prepared using Power Point, etc.. 
+
+-   The file name should be the student ID, e.g. 232323.pdf, and 232323.Rmd.
+
+## Submission of a final report (Deadline March 02):
+
+Students are required to submit a final report on a research topic.
+
+1\. Students select a research topic.
+
+2\. Collecting data on your research topic.
+
+3\. Analyze data using methods learnt in lectures.
+
+4\. Discuss your findings.
+
+Students are requested to submit a paper, with a supporting document in R Notebook to prepare your essay. Submit the PDF file of the final report and the RNotebbok file on Moodle.
+
+Length: less than 8 pages in A4 format including figures and tables.　Upload it on Moodle. Deadline of submission: March 02.
+
+## Types of Documents
+
+-   R Notebook (a type of R Markdown in HTML), Quarto, etc.
+
+    -   EDA with Reproducibility and Literate Programming
+
+    -   Easy to visualize, and easy to handle
+
+-   Slides for Presentation (isoslides in HTML, MS PowerPoint, etc.)
+
+    -   Communication
+
+    -   Screen size, page (?)
+
+-   Paper - PDF (MS Word?)
+
+    -   Academic communication
+
+    -   Fixed contents and page size
+
+## File Conversion, I
+
+-   R Notebook with data - archive in zip file to share
+
+-   R Notebook to isoslides (HTML) with options
+
+-   R Notebook to MS PowerPoint with `reference_doc: ref-ppt-style.pptx`
+
+-   R Notebook to PDF with `tinytex`
+
+-   R Notebook to MS Word with `reference_doc: ref-doc-style.docx`
+
+    -   MS Word to PDF
+
+**Reference:**
+
+-   R Markdown: The Definitive Guide [[Link](https://bookdown.org/yihui/rmarkdown/)]
+
+## File Conversion, II
+
+-   Avoid `df_print: paged` option of html in other formats
+
+    -   Use head(), head(n=10), slice_head(n=10), slice(11:20)
+
+-   Code chunk options
+
+    -   eval, echo, message, warning, include, fig.height=4.5, fig.width=6
+
+-   Page breaks in slides
+
+    -   Header 2, or three hyphens in source editor mode, or Insert \> Horizontal Rule in visual editor mode
+
+-   PowerPoint: `reference_doc: ref-ppt-style.pptx` [[Link](https://bookdown.org/yihui/rmarkdown/powerpoint-presentation.html)]
+
+-   MS Word: `reference_doc: ref-doc-style.docx` [[Link](https://bookdown.org/yihui/rmarkdown/word-document.html)]
+
+-   PDF: a little difficult unless you know LaTeX [[Link](https://bookdown.org/yihui/rmarkdown/pdf-document.html)]
+
+# Part II: Practicum
+
+## File Links
+
+-   For Communication: migrans_note [[Link](https://ds-sl.github.io/intro2r/da4r/migrants_note.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/migrants_note.Rmd)]
+
+-   Week Six Assignment Template [[Link](https://ds-sl.github.io/intro2r/da4r/w6_assignment_template.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/w6_assignment_template.Rmd)]
+
+## Week Six Assignment
+
+Choose any data.
+
+-   Create an R Markdown file (`w6_g123456.Rmd`) of a data analysis containing the following and submit the rendered files (an R Notebook (`w6_g123456`.nb.html), an isoslides presentation (`w6_g123456.html`) , and a PDF (`w6_g123456.pdf`) ) and data file unless automatically imported using WDI or URL in Moodle.
+
+    1.  Create an R Notebook using the R Notebook Template in Moodle and save it as, for example, `w6_g123456.Rmd`.
+
+    2.  Edit author with name, ID, and title.
+
+------------------------------------------------------------------------
+
+-   Contents should include the following:
+
+    -   A short abstract
+
+    -   Information of data including data name, description and link to reach the data
+
+    -   Several charts: a bar graph or a column graph, a histogram, a line graph, a scatter plot
+
+    -   Observations or questions for visualizations
+
+------------------------------------------------------------------------
+
+-   R Notebook: Run each code block and preview to create `w6_g123456.nb.html`.
+
+-   isoslides presentation: Use Header 2 or Horizontal Rule to create page break and create `w6_g123456.html` (With a isoslides presentation, you can create a PowerPoint file, but you do not need to submit it.)
+
+-   A short paper in PDF (`w6_g123456.pdf`): Directly create a pdf or through MS Word. The contents do not have to be exactly the same as R Notebook.
+
+Submit your R Notebook file (w5_g123456.nb.html), isoslides presentation (`w6_g123456.html),`and a PDF (`w6_g123456.pdf`) (with data if necessary) in Moodle (Week Six Assignment).
+
+***Due Sunday 4, February 2024, 11:59 PM***
+
+## References
+
+-   Data Analysis for Researchers. [[Link](https://icu-hsuzuki.github.io/da4r/)]
+
+-   Cheat Sheet. [[Site Link](https://rstudio.github.io/cheatsheets/)]
+
+    -   R Markdown [[Link](https://rstudio.github.io/cheatsheets/html/rmarkdown.html)]
+
+-   R Markdown Definitive Guide [[Link](https://bookdown.org/yihui/rmarkdown/)]

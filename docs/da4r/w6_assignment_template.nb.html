@@ -9,10 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Hiroshi Suzuki" />
+<meta name="author" content="ID, Last, First" />
 
+<meta name="date" content="2024-01-30" />
 
-<title>Data Analysis for Researchers 2023, Week 6</title>
+<title>Week Six Assignment Template</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1747,135 +1748,14 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Data Analysis for Researchers 2023, Week
-6</h1>
-<h4 class="author">Hiroshi Suzuki</h4>
-<h4 class="date">2024/01/31</h4>
+<h1 class="title toc-ignore">Week Six Assignment Template</h1>
+<h4 class="author">ID, Last, First</h4>
+<h4 class="date">2024-01-30</h4>
 
 </div>
 
 
 <!-- rnb-text-begin -->
-<div id="part-i-eda-round-up" class="section level1">
-<h1>Part I: EDA Round-up</h1>
-<div id="contents" class="section level2">
-<h2>Contents</h2>
-<ul>
-<li>Week 6, Jan. 31: EDA5, Round-up, communication, pdf, Word,
-PowerPoint</li>
-</ul>
-<div id="review" class="section level3">
-<h3>Review</h3>
-<ul>
-<li><p>OECD and UN data: migrants [<a href="https://ds-sl.github.io/intro2r/da4r/migrants.nb.html">Link</a>],
-[<a href="https://github.com/ds-sl/intro2r/blob/main/docs/da4r/migrants.Rmd">Rmd</a>]</p></li>
-<li><p>Responses to Week Five Assignment: [<a href="https://ds-sl.github.io/intro2r/da4r/w5a_response.nb.html">Link</a>].
-[<a href="https://github.com/ds-sl/intro2r/blob/main/docs/da4r/w5a_response.Rmd">Rmd</a>]</p></li>
-</ul>
-</div>
-</div>
-<div id="presentation-of-the-final-report-feb.-26" class="section level2">
-<h2>Presentation of the final report (Feb. 26):</h2>
-<ul>
-<li><p>Please prepare for a 7-minute talk (including discussion for 1
-mins) in class on the topic of your final report. </p></li>
-<li><p>Students will be required to use Rnotebook to analyze data and
-prepare the basis for slides. </p></li>
-<li><p>Presentation slides should be prepared using Power Point,
-etc.. </p></li>
-<li><p>The file name should be the student ID, e.g. 232323.pdf, and
-232323.Rmd.</p></li>
-</ul>
-</div>
-<div id="submission-of-a-final-report-deadline-march-02" class="section level2">
-<h2>Submission of a final report (Deadline March 02):</h2>
-<p>Students are required to submit a final report on a research
-topic.</p>
-<p>1. Students select a research topic.</p>
-<p>2. Collecting data on your research topic.</p>
-<p>3. Analyze data using methods learnt in lectures.</p>
-<p>4. Discuss your findings.</p>
-<p>Students are requested to submit a paper, with a supporting document
-in R Notebook to prepare your essay. Submit the PDF file of the final
-report and the RNotebbok file on Moodle.</p>
-<p>Length: less than 8 pages in A4 format including figures and
-tables.　Upload it on Moodle. Deadline of submission: March 02.</p>
-</div>
-<div id="types-of-documents" class="section level2">
-<h2>Types of Documents</h2>
-<ul>
-<li><p>R Notebook (a type of R Markdown in HTML), Quarto, etc.</p>
-<ul>
-<li><p>EDA with Reproducibility and Literate Programming</p></li>
-<li><p>Easy to visualize, and easy to handle</p></li>
-</ul></li>
-<li><p>Slides for Presentation (isoslides in HTML, MS PowerPoint,
-etc.)</p>
-<ul>
-<li><p>Communication</p></li>
-<li><p>Screen size, page (?)</p></li>
-</ul></li>
-<li><p>Paper - PDF (MS Word?)</p>
-<ul>
-<li><p>Academic communication</p></li>
-<li><p>Fixed contents and page size</p></li>
-</ul></li>
-</ul>
-</div>
-<div id="file-conversion-i" class="section level2">
-<h2>File Conversion, I</h2>
-<ul>
-<li><p>R Notebook with data - archive in zip file to share</p></li>
-<li><p>R Notebook to isoslides (HTML) with options</p></li>
-<li><p>R Notebook to MS PowerPoint with
-<code>reference_doc: ref-ppt-style.pptx</code></p></li>
-<li><p>R Notebook to PDF with <code>tinytex</code></p></li>
-<li><p>R Notebook to MS Word with
-<code>reference_doc: ref-doc-style.docx</code></p>
-<ul>
-<li>MS Word to PDF</li>
-</ul></li>
-</ul>
-<p><strong>Reference:</strong></p>
-<ul>
-<li>R Markdown: The Definitive Guide [<a href="https://bookdown.org/yihui/rmarkdown/">Link</a>]</li>
-</ul>
-</div>
-<div id="file-conversion-ii" class="section level2">
-<h2>File Conversion, II</h2>
-<ul>
-<li><p>Avoid <code>df_print: paged</code> option of html in other
-formats</p>
-<ul>
-<li>Use head(), head(n=10), slice_head(n=10), slice(11:20)</li>
-</ul></li>
-<li><p>Code chunk options</p>
-<ul>
-<li>eval, echo, message, warning, include, fig.height=4.5,
-fig.width=6</li>
-</ul></li>
-<li><p>Page breaks in slides</p>
-<ul>
-<li>Header 2, or three hyphens in source editor mode, or Insert &gt;
-Horizontal Rule in visual editor mode</li>
-</ul></li>
-<li><p>PowerPoint: <code>reference_doc: ref-ppt-style.pptx</code> [<a href="https://bookdown.org/yihui/rmarkdown/powerpoint-presentation.html">Link</a>]</p></li>
-<li><p>MS Word: <code>reference_doc: ref-doc-style.docx</code> [<a href="https://bookdown.org/yihui/rmarkdown/word-document.html">Link</a>]</p></li>
-<li><p>PDF: a little difficult unless you know LaTeX [<a href="https://bookdown.org/yihui/rmarkdown/pdf-document.html">Link</a>]</p></li>
-</ul>
-</div>
-</div>
-<div id="part-ii-practicum" class="section level1">
-<h1>Part II: Practicum</h1>
-<div id="file-links" class="section level2">
-<h2>File Links</h2>
-<ul>
-<li><p>For Communication: migrans_note [<a href="https://ds-sl.github.io/intro2r/da4r/migrants_note.nb.html">Link</a>],
-[<a href="https://github.com/ds-sl/intro2r/blob/main/docs/da4r/migrants_note.Rmd">Rmd</a>]</p></li>
-<li><p>Week Six Assignment Template [<a href="https://ds-sl.github.io/intro2r/da4r/w6_assignment_template.nb.html">Link</a>],
-[<a href="https://github.com/ds-sl/intro2r/blob/main/docs/da4r/w6_assignment_template.Rmd">Rmd</a>]</p></li>
-</ul>
-</div>
 <div id="week-six-assignment" class="section level2">
 <h2>Week Six Assignment</h2>
 <p>Choose any data.</p>
@@ -1922,6 +1802,38 @@ presentation (<code>w6_g123456.html),</code>and a PDF
 Six Assignment).</p>
 <p><strong><em>Due Sunday 4, February 2024, 11:59 PM</em></strong></p>
 </div>
+<div id="short-abstract" class="section level2">
+<h2>Short Abstract</h2>
+</div>
+<div id="information-of-data" class="section level2">
+<h2>Information of data</h2>
+</div>
+<div id="setup" class="section level2">
+<h2>Setup</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KFdESSlcbmxpYnJhcnkocmVhZHhsKVxubGlicmFyeShjb3VudHJ5Y29kZSlcbmBgYCJ9 -->
+<pre class="r"><code>library(tidyverse)
+library(WDI)
+library(readxl)
+library(countrycode)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="importing-data" class="section level2">
+<h2>Importing Data</h2>
+</div>
+<div id="viewing-data" class="section level2">
+<h2>Viewing Data</h2>
+</div>
+<div id="visualization-and-analysis" class="section level2">
+<h2>Visualization and Analysis</h2>
+<p><em>Do not forget to add observations and questions.</em></p>
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+</div>
 <div id="references" class="section level2">
 <h2>References</h2>
 <ul>
@@ -1934,9 +1846,8 @@ Six Assignment).</p>
 </ul>
 <!-- rnb-text-end -->
 </div>
-</div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiRGF0YSBBbmFseXNpcyBmb3IgUmVzZWFyY2hlcnMgMjAyMywgV2VlayA2IgphdXRob3I6ICJIaXJvc2hpIFN1enVraSIKZGF0ZTogIjIwMjQvMDEvMzEiCm91dHB1dDoKICBpb3NsaWRlc19wcmVzZW50YXRpb246CiAgICB3aWRlc2NyZWVuOiB5ZXMKICBodG1sX25vdGVib29rOiBkZWZhdWx0CiAgaHRtbF9kb2N1bWVudDoKICAgIGRmX3ByaW50OiBwYWdlZAotLS0KCiMgUGFydCBJOiBFREEgUm91bmQtdXAKCiMjIENvbnRlbnRzCgotICAgV2VlayA2LCBKYW4uIDMxOiBFREE1LCBSb3VuZC11cCwgY29tbXVuaWNhdGlvbiwgcGRmLCBXb3JkLCBQb3dlclBvaW50CgojIyMgUmV2aWV3CgotICAgT0VDRCBhbmQgVU4gZGF0YTogbWlncmFudHMgW1tMaW5rXShodHRwczovL2RzLXNsLmdpdGh1Yi5pby9pbnRybzJyL2RhNHIvbWlncmFudHMubmIuaHRtbCldLCBbW1JtZF0oaHR0cHM6Ly9naXRodWIuY29tL2RzLXNsL2ludHJvMnIvYmxvYi9tYWluL2RvY3MvZGE0ci9taWdyYW50cy5SbWQpXQoKLSAgIFJlc3BvbnNlcyB0byBXZWVrIEZpdmUgQXNzaWdubWVudDogW1tMaW5rXShodHRwczovL2RzLXNsLmdpdGh1Yi5pby9pbnRybzJyL2RhNHIvdzVhX3Jlc3BvbnNlLm5iLmh0bWwpXS4gW1tSbWRdKGh0dHBzOi8vZ2l0aHViLmNvbS9kcy1zbC9pbnRybzJyL2Jsb2IvbWFpbi9kb2NzL2RhNHIvdzVhX3Jlc3BvbnNlLlJtZCldCgojIyBQcmVzZW50YXRpb24gb2YgdGhlIGZpbmFsIHJlcG9ydCAoRmViLiAyNik6CgotICAgUGxlYXNlIHByZXBhcmUgZm9yIGEgNy1taW51dGUgdGFsayAoaW5jbHVkaW5nIGRpc2N1c3Npb24gZm9yIDEgbWlucykgaW4gY2xhc3Mgb24gdGhlIHRvcGljIG9mIHlvdXIgZmluYWwgcmVwb3J0LsKgCgotICAgU3R1ZGVudHMgd2lsbCBiZSByZXF1aXJlZCB0byB1c2UgUm5vdGVib29rIHRvIGFuYWx5emUgZGF0YSBhbmQgcHJlcGFyZSB0aGUgYmFzaXMgZm9yIHNsaWRlcy7CoAoKLSAgIFByZXNlbnRhdGlvbiBzbGlkZXMgc2hvdWxkIGJlIHByZXBhcmVkIHVzaW5nIFBvd2VyIFBvaW50LCBldGMuLsKgCgotICAgVGhlIGZpbGUgbmFtZSBzaG91bGQgYmUgdGhlIHN0dWRlbnQgSUQsIGUuZy4gMjMyMzIzLnBkZiwgYW5kIDIzMjMyMy5SbWQuCgojIyBTdWJtaXNzaW9uIG9mIGEgZmluYWwgcmVwb3J0IChEZWFkbGluZSBNYXJjaCAwMik6CgpTdHVkZW50cyBhcmUgcmVxdWlyZWQgdG8gc3VibWl0IGEgZmluYWwgcmVwb3J0IG9uIGEgcmVzZWFyY2ggdG9waWMuCgoxXC4gU3R1ZGVudHMgc2VsZWN0IGEgcmVzZWFyY2ggdG9waWMuCgoyXC4gQ29sbGVjdGluZyBkYXRhIG9uIHlvdXIgcmVzZWFyY2ggdG9waWMuCgozXC4gQW5hbHl6ZSBkYXRhIHVzaW5nIG1ldGhvZHMgbGVhcm50IGluIGxlY3R1cmVzLgoKNFwuIERpc2N1c3MgeW91ciBmaW5kaW5ncy4KClN0dWRlbnRzIGFyZSByZXF1ZXN0ZWQgdG8gc3VibWl0IGEgcGFwZXIsIHdpdGggYSBzdXBwb3J0aW5nIGRvY3VtZW50IGluIFIgTm90ZWJvb2sgdG8gcHJlcGFyZSB5b3VyIGVzc2F5LiBTdWJtaXQgdGhlIFBERiBmaWxlIG9mIHRoZSBmaW5hbCByZXBvcnQgYW5kIHRoZSBSTm90ZWJib2sgZmlsZSBvbiBNb29kbGUuCgpMZW5ndGg6IGxlc3MgdGhhbiA4IHBhZ2VzIGluIEE0IGZvcm1hdCBpbmNsdWRpbmcgZmlndXJlcyBhbmQgdGFibGVzLuOAgFVwbG9hZCBpdCBvbiBNb29kbGUuIERlYWRsaW5lIG9mIHN1Ym1pc3Npb246IE1hcmNoIDAyLgoKIyMgVHlwZXMgb2YgRG9jdW1lbnRzCgotICAgUiBOb3RlYm9vayAoYSB0eXBlIG9mIFIgTWFya2Rvd24gaW4gSFRNTCksIFF1YXJ0bywgZXRjLgoKICAgIC0gICBFREEgd2l0aCBSZXByb2R1Y2liaWxpdHkgYW5kIExpdGVyYXRlIFByb2dyYW1taW5nCgogICAgLSAgIEVhc3kgdG8gdmlzdWFsaXplLCBhbmQgZWFzeSB0byBoYW5kbGUKCi0gICBTbGlkZXMgZm9yIFByZXNlbnRhdGlvbiAoaXNvc2xpZGVzIGluIEhUTUwsIE1TIFBvd2VyUG9pbnQsIGV0Yy4pCgogICAgLSAgIENvbW11bmljYXRpb24KCiAgICAtICAgU2NyZWVuIHNpemUsIHBhZ2UgKD8pCgotICAgUGFwZXIgLSBQREYgKE1TIFdvcmQ/KQoKICAgIC0gICBBY2FkZW1pYyBjb21tdW5pY2F0aW9uCgogICAgLSAgIEZpeGVkIGNvbnRlbnRzIGFuZCBwYWdlIHNpemUKCiMjIEZpbGUgQ29udmVyc2lvbiwgSQoKLSAgIFIgTm90ZWJvb2sgd2l0aCBkYXRhIC0gYXJjaGl2ZSBpbiB6aXAgZmlsZSB0byBzaGFyZQoKLSAgIFIgTm90ZWJvb2sgdG8gaXNvc2xpZGVzIChIVE1MKSB3aXRoIG9wdGlvbnMKCi0gICBSIE5vdGVib29rIHRvIE1TIFBvd2VyUG9pbnQgd2l0aCBgcmVmZXJlbmNlX2RvYzogcmVmLXBwdC1zdHlsZS5wcHR4YAoKLSAgIFIgTm90ZWJvb2sgdG8gUERGIHdpdGggYHRpbnl0ZXhgCgotICAgUiBOb3RlYm9vayB0byBNUyBXb3JkIHdpdGggYHJlZmVyZW5jZV9kb2M6IHJlZi1kb2Mtc3R5bGUuZG9jeGAKCiAgICAtICAgTVMgV29yZCB0byBQREYKCioqUmVmZXJlbmNlOioqCgotICAgUiBNYXJrZG93bjogVGhlIERlZmluaXRpdmUgR3VpZGUgW1tMaW5rXShodHRwczovL2Jvb2tkb3duLm9yZy95aWh1aS9ybWFya2Rvd24vKV0KCiMjIEZpbGUgQ29udmVyc2lvbiwgSUkKCi0gICBBdm9pZCBgZGZfcHJpbnQ6IHBhZ2VkYCBvcHRpb24gb2YgaHRtbCBpbiBvdGhlciBmb3JtYXRzCgogICAgLSAgIFVzZSBoZWFkKCksIGhlYWQobj0xMCksIHNsaWNlX2hlYWQobj0xMCksIHNsaWNlKDExOjIwKQoKLSAgIENvZGUgY2h1bmsgb3B0aW9ucwoKICAgIC0gICBldmFsLCBlY2hvLCBtZXNzYWdlLCB3YXJuaW5nLCBpbmNsdWRlLCBmaWcuaGVpZ2h0PTQuNSwgZmlnLndpZHRoPTYKCi0gICBQYWdlIGJyZWFrcyBpbiBzbGlkZXMKCiAgICAtICAgSGVhZGVyIDIsIG9yIHRocmVlIGh5cGhlbnMgaW4gc291cmNlIGVkaXRvciBtb2RlLCBvciBJbnNlcnQgXD4gSG9yaXpvbnRhbCBSdWxlIGluIHZpc3VhbCBlZGl0b3IgbW9kZQoKLSAgIFBvd2VyUG9pbnQ6IGByZWZlcmVuY2VfZG9jOiByZWYtcHB0LXN0eWxlLnBwdHhgIFtbTGlua10oaHR0cHM6Ly9ib29rZG93bi5vcmcveWlodWkvcm1hcmtkb3duL3Bvd2VycG9pbnQtcHJlc2VudGF0aW9uLmh0bWwpXQoKLSAgIE1TIFdvcmQ6IGByZWZlcmVuY2VfZG9jOiByZWYtZG9jLXN0eWxlLmRvY3hgIFtbTGlua10oaHR0cHM6Ly9ib29rZG93bi5vcmcveWlodWkvcm1hcmtkb3duL3dvcmQtZG9jdW1lbnQuaHRtbCldCgotICAgUERGOiBhIGxpdHRsZSBkaWZmaWN1bHQgdW5sZXNzIHlvdSBrbm93IExhVGVYIFtbTGlua10oaHR0cHM6Ly9ib29rZG93bi5vcmcveWlodWkvcm1hcmtkb3duL3BkZi1kb2N1bWVudC5odG1sKV0KCiMgUGFydCBJSTogUHJhY3RpY3VtCgojIyBGaWxlIExpbmtzCgotICAgRm9yIENvbW11bmljYXRpb246IG1pZ3JhbnNfbm90ZSBbW0xpbmtdKGh0dHBzOi8vZHMtc2wuZ2l0aHViLmlvL2ludHJvMnIvZGE0ci9taWdyYW50c19ub3RlLm5iLmh0bWwpXSwgW1tSbWRdKGh0dHBzOi8vZ2l0aHViLmNvbS9kcy1zbC9pbnRybzJyL2Jsb2IvbWFpbi9kb2NzL2RhNHIvbWlncmFudHNfbm90ZS5SbWQpXQoKLSAgIFdlZWsgU2l4IEFzc2lnbm1lbnQgVGVtcGxhdGUgW1tMaW5rXShodHRwczovL2RzLXNsLmdpdGh1Yi5pby9pbnRybzJyL2RhNHIvdzZfYXNzaWdubWVudF90ZW1wbGF0ZS5uYi5odG1sKV0sIFtbUm1kXShodHRwczovL2dpdGh1Yi5jb20vZHMtc2wvaW50cm8yci9ibG9iL21haW4vZG9jcy9kYTRyL3c2X2Fzc2lnbm1lbnRfdGVtcGxhdGUuUm1kKV0KCiMjIFdlZWsgU2l4IEFzc2lnbm1lbnQKCkNob29zZSBhbnkgZGF0YS4KCi0gICBDcmVhdGUgYW4gUiBNYXJrZG93biBmaWxlIChgdzZfZzEyMzQ1Ni5SbWRgKSBvZiBhIGRhdGEgYW5hbHlzaXMgY29udGFpbmluZyB0aGUgZm9sbG93aW5nIGFuZCBzdWJtaXQgdGhlIHJlbmRlcmVkIGZpbGVzIChhbiBSIE5vdGVib29rIChgdzZfZzEyMzQ1NmAubmIuaHRtbCksIGFuIGlzb3NsaWRlcyBwcmVzZW50YXRpb24gKGB3Nl9nMTIzNDU2Lmh0bWxgKSAsIGFuZCBhIFBERiAoYHc2X2cxMjM0NTYucGRmYCkgKSBhbmQgZGF0YSBmaWxlIHVubGVzcyBhdXRvbWF0aWNhbGx5IGltcG9ydGVkIHVzaW5nIFdESSBvciBVUkwgaW4gTW9vZGxlLgoKICAgIDEuICBDcmVhdGUgYW4gUiBOb3RlYm9vayB1c2luZyB0aGUgUiBOb3RlYm9vayBUZW1wbGF0ZSBpbiBNb29kbGUgYW5kIHNhdmUgaXQgYXMswqBmb3IgZXhhbXBsZSwgYHc2X2cxMjM0NTYuUm1kYC4KCiAgICAyLiAgRWRpdCBhdXRob3Igd2l0aCBuYW1lLCBJRCwgYW5kIHRpdGxlLgoKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCgotICAgQ29udGVudHMgc2hvdWxkIGluY2x1ZGUgdGhlIGZvbGxvd2luZzoKCiAgICAtICAgQSBzaG9ydCBhYnN0cmFjdAoKICAgIC0gICBJbmZvcm1hdGlvbiBvZiBkYXRhIGluY2x1ZGluZyBkYXRhIG5hbWUsIGRlc2NyaXB0aW9uIGFuZCBsaW5rIHRvIHJlYWNoIHRoZSBkYXRhCgogICAgLSAgIFNldmVyYWwgY2hhcnRzOiBhIGJhciBncmFwaCBvciBhIGNvbHVtbiBncmFwaCwgYSBoaXN0b2dyYW0sIGEgbGluZSBncmFwaCwgYSBzY2F0dGVyIHBsb3QKCiAgICAtICAgT2JzZXJ2YXRpb25zIG9yIHF1ZXN0aW9ucyBmb3IgdmlzdWFsaXphdGlvbnMKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQoKLSAgIFIgTm90ZWJvb2s6IFJ1biBlYWNoIGNvZGUgYmxvY2sgYW5kIHByZXZpZXcgdG8gY3JlYXRlwqBgdzZfZzEyMzQ1Ni5uYi5odG1sYC4KCi0gICBpc29zbGlkZXMgcHJlc2VudGF0aW9uOiBVc2UgSGVhZGVyIDIgb3IgSG9yaXpvbnRhbCBSdWxlIHRvIGNyZWF0ZSBwYWdlIGJyZWFrIGFuZCBjcmVhdGUgYHc2X2cxMjM0NTYuaHRtbGAgKFdpdGggYSBpc29zbGlkZXMgcHJlc2VudGF0aW9uLCB5b3UgY2FuIGNyZWF0ZSBhIFBvd2VyUG9pbnQgZmlsZSwgYnV0IHlvdSBkbyBub3QgbmVlZCB0byBzdWJtaXQgaXQuKQoKLSAgIEEgc2hvcnQgcGFwZXIgaW4gUERGIChgdzZfZzEyMzQ1Ni5wZGZgKTogRGlyZWN0bHkgY3JlYXRlIGEgcGRmIG9yIHRocm91Z2ggTVMgV29yZC4gVGhlIGNvbnRlbnRzIGRvIG5vdCBoYXZlIHRvIGJlIGV4YWN0bHkgdGhlIHNhbWUgYXMgUiBOb3RlYm9vay4KClN1Ym1pdCB5b3VyIFIgTm90ZWJvb2sgZmlsZSAodzVfZzEyMzQ1Ni5uYi5odG1sKSwgaXNvc2xpZGVzIHByZXNlbnRhdGlvbiAoYHc2X2cxMjM0NTYuaHRtbCksYGFuZCBhIFBERiAoYHc2X2cxMjM0NTYucGRmYCkgKHdpdGggZGF0YSBpZiBuZWNlc3NhcnkpIGluIE1vb2RsZSAoV2VlayBTaXggQXNzaWdubWVudCkuCgoqKipEdWUgU3VuZGF5IDQsIEZlYnJ1YXJ5IDIwMjQsIDExOjU5IFBNKioqCgojIyBSZWZlcmVuY2VzCgotICAgRGF0YSBBbmFseXNpcyBmb3IgUmVzZWFyY2hlcnMuIFtbTGlua10oaHR0cHM6Ly9pY3UtaHN1enVraS5naXRodWIuaW8vZGE0ci8pXQoKLSAgIENoZWF0IFNoZWV0LiBbW1NpdGUgTGlua10oaHR0cHM6Ly9yc3R1ZGlvLmdpdGh1Yi5pby9jaGVhdHNoZWV0cy8pXQoKICAgIC0gICBSIE1hcmtkb3duIFtbTGlua10oaHR0cHM6Ly9yc3R1ZGlvLmdpdGh1Yi5pby9jaGVhdHNoZWV0cy9odG1sL3JtYXJrZG93bi5odG1sKV0KCi0gICBSIE1hcmtkb3duIERlZmluaXRpdmUgR3VpZGUgW1tMaW5rXShodHRwczovL2Jvb2tkb3duLm9yZy95aWh1aS9ybWFya2Rvd24vKV0K</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiV2VlayBTaXggQXNzaWdubWVudCBUZW1wbGF0ZSIKYXV0aG9yOiAiSUQsIExhc3QsIEZpcnN0IgpkYXRlOiAiYHIgU3lzLkRhdGUoKWAiCm91dHB1dDoKICB3b3JkX2RvY3VtZW50OiBkZWZhdWx0CiAgcGRmX2RvY3VtZW50OiBkZWZhdWx0CiAgaW9zbGlkZXNfcHJlc2VudGF0aW9uOiBkZWZhdWx0CiAgcG93ZXJwb2ludF9wcmVzZW50YXRpb246IGRlZmF1bHQKICBodG1sX25vdGVib29rOiBkZWZhdWx0Ci0tLQoKIyMgV2VlayBTaXggQXNzaWdubWVudAoKQ2hvb3NlIGFueSBkYXRhLgoKLSAgIENyZWF0ZSBhbiBSIE1hcmtkb3duIGZpbGUgKGB3Nl9nMTIzNDU2LlJtZGApIG9mIGEgZGF0YSBhbmFseXNpcyBjb250YWluaW5nIHRoZSBmb2xsb3dpbmcgYW5kIHN1Ym1pdCB0aGUgcmVuZGVyZWQgZmlsZXMgKGFuIFIgTm90ZWJvb2sgKGB3Nl9nMTIzNDU2YC5uYi5odG1sKSwgYW4gaXNvc2xpZGVzIHByZXNlbnRhdGlvbiAoYHc2X2cxMjM0NTYuaHRtbGApICwgYW5kIGEgUERGIChgdzZfZzEyMzQ1Ni5wZGZgKSApIGFuZCBkYXRhIGZpbGUgdW5sZXNzIGF1dG9tYXRpY2FsbHkgaW1wb3J0ZWQgdXNpbmcgV0RJIG9yIFVSTCBpbiBNb29kbGUuCgogICAgMS4gIENyZWF0ZSBhbiBSIE5vdGVib29rIHVzaW5nIHRoZSBSIE5vdGVib29rIFRlbXBsYXRlIGluIE1vb2RsZSBhbmQgc2F2ZSBpdCBhcyzCoGZvciBleGFtcGxlLCBgdzZfZzEyMzQ1Ni5SbWRgLgoKICAgIDIuICBFZGl0IGF1dGhvciB3aXRoIG5hbWUsIElELCBhbmQgdGl0bGUuCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KCi0gICBDb250ZW50cyBzaG91bGQgaW5jbHVkZSB0aGUgZm9sbG93aW5nOgoKICAgIC0gICBBIHNob3J0IGFic3RyYWN0CgogICAgLSAgIEluZm9ybWF0aW9uIG9mIGRhdGEgaW5jbHVkaW5nIGRhdGEgbmFtZSwgZGVzY3JpcHRpb24gYW5kIGxpbmsgdG8gcmVhY2ggdGhlIGRhdGEKCiAgICAtICAgU2V2ZXJhbCBjaGFydHM6IGEgYmFyIGdyYXBoIG9yIGEgY29sdW1uIGdyYXBoLCBhIGhpc3RvZ3JhbSwgYSBsaW5lIGdyYXBoLCBhIHNjYXR0ZXIgcGxvdAoKICAgIC0gICBPYnNlcnZhdGlvbnMgb3IgcXVlc3Rpb25zIGZvciB2aXN1YWxpemF0aW9ucwoKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCgotICAgUiBOb3RlYm9vazogUnVuIGVhY2ggY29kZSBibG9jayBhbmQgcHJldmlldyB0byBjcmVhdGXCoGB3Nl9nMTIzNDU2Lm5iLmh0bWxgLgoKLSAgIGlzb3NsaWRlcyBwcmVzZW50YXRpb246IFVzZSBIZWFkZXIgMiBvciBIb3Jpem9udGFsIFJ1bGUgdG8gY3JlYXRlIHBhZ2UgYnJlYWsgYW5kIGNyZWF0ZSBgdzZfZzEyMzQ1Ni5odG1sYCAoV2l0aCBhIGlzb3NsaWRlcyBwcmVzZW50YXRpb24sIHlvdSBjYW4gY3JlYXRlIGEgUG93ZXJQb2ludCBmaWxlLCBidXQgeW91IGRvIG5vdCBuZWVkIHRvIHN1Ym1pdCBpdC4pCgotICAgQSBzaG9ydCBwYXBlciBpbiBQREYgKGB3Nl9nMTIzNDU2LnBkZmApOiBEaXJlY3RseSBjcmVhdGUgYSBwZGYgb3IgdGhyb3VnaCBNUyBXb3JkLiBUaGUgY29udGVudHMgZG8gbm90IGhhdmUgdG8gYmUgZXhhY3RseSB0aGUgc2FtZSBhcyBSIE5vdGVib29rLgoKU3VibWl0IHlvdXIgUiBOb3RlYm9vayBmaWxlICh3NV9nMTIzNDU2Lm5iLmh0bWwpLCBpc29zbGlkZXMgcHJlc2VudGF0aW9uIChgdzZfZzEyMzQ1Ni5odG1sKSxgYW5kIGEgUERGIChgdzZfZzEyMzQ1Ni5wZGZgKSAod2l0aCBkYXRhIGlmIG5lY2Vzc2FyeSkgaW4gTW9vZGxlIChXZWVrIFNpeCBBc3NpZ25tZW50KS4KCioqKkR1ZSBTdW5kYXkgNCwgRmVicnVhcnkgMjAyNCwgMTE6NTkgUE0qKioKCgojIyBTaG9ydCBBYnN0cmFjdAoKIyMgSW5mb3JtYXRpb24gb2YgZGF0YQoKIyMgU2V0dXAKCmBgYHtyfQpsaWJyYXJ5KHRpZHl2ZXJzZSkKbGlicmFyeShXREkpCmxpYnJhcnkocmVhZHhsKQpsaWJyYXJ5KGNvdW50cnljb2RlKQpgYGAKCiMjIEltcG9ydGluZyBEYXRhCgojIyBWaWV3aW5nIERhdGEKCiMjIFZpc3VhbGl6YXRpb24gYW5kIEFuYWx5c2lzCgoqRG8gbm90IGZvcmdldCB0byBhZGQgb2JzZXJ2YXRpb25zIGFuZCBxdWVzdGlvbnMuKgoKIyMgQ29uY2x1c2lvbgoKIyMgUmVmZXJlbmNlcwoKLSAgIERhdGEgQW5hbHlzaXMgZm9yIFJlc2VhcmNoZXJzLiBbW0xpbmtdKGh0dHBzOi8vaWN1LWhzdXp1a2kuZ2l0aHViLmlvL2RhNHIvKV0KCi0gICBDaGVhdCBTaGVldC4gW1tTaXRlIExpbmtdKGh0dHBzOi8vcnN0dWRpby5naXRodWIuaW8vY2hlYXRzaGVldHMvKV0KCiAgICAtICAgUiBNYXJrZG93biBbW0xpbmtdKGh0dHBzOi8vcnN0dWRpby5naXRodWIuaW8vY2hlYXRzaGVldHMvaHRtbC9ybWFya2Rvd24uaHRtbCldCgotICAgUiBNYXJrZG93biBEZWZpbml0aXZlIEd1aWRlIFtbTGlua10oaHR0cHM6Ly9ib29rZG93bi5vcmcveWlodWkvcm1hcmtkb3duLyldCgo=</div>
 
 
 
@@ -1983,7 +1894,7 @@ $(document).ready(function () {
 <!-- code folding -->
 <script>
 $(document).ready(function () {
-  window.initializeSourceEmbed("qall401-06.Rmd");
+  window.initializeSourceEmbed("w6_assignment_template.Rmd");
   window.initializeCodeFolding("show" === "show");
 });
 </script>

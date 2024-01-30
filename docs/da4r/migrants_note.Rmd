@@ -3,11 +3,11 @@ title: "Foreigners, Migrants - OECD and UN data"
 author: "ID, Last Name, First Name"
 date: "2024/01/24"
 output:
-  powerpoint_presentation: default
   html_notebook: default
+  word_document: default
   ioslides_presentation: default
   pdf_document: default
-  word_document: default
+  powerpoint_presentation: default
 ---
 
 ## R Markdown Options
@@ -189,4 +189,5 @@ df_in |> pivot_wider(names_from = category, values_from = value) |>
   labs(title = "Permanent immigrant inflows in 2022", fill = "", x = "") +
   theme(legend.position = 'bottom')
 ```
+
 

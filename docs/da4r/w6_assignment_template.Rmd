@@ -1,0 +1,80 @@
+---
+title: "Week Six Assignment Template"
+author: "ID, Last, First"
+date: "`r Sys.Date()`"
+output:
+  word_document: default
+  pdf_document: default
+  ioslides_presentation: default
+  powerpoint_presentation: default
+  html_notebook: default
+---
+
+## Week Six Assignment
+
+Choose any data.
+
+-   Create an R Markdown file (`w6_g123456.Rmd`) of a data analysis containing the following and submit the rendered files (an R Notebook (`w6_g123456`.nb.html), an isoslides presentation (`w6_g123456.html`) , and a PDF (`w6_g123456.pdf`) ) and data file unless automatically imported using WDI or URL in Moodle.
+
+    1.  Create an R Notebook using the R Notebook Template in Moodle and save it as, for example, `w6_g123456.Rmd`.
+
+    2.  Edit author with name, ID, and title.
+
+------------------------------------------------------------------------
+
+-   Contents should include the following:
+
+    -   A short abstract
+
+    -   Information of data including data name, description and link to reach the data
+
+    -   Several charts: a bar graph or a column graph, a histogram, a line graph, a scatter plot
+
+    -   Observations or questions for visualizations
+
+------------------------------------------------------------------------
+
+-   R Notebook: Run each code block and preview to create `w6_g123456.nb.html`.
+
+-   isoslides presentation: Use Header 2 or Horizontal Rule to create page break and create `w6_g123456.html` (With a isoslides presentation, you can create a PowerPoint file, but you do not need to submit it.)
+
+-   A short paper in PDF (`w6_g123456.pdf`): Directly create a pdf or through MS Word. The contents do not have to be exactly the same as R Notebook.
+
+Submit your R Notebook file (w5_g123456.nb.html), isoslides presentation (`w6_g123456.html),`and a PDF (`w6_g123456.pdf`) (with data if necessary) in Moodle (Week Six Assignment).
+
+***Due Sunday 4, February 2024, 11:59 PM***
+
+
+## Short Abstract
+
+## Information of data
+
+## Setup
+
+```{r}
+library(tidyverse)
+library(WDI)
+library(readxl)
+library(countrycode)
+```
+
+## Importing Data
+
+## Viewing Data
+
+## Visualization and Analysis
+
+*Do not forget to add observations and questions.*
+
+## Conclusion
+
+## References
+
+-   Data Analysis for Researchers. [[Link](https://icu-hsuzuki.github.io/da4r/)]
+
+-   Cheat Sheet. [[Site Link](https://rstudio.github.io/cheatsheets/)]
+
+    -   R Markdown [[Link](https://rstudio.github.io/cheatsheets/html/rmarkdown.html)]
+
+-   R Markdown Definitive Guide [[Link](https://bookdown.org/yihui/rmarkdown/)]
+
