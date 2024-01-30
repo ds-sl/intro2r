@@ -399,6 +399,4 @@ df_oecd_un_wide <- df_oecd_un |> drop_na(value, migrants) |> pivot_wider(names_f
 df_oecd_un_wide
 ```
 
-```{r}
-df_oecd_un_wide |>
-```
+
