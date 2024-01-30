@@ -6,11 +6,11 @@ output:
   html_notebook: default
 ---
 
+## Short Abstract
+
 > In this note, we study GINI index using WDI and compare with other index. In an OECD report,  'OECD Regions and Cities at a Glance 2022' [Link](https://read.oecd-ilibrary.org/urban-rural-and-regional-development/oecd-regions-and-cities-at-a-glance-2022_14108660-en#page1), S80/S20 ratios are used. We consider a question if  the ratio is related to GINI index.
 
 **Definition S80/S20 ratio**: The total income received by the 20% of people with the highest income in a region divided by the total income received by the 20% of people with the lowest income in the same region.
-
-## Short Abstract
 
 ## Information of data
 
@@ -196,4 +196,36 @@ glance(model_gini_top20) |> rbind(glance(model_gini_8020)) |> rbind(glance(model
 The GINI index and the income share held by highest 20% is strongly correlated. The relation is even stronger than the correlation between the GINI index and the `s80/s20` ratio.
 
 
+## Calculation Model of Gini Index
 
+```{r}
+df_gini_calc <- df_gini |> 
+  mutate(`0` = 0, `20` = `0-20`,
+         `40` = `0-20` + `20-40`, 
+         `60` = `0-20` + `20-40` + `40-60`, 
+         `80` = `0-20` + `20-40` + `40-60` + `60-80`, 
+         `100` = 100) |>
+  select(-c(`0-20`:`60-80`)) 
+df_gini_calc %>% drop_na() 
+```
+
+
+```{r}
+df_gini_calc_long <- df_gini_calc |>  pivot_longer(`0`:`100`, names_to = "classes", values_to = "cumulative_share") |> mutate(classes = as.numeric(classes))
+df_gini_calc_long %>% drop_na() 
+```
+
+```{r}
+df_gini_f <- df_gini_calc_long |> group_by(country, year) |> 
+  drop_na(gini) |>
+  reframe(gini, gini_spline = round(100-AUC(classes, cumulative_share, method = "spline")/50, digits = 1), gini_trapezoid = round(100-AUC(classes, cumulative_share)/50, digits = 1), `80-100`, `s80/s20`) |> 
+  distinct(country, year, gini, gini_spline, gini_trapezoid, `80-100`, `s80/s20`)
+df_gini_f
+```
+
+```{r}
+df_gini_f |> drop_na(gini, gini_spline, gini_trapezoid, `80-100`, `s80/s20`) |> select(gini, gini_spline, gini_trapezoid, `80-100`, `s80/s20`) |> cor() |> as.data.frame()
+```
+**Observation:**
+
+- Since gini_spline and gini_trapezoid are calculated using the definition of the gini index, they are strongly correlated, though they are not exactly equal.
