@@ -3,12 +3,12 @@ title: "GES 001 演習6"
 author: "H. Suzuki"
 date: "2024年1月31日"
 output:
-  html_notebook: default
-  html_document:
-    df_print: paged
   ioslides_presentation:
     widescreen: true
     df_print: paged
+  html_document:
+    df_print: paged
+  html_notebook: default
 ---
 
 ## 準備
@@ -533,6 +533,10 @@ df_w6_chart_f |> ggplotly()
 <!-- -   課題：2023.2.3.23:59 までに Moodle の演習の課題ボックスに提出したものについては、なるべく、早く見て、フィードバックを書きます。それ以降に提出されたものも見ますが、フィードバックは遅くなると思ってください。 -->
 
 ## 参考文献
+
+
+- 課題1：解説 [リンク](https://ds-sl.github.io/intro2r/ges001/w5a_response.nb.html)
+- 課題1：解答例 [リンク](https://ds-sl.github.io/intro2r/ges001/w5eda0.nb.html)
 
 1.  「みんなのデータサイエンス - Data Science for All」[[はじめてのデータサイエンス](https://icu-hsuzuki.github.io/ds4aj/first-example.html#first-example)]
 
