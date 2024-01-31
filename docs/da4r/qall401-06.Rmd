@@ -3,9 +3,9 @@ title: "Data Analysis for Researchers 2023, Week 6"
 author: "Hiroshi Suzuki"
 date: "2024/01/31"
 output:
+  html_notebook: default
   ioslides_presentation:
     widescreen: yes
-  html_notebook: default
   html_document:
     df_print: paged
 ---
@@ -74,11 +74,11 @@ Length: less than 8 pages in A4 format including figures and tables.　Upload it
 
 -   R Notebook to isoslides (HTML) with options
 
--   R Notebook to MS PowerPoint with `reference_doc: ref-ppt-style.pptx`
+-   R Notebook to MS PowerPoint with options
 
--   R Notebook to PDF with `tinytex`
+-   R Notebook to PDF with options
 
--   R Notebook to MS Word with `reference_doc: ref-doc-style.docx`
+-   R Notebook to MS Word with options
 
     -   MS Word to PDF
 
@@ -104,7 +104,7 @@ Length: less than 8 pages in A4 format including figures and tables.　Upload it
 
 -   MS Word: `reference_doc: ref-doc-style.docx` [[Link](https://bookdown.org/yihui/rmarkdown/word-document.html)]
 
--   PDF: a little difficult unless you know LaTeX [[Link](https://bookdown.org/yihui/rmarkdown/pdf-document.html)]
+-   PDF: with `tinytex`, a little difficult unless you know LaTeX [[Link](https://bookdown.org/yihui/rmarkdown/pdf-document.html)]
 
 # Part II: Practicum
 
