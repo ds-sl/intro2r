@@ -96,24 +96,24 @@ Rural population (percent growth rate per annum))
 19. UN: Anthracite - commerce and public services
 20: WID: World Inequality Database. The data sheet selected was data F4 [URL](https://wir2022.wid.world/www-site/uploads/2022/03/WIR2022TablesFigures-Summary.xlsx), UN Health Data
 21. OECD Child Well-Being: [Link](https://data-explorer.oecd.org/vis?fs[0]=Topic%2C1%7CSociety%23SOC%23%7CWell-being%20and%20beyond%20GDP%23SOC_WEL%23&pg=0&fc=Topic&bp=true&snb=2&vw=tb&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_CWB%40DF_CWB&df[ag]=OECD.WISE.CWB&df[vs]=1.0&pd=2018%2C2018&dq=.A4_3%2BA4_2%2BA4_6.A4&ly[cl]=MEASURE&ly[rw]=REF_AREA&to[TIME_PERIOD]=false)
+22. UN Data - Government expenditure on education as % of GDP: [Link](https://data.un.org/Data.aspx?q=education+expenditure&d=UNESCO&f=series%3aXGDP_FSGOV), UN Data - Gross Enrolment Ratio - Tertiary Education: [Link](https://data.un.org/Data.aspx?q=tertiary&d=GenderStat&f=inID%3a65)
 
 
 ### Examples
 
+
 *Let me illustrate steps using the following indicators. Issues are not taken from the analysis of the one who chose these indicators.*
 
-1.  GDP (current \$): NY.GDP.MKTP.CD
-2.  Value addition in Agriculture : NV.AGR.EMPL.KD
-3.  Value addition in Industrial Sector : NV.IND.EMPL.KD
-4.  Value addition in Service Sector : NV.SRV.EMPL.KD
+1.  UN Data - Government expenditure on education as % of GDP: [Link](https://data.un.org/Data.aspx?q=education+expenditure&d=UNESCO&f=series%3aXGDP_FSGOV), 2.  UN Data - Gross Enrolment Ratio - Tertiary Education: [Link](https://data.un.org/Data.aspx?q=tertiary&d=GenderStat&f=inID%3a65)
 
-*See the descriptions below. It is helpful to add links to the site.*
+*When download the data, choose country codes from 'Select columns'. The first data adds iso3c codes and the second adds UN number codes.*
+
+*It is helpful to add links to the site.*
 
 ### Set up
 
 ```{r}
 library(tidyverse)
-library(WDI)
 ```
 
 *Create data folder if you do not have it under Files.*
@@ -138,218 +138,99 @@ wdicache <- read_rds("data/wdicache.rds")
 
 ### Information of Data
 
-#### *Regular Expression (intermediate level)*
-
--   *"NY.GDP.MKTP.CD\$": ends with the string "NY.GDP.MKTP.CD"*
-
--   *A \|\> rbind(B): row bind A with B, i.e., add B to the next row of A.*
-
-```{r}
-WDIsearch(string = "NY.GDP.MKTP.CD$", field = "indicator", short = FALSE, cache = wdicache) |> 
-  rbind(WDIsearch(string = "NV.AGR.EMPL.KD$", field = "indicator", short = FALSE, cache = wdicache)) |>
-  rbind(WDIsearch(string = "NV.IND.EMPL.KD$", field = "indicator", short = FALSE, cache = wdicache)) |>
-  rbind(WDIsearch(string = "NV.SRV.EMPL.KD$", field = "indicator", short = FALSE, cache = wdicache))
-```
 
 ### Importing Data
 
 Edit short_name_1, chosen_indicator_1, short_name_2, chosen_indicator_2, etc. You can edit `df_yourdata` to a descriptive name. If you edit `df_yourdata` , please edit other parts as well.
 
-```{r eval=FALSE}
-df_yourdata <- WDI(
-  indicator = c(gdp = "NY.GDP.MKTP.CD",
-                agriculture = "NV.AGR.EMPL.KD",
-                industry = "NV.IND.EMPL.KD",
-                service = "NV.SRV.EMPL.KD"),
-  extra = TRUE, cache = wdicache)
-```
-
-```{r eval=FALSE}
-write_csv(df_yourdata, "data/yourdata.csv")
+```{r}
+df_ed_gov_exp <- read_csv("data/UNdata_Export_20240131_024758033.csv")
+df_ed_gov_exp
 ```
 
 ```{r}
-df_yourdata <- read_csv("data/yourdata.csv")
-```
-
-### Viewing data
-
-*You can view your data from Environment in the top right pane.*
-
-```{r}
-df_yourdata
-```
-
-*Structure of your data: a list of columns, i.e., variables.*
-
-```{r}
-df_yourdata |> str()
-```
-
-*Check the number of available data (not NA).*
-
-```{r}
-df_yourdata |> drop_na(gdp) |>
-  ggplot(aes(year)) + geom_bar()
-```
-
-### Creating a long table
-
-#### Example.
-
-```         
-df_sec_ter_gdp_long <- df_sec_ter_gdp |> 
-  pivot_longer(cols = c(secondary, tertiary)) 
-df_sec_ter_gdp_long
-```
-
-*Generate a long table. The following works fine, but it is also good to change the order of the selected columns needed. The following codes do the same. "name" and "value" are added as default.*
-
-```{r eval = FALSE}
-df_yourdata_long <- df_yourdata |> pivot_longer(cols = c(agriculture, industry, service), names_to = "name", values_to = "value")
-df_yourdata_long
+df_ed_gov_exp |> str()
 ```
 
 ```{r}
-df_yourdata_long <- df_yourdata |> 
-  pivot_longer(cols = agriculture:service)
-df_yourdata_long
-```
-
-*Select columns of a long table and change the order of the variables.*
-
-```{r}
-df_yourdata_long <- df_yourdata |> 
-  pivot_longer(cols = agriculture:service) |>
-  select(country, iso2c, year, gdp, name, value, region, income)
-```
-
-*With a long table, you can display the following chart as well. Compare with a similar chart above.*
-
-```{r}
-df_yourdata_long |> drop_na(value) |> 
-  ggplot(aes(year, fill = name)) + geom_bar()
-```
-
-### Visualizing data
-
-```{r}
-df_yourdata_long
-```
-
-**Observations and Questions:**
-
--   *It is easier to see the main part of the data.*
-
-```{r}
-df_yourdata_long |> filter(country == "World") |> drop_na(value) |>
-  ggplot(aes(year, value, col = name)) + geom_line()
-```
-
-**Observations and Questions:**
-
--   *You can create the line chart above easily using col = name, if you have a long table.*
-
-```{r}
-INCOME <- df_yourdata |> drop_na(income) |> 
-  filter(income != "Aggregates") |> filter(income != "Not classified") |> 
-  distinct(income) |> pull()
-INCOME
+df_ed_gov_exp |> select(`Time Period`, Sex, `Age group`, `Units of measurement`) |> lapply(unique)
 ```
 
 ```{r}
-df_yourdata_long |> filter(country %in% INCOME) |> drop_na(value) |>
-  ggplot(aes(year, value, col = country, linetype = name)) + geom_line()
+df_gov_exp <- df_ed_gov_exp |> 
+  select(iso3c = `Reference Area Code`, country = `Reference Area`, `Time Period`, gov_exp = `Observation Value`) |> mutate(year = as.integer(`Time Period`), .after = country) |> 
+  select(-`Time Period`) |> arrange(country, iso3c, year)
+df_gov_exp
 ```
 
 ```{r}
-df_yourdata_long |> drop_na(value) |> filter(income %in% INCOME) |>
-  ggplot(aes(year, value, col = income, linetype = name)) + geom_line()
-```
-
-**Observations and Questions:**
-
--   *Compare two charts above. The first one is fine, INCOME is taken from a list of countries. The second one is called a saw tooth graph. There are so many data in each category of income level and line graph cannot be generated using the code above.*
-
--   *See the following. It is smoothing with loess method after taking avarage. What are the differences of the chart below and the first?*
-
-```{r}
-df_yourdata_long |> drop_na(value) |> filter(income %in% INCOME) |>
-  ggplot(aes(year, value, col = income, linetype = name)) + 
-  geom_smooth(formula = 'y ~ x', method = "loess", se=FALSE, linewidth = 0.5) +
-  labs(title = "Values of Each Sector in Each Income Level, Aggregated")
+df_tertiary_ratio <- read_csv("data/UNdata_Export_20240131_024820801.csv")
+df_tertiary_ratio
 ```
 
 ```{r}
-df_yourdata_long |> filter(year == 2018) |> filter(region != "Aggregates") |>
-  drop_na(value) |> 
-  ggplot(aes(gdp, value, col = name)) + geom_point() + 
-  scale_x_log10() + scale_y_log10() +
-  labs(title = "GDP vs Values of Each Sector in 2018")
-```
-
-**Observations and Questions:**
-
--   *What happens if we are not using log10 scales.*
-
-### A choropleth map
-
-```{r}
-library(rnaturalearth)
-library(rnaturalearthdata)
+df_tertiary_ratio |> str()
 ```
 
 ```{r}
-ne_world <- ne_countries(scale = "medium", returnclass = "sf")
-```
-
-*A couple of students had an error when they changed "medium" to "large". I also had the same error when I checked using Windows OS. You can stay with "medium" but if you want to use "large", please follow the following steps.*
-
-1.  *Install `devtools` package, either by running `install.packages("devtools")` or intall it from Install Packages under Tools in the menu.*
-2.  *Then run the following in Console: `devtools::install_github("ropensci/rnaturalearthhires")`*
-
-If possible, create a choropleth map. (a challenge, not required)
-
-```{r}
-df_yourdata |> filter(year == 2022) |> drop_na(gdp) |> pull(gdp) |> 
-  quantile(probs = c(0.25,0.5,0.75,1))
+df_tertiary_ratio |> select(Subgroup, Year, Source, Unit, `Value Footnotes`) |> lapply(unique)
 ```
 
 ```{r}
-df_gdp_2022 <- df_yourdata |> filter(year == 2022) |> select(iso2c, gdp)
-ne_gdp_2022 <- ne_world |> left_join(df_gdp_2022, by = c("wb_a2" = "iso2c"))
+df_tertiary <- df_tertiary_ratio |> select(un_code = `Country or Area Code`, country = `Country or Area`, sex = Subgroup, Year, tertiary = Value) |> mutate(year = as.integer(Year), .before = sex, tertiary = as.numeric(tertiary)) |> select(-Year)
+df_tertiary
 ```
 
 ```{r}
-ne_gdp_2022 |> mutate(level = cut(gdp, breaks = c(0, 1.403573e+10, 7.573231e+10, 8.912561e+11, 1.013257e+14), labels = c("bottom quartile","2nd quartile","3rd quartile","top quartile"))) |> ggplot() + geom_sf(aes(fill = level)) + labs(title = "GDP in 2022")
+setdiff(unique(df_gov_exp$country), unique(df_tertiary$country))
 ```
 
 ```{r}
-df_yourdata |> filter(year == 1960) |> drop_na(gdp) |> pull(gdp) |> 
-  quantile(probs = c(0.25,0.5,0.75,1))
+setdiff(unique(df_tertiary$country), unique(df_gov_exp$country))
+```
+
+**Country Names are different.**
+
+```{r}
+df_tertiary |> 
+  mutate(iso3c = countrycode(country, "country.name", "iso3c"), .after = un_code) |> 
+  filter(is.na(iso3c)) |> distinct(country)
 ```
 
 ```{r}
-df_gdp_1960 <- df_yourdata |> filter(year == 1960) |> select(iso2c, gdp)
-ne_gdp_1960 <- ne_world |> left_join(df_gdp_1960, by = c("wb_a2" = "iso2c"))
+df_gov_exp |> filter(country %in% c("Netherlands Antilles", "Serbia and Montenegro"))
 ```
 
 ```{r}
-ne_gdp_2022 |> mutate(level = cut(gdp, breaks = c(0, 5.151683e+08, 2.661058e+09, 2.398013e+10, 1.381135e+12), labels = c("bottom quartile","2nd quartile","3rd quartile","top quartile"))) |> ggplot() + geom_sf(aes(fill = level)) + labs(title = "GDP in 1960")
+df_tertiary1 <- df_tertiary |> 
+  mutate(iso3c = countrycode(country, "country.name", "iso3c"), .after = un_code) |> 
+  select(-country, -un_code) |> filter(!is.na(iso3c))
+df_tertiary1
 ```
 
-**Observations and Questions:**
+```{r}
+df_un_ed_combined <- df_gov_exp |> full_join(df_tertiary1, by = c("iso3c", "year"))
+df_un_ed_combined
+```
 
--   *What can you see?*
+```{r}
+df_un_ed_combined |> filter(country %in% c("Japan", "Viet Nam", "China", "Republic of Korea", "United States of America")) |> drop_na(gov_exp) |>
+  ggplot(aes(year, gov_exp, col = country)) + geom_line() +
+  labs(title = "Five Countries' Goverment Expenditure on Education")
+```
 
-***Before you turn in:***
+```{r}
+df_un_ed_combined |> filter(country %in% c("Japan", "Viet Nam", "China", "Republic of Korea", "United States of America")) |> drop_na(tertiary)
+```
 
-1.  *Run all from the top.*
+```{r}
+df_un_ed_combined |> filter(country %in% c("Japan", "Viet Nam", "China", "Republic of Korea", "United States of America")) |> drop_na(tertiary) |>
+  ggplot(aes(year, tertiary, col = country, linetype = sex)) + geom_line()
+```
 
-2.  *Preview*
+```{r}
+df_un_ed_combined |> filter(country %in% c("Japan", "Viet Nam", "China", "Republic of Korea", "United States of America")) |> drop_na(tertiary) |>
+  ggplot(aes(year, tertiary, col = country, linetype = sex)) + geom_line() + 
+  scale_y_log10() + labs(title = "Gross Enrolment Ratio in Tertiary Education", subtitle = "Log 10 Scale in Number")
+```
 
-3.  *View R Notebook file in your web browser.*
-
-*Then post your R Notebook file, i.e., w4_g1234556x.nb.html.*
-
-*If you had a lot of errors and could not generate R Notebook file properly, post both R Notebook file and R Markdown file, i.e., w4_g123456x.Rmd.*
