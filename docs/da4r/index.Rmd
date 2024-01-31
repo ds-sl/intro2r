@@ -265,9 +265,8 @@ Choose at least two *similar* WDI codes with the *same scale*, and analyze the d
 
     2.  Edit author with name, ID, and title.
 
-```{=html}
 <!-- -->
-```
+
 -   Contents should include the following:
 
     -   A short abstract
@@ -356,7 +355,7 @@ Submit your R Notebook file (w5_g123456.nb.html) in Moodle (Week Five Assignment
 
 ## Week 6 (2024/01/31)
 
-Exploratory Data Analysis V [Slides], [[R Notebook](https://ds-sl.github.io/intro2r/da4r/qall401-06.nb.html)], [Video1], [Video2]
+Exploratory Data Analysis V [[Slides](https://ds-sl.github.io/intro2r/da4r/qall401-06.html)], [[R Notebook](https://ds-sl.github.io/intro2r/da4r/qall401-06.nb.html)], [[Video1](https://youtu.be/bgGR_mZ1ox0)], [[Video2](https://youtu.be/wipkINZz8Ko)]
 
 ### Part I
 
@@ -366,6 +365,12 @@ Exploratory Data Analysis V [Slides], [[R Notebook](https://ds-sl.github.io/intr
     -   PDF, Word, PowerPoint, Other Slides, etc
 
 ### Part II - Practicum
+
+-   For Communication: migrants_note [[Link](https://ds-sl.github.io/intro2r/da4r/migrants_note.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/migrants_note.Rmd)]
+
+-   Week Six Assignment Template [[Link](https://ds-sl.github.io/intro2r/da4r/w6_assignment_template.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/w6_assignment_template.Rmd)]
+
+-   Model: gini_and_inequality [[Link](https://ds-sl.github.io/intro2r/da4r/gini_and_inequality.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/gini_and_inequality.Rmd)]
 
 ### Assignment 5
 
