@@ -1,6 +1,6 @@
 ---
 title: "Responses to Week Five Assignment"
-author: "ID Last, First"
+author: "Hiroshi Suzuki"
 date: "`r Sys.Date()`"
 output:
   html_notebook: default
@@ -73,30 +73,30 @@ library(countrycode)
 
 #### List of Data Chosen:
 
-1.  UN population: https://data.un.org/_Docs/SYB/CSV/SYB66_246_202310_Population%20Growth,%20Fertility%20and%20Mortality%20Indicators.csv
-2.  UN (FAO) palm oil: data attached UNdata_Export_20240128_153052531.csv
-3.  UN Human resources in R & D: [Link](https://data.un.org/_Docs/SYB/CSV/SYB66_285_202310_Research%20and%20Development%20Staff%20and%20researchers%20in%20full%20time%20equivalent.csv) URL https://data.un.org/_Docs/SYB/CSV/SYB66_285_202310_Research%20and%20Development%20Staff%20and%20researchers%20in%20full%20time%20equivalent.csv
-4.  UN Consumer Price Index, Employment: https://data.un.org/_Docs/SYB/CSV/SYB66_128_202310_Consumer%20Price%20Index.csv, https://data.un.org/_Docs/SYB/CSV/SYB66_200_202310_Employment.csv
-5.  OECD CIP country weight:  https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CEconomy%23ECO%23&fs[1]=Topic%2C1%7CEconomy%23ECO%23%7CPrices%23ECO_PRI%23&pg=0&fc=Topic&snb=16&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_CPI_COU_WEIGHTS%40DF_CPI_CTRY_WEIGHTS&df[ag]=OECD.SDD.TPS&df[vs]=1.0&pd=%2C&dq=.A..&ly[rw]=REF_AREA&ly[cl]=TIME_PERIOD&to[TIME_PERIOD]=false&lo=5&lom=LASTNPERIODS
-6.  UN Population in the capital city, urban and rural areas: https://data.un.org/_Docs/SYB/CSV/SYB61_253_Population%20Growth%20Rates%20in%20Urban%20areas%20and%20Capital%20cities.csv
-7.  OECD: Venture capital investments (market statistics), Gross domestic product (GDP)
-8.  OECD: https://data-explorer.oecd.org/vis?fs[0]=Topic%2C1%7CSociety%23SOC%23%7CWell-being%20and%20beyond%20GDP%23SOC_WEL%23&pg=0&fc=Topic&bp=true&snb=2&vw=tb&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_CWB%40DF_CWB&df[ag]=OECD.WISE.CWB&df[vs]=1.0&pd=2018%2C2018&dq=.A4_3%2BA4_2%2BA4_6.A4&ly[cl]=MEASURE&ly[rw]=REF_AREA&to[TIME_PERIOD]=false
+1. WIR Executive Report: https://wir2022.wid.world/www-site/uploads/2022/03/WIR2022TablesFigures-Summary.xlsx
+2. The world inequaluty report 2022 Executive Report F4: https://wir2022.wid.world/www-site/uploads/2022/03/WIR2022TablesFigures-Summary.xlsx
+3. WID: World Inequality Database. The data sheet selected was data F4 [URL](https://wir2022.wid.world/www-site/uploads/2022/03/WIR2022TablesFigures-Summary.xlsx), UN Health Data
+4.  UN population: https://data.un.org/_Docs/SYB/CSV/SYB66_246_202310_Population%20Growth,%20Fertility%20and%20Mortality%20Indicators.csv
+5.  UN (FAO) palm oil: data attached UNdata_Export_20240128_153052531.csv
+6.  UN Human resources in R & D: [Link](https://data.un.org/_Docs/SYB/CSV/SYB66_285_202310_Research%20and%20Development%20Staff%20and%20researchers%20in%20full%20time%20equivalent.csv) URL https://data.un.org/_Docs/SYB/CSV/SYB66_285_202310_Research%20and%20Development%20Staff%20and%20researchers%20in%20full%20time%20equivalent.csv
+7.  UN Consumer Price Index, Employment: https://data.un.org/_Docs/SYB/CSV/SYB66_128_202310_Consumer%20Price%20Index.csv, https://data.un.org/_Docs/SYB/CSV/SYB66_200_202310_Employment.csv
+8.  UN Population in the capital city, urban and rural areas: https://data.un.org/_Docs/SYB/CSV/SYB61_253_Population%20Growth%20Rates%20in%20Urban%20areas%20and%20Capital%20cities.csv
 9.  UN (UNCHR): total number of forcibly displaced people [Link](https://data.un.org/Data.aspx?d=UNHCR&f=indID%3aType-Ref)
-10. Ease of doing business (EODB) score [Link]( https://data.un.org/Data.aspx?d=WDI&f=Indicator_Code%3aIC.BUS.DFRN.XQ), CPIA business regulatory environment rating [Link](https://data.un.org/Data.aspx?q=cpia&d=WDI&f=Indicator_Code%3aIQ.CPA.BREG.XQ)
-11. The world inequaluty report 2022 Executive Report F4: https://wir2022.wid.world/www-site/uploads/2022/03/WIR2022TablesFigures-Summary.xlsx
-12. WIR Executive Report: https://wir2022.wid.world/www-site/uploads/2022/03/WIR2022TablesFigures-Summary.xlsx
-13. OECD: Tertiary graduation rate of women (PhD graduation, women) [Link]( https://data.oecd.org/students/tertiary-graduation-rate.htm)
-14. Tax on personal income: OECD [Link](https://stats.oecd.org/sdmx-json/data/DP_LIVE/.TAXINCOME.TOT.PC_GDP.A/OECD?contentType=csv&detail=code&separator=comma&csv-lang=en&startPeriod=2000)
-15. OECD: “ICT Access and Usage by Individuals” [URL CSV](https://sdmx.oecd.org/public/rest/data/OECD.STI.STP,DSD_MSTI@DF_MSTI,1.1/.A.G.PT_B1GQ..?startPeriod=2014&dimensionAtObservation=AllDimensions&format=csvfilewithlabels), “Main Science and Technology Indicators” [URL Excel](https://datacatalogfiles.worldbank.org/ddh-published/0037712/DR0090755/CLASS.xlsx)
-16. OECD: fluctuations by analyzing the catch files:
-17. UN: gender gap in education:  https://data.un.org/_Docs/SYB/CSV/SYB66_319_202310_Ratio%20of%20girls%20to%20boys%20in%20education.csv
-18. UN: urbanization (Capital city population (thousands)
+10. UN: gender gap in education:  https://data.un.org/_Docs/SYB/CSV/SYB66_319_202310_Ratio%20of%20girls%20to%20boys%20in%20education.csv
+11. UN: urbanization (Capital city population (thousands)
 Urban population (percent growth rate per annum)
 Rural population (percent growth rate per annum))
-19. UN: Anthracite - commerce and public services
-20: WID: World Inequality Database. The data sheet selected was data F4 [URL](https://wir2022.wid.world/www-site/uploads/2022/03/WIR2022TablesFigures-Summary.xlsx), UN Health Data
-21. OECD Child Well-Being: [Link](https://data-explorer.oecd.org/vis?fs[0]=Topic%2C1%7CSociety%23SOC%23%7CWell-being%20and%20beyond%20GDP%23SOC_WEL%23&pg=0&fc=Topic&bp=true&snb=2&vw=tb&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_CWB%40DF_CWB&df[ag]=OECD.WISE.CWB&df[vs]=1.0&pd=2018%2C2018&dq=.A4_3%2BA4_2%2BA4_6.A4&ly[cl]=MEASURE&ly[rw]=REF_AREA&to[TIME_PERIOD]=false)
-22. UN Data - Government expenditure on education as % of GDP: [Link](https://data.un.org/Data.aspx?q=education+expenditure&d=UNESCO&f=series%3aXGDP_FSGOV), UN Data - Gross Enrolment Ratio - Tertiary Education: [Link](https://data.un.org/Data.aspx?q=tertiary&d=GenderStat&f=inID%3a65)
+12. UN: Anthracite - commerce and public services
+13. UN Data - Government expenditure on education as % of GDP: [Link](https://data.un.org/Data.aspx?q=education+expenditure&d=UNESCO&f=series%3aXGDP_FSGOV), UN Data - Gross Enrolment Ratio - Tertiary Education: [Link](https://data.un.org/Data.aspx?q=tertiary&d=GenderStat&f=inID%3a65)
+14. Ease of doing business (EODB) score [Link]( https://data.un.org/Data.aspx?d=WDI&f=Indicator_Code%3aIC.BUS.DFRN.XQ), CPIA business regulatory environment rating [Link](https://data.un.org/Data.aspx?q=cpia&d=WDI&f=Indicator_Code%3aIQ.CPA.BREG.XQ)
+15.  OECD CIP country weight:  https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CEconomy%23ECO%23&fs[1]=Topic%2C1%7CEconomy%23ECO%23%7CPrices%23ECO_PRI%23&pg=0&fc=Topic&snb=16&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_CPI_COU_WEIGHTS%40DF_CPI_CTRY_WEIGHTS&df[ag]=OECD.SDD.TPS&df[vs]=1.0&pd=%2C&dq=.A..&ly[rw]=REF_AREA&ly[cl]=TIME_PERIOD&to[TIME_PERIOD]=false&lo=5&lom=LASTNPERIODS
+16.  OECD: Venture capital investments (market statistics), Gross domestic product (GDP)
+17.  OECD: https://data-explorer.oecd.org/vis?fs[0]=Topic%2C1%7CSociety%23SOC%23%7CWell-being%20and%20beyond%20GDP%23SOC_WEL%23&pg=0&fc=Topic&bp=true&snb=2&vw=tb&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_CWB%40DF_CWB&df[ag]=OECD.WISE.CWB&df[vs]=1.0&pd=2018%2C2018&dq=.A4_3%2BA4_2%2BA4_6.A4&ly[cl]=MEASURE&ly[rw]=REF_AREA&to[TIME_PERIOD]=false
+18. OECD: Tertiary graduation rate of women (PhD graduation, women) [Link]( https://data.oecd.org/students/tertiary-graduation-rate.htm)
+19. OECD: Tax on personal income  [Link](https://stats.oecd.org/sdmx-json/data/DP_LIVE/.TAXINCOME.TOT.PC_GDP.A/OECD?contentType=csv&detail=code&separator=comma&csv-lang=en&startPeriod=2000)
+20. OECD: “ICT Access and Usage by Individuals” [URL CSV](https://sdmx.oecd.org/public/rest/data/OECD.STI.STP,DSD_MSTI@DF_MSTI,1.1/.A.G.PT_B1GQ..?startPeriod=2014&dimensionAtObservation=AllDimensions&format=csvfilewithlabels), “Main Science and Technology Indicators” [URL Excel](https://datacatalogfiles.worldbank.org/ddh-published/0037712/DR0090755/CLASS.xlsx)
+21. OECD: fluctuations by analyzing the catch files:
+22. OECD Child Well-Being: [Link](https://data-explorer.oecd.org/vis?fs[0]=Topic%2C1%7CSociety%23SOC%23%7CWell-being%20and%20beyond%20GDP%23SOC_WEL%23&pg=0&fc=Topic&bp=true&snb=2&vw=tb&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_CWB%40DF_CWB&df[ag]=OECD.WISE.CWB&df[vs]=1.0&pd=2018%2C2018&dq=.A4_3%2BA4_2%2BA4_6.A4&ly[cl]=MEASURE&ly[rw]=REF_AREA&to[TIME_PERIOD]=false)
 
 
 ### Examples
@@ -104,7 +104,9 @@ Rural population (percent growth rate per annum))
 
 *Let me illustrate steps using the following indicators. Issues are not taken from the analysis of the one who chose these indicators.*
 
-1.  UN Data - Government expenditure on education as % of GDP: [Link](https://data.un.org/Data.aspx?q=education+expenditure&d=UNESCO&f=series%3aXGDP_FSGOV), 2.  UN Data - Gross Enrolment Ratio - Tertiary Education: [Link](https://data.un.org/Data.aspx?q=tertiary&d=GenderStat&f=inID%3a65)
+1.  UN Data - Government expenditure on education as % of GDP: [Link](https://data.un.org/Data.aspx?q=education+expenditure&d=UNESCO&f=series%3aXGDP_FSGOV), 
+
+2.  UN Data - Gross Enrolment Ratio - Tertiary Education: [Link](https://data.un.org/Data.aspx?q=tertiary&d=GenderStat&f=inID%3a65)
 
 *When download the data, choose country codes from 'Select columns'. The first data adds iso3c codes and the second adds UN number codes.*
 
@@ -136,12 +138,20 @@ write_rds(wdicache, "data/wdicache.rds")
 wdicache <- read_rds("data/wdicache.rds")
 ```
 
+```{r}
+wdi_country_extra <- wdicache$country |> select(iso3c, region, income, lending)
+```
+
 ### Information of Data
 
 
 ### Importing Data
 
-Edit short_name_1, chosen_indicator_1, short_name_2, chosen_indicator_2, etc. You can edit `df_yourdata` to a descriptive name. If you edit `df_yourdata` , please edit other parts as well.
+Go to the [data link](https://data.un.org/Data.aspx?q=education+expenditure&d=UNESCO&f=series%3aXGDP_FSGOV). Add Reference Area Code from Select column on top. Click Update. You will see that iso3c is added in the first column. Then download a CSV file (Comma). You get 'UNdata_Export_20240131_024758033.csv'.
+
+Next go the the [data link](https://data.un.org/Data.aspx?q=tertiary&d=GenderStat&f=inID%3a65). Similarly, add Country or Area Code from Select column on top. Click Update. You will see that UN code is added in the first column. Then download a CSV file (Comma). You get 'data/UNdata_Export_20240131_024820801.csv'.
+
+Place the downloaded data 'UNdata_Export_20240131_024758033.csv' and 'UNdata_Export_20240131_024820801.csv' in the data folder.
 
 ```{r}
 df_ed_gov_exp <- read_csv("data/UNdata_Export_20240131_024758033.csv")
@@ -152,9 +162,28 @@ df_ed_gov_exp
 df_ed_gov_exp |> str()
 ```
 
+**Observation**
+
+- There are seven columns.
+- The first column 'Reference Area Code' is 'iso3c'.
+- The second column 'Reference Area' seems to be the country name.
+- The third column 'Time Period' is year. It is in `dbl`, and should be in `integer`.
+- The fourth column, 'Sex' start with "Not applicable". Probably, male and female will appear.
+- The fifth column, 'Age group' start with "Not applicable". 
+- The sixth column, 'Units of measurement' starts with "Percent".
+- The seventh column, 'Observation Value' should be numbers reprenting the percent of GDP.
+
+#### Check the categorical variables
+
+Select the categorical vaiables we want to check the values.
+
 ```{r}
 df_ed_gov_exp |> select(`Time Period`, Sex, `Age group`, `Units of measurement`) |> lapply(unique)
 ```
+
+We do not need the categorical variable with only one value.
+
+With 'select' we can change the names of the variables as well. Change `Time Period` to integer values. Then delete `Time Period` column. We do not need quotation marks for column names, but if there is a space in the column name, we need to surround by ` ` back ticks.
 
 ```{r}
 df_gov_exp <- df_ed_gov_exp |> 
@@ -162,6 +191,8 @@ df_gov_exp <- df_ed_gov_exp |>
   select(-`Time Period`) |> arrange(country, iso3c, year)
 df_gov_exp
 ```
+
+Now, we reached a clean data. We do the same to the second data.
 
 ```{r}
 df_tertiary_ratio <- read_csv("data/UNdata_Export_20240131_024820801.csv")
@@ -172,6 +203,14 @@ df_tertiary_ratio
 df_tertiary_ratio |> str()
 ```
 
+Besides the ones we noticed in the first data, surprisingly, the Value is in character. Let me check.
+
+```{r}
+df_tertiary_ratio$Value |> unique()
+```
+
+We can assume that these are numbers.
+
 ```{r}
 df_tertiary_ratio |> select(Subgroup, Year, Source, Unit, `Value Footnotes`) |> lapply(unique)
 ```
@@ -181,6 +220,8 @@ df_tertiary <- df_tertiary_ratio |> select(un_code = `Country or Area Code`, cou
 df_tertiary
 ```
 
+Here, we check the list of countries in two data sets.
+
 ```{r}
 setdiff(unique(df_gov_exp$country), unique(df_tertiary$country))
 ```
@@ -189,7 +230,12 @@ setdiff(unique(df_gov_exp$country), unique(df_tertiary$country))
 setdiff(unique(df_tertiary$country), unique(df_gov_exp$country))
 ```
 
+We can observe that many country names do not agree. 
+
 **Country Names are different.**
+
+Next check, if we can properly assign `iso3c` to the second data. 
+The following shows that excep the 8 countries below, `iso3c` are assigned. 
 
 ```{r}
 df_tertiary |> 
@@ -197,9 +243,13 @@ df_tertiary |>
   filter(is.na(iso3c)) |> distinct(country)
 ```
 
+Check whether two countries appear in the first data.
+
 ```{r}
 df_gov_exp |> filter(country %in% c("Netherlands Antilles", "Serbia and Montenegro"))
 ```
+
+Let us assign `iso3c` and delete the rows which we cannot assign `iso3c`.
 
 ```{r}
 df_tertiary1 <- df_tertiary |> 
@@ -208,10 +258,14 @@ df_tertiary1 <- df_tertiary |>
 df_tertiary1
 ```
 
+Now we combine these two datasets. We reached a reasonably clean combined dataset.
+
 ```{r}
 df_un_ed_combined <- df_gov_exp |> full_join(df_tertiary1, by = c("iso3c", "year"))
 df_un_ed_combined
 ```
+
+### Five chosen counries' government expendicure on education
 
 ```{r}
 df_un_ed_combined |> filter(country %in% c("Japan", "Viet Nam", "China", "Republic of Korea", "United States of America")) |> drop_na(gov_exp) |>
@@ -223,6 +277,8 @@ df_un_ed_combined |> filter(country %in% c("Japan", "Viet Nam", "China", "Republ
 df_un_ed_combined |> filter(country %in% c("Japan", "Viet Nam", "China", "Republic of Korea", "United States of America")) |> drop_na(tertiary)
 ```
 
+### Five counrties' tertiary educaton enrolement
+
 ```{r}
 df_un_ed_combined |> filter(country %in% c("Japan", "Viet Nam", "China", "Republic of Korea", "United States of America")) |> drop_na(tertiary) |>
   ggplot(aes(year, tertiary, col = country, linetype = sex)) + geom_line()
@@ -232,5 +288,12 @@ df_un_ed_combined |> filter(country %in% c("Japan", "Viet Nam", "China", "Republ
 df_un_ed_combined |> filter(country %in% c("Japan", "Viet Nam", "China", "Republic of Korea", "United States of America")) |> drop_na(tertiary) |>
   ggplot(aes(year, tertiary, col = country, linetype = sex)) + geom_line() + 
   scale_y_log10() + labs(title = "Gross Enrolment Ratio in Tertiary Education", subtitle = "Log 10 Scale in Number")
+```
+
+### Combine wdicache
+
+```{r}
+df_un_ed_combined_ext <- df_un_ed_combined |> left_join(wdi_country_extra, by = 'iso3c')
+df_un_ed_combined_ext
 ```
 
