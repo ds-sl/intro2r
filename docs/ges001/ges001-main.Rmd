@@ -582,7 +582,7 @@ Net official development assistance (ODA) consists of disbursements of loans mad
 
 をテキストに使っています。
 
-01/30(TU)　Rでデータサイエンス6：気候変動　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-6.nb.html)]・[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00112.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00112.nb.html)]・[ビデオ]
+01/30(TU)　Rでデータサイエンス6：気候変動　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-6.nb.html)]・[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00112.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00112.nb.html)]・[[ビデオ](https://youtu.be/Zj_gK6XYaHs)]
 
 Environment-Climate　
 
@@ -602,7 +602,7 @@ IEA:　Energy Statistics Data Browser　データ元
 
 #### 演習の内容
 
-課題の解答例 [リンク]([https://ds-sl.github.io/intro2r/ges001/w5eda0.nb.html)](https://ds-sl.github.io/intro2r/ges001/w5eda0.nb.html))
+課題の解答例 [リンク](%5Bhttps://ds-sl.github.io/intro2r/ges001/w5eda0.nb.html)](<https://ds-sl.github.io/intro2r/ges001/w5eda0.nb.html>))
 
 基本的には、PositCloud（<https://posit.cloud/>）を使って実習
 
@@ -617,6 +617,76 @@ IEA:　Energy Statistics Data Browser　データ元
 　　　　　　 気候変動と貧困の連鎖
 
 第7週は、南部アフリカや南アジアなど気候変動から大きな影響を受けている国々の現状を取り上げます。
+
+#### コメント・レビュー
+
+-   将来のことに関するいま生きている人の責任。将来の富を食い尽くす経済。
+
+-   生活保護をうけていてアルバイトをしたときにその分が差し引かれてしまう。20万円ぐらい（年収249万位）それでは、働きたくないひとも生じてしまう。
+
+-   アフリカのような貧しい国が多くの影響を受けてしまっている。緊急支援・開発援助・政策提案
+
+-   2030年までに、CO2 排出を、43% 削減（現在40G ton 排出）：日本人、経済大国に住むものの責任
+
+#### 講義
+
+-   世界の１年間のCO2排出量は、40Gt CO2 - 日本は、1G ton（10億4400万トン）
+
+    -   Carbon budget 2023 年現在 274Gt 1.5度以内に抑えるための累積排出量上限
+
+-   Major flows from production to consumption
+
+    -   温室効果ガスインベントリオフィス：<https://www.nies.go.jp/gio/>
+
+-   Carbon Pricing: 迷惑財 - 負の公共財
+
+    -   1t あたり CO2 に関する価格
+
+        -   温対税　ガソリン 0.7円/L 289円
+
+        -   化石燃料税：6310円
+
+        -   パリ協定と整合性のあるレベル：15000円
+
+        -   炭素除去技術（DAC）：約33000円
+
+    -   カーボンリーケージ：国境炭素調節
+
+-   SCOPE 計算方法
+
+-   Climate group R100％ [[リンク](https://www.there100.org/re100-members?items_per_page=100)] - Apple など
+
+    -   日本：村田製作所、Panasonic、FujisawaSST、ヤマトホールディングス
+
+    -   環境省：地球環境・国際環境協力 [[リンク](https://www.env.go.jp/earth/)]
+
+        -   “Supply-chain emissions” in Japan [[リンク](https://www.env.go.jp/earth/ondanka/supply_chain/gvc/en/files/supply_chain_en.pdf)]
+
+-   発電
+
+    -   洋上風力発電：ニュース：三菱商事が圧勝、Amazon、GE が後押し 11.99円/1Wh
+
+-   政府の気候変動対策（欧州と日本）
+
+    -   2021年6月28日、EU理事会は「欧州気候法 Fit for 55」を採択した。
+
+    -   EUの排出量取引制度（EU ETS）の強化と範囲の拡大
+
+    -   2023年05月12日: EU理事会（閣僚理事会）は4月25日、2030年の温室効果ガス（GHG） 削減目標（1990年比で少なくとも55％削減）を達成するための政策 パッケージ「Fit for 55」（注1）に関する5つの法案を採択
+
+    -   1分からわかる、グリーン・ニューディール [[リンク](https://www.egmkt.co.jp/column/corporation/20220727_50.html)]
+
+    -   日本が抱えるエネルギー問題 [[前編](https://www.enecho.meti.go.jp/about/special/johoteikyo/energyissue2022_1.html)]・[[後編](https://www.enecho.meti.go.jp/about/special/johoteikyo/energyissue2022_2.html)]
+
+    -   GX関連法に残る問題点と必要な改善策 [[リンク](https://www.wwf.or.jp/activities/activity/5318.html)]
+
+    -   太陽光発電：世界 2021年 5.3円、日本 13.8円 kWh [[資源エネルギー庁](https://www.enecho.meti.go.jp/about/special/tokushu/saiene/saienecost.html)][[REPOS](https://www.renewable-energy-potential.env.go.jp/RenewableEnergy/report/r01.html)][[リンク](https://earthene.com/media/180)]
+
+    -   風力発電：頭の論理が追いつかない。すべてが驚きだ。[[リンク](https://www.nikkei.com/article/DGXZQOUC1057A0Q1A810C2000000/)]
+
+    -   資源エネルギー庁：もっと知りたい！エネルギー基本計画③　再生可能エネルギー（3）高い経済性が期待される風力発電 [[リンク](https://www.enecho.meti.go.jp/about/special/johoteikyo/energykihonkeikaku2021_kaisetu03.html)]
+
+#### Climate Ambition Summit [[Link](https://www.un.org/climatechange/climate-ambition-summit)]
 
 02/06 (TU)　Rでデータサイエンス7：都市部と農村部の生活状況の格差　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-7.nb.html)]・[授業]・[スライド]・[R Notebook]・[ビデオ]
 
