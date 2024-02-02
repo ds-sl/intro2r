@@ -688,7 +688,7 @@ IEA:　Energy Statistics Data Browser　データ元
 
 #### Climate Ambition Summit [[Link](https://www.un.org/climatechange/climate-ambition-summit)]
 
-02/06 (TU)　Rでデータサイエンス7：都市部と農村部の生活状況の格差　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-7.nb.html)]・[授業]・[スライド]・[R Notebook]・[ビデオ]
+02/06 (TU)　Rでデータサイエンス7：都市部と農村部の生活状況の格差　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-7.nb.html)]・[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00120.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00120.nb.html)]・[ビデオ]
 
 Urban and rural development
 
@@ -714,7 +714,7 @@ People using at least basic drinking water services, rural (% of rural populatio
 
 Fragility and Conflict: On the Front Lines of the Fight against Poverty [[Link](https://www.worldbank.org/en/topic/poverty/publication/fragility-conflict-on-the-front-lines-fight-against-poverty)]
 
-02/13(TU)　Rでデータサイエンス8：難民、軍事支出　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-8.nb.html)]・[授業]
+02/13(TU)　Rでデータサイエンス8：難民、軍事支出　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-8.nb.html)]・[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00121.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00121.nb.html)]・[ビデオ]
 
 **Global Link-Refugees**
 
@@ -746,7 +746,7 @@ FAO: The Importance of Ukraine and the Russian Federation for Global Agricultura
 
 戦争が引き起こす食料危機の現状と解決策を考える。
 
-02/20(TU)　Rでデータサイエンス9：まとめと演習　[[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-9.nb.html)]・[授業]
+02/20(TU)　Rでデータサイエンス9：まとめと演習　[[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-9.nb.html)]・[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00122.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00122.nb.html)]・[ビデオ]
 
 ### 第10週
 
