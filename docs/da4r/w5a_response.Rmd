@@ -3,7 +3,9 @@ title: "Responses to Week Five Assignment"
 author: "Hiroshi Suzuki"
 date: "`r Sys.Date()`"
 output:
-  html_notebook: default
+  html_notebook: 
+    toc: yes
+    toc_float: yes
 ---
 
 ## Week Five Assignment
@@ -99,14 +101,15 @@ Rural population (percent growth rate per annum))
 22. OECD Child Well-Being: [Link](https://data-explorer.oecd.org/vis?fs[0]=Topic%2C1%7CSociety%23SOC%23%7CWell-being%20and%20beyond%20GDP%23SOC_WEL%23&pg=0&fc=Topic&bp=true&snb=2&vw=tb&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_CWB%40DF_CWB&df[ag]=OECD.WISE.CWB&df[vs]=1.0&pd=2018%2C2018&dq=.A4_3%2BA4_2%2BA4_6.A4&ly[cl]=MEASURE&ly[rw]=REF_AREA&to[TIME_PERIOD]=false)
 
 
-### Examples
+# Examples
 
+## UN Data on Education
 
 *Let me illustrate steps using the following indicators. Issues are not taken from the analysis of the one who chose these indicators.*
 
 1.  UN Data - Government expenditure on education as % of GDP: [Link](https://data.un.org/Data.aspx?q=education+expenditure&d=UNESCO&f=series%3aXGDP_FSGOV), 
 
-2.  UN Data - Gross Enrolment Ratio - Tertiary Education: [Link](https://data.un.org/Data.aspx?q=tertiary&d=GenderStat&f=inID%3a65)
+2.  UN Data - Gross Enrollment Ratio - Tertiary Education: [Link](https://data.un.org/Data.aspx?q=tertiary&d=GenderStat&f=inID%3a65)
 
 *When download the data, choose country codes from 'Select columns'. The first data adds iso3c codes and the second adds UN number codes.*
 
@@ -297,3 +300,169 @@ df_un_ed_combined_ext <- df_un_ed_combined |> left_join(wdi_country_extra, by = 
 df_un_ed_combined_ext
 ```
 
+## Human resources in Research and Development
+
+### Preparation
+
+```{r}
+wdicache <- read_rds("data/wdicache.rds")
+wdi_country_extra <- wdicache$country |> select(iso2c, region, income)
+```
+
+```{r}
+INCOME <- c("High income", "Upper middle income", "Lower middle income", "Low income")
+```
+
+```{r}
+BRICS <- c("Brazil", "Russian Federation", "India", "China", "South Africa")
+```
+
+```{r}
+G7 <- c("Canada", "France", "Germany", "Italy", "Japan", "United Kingdom", "United States")
+```
+
+### Importing Data
+
+```{r}
+url_un_R_D <- "https://data.un.org/_Docs/SYB/CSV/SYB66_285_202310_Research%20and%20Development%20Staff%20and%20researchers%20in%20full%20time%20equivalent.csv"
+```
+
+```{r}
+df_un_R_D <- read_csv(url_un_R_D, skip = 1)
+```
+
+```{r}
+df_un_R_D
+```
+
+```{r}
+str(df_un_R_D)
+```
+
+```{r}
+df_un_R_D |> select(Series, Footnotes, Source) |> lapply(unique)
+```
+
+Add iso2c code, and check those the names listed in ...2 whose iso2c_un is NA.
+From the output, these are all region names. So in the next code, we delete them.
+
+```{r}
+library(countrycode)
+df_un_R_D |> 
+  mutate(iso2c = countrycode(`Region/Country/Area`, "un", "iso2c"), .after = ...2) |>
+  filter(is.na(iso2c)) |> distinct(...2)
+```
+
+```{r}
+df_un_R_D |> 
+  mutate(iso2c = countrycode(`Region/Country/Area`, "un", "iso2c"), .after = ...2) |>
+  filter(!is.na(iso2c)) |> 
+  select(country = ...2, iso2c, year = Year, series = Series, value = Value) |>
+  pivot_wider(names_from = series, values_from = value)
+```
+
+The following is another way of renaming series names, an alternative to use mutate-case_when.
+The operation `pivot_wider` is the converse operation to `pivot_longer`.
+
+The units of two indicators are different. One is in percent of GDP, and the other is the number of researchers in one million inhabitants. So it is better to handle the data in wide format instead of that in long data. 
+
+```{r}
+df_R_D_wide <- df_un_R_D |> 
+  mutate(iso2c = countrycode(`Region/Country/Area`, "un", "iso2c"), .after = ...2) |>
+  filter(!is.na(iso2c)) |> 
+  select(country = ...2, iso2c, year = Year, series = Series, value = Value) |>
+  pivot_wider(names_from = series, values_from = value) |>
+  rename(rd_exp = `Gross domestic expenditure on R&D: as a percentage of GDP`, researcher = `Researchers per million inhabitants (FTE)`)
+df_R_D_wide
+```
+
+```{r}
+df_R_D_wide_extra <- df_R_D_wide |> left_join(wdi_country_extra, by = "iso2c")
+df_R_D_wide_extra
+```
+
+```{r}
+df_R_D_extra <- df_R_D_wide_extra |> pivot_longer(cols = c(rd_exp, researcher))
+df_R_D_extra
+```
+
+It is important to check the number of data in each year.
+
+```{r}
+df_R_D_extra |> drop_na(value) |> 
+  ggplot(aes(year, fill = name)) + geom_bar() + labs(title = "Count of data")
+```
+
+```{r}
+df_R_D_wide_extra |> drop_na(rd_exp, researcher) |>
+  ggplot(aes(rd_exp, researcher, col = income)) + geom_point() +
+  labs(title = "Scatterplot: Expenditure on R&D vs Researchers per million", subtitle = "by income level")
+```
+
+```{r}
+df_R_D_wide_extra |> drop_na(rd_exp, researcher) |>
+  ggplot(aes(rd_exp, researcher, col = region)) + geom_point() +
+  labs(title = "Scatterplot: Expenditure on R&D vs Researchers per million", subtitle = "by region")
+```
+
+```{r}
+df_R_D_wide_extra |> drop_na(rd_exp, researcher) |> lm(researcher ~ rd_exp, data = _) |>
+  summary()
+```
+
+```{r}
+df_R_D_wide_extra |> drop_na(rd_exp, researcher) |> select(rd_exp, researcher) |> cor()
+```
+
+The value is the square root of the multiple R-squared above. There variables are strongly positively correlated.
+
+
+```{r}
+df_R_D_wide_extra |> filter(year %in% c(2005, 2010, 2015, 2020)) |> drop_na(rd_exp) |>
+  filter(income %in% INCOME) |>
+  ggplot(aes(factor(income, levels = INCOME), rd_exp)) + geom_boxplot() + 
+  labs(title = "Gross domestic expenditure on R&D: % of GDP by income level", x = "", y = "expenditure on R&D" )
+```
+
+```{r}
+df_R_D_wide_extra |> filter(year %in% c(2005, 2010, 2015, 2020)) |> drop_na(researcher) |>
+  filter(income %in% INCOME) |>
+  ggplot(aes(factor(income, levels = INCOME), researcher)) + geom_boxplot() + 
+  labs(title = "Researchers per million inhabitants (FTE) by income level", x = "")
+```
+
+```{r}
+df_R_D_wide_extra |> filter(year %in% c(2005, 2010, 2015, 2020)) |> drop_na(rd_exp) |>
+  ggplot(aes(region, rd_exp)) + geom_boxplot() + coord_flip() + 
+  labs(title = "G7 countries: Gross domestic expenditure on R&D: % of GDP ", x = "", y = "expenditure on R&D")
+```
+
+```{r}
+df_R_D_wide_extra |> filter(year %in% c(2005, 2010, 2015, 2020)) |> drop_na(researcher) |>
+  ggplot(aes(region, researcher)) + geom_boxplot() + coord_flip() + 
+  labs(title = "Researchers per million inhabitants (FTE) by region", x = "")
+```
+
+```{r}
+df_R_D_wide_extra |> filter(country %in% G7) |> drop_na(rd_exp) |>
+  ggplot(aes(year, rd_exp, col = country)) + geom_line() + 
+  labs(title = "G7 countries: Gross domestic expenditure on R&D: % of GDP ", y = "expenditure on R&D")
+```
+
+```{r}
+df_R_D_wide_extra |> filter(country %in% BRICS) |> drop_na(rd_exp) |>
+  ggplot(aes(year, rd_exp, col = country)) + geom_line() + 
+  labs(title = "BRICS countries: Gross domestic expenditure on R&D: % of GDP ",y = "expenditure on R&D")
+```
+
+```{r}
+df_R_D_wide_extra |> filter(country %in% G7) |> drop_na(researcher) |>
+  ggplot(aes(year, researcher, col = country)) + geom_line()  + 
+  labs(title = "G7 countries: Researchers per million inhabitants (FTE)")
+```
+
+```{r}
+df_R_D_wide_extra |> filter(country %in% BRICS) |> drop_na(researcher) |>
+  ggplot(aes(year, researcher, col = country)) + geom_line() + 
+  labs(title = "BRICS countries: Researchers per million inhabitants (FTE)")
+```
