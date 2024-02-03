@@ -280,6 +280,7 @@ df_serv |> filter(!(iso2c %in% REGION)) |> # 地域以外（国のみ選択）
 相関係数：散布図の近似（回帰）直線の傾きが正なら正、負なら負、直線に近い程、1 または-1 に近い
 
 ---
+
 ### 経年変化
 
 ### a. 日本
@@ -330,38 +331,51 @@ df_serv |> filter(region != "Aggregates") |> drop_na(electricity_rural) |>
   ggplot(aes(region, electricity_rural)) + geom_boxplot() + coord_flip()
 ```
 
+```{r}
+df_serv_long |> filter(name %in% c("electricity_rural", "electricity_urban")) |> 
+  filter(income != "Aggregates") |> drop_na(value) |>
+  ggplot(aes(income, value, fill = name)) + geom_boxplot() + coord_flip()
+```
+
+```{r fig.height=7, fig.width=7}
+df_serv_long |> filter(income != "Aggregates", income != "Not classified") |> drop_na(value) |>
+  ggplot(aes(income, value, fill = name)) + geom_boxplot() + coord_flip()
+```
+
+
 ## ファイルリンク
 
 基本的には、PositCloud（<https://posit.cloud/>）を使って実習
 
 -   探索的データ分析（EDA） -
-    -   練習と一つ目の実習課題（w6eda.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/w6eda.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w6eda.Rmd)]
-    -   二つ目以降の実習課題：w6eda1.Rmd [[リンク](https://ds-sl.github.io/intro2r/ges001/w6eda1.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w6eda1.Rmd)]
+    -   課題2:例 男女別失業率（unemployment.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/unemployment.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/unemployment.Rmd)]
+    -   課題2：テンプレート：w7eda_template.Rmd [[リンク](https://ds-sl.github.io/intro2r/ges001/w7eda_template.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w7eda_template.Rmd)]
 
-<!-- -   課題：**2023.1.27. 23:59** までに Moodle の演習の課題ボックスに提出したものについては、なるべく、早く見て、フィードバックを書きます。それ以降に提出されたものも見ますが、フィードバックは遅くなると思ってください。 -->
+**2023.2.10.23:59** までに Moodle の課題２提出ボックスに提出してください。
 
-R Notebook のソースファイル（Rmd）を取得方法
+できたグラフだけでも構いませんから、期限までに提出してください。解説を加え、課題２再提出ボックスを作成する予定です。
 
--   **Rmd のリンクをクリックし Raw の横の Copy a raw file からコピー、新規 RMarkdown ファイルを PositCloud または RStudio のプロジェクト内に作成しペースト**
 
-## 演習
+## 課題2
 
-以下の指標の中から、二つを選択して、データの概要（description）を記録し、データを WDI で取得し、以下の分析をする。
+以下の指標の中から、二つ以上（複数）を選択して、データの概要（description）を記録し、データを WDI で取得し、以下の分析をする。
 
 1.  各年毎のデータの数の棒グラフ
-2.  国または地域を選択
-3.  それぞれの経年変化を表す折れ線グラフ
-    a.  日本
-    b.  選択した国または地域
-4.  二つのデータの散布図-必要に応じて log10 スケールを用いる
-    a.  すべての値の散布図
-    b.  NA ではない値の散布図、近似（回帰）直線を表示
-    c.  地域を除き国のみの散布図、近似（回帰）直線を表示
-    d.  最近の年を選択し、地域を除き国のもの散布図、近似（回帰）直線を表示
+2.  経年変化を表す折れ線グラフ
+    a.  日本、またはデータがある国
+    b.  選択したいくつかの国
+3.  複数の指標の値を一列に含む縦長の表（Long Table）を作成し 　
+    a. 日本、またはデータがある国の、複数の指標を色分けした経年変化のグラフ 　
+    b. 選択したいくつかの国についての経年変化のグラフを、国を色分けし、指標は線の種類を変えたグラフ
+4.  二つのデータの散布図- NA は取り除くこと。（log10 スケールを用いる場合は値が正のもののみに限定）
+    a.  （地域を除き）国のみの散布図 （近似（回帰）直線を表示）
+    b.  最近の年の（地域を除き）国のみの散布図　（近似（回帰）直線を表示）
+    c.  b に対応する相関係数
+5.  カテゴリー変数（Categorical Variable: region, income, year など）と、数値変数（Numberical Variable）一組についての箱ヒゲ図（Boxplot）
 
 それぞれについて考察（気づいたこと、疑問など）を記す
 
-<!-- **2023.2.3.23:59** までに Moodle の演習の課題ボックスに提出したものについては、なるべく、早く見て、フィードバックを書きます。それ以降に提出されたものも見ますが、フィードバックは遅くなると思ってください。 -->
+**2023.2.10.23:59** までに Moodle の課題２提出ボックスに提出してください。
 
 ------------------------------------------------------------------------
 
@@ -385,265 +399,6 @@ R Notebook のソースファイル（Rmd）を取得方法
 -   上の方法でうまくいかないときは、data フォルダに、データ（\*\*\*.csv）が入っているかを確認、なければ、data フォルダがあることを確認して、最初のデータ読み込みのところを実行してみてください。
 -   実行できていても、結果が見えないこともあります。そのときは、Code Chunk の下にある、山二つの記号を押してみてください。これは、結果を表示、非表示にします。それが原因で隠れている場合があります。
 
-
-## データ
-
-### データ情報
-
--   データ１：一人当たりの二酸化炭素排出量 (CO2 emissions (metric tons per capita))、"EN.ATM.CO2E.PC"、co2pcap [[Link](https://data.worldbank.org/indicator/EN.ATM.CO2E.PC)]
-
--   概要：Carbon dioxide emissions are those stemming from the burning of fossil fuels and the manufacture of cement. They include carbon dioxide produced during consumption of solid, liquid, and gas fuels and gas flaring.
-
--   データ２：森林面積（％）(Forest area (% of land area))、"AG.LND.FRST.ZS"、forest [[Link](https://data.worldbank.org/indicator/AG.LND.FRST.ZS)]
-
--   概要：Forest area is land under natural or planted stands of trees of at least 5 meters in situ, whether productive or not, and excludes tree stands in agricultural production systems (for example, in fruit plantations and agroforestry systems) and trees in urban parks and gardens.
-
-------------------------------------------------------------------------
-
-### データの取得
-
-#### 準備
-
-```{r}
-library(tidyverse)
-library(WDI)
-```
-
-データのダウンロードと保存：コードと変数名を指定。
-
-```{r eval = FALSE}
-df_w6eda <- WDI(indicator = c(co2pcap = "EN.ATM.CO2E.PC",
-                              forest = "AG.LND.FRST.ZS"),
-                extra = TRUE)
-```
-
-*２回目からは、data から読み込めるようにしておく ファイル (Rmd) の保存場所に data フォルダがあることを確認*
-
-```{r eval = FALSE}
-write_csv(df_w6eda, "data/w6eda.csv")
-```
-
-```{r}
-df_w6eda <- read_csv("data/w6eda.csv")
-```
-
-------------------------------------------------------------------------
-
-### データの確認
-
-```{r}
-df_w6eda
-```
-
-```{r}
-str(df_w6eda)
-```
-
-------------------------------------------------------------------------
-
-#### 変数の選択（selecting）
-
-```{r}
-df_w6 <- df_w6eda |> 
-  select(country, iso2c, year, co2pcap, forest, region, income)
-df_w6
-```
-
-------------------------------------------------------------------------
-
-### 各年毎のデータの数の棒グラフ
-
-```{r}
-df_w6eda |> drop_na(co2pcap, forest) |>
-  ggplot(aes(year)) + geom_bar()
-```
-
-------------------------------------------------------------------------
-
-### 国と地域
-
-country には、国と地域両方が入っています。地域の iso2c は以下のものです。
-
-```{r}
-REGION <- c("1A", "1W", "4E", "7E", "8S", "B8", "EU", "F1", "OE", "S1", 
-"S2", "S3", "S4", "T2", "T3", "T4", "T5", "T6", "T7", "V1", "V2", 
-"V3", "V4", "XC", "XD", "XE", "XF", "XG", "XH", "XI", "XJ", "XL", 
-"XM", "XN", "XO", "XP", "XQ", "XT", "XU", "XY", "Z4", "Z7", "ZF", 
-"ZG", "ZH", "ZI", "ZJ", "ZQ", "ZT")
-```
-
-------------------------------------------------------------------------
-
-#### 地域のリストを表示
-
-```{r}
-df_w6eda |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
-```
-
-------------------------------------------------------------------------
-
-#### 国名とその地域・所得レベルを表示
-
-```{r}
-df_w6eda |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c, region, income)
-```
-
-------------------------------------------------------------------------
-
-### 分析する国のリスト
-
-BRICS を選択します。
-
-```{r}
-BRICS <- c("Brazil", "Russian Federation", "India", "China", "South Africa")
-```
-
-------------------------------------------------------------------------
-
-### 経年変化
-
-### a. 日本
-
-```{r}
-df_w6 |> drop_na(co2pcap) |> filter(country == "Japan") |>
-  ggplot(aes(year, co2pcap)) + geom_line() + 
-  labs(title = "日本の一人当たりの二酸化炭素排出量")
-```
-
-------------------------------------------------------------------------
-
-```{r}
-df_w6 |> drop_na(forest) |> filter(country == "Japan") |>
-  ggplot(aes(year, forest)) + geom_line() + 
-  labs(title = "日本の森林面積（％）")
-```
-
-### b. 選択した国・地域
-
-```{r}
-df_w6 |> drop_na(co2pcap) |> filter(country %in% BRICS) |>
-  ggplot(aes(year, co2pcap, col = country)) + geom_line() + 
-  labs(title = "BRICS の一人当たりの二酸化炭素排出量")
-```
-
-------------------------------------------------------------------------
-
-```{r}
-df_w6 |> drop_na(forest) |> filter(country %in% BRICS) |>
-  ggplot(aes(year, forest, col = country)) + geom_line() + 
-  labs(title = "BRICSの森林面積（％）")
-```
-
-------------------------------------------------------------------------
-
-### 二つのデータの散布図
-
-必要に応じて log10 スケール (`+ scale_y_log10`)
-
-#### a. すべての値の散布図
-
-```{r}
-df_w6 |> ggplot(aes(forest, co2pcap, col = region)) + geom_point()
-```
-
-------------------------------------------------------------------------
-
-```{r}
-df_w6 |> filter(co2pcap >0) |> ggplot(aes(forest, co2pcap, col = region)) + 
-  geom_point() + scale_y_log10()
-```
-
-------------------------------------------------------------------------
-
-#### b. NA ではない値の散布図、近似（回帰）直線を表示
-
-```{r}
-df_w6 |> drop_na(co2pcap, forest) |> 
-  ggplot(aes(forest, co2pcap)) + geom_point(aes(col = region)) +
-  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
-```
-
-------------------------------------------------------------------------
-
-#### c. 地域を除き国のみの散布図、近似（回帰）直線を表示
-
-```{r}
-df_w6 |> filter(!(iso2c %in% REGION)) |> drop_na(co2pcap, forest) |> 
-  ggplot(aes(forest, co2pcap)) + geom_point(aes(col = region)) +
-  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
-```
-
-------------------------------------------------------------------------
-
-#### d. 最近の年を選択し、地域を除き国のもの散布図、近似（回帰）直線を表示
-
-```{r}
-df_w6 |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2pcap, forest) |> 
-  ggplot(aes(forest, co2pcap)) + geom_point(aes(col = region)) +
-  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
-```
-
-------------------------------------------------------------------------
-
-**気づいたこと・疑問**
-
--   森林面積が10％ よりも少ない国が多い
-
--   弱い負の相関があるようだ
-
--   授業で求めた相関係数は、-0.1832374。これは、四つの指標すべての値があり（NA ではなく）国地域も分けず、すべての年のデータでの相関をとったもの。傾向はある程度わかる。
-
-```{r}
-df_w6 |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2pcap, forest) |> 
-  select(co2pcap, forest) |> cor() 
-```
-
-------------------------------------------------------------------------
-
-### 参考
-
-```{r eval = FALSE}
-df_w6 |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2pcap, forest) |> 
-  select(co2pcap, forest) |> lm(co2pcap ~ forest, data = _) |> summary()
-```
-
--  Residuals: 直線よりどのぐらい大き値や小さい値があるか
--  Coefficients: Estimate の　(Intercept) は直線の y-切片、forest は、傾き
--  Residual Standard Error: 直線からこの値の幅の間に、おおよそ 2/3 程度（68.2%）の点が入っている
--  Multiple R-squared: 直線がどの程度近似しているか、0 と 1 の間で、相関係数の二乗
--  p-value: かなり小さいと（たとえば 0.01 未満）相関が正か負かがほぼ確実といえる
-
-------------------------------------------------------------------------
-
-```{r eval = TRUE, echo = FALSE}
-df_w6 |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2pcap, forest) |> 
-  select(co2pcap, forest) |> lm(co2pcap ~ forest, data = _) |> summary()
-```
-
-
-------------------------------------------------------------------------
-
-
-```{r message = FALSE, warning= FALSE}
-library(plotly)
-df_w6_chart_f <- df_w6 |> filter(!(iso2c %in% REGION), year == 2020) |> drop_na(co2pcap, forest) |> 
-  ggplot(aes(forest, co2pcap, text = country, colour = region)) + geom_point() +
-  labs(title = "Forest (%) vs CO2 per Capita (tons)") + theme(legend.position = "none")
-df_w6_chart_f |> ggplotly()
-```
-
-
-------------------------------------------------------------------------
-
-### 演習の内容と課題
-
-基本的には、PositCloud（<https://posit.cloud/>）を使って実習
-
--   探索的データ分析（EDA） -
-    -   練習と一つ目の課題（w6eda.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/w5eda.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w5eda.Rmd)]
-    -   二つ目以降の課題：w6eda1.Rmd [[リンク](https://ds-sl.github.io/intro2r/ges001/w5eda1.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w5eda1.Rmd)]
-
-<!-- -   課題：2023.2.3.23:59 までに Moodle の演習の課題ボックスに提出したものについては、なるべく、早く見て、フィードバックを書きます。それ以降に提出されたものも見ますが、フィードバックは遅くなると思ってください。 -->
 
 ## 参考文献
 
