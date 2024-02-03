@@ -1,4 +1,4 @@
-country,iso2c,iso3c,year,status,lastupdated,electricity_ur,electricity_ru,water_ur,water_ru,sanitation_ur,sanitation_ru,region,capital,longitude,latitude,income,lending
+country,iso2c,iso3c,year,status,lastupdated,electricity_urban,electricity_rural,water_urban,water_rural,sanitation_urban,sanitation_rural,region,capital,longitude,latitude,income,lending
 Afghanistan,AF,AFG,2014,,2023-12-18,98.7,86.5005116269173,82.1425987948402,52.2479644814743,54.4099774190194,38.3231293571335,South Asia,Kabul,69.1761,34.5228,Low income,IDA
 Afghanistan,AF,AFG,1971,,2023-12-18,NA,NA,NA,NA,NA,NA,South Asia,Kabul,69.1761,34.5228,Low income,IDA
 Afghanistan,AF,AFG,2006,,2023-12-18,81.6020889282227,19.2648207623049,64.2738865225015,30.9287501723513,38.5002919859584,25.9336193550084,South Asia,Kabul,69.1761,34.5228,Low income,IDA
