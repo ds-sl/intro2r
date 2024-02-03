@@ -348,9 +348,14 @@ From the output, these are all region names. So in the next code, we delete them
 
 ```{r}
 library(countrycode)
-df_un_R_D |> 
+```
+
+
+```{r}
+df_un_R_D_region <- df_un_R_D |> 
   mutate(iso2c = countrycode(`Region/Country/Area`, "un", "iso2c"), .after = ...2) |>
-  filter(is.na(iso2c)) |> distinct(...2)
+  filter(is.na(iso2c)) 
+df_un_R_D_region |> distinct(...2)
 ```
 
 ```{r}
@@ -374,6 +379,13 @@ df_R_D_wide <- df_un_R_D |>
   pivot_wider(names_from = series, values_from = value) |>
   rename(rd_exp = `Gross domestic expenditure on R&D: as a percentage of GDP`, researcher = `Researchers per million inhabitants (FTE)`)
 df_R_D_wide
+```
+
+```{r}
+df_R_D_region_wide <- df_un_R_D_region |> select(country = ...2, year = Year, series = Series, value = Value) |>
+  pivot_wider(names_from = series, values_from = value) |>
+  rename(rd_exp = `Gross domestic expenditure on R&D: as a percentage of GDP`, researcher = `Researchers per million inhabitants (FTE)`)
+df_R_D_region_wide
 ```
 
 ```{r}
@@ -466,3 +478,20 @@ df_R_D_wide_extra |> filter(country %in% BRICS) |> drop_na(researcher) |>
   ggplot(aes(year, researcher, col = country)) + geom_line() + 
   labs(title = "BRICS countries: Researchers per million inhabitants (FTE)")
 ```
+
+```{r}
+df_R_D_region_wide |> distinct(country)
+```
+
+```{r}
+df_R_D_region_wide |> drop_na(rd_exp) |>
+  filter(!(country %in% c("Total, all countries or areas", "Australia and New Zealand", "LLDCs", "LDC\xa7", "SIDS"))) |> ggplot(aes(year, rd_exp, col = country)) + geom_line() +
+  labs(title = "Gross domestic expenditure on R&D: % of GDP by region")
+```
+
+```{r}
+df_R_D_region_wide |> drop_na(researcher) |>
+  filter(!(country %in% c("Total, all countries or areas", "Australia and New Zealand", "LLDCs", "LDC\xa7", "SIDS"))) |> ggplot(aes(year, researcher, col = country)) + geom_line() +
+  labs(title = "Researchers per million inhabitants (FTE) by region")
+```
+
