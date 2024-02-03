@@ -3,12 +3,12 @@ title: "GES 001 演習5"
 author: "H. Suzuki"
 date: "2024年1月24日"
 output:
+  html_notebook: default
+  html_document:
+    df_print: paged
   ioslides_presentation:
     widescreen: true
     df_print: paged
-  html_document:
-    df_print: paged
-  html_notebook: default
 ---
 
 ## 準備
@@ -55,104 +55,6 @@ RStudio の場合には、自分の PC に作成したファイルがありま�
 
 01/23(TU)　Rでデータサイエンス5　 [[Main](https://ds-sl.github.io/intro2r/ges001/)]
 
-<!-- **People-Education** -->
-
-<!-- Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)] -->
-
-<!-- General government expenditure on education (current, capital, and transfers) is expressed as a percentage of GDP. It includes expenditure funded by transfers from international sources to government. General government usually refers to local, regional and central governments. -->
-
-<!-- 教育に対する政府の一般支出（経常、資本、移転）は GDP の割合で表されます。これには、国際資金源から政府への送金によって資金提供された支出が含まれます。一般政府とは通常、地方自治体、地域政府、中央政府を指します。 -->
-
-<!-- ------------------------------------------------------------------------ -->
-
-<!-- School enrollment, primary (% gross)：SE.PRM.ENRR [[Link](https://data.worldbank.org/indicator/SE.PRM.ENRR)] -->
-
-<!-- Gross enrollment ratio is the ratio of total enrollment, regardless of age, to the population of the age group that officially corresponds to the level of education shown. Primary education provides children with basic reading, writing, and mathematics skills along with an elementary understanding of such subjects as history, geography, natural science, social science, art, and music. -->
-
-<!-- 総就学率は、年齢に関係なく、表示されている教育レベルに正式に対応する年齢層の人口に対する総就学者数の比率です。初等教育では、子供たちに基本的な読み書き、数学のスキルと、歴史、地理、自然科学、社会科学、芸術、音楽などの科目の初歩的な理解を提供します。 -->
-
-<!-- ------------------------------------------------------------------------ -->
-
-<!-- School enrollment, secondary (% gross)：SE.SEC.ENRR [[Link](https://data.worldbank.org/indicator/SE.SEC.ENRR)] -->
-
-<!-- Gross enrollment ratio is the ratio of total enrollment, regardless of age, to the population of the age group that officially corresponds to the level of education shown. Secondary education completes the provision of basic education that began at the primary level, and aims at laying the foundations for lifelong learning and human development, by offering more subject- or skill-oriented instruction using more specialized teachers. -->
-
-<!-- 総就学率は、年齢に関係なく、表示されている教育レベルに正式に対応する年齢層の人口に対する総就学者数の比率です。中等教育は、初等段階から始まった基礎教育の提供を完了し、より専門性の高い教師によるより教科や技能に特化した指導を行うことにより、生涯学習と人間形成の基礎を築くことを目的としています。 -->
-
-<!-- ------------------------------------------------------------------------ -->
-
-<!-- School enrollment, tertiary (% gross)：SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)] -->
-
-<!-- Gross enrollment ratio is the ratio of total enrollment, regardless of age, to the population of the age group that officially corresponds to the level of education shown. Tertiary education, whether or not to an advanced research qualification, normally requires, as a minimum condition of admission, the successful completion of education at the secondary level. -->
-
-<!-- 総就学率は、年齢に関係なく、表示されている教育レベルに正式に対応する年齢層の人口に対する総就学者数の比率です。高等教育では、高度な研究資格の有無にかかわらず、通常、入学の最低条件として中等教育レベルの教育を無事に修了することが求められます。 -->
-
-<!-- ------------------------------------------------------------------------ -->
-
-<!-- **Health** -->
-
-<!-- Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SH.DYN.MORT)] -->
-
-<!-- Under-five mortality rate is the probability per 1,000 that a newborn baby will die before reaching age five, if subject to age-specific mortality rates of the specified year. -->
-
-<!-- 5 歳未満死亡率は、指定された年の年齢別死亡率が適用される場合に、新生児が 5 歳に達する前に死亡する 1,000 人あたりの確率です。 -->
-
-<!-- Incidence of HIV (% of uninfected population ages 15-49)：SH.HIV.INCD.ZS [[Link](https://data.worldbank.org/indicator/SH.HIV.INCD.ZS?locations=SZ)] -->
-
-<!-- Number of new HIV infections among uninfected populations ages 15-49 expressed per 1,000 uninfected population in the year before the period. -->
-
-<!-- 期間の前の年間の非感染人口 1,000 人当たりの 15 ～ 49 歳の非感染集団における新規 HIV 感染者数。 -->
-
-<!-- ------------------------------------------------------------------------ -->
-
-<!-- **Gender** -->
-
-<!-- School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS [[Link](https://data.worldbank.org/indicator/SE.ENR.PRSC.FM.ZS)] -->
-
-<!-- Gender parity index for gross enrollment ratio in primary and secondary education is the ratio of girls to boys enrolled at primary and secondary levels in public and private schools. -->
-
-<!-- 初等中等教育における総就学率の男女平等指数は、公立および私立学校の初等および中等教育レベルに在籍する女子と男子の比率です。 -->
-
-<!-- Ratio of female to male labor force participation rate (%) (modeled ILO estimate)：SL.TLF.CACT.FM.ZS [[Link](https://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS)] -->
-
-<!-- Labor force participation rate is the proportion of the population ages 15 and older that is economically active: all people who supply labor for the production of goods and services during a specified period. Ratio of female to male labor force participation rate is calculated by dividing female labor force participation rate by male labor force participation rate and multiplying by 100. -->
-
-<!-- 労働参加率とは、経済的に活動している 15 歳以上の人口の割合であり、指定された期間に商品やサービスの生産に労働力を供給するすべての人々を指します。女性労働力率と男性労働力率の比率は、女性労働力率を男性労働力率で割って100を乗じて算出します。 -->
-
-<!-- ------------------------------------------------------------------------ -->
-
-<!-- **Labor** -->
-
-<!-- Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.FE.ZS)] -->
-
-<!-- Unemployment refers to the share of the labor force that is without work but available for and seeking employment. -->
-
-<!-- 失業率とは、仕事はなくても職に就くことができ、求職している労働力の割合を指します。 -->
-
-<!-- Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.ZS)] -->
-
-<!-- Unemployment refers to the share of the labor force that is without work but available for and seeking employment. -->
-
-<!-- 失業率とは、仕事はなくても職に就くことができ、求職している労働力の割合を指します。 -->
-
-<!-- ------------------------------------------------------------------------ -->
-
-<!-- #### Global Link - Aid dependency -->
-
-<!-- Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)] -->
-
-<!-- Net official development assistance (ODA) consists of disbursements of loans made on concessional terms (net of repayments of principal) and grants by official agencies of the members of the Development Assistance Committee (DAC), by multilateral institutions, and by non-DAC countries to promote economic development and welfare in countries and territories in the DAC list of ODA recipients. It includes loans with a grant element of at least 25 percent (calculated at a rate of discount of 10 percent). Net official aid refers to aid flows (net of repayments) from official donors to countries and territories in part II of the DAC list of recipients: more advanced countries of Central and Eastern Europe, the countries of the former Soviet Union, and certain advanced developing countries and territories. Official aid is provided under terms and conditions similar to those for ODA. Part II of the DAC List was abolished in 2005. The collection of data on official aid and other resource flows to Part II countries ended with 2004 data. Data are in current U.S. dollars. -->
-
-<!-- 政府開発援助（ODA）の純額は、開発援助委員会（DAC）メンバーの公的機関、多国間機関、DAC非加盟国による、譲許的条件（元本返済を除く）で行われた融資の実行と助成金で構成されます。 DAC の ODA 受領者リストに含まれる国および地域の経済発展と福祉を促進する。これには、少なくとも 25 パーセント（割引率 10 パーセントで計算）の補助金要素を持つローンが含まれます。純公的援助とは、公的ドナーからDACの受取人リストのパートIIにある国および地域への援助の流れ（返済額を差し引いた額）を指します：中央および東ヨーロッパのより先進国、旧ソ連諸国、および一部の先進途上国国と地域。公的援助は、ODA と同様の条件で提供されます。DAC リストのパート II は 2005 年に廃止されました。パート II 諸国への公的援助およびその他の資源の流れに関するデータの収集は 2004 年のデータで終了しました。データは現在の米ドルで表示されます。 -->
-
-<!-- ```{r echo = FALSE} -->
-
-<!-- library(tidyverse) -->
-
-<!-- library(WDI) -->
-
-<!-- ``` -->
-
 # 演習 1月24日（火）
 
 ## 内容
@@ -182,54 +84,6 @@ RStudio の場合には、自分の PC に作成したファイルがありま�
 -   Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.ZS)]
 
 -   Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
-
-<!-- ## 復習 -->
-
-<!-- 貧困は、どのような尺度で測るのだろうか。 -->
-
-<!-- ### 一人当たりの購買力平価（Purchasing Power Parities）による国内総生産（Gross Domestic Product） -->
-
-<!-- -   GDP per capita, PPP (constant 2017 international \$): NY.GDP.PCAP.PP.KD [[Link](https://data.worldbank.org/indicator/NY.GDP.PCAP.PP.KD)] -->
-
-<!-- -   12/13 極度に貧しい！？ [[R Notebook](https://ds-sl.github.io/intro2r/ges001/poverty.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/poverty.Rmd)] -->
-
-<!-- -   国ごとの所得の平均のようなものはわかるが、極度の貧困の人がどの程度いるのかはわからない。 -->
-
-<!-- ------------------------------------------------------------------------ -->
-
-<!-- ### 人口動態（demography） -->
-
-<!-- -   人口のデータ（総人口、出生率、死亡率、若年者扶養率、高齢者扶養率） -->
-
-<!-- -   12/20 人口動態（demography）[[R Notebook](https://ds-sl.github.io/intro2r/ges001/demography.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/demography.Rmd)] -->
-
-<!-- -   人口データは基本的で、国の値から個人の値を求めたり、他の国と比較しやすい割合から実際の数を求めるなどに必須 -->
-
-<!-- ------------------------------------------------------------------------ -->
-
-<!-- ### ジニ指数および所得分布 -->
-
-<!-- -   ジニ指数（Gini）, 所得の下位10%, 20%, 20%-40%, 40%-60%, 60%-80%, 80%以上, 90%以上 -->
-
-<!-- -   1/9 ジニって何！？ [[R Notebook](https://ds-sl.github.io/intro2r/ges001/what_is_gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/what_is_gini.Rmd)] -->
-
-<!-- -   1/9 ジニ指数と所得分布 [[R Notebook](https://ds-sl.github.io/intro2r/ges001/gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/gini.Rmd)]　（参考1/参考2付 [[R Notebook](https://ds-sl.github.io/intro2r/ges001/gini_long.nb.html)]） -->
-
-<!-- -   国の中での所得分布を見、かつ所得分配の公平さを一つの指標（ジニ指数）で表すことにより、比較も可能になったが、極度に貧困なひとがどのぐらいいるのかはわからない。 -->
-
-<!-- ## 貧困者率 -->
-
-<!-- -   生活するための基本的ニーズを賄うために必要とそれぞれの国が考える基準を満たしていない人口の割合 -->
-
-<!--     -   Poverty headcount ratio at national poverty lines (% of population)：SI.POV.NAHC [[Link](https://data.worldbank.org/indicator/SI.POV.NAHC)] -->
-
-<!--     -   日本は？ [[Wikipedia](https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E3%81%AE%E8%B2%A7%E5%9B%B0)] -->
-
-<!-- -   \$2.15/日 (\$65.4/月, 785/年), \$3.65（\$111.0/月, \$1,332/年）, \$6.85（\$208.4/月, \$2,500/年） -->
-
-<!--     -   Poverty headcount ratio at \$2.15 a day (2017 PPP) (% of population)：SI.POV.DDAY [[Link](https://data.worldbank.org/indicator/SI.POV.DDAY)] -->
-
-<!--     -   Poverty headcount ratio at \$3.65 a day (2017 PPP) (% of population)：SI.POV.LMIC [[Link](https://data.worldbank.org/indicator/SI.POV.LMIC)] -->
 
 ------------------------------------------------------------------------
 

@@ -1,0 +1,377 @@
+---
+title: "課題2：探索的データ分析 - EDA"
+author: "ID, Last, First"
+date: "2024年2月6日"
+output:
+  html_notebook: default
+---
+
+## 課題
+
+以下の指標の中から、二つ以上（複数）を選択して、データの概要（description）を記録し、データを WDI で取得し、以下の分析をする。
+
+1.  各年毎のデータの数の棒グラフ
+2.  経年変化を表す折れ線グラフ
+    a.  日本、またはデータがある国
+    b.  選択したいくつかの国
+3.  複数の指標の値を一列に含む縦長の表（Long Table）を作成し 　
+    a. 日本、またはデータがある国の、複数の指標を色分けした経年変化のグラフ 　
+    b. 選択したいくつかの国についての経年変化のグラフを、国を色分けし、指標は線の種類を変えたグラフ
+4.  二つのデータの散布図- NA は取り除くこと。（log10 スケールを用いる場合は値が正のもののみに限定）
+    a.  （地域を除き）国のみの散布図 （近似（回帰）直線を表示）
+    b.  最近の年の（地域を除き）国のみの散布図　（近似（回帰）直線を表示）
+    c.  b に対応する相関係数
+5.  カテゴリー変数（Categorical Variable: region, income, year など）と、数値変数（Numberical Variable）一組についての箱ヒゲ図（Boxplot）
+
+それぞれについて考察（気づいたこと、疑問など）を記す
+
+**2023.2.10.23:59** までに Moodle の課題２提出ボックスに提出してください。
+
+できたグラフだけでも構いませんから、期限までに提出してください。解説を加え、課題２再提出ボックスを作成する予定です。
+
+### データ
+
+1.  CO2 emissions (metric tons per capita) ：EN.ATM.CO2E.PC [[Link](https://data.worldbank.org/indicator/EN.ATM.CO2E.PC)]
+
+2.  Forest area (% of land area)：AG.LND.FRST.ZS [[Link](https://data.worldbank.org/indicator/AG.LND.FRST.ZS)]
+
+3.  Renewable electricity output (% of total electricity output)：EG.ELC.RNEW.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.RNEW.ZS)]
+
+4.  Electricity production from oil, gas and coal sources (% of total)：EG.ELC.FOSL.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.FOSL.ZS)]
+
+5.  Electricity production from nuclear sources (% of total)：EG.ELC.NUCL.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.NUCL.ZS)]
+
+6.  Access to electricity, urban (% of urban population)：EG.ELC.ACCS.UR.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.ACCS.UR.ZS)]
+
+7.  Access to electricity, rural (% of rural population)：EG.ELC.ACCS.RU.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.ACCS.RU.ZS)]
+
+8.  People using at least basic drinking water services, urban (% of urban population)：SH.H2O.BASW.UR.ZS [[Link](https://data.worldbank.org/indicator/SH.H2O.BASW.ZS)]
+
+9.  People using at least basic drinking water services, rural (% of rural population)：SH.H2O.BASW.RU.ZS [[Link](https://data.worldbank.org/indicator/SH.H2O.BASW.RU.ZS)]
+
+10. People using at least basic sanitation services, urban (% of urban population)：SH.STA.BASS.UR.ZS [[Link](https://data.worldbank.org/indicator/SH.STA.BASS.UR.ZS)]
+
+11. People using at least basic sanitation services, rural (% of rural population)：SH.STA.BASS.RU.ZS [[Link](https://data.worldbank.org/indicator/SH.STA.BASS.RU.ZS)]
+
+# 例
+
+## データ
+
+### データ情報
+
+-   女性の失業率：Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.FE.ZS)]
+
+-   男性の失業率：Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.ZS)]
+
+-   失業率とは、労働人口のうちで、失業しており、かつ仕事に就くことを求めている者の率をいう。Unemployment refers to the share of the labor force that is without work but available for and seeking employment.
+
+### データの取得
+
+#### 準備
+
+*これまでとも同じように二つのパッケージを読み込み（load）ます。*
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+WDI パッケージを使って、直接データをダウンロードし、変数名を、under_6.85 に指定。
+
+*この変数名は、今後使いますから、重要です。一応、例として、わたしが使った、変数名を書いてあります。他の変数名を使っても構いません。*
+
+```{r eval = FALSE}
+df_unemploy <- WDI(indicator = c(female_unemploy = "SL.UEM.TOTL.FE.ZS", 
+                                 male_unemploy = "SL.UEM.TOTL.MA.ZS"),
+                   extra = TRUE)
+```
+
+*data ディレクトリに書き込んでおきます。*
+
+```{r eval = FALSE}
+write_csv(df_unemploy, "data/unemploy.csv")
+```
+
+*data ディレクトリから読み出します。Run All や、Run All Chunks Above をする時は、上の二つをスキップする設定にしてあります。*
+
+```{r}
+df_unemploy <- read_csv("data/unemploy.csv")
+```
+
+### データの確認
+
+*データ名で、中身を表示できます。`head(df_unemploy)` とすると、6行表示されます。*
+
+```{r}
+df_unemploy
+```
+
+*変数の情報を得ることができます。*
+
+```{r}
+str(df_unemploy)
+```
+
+### 変形
+
+#### 変数の選択（selecting）
+
+```{r}
+df_unemp <- df_unemploy |> 
+  select(country, iso2c, year, female_unemploy, male_unemploy, region, income)
+df_unemp
+```
+
+*データには country のところに、国だけでなく、地域も入っているので、地域のリストを、`iso2c` で `REGION` に入れておきます。*
+
+```{r}
+REGION <- c("1A", "1W", "4E", "6F", "6N", "6X", "7E", "8S", "A4", "A5", 
+"A9", "B1", "B2", "B3", "B4", "B6", "B7", "B8", "C4", "C5", "C6", 
+"C7", "C8", "C9", "D2", "D3", "D4", "D5", "D6", "D7", "EU", "F1", 
+"F6", "M1", "M2", "N6", "OE", "R6", "S1", "S2", "S3", "S4", "T2", 
+"T3", "T4", "T5", "T6", "T7", "V1", "V2", "V3", "V4", "XC", "XD", 
+"XE", "XF", "XG", "XH", "XI", "XJ", "XL", "XM", "XN", "XO", "XP", 
+"XQ", "XT", "XU", "XY", "Z4", "Z7", "ZB", "ZF", "ZG", "ZH", "ZI", 
+"ZJ", "ZQ", "ZT")
+```
+
+*地域名にはどのようなものがあるか見ておきます。*
+
+```{r}
+df_unemp |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
+```
+
+*国名も、地域（region）と、所得レベル（income）と共に、表示しておきます。*
+
+```{r}
+df_unemp |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c, region, income)
+```
+
+### 分析する国のリスト
+
+*自分で分析したい国のリストを作ってください。ここでは、ASEAN を iso2c で設定します。国名で選択しても構いません。*
+
+```{r}
+ASEAN <- c("BN", "KH", "ID", "LA", "MY", "MM", "PH", "SG", "VN")
+```
+
+```{r}
+asean <- c("Brunei Darussalam", "Cambodia", "Indonesia", "Lao PDR", "Malaysia", "Myanmar", "Philippines", "Singapore", "Viet Nam")
+```
+
+## 視覚化
+
+### 1. 各年毎のデータの数の棒グラフ
+
+*まずは、NA の値を削除します。そのあとで、国の情報の数を数えたいので、`!(iso2c %in% REGION)` で、上でおいた、地域の iso2c を選択し、! は否定でしたから、地域ではないものを選択し、その数を棒グラフにしています。*
+
+```{r}
+df_unemp |> drop_na(female_unemploy, male_unemploy) |> filter(!(iso2c %in% REGION)) |>
+  ggplot(aes(year)) + geom_bar()
+```
+
+**気づいたこと・疑問**
+
+-   1991年から2022年までデータがある。2021, 2022 は、少しデータが少ないが、2020年とあまり変わらない。
+
+### 経年変化を表す折れ線グラフ
+
+#### a. 日本、またはデータがある国
+
+```{r}
+df_unemp |> filter(country == "Japan") |> drop_na(female_unemploy) |>
+  ggplot(aes(year, female_unemploy)) + geom_line() +
+  labs(title = "日本の女性労働者失業率")
+```
+
+```{r}
+df_unemp |> filter(country == "Japan") |> drop_na(male_unemploy) |>
+  ggplot(aes(year, male_unemploy)) + geom_line()　+
+  labs(title = "日本の男性労働者失業率")
+```
+
+**気づいたこと・疑問**
+
+-   日本の、女性失業率と、男性失業率は、似た傾向であるが、重ねてみてみたい。
+
+#### b. 選択したいくつかの国
+
+ASEAN は、iso2c ですから、下のようにします。
+
+```{r}
+df_unemp |> filter(iso2c %in% ASEAN) |> drop_na(female_unemploy) |>
+  ggplot(aes(year, female_unemploy, col = country)) + geom_line() +
+  labs(title = "ASEAN の女性労働者失業率")
+```
+
+asean は、国名でしたから、下のようにします。今度は、男性の失業率です。
+
+```{r}
+df_unemp |> filter(country %in% asean) |> drop_na(male_unemploy) |>
+  ggplot(aes(year, male_unemploy, col = country)) + geom_line() +
+  labs(title = "ASEAN の男性労働者失業率")
+```
+
+**気づいたこと・疑問**
+
+-   国によって、様相が異なるようだが、これも、重ねてみた方が見やすいように思われる。
+
+### 縦長の表（Long Table）
+
+*`cols = c(female_unemploy, male_unemploy)` と、一つの指標にまとめるものをリストすると、`name` に指標名が入り、`value` に、その値が入る。書式は、`pivot_longer(cols = ..., names_to = ..., values_to = ...)` で、初期設定では、`names_to = "name", values_to = "value"` となっているので、指定しないと、下のようになる。Help 参照。*
+
+```{r}
+df_unemp_long <- df_unemp |> pivot_longer(cols = c(female_unemploy, male_unemploy))
+df_unemp_long
+```
+
+#### 日本の複数の指標を色分けした経年変化のグラフ 
+
+*`col = name` と指定すると、色で区別して、一つのグラフに描ける*
+
+```{r}
+df_unemp_long |> filter(country == "Japan") |> drop_na(value) |>
+  ggplot(aes(year, value, col = name)) + geom_line()  +
+  labs(title = "日本の男女別失業率")
+```
+
+**気づいたこと・疑問**
+
+-   ほぼ、同じ傾向で、推移している。最近は、女性の失業率の方がわずかに低い場合が多い。
+
+#### 選択したいくつかの国の複数の指標を色分けした経年変化のグラフ 
+
+```{r}
+df_unemp_long |> filter(iso2c %in% ASEAN) |> drop_na(value) |>
+  ggplot(aes(year, value, col = country, linetype = name)) + geom_line()  +
+  labs(title = "ASEAN の男女別失業率")
+```
+
+**気づいたこと・疑問**
+
+-   国によって、それぞれで、女性の失業率が多い場合のほうが、多いように見えるが、もっとよく見ないとわからない。
+
+### 散布図
+
+#### a.（地域を除き）国のみの散布図 
+
+```{r}
+df_unemp |> filter(!(iso2c %in% REGION)) |> drop_na(female_unemploy, male_unemploy) |>
+  ggplot(aes(female_unemploy, male_unemploy)) + geom_point()  +
+  labs(title = "失業率：男女別相関")
+```
+
+**気づいたこと・疑問**
+
+-   強い相関がありそうだ。景気の良い悪いが関係するのだろうか。
+
+#### 近似（回帰）直線の表示
+
+```{r}
+df_unemp |> filter(!(iso2c %in% REGION)) |> drop_na(female_unemploy, male_unemploy) |>
+  ggplot(aes(female_unemploy, male_unemploy)) + geom_point() + 
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE) +
+  labs(title = "失業率：男女別相関（回帰直線付）")
+```
+
+**気づいたこと・疑問**
+
+-   直線の傾きから、女性失業率の方が、一般的には高いように見える。
+
+#### b. 最近の年の（地域を除き）国のみの散布図
+
+```{r}
+df_unemp |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
+  drop_na(female_unemploy, male_unemploy) |>
+  ggplot(aes(female_unemploy, male_unemploy)) + geom_point() +
+  labs(title = "2022年の失業率：男女別相関")
+```
+
+**気づいたこと・疑問**
+
+-   いろいろな国があるように見える。
+
+#### 近似（回帰）直線の表示
+
+```{r}
+df_unemp |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
+  drop_na(female_unemploy, male_unemploy) |>
+  ggplot(aes(female_unemploy, male_unemploy)) + geom_point() + 
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE) +
+  labs(title = "失業率：男女別相関（回帰直線付）")
+```
+
+**気づいたこと・疑問**
+
+-   女性の失業率のほうが高いようだ。
+
+#### c. 相関係数
+
+```{r}
+df_unemp |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
+  drop_na(female_unemploy, male_unemploy) |> select(female_unemploy, male_unemploy) |> cor()
+```
+
+相関係数が、0.87 で、強い正の相関があることが見て取れる。
+
+#### 箱ヒゲ図（Boxplot）
+
+```{r}
+df_unemp_long |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
+  drop_na(value) |>
+  ggplot(aes(name, value)) + geom_boxplot()  +
+  labs(title = "労働者失業率：男女別箱ひげ図")
+```
+
+**気づいたこと・疑問**
+
+-   女性の失業率の方が、分布から見ても、高い値になっている。
+
+-   非常に高いあたいも、特に女性の失業率に存在する。
+
+```{r}
+df_unemp_long |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
+  drop_na(value, region) |>
+  ggplot(aes(region, value, fill = name)) + geom_boxplot() + coord_flip()　+
+  labs(title = "労働者失業率：男女・地域別箱ひげ図")
+```
+
+**気づいたこと・疑問**
+
+-   地域差がある。北アメリカ、ヨーロッパ、東アジアと太平洋地域では、あまり差異がないが、他の地域では、女性の失業率の方が高いようだ。
+
+```{r}
+df_unemp_long |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
+  drop_na(value, income) |> filter(income != "Not classified") |>
+  ggplot(aes(income, value, fill = name)) + geom_boxplot() + coord_flip()　+
+  labs(title = "労働者失業率：男女・収入レベル別箱ひげ図")
+```
+
+**気づいたこと・疑問**
+
+-   中央値でみると、Upper middle income では、女性の失業率が非常に高い
+
+```{r}
+df_unemp_long |> filter(!(iso2c %in% REGION)) |> filter(year %in% c(1991, 2001, 2011, 2021)) |>
+  drop_na(value) |> 
+  ggplot(aes(factor(year), value, fill = name)) + geom_boxplot() +
+  labs(title = "労働者失業率：男女別・10年ごとの箱ひげ図")
+```
+
+**気づいたこと・疑問**
+
+-   この期間では、あまり大きな変化はないように見える。
+
+-   一般的に、女性の失業率の方が高い。
+
+```{r}
+df_unemp_long |> filter(iso2c %in% ASEAN) |> drop_na(value) |> 
+  ggplot(aes(country, value, fill = name)) + geom_boxplot() + coord_flip() +
+  labs(title = "ASEAN の労働者失業率：男女別箱ひげ図")
+```
+
+**気づいたこと・疑問**
+
+-   それぞれの国のデータは、データのある年の中での、値である。
+
+-   国によって、さまざまである。個別に調べた方がよいように見える。

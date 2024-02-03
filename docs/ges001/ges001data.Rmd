@@ -1,0 +1,183 @@
+---
+title: "GES 001 経済と経済学"
+author: "H. Suzuki"
+date: "`r Sys.Date()`"
+output:
+  html_notebook: default
+---
+
+## **このコースで使用するデータのリスト**
+
+### 第1週
+
+-   PositCloud: https://posit.cloud/
+
+-   PositCloud 共有リンク：<https://posit.cloud/content/5539763>
+
+### 第2週
+
+12/19(TU)　Rでデータサイエンス2：人口の少子高齢化　 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00101.html)]・[[RNotebook](https://ds-sl.github.io/intro2r/ges001/ges00101.nb.html)]・[[ビデオ](https://youtu.be/AFNVhNdWZ_Y)]
+
+**People- Population dynamics**
+
+-   総人口　Population, total：SP.POP.TOTL [[Link](https://data.worldbank.org/indicator/SP.POP.TOTL)]
+
+-   出生率（千人）Birth rate, crude (per 1,000 people)：SP.DYN.CBRT.IN [[Link](https://data.worldbank.org/indicator/SP.DYN.CBRT.IN)]
+
+-   死亡率（千人）Death rate, crude (per 1,000 people)：SP.DYN.CDRT.IN [[Link](https://data.worldbank.org/indicator/SP.DYN.CDRT.IN)]
+
+-   若年労働依存率　Age dependency ratio, young (% of working-age population)：SP.POP.DPND.YG [[Link](https://data.worldbank.org/indicator/SP.POP.DPND.YG)]
+
+-   高齢者労働依存率　Age dependency ratio, old (% of working-age population)：SP.POP.DPND.OL [[Link](https://data.worldbank.org/indicator/SP.POP.DPND.OL)]
+
+### 第3週
+
+01/09(TU)　Rでデータサイエンス3：GNI係数と所得分布　 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00102.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00102.nb.html)]・[[ビデオ](https://youtu.be/RwD-SJlSHkQ)]
+
+-   ジニって何！？（what_is_gini.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/what_is_gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/what_is_gini.Rmd)]
+
+-   ジニ指数と所得分布（gini.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/gini.Rmd)]
+
+    -   参考1/参考2付（gini_long.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/gini_long.nb.html)]
+
+**Poverty and Inequality―Distribution of income or consumption**
+
+-   GINI 指数 (世界銀行推計)：SI.POV.GINI [[Link](https://data.worldbank.org/indicator/SI.POV.GINI)]
+
+-   下位 10% が占める所得シェア：SI.DST.FRST.10 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.FRST.10)]
+
+-   下位 20% が占める所得シェア：SI.DST.FRST.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.FRST.20)]
+
+-   2番目の 20% が占める収入シェア：SI.DST.02ND.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.02ND.20)]
+
+-   3番目の 20% が占める収入シェア ：SI.DST.03RD.20 [[Link](https://data.worldbank.org/indicator/SI.DST.03RD.20)]
+
+-   4番目の 20% が占める収入シェア：SI.DST.04TH.20 [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SI.DST.04TH.20)]
+
+-   上位 20% が占める収入シェア：SI.DST.05TH.20 [[Link](https://data.worldbank.org/indicator/SI.DST.05TH.20)]
+
+-   上位 10% が占める収入シェア：SI.DST.10TH.10 [[Link](https://data.worldbank.org/indicator/SI.DST.10TH.10)]
+
+### 第4週
+
+01/16(TU)　Rでデータサイエンス4:貧困（データが少ない難点） [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-4.nb.html)]・[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00110.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00110.nb.html)]・[[ビデオ](https://youtu.be/RwD-SJlSHkQ)]
+
+**Poverty rates at national poverty lines**
+
+-   国ごとの貧困率：Poverty headcount ratio at national poverty lines (% of population)：SI.POV.NAHC [[Link](https://data.worldbank.org/indicator/SI.POV.NAHC)]
+
+**Poverty and Inequality―Poverty rates at international poverty lines**
+
+-   １日2.15ドル以下の人口：Poverty headcount ratio at \$2.15 a day (2017 PPP) (% of population)：SI.POV.DDAY [[Link](https://data.worldbank.org/indicator/SI.POV.DDAY)]
+
+-   １日3.65ドル以下の人口：Poverty headcount ratio at \$3.65 a day (2017 PPP) (% of population)：SI.POV.LMIC [[Link](https://data.worldbank.org/indicator/SI.POV.LMIC)]
+
+-   １日6.85ドル以下の人口：Poverty headcount ratio at \$6.85 a day (2017 PPP) (% of population)：SI.POV.UMIC [[Link](https://data.worldbank.org/indicator/SI.POV.UMIC)]
+
+### 第5週
+
+01/23(TU)　Rでデータサイエンス5　 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00111.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00111.nb.html)]・[[ビデオ](https://youtu.be/WHIz4Vec4ek)]
+
+-   練習と一つ目の課題（w5eda.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/w5eda.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w5eda.Rmd)]
+
+-   二つ目以降の課題：w5eda1.Rmd [[リンク](https://ds-sl.github.io/intro2r/ges001/w5eda1.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w5eda1.Rmd)]
+
+-   解答例：w5eda0.Rmd [[リンク](https://ds-sl.github.io/intro2r/ges001/w5eda0.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w5eda0.Rmd)]
+
+**People-Education**
+
+-   教育に関する政府支出の対GDP比率：Government expenditure on education, total (% of GDP)：SE.XPD.TOTL.GD.ZS [[Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS)]
+
+-   初等学校就学率：School enrollment, primary (% gross)：SE.PRM.ENRR [[Link](https://data.worldbank.org/indicator/SE.PRM.ENRR)]
+
+-   中等学校就学率：School enrollment, secondary (% gross)：SE.SEC.ENRR [[Link](https://data.worldbank.org/indicator/SE.SEC.ENRR)]
+
+-   中等学校後の就学率：School enrollment, tertiary (% gross)：SE.TER.ENRR [[Link](https://data.worldbank.org/indicator/SE.TER.ENRR)]
+
+**Health**
+
+-   千人中の五歳未満死亡率：Mortality rate, under-5 (per 1,000 live births)：SH.DYN.MORT [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SH.DYN.MORT)]
+
+-   HIVの感染率：Incidence of HIV (% of uninfected population ages 15-49)：SH.HIV.INCD.ZS [[Link](https://data.worldbank.org/indicator/SH.HIV.INCD.ZS?locations=SZ)]
+
+**Gender**
+
+-   初等中等学校就学率におけるGPI：School enrollment, primary and secondary (gross), gender parity index (GPI)：SE.ENR.PRSC.FM.ZS [[Link](https://data.worldbank.org/indicator/SE.ENR.PRSC.FM.ZS)]
+
+-   就労率のGPI：Ratio of female to male labor force participation rate (%) (modeled ILO estimate)：SL.TLF.CACT.FM.ZS [[Link](https://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS)]
+
+**Labor**
+
+-   女性の失業率：Unemployment, female (% of female labor force) (modeled ILO estimate)：SL.UEM.TOTL.FE.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.FE.ZS)]
+
+-   男性の失業率：Unemployment, male (% of male labor force) (modeled ILO estimate)：SL.UEM.TOTL.MA.ZS [[Link](https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.ZS)]
+
+**Global Link - Aid dependency**
+
+-   政府開発援助受給額：Net official development assistance and official aid received (current US\$) DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
+
+### 第6週
+
+01/30(TU)　Rでデータサイエンス6：気候変動　 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00112.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00112.nb.html)]・[[ビデオ](https://youtu.be/Zj_gK6XYaHs)]
+
+**Environment-Climate**　
+
+-   一人当たりの二酸化炭素排出率：CO2 emissions (metric tons per capita) ：EN.ATM.CO2E.PC [[Link](https://data.worldbank.org/indicator/EN.ATM.CO2E.PC)]
+
+-   森林の面積率：Forest area (% of land area)：AG.LND.FRST.ZS [[Link](https://data.worldbank.org/indicator/AG.LND.FRST.ZS)]
+
+-   再生可能エネルギーによる発電割合：Renewable electricity output (% of total electricity output)：EG.ELC.RNEW.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.RNEW.ZS)]
+
+-   化石燃料による発電割合：Electricity production from oil, gas and coal sources (% of total)：EG.ELC.FOSL.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.FOSL.ZS)]
+
+-   原子力による発電割合：Electricity production from nuclear sources (% of total)：EG.ELC.NUCL.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.NUCL.ZS)]
+
+### 第7週
+
+02/06 (TU)　Rでデータサイエンス7：都市部と農村部の生活状況の格差　 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00120.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00120.nb.html)]・[ビデオ]
+
+**Urban and rural development**
+
+-   都市での電気受給率：Access to electricity, urban (% of urban population)：EG.ELC.ACCS.UR.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.ACCS.UR.ZS)]
+
+-   都市以外での電気受給率：Access to electricity, rural (% of rural population)：EG.ELC.ACCS.RU.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.ACCS.RU.ZS)]
+
+-   都市での飲料水受給率：People using at least basic drinking water services, urban (% of urban population)：SH.H2O.BASW.UR.ZS [[Link](https://data.worldbank.org/indicator/SH.H2O.BASW.ZS)]
+
+-   都市以外での飲料水受給率：People using at least basic drinking water services, rural (% of rural population)：SH.H2O.BASW.RU.ZS [[Link](https://data.worldbank.org/indicator/SH.H2O.BASW.RU.ZS)]
+
+-   都市での基本的衛生サービス受給率：People using at least basic sanitation services, urban (% of urban population)：SH.STA.BASS.UR.ZS [[Link](https://data.worldbank.org/indicator/SH.STA.BASS.UR.ZS)]
+
+-   都市以外での基本的衛生サービス受給率：People using at least basic sanitation services, rural (% of rural population)：SH.STA.BASS.RU.ZS [[Link](https://data.worldbank.org/indicator/SH.STA.BASS.RU.ZS)]
+
+### 第8週
+
+02/13(TU)　Rでデータサイエンス8：難民、軍事支出　 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00121.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00121.nb.html)]・[ビデオ]
+
+**Global Link-Refugees**
+
+-   Refugee population by country or territory of asylum：SM.POP.REFG [[Link](https://data.worldbank.org/indicator/SM.POP.REFG)]
+
+-   Refugee population by country or territory of origin：SM.POP.REFG.OR [[Link](https://data.worldbank.org/indicator/SM.POP.REFG.OR)]
+
+-   Net ODA received (% of GNI)：DT.ODA.ODAT.GN.ZS [[Link](https://data.worldbank.org/indicator/DT.ODA.ODAT.GN.ZS)]
+
+-   Net official development assistance and official aid received (current US\$)：DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
+
+-   Net ODA received (% of central government expense)：DT.ODA.ODAT.XP.ZS [[Link](https://data.worldbank.org/indicator/DT.ODA.ODAT.XP.ZS)]
+
+-   Military expenditure (current USD)：MS.MIL.XPND.CD [[Link](https://data.worldbank.org/indicator/MS.MIL.XPND.CD)]
+
+-   Military expenditure (% of general government expenditure)：MS.MIL.XPND.ZS [[Link](https://data.worldbank.org/indicator/MS.MIL.XPND.ZS)]
+
+-   Arms imports (SIPRI trend indicator values)：MS.MIL.MPRT.KD [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/MS.MIL.MPRT.KD)]
+
+-   Arms exports (SIPRI trend indicator values)：MS.MIL.XPRT.KD [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/MS.MIL.XPRT.KD)]
+
+### 第9週
+
+02/20(TU)　Rでデータサイエンス9：まとめと演習　[[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-9.nb.html)]・[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00122.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00122.nb.html)]・[ビデオ]
+
+### 第10週
+
+02/27(TU)　まとめ
