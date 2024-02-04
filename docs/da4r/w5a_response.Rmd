@@ -8,6 +8,8 @@ output:
     toc_float: yes
 ---
 
+# Assignment
+
 ## Week Five Assignment
 
 Choose a data from UN data or OECD data.
@@ -50,7 +52,7 @@ Submit your R Notebook file (w5_g123456.nb.html) in Moodle (Week Five Assignment
 
 We study .....
 
-## Setup
+### Setup
 
 Install a package `countrycode` first.
 
@@ -62,18 +64,18 @@ library(countrycode)
 ```
 
 
-## Importing Data
+### Importing Data
 
-## Viewing Data
+### Viewing Data
 
-## Visualization and Analysis
+### Visualization and Analysis
 
 *Do not forget to add observations and questions.*
 
 
-### About Data
+## About Data
 
-#### List of Data Chosen:
+### List of Data Chosen:
 
 1. WIR Executive Report: https://wir2022.wid.world/www-site/uploads/2022/03/WIR2022TablesFigures-Summary.xlsx
 2. The world inequaluty report 2022 Executive Report F4: https://wir2022.wid.world/www-site/uploads/2022/03/WIR2022TablesFigures-Summary.xlsx
@@ -343,6 +345,8 @@ str(df_un_R_D)
 df_un_R_D |> select(Series, Footnotes, Source) |> lapply(unique)
 ```
 
+### Transforming Data
+
 Add iso2c code, and check those the names listed in ...2 whose iso2c_un is NA.
 From the output, these are all region names. So in the next code, we delete them.
 
@@ -398,12 +402,18 @@ df_R_D_extra <- df_R_D_wide_extra |> pivot_longer(cols = c(rd_exp, researcher))
 df_R_D_extra
 ```
 
+### Visualization
+
+#### Bar Chart
+
 It is important to check the number of data in each year.
 
 ```{r}
 df_R_D_extra |> drop_na(value) |> 
   ggplot(aes(year, fill = name)) + geom_bar() + labs(title = "Count of data")
 ```
+
+#### Scatter Plot
 
 ```{r}
 df_R_D_wide_extra |> drop_na(rd_exp, researcher) |>
@@ -429,6 +439,8 @@ df_R_D_wide_extra |> drop_na(rd_exp, researcher) |> select(rd_exp, researcher) |
 The value is the square root of the multiple R-squared above. There variables are strongly positively correlated.
 
 
+#### Boxplot
+
 ```{r}
 df_R_D_wide_extra |> filter(year %in% c(2005, 2010, 2015, 2020)) |> drop_na(rd_exp) |>
   filter(income %in% INCOME) |>
@@ -446,7 +458,7 @@ df_R_D_wide_extra |> filter(year %in% c(2005, 2010, 2015, 2020)) |> drop_na(rese
 ```{r}
 df_R_D_wide_extra |> filter(year %in% c(2005, 2010, 2015, 2020)) |> drop_na(rd_exp) |>
   ggplot(aes(region, rd_exp)) + geom_boxplot() + coord_flip() + 
-  labs(title = "G7 countries: Gross domestic expenditure on R&D: % of GDP ", x = "", y = "expenditure on R&D")
+  labs(title = "Gross domestic expenditure on R&D: % of GDP ", x = "", y = "expenditure on R&D")
 ```
 
 ```{r}
@@ -454,6 +466,22 @@ df_R_D_wide_extra |> filter(year %in% c(2005, 2010, 2015, 2020)) |> drop_na(rese
   ggplot(aes(region, researcher)) + geom_boxplot() + coord_flip() + 
   labs(title = "Researchers per million inhabitants (FTE) by region", x = "")
 ```
+
+The variable `year` is in integers which is a numerical variable. So in order to take it as a categorical variable, we use `factor(year)`. 
+
+```{r}
+df_R_D_wide_extra |> filter(year %in% c(2005, 2010, 2015, 2020)) |> drop_na(rd_exp) |>
+  ggplot(aes(factor(year), rd_exp)) + geom_boxplot() + 
+  labs(title = "Gross domestic expenditure on R&D: % of GDP ", x = "year", y = "expenditure on R&D")
+```
+
+```{r}
+df_R_D_wide_extra |> filter(year %in% c(2005, 2010, 2015, 2020)) |> drop_na(researcher) |>
+  ggplot(aes(factor(year), researcher)) + geom_boxplot() + 
+  labs(title = "Researchers per million inhabitants (FTE) by year", x = "year", y = "expenditure on R&D")
+```
+
+#### Line Chart
 
 ```{r}
 df_R_D_wide_extra |> filter(country %in% G7) |> drop_na(rd_exp) |>
@@ -495,3 +523,39 @@ df_R_D_region_wide |> drop_na(researcher) |>
   labs(title = "Researchers per million inhabitants (FTE) by region")
 ```
 
+#### Column Chart
+
+```{r}
+rd_exp_ranking <- df_R_D_region_wide |> filter(year == 2015) |> 
+  filter(!(country %in% c("Total, all countries or areas", "Australia and New Zealand", "LLDCs", "LDC\xa7", "SIDS"))) |> drop_na(rd_exp) |> arrange(rd_exp) |> pull(country)
+rd_exp_ranking
+
+df_R_D_region_wide |> filter(year == 2015) |> 
+  filter(!(country %in% c("Total, all countries or areas", "Australia and New Zealand", "LLDCs", "LDC\xa7", "SIDS"))) |> drop_na(rd_exp) |>
+  ggplot(aes(factor(country, levels = rd_exp_ranking), rd_exp)) + geom_col() + coord_flip() + 
+  labs(title="Gross domestic expenditure on R&D: % of GDP by region in 2015", x = "", y = "")
+```
+
+```{r}
+researcher_ranking <- df_R_D_region_wide |> filter(year == 2015) |> 
+  filter(!(country %in% c("Total, all countries or areas", "Australia and New Zealand", "LLDCs", "LDC\xa7", "SIDS"))) |> drop_na(researcher) |> arrange(researcher) |> pull(country)
+researcher_ranking
+
+df_R_D_region_wide |> filter(year == 2015) |> 
+  filter(!(country %in% c("Total, all countries or areas", "Australia and New Zealand", "LLDCs", "LDC\xa7", "SIDS"))) |> drop_na(researcher) |>
+  ggplot(aes(factor(country, levels = researcher_ranking), researcher, fill= factor(country, levels = researcher_ranking))) + geom_col() + coord_flip() + 
+  labs(title="Researchers per million inhabitants (FTE) by region in 2015", x = "", y = "") + theme(legend.position = "none")
+```
+
+
+```{r}
+df_R_D_region_wide |> drop_na(researcher) |>
+  filter(!(country %in% c("Total, all countries or areas", "Australia and New Zealand", "LLDCs", "LDC\xa7", "SIDS"))) |> ggplot(aes(year, researcher, col = country)) + geom_line() +
+  labs(title = "Researchers per million inhabitants (FTE) by region")
+```
+
+
+## Reference
+
+The R Notebook contains various technique on visualization. [Link](https://ds-sl.github.io/data-analysis/wir2022.nb.html)
+I recommend `rnaturalearth` and `rnaturalearthdata` packages introduced in class for choropleth maps. 
