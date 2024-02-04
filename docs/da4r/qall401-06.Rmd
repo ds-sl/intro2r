@@ -20,7 +20,7 @@ output:
 
 -   OECD and UN data: migrants [[Link](https://ds-sl.github.io/intro2r/da4r/migrants.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/migrants.Rmd)]
 
--   Responses to Week Five Assignment (in progress): [[Link](https://ds-sl.github.io/intro2r/da4r/w5a_response.nb.html)]. [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/w5a_response.Rmd)]
+-   Responses to Week Five Assignment: [[Link](https://ds-sl.github.io/intro2r/da4r/w5a_response.nb.html)]. [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/da4r/w5a_response.Rmd)]
 
 ## Presentation of the final report (Feb. 26):
 
