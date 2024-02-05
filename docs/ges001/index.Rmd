@@ -286,7 +286,7 @@ DT.ODA.ALLD.CD
 
 をテキストに使っています。
 
-01/30(TU)　Rでデータサイエンス6：気候変動　 　[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00112.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00112.nb.html)]・[ビデオ]
+01/30(TU)　Rでデータサイエンス6：気候変動　 　[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00112.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00112.nb.html)]・[ビデオ](https://youtu.be/Zj_gK6XYaHs)
 
 **Environment-Climate**　
 
@@ -306,7 +306,8 @@ IEA:　Energy Statistics Data Browser　データ元
 
 #### 演習の内容
 
-<!-- 課題の解答例 [リンク](https://ds-sl.github.io/intro2r/ges001/w5eda0.nb.html) -->
+-   課題1：解説 [リンク](https://ds-sl.github.io/intro2r/ges001/w5a_response.nb.html)
+- 　課題1：解答例 [リンク](https://ds-sl.github.io/intro2r/ges001/w5eda0.nb.html)
 
 基本的には、PositCloud（<https://posit.cloud/>）を使って実習
 
@@ -324,7 +325,7 @@ IEA:　Energy Statistics Data Browser　データ元
 
 第7週は、南部アフリカや南アジアなど気候変動から大きな影響を受けている国々の現状を取り上げます。
 
-02/06 (TU)　Rでデータサイエンス7：都市部と農村部の生活状況の格差　[授業資料]
+02/06 (TU)　Rでデータサイエンス7：都市部と農村部の生活状況の格差　[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00120.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00120.nb.html)]・[ビデオ]
 
 **Urban and rural development**
 
@@ -348,6 +349,16 @@ People using at least basic drinking water services, rural (% of rural populatio
 
 SH.H2O.BASW.RU.ZS
 
+#### 演習
+
+- 縦長表（Long Table）
+- 箱ひげ図（Boxplot）
+
+#### 課題2
+
+- 練習：失業率（unemployment.Rmd）[[リンク](https://ds-sl.github.io/intro2r/ges001/unemployment.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/unemployment.Rmd)]
+- 課題テンプレート [[リンク](https://ds-sl.github.io/intro2r/ges001/w7eda_template.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w7eda_template.Rmd)]
+
 ### 第8週
 
 02/08(TH)　紛争と貧困の連鎖1
@@ -360,9 +371,20 @@ SH.H2O.BASW.RU.ZS
 
 **Global Link-Refugees**
 
-<!-- Refugee population by country or territory of asylum：SM.POP.REFG -->
+Refugee population by country or territory of asylum：SM.POP.REFG
 
-<!-- Refugee population by country or territory of origin：SM.POP.REFG.OR -->
+Refugee population by country or territory of origin：SM.POP.REFG.OR
+
+#### 演習
+
+- 探索的データ分析まとめ
+- 視覚化まとめ
+
+<!-- #### 課題2について -->
+
+<!-- -   課題2：解説 [リンク](https://ds-sl.github.io/intro2r/ges001/w7a_response.nb.html) -->
+<!-- - 　課題2：解答例 [リンク](https://ds-sl.github.io/intro2r/ges001/w7eda0.nb.html) -->
+
 
 ### 第9週
 
