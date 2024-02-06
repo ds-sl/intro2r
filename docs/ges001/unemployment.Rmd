@@ -186,7 +186,7 @@ df_unemp |> filter(country == "Japan") |> drop_na(female_unemploy) |>
 
 ```{r}
 df_unemp |> filter(country == "Japan") |> drop_na(male_unemploy) |>
-  ggplot(aes(year, male_unemploy)) + geom_line()　+
+  ggplot(aes(year, male_unemploy)) + geom_line() +
   labs(title = "日本の男性労働者失業率")
 ```
 
@@ -319,7 +319,7 @@ df_unemp |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |>
 ```{r}
 df_unemp_long |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
   drop_na(value) |>
-  ggplot(aes(name, value)) + geom_boxplot()  +
+  ggplot(aes(name, value)) + geom_boxplot() +
   labs(title = "労働者失業率：男女別箱ひげ図")
 ```
 
@@ -332,7 +332,7 @@ df_unemp_long |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |>
 ```{r}
 df_unemp_long |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
   drop_na(value, region) |>
-  ggplot(aes(region, value, fill = name)) + geom_boxplot() + coord_flip()　+
+  ggplot(aes(region, value, fill = name)) + geom_boxplot() + coord_flip() +
   labs(title = "労働者失業率：男女・地域別箱ひげ図")
 ```
 
@@ -343,7 +343,7 @@ df_unemp_long |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |>
 ```{r}
 df_unemp_long |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
   drop_na(value, income) |> filter(income != "Not classified") |>
-  ggplot(aes(income, value, fill = name)) + geom_boxplot() + coord_flip()　+
+  ggplot(aes(income, value, fill = name)) + geom_boxplot() + coord_flip() +
   labs(title = "労働者失業率：男女・収入レベル別箱ひげ図")
 ```
 

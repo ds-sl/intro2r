@@ -3,12 +3,12 @@ title: "GES 001 演習7"
 author: "H. Suzuki"
 date: "2024年2月6日"
 output:
-  html_notebook: default
-  html_document:
-    df_print: paged
   ioslides_presentation:
     widescreen: true
     df_print: paged
+  html_document:
+    df_print: paged
+  html_notebook: default
 ---
 
 ## 準備
@@ -127,11 +127,11 @@ People using at least basic drinking water services, rural (% of rural populatio
 
 -   `ggplot(aes(categorical_var, numerical_var)) + geom_boxplot()`
 
--   `ggplot(aes(region, electricity_urban)) + geom_bar()`
+-   `ggplot(aes(region, electricity_urban)) + geom_boxplot()`
 
--   `ggplot(aes(income, electricity_rural)) + geom_bar()`
+-   `ggplot(aes(income, electricity_rural)) + geom_boxplot()`
 
--   `pivot_longer(cols = c(var1, var2)) |> ggplot(aes(name, value)) + geom_bar()`
+-   `pivot_longer(cols = c(var1, var2)) |> ggplot(aes(name, value)) + geom_boxplot()`
 
 -   year は、整数なので数値変数（numerical variable）。これを カテゴリー変数として扱うためには、`factor(yea`r) を使う。`x` 軸のラベルなどはあとから修正が必要。
 
