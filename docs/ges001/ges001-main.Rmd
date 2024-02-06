@@ -690,7 +690,7 @@ IEA:　Energy Statistics Data Browser　データ元
 
 #### Climate Ambition Summit [[Link](https://www.un.org/climatechange/climate-ambition-summit)]
 
-02/06 (TU)　Rでデータサイエンス7：都市部と農村部の生活状況の格差　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-7.nb.html)]・[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00120.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00120.nb.html)]・[ビデオ]
+02/06 (TU)　Rでデータサイエンス7：都市部と農村部の生活状況の格差　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-7.nb.html)]・[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00120.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00120.nb.html)]・[[ビデオ](https://youtu.be/e0hdeQhi4xw)]
 
 Urban and rural development
 

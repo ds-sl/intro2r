@@ -325,7 +325,7 @@ IEA:　Energy Statistics Data Browser　データ元
 
 第7週は、南部アフリカや南アジアなど気候変動から大きな影響を受けている国々の現状を取り上げます。
 
-02/06 (TU)　Rでデータサイエンス7：都市部と農村部の生活状況の格差　[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00120.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00120.nb.html)]・[ビデオ]
+02/06 (TU)　Rでデータサイエンス7：都市部と農村部の生活状況の格差　[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00120.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00120.nb.html)]・[[ビデオ](https://youtu.be/e0hdeQhi4xw)]
 
 **Urban and rural development**
 
