@@ -25,7 +25,7 @@ output:
 
     -   RStudio を自分のコンピュータにインストールしている人は起動
 
-4.  リンクの右上の Raw ボタンの右の Copy a raw file からコピーして演習用 R Markdown ファイルを作成（あとで再度解説します）[[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w6eda.Rmd)]
+4.  リンクの右上の Raw ボタンの右の Copy a raw file からコピーして演習用 R Markdown ファイルを作成（あとで再度解説します）[[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/unemployment.Rmd)]
 
 ## ファイル
 
