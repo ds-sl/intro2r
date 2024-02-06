@@ -306,8 +306,8 @@ IEA:　Energy Statistics Data Browser　データ元
 
 #### 演習の内容
 
--   課題1：解説 [リンク](https://ds-sl.github.io/intro2r/ges001/w5a_response.nb.html)
-- 　課題1：解答例 [リンク](https://ds-sl.github.io/intro2r/ges001/w5eda0.nb.html)
+- 課題1：解説 [リンク](https://ds-sl.github.io/intro2r/ges001/w5a_response.nb.html)
+- 課題1：解答例 [リンク](https://ds-sl.github.io/intro2r/ges001/w5eda0.nb.html)
 
 基本的には、PositCloud（<https://posit.cloud/>）を使って実習
 
