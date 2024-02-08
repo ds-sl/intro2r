@@ -716,6 +716,60 @@ People using at least basic drinking water services, rural (% of rural populatio
 
 Fragility and Conflict: On the Front Lines of the Fight against Poverty [[Link](https://www.worldbank.org/en/topic/poverty/publication/fragility-conflict-on-the-front-lines-fight-against-poverty)]
 
+#### 講義
+
+-   コメント
+
+    -   地熱発電もある。
+
+    -   炭素税：カーボンプライシング 2033? （GX 関連法案）2026? （下の p5）
+
+        -   グリーントランスフォーメーションの推進に向けて -成長志向型カーボンプライシングを中心に（2024/05/29）経済産業省 環境経済室 [[リンク](https://www.meti.go.jp/shingikai/sankoshin/sangyo_gijutsu/chikyu_kankyo/ondanka_follow_up/pdf/2023_001_05_00.pdf)]
+
+    -   国境炭素調整 vs カーボンリケージので会メリットをカバー [[リンク](https://www.meti.go.jp/shingikai/energy_environment/carbon_neutral_jitsugen/pdf/001_02_00.pdf)]
+
+    -   二酸化炭素を除去しても、破壊された自然をもとには戻せない（地球温暖化の不可逆性）
+
+    -   原子力発電所 vs 認知バイアス - 正常化バイアス
+
+-   紛争と貧困
+
+    -   地球公共財（非排除性・非競合性[^1]）としての「平和」日本平和学会
+
+        -   UNDP: Public Common Goods (1999)
+
+        -   地球をひとつの共同体として捉え、そこでの公共利益 を考察することが地球公共財の議論の主題
+
+        -   武器は私的財
+
+    -   Global Peace Index 2023 （IEP）[[リンク](https://www.visionofhumanity.org/wp-content/uploads/2023/06/GPI-2023-Web.pdf)]
+
+        -   <https://www.economicsandpeace.org/>
+
+        -   紛争による死亡 23万人（2022）96% 増加
+
+        -   暴力の背系経済への GDP への影響 13%
+
+        -   暴力の連鎖を打破するためには，市民に安全と正義，及び雇用を提供するための正当な制度と統治を強化することが決定的に重要で
+
+            -   市民の安全と，正義，及び雇用に対する投資が暴力の削減にとっては必要不可欠である．
+
+    -   Positive Peace
+
+        -   近隣諸国との友好関係　と　情報の自由な流れ
+
+    -   世界開発報告 (WDR) [[日本語リンク](https://www.worldbank.org/ja/country/japan/publication/world-development-report)]
+
+        -   [世界開発報告2011 [リンク][日本語リンク]](https://openknowledge.worldbank.org/bitstream/handle/10986/4389/589880JAPANESE067926B09784903532776.pdf?sequence=16)
+
+        -   制度の変化が必要：人道的支援機関と開発機関の間の調整を改善する必要がある．
+
+            -   脆弱で紛争経験という環境に関与したドナーにとっ ては二重の説明責任というジレンマがある
+
+    -   Fragility and Conflict: On the Front Lines of the Fight against Poverty [[リンク](https://www.worldbank.org/en/topic/poverty/publication/fragility-conflict-on-the-front-lines-fight-against-poverty)]
+
+[^1]: 教育はどうだろうか。高等教育は、非競合的とは言えず、非排他的とも言えない。
+
 02/13(TU)　Rでデータサイエンス8：難民、軍事支出　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-8.nb.html)]・[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00121.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00121.nb.html)]・[ビデオ]
 
 **Global Link-Refugees**
