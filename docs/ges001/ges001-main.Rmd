@@ -766,7 +766,50 @@ Fragility and Conflict: On the Front Lines of the Fight against Poverty [[Link](
 
             -   脆弱で紛争経験という環境に関与したドナーにとっ ては二重の説明責任というジレンマがある
 
-    -   Fragility and Conflict: On the Front Lines of the Fight against Poverty [[リンク](https://www.worldbank.org/en/topic/poverty/publication/fragility-conflict-on-the-front-lines-fight-against-poverty)]
+    -   Fragility and Conflict: On the Front Lines of the Fight against Poverty [[リンク](https://www.worldbank.org/en/topic/poverty/publication/fragility-conflict-on-the-front-lines-fight-against-poverty)] - World Bank, FEBRUARY 27, 2020
+
+        -   FCS: fragile and conflict-affected situations [[リンク](https://openknowledge.worldbank.org/entities/publication/3c335532-5484-51a4-a16f-78399ab2f025)], [[レポートリンク](https://openknowledge.worldbank.org/server/api/core/bitstreams/ebc3ef9e-ca7f-5959-8dfe-2a8a1f2a25dc/content)]
+
+        -   紛争によって大きく分断された2つのスピードの世界が出現している。 一方では、FCSのない経済が極度の貧困を大幅に削減し、さらなる開 発の進展に道を開いている。
+
+        -   今後数十年の間に、紛争や制度の脆弱性に悩まされていない経済が 開発の階段を上り続ける可能性が高い中、世界の貧困はますます FCSに属する経済に集中することになるでしょう。
+
+        -   Overlapping deprivations are more pronounced economies in FCS: 19.8% vs 6.6%
+
+        -   Growth is negatively correlated with conflict deaths and fragility
+
+        -   Most people living in FCS also doubt that things with get better
+
+        -   まとめ：
+
+            -   FCS地域では、深刻な暴力や心的外傷後の経験、基本的なインフラ
+                （例えば、水や電気）の欠如、質の高いヘルスケアや教育へのアクセ
+                スの欠如などが同時に起きている。
+
+            -   これらの要因は、貧しい人々の人的資本の形成を阻害し、経済成長
+                を阻害している。
+
+        -   紛争が貧困と福祉に及ぼす長期的な影響　[[Link](https://www.worldbank.org/en/publication/worldwide-governance-indicators)]
+
+        -   紛争は、人的資本や生産性を損なうことで経済の発展を阻害し、
+            その影響は何世代にもわたって続く。
+
+        -   脆弱性のプロファイルごとに国を分類すると、2 つの重要な発見
+            がある。第一に、FCS諸国内には大きな不均質性があり、より効果的
+            な解決策を講じるためには、差別化された政策が必要である。第二
+            に、脆弱性は、FCS諸国と非FCS諸国の両方に存在し、予防措置の
+            ために監視される必要がある
+
+        -   世界の貧困層の大半が住むであろうFCS経済圏での劇的かつ持続
+            的な貧困削減なくして、世界の貧困目標は達成されない。
+
+        -   貧困と紛争の連鎖を断ち切るための包括的な努力の成否は、FCS
+            の貧困層にとって重要である。多くの人々にとって、これらの政策が
+            いかにうまく機能するかが、彼らの生存の可能性を左右するのであ
+            る。世界で最も弱い立場にある何百万人もの人々の希望と、しばし
+            ば命がかかっていることは、行動するのに十分な理由である。しかし
+            、FCSにおける貧困削減と機会拡大の恩恵は、直接関係する人々や
+            FCSの境界を越えて、はるかに広がるだろう。
 
 [^1]: 教育はどうだろうか。高等教育は、非競合的とは言えず、非排他的とも言えない。
 
