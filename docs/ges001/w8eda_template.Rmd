@@ -1,0 +1,462 @@
+---
+title: "探索的データ分析 - EDA テンプレート"
+author: "ID, Last, First"
+date: "2024年2月13日"
+output:
+  html_notebook: default
+---
+
+## 課題
+
+以下の指標の中から、二つ以上（複数）を選択して、データの概要（description）を記録し、データを WDI で取得し、以下の分析をする。
+
+1.  各年毎のデータの数の棒グラフ
+2.  経年変化を表す折れ線グラフ
+    a.  日本、またはデータがある国
+    b.  選択したいくつかの国
+3.  複数の指標の値を一列に含む縦長の表（Long Table）を作成し 　
+    a. 日本、またはデータがある国の、複数の指標を色分けした経年変化のグラフ 　
+    b. 選択したいくつかの国についての経年変化のグラフを、国を色分けし、指標は線の種類を変えたグラフ
+4.  データが十分ある最近の年の値のヒストグラム
+5.  データが十分ある最近の年の値の10カ国の値の棒グラフ
+    a.  値が大きい方から
+    b.  値が小さい方から
+6.  二つのデータの散布図- NA は取り除くこと。（log10 スケールを用いる場合は値が正のもののみに限定）
+    a.  （地域を除き）国のみの散布図 （近似（回帰）直線を表示）
+    b.  最近の年の（地域を除き）国のみの散布図　（近似（回帰）直線を表示）
+    c.  b に対応する相関係数
+7.  カテゴリー変数（Categorical Variable: region, income, year など）と、数値変数（Numberical Variable）一組についての箱ヒゲ図（Boxplot）
+
+それぞれについて考察（気づいたこと、疑問など）を記す
+
+これは、課題１と課題２の合わせたものです。課題１も課題２も終わった人は、挑戦してください。
+
+**2023.2.17.23:59** までに Moodle の課題２追加提出ボックスに提出してくださればフィードバックを書きます。。
+
+### データ
+
+1.   Refugee population by country or territory of asylum：SM.POP.REFG [[Link](https://data.worldbank.org/indicator/SM.POP.REFG)]
+
+2.   Refugee population by country or territory of origin：SM.POP.REFG.OR [[Link](https://data.worldbank.org/indicator/SM.POP.REFG.OR)]
+
+3.   Net ODA received (% of GNI)：DT.ODA.ODAT.GN.ZS [[Link](https://data.worldbank.org/indicator/DT.ODA.ODAT.GN.ZS)]
+
+4.   Net official development assistance and official aid received (current US\$)：DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
+
+5.   Net ODA received (% of central government expense)：DT.ODA.ODAT.XP.ZS [[Link](https://data.worldbank.org/indicator/DT.ODA.ODAT.XP.ZS)]
+
+6.   Military expenditure (current USD)：MS.MIL.XPND.CD [[Link](https://data.worldbank.org/indicator/MS.MIL.XPND.CD)]
+
+7.   Military expenditure (% of general government expenditure)：MS.MIL.XPND.ZS [[Link](https://data.worldbank.org/indicator/MS.MIL.XPND.ZS)]
+
+8.   Arms imports (SIPRI trend indicator values)：MS.MIL.MPRT.KD [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/MS.MIL.MPRT.KD)]
+
+9.   Arms exports (SIPRI trend indicator values)：MS.MIL.XPRT.KD [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/MS.MIL.XPRT.KD)]
+
+# タイトル
+
+## データ
+
+### データ情報
+
+1.   
+
+2.   
+
+-   
+
+-   **Description:** 
+
+-   **概要:** 
+
+### データの取得
+
+#### 準備
+
+*これまでとも同じように二つのパッケージを読み込み（load）ます。*
+
+
+```{r}
+
+```
+
+*変数名を指定します。なるべくわかりやすい名前にします。*
+
+*この変数名は、今後使いますから、重要です。一応、例として、わたしが使った、変数名を書いてあります。他の変数名を使っても構いません。`extra = TRUE` とすると、地域名（region）や、収入レベル（income）などが追加されます。*
+
+
+```{r eval = FALSE}
+
+
+```
+
+*data ディレクトリに書き込んでおきます。*
+
+
+```{r eval = FALSE}
+
+```
+
+
+
+```{r}
+
+```
+
+### データの確認
+
+*データ名で、中身を表示できます。`head(df_refugee)` とすると、6行表示されます。*
+
+```{r}
+
+```
+
+*変数の情報を得ることができます。*
+
+
+```{r}
+
+```
+
+### 変形
+
+#### 変数の選択（selecting）
+
+
+```{r}
+
+```
+
+*データには country のところに、国だけでなく、地域も入っているので、地域のリストを、`iso2c` で `REGION` に入れておきます。*
+
+```
+REGION <- c("1A", "1W", "4E", "6F", "6N", "6X", "7E", "8S", "A4", "A5", 
+"A9", "B1", "B2", "B3", "B4", "B6", "B7", "B8", "C4", "C5", "C6", 
+"C7", "C8", "C9", "D2", "D3", "D4", "D5", "D6", "D7", "EU", "F1", 
+"F6", "M1", "M2", "N6", "OE", "R6", "S1", "S2", "S3", "S4", "T2", 
+"T3", "T4", "T5", "T6", "T7", "V1", "V2", "V3", "V4", "XC", "XD", 
+"XE", "XF", "XG", "XH", "XI", "XJ", "XL", "XM", "XN", "XO", "XP", 
+"XQ", "XT", "XU", "XY", "Z4", "Z7", "ZB", "ZF", "ZG", "ZH", "ZI", 
+"ZJ", "ZQ", "ZT")
+```
+
+```{r}
+
+```
+
+*地域名にはどのようなものがあるか見ておきます。*
+
+
+```{r}
+
+```
+
+*国名も、地域（region）と、所得レベル（income）と共に、表示しておきます。*
+
+
+```{r}
+
+```
+
+### 分析する国のリスト
+
+
+```{r}
+
+```
+
+
+## 視覚化
+
+### 1. 各年毎のデータの数の棒グラフ
+
+*まずは、NA の値を削除します。そのあとで、国の情報の数を数えたいので、`!(iso2c %in% REGION)` で、上でおいた、地域の iso2c を選択し、! は否定でしたから、地域ではないものを選択し、その数を棒グラフにしています。*
+
+
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問**
+
+-  
+
+### 2. 経年変化を表す折れ線グラフ
+
+#### a. 日本、またはデータがある国
+
+```{r}
+
+
+```
+
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+#### b. 選択したいくつかの国
+
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問**
+
+-  
+
+### 3. 縦長の表（Long Table）
+
+*`cols = c(refugee_asylum, refugee_origin)` と、一つの指標にまとめるものをリストすると、`name` に指標名が入り、`value` に、その値が入る。書式は、`pivot_longer(cols = ..., names_to = ..., values_to = ...)` で、初期設定では、`names_to = "name", values_to = "value"` となっているので、指定しないと、下のようになる。Help 参照。*
+
+
+```{r}
+
+
+```
+
+#### a. 日本の複数の指標を色分けした経年変化のグラフ 
+
+*`col = name` と指定すると、色で区別して、一つのグラフに描ける*
+
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問**
+
+- 
+
+#### b. 選択したいくつかの国の複数の指標を色分けした経年変化のグラフ 
+
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+
+### 4. ヒストグラム
+
+それぞれのデータが十分ある最近の年の値のヒストグラム（度数分布）
+
+_分け方の数 bins や、幅 binwidth を適切に変更_
+
+#### 一つ目の指標
+
+_必要に応じて、log10 スケール（scale_x_log10()）を使う。_
+
+
+```{r}
+
+```
+
+
+```{r}
+
+
+```
+
+#### 二つ目の指標
+
+
+```{r}
+
+
+```
+
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問点**
+
+- 
+
+### 5. 棒グラフ
+
+データが十分ある最近の年の値の10カ国の値の棒グラフ
+
+#### a.  一つ目の指標：値が大きい方から
+
+
+```{r}
+
+```
+
+
+#### b.  一つ目の指標：値が小さい方から
+
+
+```{r}
+
+
+```
+
+#### a.  二つ目の指標：値が大きい方から
+
+
+```{r}
+
+```
+
+#### b.  二つ目の指標：値が小さい方から
+
+
+```{r}
+
+```
+
+### 6. 散布図
+
+_必要に応じて、LOG10 (scale_x_log10(), scale_y_log10()) スケールを使う。_
+
+#### a.（地域を除き）国のみの散布図 
+
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+#### 近似（回帰）直線の表示
+
+
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+#### b. 最近の年の（地域を除き）国のみの散布図
+
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+#### 近似（回帰）直線の表示
+
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+#### c. 相関係数
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+
+### 7. 箱ヒゲ図（Boxplot）
+
+必要時応じて、ログスケール（scale_y_log10()）
+
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問**
+
+-   
+`
+
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問**
+
+-   

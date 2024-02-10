@@ -1,0 +1,660 @@
+---
+title: "探索的データ分析 - EDA"
+author: "ID, Last, First"
+date: "2024年2月13日"
+output:
+  html_notebook: default
+---
+
+## 課題
+
+以下の指標の中から、二つ以上（複数）を選択して、データの概要（description）を記録し、データを WDI で取得し、以下の分析をする。
+
+1.  各年毎のデータの数の棒グラフ
+2.  経年変化を表す折れ線グラフ
+    a.  日本、またはデータがある国
+    b.  選択したいくつかの国
+3.  複数の指標の値を一列に含む縦長の表（Long Table）を作成し 　
+    a. 日本、またはデータがある国の、複数の指標を色分けした経年変化のグラフ 　
+    b. 選択したいくつかの国についての経年変化のグラフを、国を色分けし、指標は線の種類を変えたグラフ
+4.  データが十分ある最近の年の値のヒストグラム
+5.  データが十分ある最近の年の値の10カ国の値の棒グラフ
+    a.  値が大きい方から
+    b.  値が小さい方から
+6.  二つのデータの散布図- NA は取り除くこと。（log10 スケールを用いる場合は値が正のもののみに限定）
+    a.  （地域を除き）国のみの散布図 （近似（回帰）直線を表示）
+    b.  最近の年の（地域を除き）国のみの散布図　（近似（回帰）直線を表示）
+    c.  b に対応する相関係数
+7.  カテゴリー変数（Categorical Variable: region, income, year など）と、数値変数（Numberical Variable）一組についての箱ヒゲ図（Boxplot）
+
+それぞれについて考察（気づいたこと、疑問など）を記す
+
+これは、課題１と課題２の合わせたものです。課題１も課題２も終わった人は、挑戦してください。
+
+**2023.2.17.23:59** までに Moodle の課題２追加提出ボックスに提出してくださればフィードバックを書きます。。
+
+### データ
+
+1.   Refugee population by country or territory of asylum：SM.POP.REFG [[Link](https://data.worldbank.org/indicator/SM.POP.REFG)]
+
+2.   Refugee population by country or territory of origin：SM.POP.REFG.OR [[Link](https://data.worldbank.org/indicator/SM.POP.REFG.OR)]
+
+3.   Net ODA received (% of GNI)：DT.ODA.ODAT.GN.ZS [[Link](https://data.worldbank.org/indicator/DT.ODA.ODAT.GN.ZS)]
+
+4.   Net official development assistance and official aid received (current US\$)：DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
+
+5.   Net ODA received (% of central government expense)：DT.ODA.ODAT.XP.ZS [[Link](https://data.worldbank.org/indicator/DT.ODA.ODAT.XP.ZS)]
+
+6.   Military expenditure (current USD)：MS.MIL.XPND.CD [[Link](https://data.worldbank.org/indicator/MS.MIL.XPND.CD)]
+
+7.   Military expenditure (% of general government expenditure)：MS.MIL.XPND.ZS [[Link](https://data.worldbank.org/indicator/MS.MIL.XPND.ZS)]
+
+8.   Arms imports (SIPRI trend indicator values)：MS.MIL.MPRT.KD [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/MS.MIL.MPRT.KD)]
+
+9.   Arms exports (SIPRI trend indicator values)：MS.MIL.XPRT.KD [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/MS.MIL.XPRT.KD)]
+
+# 難民人口
+
+## データ
+
+### データ情報
+
+1.   難民受け入れ人口：Refugee population by country or territory of asylum：SM.POP.REFG [[Link](https://data.worldbank.org/indicator/SM.POP.REFG)]
+
+2.   難民となる人口：Refugee population by country or territory of origin：SM.POP.REFG.OR [[Link](https://data.worldbank.org/indicator/SM.POP.REFG.OR)]
+
+-   難民の庇護国とは、庇護請求が提出され、認められた国のことである。出身国とは、一般的に請求者の国籍または市民権のある国を指す。
+
+-   **Description:** Refugees are people who are recognized as refugees under the 1951 Convention Relating to the Status of Refugees or its 1967 Protocol, the 1969 Organization of African Unity Convention Governing the Specific Aspects of Refugee Problems in Africa, people recognized as refugees in accordance with the UNHCR statute, people granted refugee-like humanitarian status, and people provided temporary protection. Asylum seekers--people who have applied for asylum or refugee status and who have not yet received a decision or who are registered as asylum seekers--are excluded. Palestinian refugees are people (and their descendants) whose residence was Palestine between June 1946 and May 1948 and who lost their homes and means of livelihood as a result of the 1948 Arab-Israeli conflict. Country of asylum is the country where an asylum claim was filed and granted. Country of origin generally refers to the nationality or country of citizenship of a claimant.
+
+-   **概要:** 難民とは、「難民の地位に関する1951年条約」またはその「1967年議定書」、「アフリカにおける難民問題の特定の側面を管理する1969年アフリカ統一機構条約」に基づき難民と認められた人、UNHCRの法令に基づき難民と認められた人、難民に準ずる人道的地位を与えられた人、一時的な保護を与えられた人を指す。庇護申請者--庇護または難民認定を申請し、まだ決定を受けていない人、または庇護申請者として登録されている人--は除外される。パレスチナ難民とは、1946年6月から1948年5月までの間に居住地がパレスチナであり、1948年のアラブ・イスラエル紛争の結果、住居と生計手段を失った人々（およびその子孫）である。庇護国とは、庇護請求が提出され、認められた国のことである。出身国とは、一般的に請求者の国籍または市民権のある国を指す。
+
+### データの取得
+
+#### 準備
+
+*これまでとも同じように二つのパッケージを読み込み（load）ます。*
+
+```
+library(tidyverse)
+library(WDI)
+```
+
+```{r}
+
+```
+
+*変数名を指定します。ここでは、`refugee_asylum` と、`refugee_origin` としました。なるべくわかりやすい名前にします。*
+
+*この変数名は、今後使いますから、重要です。一応、例として、わたしが使った、変数名を書いてあります。他の変数名を使っても構いません。`extra = TRUE` とすると、地域名（region）や、収入レベル（income）などが追加されます。*
+
+```
+df_unemploy <- WDI(indicator = c(female_unemploy = "SL.UEM.TOTL.FE.ZS", 
+                                 male_unemploy = "SL.UEM.TOTL.MA.ZS"),
+                   extra = TRUE)
+```
+
+```{r eval = FALSE}
+
+
+```
+
+*data ディレクトリに書き込んでおきます。*
+
+
+```
+write_csv(df_unemploy, "data/unemploy.csv")
+```
+
+```{r eval = FALSE}
+
+```
+
+*data ディレクトリから読み出します。Run All や、Run All Chunks Above をする時は、上の二つをスキップする設定にしてあります。*
+
+```
+df_unemploy <- read_csv("data/unemploy.csv")
+```
+
+
+```{r}
+
+```
+
+### データの確認
+
+```
+df_unemploy
+```
+
+
+*データ名で、中身を表示できます。`head(df_refugee)` とすると、6行表示されます。*
+
+```{r}
+
+```
+
+*変数の情報を得ることができます。*
+
+```
+str(df_unemploy)
+```
+
+
+```{r}
+
+```
+
+### 変形
+
+#### 変数の選択（selecting）
+
+```
+df_unemp <- df_unemploy |> 
+  select(country, iso2c, year, female_unemploy, male_unemploy, region, income)
+df_unemp
+```
+
+
+```{r}
+
+```
+
+*データには country のところに、国だけでなく、地域も入っているので、地域のリストを、`iso2c` で `REGION` に入れておきます。*
+
+```
+REGION <- c("1A", "1W", "4E", "6F", "6N", "6X", "7E", "8S", "A4", "A5", 
+"A9", "B1", "B2", "B3", "B4", "B6", "B7", "B8", "C4", "C5", "C6", 
+"C7", "C8", "C9", "D2", "D3", "D4", "D5", "D6", "D7", "EU", "F1", 
+"F6", "M1", "M2", "N6", "OE", "R6", "S1", "S2", "S3", "S4", "T2", 
+"T3", "T4", "T5", "T6", "T7", "V1", "V2", "V3", "V4", "XC", "XD", 
+"XE", "XF", "XG", "XH", "XI", "XJ", "XL", "XM", "XN", "XO", "XP", 
+"XQ", "XT", "XU", "XY", "Z4", "Z7", "ZB", "ZF", "ZG", "ZH", "ZI", 
+"ZJ", "ZQ", "ZT")
+```
+
+```{r}
+
+```
+
+*地域名にはどのようなものがあるか見ておきます。*
+
+```
+df_unemp |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
+```
+
+
+```{r}
+
+```
+
+*国名も、地域（region）と、所得レベル（income）と共に、表示しておきます。*
+
+```
+df_unemp |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c, region, income)
+```
+
+
+```{r}
+
+```
+
+### 分析する国のリスト
+
+*自分で分析したい国のリストを作ってください。ここでは、紛争に関係がありそうな国を CONFLICTS にします。無論、変更してくだっさって構いません*
+
+```
+CONFLICTS <- c("Syrian Arab Republic", "Ukraine", "Afghanistan", "South Sudan", "Myanmar", "Congo, Dem. Rep.", "Turkiye", "West Bank and Gaza")
+```
+
+```{r}
+
+```
+
+
+## 視覚化
+
+### 1. 各年毎のデータの数の棒グラフ
+
+*まずは、NA の値を削除します。そのあとで、国の情報の数を数えたいので、`!(iso2c %in% REGION)` で、上でおいた、地域の iso2c を選択し、! は否定でしたから、地域ではないものを選択し、その数を棒グラフにしています。*
+
+```
+df_unemp |> drop_na(female_unemploy, male_unemploy) |> filter(!(iso2c %in% REGION)) |>
+  ggplot(aes(year)) + geom_bar()
+```
+
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問**
+
+-  
+
+### 2. 経年変化を表す折れ線グラフ
+
+#### a. 日本、またはデータがある国
+
+```
+df_unemp |> filter(country == "Japan") |> drop_na(female_unemploy) |>
+  ggplot(aes(year, female_unemploy)) + geom_line() +
+  labs(title = "日本の女性労働者失業率")
+```
+
+
+```{r}
+
+
+```
+
+```
+df_unemp |> filter(country == "Japan") |> drop_na(male_unemploy) |>
+  ggplot(aes(year, male_unemploy)) + geom_line() +
+  labs(title = "日本の男性労働者失業率")
+```
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+#### b. 選択したいくつかの国
+
+```
+df_unemp |> filter(iso2c %in% ASEAN) |> drop_na(female_unemploy) |>
+  ggplot(aes(year, female_unemploy, col = country)) + geom_line() +
+  labs(title = "ASEAN の女性労働者失業率")
+```
+
+CONFLICTS は、`country` ですから、下のようにします。
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+```
+df_unemp |> filter(country %in% asean) |> drop_na(male_unemploy) |>
+  ggplot(aes(year, male_unemploy, col = country)) + geom_line() +
+  labs(title = "ASEAN の男性労働者失業率")
+```
+
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問**
+
+-  
+
+### 3. 縦長の表（Long Table）
+
+*`cols = c(refugee_asylum, refugee_origin)` と、一つの指標にまとめるものをリストすると、`name` に指標名が入り、`value` に、その値が入る。書式は、`pivot_longer(cols = ..., names_to = ..., values_to = ...)` で、初期設定では、`names_to = "name", values_to = "value"` となっているので、指定しないと、下のようになる。Help 参照。*
+
+```
+df_unemp_long <- df_unemp |> pivot_longer(cols = c(female_unemploy, male_unemploy))
+df_unemp_long
+```
+
+```{r}
+
+
+```
+
+#### a. 日本の複数の指標を色分けした経年変化のグラフ 
+
+*`col = name` と指定すると、色で区別して、一つのグラフに描ける*
+
+```
+df_unemp_long |> filter(country == "Japan") |> drop_na(value) |>
+  ggplot(aes(year, value, col = name)) + geom_line()  +
+  labs(title = "日本の男女別失業率")
+```
+
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+```
+df_unemp_long |> filter(country == "World") |> drop_na(value) |>
+  ggplot(aes(year, value, col = name)) + geom_line()  +
+  labs(title = "世界の男女別失業率")
+```
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問**
+
+- 
+
+#### b. 選択したいくつかの国の複数の指標を色分けした経年変化のグラフ 
+
+```
+df_unemp_long |> filter(iso2c %in% ASEAN) |> drop_na(value) |>
+  ggplot(aes(year, value, col = country, linetype = name)) + geom_line()  +
+  labs(title = "ASEAN の男女別失業率")
+```
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+
+### 4. ヒストグラム
+
+それぞれのデータが十分ある最近の年の値のヒストグラム（度数分布）
+
+_分け方の数 bins や、幅 binwidth を適切に変更_
+
+#### 一つ目の指標
+
+_必要に応じて、log10 スケール（scale_x_log10()）を使う。_
+
+```
+df_unemp |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(female_unemploy) |>
+  ggplot(aes(female_unemploy, fill = region)) + geom_histogram(bins = 10, col = "black", linewidth = 0.2) + scale_x_log10()
+```
+
+
+```{r}
+
+```
+
+
+```
+df_unemp |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(female_unemploy) |>
+  ggplot(aes(female_unemploy, fill = income)) + geom_histogram(bins = 10, col = "black", linewidth = 0.2) 
+```
+
+```{r}
+
+
+```
+
+#### 二つ目の指標
+
+```
+df_unemp |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(male_unemploy) |>
+  ggplot(aes(male_unemploy, fill = region)) + geom_histogram(bins = 10, col = "black", linewidth = 0.2) + scale_x_log10()
+```
+
+```{r}
+
+
+```
+
+```
+df_unemp |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(male_unemploy) |>
+  ggplot(aes(male_unemploy, fill = income)) + geom_histogram(bins = 10, col = "black", linewidth = 0.2) 
+```
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問点**
+
+- 
+
+### 5. 棒グラフ
+
+データが十分ある最近の年の値の10カ国の値の棒グラフ
+
+#### a.  一つ目の指標：値が大きい方から
+
+```
+df_unemp |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(female_unemploy) |>
+  arrange(desc(female_unemploy)) |> slice_head(n = 10) |>
+  ggplot(aes(fct_rev(fct_inorder(country)), female_unemploy, fill = region)) + geom_col() + coord_flip() + labs(title = "女性失業率の高い順", x = "")
+```
+
+```{r}
+
+```
+
+
+#### b.  一つ目の指標：値が小さい方から
+
+```
+df_unemp |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(female_unemploy) |>
+  arrange(female_unemploy) |> slice_head(n = 10) |>
+  ggplot(aes(fct_rev(fct_inorder(country)), female_unemploy, fill = region)) + geom_col() + coord_flip() + labs(title = "女性失業率が低い順")
+```
+
+```{r}
+
+
+```
+
+#### a.  二つ目の指標：値が大きい方から
+
+```
+df_unemp |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(male_unemploy) |>
+  arrange(desc(male_unemploy)) |> slice_head(n = 10) |>
+  ggplot(aes(fct_rev(fct_inorder(country)), male_unemploy, fill = region)) + geom_col() + coord_flip() + labs(title = "男性失業率の高い順", x = "")
+```
+
+```{r}
+
+```
+
+#### b.  二つ目の指標：値が小さい方から
+
+```
+df_unemp |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(male_unemploy) |>
+  arrange(male_unemploy) |> slice_head(n = 10) |>
+  ggplot(aes(fct_rev(fct_inorder(country)), male_unemploy, fill = region)) + geom_col() + coord_flip() + labs(title = "男性失業率が低い順")
+```
+
+```{r}
+
+```
+
+### 6. 散布図
+
+_必要に応じて、LOG10 (scale_x_log10(), scale_y_log10()) スケールを使う。_
+
+#### a.（地域を除き）国のみの散布図 
+
+```
+df_unemp |> filter(!(iso2c %in% REGION)) |> drop_na(female_unemploy, male_unemploy) |>
+  ggplot(aes(female_unemploy, male_unemploy)) + geom_point()  +
+  labs(title = "失業率：男女別相関")
+```
+
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+#### 近似（回帰）直線の表示
+
+```
+df_unemp |> filter(!(iso2c %in% REGION)) |> drop_na(female_unemploy, male_unemploy) |>
+  ggplot(aes(female_unemploy, male_unemploy)) + geom_point() + 
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE) +
+  labs(title = "失業率：男女別相関（回帰直線付）")
+```
+
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+#### b. 最近の年の（地域を除き）国のみの散布図
+
+```
+df_unemp |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
+  drop_na(female_unemploy, male_unemploy) |>
+  ggplot(aes(female_unemploy, male_unemploy)) + geom_point() +
+  labs(title = "2022年の失業率：男女別相関")
+```
+
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+#### 近似（回帰）直線の表示
+
+```
+df_unemp |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
+  drop_na(female_unemploy, male_unemploy) |>
+  ggplot(aes(female_unemploy, male_unemploy)) + geom_point() + 
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE) +
+  labs(title = "失業率：男女別相関（回帰直線付）")
+```
+
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+#### c. 相関係数
+
+```
+df_unemp |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
+  drop_na(female_unemploy, male_unemploy) |> select(female_unemploy, male_unemploy) |> cor()
+```
+
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+
+### 7. 箱ヒゲ図（Boxplot）
+
+必要時応じて、ログスケール（scale_y_log10()）
+
+```
+df_unemp_long |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
+  drop_na(value) |>
+  ggplot(aes(name, value)) + geom_boxplot() +
+  labs(title = "労働者失業率：男女別箱ひげ図")
+```
+
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+```
+df_unemp_long |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
+  drop_na(value, region) |>
+  ggplot(aes(region, value, fill = name)) + geom_boxplot() + coord_flip() +
+  labs(title = "労働者失業率：男女・地域別箱ひげ図")
+```
+
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+```
+df_unemp_long |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
+  drop_na(value, income) |> filter(income != "Not classified") |>
+  ggplot(aes(income, value, fill = name)) + geom_boxplot() + coord_flip() +
+  labs(title = "労働者失業率：男女・収入レベル別箱ひげ図")
+```
+
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+```
+df_unemp_long |> filter(!(iso2c %in% REGION)) |> filter(year %in% c(1991, 2001, 2011, 2021)) |>
+  drop_na(value) |> 
+  ggplot(aes(factor(year), value, fill = name)) + geom_boxplot() +
+  labs(title = "労働者失業率：男女別・10年ごとの箱ひげ図")
+```
+
+
+```{r}
+
+```
+
+**気づいたこと・疑問**
+
+-   
+
+```
+df_unemp_long |> filter(iso2c %in% ASEAN) |> drop_na(value) |> 
+  ggplot(aes(country, value, fill = name)) + geom_boxplot() + coord_flip() +
+  labs(title = "ASEAN の労働者失業率：男女別箱ひげ図")
+```
+
+
+```{r}
+
+
+```
+
+**気づいたこと・疑問**
+
+-   
