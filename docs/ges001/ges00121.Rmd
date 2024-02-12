@@ -3,12 +3,12 @@ title: "GES 001 演習8"
 author: "H. Suzuki"
 date: "2024年2月13日"
 output:
-  html_notebook: default
-  html_document:
-    df_print: paged
   ioslides_presentation:
     widescreen: true
     df_print: paged
+  html_document:
+    df_print: paged
+  html_notebook: default
 ---
 
 ## 準備
@@ -45,6 +45,10 @@ RStudio の場合には、自分の PC に作成したファイルがありま�
 
 -   課題1：解説 [リンク](https://ds-sl.github.io/intro2r/ges001/w5a_response.nb.html)
 -   課題1：解答例 [リンク](https://ds-sl.github.io/intro2r/ges001/w5eda0.nb.html)
+
+### 課題1・課題2 追加提出ボックスについて
+
+期限：2023年2月17日23時59分（特別な理由がある場合は連絡してください）
 
 ## 第8週
 
@@ -83,6 +87,7 @@ Arms exports (SIPRI trend indicator values)：MS.MIL.XPRT.KD [[Link](https://dat
 -   表題 Title
 -   概要 Abstract
 -   データ情報：データ名、データコード、変数名、データ概要
+-   各項目に、気づいたこと、疑問などを記録（EDAの核となる部分です）
 -   データの取得 - ダウンロードして保存しておく
     -   準備：`library(tidyverse); library(WDI)`
     -   `df_w6eda <- WDI(indicator = c(co2pcap = "EN.ATM.CO2E.PC",                           forest = "AG.LND.FRST.ZS"), extra = TRUE)`
@@ -107,7 +112,7 @@ Arms exports (SIPRI trend indicator values)：MS.MIL.XPRT.KD [[Link](https://dat
     -   相関
         -   散布図（scatter plot）x-軸と、y-軸に、それぞれの変数をとる
         -   相関係数
--   各項目に、気づいたこと、疑問などを記録
+
 
 # 演習 2月13日（火）
 
