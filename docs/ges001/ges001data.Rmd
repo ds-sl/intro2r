@@ -14,9 +14,15 @@ output:
 
 -   PositCloud 共有リンク：<https://posit.cloud/content/5539763>
 
+-   極度に貧しい！？ [[RNotebook](https://ds-sl.github.io/intro2r/ges001/poverty.nb.html)]
+
 ### 第2週
 
 12/19(TU)　Rでデータサイエンス2：人口の少子高齢化　 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00101.html)]・[[RNotebook](https://ds-sl.github.io/intro2r/ges001/ges00101.nb.html)]・[[ビデオ](https://youtu.be/AFNVhNdWZ_Y)]
+
+-   **人口動態 [**[R Notebook](https://ds-sl.github.io/intro2r/ges001/demography.nb.html)**]**
+
+#### 世界開発指標（World Development Indicators）[[Link](https://datatopics.worldbank.org/world-development-indicators/)]
 
 **People- Population dynamics**
 
@@ -34,11 +40,11 @@ output:
 
 01/09(TU)　Rでデータサイエンス3：GNI係数と所得分布　 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00102.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00102.nb.html)]・[[ビデオ](https://youtu.be/RwD-SJlSHkQ)]
 
--   ジニって何！？（what_is_gini.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/what_is_gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/what_is_gini.Rmd)]
+-   ジニって何！？（what_is_gini.Rmd） [[R Notebook](https://ds-sl.github.io/intro2r/ges001/what_is_gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/what_is_gini.Rmd)]
 
--   ジニ指数と所得分布（gini.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/gini.Rmd)]
+-   ジニ指数と所得分布（gini.Rmd） [[R Notebook](https://ds-sl.github.io/intro2r/ges001/gini.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/gini.Rmd)]
 
-    -   参考1/参考2付（gini_long.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/gini_long.nb.html)]
+    -   参考1/参考2付（gini_long.Rmd） [[R Notebook](https://ds-sl.github.io/intro2r/ges001/gini_long.nb.html)]
 
 **Poverty and Inequality―Distribution of income or consumption**
 
@@ -60,7 +66,9 @@ output:
 
 ### 第4週
 
-01/16(TU)　Rでデータサイエンス4:貧困（データが少ない難点） [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-4.nb.html)]・[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00110.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00110.nb.html)]・[[ビデオ](https://youtu.be/RwD-SJlSHkQ)]
+01/16(TU)　Rでデータサイエンス4:貧困 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00110.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00110.nb.html)]・[[ビデオ](https://youtu.be/RwD-SJlSHkQ)]
+
+-   貧困率 - Poverty Rate [[R Notebook](https://ds-sl.github.io/intro2r/ges001/poverty_rate.nb.html)]
 
 **Poverty rates at national poverty lines**
 
@@ -78,11 +86,13 @@ output:
 
 01/23(TU)　Rでデータサイエンス5　 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00111.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00111.nb.html)]・[[ビデオ](https://youtu.be/WHIz4Vec4ek)]
 
--   練習と一つ目の課題（w5eda.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/w5eda.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w5eda.Rmd)]
+-   男女別失業率 [[R Notebook](https://ds-sl.github.io/intro2r/ges001/unemployment.nb.html)]
 
--   二つ目以降の課題：w5eda1.Rmd [[リンク](https://ds-sl.github.io/intro2r/ges001/w5eda1.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w5eda1.Rmd)]
+-   練習と一つ目の課題（w5eda.Rmd） [[R Notebook](https://ds-sl.github.io/intro2r/ges001/w5eda.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w5eda.Rmd)]
 
--   解答例：w5eda0.Rmd [[リンク](https://ds-sl.github.io/intro2r/ges001/w5eda0.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w5eda0.Rmd)]
+-   二つ目以降の課題：w5eda1.Rmd [[R Notebook](https://ds-sl.github.io/intro2r/ges001/w5eda1.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w5eda1.Rmd)]
+
+-   解答例：w5eda0.Rmd [[R Notebook](https://ds-sl.github.io/intro2r/ges001/w5eda0.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w5eda0.Rmd)]
 
 **People-Education**
 
@@ -120,6 +130,8 @@ output:
 
 01/30(TU)　Rでデータサイエンス6：気候変動　 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00112.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00112.nb.html)]・[[ビデオ](https://youtu.be/Zj_gK6XYaHs)]
 
+-   環境について [[R Notebook](https://ds-sl.github.io/intro2r/ges001/w6eda0.nb.html)]
+
 **Environment-Climate**　
 
 -   一人当たりの二酸化炭素排出率：CO2 emissions (metric tons per capita) ：EN.ATM.CO2E.PC [[Link](https://data.worldbank.org/indicator/EN.ATM.CO2E.PC)]
@@ -154,29 +166,31 @@ output:
 
 02/13(TU)　Rでデータサイエンス8：難民、軍事支出　 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00121.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00121.nb.html)]・[ビデオ]
 
+-   難民の出身国と受け入れ国 [[R Notebook](https://ds-sl.github.io/intro2r/ges001/peace0.nb.html)]
+
 **Global Link-Refugees**
 
--   Refugee population by country or territory of asylum：SM.POP.REFG [[Link](https://data.worldbank.org/indicator/SM.POP.REFG)]
+-   難民受け入れ国：Refugee population by country or territory of asylum：SM.POP.REFG [[Link](https://data.worldbank.org/indicator/SM.POP.REFG)]
 
--   Refugee population by country or territory of origin：SM.POP.REFG.OR [[Link](https://data.worldbank.org/indicator/SM.POP.REFG.OR)]
+-   難民の出身国：Refugee population by country or territory of origin：SM.POP.REFG.OR [[Link](https://data.worldbank.org/indicator/SM.POP.REFG.OR)]
 
--   Net ODA received (% of GNI)：DT.ODA.ODAT.GN.ZS [[Link](https://data.worldbank.org/indicator/DT.ODA.ODAT.GN.ZS)]
+-   政府開発援助受け入れ（国民総生産に対する率）：Net ODA received (% of GNI)：DT.ODA.ODAT.GN.ZS [[Link](https://data.worldbank.org/indicator/DT.ODA.ODAT.GN.ZS)]
 
--   Net official development assistance and official aid received (current US\$)：DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
+-   政府開発援助額（USD）：Net official development assistance and official aid received (current US\$)：DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
 
--   Net ODA received (% of central government expense)：DT.ODA.ODAT.XP.ZS [[Link](https://data.worldbank.org/indicator/DT.ODA.ODAT.XP.ZS)]
+-   政府開発援助（政府の支出額に対する率）：Net ODA received (% of central government expense)：DT.ODA.ODAT.XP.ZS [[Link](https://data.worldbank.org/indicator/DT.ODA.ODAT.XP.ZS)]
 
--   Military expenditure (current USD)：MS.MIL.XPND.CD [[Link](https://data.worldbank.org/indicator/MS.MIL.XPND.CD)]
+-   軍事費（USD）：Military expenditure (current USD)：MS.MIL.XPND.CD [[Link](https://data.worldbank.org/indicator/MS.MIL.XPND.CD)]
 
--   Military expenditure (% of general government expenditure)：MS.MIL.XPND.ZS [[Link](https://data.worldbank.org/indicator/MS.MIL.XPND.ZS)]
+-   軍事費（政府の総支出額に対する率）：Military expenditure (% of general government expenditure)：MS.MIL.XPND.ZS [[Link](https://data.worldbank.org/indicator/MS.MIL.XPND.ZS)]
 
--   Arms imports (SIPRI trend indicator values)：MS.MIL.MPRT.KD [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/MS.MIL.MPRT.KD)]
+-   武器輸入値：Arms imports (SIPRI trend indicator values)：MS.MIL.MPRT.KD [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/MS.MIL.MPRT.KD)]
 
--   Arms exports (SIPRI trend indicator values)：MS.MIL.XPRT.KD [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/MS.MIL.XPRT.KD)]
+-   武器輸出値：Arms exports (SIPRI trend indicator values)：MS.MIL.XPRT.KD [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/MS.MIL.XPRT.KD)]
 
 ### 第9週
 
-02/20(TU)　Rでデータサイエンス9：まとめと演習　[[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-9.nb.html)]・[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00122.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00122.nb.html)]・[ビデオ]
+02/20(TU)　Rでデータサイエンス9：まとめと演習　[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00122.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00122.nb.html)]・[ビデオ]
 
 ### 第10週
 

@@ -1,11 +1,12 @@
 ---
 title: "極度に貧しい！？"
-date: "`r Sys.Date()`"
+date: "2023.12.12"
 output:
   html_notebook:
     df_print: paged
   word_document: default
 ---
+
 
 > UNICEF [[Link](https://www.unicef.or.jp/kodomo/sdgs/17goals/1-poverty/)]
 >

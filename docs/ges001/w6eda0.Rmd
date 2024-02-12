@@ -113,7 +113,7 @@ str(df_environment)
 すべての指標の値があるもののデータ数を、年毎に表示する。
 
 ```{r}
-df_env |> drop_na(co2pcap, forest, renewable, fossil, nuclear) |> 
+df_environment |> drop_na(co2pcap, forest, renewable, fossil, nuclear) |> 
   ggplot(aes(year)) + geom_bar()
 ```
 
@@ -126,7 +126,7 @@ df_env |> drop_na(co2pcap, forest, renewable, fossil, nuclear) |>
 それぞれのデータがどのくらいあるか見たい時は、データを縦長（long data）にして使う次のような方法もある。おおよそ、どの指標のデータが少ないかがわかる。
 
 ```{r}
-df_env |> pivot_longer(cols = c(co2pcap, forest, renewable, fossil, nuclear)) |> 
+df_environment |> pivot_longer(cols = c(co2pcap, forest, renewable, fossil, nuclear)) |> 
   drop_na(value) |> ggplot(aes(year, fill = name)) + geom_bar(col = "black", linewidth = 0.1)
 ```
 
@@ -519,3 +519,37 @@ df_env |> filter(!(iso2c %in% REGION)) |> filter(year == 2014) |>
 ```
 
 **気づいたこと・疑問**
+
+## 参考
+
+```{r}
+df_env_long <- df_env |> pivot_longer(c(renewable, fossil, nuclear))
+df_env_long
+```
+
+```{r}
+df_env_long |> filter(country == "Japan") |> drop_na(value) |>
+  ggplot(aes(year, value, fill = name)) + geom_area(col = "black", linewidth = 0.2)
+```
+
+```{r}
+df_env_long |> filter(country == "World") |> drop_na(value) |>
+  ggplot(aes(year, value, fill = name)) + geom_area(col = "black", linewidth = 0.2)
+```
+
+```{r}
+df_env |> filter(region != "Aggregates", !is.na(region)) |> distinct(region) |> dput()
+```
+```{r}
+regions <- c("South Asia", "Europe & Central Asia", 
+"Middle East & North Africa", "East Asia & Pacific", "Sub-Saharan Africa", 
+"Latin America & Caribbean", "North America")
+```
+
+```{r}
+df_env_long |> filter(country %in% regions) |> filter(year >= 1990) |> drop_na(value) |>
+  ggplot(aes(year, value, fill = name)) + geom_area(col = "black", linewidth = 0.2) +
+  facet_wrap(~country)
+```
+
+

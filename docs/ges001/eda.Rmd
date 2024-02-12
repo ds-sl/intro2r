@@ -1,0 +1,450 @@
+---
+title: "探索的データ分析（Exploratory Data Analysis）"
+author: "H. Suzuki"
+date: "2024年2月13日"
+output:
+  html_notebook: 
+    toc: true
+    number_sections: true
+    toc_float: true
+---
+
+# ワークフロー
+
+-   表題 Title
+-   概要 Abstract
+-   データ情報：データ名、データコード、変数名、データ概要
+-   データの取得 - ダウンロードして保存しておく
+    -   準備：`library(tidyverse); library(WDI)`
+    -   `df_w6eda <- WDI(indicator = c(co2pcap = "EN.ATM.CO2E.PC",                           forest = "AG.LND.FRST.ZS"), extra = TRUE)`
+    -   *二つ以上の指標、それぞれに変数名* `co2pcap`, `forest`
+    -   追加情報：`extra = TRUE`; `region` 地域情報, `income` 収入レベル
+    -   データの確認：データが十分あるか、国名リスト、地域名リスト
+-   分析する国のリスト：南部アフリカ関税同盟、国や地域を選択
+-   分析・視覚化
+    -   各年毎のデータの数の棒グラフ
+    -   経年変化
+        -   日本（身近な馴染みのあるデータを確認）
+        -   南部アフリカ関税同盟、選択した国・地域
+    -   分布
+        -   ヒストグラム（年を指定した度数分布）
+        -   値が大きい10カ国とその値の棒グラフ
+        -   値が小さい10カ国とその値の棒グラフ
+    -   相関
+        -   散布図（scatter plot）x-軸と、y-軸に、それぞれの変数をとる
+        -   相関係数
+-   各項目に、気づいたこと、疑問などを記録
+
+# 準備
+
+Posit.Cloud または RStudio で R を使うことを想定して説明と注意点を書きます。
+
+## R Notebook の作成
+
+再現性と記録、さらには、コミュニケーションのために、R Notebook を作成します。R Notebook は、R Markdown の一形式です。
+
+### ファイルを作成するときの注意
+
+1.  Posit Cloud のときは、まず、Login し、プロジェクトに移動（クラスでは、[共有プロジェクト](https://posit.cloud/content/5539763) `intro2rj` を使用）のプロジェクトに入り、 ファイルから、ges001 のフォルダーを選択して、移動します。この中に、data フォルダが作成されていることを確認し、このges001 に、新しく作成したファイルを保存します。新しく作成したファイルの入っているフォルダーの中に、data フォルダがあることが大切です。そこに、データを書き込みます。
+
+2.  RStudio の場合には、まずは、新しい Project を作成します。File \> New Project から作成します。すでに、作成してある場合は、それを、Open Project や、Recent Project から開きます。その中に、新しいファイルを作成します。作成したフォルダーに、data フォルダがあることを確認してください。新しく作成したファイルの入っているフォルダーの中に、data フォルダがあることが大切です。そこに、データを書き込みます。
+
+- 　Rmd ファイルを作成したら、すぐに、ID と名前を書きます。タイトルも決まっていたら書きます。
+
+
+### ファイルを提出するときの注意
+
+#### 確認作業
+
+-   Run All で、最後に、もう一度、すべてを、実行。
+
+-   エラーが修正できない場合には、その次のコードチャンクから、Run Below で実行。
+
+-   Preview の右のギアマークから、Preview in Widow を選択し、View in Browser で、いつも、使っている、Web Browser で、最後まで、グラフなどが出ているか確認。
+
+#### Posit.Cloud のファイルダウンロード
+
+RStudio の場合には、自分の PC に作成したファイルがありますから、問題ないと思いますが、Posit Cloud で作成した場合には、自分の PC にダウンロードする必要があります。
+
+提出したいファイルの左にあるチェックボックスをチェックします。Files の 右端にある、ギアマークの Export を押すと、ダウンロードできます。それを提出してください。末尾が、nb.html となっているものを提出していただくのがよいですが、よくわからないときは、nb.html ファイルと、Rmd ファイルと両方提出してください。
+
+## 必要なパッケージの読み込み
+
+このコースでは、この二つのパッケージ（R の機能を拡張するもの）を読み込みます。初めて使う時は、Tools > Install Packages からインストールします。
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+
+# データ
+
+- 世界開発指標（World Development Indicators）[Link](https://datatopics.worldbank.org/world-development-indicators/) からデータを選択します。
+
+- 授業で使ったデータのリスト：[リンク](https://ds-sl.github.io/intro2r/ges001/ges001data.nb.html)
+
+
+## データ情報
+
+データ名、データID（WDI コード）、データ概要を取得して書きます。
+
+リンクを残しておくとあとで便利です。サイトの Details に概要も、データ ID もあります。日本語にしておくのも良いでしょう。
+
+このときに、短い変数名も決めておきます。
+
+### 例
+
+データ１：一人当たりの二酸化炭素排出量（トン）CO2 emissions (metric tons per capita) ：EN.ATM.CO2E.PC [[Link](https://data.worldbank.org/indicator/EN.ATM.CO2E.PC)]
+
+データ１変数名：co2
+
+データ１概要：Carbon dioxide emissions are those stemming from the burning of fossil fuels and the manufacture of cement. They include carbon dioxide produced during consumption of solid, liquid, and gas fuels and gas flaring.
+
+データ２：化石燃料での電気生成の割合（%）Electricity production from oil, gas and coal sources (% of total)：EG.ELC.FOSL.ZS [[Link](https://data.worldbank.org/indicator/EG.ELC.FOSL.ZS)]
+
+データ２変数名：fossil
+
+データ２概要：Sources of electricity refer to the inputs used to generate electricity. Oil refers to crude oil and petroleum products. Gas refers to natural gas but excludes natural gas liquids. Coal refers to all coal and brown coal, both primary (including hard coal and lignite-brown coal) and derived fuels (including patent fuel, coke oven coke, gas coke, coke oven gas, and blast furnace gas). Peat is also included in this category.
+
+
+
+## データの読み込み（Importing）
+
+WDI で読み込みます。
+
+- 読み込むときには、指標 ID と、変数名が必要です。
+- 読み込んだデータに名前をつけます。
+
+### 例
+
+この例では、二つの指標を、読み込みます。
+
+```{r}
+df_co2_fossil <- WDI(indicator = c(co2 = "EN.ATM.CO2E.PC",
+                     fossil = "EG.ELC.FOSL.ZS"), extra = TRUE)
+df_co2_fossil
+```
+
+- 一つ目のデータの指標（ID）は、EN.ATM.CO2E.PC、変数名は、co2 にしました。二つ目のデータの指標（ID）は、EG.ELC.FOSL.ZS、変数名は、fossil にしました。
+
+- 指標 (ID) は WDI のサイトから得たものを使わなければいけませんが、変数名は自分で決められます。
+できるだけ、分かりやすい名前にしておくのが良いでしょう。データ名と、変数名を区別する為、わたしは、データは、df_ で始まる名前にしています。
+
+- 最後にextra = TRUE としておくと、国ごとの地域、所得レベルなどの情報を一緒に読み込んでくれます。必要がなければ、次のようになります。
+
+```{r}
+df_co2_fossil_short <- WDI(indicator = c(co2 = "EN.ATM.CO2E.PC",
+                     fossil = "EG.ELC.FOSL.ZS"))
+df_co2_fossil_short
+```
+
+-「機械は思った通りに動かない。書いた通りに動く。」と言われます。引用符や、かっこなど、マッチするように、書いてください。
+
+### WDI でのデータの読み込みのコードについて
+
+実は、次の命令でも、データをとってきます。
+
+```{r}
+WDI()
+```
+
+Help をみると次のように書かれています。
+
+```
+WDI(
+  country = "all",
+  indicator = "NY.GDP.PCAP.KD",
+  start = 1960,
+  end = NULL,
+  extra = FALSE,
+  cache = NULL,
+  latest = NULL,
+  language = "en"
+)
+```
+
+これらの変数を指定できますが、右にあるのが、初期値です。一つ一つの説明も、Help ページに書いてあります。
+
+WDI() だと、GDP (PPP) のすべての国のデータとダウンロードします。使う為には、これに名前をつける必要があるので、上の例では、df_co2_fossil とか、df_co2_fossil_short としてあります。
+最後の行に、これらを加えておくことで、内容を表示することも同時にしてくれます。
+
+## データの保存
+
+ダウンロードしたデータは、data フォルダに保存しておくことをお勧めします。世界銀行は、ときどき、データをアップデータするために、サービスが停止することがあります。また、保存したものを読み込むことで、毎回ダウンロードしないで済むメリットもあります。
+
+### 例
+
+読み込んだデータ df_co2_fossil を、CSV（カンマ区切り形式）で、data フォルダーの中に、co2_fossil.csv という名前で保存します。このときに、data フォールだがないと、保存できません。R Notebook があるフォルダーの中に、data フォルダがあることが必要です。data フォルダがないというエラーメッセージが出たら、最初に説明した、ファイルを作る時の部分を読み返してください。間違っていたら、ここで、Save as で適切なところに、保存しなおしてください。
+
+```{}
+write_csv(df_co2_fossil, "data/co2_fossil.csv")
+```
+
+```{r}
+df_co2_fossil <- read_csv("data/co2_fossil.csv")
+```
+
+## データの確認
+
+データを確認します。どのような列（変数）があるかを確認しますが、特に、最初に定めた、指標の変数が、ある列にはっていることを確認することも大切です。特に、extra = TRUE として読み込むと、さまざまな変数を読み込んでいますから、確認してください。
+
+### 例
+
+データ全体の確認。右上の三角印から、隠れている変数をみることができ、下の NEXT や、番号から、次のページへと移動し、10データずつ確認できるようになっています。
+ 
+head(df_co2_fossil) とすると、最初の６行だけ、tail(df_co2_fossil) とすると、最後の、6行を確認することができます。
+
+```{r}
+df_co2_fossil
+```
+
+データの変数（列）の確認には、str() も便利です。下のコードは、df_co2_fossil |> str() としても同じです。|> はパイプオペレータと呼ばれます。かっこの中の第一引数として、一つ前の出力を代入します。
+
+```{r}
+str(df_co2_fossil)
+```
+
+## どの年のデータがあるかを調べます
+
+世界銀行では、1960年から昨年までのデータを作成していますが、すべてあるわけではありません。また、国や地域によっては、データがない場合があります。最新のデータは何年のものかも含めて、調べておく必要があります。
+
+### 例
+
+この棒グラフでは、1990年から2015年までのデータが180程度、すなわち、180の国の地域については、両方の知っ方についてのデータがあることがわかります。
+
+```{r}
+df_co2_fossil |> drop_na(co2, fossil) |> 
+  ggplot(aes(year)) + geom_bar()
+```
+
+各、変数ごとに調べたい時は、long table を使います。少し高級ですね。
+
+この例では、fossil のデータは、1960 年からありますが、co2 は、1990 年から。また、co2 は、2020 年までのデータがありますが、fossil は、2015 年までのデータしかないことがわかります。
+
+pivot_longer(c(co2, fossil)) では、これら二つの指標を、name という変数に、それぞれの値は、value に入れます。縦長のデータということで、説明しました。（演習7）
+
+```{r}
+df_co2_fossil |> pivot_longer(c(co2, fossil)) |> drop_na(value) |> 
+  ggplot(aes(year, fill = name)) + geom_bar()
+```
+
+
+# 変形（transforming）
+
+-   **行の選択**：`filter(country %in% c("Japan", "China")`, `distinct(country)`, `drop_na(value)`
+
+-   **列の選択**：`select(country, iso2c, year, var1, var2, region)`
+
+-   **横並びの変数を縦並びに**：name 列と、value 列を作り、var_1, var_2, ... , var_n を name 列に、対応する値を　value 列に
+
+    -   `pivot_longer(cols = c(var_1, var_2, ... , var_n))`
+
+    -   `pivot_longer(cols = c(female_unemploy, male_unemploy))`
+
+    -   `pivot_longer(cols = c(electricity_urban, electricity_rural))`
+
+    -   `pivot_longer(cols = electricity_urban:sanitation_rural))`
+
+-   **活用：**`pivot_longer(cols = c(var1, var2))|> ggplot(aes(year, value, col = name) + geom_line()`
+
+
+## 変数の選択（selecting）
+
+```{r}
+df_serv <- df_service |> 
+  select(country, iso2c, year, electricity_urban:sanitation_rural, region, income)
+df_serv
+```
+
+## 縦長の表（Long Table）に変換
+
+*`electricity_urban` の列から `sanitation_rural` の列までを、変数を name に、値を value に入れて、縦に並べます。*
+
+```{r}
+df_serv_long <- df_serv |> 
+  pivot_longer(electricity_urban:sanitation_rural)
+df_serv_long
+```
+
+### 国と地域
+
+#### 地域の `iso2c` コード
+
+country には、国と地域両方が入っています。地域の iso2c は以下のものです。
+
+```{r}
+REGION <- c("1A", "1W", "4E", "6F", "6N", "6X", "7E", "8S", "A4", "A5", 
+"A9", "B1", "B2", "B3", "B4", "B6", "B7", "B8", "C4", "C5", "C6", 
+"C7", "C8", "C9", "D2", "D3", "D4", "D5", "D6", "D7", "EU", "F1", 
+"F6", "M1", "M2", "N6", "OE", "R6", "S1", "S2", "S3", "S4", "T2", 
+"T3", "T4", "T5", "T6", "T7", "V1", "V2", "V3", "V4", "XC", "XD", 
+"XE", "XF", "XG", "XH", "XI", "XJ", "XL", "XM", "XN", "XO", "XP", 
+"XQ", "XT", "XU", "XY", "Z4", "Z7", "ZB", "ZF", "ZG", "ZH", "ZI", 
+"ZJ", "ZQ", "ZT")
+```
+
+------------------------------------------------------------------------
+
+#### 地域のリストを表示
+
+```{r eval=FALSE}
+df_serv |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
+```
+
+------------------------------------------------------------------------
+
+#### 国名とその地域・所得レベルを表示
+
+```{r eval=FALSE}
+df_serv |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c,region,income)
+```
+
+------------------------------------------------------------------------
+
+### 国や地域の選択
+
+```{r}
+ASEAN <- c("BN", "KH", "ID", "LA", "MY", "MM", "PH", "SG", "VN")
+```
+
+```{r}
+BRICS <- c("Brazil", "Russian Federation", "India", "China", "South Africa")
+```
+
+```{r}
+SACU <- c("South Africa", "Namibia", "Eswatini", "Botswana", "Lesotho")
+```
+
+```{r}
+CHOSEN_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
+```
+
+------------------------------------------------------------------------
+
+### 変数同士の相関関係: NA ではないところのみ選択
+
+```{r}
+df_serv |> filter(!(iso2c %in% REGION)) |> # 地域以外（国のみ選択）
+  drop_na(electricity_urban:sanitation_rural) |> 
+  select(electricity_urban:sanitation_rural) |> cor()
+```
+
+値の正負：正の相関・負の相関、1に近いと強い正の相関、-1に近いと強い負の相関
+
+相関係数：散布図の近似（回帰）直線の傾きが正なら正、負なら負、直線に近い程、1 または-1 に近い
+
+# 視覚化（Visualizing）
+
+### 経年変化
+
+### a. 日本
+
+```{r}
+df_serv_long |> filter(country == "Japan") |> drop_na(value) |>
+  ggplot(aes(year, value, col = name)) + geom_line()
+```
+
+------------------------------------------------------------------------
+
+```{r}
+df_serv_long |> filter(country == "Japan") |> drop_na(value)
+```
+
+------------------------------------------------------------------------
+
+```{r}
+df_serv_long |> filter(iso2c %in% ASEAN) |> drop_na(value) |>
+  ggplot(aes(year, value, col = country, linetype = name)) + geom_line()
+```
+
+------------------------------------------------------------------------
+
+```{r}
+df_serv_long |> filter(iso2c %in% ASEAN) |> drop_na(value) |> 
+  filter(value < 80) |>
+  ggplot(aes(year, value, col = country, linetype = name)) + geom_line()
+```
+
+------------------------------------------------------------------------
+
+```{r}
+df_serv_long |> filter(country %in% SACU) |> drop_na(value) |>
+  ggplot(aes(year, value, col = country, linetype = name)) + geom_line()
+```
+
+------------------------------------------------------------------------
+
+### 箱ひげ図（Boxplot）
+
+カテゴリ変数（country, region, income など）毎の分布を描く
+
+-   `ggplot(aes(categorical_var, numerical_var)) + geom_boxplot()`
+
+-   `ggplot(aes(region, electricity_urban)) + geom_boxplot()`
+
+-   `ggplot(aes(income, electricity_rural)) + geom_boxplot()`
+
+-   `pivot_longer(cols = c(var1, var2)) |> ggplot(aes(name, value)) + geom_boxplot()`
+
+-   year は、整数なので数値変数（numerical variable）。これを カテゴリー変数として扱うためには、`factor(yea`r) を使う。`x` 軸のラベルなどはあとから修正が必要。
+
+    -   `filter(year %in% c(1960,1990,2020))|> ggplot(aes(factor(year), var)) + geom_boxplot()`
+
+
+```{r}
+df_serv_long |> filter(name == "electricity_rural") |> 
+  filter(region != "Aggregates") |> drop_na(value) |>
+  ggplot(aes(region, value)) + geom_boxplot() + coord_flip()
+```
+
+------------------------------------------------------------------------
+
+```{r}
+df_serv |> filter(region != "Aggregates") |> drop_na(electricity_rural) |>
+  ggplot(aes(region, electricity_rural)) + geom_boxplot() + coord_flip()
+```
+
+------------------------------------------------------------------------
+
+```{r}
+df_serv_long |> filter(name %in% c("electricity_rural", "electricity_urban")) |> 
+  filter(income != "Aggregates") |> drop_na(value) |>
+  ggplot(aes(income, value, fill = name)) + geom_boxplot() + coord_flip()
+```
+
+------------------------------------------------------------------------
+
+```{r fig.height=7, fig.width=7}
+df_serv_long |> filter(income != "Aggregates", income != "Not classified") |> drop_na(value) |>
+  ggplot(aes(income, value, fill = name)) + geom_boxplot() + coord_flip()
+```
+
+
+### エラー対応
+
+-   入力したときには、例を参照して、スペルを確認。全角や変数名の空白は問題を起こす。括弧　() や引用符がペアでマッチしているか、確認。引用符が入っていなかったり、== のところが、= だったり、Error は様々。
+-   File not found のときは、データを読み込むコードを再実行。それでもうまくいかないときは、data フォルダに、データ（\*\*\*.csv）が入っているかを確認、なければ、data フォルダがあることを確認、なければ作成して読み込みを実行。
+-   Object not found のエラーがでたときには、上から順に、Run （Code Chunk の右上の三角印を押して実行）。または、エラー箇所にカーソルを置き、Run ボタンの右の三角から、Run All Chunks Above を選択して実行。
+-   実行できていても、結果が見えないことがある。そのときは、Code Chunk の下にある、山二つの記号を押す。結果の表示、非表示の切り替え。
+-   Error message を読む。エラーが出た Code Chunk と、Error message を、ChatGPT や、Google Bard, Google Search に入れ解決方法を探る。
+-   Posit.Cloud で、Error 137 が出た時はメモリーオーバーなので、例など不要な部分を削除。ただし、一番上の、YAML は、かならず残すこと。
+
+## 参考文献
+
+-   課題1：解説 [リンク](https://ds-sl.github.io/intro2r/ges001/w5a_response.nb.html)・解答例 [リンク](https://ds-sl.github.io/intro2r/ges001/w5eda0.nb.html)
+-   第6週演習：解答例 [リンク](https://ds-sl.github.io/intro2r/ges001/w6eda0.nb.html)
+
+1.  「みんなのデータサイエンス - Data Science for All」[[はじめてのデータサイエンス](https://icu-hsuzuki.github.io/ds4aj/first-example.html#first-example)]
+
+    <!-- -   導入として、GDP（国内総生産）のデータを使って説明しています。 -->
+
+2.  Posit Recipes（旧 Posit Primers）: The Basics 対話型の演習サイトの最初 [[Link](https://posit.cloud/learn/recipes)]
+
+3.  Posit Cheat Sheet. 早見表です。印刷して使うために、PDF も提供しています。[[Site Link](https://rstudio.github.io/cheatsheets/)]
+
+4.  DataCamp Cheat Sheet: Tidyverse for Biginners. データサイエンスの教育をしている会社の早見表の一つです。基本が簡単にまとまっています。[[Link](https://images.datacamp.com/image/upload/v1676302697/Marketing/Blog/Tidyverse_Cheat_Sheet.pdf)]
+
+5.  箱ひげ図の見方 [Link](https://bellcurve.jp/statistics/course/5220.html)、外れ値検出のある箱ひげ図 [Link](https://bellcurve.jp/statistics/course/5222.html)
+
+6.  Video: [Histogram](https://vimeo.com/221607341), [Boxplot](https://vimeo.com/222358034)

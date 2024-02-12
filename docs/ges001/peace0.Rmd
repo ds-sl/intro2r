@@ -456,3 +456,39 @@ df_ref_long |> filter(country %in% CONFLICTS) |> drop_na(value) |>
 -   それぞれの国のデータは、データのある年の中での、値である。
 
 -   アフガニスタンは、継続して、難民が多いことがわかる。
+
+### 参考
+
+```{r}
+regions <- c("South Asia", "Europe & Central Asia", 
+"Middle East & North Africa", "East Asia & Pacific", "Sub-Saharan Africa", 
+"Latin America & Caribbean", "North America")
+```
+
+```{r}
+df_ref |> filter(country %in% regions) |> drop_na(refugee_asylum) |>
+  ggplot(aes(year, refugee_asylum, fill = country)) + 
+  geom_area(col = "black", linewidth = 0.1) +
+  labs(title = "Refugee Population by Region of Asylum")
+```
+
+```{r}
+df_ref |> filter(country %in% regions) |> drop_na(refugee_origin) |>
+  ggplot(aes(year, refugee_origin, fill = country)) + 
+  geom_area(col = "black", linewidth = 0.1) +
+  labs(title = "Refugee Population by Region of Origin")
+```
+
+```{r}
+df_ref_long |> filter(country %in% regions) |> drop_na(value) |>
+  ggplot(aes(year, value, fill = country)) + 
+  geom_area(col = "black", linewidth = 0.1) +
+  facet_wrap(~name) +
+  labs(title = "Refugee Population by Region of Asylum and Origin", fill = "") +
+  theme(legend.position = "top")
+```
+
+```{r}
+df_ref_long |> filter(country %in% regions, year >= 1990) |> filter(is.na(value))
+```
+
