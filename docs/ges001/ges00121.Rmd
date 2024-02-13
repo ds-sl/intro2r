@@ -46,6 +46,8 @@ RStudio の場合には、自分の PC に作成したファイルがありま�
 -   課題1：解説 [リンク](https://ds-sl.github.io/intro2r/ges001/w5a_response.nb.html)
 -   課題1：解答例 [リンク](https://ds-sl.github.io/intro2r/ges001/w5eda0.nb.html)
 
+-   探索的データ分析（課題2の解説にかえて）in progress [リンク](https://ds-sl.github.io/intro2r/ges001/eda.nb.html)
+
 ### 課題1・課題2 追加提出ボックスについて
 
 期限：2023年2月17日23時59分（特別な理由がある場合は連絡してください）
@@ -475,7 +477,8 @@ df_pc_long |> filter(income != "Aggregates", income != "Not classified") |> drop
 ## 参考文献
 
 -   課題1：解説 [リンク](https://ds-sl.github.io/intro2r/ges001/w5a_response.nb.html)・解答例 [リンク](https://ds-sl.github.io/intro2r/ges001/w5eda0.nb.html)
--   第6週演習：解答例 [リンク](https://ds-sl.github.io/intro2r/ges001/w6eda0.nb.html)
+<!-- -   第6週演習：解答例 [リンク](https://ds-sl.github.io/intro2r/ges001/w6eda0.nb.html) -->
+-   探索的データ分析（課題2の解説にかえて）in progress [リンク](https://ds-sl.github.io/intro2r/ges001/eda.nb.html)
 
 1.  「みんなのデータサイエンス - Data Science for All」[[はじめてのデータサイエンス](https://icu-hsuzuki.github.io/ds4aj/first-example.html#first-example)]
 
