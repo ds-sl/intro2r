@@ -421,7 +421,16 @@ CHOSEN_COUNTRIES <- c()
 
 # 分析・視覚化
 
+一般的な形で書く時は、今後、データは、`df` で表します。data frame の意味です。R では、基本的なデータ形式です。df_co2fos などとした、df もそこからとったものです。
 
+視覚化は、探索的データ分析の核とも言えるものです。視覚化して、それから、見えるものを通して、考えます。気づいたこと、疑問に思ったことを、書き留めておく。そして、次の視覚化で、さらに、理解を深めていくといった感じです。また、ちがった、データをみることもあるかと思いますが、ここでは、限られたデータをみる、基本的な方法を見ていきます。
+
+基本は、二つ。
+
+1. 一つのデータの、分布をみる。
+2. 二つのデータの相関をみる。
+
+データは、数値データ（numerical data）ばかりでなく、文字からなるデータ、通常は、カテゴリー・データ（categorical data、日本語では、名目データということもあります）の場合もあります。
 
 ## さまざまな視覚化（Visualizing）
 
@@ -438,13 +447,34 @@ df_co2fos |> filter などで必要な行を絞り込む　|> drop_na(変数) �
   ggplot(aes(x, y)) + geom_***()
 ```
 
-aes() の部分を mapping と言います。実は、`mapping = aes(x, y)` の　mapping を省略しています。詳細は、geom_***() のいろいろな描写方法によって異なりますので、それぞれの、Help を確認してください。
+aes() の部分を mapping と言います。実は、`mapping = aes(x, y)` と書くのが正式で、その　mapping を省略しています。詳細は、geom_***() のいろいろな描写方法によって異なりますので、それぞれの、Help（右下の窓枠（pane）の Help タブの検索窓に入れれば、説明や、パラメタ（オプションとして書き込む内容）や、その初期値などの情報が得られます）を確認してください。
+
+データの最初の6行を表示させるのは、head() でしたが、head と Help に入れてみてください。かなり詳しく書かれていますから、すべて理解するのは難しいかもしれませんね。視覚化の最初は、折れ線グラフから始めますが、それには、geom_line を使います。これもみてみてください。
 
 ## 経年変化
 
 year を x 軸に、変数の値を　y 軸に取ると、経年変化がわかります。日本や、世界でみてみます。drop_na(var) を使うことで、空白部分がなくなり、Warning も減りますが、違う指標を比較する時は、これを入れないのも手ですし、同じ基準にするために、drop_na(var1, var2) としておく手もあります。
 
-一つの国・地域
+基本は、年毎に、数値変数 var の点を、結びます。
+
+``` 
+df |> ggplot(aes(year, var)) + geom_line()
+```
+
+次のように書くことも可能です。
+
+```
+df |> ggplot() +geom_line(aes(year, var))
+```
+
+```
+df |> ggplot(aes(year)) + geom_line(var1) + geom_line(var2)
+```
+
+なども可能です。
+
+
+例をみていきましょう。一つの国・地域
 
 ```
 df_co2_fos |> filter(country == "国名") |> drop_na(変数) |>
@@ -476,9 +506,19 @@ df_co2_fos |> filter(iso2c %in% c("二文字コード1", "二文字コード2", 
 
 とします。
 
+改行するときには、|> の後、+、(、, や、=  の後で改行します。なんとなく、続くことが明らかなところで改行するということですね。
+
 ### 例
 
 #### 国または地域の一つの変数に関する経年変化
+
+一番、簡単な形は、
+
+```{r}
+df_co2fos |> filter(country == "Japan") |> ggplot(aes(year, co2)) + geom_line()
+```
+
+ただ、これだと、最初の方はデータがないので、グラフが途中から始まります。そこで、drop_na(co2) を入れて、co2 の値が、NA ではないところだけ表示します。
 
 ```{r}
 df_co2fos |> filter(country == "Japan") |> drop_na(co2) |>
@@ -490,7 +530,41 @@ df_co2fos |> filter(country == "World") |> drop_na(fossil) |>
   ggplot(aes(year, fossil)) + geom_line() + labs(title = "世界の化石燃料による発電量（％）")
 ```
 
+化石燃料のデータは、1970年からデータがあることも分かりましたね。データの数を最初に調べたときのことを思い出してください。特に、色付きの方。違う条件で描くと、比較ができます。いろいろなことが分かりますよ。
+
 ここでは、日本と世界と変えましたが、同じ国または地域で比較するのが適切でしょう。いくつもの国や、地域でみてみることはおすすめです。
+
+##### 参考
+
+では、次のようにしたらどうでしょう。
+
+```{r}
+df_co2fos |> ggplot(aes(year, fossil)) + geom_line()
+```
+
+なにか変ですね。これは、それぞれの年にたくさんデータがあって、それを線では結べないので、こうなってしまうのです。実は、geom_line を geom_point に変えれば、多少状況は分かります。
+
+```{r}
+df_co2fos |> ggplot(aes(year, fossil)) + geom_point()
+```
+
+これを、折線で結ぶことはできません。また、missing value もたくさんあるよとなっています。そこで、ちょっと改良します。
+
+```{r}
+df_co2fos |> filter(!(iso2c %in% REGION)) |> drop_na(fossil, income) |> 
+  ggplot(aes(year, fossil, col = factor(income, levels = INCOME))) + geom_point() +
+  labs(title = "国別、所得レベル別の一人当たりの化石燃料での発電割合", col = "Income Level")
+```
+
+```{r}
+df_co2fos |> filter(!(iso2c %in% REGION)) |> drop_na(co2, income) |> 
+  ggplot(aes(year, co2, col = factor(income, levels = INCOME))) + geom_point() +
+  labs(title = "国別、所得レベル別の一人当たりの二酸化炭素排出量", col = "Income Level")
+```
+
+現時点では、何をやているかわからないかもしれませんが、二つのグラフは、散布図のひとつで、所得レベルで、色を変えています。また、その表示の順序を、何も指定しないと、アルファベット順になるので、ここでは、特別に、INCOME に登録した順序で表示しています。いろいろなことを見てとることもできると思います。あなたは、どんなことに気づきましたか。
+
+実は、散布図の方が基本的です。そちらを先に学ぶ方がよいように思います。ただ、世界開発指標は、年毎のデータになっていますから、経年変化を先にしています。上に書いたように、経験変化を調べる時は、まずは、国などを指定する必要があることを、理解してください。
 
 #### 国または地域の二つ以上の変数に関する経年変化
 
@@ -500,13 +574,39 @@ df_co2fos |> filter(country == "World") |> drop_na(fossil) |>
 
 ```{r}
 df_co2fos_long |> filter(country == "Japan") |> drop_na(value) |>
-  ggplot(aes(year, value, col = name)) + geom_line()
+  ggplot(aes(year, value, col = name)) + geom_line() + 
+  labs(title = "日本の一人当たりの二酸化炭素排出量と、\n化石燃料による発電の割合")
 ```
 
 ```{r}
 df_co2fos_long |> filter(country == "World") |> drop_na(value) |>
-  ggplot(aes(year, value, col = name)) + geom_line()
+  ggplot(aes(year, value, col = name)) + geom_line() +
+  labs(title = "世界の一人当たりの二酸化炭素排出量と、\n化石燃料による発電の割合")
 ```
+
+##### 参考
+
+実は、指標の数が二つぐらいであれば、`df_co2fos` を使って、描くことも可能です。
+
+```{r}
+df_co2fos |> filter(country == "Japan") |> drop_na(co2, fossil) |>
+  ggplot(aes(x = year)) + geom_line(aes(y = co2), col = "red") + 
+  geom_line(aes(y = fossil), col = "blue") +
+  labs(y = "fossil (%) in blue, co2 (ton) in red")
+```
+
+co2 の方は、大体、9ton ぐらいなので、7倍ぐらいしてみましょう。
+
+```{r}
+df_co2fos |> filter(country == "Japan") |> drop_na(co2, fossil) |>
+  ggplot(aes(x = year)) + geom_line(aes(y = co2*7), col = "red") + geom_line(aes(y = fossil), col = "blue") + labs(y = "fossil (%) in blue, co2 (ton) x 7 in red")
+```
+
+どうですか、縦軸は、少し変ですが、いままでとは、違って気づくこともありますよね。両方のデータがあるところだけを表示させています。
+
+簡単なのは、df_co2fos_long を使った方でしたが、df_co2fos を使った方も、使えそうなことが分かりました。
+
+色の取り扱いもいろいろとありますが、それは、参考文献などを参照してください。
 
 #### データの確認
 
@@ -519,14 +619,35 @@ df_co2fos_long |> filter(country == "Japan") |> drop_na(value)
 
 #### いくつかの国または地域の二つ以上の変数に関する経年変化
 
+regions は、国名で定義していましたから、filter(country %in% regions) で選択しています。次の、ASEAN は、iso2c で定義していましたから、filter(iso2c %in% ASEAN) としています。違いを理解してください。
+
+filter の使い方、一つの国や地域のときは、filter(country == "Japan"), filter(country == "World") でした。今度は、%in% をつかい、そのあとのグループに入っているものを選択しています。
+
+参考：
+```
+regions <- c("South Asia", "Europe & Central Asia", "Middle East & North Africa", 
+"East Asia & Pacific", "Sub-Saharan Africa", "Latin America & Caribbean", 
+"North America")
+
+ASEAN <- c("BN", "KH", "ID", "LA", "MY", "MM", "PH", "SG", "VN")
+```
+
+
 ```{r}
 df_co2fos |> filter(country %in% regions) |> drop_na(co2) |>
   ggplot(aes(year, co2, col = country)) + geom_line()
 ```
 
+選択は、iso2c でしていますが、col = country としてあるので、国名が表示されています。この次の 一人当たりの二酸化炭素排出量の方のグラフでは、それを、iso2c に変更しています。
+
 ```{r}
 df_co2fos |> filter(iso2c %in% ASEAN) |> drop_na(fossil) |>
   ggplot(aes(year, fossil, col = country)) + geom_line()
+```
+
+```{r}
+df_co2fos |> filter(iso2c %in% ASEAN) |> drop_na(co2) |>
+  ggplot(aes(year, co2, col = iso2c)) + geom_line()
 ```
 
 #### いくつかの国または地域の二つ以上の変数に関する経年変化
@@ -576,6 +697,13 @@ df_co2fos |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2
 
 ```{r}
 df_co2fos |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2) |>
+  ggplot(aes(co2, fill = region)) + geom_histogram(bins = 10)
+```
+
+境目がみにくいように思うので、わたしは、黒枠の細めの線を入れます。
+
+```{r}
+df_co2fos |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2) |>
   ggplot(aes(co2, fill = region)) + geom_histogram(bins = 10, col = "black", linewidth = 0.2)
 ```
 左に偏っているので、LOG 表示を使うこともひとつです。
@@ -588,18 +716,109 @@ df_co2fos |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2
 
 もう一つの変数、fossil についてもやってみてください。
 
+##### 参考
+
+年を、2020 にしましたが、fossil のときにも同じように、2020 にするとどうなるでしょうか。
+
+```{r}
+df_co2fos |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(fossil) |>
+  ggplot(aes(fossil)) + geom_histogram(bins = 10)
+```
+
+何も現れません。何が問題なのでしょう。一番最初に、データの数をみましたよね。特に、カラーの方を思い出してください。確かめてみましょう。
+
+```{r}
+df_co2fos |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(fossil)
+```
+
+2020にすると、NA でないデータはないことが確認できます。では、何年なら大丈夫でしょうか。
+
+```{r}
+df_co2fos |> filter(!(iso2c %in% REGION)) |> filter(year == 2015) |> drop_na(fossil) |>
+  ggplot(aes(fossil)) + geom_histogram(bins = 10)
+```
+
+グラフは現れましたが、bins や、binwidth はこれが適切でしょうか。指標によって、変えないといけませんね。
+
+```{r}
+df_co2fos |> filter(!(iso2c %in% REGION)) |> filter(year == 2015) |> drop_na(fossil) |>
+  ggplot(aes(fossil, fill = income)) + geom_histogram(binwidth = 10, col = "black", linewidth = 0.2)
+```
+
+どんなことがわかりますか。
+
 ### 棒グラフ
 
-カテゴリー変数（日本語では名目変数ということばも使われます）と、その値が与えられているときに使います。データの数の時に使った、geom_bar も似ていますが、こちらは、カテゴリー変数や飛び飛びの値（discrete numerical variable）の数値変数などの、数を数えます。
+カテゴリー変数（日本語では名目変数ということばも使われます）と、その値（numerical value）が与えられているときに使います。データの数の時に使った、geom_bar も似ていますが、こちらは、カテゴリー変数や飛び飛びの値（discrete numerical variable）の数値変数などの、数を数えます。
 
 #### 例
 
-データが十分ある最近の年の値の10カ国の値の棒グラフ
+```{r}
+df_co2fos |> filter(year == 2015, country %in% regions) |> drop_na(co2) |>
+  ggplot(aes(country, co2)) + geom_col()
+```
+
+重なり合ってしまうので、軸を変えます。
+
+```{r}
+df_co2fos |> filter(year == 2015, country %in% regions) |> drop_na(co2) |>
+  ggplot(aes(country, co2)) + geom_col() + coord_flip()
+```
+
+化石燃料での発電割合はどうでしょうか。次のグラフでは、情報は加えていませんが、塗る色を変えてあります。でも、凡例は不要ですよね。theme(legend.position = "none") とします。
+
+country は、regions とする手もありますが、消しておいても良さそうです。注意が必要なのは、coord_flip をする前の座標なので、x を消します。
+
+```{r}
+df_co2fos |> filter(year == 2015, country %in% regions) |> drop_na(fossil) |>
+  ggplot(aes(country, fossil, fill = country)) + geom_col() + coord_flip()
+```
+
+```{r}
+df_co2fos |> filter(year == 2015, country %in% regions) |> drop_na(fossil) |>
+  ggplot(aes(country, fossil, fill = country)) + geom_col() + coord_flip() + 
+  labs(x = "") + theme(legend.position = "none")
+```
+
+fill（塗りつぶし）を使いましたが、col だとどうなるのでしょうか。あまり適切だとは思えません。しかし、ヒストグラムのときのように、枠を黒にすることは、多少意味があるかもしれません。
+
+```{r}
+df_co2fos |> filter(year == 2015, country %in% regions) |> drop_na(fossil) |>
+  ggplot(aes(country, fossil, col = country)) + geom_col() + coord_flip() + 
+  labs(col = "")
+```
+
+```{r}
+df_co2fos |> filter(year == 2015, country %in% regions) |> drop_na(fossil) |>
+  ggplot(aes(country, fossil, fill = country)) + geom_col(col = "black", linewidth = 0.2) +
+  coord_flip() + labs(title = "地域別化石燃料による発電量（%）", x = "", y = "") + theme(legend.position = "none")
+```
+
+##### 参考
+
+実は、縦のままにすることも可能です。ただ、それには、strngr という、tidyverse の一部ではありますが、読み込まれていない、パッケージの命令を使います。
+
+```{r}
+df_co2fos |> filter(year == 2015, country %in% regions) |> drop_na(fossil) |>
+  ggplot(aes(country, fossil, fill = country)) + geom_col(col = "black", linewidth = 0.2) +
+  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 15)) +
+  labs(title = "地域別化石燃料による発電量（%）", x = "", y = "") + theme(legend.position = "none")
+```
+
+#### データが十分ある最近の年の値の10カ国の値の棒グラフ
+
+表示の順序を制御するのには、factor というものを使います。カテゴリー変数に順序をつけるものです。普通は、`factor(var, legends = c(var の 順序))` とします。ただ、基本的な順序付を制御することは、個別に定義しなくても可能です。それが、fct_inorder で、データに現れる順序に表示します。ここでは、大きい順に表示されます。それを、fct_rev で逆にしています。fct_rev をとった、この次の例を比較してください。
 
 ```{r}
 df_co2fos |> filter(!(iso2c %in% REGION)) |> filter(year == 2015) |> drop_na(co2) |>
   arrange(desc(co2)) |> slice_head(n = 10) |>
   ggplot(aes(fct_rev(fct_inorder(country)), co2)) + geom_col() + coord_flip() + labs(title = "一人当たりの二酸化炭素排出量が多い順", x = "")
+```
+
+```{r}
+df_co2fos |> filter(!(iso2c %in% REGION)) |> filter(year == 2015) |> drop_na(co2) |>
+  arrange(desc(co2)) |> slice_head(n = 10) |>
+  ggplot(aes(fct_inorder(country), co2)) + geom_col() + coord_flip() + labs(title = "一人当たりの二酸化炭素排出量が多い順", x = "")
 ```
 
 地域ことに色分けすることも可能です。
@@ -640,31 +859,52 @@ df_co2fos |> filter(!(iso2c %in% REGION)) |> filter(year == 2015) |> drop_na(fos
 
     -   `filter(year %in% c(1960,1990,2020))|> ggplot(aes(factor(year), var)) + geom_boxplot()`
 
+#### 例
+
+国や地域はカテゴリー変数ですから、地域別で、一人あたりの二酸化炭素排出量を箱ひげ図に書いてみましょう。ここでは、df_co2fos_long を使っていますが、このような箱ひげ図は、df_co2fos でも同様に描けます。ただ、コードは異なりますから注意してください。
+
+df_co2fos_long のときは、name に、co2 と fossil が含まれていますから、まず、co2 を選択します。グラフを書く時は、value にある値を使います。
 
 ```{r}
 df_co2fos_long |> filter(name == "co2") |> 
   filter(region != "Aggregates") |> drop_na(value) |>
-  ggplot(aes(region, value)) + geom_boxplot() + coord_flip()
+  ggplot(aes(region, value)) + geom_boxplot() + coord_flip() +
+  labs(title = "地域ごとの一人当たりの二酸化炭素排出量（トン）")
 ```
 
+今度は、df_co2fos を使います。こちらでは、filter(region != "Aggregates") としていますが、REGION を使うてもあります。それは、次に示します。実は、次の方が正確です。それは、ちょっと細かい話ですが、地域名が、入っていない国があるのです。そのこともあって、REGION を最初に定義してあります。
 
 ```{r}
 df_co2fos |> filter(region != "Aggregates") |> drop_na(fossil) |>
-  ggplot(aes(region, fossil)) + geom_boxplot() + coord_flip()
+  ggplot(aes(region, fossil)) + geom_boxplot() + coord_flip() +
+  labs(title = "地域ごとの化石燃料による発電量の割合")
 ```
 
+REGION は、iso2c で定義していましたから、filter(!(iso2c %in% REGION)) とします。
+
+```{r}
+df_co2fos |> filter(!(iso2c %in% REGION)) |> drop_na(fossil, region) |>
+  ggplot(aes(region, fossil)) + geom_boxplot() + coord_flip()+
+  labs(title = "地域ごとの化石燃料による発電量の割合")
+```
+
+co2 と、fossil は、一方は、トンで、他方は、パーセントで、尺度が違いますから、同時に、箱ひげ図に表すのは、適切とは言えませんが、一応、df_co2fos_long を使って、コードを書いてみます。
 
 ```{r}
 df_co2fos_long |> 
   filter(income != "Aggregates") |> drop_na(value) |>
-  ggplot(aes(income, value, fill = name)) + geom_boxplot() + coord_flip()
+  ggplot(aes(income, value, fill = name)) + geom_boxplot() + coord_flip() +
+  labs(title = "所得レベル別の、化石燃料による発電の割合と\n一人当たりの二酸化炭素排出量")
 ```
 
-------------------------------------------------------------------------
+順序を、`INCOME <- c("High income", "Upper middle income", "Lower middle income", 
+"Low income")` と指定した順序に帰る時は、factor を使います。
 
-```{r fig.height=7, fig.width=7}
-df_co2fos_long |> filter(income != "Aggregates", income != "Not classified") |> drop_na(value) |>
-  ggplot(aes(income, value, fill = name)) + geom_boxplot() + coord_flip()
+```{r}
+df_co2fos_long |> filter(income != "Aggregates", income != "Not classified") |> 
+  drop_na(value) |>
+  ggplot(aes(factor(income, levels = INCOME), value, fill = name)) + geom_boxplot() +
+  coord_flip() + labs(title = "所得レベル別の、化石燃料による発電の割合と\n一人当たりの二酸化炭素排出量", x = "")
 ```
 
 ## 相関
@@ -689,14 +929,7 @@ df_co2fos |> filter(!(iso2c %in% REGION)) |> # 地域以外（国のみ選択）
 
 これは、弱い正の相関となります。つまり、「化石燃料による発電が多い国はある程度、二酸化炭素排出量が多い傾向にある」と言えます。
 
-### エラー対応
 
--   入力したときには、例を参照して、スペルを確認。全角や変数名の空白は問題を起こす。括弧　() や引用符がペアでマッチしているか、確認。引用符が入っていなかったり、== のところが、= だったり、Error は様々。
--   File not found のときは、データを読み込むコードを再実行。それでもうまくいかないときは、data フォルダに、データ（\*\*\*.csv）が入っているかを確認、なければ、data フォルダがあることを確認、なければ作成して読み込みを実行。
--   Object not found のエラーがでたときには、上から順に、Run （Code Chunk の右上の三角印を押して実行）。または、エラー箇所にカーソルを置き、Run ボタンの右の三角から、Run All Chunks Above を選択して実行。
--   実行できていても、結果が見えないことがある。そのときは、Code Chunk の下にある、山二つの記号を押す。結果の表示、非表示の切り替え。
--   Error message を読む。エラーが出た Code Chunk と、Error message を、ChatGPT や、Google Bard, Google Search に入れ解決方法を探る。
--   Posit.Cloud で、Error 137 が出た時はメモリーオーバーなので、例など不要な部分を削除。ただし、一番上の、YAML は、かならず残すこと。
 
 ### 散布図
 
@@ -709,11 +942,31 @@ df_co2fos |> filter で選択 |> drop_na(変数1, 変数2) |>
 
 #### 例
 
+二変数の相関をみるには、df_co2fos を使います。地域は、filter(!(iso2c %in% REGION)) で、省いてあります。
+
 ```{r}
 df_co2fos |> filter(!(iso2c %in% REGION)) |> drop_na(co2, fossil) |>
   ggplot(aes(co2, fossil)) + geom_point() + 
   labs(title = "一人当たりの二酸化炭素排出量と化石燃料での発電割合")
 ```
+
+回帰直線を加えます。
+
+```{r warning = FALSE}
+df_co2fos |> filter(!(iso2c %in% REGION)) |> drop_na(co2, fossil) |>
+  ggplot(aes(co2, fossil)) + geom_point() + geom_smooth(formula = 'y~x', method = "lm", se = FALSE) + ylim(0,100) +
+  labs(title = "一人当たりの二酸化炭素排出量と化石燃料での発電割合（回帰直線）")
+```
+
+収入レベルで色分けをすることも可能です。
+
+```{r}
+df_co2fos |> filter(!(iso2c %in% REGION)) |> drop_na(co2, fossil) |> 
+  ggplot(aes(co2, fossil, col = factor(income, levels = INCOME))) + geom_point() + 
+  labs(title = "一人当たりの二酸化炭素排出量と化石燃料での発電割合", col = "Income Level")
+```
+
+0 に近い方に値がかたまっているので、scale_x_log10() で 対数表時をしてみます。すこし広がります。
 
 ```{r}
 df_co2fos |> filter(!(iso2c %in% REGION)) |> drop_na(co2, fossil) |>
@@ -721,6 +974,144 @@ df_co2fos |> filter(!(iso2c %in% REGION)) |> drop_na(co2, fossil) |>
   labs(title = "一人当たりの二酸化炭素排出量と化石燃料での発電割合")
 ```
 
+こちらに回帰直線を加えると下のようになります。
+
+```{r}
+df_co2fos |> filter(!(iso2c %in% REGION)) |> drop_na(co2, fossil) |>
+  ggplot(aes(co2, fossil)) + geom_point() + scale_x_log10() + 
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE) + 
+  labs(title = "一人当たりの二酸化炭素排出量（LOG）と化石燃料での発電割合")
+```
+
+### 補足：散布図
+
+一人当たりの購買力平価による国内総生産 GDP (PPP) と、一人当たりの二酸化炭素排出量と、人口のデータを読み込みます。
+
+```{r eval=FALSE}
+df_co2_gdp <- WDI(indicator = c(pop = "SP.POP.TOTL", gdppcap = "NY.GDP.PCAP.PP.KD", co2 = "EN.ATM.CO2E.PC"), extra = TRUE)
+write_csv(df_co2_gdp, "data/co2_gdp.csv")
+```
+
+```{r}
+df_co2_gdp <- read_csv("data/co2_gdp.csv")
+df_co2_gdp
+```
+
+```{r}
+df_co2_gdp |> filter(!(iso2c %in% REGION)) |> drop_na(gdppcap, co2) |> 
+  ggplot(aes(gdppcap, co2)) + geom_point()
+```
+明らかに、0 の付近に密集していますから、Log10 スケールを使います。
+
+```{r}
+df_co2_gdp |> filter(!(iso2c %in% REGION)) |> drop_na(gdppcap, co2) |> 
+  filter(gdppcap >0, co2 >0) |>
+  ggplot(aes(gdppcap, co2)) + geom_point() + scale_x_log10() + scale_y_log10()
+```
+強い相関がみられそうです。回帰直線を引いてみます。
+
+```{r}
+df_co2_gdp |> filter(!(iso2c %in% REGION)) |> drop_na(gdppcap, co2) |> 
+  filter(gdppcap >0, co2 >0) |>
+  ggplot(aes(gdppcap, co2)) + geom_point() + scale_x_log10() + scale_y_log10() +
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
+```
+
+少し点を減らすため、年を、2020 に制限します。さらに、地域を色で加えます。
+
+```{r}
+df_co2_gdp |> filter(!(iso2c %in% REGION), year == 2020) |> drop_na(gdppcap, co2) |> 
+  filter(gdppcap >0, co2 >0) |>
+  ggplot(aes(gdppcap, co2, col = region)) + geom_point() + scale_x_log10() + scale_y_log10()
+```
+
+さらに、人口の大きさにより、点の大きさを変えます。
+
+```{r}
+df_co2_gdp |> filter(!(iso2c %in% REGION), year == 2020) |> drop_na(gdppcap, co2) |> 
+  filter(gdppcap >0, co2 >0) |>
+  ggplot(aes(gdppcap, co2, col = region, size = pop)) + geom_point() + scale_x_log10() + scale_y_log10()
+```
+
+##### 参考
+
+plotly という別のパッケージを使うと、ポインターを点にあてると、情報が読み取れるようになります。
+
+```{r}
+library(plotly)
+ggp <- df_co2_gdp |> filter(!(iso2c %in% REGION), year == 2020) |> drop_na(gdppcap, co2) |> 
+  filter(gdppcap >0, co2 >0) |>
+  ggplot(aes(text = country, gdppcap, co2, col = region, size = pop)) + geom_point() + scale_x_log10() + scale_y_log10()
+ggplotly(ggp)
+```
+
+回帰直線を加えます。
+
+```{r}
+df_co2_gdp |> filter(!(iso2c %in% REGION), year == 2020) |> drop_na(gdppcap, co2) |> 
+  filter(gdppcap >0, co2 >0) |>
+  ggplot(aes(gdppcap, co2)) + geom_point(aes(col = region, size = pop)) + scale_x_log10() + scale_y_log10() +
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
+```
+
+##### 参考：線形モデル概要
+
+直線とフィットしているかをみるのは、線形回帰分析と言いますが、その概要は以下のようになります。
+
+上は、対数をとる前と、下は、対数をとってから。
+
+第６週に、少し紹介しましたから、大体どのようなことを言っているかだけ、書いておきます。
+
+- Residuals: 直線よりどのぐらい大き値や小さい値があるか
+- Coefficients: Estimate の　(Intercept) は直線の y-切片、gdppcap は、傾き
+- Residual Standard Error: 直線からこの値の幅の間に、おおよそ 2/3 程度（68.2%）の点が入っている
+- Multiple R-squared: 直線がどの程度近似しているか、0 と 1 の間で、相関係数の二乗
+- p-value: かなり小さいと（たとえば 0.01 未満）相関が正か負かがほぼ確実といえる
+
+```{r}
+df_co2_gdp |> filter(!(iso2c %in% REGION), year == 2020) |> drop_na(gdppcap, co2) |> 
+  filter(gdppcap >0, co2 >0) |> lm(co2 ~ gdppcap, data = _) |> summary()
+```
+
+
+```{r}
+df_co2_gdp |> filter(!(iso2c %in% REGION), year == 2020) |> drop_na(gdppcap, co2) |> 
+  filter(gdppcap >0, co2 >0) |> lm(log10(co2) ~ log10(gdppcap), data = _) |> summary()
+```
+
+この線形回帰モデルによる分析は、いくつかの仮定の上に載っていますので、個人的には、現時点では利用をお勧めしません。ただ、これから、分野によっては、この情報をよく使うことになると思いますので、大雑把なことだけ、上に紹介しました。
+
+
+```{r}
+df_co2_gdp |> filter(!(iso2c %in% REGION), year == 2020) |> drop_na(gdppcap, co2) |> 
+ select(gdppcap, co2) |> cor()
+```
+
+```{r}
+0.7222794*0.7222794
+```
+
+この値が、log10 をとらない、最初のモデルの、Multiple R Squared の値になっています。
+
+```{r}
+df_co2_gdp |> filter(!(iso2c %in% REGION), year == 2020) |> drop_na(gdppcap, co2) |> 
+ filter(gdppcap >0, co2>0) |> select(gdppcap, co2) |> sapply(log10) |> cor()
+```
+
+```{r}
+0.9150164 * 0.9150164
+```
+
+確かに、この値が、log10 をとった方の、Multiple R Squared の値になっています。
+
+## エラー対応
+
+-   入力したときには、例を参照して、スペルを確認。全角や変数名の空白は問題を起こす。括弧　() や引用符がペアでマッチしているか、確認。引用符が入っていなかったり、== のところが、= だったり、Error は様々。
+-   File not found のときは、データを読み込むコードを再実行。それでもうまくいかないときは、data フォルダに、データ（\*\*\*.csv）が入っているかを確認、なければ、data フォルダがあることを確認、なければ作成して読み込みを実行。
+-   Object not found のエラーがでたときには、上から順に、Run （Code Chunk の右上の三角印を押して実行）。または、エラー箇所にカーソルを置き、Run ボタンの右の三角から、Run All Chunks Above を選択して実行。
+-   実行できていても、結果が見えないことがある。そのときは、Code Chunk の下にある、山二つの記号を押す。結果の表示、非表示の切り替え。
+-   Error message を読む。エラーが出た Code Chunk と、Error message を、ChatGPT や、Google Bard, Google Search に入れ解決方法を探る。
+-   Posit.Cloud で、Error 137 が出た時はメモリーオーバーなので、例など不要な部分を削除。ただし、一番上の、YAML は、かならず残すこと。他にも、Environment にあるものを、消去することで、メモリーを確保する方法もあります。Console に、`rm(list = ls())` とする入れて、改行実行します。
 
 ## 参考文献
 
@@ -728,8 +1119,6 @@ df_co2fos |> filter(!(iso2c %in% REGION)) |> drop_na(co2, fossil) |>
 -   第6週演習：解答例 [リンク](https://ds-sl.github.io/intro2r/ges001/w6eda0.nb.html)
 
 1.  「みんなのデータサイエンス - Data Science for All」[[はじめてのデータサイエンス](https://icu-hsuzuki.github.io/ds4aj/first-example.html#first-example)]
-
-    <!-- -   導入として、GDP（国内総生産）のデータを使って説明しています。 -->
 
 2.  Posit Recipes（旧 Posit Primers）: The Basics 対話型の演習サイトの最初 [[Link](https://posit.cloud/learn/recipes)]
 
@@ -740,3 +1129,4 @@ df_co2fos |> filter(!(iso2c %in% REGION)) |> drop_na(co2, fossil) |>
 5.  箱ひげ図の見方 [Link](https://bellcurve.jp/statistics/course/5220.html)、外れ値検出のある箱ひげ図 [Link](https://bellcurve.jp/statistics/course/5222.html)
 
 6.  Video: [Histogram](https://vimeo.com/221607341), [Boxplot](https://vimeo.com/222358034)
+
