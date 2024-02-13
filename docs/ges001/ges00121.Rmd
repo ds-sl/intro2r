@@ -3,12 +3,12 @@ title: "GES 001 演習8"
 author: "H. Suzuki"
 date: "2024年2月13日"
 output:
-  html_notebook: default
-  html_document:
-    df_print: paged
   ioslides_presentation:
     widescreen: true
     df_print: paged
+  html_document:
+    df_print: paged
+  html_notebook: default
 ---
 
 ## 準備
@@ -238,8 +238,6 @@ df_pc
 ------------------------------------------------------------------------
 
 ### 縦長の表（Long Table）に変換
-
-*`electricity_urban` の列から `sanitation_rural` の列までを、変数を name に、値を value に入れて、縦に並べます。*
 
 ```{r}
 df_pc_long <- df_pc |> 
