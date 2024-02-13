@@ -120,7 +120,7 @@ WDI で読み込みます。
 
 この例では、二つの指標を、読み込みます。
 
-```{r}
+```{r eval = FALSE}
 df_co2_fossil <- WDI(indicator = c(co2 = "EN.ATM.CO2E.PC",
                      fossil = "EG.ELC.FOSL.ZS"), extra = TRUE)
 df_co2_fossil
@@ -133,7 +133,7 @@ df_co2_fossil
 
 - 最後にextra = TRUE としておくと、国ごとの地域、所得レベルなどの情報を一緒に読み込んでくれます。必要がなければ、次のようになります。
 
-```{r}
+```{r eval=FALSE}
 df_co2_fossil_short <- WDI(indicator = c(co2 = "EN.ATM.CO2E.PC",
                      fossil = "EG.ELC.FOSL.ZS"))
 df_co2_fossil_short
@@ -177,12 +177,20 @@ WDI() だと、GDP (PPP) のすべての国のデータとダウンロードし�
 
 読み込んだデータ df_co2_fossil を、CSV（カンマ区切り形式）で、data フォルダーの中に、co2_fossil.csv という名前で保存します。このときに、data フォールだがないと、保存できません。R Notebook があるフォルダーの中に、data フォルダがあることが必要です。data フォルダがないというエラーメッセージが出たら、最初に説明した、ファイルを作る時の部分を読み返してください。間違っていたら、ここで、Save as で適切なところに、保存しなおしてください。
 
-```{}
+```{r eval = FALSE}
 write_csv(df_co2_fossil, "data/co2_fossil.csv")
 ```
 
 ```{r}
 df_co2_fossil <- read_csv("data/co2_fossil.csv")
+```
+
+```{r eval=FALSE}
+write_csv(df_co2_fossil_short, "data/co2_fossil_short.csv")
+```
+
+```{r}
+df_co2_fossil_short <- read_csv("data/co2_fossil_short.csv")
 ```
 
 ## データの確認
@@ -247,7 +255,7 @@ df_co2_fossil |> pivot_longer(c(co2, fossil)) |> drop_na(value) |>
 
     -   `pivot_longer(cols = c(female_unemploy, male_unemploy))`
 
-    -   `pivot_longer(c(electricity_urban, electricity_rural))`: cols は省略可能
+    -   `pivot_longer(c(electricity_urban, electricity_rural))`: `cols =` は省略可能
 
     -   `pivot_longer(cols = electricity_urban:sanitation_rural))`：electricity_urban の列から、sanitation_rural の列までのすべての変数を指定
 
@@ -263,21 +271,23 @@ df_co2_fossil |> pivot_longer(c(co2, fossil)) |> drop_na(value) |>
 
 ## 変数の選択（selecting）
 
-extra = TRUE として、データを入手すると、使わない変数もたくさんあるので、見やすいように、必要なもんだけにします。
+extra = TRUE として、データを入手すると、使わない変数もたくさんあるので、見やすいように、必要な変数だけにします。必要なものを、落とさないように、気をつけます。
 
 ### 例
 
-わたしは、少し短めの名前を使っています。
+わたしは、少し短めの名前を使っています。結果を、すぐ表示するようにして、そこで、必要な変数が、のこていることを確認します。
 
 ```{r}
 df_co2fos <- df_co2_fossil |> 
-  select(country, iso2c, year, co2,fossil, region, income)
+  select(country, iso2c, year, co2, fossil, region, income)
 df_co2fos
 ```
 
 ## 縦長の表（Long Table）に変換
 
+上の説明を、確認してください。たいせつなのは、これをどのように活用するかですから、このあとに、df_co2fos_long を使って、図を描いているものを、確認して、df_co2fos との違いを比較してください。このあとも、df_co2fos を使って描画をしている場合もあります。どちらでも、使えるものと、一方を使うと、他方を使うのと比較して、非常に、単純になる場合があることを確認していってください。
 
+### 例
 
 *`co2` と `fossil` の列（変数）を、変数を name に、値を value に入れて、縦に並べます。*
 
@@ -295,7 +305,7 @@ df_co2fos_long
 
 国名は一般的に長いので、iso2c も便利です。指定する時は、たとえば、asean に国名が、ASEAN に iso2c コードが入っていれば、
 
-- `filter(country %in$ asean)`
+-  `filter(country %in$ asean)`
 
 -  `filter(iso2c %in% ASEAN)`
 
@@ -411,27 +421,9 @@ CHOSEN_COUNTRIES <- c()
 
 # 分析・視覚化
 
-## 相関係数
 
-値の正負：正の相関・負の相関、1に近いと強い正の相関、-1に近いと強い負の相関
 
-相関係数：散布図の近似（回帰）直線の傾きが正なら正、負なら負、直線に近い程、1 または-1 に近い
-
-あくまでも、相関であり、因果関係ではない。再生可能エネルギーを増やしたり、化石燃料による発電を減らしたり、森を増やせば、二酸化炭素排出量が減ると、ここから結論できるわけではない。あくまでも、化石燃料の発電が多い国のほうが、二酸化炭素排出量が多い傾向があるというようなことが見て取れることである。相関関係は因果関係にあらず。Correlation is not causation.
-
-### 例
-
-変数同士の相関関係: NA ではないところのみ選択します。
-
-```{r}
-df_co2fos |> filter(!(iso2c %in% REGION)) |> # 地域以外（国のみ選択）
-  drop_na(co2, fossil) |> 
-  select(co2, fossil) |> cor()
-```
-
-これは、弱い正の相関となります。つまり、「化石燃料による発電が多い国はある程度、二酸化炭素排出量が多い傾向にある」と言えます。
-
-# 視覚化（Visualizing）
+## さまざまな視覚化（Visualizing）
 
 例として、中心的に使うデータは、二つです。
 
@@ -439,11 +431,40 @@ df_co2fos |> filter(!(iso2c %in% REGION)) |> # 地域以外（国のみ選択）
 
 - df_co2fos_long: 縦長の表で、name に、co2 と fossil を含み、value に その値が入っています。データをよく確認してください。上の方にあります。
 
+基本的には、データを絞り込み、そのあとで、ggplot2 を使います。以下のようなフォーマットになります。
+
+```
+df_co2fos |> filter などで必要な行を絞り込む　|> drop_na(変数) などで、NA を削除 |>
+  ggplot(aes(x, y)) + geom_***()
+```
+
+aes() の部分を mapping と言います。実は、`mapping = aes(x, y)` の　mapping を省略しています。詳細は、geom_***() のいろいろな描写方法によって異なりますので、それぞれの、Help を確認してください。
+
 ## 経年変化
 
 year を x 軸に、変数の値を　y 軸に取ると、経年変化がわかります。日本や、世界でみてみます。drop_na(var) を使うことで、空白部分がなくなり、Warning も減りますが、違う指標を比較する時は、これを入れないのも手ですし、同じ基準にするために、drop_na(var1, var2) としておく手もあります。
 
-### 例
+一つの国・地域
+
+```
+df_co2_fos |> filter(country == "国名") |> drop_na(変数) |>
+  ggplot(aes(year, 変数)) + geom_line()
+```
+
+いくつかの国・地域
+
+```
+df_co2_fos |> filter(country %in% c("国名1", "国名2", ... , "国名n")) |> drop_na(変数) |>
+  ggplot(aes(year, 変数, col = country)) + geom_line()
+```
+
+iso2c で、国・地域を選択することも可能です。
+
+```
+df_co2_fos |> filter(iso2c %in% c("二文字コード1", "二文字コード2", ... , "二文字コードn")) |>
+  drop_na(変数) |>
+  ggplot(aes(year, 変数, col = country)) + geom_line()
+```
 
 最初分析中は、省略してもよいですが、なるべく、
 
@@ -454,6 +475,8 @@ year を x 軸に、変数の値を　y 軸に取ると、経年変化がわか�
 - labs(title = "グラフのタイトル", x = "年", y = "変数の名前")
 
 とします。
+
+### 例
 
 #### 国または地域の一つの変数に関する経年変化
 
@@ -624,14 +647,12 @@ df_co2fos_long |> filter(name == "co2") |>
   ggplot(aes(region, value)) + geom_boxplot() + coord_flip()
 ```
 
-------------------------------------------------------------------------
 
 ```{r}
 df_co2fos |> filter(region != "Aggregates") |> drop_na(fossil) |>
   ggplot(aes(region, fossil)) + geom_boxplot() + coord_flip()
 ```
 
-------------------------------------------------------------------------
 
 ```{r}
 df_co2fos_long |> 
@@ -646,6 +667,27 @@ df_co2fos_long |> filter(income != "Aggregates", income != "Not classified") |> 
   ggplot(aes(income, value, fill = name)) + geom_boxplot() + coord_flip()
 ```
 
+## 相関
+
+### 相関係数
+
+値の正負：正の相関・負の相関、1に近いと強い正の相関、-1に近いと強い負の相関
+
+相関係数：散布図の近似（回帰）直線の傾きが正なら正、負なら負、直線に近い程、1 または-1 に近い
+
+あくまでも、相関であり、因果関係ではない。再生可能エネルギーを増やしたり、化石燃料による発電を減らしたり、森を増やせば、二酸化炭素排出量が減ると、ここから結論できるわけではない。あくまでも、化石燃料の発電が多い国のほうが、二酸化炭素排出量が多い傾向があるというようなことが見て取れることである。相関関係は因果関係にあらず。Correlation is not causation.
+
+#### 例
+
+変数同士の相関関係: NA ではないところのみ選択します。
+
+```{r}
+df_co2fos |> filter(!(iso2c %in% REGION)) |> # 地域以外（国のみ選択）
+  drop_na(co2, fossil) |> 
+  select(co2, fossil) |> cor()
+```
+
+これは、弱い正の相関となります。つまり、「化石燃料による発電が多い国はある程度、二酸化炭素排出量が多い傾向にある」と言えます。
 
 ### エラー対応
 
@@ -655,6 +697,30 @@ df_co2fos_long |> filter(income != "Aggregates", income != "Not classified") |> 
 -   実行できていても、結果が見えないことがある。そのときは、Code Chunk の下にある、山二つの記号を押す。結果の表示、非表示の切り替え。
 -   Error message を読む。エラーが出た Code Chunk と、Error message を、ChatGPT や、Google Bard, Google Search に入れ解決方法を探る。
 -   Posit.Cloud で、Error 137 が出た時はメモリーオーバーなので、例など不要な部分を削除。ただし、一番上の、YAML は、かならず残すこと。
+
+### 散布図
+
+基本形は、次のようになります。
+
+```
+df_co2fos |> filter で選択 |> drop_na(変数1, 変数2) |>
+  ggplot(aes(変数1, 変数2)) + geom_point()
+```
+
+#### 例
+
+```{r}
+df_co2fos |> filter(!(iso2c %in% REGION)) |> drop_na(co2, fossil) |>
+  ggplot(aes(co2, fossil)) + geom_point() + 
+  labs(title = "一人当たりの二酸化炭素排出量と化石燃料での発電割合")
+```
+
+```{r}
+df_co2fos |> filter(!(iso2c %in% REGION)) |> drop_na(co2, fossil) |>
+  ggplot(aes(co2, fossil)) + geom_point() + scale_x_log10() + 
+  labs(title = "一人当たりの二酸化炭素排出量と化石燃料での発電割合")
+```
+
 
 ## 参考文献
 
