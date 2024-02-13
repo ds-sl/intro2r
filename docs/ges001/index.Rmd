@@ -367,7 +367,7 @@ SH.H2O.BASW.RU.ZS
 
 第8週と第9週では、戦争、気候変動、COVID-19の複合的要因が世界的な食糧危機を引き起こし、格差と貧困を加速させている現状について、議論します。
 
-02/13(TU)　Rでデータサイエンス8：難民、軍事支出　　[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00121.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00121.nb.html)]
+02/13(TU)　Rでデータサイエンス8：難民、軍事支出　　[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00121.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00121.nb.html)]・[[ビデオ](https://youtu.be/mq2Y83CGI4Q)]
 
 **Global Link-Refugees**
 
@@ -377,8 +377,8 @@ Refugee population by country or territory of origin：SM.POP.REFG.OR
 
 #### 演習
 
-- 探索的データ分析まとめ [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/peace.Rmd)]
-- 探索的データ分析まとめ [[EDA](https://ds-sl.github.io/intro2r/ges001/eda.nb.html)]
+- 探索的データ分析まとめ：難民について  [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/peace.Rmd)]
+- 探索的データ分析 [[EDA](https://ds-sl.github.io/intro2r/ges001/eda.nb.html)]
 
 <!-- #### 課題2について -->
 
