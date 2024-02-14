@@ -145,7 +145,7 @@ df_co2_fossil_short
 
 実は、次の命令でも、データをとってきます。
 
-```{r}
+```{r cache = TRUE}
 WDI()
 ```
 
@@ -223,7 +223,7 @@ str(df_co2_fossil)
 
 ```{r}
 df_co2_fossil |> drop_na(co2, fossil) |> 
-  ggplot(aes(year)) + geom_bar()
+  ggplot(aes(year)) + geom_bar() + labs(title = "各年毎のデータの数：co2, fossil ともに存在する国・地域の数")
 ```
 
 各、変数ごとに調べたい時は、long table を使います。少し高級ですね。
@@ -234,7 +234,8 @@ pivot_longer(c(co2, fossil)) では、これら二つの指標を、name とい�
 
 ```{r}
 df_co2_fossil |> pivot_longer(c(co2, fossil)) |> drop_na(value) |> 
-  ggplot(aes(year, fill = name)) + geom_bar()
+  ggplot(aes(year, fill = name)) + geom_bar()+ 
+  labs(title = "各年毎のデータの数：co2, fossil それぞれが存在する国・地域の数")
 ```
 
 # 変形（transforming）
@@ -515,14 +516,15 @@ df_co2_fos |> filter(iso2c %in% c("二文字コード1", "二文字コード2", 
 一番、簡単な形は、
 
 ```{r}
-df_co2fos |> filter(country == "Japan") |> ggplot(aes(year, co2)) + geom_line()
+df_co2fos |> filter(country == "Japan") |> ggplot(aes(year, co2)) + geom_line() +
+  labs(title = "日本の一人当たりの二酸化炭素排出量：NA も含む")
 ```
 
 ただ、これだと、最初の方はデータがないので、グラフが途中から始まります。そこで、drop_na(co2) を入れて、co2 の値が、NA ではないところだけ表示します。
 
 ```{r}
 df_co2fos |> filter(country == "Japan") |> drop_na(co2) |>
-  ggplot(aes(year, co2)) + geom_line() + labs(title = "日本の一人当たりの二酸化炭素排出量（トン）")
+  ggplot(aes(year, co2)) + geom_line() + labs(title = "日本の一人当たりの二酸化炭素排出量（トン）：NA を除く")
 ```
 
 ```{r}
@@ -539,13 +541,15 @@ df_co2fos |> filter(country == "World") |> drop_na(fossil) |>
 では、次のようにしたらどうでしょう。
 
 ```{r}
-df_co2fos |> ggplot(aes(year, fossil)) + geom_line()
+df_co2fos |> ggplot(aes(year, fossil)) + geom_line() +
+  labs(title = "Filter を使わなかった時の折線グラフ")
 ```
 
 なにか変ですね。これは、それぞれの年にたくさんデータがあって、それを線では結べないので、こうなってしまうのです。実は、geom_line を geom_point に変えれば、多少状況は分かります。
 
 ```{r}
-df_co2fos |> ggplot(aes(year, fossil)) + geom_point()
+df_co2fos |> ggplot(aes(year, fossil)) + geom_point() +
+  labs(title = "Filter を使わなかった時の散布図")
 ```
 
 これを、折線で結ぶことはできません。また、missing value もたくさんあるよとなっています。そこで、ちょっと改良します。
@@ -562,7 +566,7 @@ df_co2fos |> filter(!(iso2c %in% REGION)) |> drop_na(co2, income) |>
   labs(title = "国別、所得レベル別の一人当たりの二酸化炭素排出量", col = "Income Level")
 ```
 
-現時点では、何をやているかわからないかもしれませんが、二つのグラフは、散布図のひとつで、所得レベルで、色を変えています。また、その表示の順序を、何も指定しないと、アルファベット順になるので、ここでは、特別に、INCOME に登録した順序で表示しています。いろいろなことを見てとることもできると思います。あなたは、どんなことに気づきましたか。
+現時点では、何をやっているかわからないかもしれませんが、二つのグラフは、散布図のひとつで、所得レベルで、色を変えています。また、その表示の順序を、何も指定しないと、アルファベット順になるので、ここでは、特別に、INCOME に登録した順序で表示しています。いろいろなことを見てとることもできると思います。あなたは、どんなことに気づきましたか。
 
 実は、散布図の方が基本的です。そちらを先に学ぶ方がよいように思います。ただ、世界開発指標は、年毎のデータになっていますから、経年変化を先にしています。上に書いたように、経験変化を調べる時は、まずは、国などを指定する必要があることを、理解してください。
 
@@ -571,6 +575,8 @@ df_co2fos |> filter(!(iso2c %in% REGION)) |> drop_na(co2, income) |>
 このためには、縦長の表を使います。
 
 ただ、この例では、二つの指標の単位がことなるため、このように表示するのが適切かどうかは不明です。
+
+表題が長い時は、'\n' を挿入すれば、改行できます。
 
 ```{r}
 df_co2fos_long |> filter(country == "Japan") |> drop_na(value) |>
@@ -586,20 +592,20 @@ df_co2fos_long |> filter(country == "World") |> drop_na(value) |>
 
 ##### 参考
 
-実は、指標の数が二つぐらいであれば、`df_co2fos` を使って、描くことも可能です。
+実は、指標の数が二つぐらいであれば、`df_co2fos` を使って、描くことも可能です。座標軸名を変更しています。
 
 ```{r}
 df_co2fos |> filter(country == "Japan") |> drop_na(co2, fossil) |>
   ggplot(aes(x = year)) + geom_line(aes(y = co2), col = "red") + 
   geom_line(aes(y = fossil), col = "blue") +
-  labs(y = "fossil (%) in blue, co2 (ton) in red")
+  labs(title = "df_co2fos を使って一つ一つの指標を描画", y = "fossil (%) in blue, co2 (ton) in red")
 ```
 
 co2 の方は、大体、9ton ぐらいなので、7倍ぐらいしてみましょう。
 
 ```{r}
 df_co2fos |> filter(country == "Japan") |> drop_na(co2, fossil) |>
-  ggplot(aes(x = year)) + geom_line(aes(y = co2*7), col = "red") + geom_line(aes(y = fossil), col = "blue") + labs(y = "fossil (%) in blue, co2 (ton) x 7 in red")
+  ggplot(aes(x = year)) + geom_line(aes(y = co2*7), col = "red") + geom_line(aes(y = fossil), col = "blue") + labs(title = "df_co2fos を使って一つ一つの指標を描画：co2 七倍", y = "fossil (%) in blue, co2 (ton) x 7 in red")
 ```
 
 どうですか、縦軸は、少し変ですが、いままでとは、違って気づくこともありますよね。両方のデータがあるところだけを表示させています。
@@ -635,19 +641,23 @@ ASEAN <- c("BN", "KH", "ID", "LA", "MY", "MM", "PH", "SG", "VN")
 
 ```{r}
 df_co2fos |> filter(country %in% regions) |> drop_na(co2) |>
-  ggplot(aes(year, co2, col = country)) + geom_line()
+  ggplot(aes(year, co2, col = country)) + geom_line() +
+  labs(title = "地域ごとの一人当たりの二酸化炭素排出量")
 ```
 
 選択は、iso2c でしていますが、col = country としてあるので、国名が表示されています。この次の 一人当たりの二酸化炭素排出量の方のグラフでは、それを、iso2c に変更しています。
 
 ```{r}
 df_co2fos |> filter(iso2c %in% ASEAN) |> drop_na(fossil) |>
-  ggplot(aes(year, fossil, col = country)) + geom_line()
+  ggplot(aes(year, fossil, col = country)) + geom_line()  +
+  labs(title = "ASEAN の化石燃料による発電割合")
 ```
+グラフのスペースが確保できる利点もあります。
 
 ```{r}
 df_co2fos |> filter(iso2c %in% ASEAN) |> drop_na(co2) |>
-  ggplot(aes(year, co2, col = iso2c)) + geom_line()
+  ggplot(aes(year, co2, col = iso2c)) + geom_line()  +
+  labs(title = "ASEAN（iso2c 表示）の一人当たりの二酸化炭素排出量")
 ```
 
 #### いくつかの国または地域の二つ以上の変数に関する経年変化
@@ -656,12 +666,14 @@ df_co2fos |> filter(iso2c %in% ASEAN) |> drop_na(co2) |>
 
 ```{r}
 df_co2fos_long |> filter(country %in% regions) |> drop_na(value) |>
-  ggplot(aes(year, value, col = country, linetype = name)) + geom_line()
+  ggplot(aes(year, value, col = country, linetype = name)) + geom_line() +
+  labs(title = "一人当たりの二酸化炭素排出量と\n化石燃料による発電割合")
 ```
 
 ```{r}
 df_co2fos_long |> filter(country %in% SACU) |> drop_na(value) |>
-  ggplot(aes(year, value, col = country, linetype = name)) + geom_line()
+  ggplot(aes(year, value, col = country, linetype = name)) + geom_line() +
+  labs(title = "南部アフリカ関税同盟の一人当たりの二酸化炭素排出量と\n化石燃料による発電割合")
 ```
 
 ## 分布
@@ -674,44 +686,52 @@ bins 区分けの数、binwidth 区分幅を変更して、適切に表示され
 
 #### 例
 
+特定の年に、一定の範囲のところにはいる、国の数（度数分布）を表します。
+
 ```{r}
 df_co2fos |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2) |>
-  ggplot(aes(co2)) + geom_histogram()
+  ggplot(aes(co2)) + geom_histogram() +
+  labs(title = "2020年の国別の一人当たりの二酸化炭素排出量のヒストグラム")
 ```
 
-bins = 10 に変更すると次のようになります。
+区分けの個数を10個 bins = 10 に変更すると次のようになります。
 
 ```{r}
 df_co2fos |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2) |>
-  ggplot(aes(co2)) + geom_histogram(bins = 10)
+  ggplot(aes(co2)) + geom_histogram(bins = 10) +
+  labs(title = "2020年の国別の一人当たりの二酸化炭素排出量のヒストグラム")
 ```
 
-binwidth = 2 とすると下のようなグラフになります。
+区分けの幅を binwidth = 2 とすると下のようなグラフになります。
 
 ```{r}
 df_co2fos |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2) |>
-  ggplot(aes(co2)) + geom_histogram(binwidth = 2)
+  ggplot(aes(co2)) + geom_histogram(binwidth = 2) +
+  labs(title = "2020年の国別の一人当たりの二酸化炭素排出量のヒストグラム")
 ```
 
-これに地域名を加えることも可能です。
+地域名を色で加えることも可能です。塗りつぶしなので、fill を使っています。
 
 ```{r}
 df_co2fos |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2) |>
-  ggplot(aes(co2, fill = region)) + geom_histogram(bins = 10)
+  ggplot(aes(co2, fill = region)) + geom_histogram(bins = 10) +
+  labs(title = "2020年の国別の一人当たりの二酸化炭素排出量のヒストグラム\n地域情報を加えたもの")
 ```
 
 境目がみにくいように思うので、わたしは、黒枠の細めの線を入れます。
 
 ```{r}
 df_co2fos |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2) |>
-  ggplot(aes(co2, fill = region)) + geom_histogram(bins = 10, col = "black", linewidth = 0.2)
+  ggplot(aes(co2, fill = region)) + geom_histogram(bins = 10, col = "black", linewidth = 0.2)+
+  labs(title = "2020年の国別の一人当たりの二酸化炭素排出量のヒストグラム\n地域情報を加えたもの")
 ```
 左に偏っているので、LOG 表示を使うこともひとつです。
 
 ```{r}
 df_co2fos |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2) |>
   ggplot(aes(co2, fill = region)) + 
-  geom_histogram(bins = 10, col = "black", linewidth = 0.2) + scale_x_log10()
+  geom_histogram(bins = 10, col = "black", linewidth = 0.2) + scale_x_log10()+
+  labs(title = "2020年の国別の一人当たりの二酸化炭素排出量のヒストグラム\n地域情報を加えたもの", x = "co2 (ton/person, log10 scale)")
 ```
 
 もう一つの変数、fossil についてもやってみてください。
@@ -722,7 +742,8 @@ df_co2fos |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(co2
 
 ```{r}
 df_co2fos |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(fossil) |>
-  ggplot(aes(fossil)) + geom_histogram(bins = 10)
+  ggplot(aes(fossil)) + geom_histogram(bins = 10) +
+  labs(title = "2020年の化石燃料による発電割合")
 ```
 
 何も現れません。何が問題なのでしょう。一番最初に、データの数をみましたよね。特に、カラーの方を思い出してください。確かめてみましょう。
@@ -735,14 +756,16 @@ df_co2fos |> filter(!(iso2c %in% REGION)) |> filter(year == 2020) |> drop_na(fos
 
 ```{r}
 df_co2fos |> filter(!(iso2c %in% REGION)) |> filter(year == 2015) |> drop_na(fossil) |>
-  ggplot(aes(fossil)) + geom_histogram(bins = 10)
+  ggplot(aes(fossil)) + geom_histogram(bins = 10) +
+  labs(title = "2015年の化石燃料による発電割合")
 ```
 
 グラフは現れましたが、bins や、binwidth はこれが適切でしょうか。指標によって、変えないといけませんね。
 
 ```{r}
 df_co2fos |> filter(!(iso2c %in% REGION)) |> filter(year == 2015) |> drop_na(fossil) |>
-  ggplot(aes(fossil, fill = income)) + geom_histogram(binwidth = 10, col = "black", linewidth = 0.2)
+  ggplot(aes(fossil, fill = income)) + geom_histogram(binwidth = 10, col = "black", linewidth = 0.2) +
+  labs(title = "2015年の化石燃料による発電割合, 所得レベルを含む")
 ```
 
 どんなことがわかりますか。
@@ -755,19 +778,21 @@ df_co2fos |> filter(!(iso2c %in% REGION)) |> filter(year == 2015) |> drop_na(fos
 
 ```{r}
 df_co2fos |> filter(year == 2015, country %in% regions) |> drop_na(co2) |>
-  ggplot(aes(country, co2)) + geom_col()
+  ggplot(aes(country, co2)) + geom_col() +
+  labs(title ="地域別一人当たりの二酸化炭素排出量", x = "")
 ```
 
 重なり合ってしまうので、軸を変えます。
 
 ```{r}
 df_co2fos |> filter(year == 2015, country %in% regions) |> drop_na(co2) |>
-  ggplot(aes(country, co2)) + geom_col() + coord_flip()
+  ggplot(aes(country, co2)) + geom_col() + coord_flip() +
+  labs(title ="地域別一人当たりの二酸化炭素排出量", x = "")
 ```
 
 化石燃料での発電割合はどうでしょうか。次のグラフでは、情報は加えていませんが、塗る色を変えてあります。でも、凡例は不要ですよね。theme(legend.position = "none") とします。
 
-country は、regions とする手もありますが、消しておいても良さそうです。注意が必要なのは、coord_flip をする前の座標なので、x を消します。
+country は、regions とする手もありますが、消しておいても良さそうです。注意が必要なのは、coord_flip をする前の座標なので、x を消します。theme(legend.position = 'none")
 
 ```{r}
 df_co2fos |> filter(year == 2015, country %in% regions) |> drop_na(fossil) |>
@@ -776,8 +801,9 @@ df_co2fos |> filter(year == 2015, country %in% regions) |> drop_na(fossil) |>
 
 ```{r}
 df_co2fos |> filter(year == 2015, country %in% regions) |> drop_na(fossil) |>
-  ggplot(aes(country, fossil, fill = country)) + geom_col() + coord_flip() + 
-  labs(x = "") + theme(legend.position = "none")
+  ggplot(aes(country, fossil, fill = country)) + geom_col() + coord_flip()  +
+  labs(title ="地域別化石燃料による発電量（%）", x = "", y = "") +
+  theme(legend.position = "none")
 ```
 
 fill（塗りつぶし）を使いましたが、col だとどうなるのでしょうか。あまり適切だとは思えません。しかし、ヒストグラムのときのように、枠を黒にすることは、多少意味があるかもしれません。
@@ -999,22 +1025,25 @@ df_co2_gdp
 
 ```{r}
 df_co2_gdp |> filter(!(iso2c %in% REGION)) |> drop_na(gdppcap, co2) |> 
-  ggplot(aes(gdppcap, co2)) + geom_point()
+  ggplot(aes(gdppcap, co2)) + geom_point() +
+  labs(title = "購買力平価による一人当たりの国内総生産と\n一人当たりの二酸化炭素排出量")
 ```
 明らかに、0 の付近に密集していますから、Log10 スケールを使います。
 
 ```{r}
 df_co2_gdp |> filter(!(iso2c %in% REGION)) |> drop_na(gdppcap, co2) |> 
   filter(gdppcap >0, co2 >0) |>
-  ggplot(aes(gdppcap, co2)) + geom_point() + scale_x_log10() + scale_y_log10()
+  ggplot(aes(gdppcap, co2)) + geom_point() + scale_x_log10() + scale_y_log10()+
+  labs(title = "購買力平価による一人当たりの国内総生産と\n一人当たりの二酸化炭素排出量（ともに Log10 スケール）")
 ```
-強い相関がみられそうです。回帰直線を引いてみます。
+強い相関がみられそうです。回帰直線を引いてみます。subtitle を使ってみました。
 
 ```{r}
 df_co2_gdp |> filter(!(iso2c %in% REGION)) |> drop_na(gdppcap, co2) |> 
   filter(gdppcap >0, co2 >0) |>
   ggplot(aes(gdppcap, co2)) + geom_point() + scale_x_log10() + scale_y_log10() +
-  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)+
+  labs(title = "購買力平価による一人当たりの国内総生産と一人当たりの二酸化炭素排出量", subtitle = "ともに Log10 スケール、回帰直線を加えたもの")
 ```
 
 少し点を減らすため、年を、2020 に制限します。さらに、地域を色で加えます。
@@ -1022,7 +1051,9 @@ df_co2_gdp |> filter(!(iso2c %in% REGION)) |> drop_na(gdppcap, co2) |>
 ```{r}
 df_co2_gdp |> filter(!(iso2c %in% REGION), year == 2020) |> drop_na(gdppcap, co2) |> 
   filter(gdppcap >0, co2 >0) |>
-  ggplot(aes(gdppcap, co2, col = region)) + geom_point() + scale_x_log10() + scale_y_log10()
+  ggplot(aes(gdppcap, co2, col = region)) + geom_point() + scale_x_log10() + scale_y_log10()+
+  labs(title = "購買力平価による一人当たりの国内総生産と一人当たりの二酸化炭素排出量",
+       subtitle = "ともに 2020年の Log10 スケール のデータ")
 ```
 
 さらに、人口の大きさにより、点の大きさを変えます。
@@ -1030,7 +1061,9 @@ df_co2_gdp |> filter(!(iso2c %in% REGION), year == 2020) |> drop_na(gdppcap, co2
 ```{r}
 df_co2_gdp |> filter(!(iso2c %in% REGION), year == 2020) |> drop_na(gdppcap, co2) |> 
   filter(gdppcap >0, co2 >0) |>
-  ggplot(aes(gdppcap, co2, col = region, size = pop)) + geom_point() + scale_x_log10() + scale_y_log10()
+  ggplot(aes(gdppcap, co2, col = region, size = pop)) + geom_point() + scale_x_log10() + scale_y_log10()+
+  labs(title = "購買力平価による一人当たりの国内総生産と一人当たりの二酸化炭素排出量",
+       subtitle = "ともに 2020年の Log10 スケール のデータ、点の大きさは人口")
 ```
 
 ##### 参考
@@ -1041,7 +1074,8 @@ plotly という別のパッケージを使うと、ポインターを点にあ�
 library(plotly)
 ggp <- df_co2_gdp |> filter(!(iso2c %in% REGION), year == 2020) |> drop_na(gdppcap, co2) |> 
   filter(gdppcap >0, co2 >0) |>
-  ggplot(aes(text = country, gdppcap, co2, col = region, size = pop)) + geom_point() + scale_x_log10() + scale_y_log10()
+  ggplot(aes(text = country, gdppcap, co2, col = region, size = pop)) + geom_point() + scale_x_log10() + scale_y_log10() +
+  labs(title = "一人当たりの国内総生産と二酸化炭素排出量(ポインタでデータ表示)")
 ggplotly(ggp)
 ```
 
@@ -1051,7 +1085,9 @@ ggplotly(ggp)
 df_co2_gdp |> filter(!(iso2c %in% REGION), year == 2020) |> drop_na(gdppcap, co2) |> 
   filter(gdppcap >0, co2 >0) |>
   ggplot(aes(gdppcap, co2)) + geom_point(aes(col = region, size = pop)) + scale_x_log10() + scale_y_log10() +
-  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE)+
+  labs(title = "購買力平価による一人当たりの国内総生産と一人当たりの二酸化炭素排出量",
+       subtitle = "ともに 2020年の Log10 スケール のデータ、点の大きさは人口、回帰直線を含む")
 ```
 
 ##### 参考：線形モデル概要
@@ -1102,7 +1138,35 @@ df_co2_gdp |> filter(!(iso2c %in% REGION), year == 2020) |> drop_na(gdppcap, co2
 0.9150164 * 0.9150164
 ```
 
+
 確かに、この値が、log10 をとった方の、Multiple R Squared の値になっています。
+
+# おわりに
+
+## トラブル・シューティング
+
+いろいろな問題が背景にあり、一般的にはかけません。世界の問題・課題と同じです。これが、問題ですということはできませんよね。
+
+しかし、演習を担当して、質問されたり、課題をみていて、わかった問題などを中心に少し書いておきます。
+
+-   Error: ... does not exist.
+    - さまざまな背景が考えられます。まずは、この最初に説明した、R Notebook の保存場所に、data フォルダーがないために、書き込めないことがあります。大切なのは、R Notebook と、data フォールダがあるかないかではなく、どこにあるか、同じ場所にあるかどうかです。多くの場合、data フォルダの中に、R Notebook が作成されてて、data に書き込めないという状況が生じていました。write_csv(df_co2_fossil, "data/co2_fossil.csv") は、読み込んだ、df_co2_fossil と名前をつけたデータを、data フォルダの中に、co2_fossil.csv という名前の、CSV 形式（カンマ区切られたテキストデータ）として、書き込むという命令です。data フォルダがなければ、書き込めませんし、data フォルダが、R Notebook のある場所に、なければ書き込めません。次に、df_co2_fossil <- read_csv("data/co2_fossil.csv") として、もう一度読み込んでいますが、このときも、data フォルダのなかに、co2_fossil.csv という名前の、CSV ファイルがないと読み込めません。
+    - 何かがないと言われたら、それが最初に作成された場所にもどることです。たとえば、df_co2_fossil であれば、最初に、WDI() で読み込むところで、適切に定義されているか、または、 が適切になされているかです。読み込む時に、前のコードのままで、read_csv("data/co2_fossil.csv") の部分が、read_csv("data/unemployment.csv") などとなっていたら、おかしいですよね。
+    - REGION がないと言われたら、それを定義してあるコードが、実行されているか確認する必要があります。そのようなこともあるので、エラーが出たら、Run All Chunks Above をしてみるのも一つです。
+    - 次に多いのが、綴りの間違いです。スペルをしっかりチェックしましょう。
+    
+-   Error: Incomplete expression
+    - かっこが足りなかったり、最後に、|> や、+ で終わってる場合によく出ます。|> は次に、データを渡す命令ですから、受け取り側がないわけですし、+ は、ggplot で、図を描く時に、順に繋げていくためのものですから、そのあとには、何かが続くはずです。
+    
+-   R Notebook で、Run Code をすると、問題なく図が現れるのに、最後に、R Notebook を、Browser で確認すると、最後の方の図が表示されない。
+    - これは、途中に、``` または、---  などが入り込んでいる場合が多いです。わたしは、どうするかというと、Run All をします。すると、エラー箇所がわかる場合があります。そこで、コードを修正する。わからないときは、それより下を、Cut（Windows では、Ctrl + X、Mac では、Command + X）をして、 R Notebook が適切に生成されるかをみます。できていれば、Ctrl + V Mac では、Command + V または、Ctrl + Z (Mac では、Command + Z) で元に戻し、すこし、先からあとを、カットします。と順に、みていくと、どこが問題かがわかります。
+    - 以前、Code chunk の中でも同じようなことをしました。上のほうから、みていき、大丈夫だと思うところの次から、Cut し、実行します。うまくいっていたら、次の塊までもどして、実行。一ステップ、一ステップ、確認することですから、有効で、一般的でもあります。
+    
+-   なんだかわからなくなったら。
+    - 問題は、自分自身がパニックに陥ることです。冷静さをうしない、よぶんなことをどんどんします。まずは、そこまでを　Save し、次に、Sava as で違った名前にして、カットなどを使って、上から順にみていく。それでも、うまくいかなかったら、最初からやり直す。ただし、大丈夫そうなところは、コピー・ペーストして、前のものを使う。
+    - 編集にもある、Undo, Redo も有効ですよ。だいたい、間違った時は、直近で変なことをしたことが多いので。
+    
+（また気づいたら書いておきます）
 
 ## エラー対応
 
