@@ -782,38 +782,23 @@ Fragility and Conflict: On the Front Lines of the Fight against Poverty [[Link](
 
         -   まとめ：
 
-            -   FCS地域では、深刻な暴力や心的外傷後の経験、基本的なインフラ
-                （例えば、水や電気）の欠如、質の高いヘルスケアや教育へのアクセ
-                スの欠如などが同時に起きている。
+            -   FCS地域では、深刻な暴力や心的外傷後の経験、基本的なインフラ （例えば、水や電気）の欠如、質の高いヘルスケアや教育へのアクセ スの欠如などが同時に起きている。
 
-            -   これらの要因は、貧しい人々の人的資本の形成を阻害し、経済成長
-                を阻害している。
+            -   これらの要因は、貧しい人々の人的資本の形成を阻害し、経済成長 を阻害している。
 
         -   紛争が貧困と福祉に及ぼす長期的な影響　[[Link](https://www.worldbank.org/en/publication/worldwide-governance-indicators)]
 
-        -   紛争は、人的資本や生産性を損なうことで経済の発展を阻害し、
-            その影響は何世代にもわたって続く。
+        -   紛争は、人的資本や生産性を損なうことで経済の発展を阻害し、 その影響は何世代にもわたって続く。
 
-        -   脆弱性のプロファイルごとに国を分類すると、2 つの重要な発見
-            がある。第一に、FCS諸国内には大きな不均質性があり、より効果的
-            な解決策を講じるためには、差別化された政策が必要である。第二
-            に、脆弱性は、FCS諸国と非FCS諸国の両方に存在し、予防措置の
-            ために監視される必要がある
+        -   脆弱性のプロファイルごとに国を分類すると、2 つの重要な発見 がある。第一に、FCS諸国内には大きな不均質性があり、より効果的 な解決策を講じるためには、差別化された政策が必要である。第二 に、脆弱性は、FCS諸国と非FCS諸国の両方に存在し、予防措置の ために監視される必要がある
 
-        -   世界の貧困層の大半が住むであろうFCS経済圏での劇的かつ持続
-            的な貧困削減なくして、世界の貧困目標は達成されない。
+        -   世界の貧困層の大半が住むであろうFCS経済圏での劇的かつ持続 的な貧困削減なくして、世界の貧困目標は達成されない。
 
-        -   貧困と紛争の連鎖を断ち切るための包括的な努力の成否は、FCS
-            の貧困層にとって重要である。多くの人々にとって、これらの政策が
-            いかにうまく機能するかが、彼らの生存の可能性を左右するのであ
-            る。世界で最も弱い立場にある何百万人もの人々の希望と、しばし
-            ば命がかかっていることは、行動するのに十分な理由である。しかし
-            、FCSにおける貧困削減と機会拡大の恩恵は、直接関係する人々や
-            FCSの境界を越えて、はるかに広がるだろう。
+        -   貧困と紛争の連鎖を断ち切るための包括的な努力の成否は、FCS の貧困層にとって重要である。多くの人々にとって、これらの政策が いかにうまく機能するかが、彼らの生存の可能性を左右するのであ る。世界で最も弱い立場にある何百万人もの人々の希望と、しばし ば命がかかっていることは、行動するのに十分な理由である。しかし 、FCSにおける貧困削減と機会拡大の恩恵は、直接関係する人々や FCSの境界を越えて、はるかに広がるだろう。
 
 [^1]: 教育はどうだろうか。高等教育は、非競合的とは言えず、非排他的とも言えない。
 
-02/13(TU)　Rでデータサイエンス8：難民、軍事支出　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-8.nb.html)]・[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00121.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00121.nb.html)]・[ビデオ]
+02/13(TU)　Rでデータサイエンス8：難民、軍事支出　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-8.nb.html)]・[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00121.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00121.nb.html)]・[[ビデオ](https://youtu.be/mq2Y83CGI4Q)]
 
 **Global Link-Refugees**
 
@@ -844,6 +829,63 @@ Arms exports (SIPRI trend indicator values)：MS.MIL.XPRT.KD [[Link](https://dat
 FAO: The Importance of Ukraine and the Russian Federation for Global Agricultural Markets and the Risks Associated with the War in Ukraine [[Link](https://www.fao.org/3/cb9236en/cb9236en.pdf)]
 
 戦争が引き起こす食料危機の現状と解決策を考える。
+
+#### 講義
+
+-   コメント
+
+    -   Pro-active contribution to peace 積極平和主義
+
+    -   分断・二極化、ロシアでは、犯罪なども減っている。
+
+-   ウクライナ戦争と食糧危機
+
+    -   ＡＯ＝国連食糧農業機関のチーフエコノミスト、マッシモ・トレロ氏トレロ氏は、「世界の食料価格は、開戦直後の歴史的な高騰こそ落ち着いてきたものの、依然として高い水準にある」としたうえで、「ことしは、
+        アフリカ、中東、アジアなどの貧しい国々で、必要な量の食料を入手できなくなり、飢餓が広がるおそれがある」。「まずは、ウクライナの穀物輸出を継続させるため、ロシアとの合意を更新することが必要だ」。
+
+    -   ロシアとウクライナは、ともに穀物の輸出大国です。小麦の輸出量は、戦争前、ロシアが世界第１位、ウクライナが第５位で、この両国で、世界のおよそ３０％を占め、とうもろこしも、両国で２０％を占めていました。両国からの輸出が大きく減り、世界の食料価格が高騰しました。
+
+    -   Global Food Report 2023: International Food Policy Research Institute (IFPRI)　[[Link](https://www.ifpri.org/publication/global-food-policy-report-2023-rethinking-food-crisis-responses)]
+
+    -   穀物メジャーの暗躍: 欧米によるロシアへの経済制裁が穀物の国際価格急騰を招き、世界中で食料危機が懸念されるなかで、膨大な利益を求めて暗躍しているのが穀物市場を支配する穀物メジャーの存在だ
+
+    -   穀物メジャーは、小麦、大豆、トウモロコシなどの主要穀物を世界中で買い付け、集荷、輸送、保管までを
+        手掛ける多国籍企業で、アメリカや欧州に本社を置く上位5社で世界の穀物取引の約8割を支配し、穀物流通に多大な影響力を持っている。
+
+    -   経営規模は上位2社が群を抜き、首位の米カーギル社が自社で調達する穀物は年約7500万㌧、2位の米アー
+        チャー・ダニエルズ・ミッドランド(ADM)は約6500万㌧と推定されている。カーギルは66カ国に15万人以上の従業員を持ち、世界の穀物シェアの四割を握るといわれている。ADMは世界の160カ国で事業を展開している。
+
+-   **Eiman Yassin, Understanding the Middle East Society and the Palestinian Experience: History, Present and Future**
+
+    -   Three important values: religion (in ID), family, work
+
+    -   22 Arab countries, Arabic, Islam, Muslim people
+
+    -   Flag of Palestine [[Link](https://www.britannica.com/topic/flag-of-Palestine-Liberation-Organization)]
+
+    -   Monotheism: Judaism, Christianity, Islam
+
+    -   Thobe, a long, loose-fitting dress. Kuffiyeh, traditional Palestinian scarf
+
+    -   Theodor Herzl: [[Wikipedia](https://en.wikipedia.org/wiki/Theodor_Herzl)] シオニズム
+
+        -   Zionism is a nationalist movement that emerged in the 19th century to enable the establishment of a homeland for the Jewish people in Palestine a region roughly corresponding to the Land of Israel in Jewish tradition. Following the establishment of the modern state of Israel, Zionism became an ideology that supports the development and protection of the State of Israel as a Jewish state.
+
+        -   November 1917
+
+    -   Balfour Declaration
+
+        -   Dear Lord Rothschild, I have much pleasure in conveying to you, on behalf of His Majesty's Government, the following declaration of sympathy with Jewish Zionist aspirations which has been submitted to, and approved by, the Cabinet. His Majesty's government view with favor the establishment in Palestine of a national home for the Jewish people, and will use their best endeavors to facilitate the achievement of this object, it being clearly understood that nothing shall be done which may prejudice the civil and religious rights of existing non-Jewish communities in Palestine, or the rights and political status enjoyed by Jews in any other country.
+
+    -   1973: Those three Arab countries started a war against Israel and won the war and was able to return back their lands
+
+    -   Hamas attack on October 7, 2023
+
+    -   Gaza death toll 28,064 Palestinians killed 67,611 injured
+
+    -   South African representatives argued before the International Court of Justice that Israel is engaged in a genocidal assault on the Gaza Strip, subjecting the enclave to "merciless" bombing with the clear intent to wipe out the Palestinian population.
+
+    -   Itochu Corp's aviation unit will end its strategic cooperation with Israeli defence company Elbit Systems Ltd (ESLT.TA), by the end of February amid the war in Gaza, the Japanese trading house's executive said on Monday. Itochu plans to end the collaboration after the World Court ordered Israel last month to prevent acts of genocide against Palestinians and do more to help civilians, Itochu Chief Financial Officer Tsuyoshi Hachimura said. (Feb. 5, 2024, Asahi-Shinbun Digital)
 
 02/20(TU)　Rでデータサイエンス9：まとめと演習　[[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-9.nb.html)]・[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00122.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00122.nb.html)]・[ビデオ]
 
