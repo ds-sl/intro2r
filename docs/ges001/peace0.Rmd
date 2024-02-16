@@ -120,10 +120,10 @@ str(df_refugee)
 
 #### 変数の選択（selecting）
 
-```{r}
+```{r cache = TRUE}
 df_ref <- df_refugee |> 
   select(country, iso2c, year, refugee_asylum, refugee_origin, region, income)
-df_unemp
+df_ref
 ```
 
 *データには country のところに、国だけでなく、地域も入っているので、地域のリストを、`iso2c` で `REGION` に入れておきます。*
@@ -207,6 +207,15 @@ df_ref |> filter(country %in% CONFLICTS) |> drop_na(refugee_asylum) |>
 **気づいたこと・疑問**
 
 -   ミャンマーは登場していない。
+-   下の方に固まっているので、scale_y_log10() を使ってみる
+    - 1e+06 は、1,000,000 人ですから、それ以下の国が多いということになります。
+    - scale_y_log10() にすると、1e+02 = 100, 1e+04 = 10,000, 1e+06 = 1,000,000 y 座標軸に現れます。
+
+```{r}
+df_ref |> filter(country %in% CONFLICTS) |> drop_na(refugee_asylum) |>
+  ggplot(aes(year, refugee_asylum, col = country)) + geom_line() + scale_y_log10() +
+  labs(title = "紛争国の難民受け入れ数（log10 スケール）")
+```
 
 ```{r}
 df_ref |> filter(country %in% CONFLICTS) |> drop_na(refugee_origin) |>
@@ -214,11 +223,17 @@ df_ref |> filter(country %in% CONFLICTS) |> drop_na(refugee_origin) |>
   labs(title = "紛争国の難民数")
 ```
 
+```{r}
+df_ref |> filter(country %in% CONFLICTS) |> drop_na(refugee_origin) |>
+  ggplot(aes(year, refugee_origin, col = country)) + geom_line() + scale_y_log10()
+  labs(title = "紛争国の難民数（log10 スケール）")
+```
+
 ### 3. 縦長の表（Long Table）
 
 *`cols = c(refugee_asylum, refugee_origin)` と、一つの指標にまとめるものをリストすると、`name` に指標名が入り、`value` に、その値が入る。書式は、`pivot_longer(cols = ..., names_to = ..., values_to = ...)` で、初期設定では、`names_to = "name", values_to = "value"` となっているので、指定しないと、下のようになる。Help 参照。*
 
-```{r}
+```{r cache = TRUE}
 df_ref_long <- df_ref |> pivot_longer(cols = c(refugee_asylum, refugee_origin))
 df_ref_long
 ```
@@ -230,12 +245,13 @@ df_ref_long
 ```{r}
 df_ref_long |> filter(country == "Japan") |> drop_na(value) |>
   ggplot(aes(year, value, col = name)) + geom_line()  +
-  labs(title = "日本からの難民")
+  labs(title = "日本の難民")
 ```
 
 **気づいたこと・疑問**
 
 -   急激に増えているのは何なのだろう。
+-   かなり数がことなるので、このグラフがみやすいかどうか不明。
 
 ```{r}
 df_ref_long |> filter(country == "World") |> drop_na(value) |>
@@ -255,9 +271,16 @@ df_ref_long |> filter(iso2c %in% ASEAN) |> drop_na(value) |>
   labs(title = "紛争国の難民")
 ```
 
+```{r}
+df_ref_long |> filter(iso2c %in% ASEAN) |> drop_na(value) |>
+  ggplot(aes(year, value, col = country, linetype = name)) + geom_line()  + scale_y_log10() +
+  labs(title = "紛争国の難民（log10 スケール）")
+```
+
 **気づいたこと・疑問**
 
 -   もうすこし丁寧にみないとわからない。国の数が多い
+-   log10 スケールの方がみやすい。
 
 
 ### 4. ヒストグラム
@@ -269,26 +292,26 @@ _分け方の数 bins や、幅 binwidth を適切に変更_
 #### 一つ目の指標
 
 ```{r}
-df_pc |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(refugee_asylum) |>
+df_ref |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(refugee_asylum) |>
   ggplot(aes(refugee_asylum, fill = region)) + geom_histogram(bins = 10, col = "black", linewidth = 0.2) + scale_x_log10()
 ```
 
 
 ```{r}
-df_pc |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(refugee_asylum) |>
+df_ref |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(refugee_asylum) |>
   ggplot(aes(refugee_asylum, fill = income)) + geom_histogram(bins = 10, col = "black", linewidth = 0.2) + scale_x_log10()
 ```
 
 #### 二つ目の指標
 
 ```{r}
-df_pc |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(refugee_origin) |>
+df_ref |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(refugee_origin) |>
   ggplot(aes(refugee_asylum, fill = region)) + geom_histogram(bins = 10, col = "black", linewidth = 0.2) + scale_x_log10()
 ```
 
 
 ```{r}
-df_pc |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(refugee_origin) |>
+df_ref |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(refugee_origin) |>
   ggplot(aes(refugee_asylum, fill = income)) + geom_histogram(bins = 10, col = "black", linewidth = 0.2) + scale_x_log10()
 ```
 
@@ -303,35 +326,39 @@ df_pc |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(refugee
 #### a.  一つ目の指標：値が大きい方から
 
 ```{r}
-df_pc |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(refugee_asylum) |>
+df_ref |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(refugee_asylum) |>
   arrange(desc(refugee_asylum)) |> slice_head(n = 10) |>
-  ggplot(aes(fct_rev(fct_inorder(country)), refugee_asylum, fill = region)) + geom_col() + coord_flip() + labs(title = "難民受け入れの多い順")
+  ggplot(aes(fct_rev(fct_inorder(country)), refugee_asylum, fill = region)) + geom_col() + coord_flip() + labs(title = "難民受け入れの多い順", x = "")
 ```
 
 
 #### b.  一つ目の指標：値が小さい方から
 
 ```{r}
-df_pc |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(refugee_asylum) |>
+df_ref |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(refugee_asylum) |>
   arrange(refugee_asylum) |> slice_head(n = 10) |>
-  ggplot(aes(fct_rev(fct_inorder(country)), refugee_asylum, fill = region)) + geom_col() + coord_flip() + labs(title = "難民受け入れの少ない順")
+  ggplot(aes(fct_rev(fct_inorder(country)), refugee_asylum, fill = region)) + geom_col() + coord_flip() + labs(title = "難民受け入れの少ない順", x = "")
 ```
 
 #### a.  二つ目の指標：値が大きい方から
 
 ```{r}
-df_pc |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(refugee_origin) |>
+df_ref |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(refugee_origin) |>
   arrange(desc(refugee_origin)) |> slice_head(n = 10) |>
-  ggplot(aes(fct_rev(fct_inorder(country)), refugee_origin, fill = region)) + geom_col() + coord_flip() + labs(title = "難民の多い順")
+  ggplot(aes(fct_rev(fct_inorder(country)), refugee_origin, fill = region)) + geom_col() + coord_flip() + labs(title = "難民の多い順", x = "")
 ```
 
 #### b.  二つ目の指標：値が小さい方から
 
 ```{r}
-df_pc |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(refugee_origin) |>
+df_ref |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(refugee_origin) |>
   arrange(refugee_origin) |> slice_head(n = 10) |>
-  ggplot(aes(fct_rev(fct_inorder(country)), refugee_origin, fill = region)) + geom_col() + coord_flip() + labs(title = "難民の少ない順")
+  ggplot(aes(fct_rev(fct_inorder(country)), refugee_origin, fill = region)) + geom_col() + coord_flip() + labs(title = "難民の少ない順", x = "")
 ```
+
+**気づいたこと・疑問点**
+
+- これはあまり意味がないように見える。なぜ、五人なのか不明
 
 ### 6. 散布図
 
@@ -341,13 +368,13 @@ _LOG10 スケールを使っています。_
 
 ```{r}
 df_ref |> filter(!(iso2c %in% REGION)) |> drop_na(refugee_asylum, refugee_origin) |>
-  ggplot(aes(refugee_asylum, refugee_origin)) + geom_point() + scale_x_log10() + scale_y_log10() +
-  labs(title = "難民・受け入れ")
+  ggplot(aes(refugee_asylum, refugee_origin)) + geom_point(aes(col = region)) + scale_x_log10() + scale_y_log10() +
+  labs(title = "難民・受け入れ（log10 スケール）")
 ```
 
 **気づいたこと・疑問**
 
--   相関はみられない。
+-   相関はみられないが、地域性はみて取れるように思う。
 
 #### 近似（回帰）直線の表示
 
@@ -355,7 +382,7 @@ df_ref |> filter(!(iso2c %in% REGION)) |> drop_na(refugee_asylum, refugee_origin
 df_ref |> filter(!(iso2c %in% REGION)) |> drop_na(refugee_asylum, refugee_origin) |>
   ggplot(aes(refugee_asylum, refugee_origin)) + geom_point() + 
   geom_smooth(formula = 'y~x', method = "lm", se = FALSE) + scale_x_log10() + scale_y_log10() +
-  labs(title = "難民・受け入れ（回帰直線付）")
+  labs(title = "難民・受け入れ（回帰直線付）（log10 スケール）")
 ```
 
 **気づいたこと・疑問**
@@ -367,7 +394,7 @@ df_ref |> filter(!(iso2c %in% REGION)) |> drop_na(refugee_asylum, refugee_origin
 ```{r}
 df_ref |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
   drop_na(refugee_asylum, refugee_origin) |>
-  ggplot(aes(refugee_asylum, refugee_origin)) + geom_point() +　scale_x_log10() + scale_y_log10() +
+  ggplot(aes(refugee_asylum, refugee_origin)) + geom_point(aes(col = region)) +　scale_x_log10() + scale_y_log10() +
   labs(title = "2022年の難民相関")
 ```
 
@@ -387,7 +414,7 @@ df_ref |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |>
 
 **気づいたこと・疑問**
 
--   こちらも、弱い相関がありそうだ。
+-   こちらも、弱い相関があるように見える。
 
 #### c. 相関係数
 
