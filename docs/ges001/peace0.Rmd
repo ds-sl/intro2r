@@ -516,6 +516,43 @@ df_ref_long |> filter(country %in% regions) |> drop_na(value) |>
 ```
 
 ```{r}
-df_ref_long |> filter(country %in% regions, year >= 1990) |> filter(is.na(value))
+df_ref_long |> filter(country %in% regions, year >= 1990) |> filter(is.na(value)) 
 ```
 
+**気づいたこと・疑問**
+
+-   上のグラフでは、refugee_asylum と refugee_origin の数があっていないが、データがないというわけではなさそうだ。
+
+
+```{r}
+df_ref_long |> filter(country %in% c(regions, "World")) |> select(country, year, name, value) |>
+  pivot_wider(names_from = country, values_from = value) |> pivot_longer(-c(year, name, World), names_to = "country", values_to = "value") |> mutate(ratio = value/World) |> drop_na(ratio) |>
+  ggplot(aes(year, ratio, fill = country)) + 
+  geom_area(col = "black", linewidth = 0.1) +
+  facet_wrap(~name) + scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(title = "Refugee Ratio by Region of Asylum and Origin", fill = "", y = "") +
+  theme(legend.position = "top")
+```
+
+データに現れている、World の値から、百分率を出すと、上のグラフになるが、右の図は、全体で、100% になっていないので、それぞれの地域の和をとったもので割って、百聞率を出すと、下のようになる。
+
+```{r}
+df_ref |> filter(country %in% regions) |> 
+  select(country, year, refugee_asylum, refugee_origin) |> drop_na(refugee_origin) |> group_by(year) |> 
+  mutate(ASYLUM = refugee_asylum/sum(refugee_asylum), ORIGIN = refugee_origin/sum(refugee_origin)) |> ungroup() |>
+  pivot_longer(cols = c(ASYLUM, ORIGIN)) |>
+  ggplot(aes(year, value, fill = country)) + 
+  geom_area(col = "black", linewidth = 0.1) + 
+  facet_wrap(~name) + scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(title = "Refugee Ratio by Region of Asylum and Origin", fill = "", y = "") +
+  theme(legend.position = "top")
+```
+
+```{r}
+df_ref |> filter(country %in% regions) |> select(country, year, refugee_origin) |> drop_na(refugee_origin) |> group_by(year) |> 
+  mutate(ratio = refugee_origin/sum(refugee_origin)) |> ungroup() |>
+  ggplot(aes(year, ratio, fill = country)) + 
+  geom_area(col = "black", linewidth = 0.1) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(title = "Refugee Ratio by Region of Origin", fill = "", y = "")
+```
