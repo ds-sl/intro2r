@@ -1,0 +1,173 @@
+---
+title: "探究的データ分析：軍事費"
+author: "鈴木寛"
+date: "2024年2月20日"
+output:
+  html_notebook: default
+  word_document: default
+---
+
+# 軍事費・教育費
+
+> G7 (Group of Seven)、フランス（France）, アメリカ（United States）, 英国（United Kingdom）, ドイツ（Germany）, 日本（Japan）, イタリア（Italy）, カナダ（Canada）, と ヨーロッパ連合（EU, non-enumerated member) の軍事費と、教育費について、基本的なデータの分析を行う。
+
+```{r}
+G7 <- c("FR", "US", "GB", "DE", "JP", "IT", "CA", "EU")
+```
+
+## データ
+
+### データ情報
+
+-   軍事費（USD）Military expenditure (current USD)：MS.MIL.XPND.CD [[Link](https://data.worldbank.org/indicator/MS.MIL.XPND.CD)]
+
+-   軍事費（政府の総支出に対する率（%））Military expenditure (% of general government expenditure)：MS.MIL.XPND.ZS [[Link](https://data.worldbank.org/indicator/MS.MIL.XPND.ZS)]
+
+-   教育費（政府の総支出に対する率（%））Government expenditure on education, total (% of government expenditure)：SE.XPD.TOTL.GB.ZS [Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GB.ZS)]
+
+### データの取得
+
+#### 準備
+
+*これまでとも同じように二つのパッケージを読み込み（load）ます。*
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+Word など、他の文書作成のため、準備をします。
+
+```{r}
+library(showtext) 
+knitr::opts_chunk$set(fig.showtext=TRUE) 
+```
+
+*変数名を指定します。ここでは、`refugee_asylum` と、`refugee_origin` としました。なるべくわかりやすい名前にします。*
+
+*この変数名は、今後使いますから、重要です。一応、例として、わたしが使った、変数名を書いてあります。他の変数名を使っても構いません。`extra = TRUE` とすると、地域名（region）や、収入レベル（income）などが追加されます。*
+
+
+## データの取得
+
+```{r cache = TRUE}
+df_military_ed <- WDI(country = G7, indicator = c(military_usd = "MS.MIL.XPND.CD",
+                                                  military_gov = "MS.MIL.XPND.ZS", 
+                                                  education_gov = "SE.XPD.TOTL.GB.ZS"), 
+extra = TRUE) |>
+  select(country, iso2c, year, military_usd, military_gov, education_gov, region) 
+df_military_ed
+```
+
+```{r cache = TRUE}
+df_military_ed_long <- df_military_ed |> pivot_longer(military_usd:education_gov)
+```
+
+
+## 視覚化
+
+### 1. 各年毎のデータの数の棒グラフ
+
+```{r}
+df_military_ed_long |> drop_na(value) |> 
+  ggplot(aes(year, fill = name)) + geom_bar() + labs(title = "変数、年毎のデータの数")
+```
+
+**気づいたこと・疑問**
+
+-   データの指標ごとに、数が異なる。軍事費（USD）は、1960年から、すべてについてあるようだが、他はそれほど一定していない
+-   最近では、2020年は、すべての変数において、データが多いと思われる。
+
+### 2. 経年変化を表す折れ線グラフ
+
+#### 日本の軍事費と、教育費を、G7 の中で見る。
+
+７カ国＋EU なので、まずは、別々の指標ごとに、経年変化を調べる。
+
+```{r}
+df_military_ed |> drop_na(military_usd) |> 
+  ggplot(aes(year, military_usd, col = iso2c, size = iso2c)) + geom_line() + 
+  scale_y_log10() + scale_size_manual(values = c(0.3,0.3,0.3,0.3,0.3,0.3,0.7,0.3)) +
+  labs(title = "G7各国の軍事費（USD）の経年変化（log10 スケール）")
+```
+
+
+```{r}
+df_military_ed |> drop_na(military_gov) |> 
+  ggplot(aes(year, military_gov, col = iso2c, size = iso2c)) + geom_line() + scale_size_manual(values = c(0.3,0.3,0.3,0.3,0.3,0.3,0.7,0.3)) +
+  labs(title = "G7各国の軍事費（政府の総支出に対する率（%））の経年変化")
+```
+
+```{r}
+df_military_ed |> drop_na(education_gov) |> 
+  ggplot(aes(year, education_gov, col = iso2c, size = iso2c)) + geom_line() + scale_size_manual(values = c(0.3,0.3,0.3,0.3,0.3,0.3,0.7,0.3)) +
+  labs(title = "G7各国の教育費（政府の総支出に対する率（%））の経年変化")
+```
+
+**気づいたこと・疑問・備考**
+
+-   軍事費は、政府総支出に対する割合（％）でみると高くないが、総支出額でみると、アメリカを除くと、少ないとは言えない。
+-   教育費の政府総支出に対する割合（％）は減少しており、最低レベルと思われる。
+-   軍事費の総支出額は、アメリカが突出しているため、他の国について見分けるのが難しいので、log10 スケールを用いた。
+
+#### 日本と、日本以外のG7 の軍事費と教育費の（政府の総支出に対する率（%））
+
+```{r}
+df_military_ed_long |> filter(name != "military_usd", iso2c == "JP") |> drop_na(value) |>
+  ggplot(aes(year, value, col = name)) + geom_line() + 
+  labs(title = "日本の軍事費と教育費の（政府の総支出に対する率（%））")
+```
+
+```{r}
+df_military_ed_long |> filter(name != "military_usd", iso2c != "JP") |> drop_na(value) |>
+  ggplot(aes(year, value, col = name)) + geom_line() + facet_wrap(~country) +
+  labs(title = "日本以外のG7の軍事費と教育費の（政府の総支出に対する率（%））", 
+       x = "", y = "", col = "") +
+  theme(legend.position = "top")
+```
+
+**気づいたこと・疑問・備考**
+
+-   教育費の政府総支出に対する割合（％）は明らかに減少している。
+-   軍事費のアメリカの政府総支出に対する割合（％）のデータが欠落している。なぜなのだろうか。教育に関する政府支出の対GDP比率の指標 [Link](https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS?locations=US) のアメリカのデータはあるので、GDP の値と含めれば、計算できるように思う。
+
+### 4. 2020年の国別比較の棒グラフ
+
+```{r}
+df_military_ed |> filter(year == 2020) |> drop_na(military_usd) |> arrange(desc(military_usd)) |> 
+  ggplot(aes(fct_rev(fct_inorder(country)), military_usd, fill = region)) + geom_col() +
+  coord_flip() + labs(title = "軍事費（USD）の多い順", x = "")
+```
+
+```{r}
+df_military_ed |> filter(year == 2020) |> drop_na(military_gov) |> arrange(desc(military_gov)) |> 
+  ggplot(aes(fct_rev(fct_inorder(country)), military_gov, fill = region)) + geom_col() +
+  coord_flip() + labs(title = "軍事費（政府の総支出に対する率（%））の多い順", x = "")
+```
+
+**気づいたこと・疑問・備考**
+
+- 日本の軍事費のGDP費は、1.3%ぐらいだったと記憶しているので（要確認）それを、2% にあげるということは、1.5倍強ということになる。政府予算は、それほど上昇しないとすると、日本は、英国の次になる。額では、アメリカに次ぐレベルになることと思われる。周囲の国が心配するのは、当然に思う。
+
+
+```{r}
+df_military_ed |> filter(year == 2020) |> drop_na(education_gov) |> arrange(desc(education_gov)) |> 
+  ggplot(aes(fct_rev(fct_inorder(country)), education_gov, fill = region)) + geom_col() +
+  coord_flip() + labs(title = "教育費（政府の総支出に対する率（%））の多い順", x = "")
+```
+
+**気づいたこと・疑問・備考**
+
+- 経年変化のグラフで確認したように、日本は、最低レベルである。教育に投資しないで、将来的に大丈夫なのだろうか。
+
+```{r}
+df_military_ed |> filter(year == 2020) |> drop_na(military_gov, education_gov) |>
+  ggplot(aes(education_gov, military_gov, col = iso2c)) + geom_point() + geom_label(aes(label = iso2c), nudge_y = 0.1) + theme(legend.position = "none") + 
+  labs(title = "G7の2020年の教育費と軍事費の政府支出における割合の散布図", x = "教育費（政府の総支出に対する率（%））", y = "軍事費（政府の総支出に対する率（%））")
+```
+
+
+**気づいたこと・疑問**
+
+-   政府予算の傾向をみて取ることができる。日本は、社会保障費が高いのかもしれない。
+
