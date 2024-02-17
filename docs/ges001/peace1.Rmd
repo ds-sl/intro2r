@@ -4,6 +4,7 @@ author: "鈴木寛"
 date: "2024年2月20日"
 output:
   html_notebook: default
+  word_document: default
 ---
 
 # 難民人口
@@ -35,11 +36,18 @@ library(tidyverse)
 library(WDI)
 ```
 
+```{r}
+library(showtext) # グラフの日本語文字化けを防ぐため
+knitr::opts_chunk$set(fig.showtext=TRUE) # showtext_auto() でも文字化けは防げるが、タイトルなどの文字が小さくなる。
+```
+
 *変数名を指定します。ここでは、`refugee_asylum` と、`refugee_origin` としました。なるべくわかりやすい名前にします。*
 
 *この変数名は、今後使いますから、重要です。一応、例として、わたしが使った、変数名を書いてあります。他の変数名を使っても構いません。`extra = TRUE` とすると、地域名（region）や、収入レベル（income）などが追加されます。*
 
-```{r eval = FALSE}
+
+
+```{r eval = FALSE, cach = TRUE}
 df_refugee <- WDI(indicator = c(refugee_asylum = "SM.POP.REFG", 
                                  refugee_origin = "SM.POP.REFG.OR"),
                    extra = TRUE)
@@ -53,7 +61,7 @@ write_csv(df_refugee, "data/refugee.csv")
 
 *data ディレクトリから読み出します。Run All や、Run All Chunks Above をする時は、上の二つをスキップする設定にしてあります。*
 
-```{r}
+```{r cache = TRUE}
 df_refugee <- read_csv("data/refugee.csv")
 ```
 ### データの確認

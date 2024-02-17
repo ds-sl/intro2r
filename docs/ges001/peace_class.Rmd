@@ -3,9 +3,14 @@ title: "探索的データ分析 - EDA"
 author: "p000117x, Suzuki, Hiroshi 鈴木寛"
 date: "2024年2月13日"
 output:
-  html_notebook: default
   word_document: default
+  html_notebook: default
+#  pandoc_args: ["--variable=font_family:AppleGothic"]
 ---
+
+```{r}
+knitr::opts_chunk$set(out.extra = "```{r, font_family = 'Hiragino Sans'}")
+```
 
 ## 課題
 
@@ -100,8 +105,8 @@ library(WDI)
 
 ```{r}
 library(showtext)
-showtext_auto() 
-#showtext_auto(FALSE) 
+# showtext_auto() 
+showtext_auto(FALSE) 
 ```
 
 *変数名を指定します。ここでは、`refugee_asylum` と、`refugee_origin` としました。なるべくわかりやすい名前にします。*
