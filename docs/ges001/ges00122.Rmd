@@ -1,7 +1,7 @@
 ---
-title: "GES 001 演習8"
+title: "GES 001 演習9"
 author: "H. Suzuki"
-date: "2024年2月13日"
+date: "2024年2月20日"
 output:
   ioslides_presentation:
     widescreen: true
@@ -52,442 +52,69 @@ RStudio の場合には、自分の PC に作成したファイルがありま�
 
 期限：2023年2月17日23時59分（特別な理由がある場合は連絡してください）
 
-## 第8週
+## 探究的データ分析
 
-02/08(TH)　紛争と貧困の連鎖1
+- Posit Cloud について
+    - Error 137
+    - ファイルのダウンロードについて
+    - 難民についての課題について
 
-            紛争と貧困の連鎖2
+- 探索的データ分析 [リンク](https://ds-sl.github.io/intro2r/ges001/eda.nb.html)
 
-第8週と第9週では、戦争、気候変動、COVID-19の複合的要因が世界的な食糧危機を引き起こし、格差と貧困を加速させている現状について、議論します。
+## 第9週
 
-02/13(TU)　Rでデータサイエンス8：難民、軍事支出　 [[Main](https://ds-sl.github.io/intro2r/ges001/ges001-main.nb.html)]・[授業]
+02/15(TH)  紛争と貧困の連鎖3
 
-**Global Link-Refugees**
+　　　　　  紛争と貧困の連鎖を断ち切る方法
 
-Refugee population by country or territory of asylum：SM.POP.REFG [[Link](https://data.worldbank.org/indicator/SM.POP.REFG)]
+02/20(TU)　Rでデータサイエンス9：まとめと演習　
 
-Refugee population by country or territory of origin：SM.POP.REFG.OR [[Link](https://data.worldbank.org/indicator/SM.POP.REFG.OR)]
+レポート作成
 
-Net ODA received (% of GNI)：DT.ODA.ODAT.GN.ZS [[Link](https://data.worldbank.org/indicator/DT.ODA.ODAT.GN.ZS)]
+-   経済と経済学で使用したデータ：[リンク](https://ds-sl.github.io/intro2r/ges001/ges001data.nb.html)
 
-Net official development assistance and official aid received (current US\$)：DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
-
-Net ODA received (% of central government expense)：DT.ODA.ODAT.XP.ZS [[Link](https://data.worldbank.org/indicator/DT.ODA.ODAT.XP.ZS)]
-
-Military expenditure (current USD)：MS.MIL.XPND.CD [[Link](https://data.worldbank.org/indicator/MS.MIL.XPND.CD)]
-
-Military expenditure (% of general government expenditure)：MS.MIL.XPND.ZS [[Link](https://data.worldbank.org/indicator/MS.MIL.XPND.ZS)]
-
-Arms imports (SIPRI trend indicator values)：MS.MIL.MPRT.KD [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/MS.MIL.MPRT.KD)]
-
-Arms exports (SIPRI trend indicator values)：MS.MIL.XPRT.KD [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/MS.MIL.XPRT.KD)]
-
-
-
-## 探索的データ分析（EDA）ワークフロー
+## 探索的データ分析（EDA）
 
 -   表題 Title
--   概要 Abstract
+-   概要 Abstract（目的、焦点をあわせる指標や国のリストなど）
 -   データ情報：データ名、データコード、変数名、データ概要
 -   各項目に、気づいたこと、疑問などを記録（EDAの核となる部分です）
--   データの取得 - ダウンロードして保存しておく
-    -   準備：`library(tidyverse); library(WDI)`
-    -   `df_w6eda <- WDI(indicator = c(co2pcap = "EN.ATM.CO2E.PC",                           forest = "AG.LND.FRST.ZS"), extra = TRUE)`
-    -   *二つ以上の指標、それぞれに変数名* `co2pcap`, `forest`
-    -   追加情報：`extra = TRUE`; `region` 地域情報, `income` 収入レベル
-    -   データの確認：データが十分あるか、国名リスト、地域名リスト
--   分析する国のリスト：南部アフリカ関税同盟、国や地域を選択
-
-------------------------------------------------------------------------
-
-### 探索的データ分析（Exploratory Data Analysis）ワークフロー（続き）
-
--   分析・視覚化
+-   データの取得 - ダウンロードして保存しておくと良い
+-   分析・視覚化（探索的：試行と選択・指標や国リストなど修正・予想）
     -   各年毎のデータの数の棒グラフ
     -   経年変化
-        -   日本（身近な馴染みのあるデータを確認）
-        -   南部アフリカ関税同盟、選択した国・地域
     -   分布
-        -   ヒストグラム（年を指定した度数分布）
-        -   値が大きい10カ国とその値の棒グラフ
-        -   値が小さい10カ国とその値の棒グラフ
     -   相関
-        -   散布図（scatter plot）x-軸と、y-軸に、それぞれの変数をとる
-        -   相関係数
 
+-   コミュニケーション（発表・共有）
+    - 　報告・記録・スライド・論文など
 
-# 演習 2月13日（火）
-
-## 変形（transformation）
-
--   **行の選択**：`filter(country %in% c("Japan", "China")`, `distinct(country)`, `drop_na(value)`
-
--   **列の選択**：`select(country, iso2c, year, var1, var2, region)`
-
--   **横並びの変数を縦並びに**：name 列と、value 列を作り、var_1, var_2, ... , var_n を name 列に、対応する値を　value 列に
-
-    -   `pivot_longer(cols = c(var_1, var_2, ... , var_n))`
-
-    -   `pivot_longer(cols = c(female_unemploy, male_unemploy))`
-
-    -   `pivot_longer(cols = c(electricity_urban, electricity_rural))`
-
-    -   `pivot_longer(cols = electricity_urban:sanitation_rural))`
-
--   **活用：**`pivot_longer(cols = c(var1, var2))|> ggplot(aes(year, value, col = name) + geom_line()`
-
-## 箱ひげ図（boxplot）
-
-カテゴリ変数（country, region, income など）毎の分布を描く
-
--   `ggplot(aes(categorical_var, numerical_var)) + geom_boxplot()`
-
--   `ggplot(aes(region, electricity_urban)) + geom_boxplot()`
-
--   `ggplot(aes(income, electricity_rural)) + geom_boxplot()`
-
--   `pivot_longer(cols = c(var1, var2)) |> ggplot(aes(name, value)) + geom_boxplot()`
-
--   year は、整数なので数値変数（numerical variable）。これを カテゴリー変数として扱うためには、`factor(yea`r) を使う。`x` 軸のラベルなどはあとから修正が必要。
-
-    -   `filter(year %in% c(1960,1990,2020))|> ggplot(aes(factor(year), var)) + geom_boxplot()`
-
-
-## 内容
-
--   Refugee population by country or territory of asylum：SM.POP.REFG [[Link](https://data.worldbank.org/indicator/SM.POP.REFG)]
-
--   Refugee population by country or territory of origin：SM.POP.REFG.OR [[Link](https://data.worldbank.org/indicator/SM.POP.REFG.OR)]
-
--   Net ODA received (% of GNI)：DT.ODA.ODAT.GN.ZS [[Link](https://data.worldbank.org/indicator/DT.ODA.ODAT.GN.ZS)]
-
--   Net official development assistance and official aid received (current US\$)：DT.ODA.ALLD.CD [[Link](https://data.worldbank.org/indicator/DT.ODA.ALLD.CD)]
-
--   Net ODA received (% of central government expense)：DT.ODA.ODAT.XP.ZS [[Link](https://data.worldbank.org/indicator/DT.ODA.ODAT.XP.ZS)]
-
--   Military expenditure (current USD)：MS.MIL.XPND.CD [[Link](https://data.worldbank.org/indicator/MS.MIL.XPND.CD)]
-
--   Military expenditure (% of general government expenditure)：MS.MIL.XPND.ZS [[Link](https://data.worldbank.org/indicator/MS.MIL.XPND.ZS)]
-
--   Arms imports (SIPRI trend indicator values)：MS.MIL.MPRT.KD [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/MS.MIL.MPRT.KD)]
-
--   Arms exports (SIPRI trend indicator values)：MS.MIL.XPRT.KD [[Link](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/MS.MIL.XPRT.KD)]
-
-------------------------------------------------------------------------
-
-### データの取得
-
-#### 準備
-
-```{r}
-library(tidyverse)
-library(WDI)
-```
-
-------------------------------------------------------------------------
-
-```{r eval=FALSE}
-df_peace <- WDI(
-  indicator = c(refugee_asylum = "SM.POP.REFG",
-                refugee_origin = "SM.POP.REFG.OR",
-                oda_gni = "DT.ODA.ODAT.GN.ZS",
-                oda_usd = "DT.ODA.ALLD.CD",
-                oda_gov = "DT.ODA.ODAT.XP.ZS",
-                military_usd = "MS.MIL.XPND.CD",
-                military_gov = "MS.MIL.XPND.ZS",
-                arms_imports = "MS.MIL.MPRT.KD",
-                arms_exports = "MS.MIL.XPRT.KD"), extra = TRUE)
-```
-
-```{r eval=FALSE}
-write_csv(df_peace, "data/peace.csv")
-```
-
-```{r}
-df_peace <- read_csv("data/peace.csv")
-```
-
-------------------------------------------------------------------------
-
-### データの確認
-
-```{r}
-df_peace
-```
-
-------------------------------------------------------------------------
-
-### データの変数（列）の確認
-
-```{r}
-str(df_peace)
-```
-
-------------------------------------------------------------------------
-
-### 変形
-
-#### 変数の選択（selecting）
-
-```{r}
-df_pc <- df_peace |> 
-  select(country, iso2c, year, refugee_asylum:arms_exports, region, income)
-df_pc
-```
-
-------------------------------------------------------------------------
-
-### 縦長の表（Long Table）に変換
-
-```{r}
-df_pc_long <- df_pc |> 
-  pivot_longer(refugee_asylum:arms_exports)
-df_pc_long
-```
-
-------------------------------------------------------------------------
-
-### 各年毎のデータの数の確認
-
-```{r}
-df_pc_long |> drop_na(value) |> 
-  ggplot(aes(year)) + geom_bar()
-```
-
-------------------------------------------------------------------------
-
-#### 各指標ごとに積み上げ棒グラフにしてみます
-
-`fill` を `col` に変えるとどうなるでしょうか。
-
-```{r}
-df_pc_long |> drop_na(value) |> 
-  ggplot(aes(year, fill = name)) + geom_bar()
-```
-
-**気づいたこと、疑問**
-
-------------------------------------------------------------------------
-
-### 国と地域
-
-#### 地域の `iso2c` コード
-
-country には、国と地域両方が入っています。地域の iso2c は以下のものです。
-
-```{r}
-REGION <- c("1A", "1W", "4E", "6F", "6N", "6X", "7E", "8S", "A4", "A5", 
-"A9", "B1", "B2", "B3", "B4", "B6", "B7", "B8", "C4", "C5", "C6", 
-"C7", "C8", "C9", "D2", "D3", "D4", "D5", "D6", "D7", "EU", "F1", 
-"F6", "M1", "M2", "N6", "OE", "R6", "S1", "S2", "S3", "S4", "T2", 
-"T3", "T4", "T5", "T6", "T7", "V1", "V2", "V3", "V4", "XC", "XD", 
-"XE", "XF", "XG", "XH", "XI", "XJ", "XL", "XM", "XN", "XO", "XP", 
-"XQ", "XT", "XU", "XY", "Z4", "Z7", "ZB", "ZF", "ZG", "ZH", "ZI", 
-"ZJ", "ZQ", "ZT")
-```
-
-------------------------------------------------------------------------
-
-#### 地域のリストを表示
-
-```{r eval=FALSE}
-df_pc |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
-```
-
-------------------------------------------------------------------------
-
-#### 国名とその地域・所得レベルを表示
-
-```{r eval=FALSE}
-df_pc |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c,region,income)
-```
-
-------------------------------------------------------------------------
-
-### 国や地域の選択
-
-```{r}
-ASEAN <- c("BN", "KH", "ID", "LA", "MY", "MM", "PH", "SG", "VN")
-```
-
-```{r}
-BRICS <- c("Brazil", "Russian Federation", "India", "China", "South Africa")
-```
-
-```{r}
-SACU <- c("South Africa", "Namibia", "Eswatini", "Botswana", "Lesotho")
-```
-
-```{r}
-CHOSEN_COUNTRIES <- c("Suriname", "Belize", "Brazil", "Colombia")
-```
-
-------------------------------------------------------------------------
-
-### 変数同士の相関関係: NA ではないところのみ選択
-
-```{r}
-df_peace |> filter(!(iso2c %in% REGION)) |> # 地域以外（国のみ選択）
-  drop_na(refugee_asylum:arms_exports) |> 
-  select(refugee_asylum:arms_exports) |> cor()
-```
-
-値の正負：正の相関・負の相関、1に近いと強い正の相関、-1に近いと強い負の相関
-
-相関係数：散布図の近似（回帰）直線の傾きが正なら正、負なら負、直線に近い程、1 または-1 に近い
-
-------------------------------------------------------------------------
-
-### 経年変化
-
-### a. 日本
-
-```{r}
-df_pc_long |> filter(country == "Japan") |> drop_na(value) |>
-  ggplot(aes(year, value, col = name)) + geom_line()
-```
-
-------------------------------------------------------------------------
-
-```{r}
-df_pc_long |> filter(country == "Japan") |> drop_na(value)
-```
-
-------------------------------------------------------------------------
-
-```{r}
-df_pc_long |> filter(iso2c %in% ASEAN) |> drop_na(value) |>
-  ggplot(aes(year, value, col = country, linetype = name)) + geom_line()
-```
-
-------------------------------------------------------------------------
-
-```{r}
-df_pc_long |> filter(iso2c %in% ASEAN) |> drop_na(value) |> 
-  filter(value < 80) |>
-  ggplot(aes(year, value, col = country, linetype = name)) + geom_line()
-```
-
-------------------------------------------------------------------------
-
-```{r}
-df_pc_long |> filter(country %in% SACU) |> drop_na(value) |>
-  ggplot(aes(year, value, col = country, linetype = name)) + geom_line()
-```
-
-------------------------------------------------------------------------
-
-### 箱ひげ図（Boxplot）
-
-```{r}
-df_pc_long |> filter(name == "refugee_asylum") |> 
-  filter(region != "Aggregates") |> drop_na(value) |>
-  ggplot(aes(region, value)) + geom_boxplot() + coord_flip()
-```
-
----
-
-```{r}
-df_pc_long |> filter(name == "refugee_asylum") |> 
-  filter(region != "Aggregates") |> drop_na(value) |>
-  ggplot(aes(region, value)) + geom_boxplot() + scale_y_log10() + coord_flip()
-```
-
-------------------------------------------------------------------------
-
-```{r}
-df_peace |> filter(region != "Aggregates") |> drop_na(refugee_asylum) |>
-  ggplot(aes(region, refugee_asylum)) + geom_boxplot() + scale_y_log10() + coord_flip()
-```
-
-------------------------------------------------------------------------
-
-```{r}
-df_pc_long |> filter(name %in% c("refugee_asylum", "refugee_origin")) |> 
-  filter(income != "Aggregates") |> drop_na(value) |>
-  ggplot(aes(income, value, fill = name)) + geom_boxplot() + scale_y_log10() + coord_flip()
-```
-
-------------------------------------------------------------------------
-
-```{r fig.height=7, fig.width=7}
-df_pc_long |> filter(income != "Aggregates", income != "Not classified") |> drop_na(value) |>
-  ggplot(aes(income, value, fill = name)) + geom_boxplot() + scale_y_log10() + coord_flip()
-```
+# 演習 2月20日（火）
 
 ## ファイルリンク
 
 基本的には、PositCloud（<https://posit.cloud/>）を使って実習
 
 -   探索的データ分析（EDA） -
-    -   課題1+2:例 平和（peace.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/peace.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/peace.Rmd)]
-    -   課題1+2：テンプレート：w8eda_template.Rmd [[リンク](https://ds-sl.github.io/intro2r/ges001/w8eda_template.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w8eda_template.Rmd)]
-
-**2023.2.17.23:59** までに Moodle の課題２提出ボックスに提出してください。
-
-できたグラフだけでも構いませんから、期限までに提出してください。解説を加え、課題２再提出ボックスを作成する予定です。
-
-## 課題2
-
-以下の指標の中から、二つ以上（複数）を選択して、データの概要（description）を記録し、データを WDI で取得し、以下の分析をする。
-
-1 各年毎のデータの数の棒グラフ
-
-2 経年変化を表す折れ線グラフ a. 日本、またはデータがある国 b. 選択したいくつかの国
-
-3 複数の指標の値を一列に含む縦長の表（Long Table）を作成し 　 a. 日本、またはデータがある国の、複数の指標を色分けした経年変化のグラフ 　 b. 選択したいくつかの国についての経年変化のグラフを、国を色分けし、指標は線の種類を変えたグラフ
-
-------------------------------------------------------------------------
-
-### 課題2 つづき
-
-4 二つのデータの散布図- NA は取り除くこと。（log10 スケールを用いる場合は値が正のもののみに限定） a. （地域を除き）国のみの散布図 （近似（回帰）直線を表示） b. 最近の年の（地域を除き）国のみの散布図　（近似（回帰）直線を表示） c. b に対応する相関係数
-
-5 カテゴリー変数（Categorical Variable: region, income, year など）と、数値変数（Numberical Variable）一組についての箱ヒゲ図（Boxplot）
-
-それぞれについて考察（気づいたこと、疑問など）を記す
-
-**2023.2.17.23:59** までに Moodle の課題２追加提出ボックスに提出してください。
-
-------------------------------------------------------------------------
-
-### 確認作業
-
--   Preview で確認。
-
--   Web Browser で、w5_c123456.nb.html など、R Notebook を見て確認。
-
--   もし、問題があれば、Run ボタンの右の三角から、Run All を選択し、エラーがでないか確認。
-
--   最初にもどる。
-
-------------------------------------------------------------------------
-
-### エラー対応
-
--   入力したときには、例を参照して、スペルを確認。全角や変数名の空白は問題を起こす。括弧　() や引用符がペアでマッチしているか、確認。引用符が入っていなかったり、== のところが、= だったり、Error は様々。
--   File not found のときは、データを読み込むコードを再実行。それでもうまくいかないときは、data フォルダに、データ（\*\*\*.csv）が入っているかを確認、なければ、data フォルダがあることを確認、なければ作成して読み込みを実行。
--   Object not found のエラーがでたときには、上から順に、Run （Code Chunk の右上の三角印を押して実行）。または、エラー箇所にカーソルを置き、Run ボタンの右の三角から、Run All Chunks Above を選択して実行。
--   実行できていても、結果が見えないことがある。そのときは、Code Chunk の下にある、山二つの記号を押す。結果の表示、非表示の切り替え。
--   Error message を読む。エラーが出た Code Chunk と、Error message を、ChatGPT や、Google Bard, Google Search に入れ解決方法を探る。
--   Posit.Cloud で、Error 137 が出た時はメモリーオーバーなので、例など不要な部分を削除。ただし、一番上の、YAML は、かならず残すこと。
+    -   軍事費（military.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/military.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/military.Rmd)]
+    -   例：難民（peace1.Rmd）PositCloud で作成 [[リンク](https://ds-sl.github.io/intro2r/ges001/peace1.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/peace1.Rmd)]
+    -   例：難民（peace0.Rmd）RStudio で完成させたもの
+[[リンク](https://ds-sl.github.io/intro2r/ges001/peace0.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/peace0.Rmd)]
+    -   R Markdown いろいろな形式での出力
+[[リンク](https://ds-sl.github.io/intro2r/Rmarkdown-J.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/Rmakdown-J.Rmd)]
 
 ## 参考文献
 
--   課題1：解説 [リンク](https://ds-sl.github.io/intro2r/ges001/w5a_response.nb.html)・解答例 [リンク](https://ds-sl.github.io/intro2r/ges001/w5eda0.nb.html)
-<!-- -   第6週演習：解答例 [リンク](https://ds-sl.github.io/intro2r/ges001/w6eda0.nb.html) -->
--   探索的データ分析（課題2の解説にかえて）in progress [リンク](https://ds-sl.github.io/intro2r/ges001/eda.nb.html)
+探索的データ分析 [[リンク](https://ds-sl.github.io/intro2r/ges001/eda.nb.html)]・課題1：解説 [[リンク](https://ds-sl.github.io/intro2r/ges001/w5a_response.nb.html)]・解答例 [[リンク](https://ds-sl.github.io/intro2r/ges001/w5eda0.nb.html)]・第6週演習：解答例（課題２の解説にかえて）[[リンク](https://ds-sl.github.io/intro2r/ges001/w6eda0.nb.html)]・経済と経済学演習ホーム [[リンク](https://ds-sl.github.io/intro2r/ges001/)]
 
-1.  「みんなのデータサイエンス - Data Science for All」[[はじめてのデータサイエンス](https://icu-hsuzuki.github.io/ds4aj/first-example.html#first-example)]
+1.  「みんなのデータサイエンス - Data Science for All」[[リンク](https://icu-hsuzuki.github.io/ds4aj/)]
 
-    <!-- -   導入として、GDP（国内総生産）のデータを使って説明しています。 -->
-
-2.  Posit Recipes（旧 Posit Primers）: The Basics 対話型の演習サイトの最初 [[Link](https://posit.cloud/learn/recipes)]
+2.  Posit Recipes（旧 Posit Primers）: 基本的な事項の解説 [[Link](https://posit.cloud/learn/recipes)]
 
 3.  Posit Cheat Sheet. 早見表です。印刷して使うために、PDF も提供しています。[[Site Link](https://rstudio.github.io/cheatsheets/)]
 
 4.  DataCamp Cheat Sheet: Tidyverse for Biginners. データサイエンスの教育をしている会社の早見表の一つです。基本が簡単にまとまっています。[[Link](https://images.datacamp.com/image/upload/v1676302697/Marketing/Blog/Tidyverse_Cheat_Sheet.pdf)]
 
-5.  箱ひげ図の見方 [Link](https://bellcurve.jp/statistics/course/5220.html)、外れ値検出のある箱ひげ図 [Link](https://bellcurve.jp/statistics/course/5222.html)
+5.  箱ひげ図の見方 [[リンク](https://bellcurve.jp/statistics/course/5220.html)]、外れ値検出のある箱ひげ図 [[リンク](https://bellcurve.jp/statistics/course/5222.html)] などさまざまな情報あり
 
 6.  Video: [Histogram](https://vimeo.com/221607341), [Boxplot](https://vimeo.com/222358034)
