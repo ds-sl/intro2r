@@ -392,7 +392,18 @@ Refugee population by country or territory of origin：SM.POP.REFG.OR
 
 　　　　　  紛争と貧困の連鎖を断ち切る方法
 
-02/20(TU)　Rでデータサイエンス9：まとめと演習　[授業資料]
+02/20(TU)　Rでデータサイエンス9：まとめと演習　[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00122.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00122.nb.html)]・[[ビデオ]()]
+
+#### 演習
+
+-   探索的データ分析（EDA） ：レポート作成にむけて
+    -   軍事費（military.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/military.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/military.Rmd)]
+    -   例：難民（peace1.Rmd）PositCloud で作成 [[リンク](https://ds-sl.github.io/intro2r/ges001/peace1.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/peace1.Rmd)]
+    -   例：難民（peace0.Rmd）RStudio で完成させたもの
+[[リンク](https://ds-sl.github.io/intro2r/ges001/peace0.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/peace0.Rmd)]
+    -   R Markdown いろいろな形式での出力
+[[リンク](https://ds-sl.github.io/intro2r/Rmarkdown-J.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/Rmakdown-J.Rmd)]
+
 
 ### 第10週
 
@@ -432,6 +443,8 @@ Moodle 内の、課題・質問提出ボックスに、提出してください�
 
 - 探索的データ分析 [[EDA](https://ds-sl.github.io/intro2r/ges001/eda.nb.html)]
     - このコース（演習）のまとめとして、一つ一つのステップを説明したものです。断片的に、演習内で説明したことがほとんどですが、演習では、取り扱わなかった、ほとんど扱えなかったことは、参考としてあります。左の目次からも飛べますから、上からすべて読まなくてもよいように構成してありますが、できれば、ざっと読んでから、必要に応じて、参照するのがよいと思います。
+  
+- 経済と経済学で使用したデータ：[リンク](https://ds-sl.github.io/intro2r/ges001/ges001data.nb.html)
 
 1.  「みんなのデータサイエンス - Data Science for All」[[Link](https://icu-hsuzuki.github.io/ds4aj/index.html)]
 
@@ -443,7 +456,7 @@ Moodle 内の、課題・質問提出ボックスに、提出してください�
 
 4.  Y. Xie et al. *R Markdown Cookbook,* RMarkdown の詳細が書かれています。デジタルでの翻訳版 R Markdown クックブックも、上の、Bookdown Site に公開されています。[[Link](https://bookdown.org/yihui/rmarkdown/)] [[日本語版 Link](https://gedevan-aleksizde.github.io/rmarkdown-cookbook/)]
 
-5.  Posit Recipes（旧 Posit Primers）: The Basics 対話型の演習サイトの最初 [[Link](https://posit.cloud/learn/recipes)]
+5.  Posit Recipes（旧 Posit Primers）: 基本的な情報が書かれています [[Link](https://posit.cloud/learn/recipes)]
 
 6.  Cheat Sheet. 早見表です。印刷して使うために、PDF も提供しています。[[Site Link](https://rstudio.github.io/cheatsheets/)]
 

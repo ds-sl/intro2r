@@ -1,0 +1,47 @@
+---
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+
+```{r}
+WDI(country = "EU", indicator = "MS.MIL.XPRT.KD")
+```
+
+```{r}
+WDIsearch("MS.MIL.XPRT.KD", field = "indicator", short = FALSE, cache = wdicache)
+```
+
+```{r}
+MS_MIL_XPRT_KD <- read_csv("data/MS.MIL.XPRT.KD.csv", 
+    col_types = cols(Time = col_integer(), 
+        `Time Code` = col_skip(), `Arms exports (SIPRI trend indicator values) [MS.MIL.XPRT.KD]` = col_double()), 
+    na = "NA")
+write_csv(MS_MIL_XPRT_KD, "data/arms_exports.csv")
+```
+
+```{r}
+df_arms_exports <- read_csv("data/arms_exports.csv")
+df_arms_exports <- df_arms_exports |> select(country = `Country Name`, iso3c = `Country Code`, year = Time, arms_exports = `Arms exports (SIPRI trend indicator values) [MS.MIL.XPRT.KD]`) |> arrange(country, year)
+write_csv(df_arms_exports, "data/arms_exports.csv")
+```
+
+```{r}
+df_arms_exports <- read_csv("data/arms_exports.csv")
+df_arms_exports
+```
+
+```{r}
+df_arms_exports |> distinct(country, iso3c)
+```
+
+```{r}
+df_test <- left_join(df_unemploy, df_arms_exports, by = c("country", "iso3c", "year"))
+df_test
+```
+
+

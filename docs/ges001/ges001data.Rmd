@@ -20,9 +20,13 @@ output:
 
 12/19(TU)　Rでデータサイエンス2：人口の少子高齢化　 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00101.html)]・[[RNotebook](https://ds-sl.github.io/intro2r/ges001/ges00101.nb.html)]・[[ビデオ](https://youtu.be/AFNVhNdWZ_Y)]
 
--   **人口動態 [**[R Notebook](https://ds-sl.github.io/intro2r/ges001/demography.nb.html)**]**
+-   **人口動態 [[R Notebook](https://ds-sl.github.io/intro2r/ges001/demography.nb.html)**]
 
 #### 世界開発指標（World Development Indicators）[[Link](https://datatopics.worldbank.org/world-development-indicators/)]
+
+-   コース全体で、世界開発指標を利用します。授業で利用する指標は、海蔵寺先生に選択していただいたものですが、リンク先の Data Themes などから、データを探すことができます。データ名だけでなく、下でも示しているように、データ ID（データコードとも呼ばれる）や、リンクを控えておくと、あとから、データ概要などを探す時にも役に立ちます。概要は、Details に書かれています。
+
+-   他に `WDIsearch()` という、WDI パッケージの関数を利用することも可能です。このファイルの一番下を参照してください。
 
 **People- Population dynamics**
 
@@ -195,3 +199,122 @@ output:
 ### 第10週
 
 02/27(TU)　まとめ
+
+## WDI パッケージでデータを探す方法
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+WDI パッケージには、WDIsearch() という、データを探す機能も付属しています。また、WDIcache() で、メタデータ（データのデータ、データ情報）の最新情報を入手しておくと、検索も素早く行うことができます。
+
+詳細は、Help の検索窓に、WDIsearch と入れて、調べてください。みんなの[データサイエンスの当該箇所](<https://icu-hsuzuki.github.io/ds4aj/worldbank.html#worldbank>)にも書かれています。
+
+### 簡単な検索
+
+WDIsearch("検索語") とすると、検索語が、指標名（name）に現れる指標を検索してくれます。次の例では、313 の指標を返しています。
+
+```{r}
+WDIsearch("poverty")
+```
+
+とすると 71 に減りました。
+
+```{r}
+WDIsearch("poverty line")
+```
+
+### 概要を入手
+
+short = FALSE を加えると、概要（description）も得られます。
+
+```{r}
+WDIsearch("refugee", short = FALSE)
+```
+
+### 指標（ID）から検索
+
+指標がわかっていて、その詳細情報（名前や概要）が必要な時は、次のようにします。
+
+```{r}
+WDIsearch("SM.POP.REFG.OR", field = "indicator", short = FALSE)
+```
+
+### 他の検索
+
+実は、WDIsearch("refugee") や、WDIsearch("refugee", short = FALSE) では、初期値として、field = "name" として入っているので、書かなくて良いのでした。"indicator" を "description", "sourceDatabase", "sourceOrganization" に変更すると、そこに含まれる情報を入手できます。
+
+```{r}
+WDIsearch("UNICEF", field = "sourceOrganization")
+```
+
+### 高度な検索
+
+`WDIcache()` で最新情報にアップデートしておくと、いろいろと便利です。
+
+```{r include = FALSE}
+wdicache <- read_rds("data/wdicache.rds")
+```
+
+
+```{r eval = FALSE}
+wdicache <- WDIcache()
+```
+
+下の結果から、series と country の二つのデータ（data.frame）からなっていることがわかります。series には、すべての指標（WDI）情報、country には、すべての国の情報が含まれています。
+
+```{r}
+wdicache |> str(max.level = 1)
+```
+
+```{r}
+wdicache$series
+```
+
+```{r}
+wdicache$country
+```
+
+ですから、あとは、indicator を探すときは、wdicache$series を使って、filter などでとれば良いことになります。一応、列を確認しておきます。
+
+```{r}
+wdicache$series |> str()
+```
+
+filter は一般的には、一致したものしか、探せませんが、grepl を使うことで、検索語を含むものを探すことにも対応しています。
+
+grepl("検索語", 列名, ignore.case = TRUE) として、検索すれば、検索語が現れるものを探してくれます。
+
+```{r}
+wdicache$series |> filter(grepl("women and girls", name, ignore.case = TRUE)) |>
+  filter(grepl("UNICEF", sourceOrganization, ignore.case = TRUE))
+```
+
+大きなファイルなので、保存しておいて、使うとよいのですが、data.frame ではないので、他の方法で保存することが必要です。
+
+```{r eval = FALSE}
+write_rds(wdicache, "data/wdicache.rds")
+```
+
+
+### `extra = TRUE`
+
+WDI でデータを読み込む時に、最後に、extra = TRUE とつけると、地域（region）や、所得レベル（income）情報も一緒に読み込んでくれました。実は、これは、2012 年の基準になっており、世界銀行では、これを、毎年、更新しています。その情報も、wdicache に入っています。そこで、extra = TRUE として読み込む時には、次のようにするのがより正確です。
+
+```{r}
+ASEAN <- c("BN", "KH", "ID", "LA", "MY", "MM", "PH", "SG", "VN")
+```
+
+読み込む時には、国名を指定すれば、データが小さくて住みますから、今回は、ASEAN のデータだけ読んでみましょう。まずは、wdicache なし。
+
+```{r}
+df_pcap <- WDI(indicator = c(gdppcap = "NY.GDP.PCAP.PP.KD"), extra = TRUE)
+df_pcap |> distinct(country, iso2c, region, income)
+```
+
+```{r}
+df_pcap_cache <- WDI(indicator = c(gdppcap = "NY.GDP.PCAP.PP.KD"), extra = TRUE, cache = wdicache)
+df_pcap_cache |> distinct(country, iso2c, region, income)
+```
+
