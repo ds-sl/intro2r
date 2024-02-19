@@ -101,21 +101,21 @@ df_military_ed_long |> drop_na(value) |>
 
 ```{r}
 df_military_ed |> drop_na(military_usd) |> 
-  ggplot(aes(year, military_usd, col = iso2c, size = iso2c)) + geom_line() + 
-  scale_y_log10() + scale_size_manual(values = c(0.3,0.3,0.3,0.3,0.3,0.3,0.7,0.3)) +
+  ggplot(aes(year, military_usd, col = iso2c, linewidth = iso2c)) + geom_line() + 
+  scale_y_log10() + scale_linewidth_manual(values = c(0.3,0.3,0.3,0.3,0.3,0.3,0.7,0.3)) +
   labs(title = "G7各国の軍事費（USD）の経年変化（log10 スケール）")
 ```
 
 
 ```{r}
 df_military_ed |> drop_na(military_gov) |> 
-  ggplot(aes(year, military_gov, col = iso2c, size = iso2c)) + geom_line() + scale_size_manual(values = c(0.3,0.3,0.3,0.3,0.3,0.3,0.7,0.3)) +
+  ggplot(aes(year, military_gov, col = iso2c, linewidth = iso2c)) + geom_line() + scale_linewidth_manual(values = c(0.3,0.3,0.3,0.3,0.3,0.3,0.7,0.3)) +
   labs(title = "G7各国の軍事費（政府の総支出に対する率（%））の経年変化")
 ```
 
 ```{r}
 df_military_ed |> drop_na(education_gov) |> 
-  ggplot(aes(year, education_gov, col = iso2c, size = iso2c)) + geom_line() + scale_size_manual(values = c(0.3,0.3,0.3,0.3,0.3,0.3,0.7,0.3)) +
+  ggplot(aes(year, education_gov, col = iso2c, linewidth = iso2c)) + geom_line() + scale_linewidth_manual(values = c(0.3,0.3,0.3,0.3,0.3,0.3,0.7,0.3)) +
   labs(title = "G7各国の教育費（政府の総支出に対する率（%））の経年変化")
 ```
 
