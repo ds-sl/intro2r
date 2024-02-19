@@ -318,3 +318,8 @@ df_pcap_cache <- WDI(indicator = c(gdppcap = "NY.GDP.PCAP.PP.KD"), extra = TRUE,
 df_pcap_cache |> distinct(country, iso2c, region, income)
 ```
 
+## Advanced 
+
+WDI にアクセスできなかった時には、次のような方法も可能です。
+
+[Bulk Download of World Bank Data](https://ds-sl.github.io/intro2r/wdi_bulkdownload.nb.html)
