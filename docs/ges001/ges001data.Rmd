@@ -306,20 +306,52 @@ WDI でデータを読み込む時に、最後に、extra = TRUE とつけると
 ASEAN <- c("BN", "KH", "ID", "LA", "MY", "MM", "PH", "SG", "VN")
 ```
 
-読み込む時には、国名を指定すれば、データが小さくて住みますから、今回は、ASEAN のデータだけ読んでみましょう。まずは、wdicache なし。
+読み込む時には、国名を指定すれば、データが小さくてすみますから、今回は、ASEAN のデータだけ読んでみましょう。まずは、wdicache なし。
+
 
 ```{r}
-df_pcap <- WDI(indicator = c(gdppcap = "NY.GDP.PCAP.PP.KD"), extra = TRUE)
+df_pcap <- WDI(country = ASEAN, indicator = c(gdppcap = "NY.GDP.PCAP.PP.KD"), extra = TRUE)
 df_pcap |> distinct(country, iso2c, region, income)
 ```
 
+_2024年2月20日6:48a.m. 時点で下のようなメッセージが出ます。これは、データアップデートのためのメインテナンスだと思われます。_
+
+```
+WDI(indicator = c(gdppcap = "NY.GDP.PCAP.PP.KD"), extra = TRUE) でエラー: 
+  The following indicators could not be downloaded: NY.GDP.PCAP.PP.KD.
+
+Please make sure that you are running the latest version of the `WDI` package, and that the arguments you are using in the `WDI()` function are valid.
+
+Sometimes, downloads will suddenly stop working, even if nothing has changed in the R code of the WDI package. ("The same WDI package version worked yesterday!") In those cases, the problem is almost certainly related to the World Bank servers or to your internet connection.
+
+You can check if the World Bank web API is currently serving the indicator(s) of interest by typing a URL of this form in your web browser:
+
+https://api.worldbank.org/v2/en/country/all/indicator/NY.GDP.PCAP.PP.KD?format=json&date=:&per_page=32500&page=1
+```
+
 ```{r}
-df_pcap_cache <- WDI(indicator = c(gdppcap = "NY.GDP.PCAP.PP.KD"), extra = TRUE, cache = wdicache)
+df_pcap_cache <- WDI(country = ASEAN, indicator = c(gdppcap = "NY.GDP.PCAP.PP.KD"), extra = TRUE, cache = wdicache)
 df_pcap_cache |> distinct(country, iso2c, region, income)
+```
+
+### クラスで使ったデータをダウンロードする方法
+
+1. 次のサイトにアクセスします：[リンク](https://github.com/ds-sl/intro2r/tree/main/docs/ges001/data)
+2. データを探します。見つかったら、Download Raw を選択すると、ダウンロードできます。
+
+3. または、Raw を選択します。このページの URL を、Browser の窓から取得します。
+
+例：https://raw.githubusercontent.com/ds-sl/intro2r/main/docs/ges001/data/gini.csv
+
+これを、引用符で囲い、下のように、read_csv で読み込み、データに名前をつけます。あとは、いつもと同じです。
+
+```{r}
+df_gini <- read_csv("https://raw.githubusercontent.com/ds-sl/intro2r/main/docs/ges001/data/gini.csv")
+df_gini
 ```
 
 ## Advanced 
 
 WDI にアクセスできなかった時には、次のような方法も可能です。
 
-[Bulk Download of World Bank Data](https://ds-sl.github.io/intro2r/wdi_bulkdownload.nb.html)
+[Bulk Download of World Bank Data](https://ds-sl.github.io/intro2r/da4r/wdi_bulkdownload.nb.html)

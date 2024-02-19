@@ -50,12 +50,27 @@ knitr::opts_chunk$set(fig.showtext=TRUE)
 
 ## データの取得
 
-```{r cache = TRUE}
+```{r cache = TRUE, eval = FALSE}
 df_military_ed <- WDI(country = G7, indicator = c(military_usd = "MS.MIL.XPND.CD",
                                                   military_gov = "MS.MIL.XPND.ZS", 
                                                   education_gov = "SE.XPD.TOTL.GB.ZS"), 
 extra = TRUE) |>
   select(country, iso2c, year, military_usd, military_gov, education_gov, region) 
+df_military_ed
+```
+
+```{r eval = FALSE}
+write_csv(df_military_ed, "data/military_ed.csv")
+```
+
+```{r eval = FALSE}
+df_military_ed <- read_csv("data/military_ed.csv")
+```
+
+上のコードがうまく動かない時は、次の、コードチャンクを、実行してください。
+
+```{r cache = TRUE}
+df_military_ed <- read_csv("https://raw.githubusercontent.com/ds-sl/intro2r/main/docs/ges001/data/military_ed.csv")
 df_military_ed
 ```
 
