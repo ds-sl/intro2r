@@ -392,7 +392,7 @@ Refugee population by country or territory of origin：SM.POP.REFG.OR
 
 　　　　　  紛争と貧困の連鎖を断ち切る方法
 
-02/20(TU)　Rでデータサイエンス9：まとめと演習　[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00122.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00122.nb.html)]・[[ビデオ]()]
+02/20(TU)　Rでデータサイエンス9：まとめと演習　[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00122.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00122.nb.html)]・[[ビデオ](https://youtu.be/ddRCdN6tVjw)]
 
 #### 演習
 

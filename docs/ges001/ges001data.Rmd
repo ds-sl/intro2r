@@ -168,7 +168,7 @@ output:
 
 ### 第8週
 
-02/13(TU)　Rでデータサイエンス8：難民、軍事支出　 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00121.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00121.nb.html)]・[ビデオ]
+02/13(TU)　Rでデータサイエンス8：難民、軍事支出　 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00121.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00121.nb.html)]・[[ビデオ](https://youtu.be/mq2Y83CGI4Q)]
 
 -   難民の出身国と受け入れ国 [[R Notebook](https://ds-sl.github.io/intro2r/ges001/peace0.nb.html)]
 
@@ -194,7 +194,7 @@ output:
 
 ### 第9週
 
-02/20(TU)　Rでデータサイエンス9：まとめと演習　[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00122.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00122.nb.html)]・[ビデオ]
+02/20(TU)　Rでデータサイエンス9：まとめと演習　[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00122.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00122.nb.html)]・[[ビデオ](https://youtu.be/ddRCdN6tVjw)]
 
 ### 第10週
 
