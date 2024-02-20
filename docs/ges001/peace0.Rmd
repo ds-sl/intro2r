@@ -266,13 +266,13 @@ df_ref_long |> filter(country == "World") |> drop_na(value) |>
 #### b. 選択したいくつかの国の複数の指標を色分けした経年変化のグラフ 
 
 ```{r}
-df_ref_long |> filter(iso2c %in% ASEAN) |> drop_na(value) |>
+df_ref_long |> filter(iso2c %in% CONFLICTS) |> drop_na(value) |>
   ggplot(aes(year, value, col = country, linetype = name)) + geom_line()  +
   labs(title = "紛争国の難民")
 ```
 
 ```{r}
-df_ref_long |> filter(iso2c %in% ASEAN) |> drop_na(value) |>
+df_ref_long |> filter(iso2c %in% CONFLICTS) |> drop_na(value) |>
   ggplot(aes(year, value, col = country, linetype = name)) + geom_line()  + scale_y_log10() +
   labs(title = "紛争国の難民（log10 スケール）")
 ```
