@@ -314,7 +314,14 @@ df_pcap <- WDI(country = ASEAN, indicator = c(gdppcap = "NY.GDP.PCAP.PP.KD"), ex
 df_pcap |> distinct(country, iso2c, region, income)
 ```
 
-_2024年2月20日6:48a.m. 時点で下のようなメッセージが出ます。これは、データアップデートのためのメインテナンスだと思われます。_
+
+
+```{r}
+df_pcap_cache <- WDI(country = ASEAN, indicator = c(gdppcap = "NY.GDP.PCAP.PP.KD"), extra = TRUE, cache = wdicache)
+df_pcap_cache |> distinct(country, iso2c, region, income)
+```
+
+_2024年2月20日6:48a.m. 時点で下のようなメッセージが出ます。これは、データアップデートのためのメインテナンスだと思われます。_ _11:20 a.m. では解決されているようです。すべてのデータかどうかは不明ですが。_
 
 ```
 WDI(indicator = c(gdppcap = "NY.GDP.PCAP.PP.KD"), extra = TRUE) でエラー: 
@@ -327,11 +334,6 @@ Sometimes, downloads will suddenly stop working, even if nothing has changed in 
 You can check if the World Bank web API is currently serving the indicator(s) of interest by typing a URL of this form in your web browser:
 
 https://api.worldbank.org/v2/en/country/all/indicator/NY.GDP.PCAP.PP.KD?format=json&date=:&per_page=32500&page=1
-```
-
-```{r}
-df_pcap_cache <- WDI(country = ASEAN, indicator = c(gdppcap = "NY.GDP.PCAP.PP.KD"), extra = TRUE, cache = wdicache)
-df_pcap_cache |> distinct(country, iso2c, region, income)
 ```
 
 ### クラスで使ったデータをダウンロードする方法
