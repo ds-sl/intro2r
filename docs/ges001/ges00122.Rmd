@@ -3,12 +3,12 @@ title: "GES 001 演習9"
 author: "H. Suzuki"
 date: "2024年2月20日"
 output:
+  html_notebook: default
+  html_document:
+    df_print: paged
   ioslides_presentation:
     widescreen: true
     df_print: paged
-  html_document:
-    df_print: paged
-  html_notebook: default
 ---
 
 ## 準備
@@ -25,7 +25,7 @@ output:
 
     -   RStudio を自分のコンピュータにインストールしている人は起動
 
-4.  リンクの右上の Raw ボタンの右の Copy a raw file からコピーして演習用 R Markdown ファイルを作成（あとで再度解説します）[[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/peace.Rmd)]
+4.  リンクの右上の Raw ボタンの右の Copy a raw file からコピーして演習用 R Markdown ファイルを作成（あとで再度解説します）[[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/military.Rmd)]
 
 ## ファイル
 
@@ -59,7 +59,6 @@ RStudio の場合には、自分の PC に作成したファイルがありま�
     - ファイルのダウンロードについて
     - 難民についての課題について
 
-- 探索的データ分析 [リンク](https://ds-sl.github.io/intro2r/ges001/eda.nb.html)
 
 ## 第9週
 
@@ -72,6 +71,7 @@ RStudio の場合には、自分の PC に作成したファイルがありま�
 レポート作成
 
 -   経済と経済学で使用したデータ：[リンク](https://ds-sl.github.io/intro2r/ges001/ges001data.nb.html)
+-   探索的データ分析 [リンク](https://ds-sl.github.io/intro2r/ges001/eda.nb.html)
 
 ## 探索的データ分析（EDA）
 
