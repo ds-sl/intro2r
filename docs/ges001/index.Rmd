@@ -397,7 +397,8 @@ Refugee population by country or territory of origin：SM.POP.REFG.OR
 #### 演習
 
 -   探索的データ分析（EDA） ：レポート作成にむけて
-    -   軍事費（military.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/military.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/military.Rmd)]
+    -   軍事費（military.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/military.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/military.Rmd)], [[PDF version Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/military0.Rmd)]
+    
     -   例：難民（peace1.Rmd）PositCloud で作成 [[リンク](https://ds-sl.github.io/intro2r/ges001/peace1.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/peace1.Rmd)]
     -   例：難民（peace0.Rmd）RStudio で完成させたもの
 [[リンク](https://ds-sl.github.io/intro2r/ges001/peace0.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/peace0.Rmd)]

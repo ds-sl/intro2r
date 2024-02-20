@@ -1,9 +1,17 @@
 ---
-title: "探究的データ分析：軍事費"
+title: "探究的データ分析：軍事費（Word, PDF）"
 author: "鈴木寛"
 date: "2024年2月20日"
+header-includes:
+  - \usepackage{xeCJK}
+  - \setCJKmainfont{ipaexm.ttf}
+  - \setCJKsansfont{ipaexg.ttf}
+  - \setCJKmonofont{ipaexg.ttf}
 output:
   html_notebook: default
+  pdf_document: 
+    latex_engine: xelatex
+  word_document: default
 ---
 
 # 軍事費・教育費
