@@ -4,7 +4,6 @@ author: "鈴木寛"
 date: "2024年2月20日"
 output:
   html_notebook: default
-  word_document: default
 ---
 
 # 難民人口
@@ -289,7 +288,7 @@ df_ref |> filter(!(iso2c %in% REGION)) |> drop_na(refugee_asylum, refugee_origin
 ```{r}
 df_ref |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
   drop_na(refugee_asylum, refugee_origin) |>
-  ggplot(aes(refugee_asylum, refugee_origin)) + geom_point(aes(col = region)) +　scale_x_log10() + scale_y_log10() +
+  ggplot(aes(refugee_asylum, refugee_origin)) + geom_point(aes(col = region)) + scale_x_log10() + scale_y_log10() +
   labs(title = "2022年の難民相関")
 ```
 

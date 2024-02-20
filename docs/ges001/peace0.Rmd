@@ -14,8 +14,8 @@ output:
 2.  経年変化を表す折れ線グラフ
     a.  日本、またはデータがある国
     b.  選択したいくつかの国
-3.  複数の指標の値を一列に含む縦長の表（Long Table）を作成し 　
-    a. 日本、またはデータがある国の、複数の指標を色分けした経年変化のグラフ 　
+3.  複数の指標の値を一列に含む縦長の表（Long Table）を作成し  
+    a. 日本、またはデータがある国の、複数の指標を色分けした経年変化のグラフ  
     b. 選択したいくつかの国についての経年変化のグラフを、国を色分けし、指標は線の種類を変えたグラフ
 4.  データが十分ある最近の年の値のヒストグラム
 5.  データが十分ある最近の年の値の10カ国の値の棒グラフ
@@ -23,7 +23,7 @@ output:
     b.  値が小さい方から
 6.  二つのデータの散布図- NA は取り除くこと。（log10 スケールを用いる場合は値が正のもののみに限定）
     a.  （地域を除き）国のみの散布図 （近似（回帰）直線を表示）
-    b.  最近の年の（地域を除き）国のみの散布図　（近似（回帰）直線を表示）
+    b.  最近の年の（地域を除き）国のみの散布図 （近似（回帰）直線を表示）
     c.  b に対応する相関係数
 7.  カテゴリー変数（Categorical Variable: region, income, year など）と、数値変数（Numberical Variable）一組についての箱ヒゲ図（Boxplot）
 
@@ -394,11 +394,11 @@ df_ref |> filter(!(iso2c %in% REGION)) |> drop_na(refugee_asylum, refugee_origin
 ```{r}
 df_ref |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
   drop_na(refugee_asylum, refugee_origin) |>
-  ggplot(aes(refugee_asylum, refugee_origin)) + geom_point(aes(col = region)) +　scale_x_log10() + scale_y_log10() +
+  ggplot(aes(refugee_asylum, refugee_origin)) + geom_point(aes(col = region)) + scale_x_log10() + scale_y_log10() +
   labs(title = "2022年の難民相関")
 ```
 
-**気づいたこと・疑問**
+**気づいたこと・疑問** 
 
 -   いろいろな国があるように見える。
 
@@ -408,7 +408,7 @@ df_ref |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |>
 df_ref |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
   drop_na(refugee_asylum, refugee_origin) |>
   ggplot(aes(refugee_asylum, refugee_origin)) + geom_point() + 
-  geom_smooth(formula = 'y~x', method = "lm", se = FALSE) +　scale_x_log10() + scale_y_log10() +
+  geom_smooth(formula = 'y~x', method = "lm", se = FALSE) + scale_x_log10() + scale_y_log10() +
   labs(title = "難民（回帰直線付）")
 ```
 
@@ -452,7 +452,7 @@ df_ref_long |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |>
 ```{r}
 df_ref_long |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
   drop_na(value, income) |> filter(income != "Not classified") |>
-  ggplot(aes(income, value, fill = name)) + geom_boxplot() + coord_flip() +　scale_y_log10() +
+  ggplot(aes(income, value, fill = name)) + geom_boxplot() + coord_flip() + scale_y_log10() +
   labs(title = "難民・収入レベル別箱ひげ図")
 ```
 
@@ -463,7 +463,7 @@ df_ref_long |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |>
 ```{r}
 df_ref_long |> filter(!(iso2c %in% REGION)) |> filter(year %in% c(1991, 2001, 2011, 2021)) |>
   drop_na(value) |> 
-  ggplot(aes(factor(year), value, fill = name)) + geom_boxplot() +　scale_y_log10() +
+  ggplot(aes(factor(year), value, fill = name)) + geom_boxplot() + scale_y_log10() +
   labs(title = "難民・10年ごとの箱ひげ図")
 ```
 
