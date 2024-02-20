@@ -101,7 +101,7 @@ RStudio の場合には、自分の PC に作成したファイルがありま�
     -   例：難民（peace0.Rmd）RStudio で完成させたもの
 [[リンク](https://ds-sl.github.io/intro2r/ges001/peace0.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/peace0.Rmd)]
     -   R Markdown いろいろな形式での出力
-[[リンク](https://ds-sl.github.io/intro2r/Rmarkdown-J.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/Rmakdown-J.Rmd)]
+[[リンク](https://ds-sl.github.io/intro2r/Rmarkdown-J.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/Rmarkdown-J.Rmd)]
 
 ## 参考文献
 
