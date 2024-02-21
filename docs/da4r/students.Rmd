@@ -40,38 +40,39 @@ output:
 # Projects
 
 - NAME_E	NAME_KJ	DIVISION	EMAIL	Nickname
-- c241183: KISHI, MAYU
-- c241429: OOKA, AKI
-- c241429: TAGAWA, MIO
+- c241183: KISHI, MAYU:  fertility, OECD
+  - https://stats.oecd.org/Index.aspx?QueryId=20505
+- c241429: OOKA, AKI: palm oil production and harvest areas, UN, WB, owid
+- c241429: TAGAWA, MIO: wage, education spending, OECD
 - c241456: TAMAGAWA, KAI
-- c241527: YANG, PEIQING
-- c241554: RAO, SHUNYU 
-- c241559: ZHENG, WENBO
-- c241786: VIRTUDAZO, ETHAN JOSAFAT ARNUEVO	
-- g245701: LIN, CHING-TING
-- g245702: TUANO, CHRISANNE MORAL
-- g246704: DE VERA, DARA ABEGAIL MAMINTA
-- g246705: MURPHY, THOMAS JAMES
-- g246715: SAKAI, GAKU
-- g246717: SHIRAI, YOUSUKE
-- g246719: AL-HAMATI, ANAS ALI SALEH
-- g256004: FURUSAWA, RINA
-- g256005: YANAGIDA, TAKAKI
-- g256009: SUN, YIDI
-- g256019: HANADA, HIROKI
-- g256020: HIRAI, SHU 
-- g256021: NAKAGAWA, TOMOYA
-- g256709: FERNANDO, MANDADIGE KASUN UDARA SAMPATH
-- g256710: NGUYEN, THI VIET LINH
-- g256711: SUN, XIAOXUAN
-- g256712: UDATIYAWALA ARACHCHIGE , CHAMILANI
-- g256717: MC NEVIN, NICOLE JOY
-- g256724: WRIGHT, MAXWELL ALEXANDER WING CHEONG
+- c241527: YANG, PEIQING: long-term interest rate OECD, cip etc
+- c241554: RAO, SHUNYU: Gender Equality and Birth Rate, Considering Economic Factors, WDI
+- c241559: ZHENG, WENBO: GDP Per Capita and Savings Rate, WDI
+- c241786: VIRTUDAZO, ETHAN JOSAFAT ARNUEVO: Bank Runs (OR: Case Study Analysis of Silicon Valley Bank Collapse), Alpha Vantage
+- g245701: LIN, CHING-TING: Fear of failure and Parenting Styles, personally collected
+- g245702: TUANO, CHRISANNE MORAL: Gender Roles, Domestic Violence, and Early Marriage, WDI
+- g246704: DE VERA, DARA ABEGAIL MAMINTA: Competencies with Employee Performance of Two Government Corporations in the Philippines
+- g246705: MURPHY, THOMAS JAMES: Closing Digital Divide, data collected and WDI
+- g246715: SAKAI, GAKU: Kaggle; titled as “1.3M LinkedIn Jobs & Skills (2024)
+- g246717: SHIRAI, YOUSUKE: The Japanese Listed Companyʼs Board Member Composition by gender.
+- g246719: AL-HAMATI, ANAS ALI SALEH: Population and GDP Growth in Pakistan, WDI
+- g256004: FURUSAWA, RINA: GDP, Agricultural land and CO2 emissions, WDI
+- g256005: YANAGIDA, TAKAKI: 
+- g256009: SUN, YIDI: Comparative Analysis of Economic Performance: The Trump Administration vs. the Final Years of the Obama Presidency, WDI
+- g256019: HANADA, HIROKI: Request Rate and Performance of Web Servers with Different Backends, data generation
+- g256020: HIRAI, SHU: Japan's Technology Industry in Data, WDI?
+- g256021: NAKAGAWA, TOMOYA: 各国の半導体自給率と安全保障, in search
+- g256709: FERNANDO, MANDADIGE KASUN UDARA SAMPATH: Casual Relationship in labor productivity with foreign direct investments. , WDI
+- g256710: NGUYEN, THI VIET LINH: foreign direct investment (FDI) from the United States (US) into OECD countries, OECD
+- g256711: SUN, XIAOXUAN: Industrial Freshwater Withdrawals on Agricultural Land Use, WDI
+- g256712: UDATIYAWALA ARACHCHIGE , CHAMILANI: Impact of Worker Remittances on Economic Growth., data?
+- g256717: MC NEVIN, NICOLE JOY: Top Countries for Study Abroad and Their Attributes, Kaggle
+- g256724: WRIGHT, MAXWELL ALEXANDER WING CHEONG: Trends in global fertilizer consumption and impacts on agricultural nitrous oxide emissions and agricultural production, WDI
 
 
 # Presentations
 
-- NAME_E	NAME_KJ	DIVISION	EMAIL	Nickname
+- NAME_E	NAME_KJ	DIVISION	EMAIL
 - 4:40 c241786: VIRTUDAZO, ETHAN JOSAFAT ARNUEVO	
 - 4:45 g245701: LIN, CHING-TING
 - 4:50 g245702: TUANO, CHRISANNE MORAL
