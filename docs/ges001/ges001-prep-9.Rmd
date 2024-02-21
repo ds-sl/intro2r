@@ -15,3 +15,79 @@ output:
 02/20(TU)　Rでデータサイエンス9：まとめと演習　[[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-9.nb.html)]・[授業]
 
 ## 内容
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+France, United States, United Kingdom, Germany, Japan, Italy, Canada, and EU (non-enumerated member)
+
+```{r}
+G7 <- c("FR", "US", "GB", "DE", "JP", "IT", "CA", "EU")
+```
+
+```{r}
+WDIsearch(string = "% of.*government", field = "name")
+```
+
+```{r}
+WDIcache()$series |> filter(grepl("MS.MIL.XPND.ZS", indicator, ignore.case=T) | grepl("SE.XPD.TOTL.GB.ZS", indicator, ignore.case=T) | grepl("SH.XPD.GHED.GE.ZS" , indicator, ignore.case=T) | grepl("SH.XPD.PUBL.GX.ZS", indicator, ignore.case=T))
+```
+
+
+```{r cache = TRUE, eval = FALSE}
+df_government_expenditure <- WDI(country = G7, indicator = c(military = "MS.MIL.XPND.ZS", education = "SE.XPD.TOTL.GB.ZS", health = "SH.XPD.GHED.GE.ZS"))
+```
+
+```{r}
+df_government_expenditure |> distinct(country, iso2c)
+```
+
+```{r}
+write_csv(df_government_expenditure, "data/government_expenditure.csv")
+```
+
+```{r}
+df_government_expenditure <- read_csv("data/government_expenditure.csv")
+```
+
+```{r}
+df_government_expenditure_long <- df_government_expenditure |> 
+  pivot_longer(c(military, education, health))
+df_government_expenditure_long
+```
+
+```{r}
+df_government_expenditure_long |> drop_na(value) |>
+  ggplot(aes(year, fill = iso2c)) + geom_bar() + 
+  labs(title = "変数ごとのデータ数")
+```
+
+```{r}
+df_government_expenditure_long |> drop_na(value) |>
+  ggplot(aes(year, value, col = iso2c, linetype = name)) + geom_line()
+```
+
+```{r}
+df_government_expenditure_long |> drop_na(value) |>
+  ggplot(aes(year, value, col = iso2c, linetype = name)) + geom_line(aes(size = iso2c)) + scale_size_manual(values = c(0.3,0.3,0.3,0.3,0.3,0.3,1.0,0.3))
+```
+
+```{r}
+df_government_expenditure_long |> drop_na(value) |>
+  ggplot(aes(year, value, col = name)) + geom_line() +
+  facet_wrap(~country)
+```
+
+```{r}
+df_government_expenditure_long |> drop_na(value) |>
+  ggplot(aes(year, value, col = iso2c)) + geom_line() +
+  facet_wrap(~name)
+```
+
+```{r}
+df_government_expenditure_long |> filter(year == 2020) |> drop_na(value) |>
+  ggplot(aes(fct_rev(fct_inorder(country)), value)) + geom_col() + coord_flip() + labs(title = "難民の多い順", x = "") + facet_wrap(~name)
+```
+
