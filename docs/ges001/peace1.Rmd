@@ -1,0 +1,357 @@
+---
+title: "探究的データ分析：難民"
+author: "鈴木寛"
+date: "2024年2月20日"
+output:
+  html_notebook: default
+---
+
+# 難民人口
+
+> 世界の出身国（origin）ごとの難民数と、庇護国（asylum）ごとの難民数について、特に、世界の7つの地域における難民と、紛争下にある、シリア、ウクライナ、アフガニスタン、南スーダン、ミャンマー、今後民主共和国、トルコ、パレスチナに焦点を合わせ調べる。
+
+## データ
+
+### データ情報
+
+1.   難民受け入れ人口：Refugee population by country or territory of asylum：SM.POP.REFG [[Link](https://data.worldbank.org/indicator/SM.POP.REFG)]
+
+2.   難民となる人口：Refugee population by country or territory of origin：SM.POP.REFG.OR [[Link](https://data.worldbank.org/indicator/SM.POP.REFG.OR)]
+
+-   難民の庇護国とは、庇護請求が提出され、認められた国のことである。出身国とは、一般的に請求者の国籍または市民権のある国を指す。
+
+-   **Description:** Refugees are people who are recognized as refugees under the 1951 Convention Relating to the Status of Refugees or its 1967 Protocol, the 1969 Organization of African Unity Convention Governing the Specific Aspects of Refugee Problems in Africa, people recognized as refugees in accordance with the UNHCR statute, people granted refugee-like humanitarian status, and people provided temporary protection. Asylum seekers--people who have applied for asylum or refugee status and who have not yet received a decision or who are registered as asylum seekers--are excluded. Palestinian refugees are people (and their descendants) whose residence was Palestine between June 1946 and May 1948 and who lost their homes and means of livelihood as a result of the 1948 Arab-Israeli conflict. Country of asylum is the country where an asylum claim was filed and granted. Country of origin generally refers to the nationality or country of citizenship of a claimant.
+
+-   **概要:** 難民とは、「難民の地位に関する1951年条約」またはその「1967年議定書」、「アフリカにおける難民問題の特定の側面を管理する1969年アフリカ統一機構条約」に基づき難民と認められた人、UNHCRの法令に基づき難民と認められた人、難民に準ずる人道的地位を与えられた人、一時的な保護を与えられた人を指す。庇護申請者--庇護または難民認定を申請し、まだ決定を受けていない人、または庇護申請者として登録されている人--は除外される。パレスチナ難民とは、1946年6月から1948年5月までの間に居住地がパレスチナであり、1948年のアラブ・イスラエル紛争の結果、住居と生計手段を失った人々（およびその子孫）である。庇護国とは、庇護請求が提出され、認められた国のことである。出身国とは、一般的に請求者の国籍または市民権のある国を指す。
+
+### データの取得
+
+#### 準備
+
+*これまでとも同じように二つのパッケージを読み込み（load）ます。*
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+```{r}
+library(showtext) # グラフの日本語文字化けを防ぐため
+knitr::opts_chunk$set(fig.showtext=TRUE) # showtext_auto() でも文字化けは防げるが、タイトルなどの文字が小さくなる。
+```
+
+*変数名を指定します。ここでは、`refugee_asylum` と、`refugee_origin` としました。なるべくわかりやすい名前にします。*
+
+*この変数名は、今後使いますから、重要です。一応、例として、わたしが使った、変数名を書いてあります。他の変数名を使っても構いません。`extra = TRUE` とすると、地域名（region）や、収入レベル（income）などが追加されます。*
+
+
+
+```{r eval = FALSE, cach = TRUE}
+df_refugee <- WDI(indicator = c(refugee_asylum = "SM.POP.REFG", 
+                                 refugee_origin = "SM.POP.REFG.OR"),
+                   extra = TRUE)
+```
+
+*data ディレクトリに書き込んでおきます。*
+
+```{r eval = FALSE}
+write_csv(df_refugee, "data/refugee.csv")
+```
+
+*data ディレクトリから読み出します。Run All や、Run All Chunks Above をする時は、上の二つをスキップする設定にしてあります。*
+
+```{r cache = TRUE}
+df_refugee <- read_csv("data/refugee.csv")
+```
+### データの確認
+
+*データ名で、中身を表示できます。`head(df_refugee)` とすると、6行表示されます。*
+
+```{r}
+df_refugee
+```
+
+*変数の情報を得ることができます。*
+
+```{r}
+str(df_refugee)
+```
+
+## 変形
+
+### 変数の選択（selecting）
+
+```{r cache = TRUE}
+df_ref <- df_refugee |> 
+  select(country, iso2c, year, refugee_asylum, refugee_origin, region, income)
+df_ref
+```
+
+*データには country のところに、国だけでなく、地域も入っているので、地域のリストを、`iso2c` で `REGION` に入れておきます。*
+
+```{r}
+REGION <- c("1A", "1W", "4E", "6F", "6N", "6X", "7E", "8S", "A4", "A5", 
+"A9", "B1", "B2", "B3", "B4", "B6", "B7", "B8", "C4", "C5", "C6", 
+"C7", "C8", "C9", "D2", "D3", "D4", "D5", "D6", "D7", "EU", "F1", 
+"F6", "M1", "M2", "N6", "OE", "R6", "S1", "S2", "S3", "S4", "T2", 
+"T3", "T4", "T5", "T6", "T7", "V1", "V2", "V3", "V4", "XC", "XD", 
+"XE", "XF", "XG", "XH", "XI", "XJ", "XL", "XM", "XN", "XO", "XP", 
+"XQ", "XT", "XU", "XY", "Z4", "Z7", "ZB", "ZF", "ZG", "ZH", "ZI", 
+"ZJ", "ZQ", "ZT")
+```
+
+*地域名にはどのようなものがあるか見ておきます。下の、地域と、国名を選択するときに参考にします。*
+
+```{r}
+df_ref |> filter(iso2c %in% REGION) |> distinct(country, iso2c)
+```
+
+*国名も、地域（region）と、所得レベル（income）と共に、表示しておきます。*
+
+```{r}
+df_ref |> filter(!(iso2c %in% REGION)) |> distinct(country, iso2c, region, income)
+```
+
+### 分析する国のリスト
+
+世界の難民を、7つの地域別に調るとともに、個人的に、関心がある、８カ国を選んで調べてみることにする。
+
+世界銀行は、世界を７地域に分けています。
+
+```{r}
+regions <- c("South Asia", "Europe & Central Asia", 
+"Middle East & North Africa", "East Asia & Pacific", "Sub-Saharan Africa", 
+"Latin America & Caribbean", "North America")
+```
+
+*自分で分析したい国のリストを作ってください。ここでは、紛争に関係がありそうな国を CONFLICTS にします。*
+
+```{r}
+CONFLICTS <- c("Syrian Arab Republic", "Ukraine", "Afghanistan", "South Sudan", "Myanmar", "Congo, Dem. Rep.", "Turkiye", "West Bank and Gaza")
+```
+
+## 視覚化
+
+### 1. 各年毎のデータの数の棒グラフ
+
+*まずは、NA の値を削除します。そのあとで、国の情報の数を数えたいので、`!(iso2c %in% REGION)` で、上でおいた、地域の iso2c を選択し、! は否定でしたから、地域ではないものを選択し、その数を棒グラフにしています。*
+
+```{r}
+df_ref |> drop_na(refugee_asylum, refugee_origin) |> filter(!(iso2c %in% REGION)) |>
+  ggplot(aes(year)) + geom_bar()
+```
+
+**気づいたこと・疑問**
+
+-   1995年ごろからは、十分データがあるが、その前は少ない。2022年までありそう。
+
+### 2. 経年変化を表す折れ線グラフ
+
+CONFLICTS は、`country` ですから、下のようにします。6e+06 = 1,000,000 などの、記法になっていますが、0 に近いところが多くなってしまうので、log10 スケールにしてみてみます。
+
+```{r}
+df_ref |> filter(country %in% CONFLICTS) |> drop_na(refugee_origin) |>
+  ggplot(aes(year, refugee_origin, col = country)) + geom_line() +
+  labs(title = "紛争国の難民数")
+```
+
+```{r}
+df_ref |> filter(country %in% CONFLICTS) |> drop_na(refugee_origin) |>
+  ggplot(aes(year, refugee_origin, col = country)) + geom_line() + scale_y_log10()
+  labs(title = "紛争国の難民数（log10 スケール）")
+```
+```{r}
+df_ref |> filter(country %in% CONFLICTS) |> drop_na(refugee_asylum) |>
+  ggplot(aes(year, refugee_asylum, col = country)) + geom_line() +
+  labs(title = "紛争国の難民受け入れ数")
+```
+
+**気づいたこと・疑問**
+
+-   ミャンマーは登場していない。
+-   下の方に固まっているので、scale_y_log10() を使ってみる
+    - 1e+06 は、1,000,000 人ですから、それ以下の国が多いということになります。
+    - scale_y_log10() にすると、1e+02 = 100, 1e+04 = 10,000, 1e+06 = 1,000,000 y 座標軸に現れます。
+
+```{r}
+df_ref |> filter(country %in% CONFLICTS) |> drop_na(refugee_asylum) |>
+  ggplot(aes(year, refugee_asylum, col = country)) + geom_line() + scale_y_log10() +
+  labs(title = "紛争国の難民受け入れ数（log10 スケール）")
+```
+
+### 3. 縦長の表（Long Table）
+
+*`cols = c(refugee_asylum, refugee_origin)` と、一つの指標にまとめるものをリストすると、`name` に指標名が入り、`value` に、その値が入る。書式は、`pivot_longer(cols = ..., names_to = ..., values_to = ...)` で、初期設定では、`names_to = "name", values_to = "value"` となっているので、指定しないと、下のようになる。Help 参照。*
+
+```{r cache = TRUE}
+df_ref_long <- df_ref |> pivot_longer(cols = c(refugee_asylum, refugee_origin))
+df_ref_long
+```
+
+```{r}
+df_ref_long |> filter(country == "World") |> drop_na(value) |>
+  ggplot(aes(year, value, col = name)) + geom_line()  +
+  labs(title = "世界の難民")
+```
+
+**気づいたこと・疑問**
+
+- 世界では、難民受け入れと、難民数が一致している。2010年ごろから、増加している。
+
+```{r}
+df_ref_long |> filter(country %in% regions) |> drop_na(value) |>
+  ggplot(aes(year, value, col = country, linetype = name)) + geom_line() +
+  labs(title = "地域ごとの難民")
+```
+
+
+#### 紛争国の難民受け入れ数と難民のこれらの出身国別経年変化のグラフ 
+
+
+```{r}
+df_ref_long |> filter(country %in% CONFLICTS) |> drop_na(value) |>
+  ggplot(aes(year, value, col = country, linetype = name)) + geom_line()  + scale_y_log10() +
+  labs(title = "紛争国の難民（log10 スケール）")
+```
+
+
+**気づいたこと・疑問**
+
+-   もうすこし丁寧にみないとわからない。国の数が多い
+-   log10 スケールの方がみやすい。
+
+
+### 4. ヒストグラム
+
+それぞれのデータが十分ある最近の年の値のヒストグラム（度数分布）
+
+_分け方の数 bins や、幅 binwidth を適切に変更_
+
+#### 受け入れ国別難民数
+
+```{r}
+df_ref |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(refugee_asylum) |>
+  ggplot(aes(refugee_asylum, fill = region)) + geom_histogram(bins = 10, col = "black", linewidth = 0.2) + scale_x_log10()
+```
+
+
+#### 出身国別難民数
+
+```{r}
+df_ref |> filter(!(iso2c %in% REGION)) |> filter(year == 2022, refugee_origin >0) |>
+  drop_na(refugee_origin) |>
+  ggplot(aes(refugee_asylum, fill = region)) + geom_histogram(bins = 10, col = "black", linewidth = 0.2) + scale_x_log10()
+```
+
+
+
+### 5. 棒グラフ
+
+データが十分ある最近の年の値の10カ国の値の棒グラフ
+
+#### 難民受け入れ国
+
+```{r}
+df_ref |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(refugee_asylum) |>
+  arrange(desc(refugee_asylum)) |> slice_head(n = 10) |>
+  ggplot(aes(fct_rev(fct_inorder(country)), refugee_asylum, fill = region)) + geom_col() + coord_flip() + labs(title = "難民受け入れの多い順", x = "")
+```
+
+#### 出身国の難民数
+
+```{r}
+df_ref |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> drop_na(refugee_origin) |>
+  arrange(desc(refugee_origin)) |> slice_head(n = 10) |>
+  ggplot(aes(fct_rev(fct_inorder(country)), refugee_origin, fill = region)) + geom_col() + coord_flip() + labs(title = "難民の多い順", x = "")
+```
+
+
+### 6. 散布図
+
+#### a.（地域を除き）国のみの散布図 
+
+_LOG10 スケールを使っています。_
+
+```{r}
+df_ref |> filter(!(iso2c %in% REGION)) |> drop_na(refugee_asylum, refugee_origin) |>
+  ggplot(aes(refugee_asylum, refugee_origin)) + geom_point(aes(col = region)) + scale_x_log10() + scale_y_log10() +
+  labs(title = "難民・受け入れ（log10 スケール）")
+```
+
+**気づいたこと・疑問**
+
+-   相関はみられないが、地域性はみて取れるように思う。
+
+
+#### 2022年の（地域を除き）国のみの散布図
+
+```{r}
+df_ref |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
+  drop_na(refugee_asylum, refugee_origin) |>
+  ggplot(aes(refugee_asylum, refugee_origin)) + geom_point(aes(col = region)) + scale_x_log10() + scale_y_log10() +
+  labs(title = "2022年の難民相関")
+```
+
+**気づいたこと・疑問**
+
+-   地域ごとの特性があるていどあるように見える。
+
+#### 相関係数
+
+```{r}
+df_ref |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
+  drop_na(refugee_asylum, refugee_origin) |> select(refugee_asylum, refugee_origin) |> cor()
+```
+
+相関係数が、0.025 で、ほとんど相関はないと言って良い。
+
+### 7. 箱ヒゲ図（Boxplot）
+
+```{r}
+df_ref_long |> filter(!(iso2c %in% REGION)) |> filter(year == 2022) |> 
+  drop_na(value, region) |>
+  ggplot(aes(region, value, fill = name)) + geom_boxplot() + coord_flip() +scale_y_log10() +
+  labs(title = "難民・地域別箱ひげ図")
+```
+
+**気づいたこと・疑問**
+
+-   地域差がある。これだけでは、あまりわからない。
+
+```{r}
+df_ref_long |> filter(country %in% CONFLICTS) |> drop_na(value) |> 
+  ggplot(aes(country, value, fill = name)) + geom_boxplot() + coord_flip() + scale_y_log10() +
+  labs(title = "紛争国の難民箱ひげ図")
+```
+
+**気づいたこと・疑問**
+
+-   それぞれの国のデータは、データのある年の中での、値である。
+
+-   アフガニスタンは、継続して、難民が多いことがわかる。
+
+## 参考
+
+```{r}
+df_ref_long |> filter(country %in% regions) |> drop_na(value) |>
+  ggplot(aes(year, value, fill = country)) + 
+  geom_area(col = "black", linewidth = 0.1) +
+  facet_wrap(~name) +
+  labs(title = "Refugee Population by Region of Asylum and Origin", fill = "") +
+  theme(legend.position = "top")
+```
+
+実数で、積み上げグラフを作成すると、
+それぞれの地域の和をとったもので割って、百聞率を出すと、下のようになる。
+
+```{r}
+df_ref |> filter(country %in% regions) |> 
+  select(country, year, refugee_asylum, refugee_origin) |> drop_na(refugee_origin) |> group_by(year) |> 
+  mutate(ASYLUM = refugee_asylum/sum(refugee_asylum), ORIGIN = refugee_origin/sum(refugee_origin)) |> ungroup() |>
+  pivot_longer(cols = c(ASYLUM, ORIGIN)) |>
+  ggplot(aes(year, value, fill = country)) + 
+  geom_area(col = "black", linewidth = 0.1) + 
+  facet_wrap(~name) + scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(title = "Refugee Ratio by Region of Asylum and Origin", fill = "", y = "") +
+  theme(legend.position = "top")
+```

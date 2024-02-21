@@ -1,0 +1,120 @@
+---
+title: "GES 001 演習9"
+author: "H. Suzuki"
+date: "2024年2月20日"
+output:
+  html_notebook: default
+  html_document:
+    df_print: paged
+  ioslides_presentation:
+    widescreen: true
+    df_print: paged
+---
+
+## 準備
+
+1.  （自分のPCまたは教室のPCに）ログイン
+
+2.  ウェッブ・ブラウザー（Google Chrome など）を起動
+
+    -   Moodle の GES001 経済と経済学のサイトから、このスライドのページを表示（リンク「Rでデータサイエンス」[**https://ds-sl.github.io/intro2r/ges001/**](https://ds-sl.github.io/intro2r/ges001/)）
+
+3.  （別のタブまたは ウィンドウで）PositCloud にログイン[[Posit.cloud](https://posit.cloud/)]
+
+    -   アカウントのない人はサイン・アップ [[共有プロジェクト](https://posit.cloud/content/5539763)] から、Save a Permanent Copy）
+
+    -   RStudio を自分のコンピュータにインストールしている人は起動
+
+4.  リンクの右上の Raw ボタンの右の Copy a raw file からコピーして演習用 R Markdown ファイルを作成（あとで再度解説します）[[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/military.Rmd)]
+
+## ファイル
+
+### ファイルを作成するときの注意
+
+1.  Posit Cloud のときは、まず、Login し、intro2rj のプロジェクトに入り、 ファイルから、ges001 のフォルダーを選択して、移動します。この中に、data フォルダが作成されていることを確認し、このges001 に、新しく作成したファイルを保存します。新しく作成したファイルの入っているフォルダーの中に、data フォルダがあることが大切です。そこに、データを書き込みます。
+
+2.  RStudio の場合には、まずは、あたらしい　Project を作成します。File \> New Project から作成します。すでに、作成してある場合は、それを、Open Project や、Recent Project から開きます。その中に、新しいファイルを作成します。作成したフォルダーに、data フォルダがあることを確認してください。新しく作成したファイルの入っているフォルダーの中に、data フォルダがあることが大切です。そこに、データを書き込みます。
+
+------------------------------------------------------------------------
+
+### ファイルを提出するときの注意
+
+RStudio の場合には、自分の PC に作成したファイルがありますから、問題ないと思いますが、Posit Cloud で作成した場合には、提出したいファイルの左にあるチェックボックスをチェックします。Files の 右端にある、ギアマークの Export を押すと、ダウンロードできます。それを提出してください。末尾が、nb.html となっているものを提出していただくのがよいですが、よくわからないときは、nb.html ファイルと、Rmd ファイルと両方提出してください、
+
+### 課題1について
+
+-   課題1：解説 [リンク](https://ds-sl.github.io/intro2r/ges001/w5a_response.nb.html)
+-   課題1：解答例 [リンク](https://ds-sl.github.io/intro2r/ges001/w5eda0.nb.html)
+
+-   探索的データ分析（課題2の解説にかえて）in progress [リンク](https://ds-sl.github.io/intro2r/ges001/eda.nb.html)
+
+### 課題1・課題2 追加提出ボックスについて
+
+期限：2023年2月17日23時59分（特別な理由がある場合は連絡してください）
+
+## 探究的データ分析
+
+- Posit Cloud について
+    - Error 137
+    - ファイルのダウンロードについて
+    - 難民についての課題について
+
+
+## 第9週
+
+02/15(TH)  紛争と貧困の連鎖3
+
+　　　　　  紛争と貧困の連鎖を断ち切る方法
+
+02/20(TU)　Rでデータサイエンス9：まとめと演習　
+
+レポート作成
+
+-   経済と経済学で使用したデータ：[リンク](https://ds-sl.github.io/intro2r/ges001/ges001data.nb.html)
+-   探索的データ分析 [リンク](https://ds-sl.github.io/intro2r/ges001/eda.nb.html)
+
+## 探索的データ分析（EDA）
+
+-   表題 Title
+-   概要 Abstract（目的、焦点をあわせる指標や国のリストなど）
+-   データ情報：データ名、データコード、変数名、データ概要
+-   各項目に、気づいたこと、疑問などを記録（EDAの核となる部分です）
+-   データの取得 - ダウンロードして保存しておくと良い
+-   分析・視覚化（探索的：試行と選択・指標や国リストなど修正・予想）
+    -   各年毎のデータの数の棒グラフ
+    -   経年変化
+    -   分布
+    -   相関
+
+-   コミュニケーション（発表・共有）
+    - 　報告・記録・スライド・論文など
+
+# 演習 2月20日（火）
+
+## ファイルリンク
+
+基本的には、PositCloud（<https://posit.cloud/>）を使って実習
+
+-   探索的データ分析（EDA） -
+    -   軍事費（military.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/military.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/military.Rmd)]
+    -   例：難民（peace1.Rmd）PositCloud で作成 [[リンク](https://ds-sl.github.io/intro2r/ges001/peace1.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/peace1.Rmd)]
+    -   例：難民（peace0.Rmd）RStudio で完成させたもの
+[[リンク](https://ds-sl.github.io/intro2r/ges001/peace0.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/peace0.Rmd)]
+    -   R Markdown いろいろな形式での出力
+[[リンク](https://ds-sl.github.io/intro2r/Rmarkdown-J.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/Rmarkdown-J.Rmd)]
+
+## 参考文献
+
+探索的データ分析 [[リンク](https://ds-sl.github.io/intro2r/ges001/eda.nb.html)]・課題1：解説 [[リンク](https://ds-sl.github.io/intro2r/ges001/w5a_response.nb.html)]・解答例 [[リンク](https://ds-sl.github.io/intro2r/ges001/w5eda0.nb.html)]・第6週演習：解答例（課題２の解説にかえて）[[リンク](https://ds-sl.github.io/intro2r/ges001/w6eda0.nb.html)]・経済と経済学演習ホーム [[リンク](https://ds-sl.github.io/intro2r/ges001/)]
+
+1.  「みんなのデータサイエンス - Data Science for All」[[リンク](https://icu-hsuzuki.github.io/ds4aj/)]
+
+2.  Posit Recipes（旧 Posit Primers）: 基本的な事項の解説 [[Link](https://posit.cloud/learn/recipes)]
+
+3.  Posit Cheat Sheet. 早見表です。印刷して使うために、PDF も提供しています。[[Site Link](https://rstudio.github.io/cheatsheets/)]
+
+4.  DataCamp Cheat Sheet: Tidyverse for Biginners. データサイエンスの教育をしている会社の早見表の一つです。基本が簡単にまとまっています。[[Link](https://images.datacamp.com/image/upload/v1676302697/Marketing/Blog/Tidyverse_Cheat_Sheet.pdf)]
+
+5.  箱ひげ図の見方 [[リンク](https://bellcurve.jp/statistics/course/5220.html)]、外れ値検出のある箱ひげ図 [[リンク](https://bellcurve.jp/statistics/course/5222.html)] などさまざまな情報あり
+
+6.  Video: [Histogram](https://vimeo.com/221607341), [Boxplot](https://vimeo.com/222358034)

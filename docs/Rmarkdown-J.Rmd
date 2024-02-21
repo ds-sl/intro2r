@@ -9,20 +9,21 @@ header-includes:
   - \setCJKmonofont{ipaexg.ttf}
 output:
   html_notebook: default
-  powerpoint_presentation: default
-  ioslides_presentation: 
-    widescreen: yes
   beamer_presentation: 
     latex_engine: xelatex
     theme: Madrid
     colortheme: rose
   word_document: default
-  html_document:
-    df_print: paged
-  slidy_presentation: default
+  powerpoint_presentation: default
   pdf_document: 
     latex_engine: xelatex
+  html_document:
+    df_print: paged
+  ioslides_presentation: 
+    widescreen: yes
+  slidy_presentation: default
 ---
+
 ```{r include=FALSE, eval=FALSE}
 # もし、IPA フォントがないと言われたら、このコードを実行。if error on ipa fonts
 tinytex::tlmgr_install("ipaex")
@@ -55,7 +56,7 @@ install.packages('showtext')
 ```{r setup, echo=TRUE, message=FALSE}
 library(tidyverse)
 library(showtext) 
-showtext_auto()
+knitr::opts_chunk$set(fig.showtext=TRUE)
 ```
 
 ## Test Code Chunk (1)
@@ -128,8 +129,8 @@ Knit ボタンから、他の形式を選び、試してみてください。
 
 ## 出力形式に関する備考
 
-* スライドの場合は、第二レベルの表題 \#\#　があると、あたらしいスライドとなります。
-* `---` または、Visual エディターの、Horizontal Line でも新しいスライドになります。
+* スライドの場合は、第二レベルの表題 \#\#　があると、改ページとなります。
+* `---` または、Visual エディターの、Horizontal Line でも、改ページになります。
 * Word や PowerPoint は、一度、Knit して出力したファイルの書式を変更して、"my-styles.docx"、"my-styles.pptx"  などと名称を変更して、下のように、書式ファイルを付けることが可能です。参考文献を参照してください。
 ```
 ---
@@ -140,6 +141,8 @@ Knit ボタンから、他の形式を選び、試してみてください。
 ---
 ```
 
+* PDF 作成には、`tinytex` パッケージのインストールが必要。その後、Console で `tinytex::install_tinytex()`.
+
 ## さまざまな設定
 
 * *Knit* ボタンの隣のギアマーク の Output Option からそれぞれの書式を変更することが可能です。
@@ -149,12 +152,12 @@ Knit ボタンから、他の形式を選び、試してみてください。
 
 ## 参考文献 References
 
-* Posit Primers: [Report Reproducibly](https://rmarkdown.rstudio.com/lesson-1.html?_ga=2.60708591.317621277.1671142614-2004472742.1671142614)
-* Markdown Quick Reference: Top Menu Bar \> Help \> Markdown Quick Reference
-* Cheat Sheet (Top Menu Bar: Help \> Cheat Sheets): RMarkdown Cheat Sheet, RMarkdown Reference Guide
-* Books:
+* 一般的な解説：[みんなのデータサイエンス](https://icu-hsuzuki.github.io/ds4aj/index.html)、[Posit Recipes](https://posit.cloud/learn/recipes): 
+* [Report Reproducibly](https://rmarkdown.rstudio.com/lesson-1.html?_ga=2.60708591.317621277.1671142614-2004472742.1671142614): R Markdown についての解説
+* [Cheat Sheet](https://rstudio.github.io/cheatsheets/html/rmarkdown.html) (Top Menu Bar: Help \> Cheat Sheets): RMarkdown Cheat Sheet, RMarkdown Reference Guide
+* Books:[R for Datascience (1e)](https://r4ds.had.co.nz), [2nd Ed.](https://r4ds.hadley.nz)
   - [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
-  - [R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)
-* エラーが出て不明なときは、検索エンジンで、解決方法を探してください。このときに、エラーメッセージが英語の方が、解決方法が見つかりやすくなります。Post error messages to a web search engine.
+  - [R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)・[日本語翻訳版](https://gedevan-aleksizde.github.io/rmarkdown-cookbook/)
+* エラーが出て不明なときは、検索エンジンまたは、[Google Gemini](https://gemini.google.com/app), [Chat GPT](https://chat.openai.com/auth/login), [Poe](https://poe.com) などの AI で、解決方法を探してください。このときに、Console で、`Sys.setenv(LANG = "en")` として、英語のエラーメッセージを得ておいた方が、解決方法が見つかりやすくなります。戻す時は、`Sys.setenv(LANG = "ja")`.
   
 
