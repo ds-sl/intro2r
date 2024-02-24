@@ -419,7 +419,7 @@ Refugee population by country or territory of origin：SM.POP.REFG.OR
 
 資本主義と民主主義の関係について、政治学の立場から議論します。
 
-02/27(TU)　まとめ
+02/27(TU)　まとめ　[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00130.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00130.nb.html)]・[ビデオ]
 
 **03月02日：レポート提出**
 
