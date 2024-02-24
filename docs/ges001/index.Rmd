@@ -51,6 +51,8 @@ output:
 
 12/12(TU)　Rでデータサイエンス１：導入 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00100.html)]・[[RNotebook](https://ds-sl.github.io/intro2r/ges001/ges00100.nb.html)]・[[Video](https://youtu.be/pT3690JKjp0)]
 
+-   極度に貧しい！？ [[RNotebook](https://ds-sl.github.io/intro2r/ges001/poverty.nb.html)]
+
 変更期間です。次週から参加する学生がいることを想定する必要があります。RとRStudioのインストールやRを使うことのメリット、Rの簡単な使い方など。
 
 ### 第2週
@@ -70,6 +72,8 @@ output:
 （R Markdown ファイル（ソース・ファイル） は、右上の、Code ボタンからダウンロードすることが可能です。）
 
 作業ビデオ：[[Video1](https://youtu.be/WdJGH223e4g)]・[[Video2](https://youtu.be/1IdpGlA0FbQ)]
+
+-   人口と少子高齢化 [[demography](https://ds-sl.github.io/intro2r/ges001/demography.nb.html)]
 
 **People- Population dynamics**
 
@@ -288,6 +292,8 @@ DT.ODA.ALLD.CD
 
 01/30(TU)　Rでデータサイエンス6：気候変動　 　[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00112.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00112.nb.html)]・[ビデオ](https://youtu.be/Zj_gK6XYaHs)
 
+-   環境課題について [[R Notebook](https://ds-sl.github.io/intro2r/ges001/w6eda0.nb.html)]
+
 **Environment-Climate**　
 
 CO2 emissions (metric tons per capita) ：EN.ATM.CO2E.PC
@@ -306,8 +312,8 @@ IEA:　Energy Statistics Data Browser　データ元
 
 #### 演習の内容
 
-- 課題1：解説 [リンク](https://ds-sl.github.io/intro2r/ges001/w5a_response.nb.html)
-- 課題1：解答例 [リンク](https://ds-sl.github.io/intro2r/ges001/w5eda0.nb.html)
+-   課題1：解説 [リンク](https://ds-sl.github.io/intro2r/ges001/w5a_response.nb.html)
+-   課題1：解答例 [リンク](https://ds-sl.github.io/intro2r/ges001/w5eda0.nb.html)
 
 基本的には、PositCloud（<https://posit.cloud/>）を使って実習
 
@@ -351,13 +357,13 @@ SH.H2O.BASW.RU.ZS
 
 #### 演習
 
-- 縦長表（Long Table）
-- 箱ひげ図（Boxplot）
+-   縦長表（Long Table）
+-   箱ひげ図（Boxplot）
 
 #### 課題2
 
-- 練習：失業率（unemployment.Rmd）[[リンク](https://ds-sl.github.io/intro2r/ges001/unemployment.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/unemployment.Rmd)]
-- 課題テンプレート [[リンク](https://ds-sl.github.io/intro2r/ges001/w7eda_template.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w7eda_template.Rmd)]
+-   練習：失業率（unemployment.Rmd）[[リンク](https://ds-sl.github.io/intro2r/ges001/unemployment.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/unemployment.Rmd)]
+-   課題テンプレート [[リンク](https://ds-sl.github.io/intro2r/ges001/w7eda_template.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w7eda_template.Rmd)]
 
 ### 第8週
 
@@ -371,20 +377,22 @@ SH.H2O.BASW.RU.ZS
 
 **Global Link-Refugees**
 
+-   難民の出身国と受け入れ国 [[R Notebook](https://ds-sl.github.io/intro2r/ges001/peace0.nb.html)]
+
 Refugee population by country or territory of asylum：SM.POP.REFG
 
 Refugee population by country or territory of origin：SM.POP.REFG.OR
 
 #### 演習
 
-- 探索的データ分析まとめ：難民について  [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/peace.Rmd)]
-- 探索的データ分析 [[EDA](https://ds-sl.github.io/intro2r/ges001/eda.nb.html)]
+-   探索的データ分析まとめ：難民について [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/peace.Rmd)]
+-   探索的データ分析 [[EDA](https://ds-sl.github.io/intro2r/ges001/eda.nb.html)]
 
 <!-- #### 課題2について -->
 
 <!-- -   課題2：解説 [リンク](https://ds-sl.github.io/intro2r/ges001/w7a_response.nb.html) -->
-<!-- - 　課題2：解答例 [リンク](https://ds-sl.github.io/intro2r/ges001/w7eda0.nb.html) -->
 
+<!-- - 　課題2：解答例 [リンク](https://ds-sl.github.io/intro2r/ges001/w7eda0.nb.html) -->
 
 ### 第9週
 
@@ -398,13 +406,12 @@ Refugee population by country or territory of origin：SM.POP.REFG.OR
 
 -   探索的データ分析（EDA） ：レポート作成にむけて
     -   軍事費（military.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/military.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/military.Rmd)], [[PDF version Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/military0.Rmd)]
-    
-    -   例：難民（peace1.Rmd）PositCloud で作成 [[リンク](https://ds-sl.github.io/intro2r/ges001/peace1.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/peace1.Rmd)]
-    -   例：難民（peace0.Rmd）RStudio で完成させたもの
-[[リンク](https://ds-sl.github.io/intro2r/ges001/peace0.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/peace0.Rmd)]
-    -   R Markdown いろいろな形式での出力
-[[リンク](https://ds-sl.github.io/intro2r/Rmarkdown-J.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/Rmakdown-J.Rmd)]
 
+    -   例：難民（peace1.Rmd）PositCloud で作成 [[リンク](https://ds-sl.github.io/intro2r/ges001/peace1.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/peace1.Rmd)]
+
+    -   例：難民（peace0.Rmd）RStudio で完成させたもの [[リンク](https://ds-sl.github.io/intro2r/ges001/peace0.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/peace0.Rmd)]
+
+    -   R Markdown いろいろな形式での出力 [[リンク](https://ds-sl.github.io/intro2r/Rmarkdown-J.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/Rmakdown-J.Rmd)]
 
 ### 第10週
 
@@ -424,7 +431,7 @@ Moodle 内の、課題・質問提出ボックスに、提出してください�
 
 *演習助手は、成績評価には関わりません*
 
-経済学パートではレポートが60%程度、講義への参加（コメントシートを含む）が40%程度の合計で評価される。
+レポートが60%程度、講義への参加（コメントシートを含む）が20%程度、アサインメント（20％程度）の合計で評価される。
 
 ### 期末レポート
 
@@ -436,16 +443,15 @@ Moodle 内の、課題・質問提出ボックスに、提出してください�
 
 ３．紛争の現状と原因を調べ、紛争がもたらす悪影響を解決する方法を経済的視点から論じなさい。
 
-長さ：A45枚程度　PDFファイルで提出すること。（ファイル名にID、氏名を書いてください。）
+長さ：A4 5枚程度　PDFファイルで提出すること。（ファイル名にID、氏名を書いてください。）
 
 締め切り：03月02日（23：59）；　提出場所：Moodle上の提出Box
 
 ## 演習（R でデータサイエンス）の参考文献 {#references}
 
-- 探索的データ分析 [[EDA](https://ds-sl.github.io/intro2r/ges001/eda.nb.html)]
-    - このコース（演習）のまとめとして、一つ一つのステップを説明したものです。断片的に、演習内で説明したことがほとんどですが、演習では、取り扱わなかった、ほとんど扱えなかったことは、参考としてあります。左の目次からも飛べますから、上からすべて読まなくてもよいように構成してありますが、できれば、ざっと読んでから、必要に応じて、参照するのがよいと思います。
-  
-- 経済と経済学で使用したデータ：[リンク](https://ds-sl.github.io/intro2r/ges001/ges001data.nb.html)
+-   探索的データ分析 [[EDA](https://ds-sl.github.io/intro2r/ges001/eda.nb.html)]
+    -   このコース（演習）のまとめとして、一つ一つのステップを説明したものです。断片的に、演習内で説明したことがほとんどですが、演習では、取り扱わなかった、ほとんど扱えなかったことは、参考としてあります。左の目次からも飛べますから、上からすべて読まなくてもよいように構成してありますが、できれば、ざっと読んでから、必要に応じて、参照するのがよいと思います。
+-   経済と経済学で使用したデータ：[リンク](https://ds-sl.github.io/intro2r/ges001/ges001data.nb.html)
 
 1.  「みんなのデータサイエンス - Data Science for All」[[Link](https://icu-hsuzuki.github.io/ds4aj/index.html)]
 

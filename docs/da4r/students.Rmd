@@ -10,7 +10,7 @@ output:
 
 - NAME_E	NAME_KJ	DIVISION	EMAIL	Nickname
 - c241183: KISHI, MAYU 	岸 真由	5年プログラム	c241183a@icu.ac.jp	Mayu, or Kishimayu
-- c241429: OOKA, AKI 	大岡 亜樹	5年プログラム	c241338k@icu.ac.jp	Aki
+- c241338: OOKA, AKI 	大岡 亜樹	5年プログラム	c241338k@icu.ac.jp	Aki
 - c241429: TAGAWA, MIO 	田川 美桜	5年プログラム	c241429r@icu.ac.jp	Mio
 - c241456: TAMAGAWA, KAI 	玉川 海	5年プログラム	c241456w@icu.ac.jp	Kai
 - c241527: YANG, PEIQING 	楊 佩青	5年プログラム	c241527r@icu.ac.jp	Penny
@@ -42,7 +42,7 @@ output:
 - NAME_E	NAME_KJ	DIVISION	EMAIL	Nickname
 - c241183: KISHI, MAYU:  fertility, OECD
   - https://stats.oecd.org/Index.aspx?QueryId=20505
-- c241429: OOKA, AKI: palm oil production and harvest areas, UN, WB, owid
+- c241338: OOKA, AKI: palm oil production and harvest areas, UN, WB, owid
 - c241429: TAGAWA, MIO: wage, education spending, OECD
 - c241456: TAMAGAWA, KAI
 - c241527: YANG, PEIQING: long-term interest rate OECD, cip etc
@@ -87,7 +87,7 @@ output:
 - 5:35 g256019: HANADA, HIROKI
 
 - Break
-- 5:45 c241429: OOKA, AKI
+- 5:45 c241338: OOKA, AKI
 - 5:50 g256020: HIRAI, SHU 
 - 5:55 g256021: NAKAGAWA, TOMOYA
 - 6:00 g256709: FERNANDO, MANDADIGE KASUN UDARA SAMPATH

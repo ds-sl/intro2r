@@ -1,18 +1,20 @@
 ---
-title: "GES 001 演習9"
+title: "GES 001 演習10"
 author: "H. Suzuki"
 date: "`r Sys.Date()`"
 output:
   html_notebook: default
 ---
 
-## 第9週
+## 第10週
 
-02/15(TH)  紛争と貧困の連鎖3
+02/22(TH)　特別講義（千葉真先生）
 
-　　　　　  紛争と貧困の連鎖を断ち切る方法
+資本主義と民主主義の関係について、政治学の立場から議論します。
 
-02/20(TU)　Rでデータサイエンス9：まとめと演習　[[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-9.nb.html)]・[授業]
+「資本主義・デモクラシー・エコロジー」[[Link](https://www.chikumashobo.co.jp/product/9784480017437/)]
+
+#### 02/27(TU)　まとめ
 
 ## 内容
 
@@ -34,7 +36,6 @@ WDIsearch(string = "% of.*government", field = "name")
 ```{r}
 WDIcache()$series |> filter(grepl("MS.MIL.XPND.ZS", indicator, ignore.case=T) | grepl("SE.XPD.TOTL.GB.ZS", indicator, ignore.case=T) | grepl("SH.XPD.GHED.GE.ZS" , indicator, ignore.case=T) | grepl("SH.XPD.PUBL.GX.ZS", indicator, ignore.case=T))
 ```
-
 
 ```{r cache = TRUE, eval = FALSE}
 df_government_expenditure <- WDI(country = G7, indicator = c(military = "MS.MIL.XPND.ZS", education = "SE.XPD.TOTL.GB.ZS", health = "SH.XPD.GHED.GE.ZS"))
@@ -90,4 +91,3 @@ df_government_expenditure_long |> drop_na(value) |>
 df_government_expenditure_long |> filter(year == 2020) |> drop_na(value) |>
   ggplot(aes(fct_rev(fct_inorder(country)), value)) + geom_col() + coord_flip() + labs(title = "難民の多い順", x = "") + facet_wrap(~name)
 ```
-
