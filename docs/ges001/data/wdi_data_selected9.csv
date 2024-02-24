@@ -1,0 +1,568 @@
+year,Country.Name,Country.Code,n
+1960,China,CHN,159
+1960,France,FRA,267
+1960,Germany,DEU,149
+1960,India,IND,274
+1960,Italy,ITA,182
+1960,Japan,JPN,203
+1960,Russian Federation,RUS,92
+1960,United Kingdom,GBR,198
+1960,United States,USA,214
+1961,China,CHN,207
+1961,France,FRA,305
+1961,Germany,DEU,171
+1961,India,IND,319
+1961,Italy,ITA,215
+1961,Japan,JPN,229
+1961,Russian Federation,RUS,95
+1961,United Kingdom,GBR,233
+1961,United States,USA,241
+1962,China,CHN,188
+1962,France,FRA,324
+1962,Germany,DEU,181
+1962,India,IND,325
+1962,Italy,ITA,220
+1962,Japan,JPN,239
+1962,Russian Federation,RUS,95
+1962,United Kingdom,GBR,236
+1962,United States,USA,253
+1963,China,CHN,188
+1963,France,FRA,324
+1963,Germany,DEU,181
+1963,India,IND,332
+1963,Italy,ITA,220
+1963,Japan,JPN,246
+1963,Russian Federation,RUS,95
+1963,United Kingdom,GBR,241
+1963,United States,USA,273
+1964,China,CHN,189
+1964,France,FRA,324
+1964,Germany,DEU,181
+1964,India,IND,335
+1964,Italy,ITA,220
+1964,Japan,JPN,244
+1964,Russian Federation,RUS,96
+1964,United Kingdom,GBR,236
+1964,United States,USA,273
+1965,China,CHN,194
+1965,France,FRA,327
+1965,Germany,DEU,183
+1965,India,IND,339
+1965,Italy,ITA,223
+1965,Japan,JPN,251
+1965,Russian Federation,RUS,97
+1965,United Kingdom,GBR,239
+1965,United States,USA,280
+1966,China,CHN,192
+1966,France,FRA,325
+1966,Germany,DEU,181
+1966,India,IND,335
+1966,Italy,ITA,220
+1966,Japan,JPN,244
+1966,Russian Federation,RUS,96
+1966,United Kingdom,GBR,243
+1966,United States,USA,273
+1967,China,CHN,191
+1967,France,FRA,325
+1967,Germany,DEU,181
+1967,India,IND,337
+1967,Italy,ITA,225
+1967,Japan,JPN,245
+1967,Russian Federation,RUS,95
+1967,United Kingdom,GBR,240
+1967,United States,USA,273
+1968,China,CHN,191
+1968,France,FRA,332
+1968,Germany,DEU,187
+1968,India,IND,340
+1968,Italy,ITA,225
+1968,Japan,JPN,253
+1968,Russian Federation,RUS,95
+1968,United Kingdom,GBR,260
+1968,United States,USA,274
+1969,China,CHN,197
+1969,France,FRA,325
+1969,Germany,DEU,189
+1969,India,IND,344
+1969,Italy,ITA,225
+1969,Japan,JPN,257
+1969,Russian Federation,RUS,95
+1969,United Kingdom,GBR,260
+1969,United States,USA,275
+1970,China,CHN,243
+1970,France,FRA,368
+1970,Germany,DEU,314
+1970,India,IND,418
+1970,Italy,ITA,404
+1970,Japan,JPN,374
+1970,Russian Federation,RUS,118
+1970,United Kingdom,GBR,413
+1970,United States,USA,451
+1971,China,CHN,263
+1971,France,FRA,410
+1971,Germany,DEU,385
+1971,India,IND,506
+1971,Italy,ITA,473
+1971,Japan,JPN,416
+1971,Russian Federation,RUS,125
+1971,United Kingdom,GBR,481
+1971,United States,USA,455
+1972,China,CHN,263
+1972,France,FRA,443
+1972,Germany,DEU,421
+1972,India,IND,468
+1972,Italy,ITA,455
+1972,Japan,JPN,424
+1972,Russian Federation,RUS,120
+1972,United Kingdom,GBR,507
+1972,United States,USA,501
+1973,China,CHN,265
+1973,France,FRA,422
+1973,Germany,DEU,420
+1973,India,IND,479
+1973,Italy,ITA,495
+1973,Japan,JPN,422
+1973,Russian Federation,RUS,120
+1973,United Kingdom,GBR,509
+1973,United States,USA,498
+1974,China,CHN,281
+1974,France,FRA,427
+1974,Germany,DEU,420
+1974,India,IND,495
+1974,Italy,ITA,490
+1974,Japan,JPN,422
+1974,Russian Federation,RUS,120
+1974,United Kingdom,GBR,507
+1974,United States,USA,497
+1975,China,CHN,286
+1975,France,FRA,511
+1975,Germany,DEU,430
+1975,India,IND,580
+1975,Italy,ITA,497
+1975,Japan,JPN,432
+1975,Russian Federation,RUS,125
+1975,United Kingdom,GBR,516
+1975,United States,USA,515
+1976,China,CHN,290
+1976,France,FRA,489
+1976,Germany,DEU,434
+1976,India,IND,578
+1976,Italy,ITA,515
+1976,Japan,JPN,429
+1976,Russian Federation,RUS,127
+1976,United Kingdom,GBR,518
+1976,United States,USA,508
+1977,China,CHN,301
+1977,France,FRA,506
+1977,Germany,DEU,434
+1977,India,IND,590
+1977,Italy,ITA,509
+1977,Japan,JPN,431
+1977,Russian Federation,RUS,125
+1977,United Kingdom,GBR,515
+1977,United States,USA,507
+1978,China,CHN,330
+1978,France,FRA,510
+1978,Germany,DEU,434
+1978,India,IND,576
+1978,Italy,ITA,516
+1978,Japan,JPN,432
+1978,Russian Federation,RUS,125
+1978,United Kingdom,GBR,518
+1978,United States,USA,510
+1979,China,CHN,357
+1979,France,FRA,561
+1979,Germany,DEU,435
+1979,India,IND,567
+1979,Italy,ITA,531
+1979,Japan,JPN,439
+1979,Russian Federation,RUS,124
+1979,United Kingdom,GBR,519
+1979,United States,USA,513
+1980,China,CHN,391
+1980,France,FRA,556
+1980,Germany,DEU,439
+1980,India,IND,591
+1980,Italy,ITA,516
+1980,Japan,JPN,457
+1980,Russian Federation,RUS,125
+1980,United Kingdom,GBR,529
+1980,United States,USA,536
+1981,China,CHN,418
+1981,France,FRA,531
+1981,Germany,DEU,439
+1981,India,IND,616
+1981,Italy,ITA,508
+1981,Japan,JPN,444
+1981,Russian Federation,RUS,142
+1981,United Kingdom,GBR,529
+1981,United States,USA,539
+1982,China,CHN,513
+1982,France,FRA,550
+1982,Germany,DEU,439
+1982,India,IND,590
+1982,Italy,ITA,495
+1982,Japan,JPN,443
+1982,Russian Federation,RUS,126
+1982,United Kingdom,GBR,527
+1982,United States,USA,534
+1983,China,CHN,493
+1983,France,FRA,558
+1983,Germany,DEU,461
+1983,India,IND,605
+1983,Italy,ITA,511
+1983,Japan,JPN,446
+1983,Russian Federation,RUS,126
+1983,United Kingdom,GBR,545
+1983,United States,USA,533
+1984,China,CHN,508
+1984,France,FRA,542
+1984,Germany,DEU,461
+1984,India,IND,598
+1984,Italy,ITA,512
+1984,Japan,JPN,447
+1984,Russian Federation,RUS,126
+1984,United Kingdom,GBR,545
+1984,United States,USA,535
+1985,China,CHN,515
+1985,France,FRA,569
+1985,Germany,DEU,465
+1985,India,IND,593
+1985,Italy,ITA,534
+1985,Japan,JPN,449
+1985,Russian Federation,RUS,129
+1985,United Kingdom,GBR,544
+1985,United States,USA,538
+1986,China,CHN,518
+1986,France,FRA,573
+1986,Germany,DEU,464
+1986,India,IND,608
+1986,Italy,ITA,541
+1986,Japan,JPN,447
+1986,Russian Federation,RUS,145
+1986,United Kingdom,GBR,550
+1986,United States,USA,544
+1987,China,CHN,533
+1987,France,FRA,565
+1987,Germany,DEU,463
+1987,India,IND,633
+1987,Italy,ITA,537
+1987,Japan,JPN,446
+1987,Russian Federation,RUS,132
+1987,United Kingdom,GBR,552
+1987,United States,USA,543
+1988,China,CHN,516
+1988,France,FRA,589
+1988,Germany,DEU,481
+1988,India,IND,613
+1988,Italy,ITA,547
+1988,Japan,JPN,466
+1988,Russian Federation,RUS,167
+1988,United Kingdom,GBR,551
+1988,United States,USA,523
+1989,China,CHN,534
+1989,France,FRA,593
+1989,Germany,DEU,485
+1989,India,IND,611
+1989,Italy,ITA,558
+1989,Japan,JPN,464
+1989,Russian Federation,RUS,234
+1989,United Kingdom,GBR,552
+1989,United States,USA,555
+1990,China,CHN,665
+1990,France,FRA,720
+1990,Germany,DEU,594
+1990,India,IND,734
+1990,Italy,ITA,661
+1990,Japan,JPN,571
+1990,Russian Federation,RUS,367
+1990,United Kingdom,GBR,677
+1990,United States,USA,675
+1991,China,CHN,647
+1991,France,FRA,716
+1991,Germany,DEU,673
+1991,India,IND,750
+1991,Italy,ITA,708
+1991,Japan,JPN,595
+1991,Russian Federation,RUS,419
+1991,United Kingdom,GBR,715
+1991,United States,USA,708
+1992,China,CHN,700
+1992,France,FRA,722
+1992,Germany,DEU,703
+1992,India,IND,750
+1992,Italy,ITA,701
+1992,Japan,JPN,595
+1992,Russian Federation,RUS,553
+1992,United Kingdom,GBR,720
+1992,United States,USA,676
+1993,China,CHN,700
+1993,France,FRA,734
+1993,Germany,DEU,739
+1993,India,IND,764
+1993,Italy,ITA,708
+1993,Japan,JPN,582
+1993,Russian Federation,RUS,586
+1993,United Kingdom,GBR,696
+1993,United States,USA,696
+1994,China,CHN,692
+1994,France,FRA,737
+1994,Germany,DEU,736
+1994,India,IND,788
+1994,Italy,ITA,707
+1994,Japan,JPN,623
+1994,Russian Federation,RUS,707
+1994,United Kingdom,GBR,700
+1994,United States,USA,707
+1995,China,CHN,739
+1995,France,FRA,758
+1995,Germany,DEU,765
+1995,India,IND,774
+1995,Italy,ITA,781
+1995,Japan,JPN,647
+1995,Russian Federation,RUS,705
+1995,United Kingdom,GBR,722
+1995,United States,USA,753
+1996,China,CHN,795
+1996,France,FRA,805
+1996,Germany,DEU,797
+1996,India,IND,816
+1996,Italy,ITA,807
+1996,Japan,JPN,730
+1996,Russian Federation,RUS,729
+1996,United Kingdom,GBR,754
+1996,United States,USA,791
+1997,China,CHN,749
+1997,France,FRA,760
+1997,Germany,DEU,755
+1997,India,IND,788
+1997,Italy,ITA,751
+1997,Japan,JPN,690
+1997,Russian Federation,RUS,718
+1997,United Kingdom,GBR,717
+1997,United States,USA,758
+1998,China,CHN,763
+1998,France,FRA,795
+1998,Germany,DEU,782
+1998,India,IND,782
+1998,Italy,ITA,807
+1998,Japan,JPN,757
+1998,Russian Federation,RUS,789
+1998,United Kingdom,GBR,784
+1998,United States,USA,821
+1999,China,CHN,723
+1999,France,FRA,797
+1999,Germany,DEU,772
+1999,India,IND,828
+1999,Italy,ITA,788
+1999,Japan,JPN,711
+1999,Russian Federation,RUS,758
+1999,United Kingdom,GBR,776
+1999,United States,USA,775
+2000,China,CHN,881
+2000,France,FRA,927
+2000,Germany,DEU,910
+2000,India,IND,1054
+2000,Italy,ITA,935
+2000,Japan,JPN,818
+2000,Russian Federation,RUS,910
+2000,United Kingdom,GBR,938
+2000,United States,USA,907
+2001,China,CHN,800
+2001,France,FRA,873
+2001,Germany,DEU,852
+2001,India,IND,929
+2001,Italy,ITA,908
+2001,Japan,JPN,752
+2001,Russian Federation,RUS,891
+2001,United Kingdom,GBR,862
+2001,United States,USA,836
+2002,China,CHN,863
+2002,France,FRA,902
+2002,Germany,DEU,901
+2002,India,IND,940
+2002,Italy,ITA,899
+2002,Japan,JPN,794
+2002,Russian Federation,RUS,973
+2002,United Kingdom,GBR,901
+2002,United States,USA,885
+2003,China,CHN,840
+2003,France,FRA,918
+2003,Germany,DEU,912
+2003,India,IND,960
+2003,Italy,ITA,925
+2003,Japan,JPN,798
+2003,Russian Federation,RUS,934
+2003,United Kingdom,GBR,911
+2003,United States,USA,867
+2004,China,CHN,826
+2004,France,FRA,946
+2004,Germany,DEU,950
+2004,India,IND,959
+2004,Italy,ITA,940
+2004,Japan,JPN,795
+2004,Russian Federation,RUS,935
+2004,United Kingdom,GBR,929
+2004,United States,USA,902
+2005,China,CHN,894
+2005,France,FRA,966
+2005,Germany,DEU,971
+2005,India,IND,1020
+2005,Italy,ITA,985
+2005,Japan,JPN,813
+2005,Russian Federation,RUS,941
+2005,United Kingdom,GBR,967
+2005,United States,USA,949
+2006,China,CHN,895
+2006,France,FRA,943
+2006,Germany,DEU,967
+2006,India,IND,1027
+2006,Italy,ITA,980
+2006,Japan,JPN,800
+2006,Russian Federation,RUS,928
+2006,United Kingdom,GBR,957
+2006,United States,USA,917
+2007,China,CHN,918
+2007,France,FRA,960
+2007,Germany,DEU,967
+2007,India,IND,985
+2007,Italy,ITA,985
+2007,Japan,JPN,817
+2007,Russian Federation,RUS,970
+2007,United Kingdom,GBR,956
+2007,United States,USA,883
+2008,China,CHN,930
+2008,France,FRA,967
+2008,Germany,DEU,959
+2008,India,IND,977
+2008,Italy,ITA,964
+2008,Japan,JPN,823
+2008,Russian Federation,RUS,955
+2008,United Kingdom,GBR,955
+2008,United States,USA,915
+2009,China,CHN,905
+2009,France,FRA,958
+2009,Germany,DEU,954
+2009,India,IND,1006
+2009,Italy,ITA,965
+2009,Japan,JPN,799
+2009,Russian Federation,RUS,969
+2009,United Kingdom,GBR,953
+2009,United States,USA,893
+2010,China,CHN,989
+2010,France,FRA,1003
+2010,Germany,DEU,1018
+2010,India,IND,1065
+2010,Italy,ITA,1018
+2010,Japan,JPN,887
+2010,Russian Federation,RUS,982
+2010,United Kingdom,GBR,1012
+2010,United States,USA,970
+2011,China,CHN,930
+2011,France,FRA,988
+2011,Germany,DEU,996
+2011,India,IND,1060
+2011,Italy,ITA,999
+2011,Japan,JPN,828
+2011,Russian Federation,RUS,985
+2011,United Kingdom,GBR,985
+2011,United States,USA,948
+2012,China,CHN,928
+2012,France,FRA,981
+2012,Germany,DEU,993
+2012,India,IND,1051
+2012,Italy,ITA,991
+2012,Japan,JPN,833
+2012,Russian Federation,RUS,1019
+2012,United Kingdom,GBR,969
+2012,United States,USA,954
+2013,China,CHN,957
+2013,France,FRA,971
+2013,Germany,DEU,994
+2013,India,IND,1035
+2013,Italy,ITA,980
+2013,Japan,JPN,903
+2013,Russian Federation,RUS,1012
+2013,United Kingdom,GBR,988
+2013,United States,USA,988
+2014,China,CHN,967
+2014,France,FRA,995
+2014,Germany,DEU,1028
+2014,India,IND,1029
+2014,Italy,ITA,1016
+2014,Japan,JPN,907
+2014,Russian Federation,RUS,1079
+2014,United Kingdom,GBR,1001
+2014,United States,USA,1055
+2015,China,CHN,962
+2015,France,FRA,993
+2015,Germany,DEU,1024
+2015,India,IND,1039
+2015,Italy,ITA,1007
+2015,Japan,JPN,918
+2015,Russian Federation,RUS,1059
+2015,United Kingdom,GBR,974
+2015,United States,USA,1043
+2016,China,CHN,943
+2016,France,FRA,972
+2016,Germany,DEU,1021
+2016,India,IND,1042
+2016,Italy,ITA,979
+2016,Japan,JPN,892
+2016,Russian Federation,RUS,1045
+2016,United Kingdom,GBR,965
+2016,United States,USA,1042
+2017,China,CHN,949
+2017,France,FRA,959
+2017,Germany,DEU,964
+2017,India,IND,1044
+2017,Italy,ITA,969
+2017,Japan,JPN,874
+2017,Russian Federation,RUS,1028
+2017,United Kingdom,GBR,992
+2017,United States,USA,1010
+2018,China,CHN,962
+2018,France,FRA,927
+2018,Germany,DEU,959
+2018,India,IND,1054
+2018,Italy,ITA,939
+2018,Japan,JPN,856
+2018,Russian Federation,RUS,984
+2018,United Kingdom,GBR,935
+2018,United States,USA,1016
+2019,China,CHN,922
+2019,France,FRA,940
+2019,Germany,DEU,931
+2019,India,IND,1000
+2019,Italy,ITA,955
+2019,Japan,JPN,855
+2019,Russian Federation,RUS,990
+2019,United Kingdom,GBR,913
+2019,United States,USA,966
+2020,China,CHN,865
+2020,France,FRA,847
+2020,Germany,DEU,864
+2020,India,IND,981
+2020,Italy,ITA,885
+2020,Japan,JPN,781
+2020,Russian Federation,RUS,883
+2020,United Kingdom,GBR,828
+2020,United States,USA,904
+2021,China,CHN,706
+2021,France,FRA,721
+2021,Germany,DEU,727
+2021,India,IND,837
+2021,Italy,ITA,718
+2021,Japan,JPN,609
+2021,Russian Federation,RUS,732
+2021,United Kingdom,GBR,647
+2021,United States,USA,765
+2022,China,CHN,471
+2022,France,FRA,455
+2022,Germany,DEU,456
+2022,India,IND,596
+2022,Italy,ITA,455
+2022,Japan,JPN,389
+2022,Russian Federation,RUS,457
+2022,United Kingdom,GBR,409
+2022,United States,USA,388
