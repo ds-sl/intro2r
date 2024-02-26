@@ -276,7 +276,7 @@ DT.ODA.ALLD.CD
 -   探索的データ分析（EDA） -
     -   練習と一つ目の課題（w5eda.Rmd） [[リンク](https://ds-sl.github.io/intro2r/ges001/w5eda.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w5eda.Rmd)]
     -   二つ目以降の課題：w5eda1.Rmd [[リンク](https://ds-sl.github.io/intro2r/ges001/w5eda1.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/w5eda1.Rmd)]
--   課題：**2023.1.27. 23:59** までに Moodle の演習の課題ボックスに提出したものについては、なるべく、早く見て、フィードバックを書きます。それ以降に提出されたものも見ますが、フィードバックは遅くなると思ってください。
+-   課題：**2023.1.27. 23:59** までに Moodle の演習の課題ボックスに提出したものについては、なるべく、早く見て、フィードバックを書きます。~~それ以降に提出されたものも見ますが、フィードバックは遅くなると思ってください。~~
 
 ### 第6週
 
@@ -420,6 +420,8 @@ Refugee population by country or territory of origin：SM.POP.REFG.OR
 資本主義と民主主義の関係について、政治学の立場から議論します。
 
 02/27(TU)　まとめ　[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00130.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00130.nb.html)]・[ビデオ]
+
+課題1、課題2、それ以外にも提出すればみますと言った練習問題は、すべて 2月27日深夜で締め切ります。
 
 **03月02日：レポート提出**
 

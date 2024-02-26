@@ -3,9 +3,11 @@ title: "GES 001 演習10"
 author: "H. Suzuki"
 date: "2024年2月27日"
 output:
-  ioslides_presentation:
+  ioslides_presentation: 
     widescreen: true
     df_print: paged
+    fig_width: 9
+    fig_retina: 1
   html_document:
     df_print: paged
   html_notebook: default
@@ -31,9 +33,15 @@ output:
 
 **データサイエンスを学ぶことは、未来を切り開くための羅針盤となるでしょう。**
 
-------------------------------------------------------------------------
-
 ### **データサイエンス学習があなたに与える3つの力**
+
+**1. 情報洪水に惑わされない「データリテラシー」**
+
+**2. 多様な視点から物事を捉える「批判的思考」**
+
+**3. データに基づいて行動し、社会貢献する力**
+
+------------------------------------------------------------------------
 
 **1. 情報洪水に惑わされない「データリテラシー」**
 
@@ -144,15 +152,18 @@ df_pop_related_extra |> filter(country == "Japan") |>
 ------------------------------------------------------------------------
 
 ```{r echo=FALSE}
-df_pop_related_extra |> pivot_longer(pop:old) |> filter(name %in% c("birth_rate", "death_rate", "young", "old")) |>
-  filter(country == "Japan") |> drop_na(value) |>
-  ggplot(aes(year, value, col = name)) + geom_line() +
-  labs(title = "日本の出生率・死亡率・労働人口に対する高齢・若年扶養率（％）")
+df_pop_related_extra |> mutate(birth_rate = birth_rate*2, death_rate = death_rate*2) |> pivot_longer(pop:old, values_to = "若年扶養率・老年扶養率（%）") |> filter(name %in% c("birth_rate", "death_rate", "young", "old")) |>
+  filter(country == "Japan") |> drop_na(`若年扶養率・老年扶養率（%）`) |>
+  ggplot(aes(year, `若年扶養率・老年扶養率（%）`, col = name)) + geom_line() + 
+  scale_y_continuous(
+    "若年扶養率・老年扶養率（%）", 
+    sec.axis = sec_axis(~ . / 2, name = "出生率・死亡率（千人あたり）")) +
+  labs(title = "日本の出生率・死亡率（千人毎）\n労働人口に対する高齢・若年扶養率（％）")
 ```
 
 ------------------------------------------------------------------------
 
-```{r fig.height=6.5, fig.width=9, echo = FALSE}
+```{r fig.height=6, fig.width=9, echo = FALSE}
 df_pop_related_extra |> filter(year == 2019, income == "High income", pop > 10000000) |> 
   drop_na(birth_rate, death_rate) |> 
   mutate(pop_rate = birth_rate/death_rate, .after = death_rate) |>
@@ -179,7 +190,7 @@ df_pop_related_extra |> filter(pop > 50000000, pop < 150000000, income == "High 
 df_pop_related_extra |> filter(pop > 50000000, income == "High income") |>
   pivot_longer(pop:old) |> filter(name %in% c("young", "old")) |>
   ggplot(aes(year, value, col = country, linetype = name)) + 
-  geom_line() + labs(title = "5000万人以上の高所得の国の高齢者・若年者扶養率")
+  geom_line() + labs(title = "5000万人以上の高所得の国の高齢者・若年者扶養率", y = "扶養率（%）")
 ```
 
 -   さまざまなことが見えてきませんか。
@@ -263,7 +274,8 @@ df_environment |> filter(!(iso2c %in% REGION)) |> filter(year == 2014) |>
 wdi_data_selected9 <- read_csv("data/wdi_data_selected9.csv")
 ```
 
--   WDI のデータ数: 1,486
+-   WDI の指標数: 1,486、最大217カ国、79地域のデータ
+-   国および年によっては、いくつかの指標のデータが提供されていません。
 
 ### 質問
 
@@ -276,7 +288,7 @@ wdi_data_selected9 <- read_csv("data/wdi_data_selected9.csv")
 
 ```{r echo=FALSE}
 wdi_data_selected9 |> filter(Country.Code %in% c("CHN", "JPN", "RUS", "USA")) |> ggplot(aes(year, n, col = Country.Name)) + geom_line() +
-  labs(title = "アメリカ合衆国、日本、中国、ロシアの提供する国別データ数")
+  labs(title = "アメリカ合衆国、日本、中国、ロシアの提供する国別データ数", y = "指標数")
 ```
 
 ベルリンの壁崩壊 1989年、ソビエト社会主義共和国連邦が崩壊したのは、1988年から1991年、1991年東西ドイツ統合
@@ -289,9 +301,11 @@ wdi_data_selected9 |> filter(Country.Code %in% c("CHN", "JPN", "RUS", "USA")) |>
 wdi_data_selected9 |> filter(year == 2015) |> arrange(desc(n))
 ```
 
+**オープンデータを活用**し、情報の透明性を高くしていきましょう。
+
 ## おわりに
 
--   「日本ごと・世界ごと・自分ごと」 「自分ごと・世界ごと・日本ごと」
+-   **「日本ごと・世界ごと・自分ごと」 「自分ごと・世界ごと・日本ごと」**
 
     -   自分が生きている社会の課題　vs 普遍的な人間の課題 vs 自分や個人の課題
 
@@ -299,7 +313,7 @@ wdi_data_selected9 |> filter(year == 2015) |> arrange(desc(n))
 
 **オープンデータは、通常は困難な「世界ごと」として課題を相対化、普遍化する。**
 
--   今だけ、金だけ、自分だけ（単純化バイアス）にとらわれない生き方
+-   **今だけ、金だけ、自分だけ**（単純化バイアス）にとらわれない生き方
     -   遺伝子的情報の中に自己防衛本能として書き込まれているかもしれない
     -   思考しているその時、見えやすい価値、自分の経験だけに縛られずより広い視点へ
 
@@ -307,7 +321,7 @@ wdi_data_selected9 |> filter(year == 2015) |> arrange(desc(n))
 
 ## おわりに（つづき）：AI とどう付き合っていくか
 
--   探究的データ分析：得られた結論に満足せず、探求し続けることを厭わないで
+-   **探究的データ分析**：得られた結論に満足せず、探求し続けることを厭わないで
 
     -   分断ではなく、公開・共有・議論・協働によって、他者の視点をたいせつに
 
@@ -315,7 +329,7 @@ wdi_data_selected9 |> filter(year == 2015) |> arrange(desc(n))
 
     -   特定の行動の決断が正しいか間違っているかで争うより、行動しながら、その影響を図りながら、修正していくことがたいせつ。施策の影響は、実行してみないとわからない部分もある。
 
--   AI の最大の強みは、学び続けること
+-   AI の最大の強みは、**学び続けること**
 
     -   AI の影響が大きくなっていく時代に、AIと上手に付き合うには、AI の思考方法（データサイエンス）を自分も経験し、コミュニケーションしましょう。
 
