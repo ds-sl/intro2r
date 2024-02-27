@@ -887,7 +887,7 @@ FAO: The Importance of Ukraine and the Russian Federation for Global Agricultura
 
     -   Itochu Corp's aviation unit will end its strategic cooperation with Israeli defence company Elbit Systems Ltd (ESLT.TA), by the end of February amid the war in Gaza, the Japanese trading house's executive said on Monday. Itochu plans to end the collaboration after the World Court ordered Israel last month to prevent acts of genocide against Palestinians and do more to help civilians, Itochu Chief Financial Officer Tsuyoshi Hachimura said. (Feb. 5, 2024, Asahi-Shinbun Digital)
 
-02/20(TU)　Rでデータサイエンス9：まとめと演習　[[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-9.nb.html)]・[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00122.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00122.nb.html)]・[ビデオ]
+02/20(TU)　Rでデータサイエンス9：まとめと演習　[[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-9.nb.html)]・[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00122.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00122.nb.html)]・[[ビデオ](https://youtu.be/ddRCdN6tVjw)]
 
 ### 第10週
 
@@ -967,7 +967,7 @@ FAO: The Importance of Ukraine and the Russian Federation for Global Agricultura
 
 -   若い世代がどのように政治と向き合うか
 
-02/27(TU)　まとめ
+02/27(TU)　まとめ　[[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-10.nb.html)]・[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00130.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00130.nb.html)]・[[ビデオ](https://youtu.be/VLI_WYP95ng)]
 
 データサイエンスについて
 
@@ -976,6 +976,32 @@ FAO: The Importance of Ukraine and the Russian Federation for Global Agricultura
 -   COP28に際して若者の緊急声明ー1.5度目標やってるふりはもうやめてー：[[リンク](https://fridaysforfuture.jp/cop28に際して若者の緊急声明ー1-5度目標やってるふり/)]
 
 -   「防衛装備移転三原則」改正　日本産の迎撃ミサイル「パトリオット」米に輸出決定(2023年12月22日) <https://www.youtube.com/watch?v=qRW_2CkBqLU>
+
+-   この授業について
+
+    -   千葉先生からのコメント
+
+    -   防衛政策変更の経緯
+
+    -   2027年には予定通りに2%になると、防衛費は世界で、アメリカ・中国の次の、三番目になる。
+
+    -   2023年12月22日「武衛装備移転三原則」の改訂 - パトリオットの米国への輸出決定
+
+    -   日本の選挙
+
+        -   有権者 一億500万人
+
+        -   投票率 50% 程度
+
+        -   自民党：2000万票をとっている。
+
+        -   国民に対する説明責任を果たすインセンティブが働かない。
+
+    -   選挙に行こう
+
+-   期末レポートについて
+
+    -   世界銀行からのデータを図にしたものをひとつは加える
 
 **03月02日：レポート提出**
 
