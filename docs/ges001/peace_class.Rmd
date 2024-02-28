@@ -8,7 +8,7 @@ output:
 #  pandoc_args: ["--variable=font_family:AppleGothic"]
 ---
 
-```{r}
+```
 knitr::opts_chunk$set(out.extra = "```{r, font_family = 'Hiragino Sans'}")
 ```
 
