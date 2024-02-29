@@ -73,37 +73,99 @@ output:
 # Presentations
 
 - NAME_E	NAME_KJ	DIVISION	EMAIL
-- 4:40 c241786: VIRTUDAZO, ETHAN JOSAFAT ARNUEVO	
+- 4:40 g256020: HIRAI, SHU 
+  - Modern Japanese Exports: three questions: WDI high technology exprorts
+  - Number of technicians: Jpan's indices are declining
+- 4:40 c241786: VIRTUDAZO, ETHAN JOSAFAT ARNUEVO
+  - Popularity of article? lenght
+  - Article Lenght 548, Word Lenght 4.55, Entermaint: 529.5, Word lenght 4.6
 - 4:45 g245701: LIN, CHING-TING
+  - Issue of fear of failure among students
+  - parenting style and FF
+  - comparison of models
 - 4:50 g245702: TUANO, CHRISANNE MORAL
+  - Domestic violence, early marrage, young age pregnancy
+  - belief that thre is justfied VAW, violence againct wives, across region
+  - Sub-Saharan Africa and South Asia: rates of both early marriage and justification of VAW
+  - correlation matrix
 - 4:55 g246704: DE VERA, DARA ABEGAIL MAMINTA
+  - Relationship between Competencies and Employee Performance
+  - Educagion distribution, Employeee performaince by Education level
+  - Competency assessment across years
 - 5:00 g246705: MURPHY, THOMAS JAMES
+  - Digital divide in East Asia and {acofoc}
+  - Choropleth map
 - 5:05 g246715: SAKAI, GAKU
+  - LinkedIn Job Posts in the US *2023): 6 experience level: better to use factor
 - 5:10 g246717: SHIRAI, YOUSUKE
-- 5:15 g246719: AL-HAMATI, ANAS ALI SALEH
+  - Gender Inequality in Japanese Company
+  - Independent women pct, Internal women pct
+  - Percentage of women emplyees
+- 5:15 g246719: AL-HAMATI, ANAS ALI SALEH - sick
+  - Population growth rate, and GDP growth in Pakistan: needs balance
 - 5:20 g256004: FURUSAWA, RINA
+  - Voicing Contrast in Singing, ta vs da, sa vs da, 
+  - In singing voicing, VOT in singing and speech, vcd, vs vcl (voice less)
 - 5:25 g256005: YANAGIDA, TAKAKI
+  - Eploratory analysis of baseball: pichers' performance
+  - https://baseballsavant.mlb.com/statcast_search
+  - release points vs K/BB
 - 5:30 g256009: SUN, YIDI
+  - Trump vs Obama, GDP, Fiscal Deficet, Debt, Inflation, Unemployment, Infrastructure Investment
 - 5:35 g256019: HANADA, HIROKI
+  - EDA on Performance Metrics of the Emulated and Original Microeservices Benchmark
+  - end to end latency
 
 - Break
-- 5:45 c241338: OOKA, AKI
-- 5:50 g256020: HIRAI, SHU 
+- 5:45 c241338: OOKA, AKI 
+  - Palm oil, land area: How did palm oil pruduction increase
+  - geom_area can be used, scale log10
 - 5:55 g256021: NAKAGAWA, TOMOYA
+  - Prediction of World semiconductor sales trend using linear regression and digital fourier Transform
+  - Upward trend, small oscillation (Si Cycle)
+  - Parametric and non parametric approach
 - 6:00 g256709: FERNANDO, MANDADIGE KASUN UDARA SAMPATH
+  - How does India achieve economic stability? : foreign direct investment
 - 6:05 g256710: NGUYEN, THI VIET LINH
+  - Determinants Flugszfc FDI by US to OECD
 - 6:10 g256711: SUN, XIAOXUAN
-- 6:15 g256712: UDATIYAWALA ARACHCHIGE , CHAMILANI
+  - Impact of agrricautural land, industry,  and water
+- 6:15 g256712: UDATIYAWALA ARACHCHIGE, CHAMILANI
+  - Impact of; remittances, imports, fpreogm direct investment
+  - foreign remittances on economic growth
 - 6:20 g256717: MC NEVIN, NICOLE JOY
+  - International Studdent Mobility: EDA
+  - to sending nations and receiveing nations
+  - Kaggle, Inbound student mobility, outbound student mobility from UNESCO [[Link](http://data.uis.unesco.org/index.aspx?queryid=3807)]
+  - Name label
 - 6:25 g256724: WRIGHT, MAXWELL ALEXANDER WING CHEONG
+  - how agriculture impacte greenhouse emissions using WDI
+  - Agriculture land vs emissions: log10 scale
+  - Fertiizer and Nitrous Oxide, Faroe island
 - 6:30 c241183: KISHI, MAYU
+  - The relationship between fertility rate and gender wage gap (OECD)
+  - France, Iceland, Japan, South Korea, explanaton of D1 and D9
 - 6:35 c241429: TAGAWA, MIO
+  - Current situation of renewable energy consumption
+  - long title, isoslides use
+  - Renewable energy consumption, low income countries, and regions, choropleth maps
 - 6:40 c241456: TAMAGAWA, KAI
+  - **[NO: did not show-up]**
 - 6:45 c241527: YANG, PEIQING
+  - long term interest rate of the U.S. and Japan: OECD, Yahoo finance
+  - Long and short term interest rate: OECD, VIX frmm hayhoo finance, Nikkei stock average
 - 6:50 c241554: RAO, SHUNYU 
+  - gender equality and birth rate, considering economic factors, GNI (PPP), GINI, School Enrolment, Seats of parliaments, birth rate, 
+  - Psychology,  oofplog…… offplogmixed
 - 6:55 c241559: ZHENG, WENBO
+  - Saving rate: Gross savings, GDP p cap, CPI, unemployment
+  - GDP per Capita vs Saving rate
 
 - Final Remark
+
+  - Line break in the title and use of subtitle
+  - APA table:Create American Psychological Association (APA) Style Tables [Link](https://cran.r-project.org/web/packages/apaTables/index.html) (Rao)
+  - Mac Connection: Command F1, Command FN, F1
 
 
 # Paper
