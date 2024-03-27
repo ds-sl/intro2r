@@ -3,14 +3,14 @@ title: "GES 001 演習10"
 author: "H. Suzuki"
 date: "2024年2月27日"
 output:
+  html_notebook: default
+  html_document:
+    df_print: paged
   ioslides_presentation: 
     widescreen: true
     df_print: paged
     fig_width: 9
     fig_retina: 1
-  html_document:
-    df_print: paged
-  html_notebook: default
 ---
 
 ## 期末レポート

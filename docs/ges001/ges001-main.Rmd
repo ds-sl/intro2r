@@ -798,7 +798,7 @@ Fragility and Conflict: On the Front Lines of the Fight against Poverty [[Link](
 
 [^1]: 教育はどうだろうか。高等教育は、非競合的とは言えず、非排他的とも言えない。
 
-02/13(TU)　Rでデータサイエンス8：難民、軍事支出　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-8.nb.html)]・[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00121.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00121.nb.html)]・[[ビデオ](https://youtu.be/mq2Y83CGI4Q)]
+02/13(TU)　Rでデータサイエンス8：難民、軍事支出　 [[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-8.nb.html)]・[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00121.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00121.nb.html)]・[ビデオ]
 
 **Global Link-Refugees**
 
@@ -830,64 +830,7 @@ FAO: The Importance of Ukraine and the Russian Federation for Global Agricultura
 
 戦争が引き起こす食料危機の現状と解決策を考える。
 
-#### 講義
-
--   コメント
-
-    -   Pro-active contribution to peace 積極平和主義
-
-    -   分断・二極化、ロシアでは、犯罪なども減っている。
-
--   ウクライナ戦争と食糧危機
-
-    -   ＡＯ＝国連食糧農業機関のチーフエコノミスト、マッシモ・トレロ氏トレロ氏は、「世界の食料価格は、開戦直後の歴史的な高騰こそ落ち着いてきたものの、依然として高い水準にある」としたうえで、「ことしは、
-        アフリカ、中東、アジアなどの貧しい国々で、必要な量の食料を入手できなくなり、飢餓が広がるおそれがある」。「まずは、ウクライナの穀物輸出を継続させるため、ロシアとの合意を更新することが必要だ」。
-
-    -   ロシアとウクライナは、ともに穀物の輸出大国です。小麦の輸出量は、戦争前、ロシアが世界第１位、ウクライナが第５位で、この両国で、世界のおよそ３０％を占め、とうもろこしも、両国で２０％を占めていました。両国からの輸出が大きく減り、世界の食料価格が高騰しました。
-
-    -   Global Food Report 2023: International Food Policy Research Institute (IFPRI)　[[Link](https://www.ifpri.org/publication/global-food-policy-report-2023-rethinking-food-crisis-responses)]
-
-    -   穀物メジャーの暗躍: 欧米によるロシアへの経済制裁が穀物の国際価格急騰を招き、世界中で食料危機が懸念されるなかで、膨大な利益を求めて暗躍しているのが穀物市場を支配する穀物メジャーの存在だ
-
-    -   穀物メジャーは、小麦、大豆、トウモロコシなどの主要穀物を世界中で買い付け、集荷、輸送、保管までを
-        手掛ける多国籍企業で、アメリカや欧州に本社を置く上位5社で世界の穀物取引の約8割を支配し、穀物流通に多大な影響力を持っている。
-
-    -   経営規模は上位2社が群を抜き、首位の米カーギル社が自社で調達する穀物は年約7500万㌧、2位の米アー
-        チャー・ダニエルズ・ミッドランド(ADM)は約6500万㌧と推定されている。カーギルは66カ国に15万人以上の従業員を持ち、世界の穀物シェアの四割を握るといわれている。ADMは世界の160カ国で事業を展開している。
-
--   **Eiman Yassin, Understanding the Middle East Society and the Palestinian Experience: History, Present and Future**
-
-    -   Three important values: religion (in ID), family, work
-
-    -   22 Arab countries, Arabic, Islam, Muslim people
-
-    -   Flag of Palestine [[Link](https://www.britannica.com/topic/flag-of-Palestine-Liberation-Organization)]
-
-    -   Monotheism: Judaism, Christianity, Islam
-
-    -   Thobe, a long, loose-fitting dress. Kuffiyeh, traditional Palestinian scarf
-
-    -   Theodor Herzl: [[Wikipedia](https://en.wikipedia.org/wiki/Theodor_Herzl)] シオニズム
-
-        -   Zionism is a nationalist movement that emerged in the 19th century to enable the establishment of a homeland for the Jewish people in Palestine a region roughly corresponding to the Land of Israel in Jewish tradition. Following the establishment of the modern state of Israel, Zionism became an ideology that supports the development and protection of the State of Israel as a Jewish state.
-
-        -   November 1917
-
-    -   Balfour Declaration
-
-        -   Dear Lord Rothschild, I have much pleasure in conveying to you, on behalf of His Majesty's Government, the following declaration of sympathy with Jewish Zionist aspirations which has been submitted to, and approved by, the Cabinet. His Majesty's government view with favor the establishment in Palestine of a national home for the Jewish people, and will use their best endeavors to facilitate the achievement of this object, it being clearly understood that nothing shall be done which may prejudice the civil and religious rights of existing non-Jewish communities in Palestine, or the rights and political status enjoyed by Jews in any other country.
-
-    -   1973: Those three Arab countries started a war against Israel and won the war and was able to return back their lands
-
-    -   Hamas attack on October 7, 2023
-
-    -   Gaza death toll 28,064 Palestinians killed 67,611 injured
-
-    -   South African representatives argued before the International Court of Justice that Israel is engaged in a genocidal assault on the Gaza Strip, subjecting the enclave to "merciless" bombing with the clear intent to wipe out the Palestinian population.
-
-    -   Itochu Corp's aviation unit will end its strategic cooperation with Israeli defence company Elbit Systems Ltd (ESLT.TA), by the end of February amid the war in Gaza, the Japanese trading house's executive said on Monday. Itochu plans to end the collaboration after the World Court ordered Israel last month to prevent acts of genocide against Palestinians and do more to help civilians, Itochu Chief Financial Officer Tsuyoshi Hachimura said. (Feb. 5, 2024, Asahi-Shinbun Digital)
-
-02/20(TU)　Rでデータサイエンス9：まとめと演習　[[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-9.nb.html)]・[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00122.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00122.nb.html)]・[[ビデオ](https://youtu.be/ddRCdN6tVjw)]
+02/20(TU)　Rでデータサイエンス9：まとめと演習　[[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-9.nb.html)]・[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00122.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00122.nb.html)]・[ビデオ]
 
 ### 第10週
 
@@ -897,111 +840,7 @@ FAO: The Importance of Ukraine and the Russian Federation for Global Agricultura
 
 「資本主義・デモクラシー・エコロジー」[[Link](https://www.chikumashobo.co.jp/product/9784480017437/)]
 
-#### 特別講義：今日の環境危機とそれへの取り組みについて- 政治理論の視点から
-
-1.  はじめに
-
-    -   民主主義、国家主義、資本主義
-
-2.  自由民主主義が試されている「試される民主主義」
-
-    -   代表制民主主義 (representative democracy)、参加民主主義 (participatory democracy)
-
-    -   日本では、一と二分の一体制
-
-    -   福祉国家（welfare state）のもとで、40年間、自由民主主義体制が、徹底平和主義とも連動して維持されてきた。これが崩れつつある。（24条、生存権）
-
-    -   ヤン・ウェルナー・ミラー「自由民主主義は多くの人々にとってデフォルトではなくなりつつある」80年代半ばから。
-
-    -   福祉国家型資本主義からネオ・リベラリズム（新自由主義）型資本主義にとって替えられた。
-
-        -   20 世紀末以降は、製造業中心から 株・投資（投機との違いが不分明化）・金融中心のグローバル資本主義、国民経済とし て発展してきた資本主義からグローバルな資本主義へと変容。
-
-            -   要因：① 経済成長の陰り、② グローバル・ノースとグローバル・サウス の構造的格差の激化、③ 環境（エコロジー）危機の深刻化と地球温暖化、④ 気候変動 と「人新世時代」の到来、⑤「ネオ・リベラリズム」（新自由主義）と「新右派連合」の 形成など。
-
-            -   デ ヴィッド・ハーヴェイ「新自由主義とは何よりも、強力な私的所有権、自由市場、自由 貿易を特徴とする制度的枠組みの範囲内で個々人の企業活動の自由とその能力とが無 制約的に発揮されることによって人類の富と福利が最も増大する、と主張する政治経済 的実践の理論である」
-
-        -   1980 年代のポスト福祉国家を 標榜するレーガン＝サッチャー＝中曽根式の「新保守主義」
-
-            -   規制緩和、市 場至上主義、自己利益のマキシマム化を指向→公共性の著しい欠如、社会保障と社会福 祉の劣化、社会的弱者（貧窮者・母子家庭・女性・若者・非正規雇用者）保護の減退
-
-                -   トリクルダウン理論（トリクルダウンりろん、英: trickle-down effect）とは、「富める者が富めば、貧しい者にも自然に富がこぼれ落ち、経済全体が良くなる」とする経済理論である。
-
-            -   ブランコ・ミラノヴィッチ『資本主義だけ残った』（みすず書房、2019 年）
-
-3.  エコロジー危機と政治
-
-    -   ① 環境汚染と資源の枯渇、② 人口・食糧・エネルギ ー問題、③ 熱帯林の破壊と巨大な山火事、④ 地球温暖化による気候変動。
-
-    -   1988 Time: Man of the Year, 絶滅寸前の地球 Endangered Earth, Planet of the Year \| Jan. 2, 1989 [[リンク](https://content.time.com/time/covers/0,16641,19890102,00.html)]
-
-        -   Planet Of The Year: What on EARTH Are We Doing?　[[リンク](https://content.time.com/time/subscriber/article/0,33009,956627-5,00.html)]
-
-    -   パウル・クルッツェンによる 2010 年の「人新世時代」（アントロポセン/the Anthropocene）の始まり
-
-    -   ① 持 続 可 能 な 発 展 （ sustainable development ）、 ② 定 常 型 経 済 （ stationary economics ）、 ③ 脱 成 長 （ degrowth, décroissance）
-
-        -   ① は経済成長と温暖化による異常気象の克服を何とか両立させよ うとする試み。
-
-        -   ②ハ 6 ーマン・デイリーや広井良典や古くはジョン・スチュアート・ミルなど。
-
-4.  付論 日本の安全保障政策の新局面
-
-    -   中村哲「アフガニスタンの実体験において、確信できることがある。武力によってこ の身が守られたことはなかった。防備は必ずしも武器によらない」（『天、共に在り』 2013 年、244 頁）
-
-    -   2022 年 12 月 16 日に岸田政権が「安全保障三文書」（「国家安全保障戦略」、「国家防 7 衛戦略」 、「防衛力整備計画」 ）を閣議決定した。
-
-        -   ① 戦後日本の政治と外交と安全保障の根幹を作り上げてきた日本国憲 法の非戦=平和主義の大原則からの明白な逸脱。
-
-        -   ② これだけ重要な決定を、立法の最高 機関である国会に諮ることなく、それを通さずに行政部だけで決定。
-
-        -   ③ 初めの二文書 では「中国、北朝鮮、ロシア」を仮想敵国として明示。
-
-        -   ④ 防衛費の国家予算を GDP 比 1％枠を撤廃し、5 年間で倍増の 2%まで増強し、43 兆円とするという決定。
-
-        -   ⑤「敵基地攻撃」能力の保持を謳い、先制攻撃のリスクを持ち、これまでの「専守防衛」の原則 からの逸脱の可能性が高い。
-
-#### 質疑
-
--   アメリカべったりの日本が、中国の脅威とどう向き合うか
-
--   若い世代がどのように政治と向き合うか
-
-02/27(TU)　まとめ　[[準備](https://ds-sl.github.io/intro2r/ges001/ges001-prep-10.nb.html)]・[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00130.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00130.nb.html)]・[[ビデオ](https://youtu.be/VLI_WYP95ng)]
-
-データサイエンスについて
-
-海蔵寺先生：
-
--   COP28に際して若者の緊急声明ー1.5度目標やってるふりはもうやめてー：[[リンク](https://fridaysforfuture.jp/cop28に際して若者の緊急声明ー1-5度目標やってるふり/)]
-
--   「防衛装備移転三原則」改正　日本産の迎撃ミサイル「パトリオット」米に輸出決定(2023年12月22日) <https://www.youtube.com/watch?v=qRW_2CkBqLU>
-
--   この授業について
-
-    -   千葉先生からのコメント
-
-    -   防衛政策変更の経緯
-
-    -   2027年には予定通りに2%になると、防衛費は世界で、アメリカ・中国の次の、三番目になる。
-
-    -   2023年12月22日「武衛装備移転三原則」の改訂 - パトリオットの米国への輸出決定
-
-    -   日本の選挙
-
-        -   有権者 一億500万人
-
-        -   投票率 50% 程度
-
-        -   自民党：2000万票をとっている。
-
-        -   国民に対する説明責任を果たすインセンティブが働かない。
-
-    -   選挙に行こう
-
--   期末レポートについて
-
-    -   世界銀行からのデータを図にしたものをひとつは加える
+02/27(TU)　まとめ
 
 **03月02日：レポート提出**
 

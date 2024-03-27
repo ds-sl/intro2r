@@ -20,15 +20,11 @@ output:
 
 12/19(TU)　Rでデータサイエンス2：人口の少子高齢化　 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00101.html)]・[[RNotebook](https://ds-sl.github.io/intro2r/ges001/ges00101.nb.html)]・[[ビデオ](https://youtu.be/AFNVhNdWZ_Y)]
 
--   人口と少子高齢化 [[R Notebook](https://ds-sl.github.io/intro2r/ges001/demography.nb.html)]
+-   \*\*人口動態 [[R Notebook](https://ds-sl.github.io/intro2r/ges001/demography.nb.html)\*\*]
 
 #### 世界開発指標（World Development Indicators）[[Link](https://datatopics.worldbank.org/world-development-indicators/)]
 
--   コース全体で、世界開発指標を利用します。授業で利用する指標は、海蔵寺先生に選択していただいたものですが、リンク先の Data Themes などから、データを探すことができます。データ名だけでなく、下でも示しているように、データ ID（データコードとも呼ばれる）や、リンクを控えておくと、あとから、データ概要などを探す時にも役に立ちます。概要は、Details に書かれています。
-
--   他に `WDIsearch()` という、WDI パッケージの関数を利用することも可能です。このファイルの一番下を参照してください。
-
-**People- Population dynamics** [[demography](https://ds-sl.github.io/intro2r/ges001/demography.nb.html)]
+**People- Population dynamics**
 
 -   総人口　Population, total：SP.POP.TOTL [[Link](https://data.worldbank.org/indicator/SP.POP.TOTL)]
 
@@ -134,7 +130,7 @@ output:
 
 01/30(TU)　Rでデータサイエンス6：気候変動　 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00112.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00112.nb.html)]・[[ビデオ](https://youtu.be/Zj_gK6XYaHs)]
 
--   環境課題について [[R Notebook](https://ds-sl.github.io/intro2r/ges001/w6eda0.nb.html)]
+-   環境について [[R Notebook](https://ds-sl.github.io/intro2r/ges001/w6eda0.nb.html)]
 
 **Environment-Climate**　
 
@@ -168,7 +164,7 @@ output:
 
 ### 第8週
 
-02/13(TU)　Rでデータサイエンス8：難民、軍事支出　 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00121.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00121.nb.html)]・[[ビデオ](https://youtu.be/mq2Y83CGI4Q)]
+02/13(TU)　Rでデータサイエンス8：難民、軍事支出　 [[スライド](https://ds-sl.github.io/intro2r/ges001/ges00121.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00121.nb.html)]・[ビデオ]
 
 -   難民の出身国と受け入れ国 [[R Notebook](https://ds-sl.github.io/intro2r/ges001/peace0.nb.html)]
 
@@ -194,170 +190,8 @@ output:
 
 ### 第9週
 
-02/20(TU)　Rでデータサイエンス9：まとめと演習　[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00122.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00122.nb.html)]・[[ビデオ](https://youtu.be/ddRCdN6tVjw)]
-
--   軍事費（military.Rmd） [[R Notebook](https://ds-sl.github.io/intro2r/ges001/military.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/military.Rmd)], [[PDF version Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/military0.Rmd)]
-
--   例：難民（peace1.Rmd）PositCloud で作成 [[R Notebook](https://ds-sl.github.io/intro2r/ges001/peace1.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/peace1.Rmd)]
-
--   例：難民（peace0.Rmd）RStudio で完成させたもの [[R Notebook](https://ds-sl.github.io/intro2r/ges001/peace0.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/ges001/peace0.Rmd)]
-
--   R Markdown いろいろな形式での出力 [[R Notebook](https://ds-sl.github.io/intro2r/Rmarkdown-J.nb.html)], [[Rmd](https://github.com/ds-sl/intro2r/blob/main/docs/Rmakdown-J.Rmd)]
+02/20(TU)　Rでデータサイエンス9：まとめと演習　[[スライド](https://ds-sl.github.io/intro2r/ges001/ges00122.html)]・[[R Notebook](https://ds-sl.github.io/intro2r/ges001/ges00122.nb.html)]・[ビデオ]
 
 ### 第10週
 
 02/27(TU)　まとめ
-
-## WDI パッケージでデータを探す方法
-
-```{r}
-library(tidyverse)
-library(WDI)
-```
-
-WDI パッケージには、WDIsearch() という、データを探す機能も付属しています。また、WDIcache() で、メタデータ（データのデータ、データ情報）の最新情報を入手しておくと、検索も素早く行うことができます。
-
-詳細は、Help の検索窓に、WDIsearch と入れて、調べてください。みんなの[データサイエンスの当該箇所](https://icu-hsuzuki.github.io/ds4aj/worldbank.html#worldbank)にも書かれています。
-
-### 簡単な検索
-
-WDIsearch("検索語") とすると、検索語が、指標名（name）に現れる指標を検索してくれます。次の例では、313 の指標を返しています。
-
-```{r}
-WDIsearch("poverty")
-```
-
-とすると 71 に減りました。
-
-```{r}
-WDIsearch("poverty line")
-```
-
-### 概要を入手
-
-short = FALSE を加えると、概要（description）も得られます。
-
-```{r}
-WDIsearch("refugee", short = FALSE)
-```
-
-### 指標（ID）から検索
-
-指標がわかっていて、その詳細情報（名前や概要）が必要な時は、次のようにします。
-
-```{r}
-WDIsearch("SM.POP.REFG.OR", field = "indicator", short = FALSE)
-```
-
-### 他の検索
-
-実は、WDIsearch("refugee") や、WDIsearch("refugee", short = FALSE) では、初期値として、field = "name" として入っているので、書かなくて良いのでした。"indicator" を "description", "sourceDatabase", "sourceOrganization" に変更すると、そこに含まれる情報を入手できます。
-
-```{r}
-WDIsearch("UNICEF", field = "sourceOrganization")
-```
-
-### 高度な検索
-
-`WDIcache()` で最新情報にアップデートしておくと、いろいろと便利です。
-
-```{r include = FALSE}
-wdicache <- read_rds("data/wdicache.rds")
-```
-
-```{r eval = FALSE}
-wdicache <- WDIcache()
-```
-
-下の結果から、series と country の二つのデータ（data.frame）からなっていることがわかります。series には、すべての指標（WDI）情報、country には、すべての国の情報が含まれています。
-
-```{r}
-wdicache |> str(max.level = 1)
-```
-
-```{r}
-wdicache$series
-```
-
-```{r}
-wdicache$country
-```
-
-ですから、あとは、indicator を探すときは、wdicache\$series を使って、filter などでとれば良いことになります。一応、列を確認しておきます。
-
-```{r}
-wdicache$series |> str()
-```
-
-filter は一般的には、一致したものしか、探せませんが、grepl を使うことで、検索語を含むものを探すことにも対応しています。
-
-grepl("検索語", 列名, ignore.case = TRUE) として、検索すれば、検索語が現れるものを探してくれます。
-
-```{r}
-wdicache$series |> filter(grepl("women and girls", name, ignore.case = TRUE)) |>
-  filter(grepl("UNICEF", sourceOrganization, ignore.case = TRUE))
-```
-
-大きなファイルなので、保存しておいて、使うとよいのですが、data.frame ではないので、他の方法で保存することが必要です。
-
-```{r eval = FALSE}
-write_rds(wdicache, "data/wdicache.rds")
-```
-
-### `extra = TRUE`
-
-WDI でデータを読み込む時に、最後に、extra = TRUE とつけると、地域（region）や、所得レベル（income）情報も一緒に読み込んでくれました。実は、これは、2012 年の基準になっており、世界銀行では、これを、毎年、更新しています。その情報も、wdicache に入っています。そこで、extra = TRUE として読み込む時には、次のようにするのがより正確です。
-
-```{r}
-ASEAN <- c("BN", "KH", "ID", "LA", "MY", "MM", "PH", "SG", "VN")
-```
-
-読み込む時には、国名を指定すれば、データが小さくてすみますから、今回は、ASEAN のデータだけ読んでみましょう。まずは、wdicache なし。
-
-```{r}
-df_pcap <- WDI(country = ASEAN, indicator = c(gdppcap = "NY.GDP.PCAP.PP.KD"), extra = TRUE)
-df_pcap |> distinct(country, iso2c, region, income)
-```
-
-```{r}
-df_pcap_cache <- WDI(country = ASEAN, indicator = c(gdppcap = "NY.GDP.PCAP.PP.KD"), extra = TRUE, cache = wdicache)
-df_pcap_cache |> distinct(country, iso2c, region, income)
-```
-
-*2024年2月20日6:48a.m. 時点で下のようなメッセージが出ます。これは、データアップデートのためのメインテナンスだと思われます。* *11:20 a.m. では解決されているようです。すべてのデータかどうかは不明ですが。*
-
-```         
-WDI(indicator = c(gdppcap = "NY.GDP.PCAP.PP.KD"), extra = TRUE) でエラー: 
-  The following indicators could not be downloaded: NY.GDP.PCAP.PP.KD.
-
-Please make sure that you are running the latest version of the `WDI` package, and that the arguments you are using in the `WDI()` function are valid.
-
-Sometimes, downloads will suddenly stop working, even if nothing has changed in the R code of the WDI package. ("The same WDI package version worked yesterday!") In those cases, the problem is almost certainly related to the World Bank servers or to your internet connection.
-
-You can check if the World Bank web API is currently serving the indicator(s) of interest by typing a URL of this form in your web browser:
-
-https://api.worldbank.org/v2/en/country/all/indicator/NY.GDP.PCAP.PP.KD?format=json&date=:&per_page=32500&page=1
-```
-
-### クラスで使ったデータをダウンロードする方法
-
-1.  次のサイトにアクセスします：[リンク](https://github.com/ds-sl/intro2r/tree/main/docs/ges001/data)
-
-2.  データを探します。見つかったら、Download Raw を選択すると、ダウンロードできます。
-
-3.  または、Raw を選択します。このページの URL を、Browser の窓から取得します。
-
-例：<https://raw.githubusercontent.com/ds-sl/intro2r/main/docs/ges001/data/gini.csv>
-
-これを、引用符で囲い、下のように、read_csv で読み込み、データに名前をつけます。あとは、いつもと同じです。
-
-```{r}
-df_gini <- read_csv("https://raw.githubusercontent.com/ds-sl/intro2r/main/docs/ges001/data/gini.csv")
-df_gini
-```
-
-## Advanced
-
-WDI にアクセスできなかった時には、次のような方法も可能です。
-
-[Bulk Download of World Bank Data](https://ds-sl.github.io/intro2r/da4r/wdi_bulkdownload.nb.html)

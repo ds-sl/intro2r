@@ -3,10 +3,10 @@ title: "GES 001 演習2"
 author: "H. Suzuki"
 date: "2023年12月19日`"
 output:
+  html_notebook: default
   ioslides_presentation:
     widescreen: yes
     df_print: paged
-  html_notebook: default
 ---
 
 ## 準備
