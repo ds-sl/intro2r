@@ -3,8 +3,8 @@ title: "探索的データ分析 - EDA"
 author: "p000117x, Suzuki, Hiroshi 鈴木寛"
 date: "2024年2月13日"
 output:
-  word_document: default
   html_notebook: default
+  word_document: default
 #  pandoc_args: ["--variable=font_family:AppleGothic"]
 ---
 
